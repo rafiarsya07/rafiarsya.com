@@ -1202,7 +1202,7 @@
         </aside>
 
         <!-- BLOG LAYOUT -->
-        <div class="blog-layout">
+        <div class="blog-layout page-transition">
 
             <!-- SESSION SIDEBAR -->
             <nav class="session-sidebar">
@@ -1959,5 +1959,35 @@ services:
         // Init
         updateFab(1);
     </script>
+
+<script>
+(function () {
+    function initPageTransitions() {
+        var main = document.querySelector('.blog-main, .blog-layout, main');
+        if (main) main.classList.add('page-transition');
+
+        document.querySelectorAll('a[href]').forEach(function (link) {
+            var href = link.getAttribute('href');
+            if (!href) return;
+            if (href.startsWith('http') || href.startsWith('#') ||
+                href.startsWith('mailto') || href.startsWith('javascript')) return;
+            if (link.target === '_blank') return;
+            link.addEventListener('click', function (e) {
+                if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+                e.preventDefault();
+                // Read href from the element at click time — not from closure
+                var dest = this.getAttribute('href');
+                document.body.classList.add('is-leaving');
+                setTimeout(function () { window.location.href = dest; }, 260);
+            });
+        });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPageTransitions);
+    } else {
+        initPageTransitions();
+    }
+})();
+</script>
 </body>
 </html>
