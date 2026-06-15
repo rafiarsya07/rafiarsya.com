@@ -1,0 +1,1987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaperMind — Blog | Muhammad Rafi Arsya</title>
+    <link rel="icon" type="image/png" href="assets/avatar_rafi.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── LAYOUT ── */
+        .blog-layout {
+            display: flex;
+            min-height: 100vh;
+            background: #fff;
+            align-items: start;
+            overflow-x: clip;
+        }
+
+        /* ── SESSION SIDEBAR ── */
+        .session-sidebar {
+            width: 220px;
+            flex-shrink: 0;
+            border-right: 1px solid #f3f4f6;
+            padding: 48px 0 48px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: #fafafa;
+            scrollbar-width: thin;
+            scrollbar-color: #e5e7eb transparent;
+        }
+
+        .session-sidebar-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            padding: 0 24px;
+            margin-bottom: 12px;
+        }
+
+        .session-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding: 0 12px;
+        }
+
+        .session-nav a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 12px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            color: #6b7280;
+            transition: all 0.15s;
+        }
+
+        .session-nav a:hover {
+            background: #f3f4f6;
+            color: #111827;
+        }
+
+        .session-nav a.active {
+            background: #111827;
+            color: #fff;
+        }
+
+        .session-num {
+            font-size: 10px;
+            font-weight: 700;
+            color: inherit;
+            opacity: 0.6;
+            min-width: 28px;
+        }
+
+        .session-nav a.active .session-num {
+            opacity: 0.7;
+        }
+
+        .session-progress {
+            margin: 20px 24px 0;
+            padding-top: 20px;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        .session-progress-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 8px;
+        }
+
+        .session-progress-bar {
+            height: 4px;
+            background: #f3f4f6;
+            border-radius: 100px;
+            overflow: hidden;
+        }
+
+        .session-progress-fill {
+            height: 100%;
+            background: #111827;
+            border-radius: 100px;
+            transition: width 0.3s ease;
+        }
+
+        .session-progress-text {
+            font-size: 11px;
+            color: #9ca3af;
+            margin-top: 6px;
+        }
+
+        /* ── BLOG CONTENT ── */
+        .blog-content {
+            flex: 1;
+            min-width: 0;
+            padding: 48px 56px 100px;
+            min-height: 100vh;
+        }
+
+        .blog-session {
+            max-width: 800px;
+        }
+
+        .blog-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #6b7280;
+            text-decoration: none;
+            margin-bottom: 40px;
+            transition: color 0.15s;
+        }
+        .blog-back:hover { color: #111827; }
+        .blog-back svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+        /* ── SESSION SECTIONS ── */
+        .blog-session {
+            display: none;
+        }
+        .blog-session.active {
+            display: block;
+        }
+
+        /* ── HEADER ── */
+        .blog-tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .blog-tag {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            background: #f3f4f6;
+            color: #374151;
+            border-radius: 4px;
+            padding: 3px 10px;
+        }
+
+        .blog-tag.green { background: #dcfce7; color: #166534; }
+        .blog-tag.blue { background: #dbeafe; color: #1e40af; }
+        .blog-tag.orange { background: #ffedd5; color: #9a3412; }
+
+        .blog-session-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 10px;
+        }
+
+        .blog-title {
+            font-size: 36px;
+            font-weight: 800;
+            color: #111827;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 14px;
+        }
+
+        .blog-subtitle {
+            font-size: 17px;
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .blog-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            padding: 20px 0;
+            border-top: 1px solid #f3f4f6;
+            border-bottom: 1px solid #f3f4f6;
+            margin-bottom: 40px;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .blog-meta-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #9ca3af;
+        }
+
+        .blog-meta-value {
+            font-size: 13.5px;
+            font-weight: 500;
+            color: #111827;
+        }
+
+        /* ── HERO BANNER ── */
+        .blog-hero {
+            width: 100%;
+            aspect-ratio: 16/7;
+            border-radius: 12px;
+            margin-bottom: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-hero-text {
+            font-size: 80px;
+            font-weight: 800;
+            color: rgba(255,255,255,0.08);
+            letter-spacing: -0.04em;
+            user-select: none;
+        }
+
+        .blog-hero-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            letter-spacing: 0.04em;
+        }
+
+        /* ── BODY TEXT ── */
+        .blog-section {
+            margin-bottom: 44px;
+        }
+
+        .blog-section-title {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .blog-body {
+            font-size: 15.5px;
+            color: #374151;
+            line-height: 1.9;
+        }
+
+        .blog-body p { margin: 0 0 18px; }
+        .blog-body p:last-child { margin-bottom: 0; }
+        .blog-body strong { color: #111827; font-weight: 600; }
+        .blog-body em { font-style: italic; color: #6b7280; }
+
+        /* ── CALLOUT ── */
+        .blog-callout {
+            background: #f9fafb;
+            border-left: 3px solid #111827;
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin: 24px 0;
+            font-size: 15px;
+            color: #374151;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .blog-callout.green { border-left-color: #16a34a; background: #f0fdf4; }
+        .blog-callout.blue { border-left-color: #2563eb; background: #eff6ff; }
+        .blog-callout.red { border-left-color: #dc2626; background: #fef2f2; }
+
+        /* ── STAT BOXES ── */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .stat-box {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 18px 16px;
+            text-align: center;
+        }
+
+        .stat-box-value {
+            font-size: 28px;
+            font-weight: 800;
+            color: #111827;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+        }
+
+        .stat-box-label {
+            font-size: 11px;
+            color: #9ca3af;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+        }
+
+        /* ── TECH PILLS ── */
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .tech-pill {
+            font-size: 13px;
+            font-weight: 500;
+            color: #374151;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 5px 13px;
+        }
+
+        /* ── CODE BLOCK ── */
+        .blog-code {
+            background: #111827;
+            color: #e5e7eb;
+            border-radius: 10px;
+            padding: 20px 24px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 1.7;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .blog-code .comment { color: #6b7280; }
+        .blog-code .keyword { color: #93c5fd; }
+        .blog-code .string { color: #86efac; }
+        .blog-code .number { color: #fde68a; }
+
+        /* ── STEP LIST ── */
+        .step-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            width: 28px;
+            height: 28px;
+            background: #111827;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-size: 14.5px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+
+        .step-desc {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.65;
+        }
+
+        /* ── NAV BUTTONS ── */
+        .session-nav-btns {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 60px;
+            padding-top: 28px;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        .session-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13.5px;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .session-btn.prev {
+            background: #f9fafb;
+            color: #374151;
+            border: 1px solid #e5e7eb;
+        }
+        .session-btn.prev:hover { background: #f3f4f6; }
+
+        .session-btn.next {
+            background: #111827;
+            color: white;
+        }
+        .session-btn.next:hover { background: #1f2937; }
+
+        .session-btn svg {
+            width: 15px; height: 15px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        /* ── LINKS ── */
+        .blog-link-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .blog-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 9px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+
+        .blog-link-btn.primary { background: #111827; color: white; }
+        .blog-link-btn.primary:hover { background: #1f2937; }
+        .blog-link-btn.secondary { background: #f9fafb; color: #374151; border: 1px solid #e5e7eb; }
+        .blog-link-btn.secondary:hover { background: #f3f4f6; }
+        .blog-link-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+        /* ── CASE STUDY CARDS ── */
+        .case-study-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            margin: 24px 0;
+        }
+
+        .case-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .case-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 20px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .case-card-header.diseased {
+            background: #fff7ed;
+            color: #9a3412;
+            border-bottom: 1px solid #fed7aa;
+        }
+
+        .case-card-header.healthy {
+            background: #f0fdf4;
+            color: #166534;
+            border-bottom: 1px solid #bbf7d0;
+        }
+
+        .case-card-header svg {
+            width: 16px; height: 16px;
+            flex-shrink: 0;
+        }
+
+        .case-card-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .case-card-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            border-right: 1px solid #e5e7eb;
+        }
+
+        .case-card-info {
+            padding: 20px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: #fafafa;
+        }
+
+        .case-result-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .case-result-badge.diseased { color: #ea580c; }
+        .case-result-badge.healthy { color: #16a34a; }
+
+        .case-detail-row {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .case-detail-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #9ca3af;
+        }
+
+        .case-detail-value {
+            font-size: 13.5px;
+            font-weight: 500;
+            color: #111827;
+        }
+
+        .case-confidence-bar {
+            height: 6px;
+            background: #f3f4f6;
+            border-radius: 100px;
+            overflow: hidden;
+            margin-top: 4px;
+        }
+
+        .case-confidence-fill {
+            height: 100%;
+            border-radius: 100px;
+        }
+
+        .case-confidence-fill.diseased { background: #f97316; }
+        .case-confidence-fill.healthy { background: #22c55e; }
+
+        .case-other-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 4px;
+        }
+
+        .case-other-item {
+            font-size: 12px;
+            color: #6b7280;
+            padding: 3px 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .case-card-note {
+            padding: 12px 20px;
+            border-top: 1px solid #e5e7eb;
+            font-size: 12.5px;
+            color: #6b7280;
+            background: #fff;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        /* ── BLOG MEDIA ── */
+        .blog-img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 20px 0 8px;
+            display: block;
+            object-fit: cover;
+        }
+
+        .blog-img-caption {
+            font-size: 12px;
+            color: #9ca3af;
+            text-align: center;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .blog-img-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .blog-img-compare-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .blog-img-compare-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid #f3f4f6;
+        }
+
+        .blog-img-compare-label {
+            font-size: 12px;
+            color: #6b7280;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .blog-video-wrap {
+            position: relative;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 20px 0 8px;
+            background: #111827;
+            border: 1px solid #e5e7eb;
+        }
+
+        .blog-video-wrap video {
+            width: 100%;
+            display: block;
+            max-height: 420px;
+            object-fit: contain;
+        }
+
+        /* ── INFOGRAPHIC: IMPACT ── */
+        .infographic-impact {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+        .impact-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .impact-card {
+            border-radius: 10px;
+            padding: 18px 14px;
+            text-align: center;
+            border: 1px solid;
+        }
+        .impact-card.impact-red { background: #fff1f2; border-color: #fecdd3; }
+        .impact-card.impact-orange { background: #fff7ed; border-color: #fed7aa; }
+        .impact-card.impact-green { background: #f0fdf4; border-color: #bbf7d0; }
+        .impact-icon { font-size: 22px; margin-bottom: 8px; }
+        .impact-val { font-size: 22px; font-weight: 800; color: #111827; letter-spacing: -0.02em; margin-bottom: 4px; }
+        .impact-desc { font-size: 11px; color: #6b7280; line-height: 1.5; }
+        .impact-timeline { border-top: 1px solid #e5e7eb; padding-top: 18px; }
+        .impact-timeline-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #9ca3af; margin-bottom: 12px; }
+        .impact-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .impact-bar-tag { font-size: 12px; font-weight: 500; color: #374151; min-width: 80px; }
+        .impact-bar-outer { flex: 1; height: 8px; background: #f3f4f6; border-radius: 100px; overflow: hidden; }
+        .impact-bar-fill { height: 100%; border-radius: 100px; }
+        .impact-bar-time { font-size: 11px; color: #6b7280; min-width: 50px; text-align: right; }
+
+        /* ── INFOGRAPHIC: CLASS DISTRIBUTION ── */
+        .infographic-distribution {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin: 20px 0;
+        }
+        .dist-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #9ca3af; margin-bottom: 14px; }
+        .dist-bars { display: flex; flex-direction: column; gap: 8px; }
+        .dist-row { display: flex; align-items: center; gap: 10px; }
+        .dist-name { font-size: 11.5px; color: #374151; font-weight: 500; min-width: 170px; }
+        .dist-bar-outer { flex: 1; height: 8px; background: #e5e7eb; border-radius: 100px; overflow: hidden; }
+        .dist-bar-fill { height: 100%; background: #111827; border-radius: 100px; transition: width 0.4s ease; }
+        .dist-bar-low { background: #f97316 !important; }
+        .dist-count { font-size: 11px; color: #9ca3af; min-width: 55px; text-align: right; }
+        .dist-note { margin-top: 14px; font-size: 12px; color: #92400e; background: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 8px 12px; }
+
+        /* ── INFOGRAPHIC: MODEL ARCHITECTURE ── */
+        .infographic-arch {
+            background: #111827;
+            border-radius: 14px;
+            padding: 22px 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .arch-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #6b7280; margin-bottom: 20px; }
+        .arch-flow { display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; min-width: max-content; }
+        .arch-block { background: #1f2937; border: 1px solid #374151; border-radius: 10px; padding: 12px 14px; text-align: center; min-width: 90px; position: relative; }
+        .arch-block-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); font-size: 9px; font-weight: 700; background: #f59e0b; color: #111827; padding: 2px 8px; border-radius: 100px; white-space: nowrap; }
+        .arch-block-icon { font-size: 20px; margin-bottom: 4px; }
+        .arch-block-name { font-size: 11px; font-weight: 700; color: #f9fafb; margin-bottom: 2px; }
+        .arch-block-dim { font-size: 9.5px; color: #6b7280; }
+        .arch-block.arch-input { border-color: #3b82f6; }
+        .arch-block.arch-base { border-color: #f59e0b; min-width: 110px; }
+        .arch-block.arch-pool { border-color: #8b5cf6; }
+        .arch-block.arch-output { border-color: #22c55e; }
+        .arch-stack { display: flex; flex-direction: column; gap: 4px; }
+        .arch-stack .arch-block { min-width: 130px; padding: 7px 12px; }
+        .arch-block.arch-dense { border-color: #6366f1; }
+        .arch-arrow { color: #4b5563; font-size: 18px; flex-shrink: 0; }
+        .arch-phases { margin-top: 16px; display: flex; gap: 20px; flex-wrap: wrap; }
+        .arch-phase { font-size: 11px; color: #9ca3af; display: flex; align-items: center; gap: 6px; }
+        .phase-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+        .phase-1 { background: #f59e0b; }
+        .phase-2 { background: #3b82f6; }
+
+        /* ── INFOGRAPHIC: TRAINING CHART ── */
+        .infographic-chart {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 20px 20px 16px;
+            margin: 20px 0;
+        }
+        .chart-title { font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #9ca3af; margin-bottom: 12px; }
+        .chart-area { overflow-x: auto; }
+        .chart-svg { width: 100%; height: auto; font-family: inherit; }
+        .chart-note { font-size: 11.5px; color: #6b7280; margin-top: 10px; font-style: italic; }
+
+        /* ── OTHER POSTS (desktop sidebar) ── */
+        .other-posts-section {
+            margin: 24px 0 0;
+            padding: 20px 12px 20px;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        .other-posts-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 10px;
+            padding: 0 4px;
+        }
+
+        .other-post-thumb {
+            display: block;
+            text-decoration: none;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 8px;
+            position: relative;
+            aspect-ratio: 16/9;
+            transition: transform 0.18s, box-shadow 0.18s;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+
+        .other-post-thumb:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.13);
+        }
+
+        .other-post-thumb-bg {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .other-post-thumb-emoji {
+            font-size: 36px;
+            opacity: 0.25;
+            user-select: none;
+        }
+
+        .other-post-thumb-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 55%);
+        }
+
+        .other-post-thumb-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px 12px;
+        }
+
+        .other-post-thumb-badge {
+            display: inline-block;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 3px;
+        }
+
+        .other-post-thumb-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.3;
+        }
+
+        .other-post-coming {
+            font-size: 11px;
+            color: #9ca3af;
+            font-style: italic;
+            padding: 10px;
+            background: #f9fafb;
+            border-radius: 8px;
+            border: 1px dashed #e5e7eb;
+            text-align: center;
+        }
+
+        /* ── MOBILE SESSION FAB ── */
+        .session-fab {
+            display: none;
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 200;
+            background: #111827;
+            color: #fff;
+            border: none;
+            border-radius: 100px;
+            padding: 11px 20px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .session-fab:active {
+            transform: translateX(-50%) scale(0.96);
+        }
+
+        .session-fab-num {
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 2px 9px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .session-fab-icon {
+            opacity: 0.7;
+            width: 14px;
+            height: 14px;
+        }
+
+        /* ── MOBILE SESSION DRAWER ── */
+        .session-drawer-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            z-index: 300;
+            opacity: 0;
+            transition: opacity 0.25s;
+        }
+
+        .session-drawer-backdrop.open {
+            display: block;
+            opacity: 1;
+        }
+
+        .session-drawer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 301;
+            background: #fff;
+            border-radius: 20px 20px 0 0;
+            padding: 0 0 env(safe-area-inset-bottom, 16px);
+            transform: translateY(100%);
+            transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .session-drawer.open {
+            transform: translateY(0);
+        }
+
+        .session-drawer-handle {
+            width: 40px;
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 100px;
+            margin: 12px auto 0;
+        }
+
+        .session-drawer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px 8px;
+        }
+
+        .session-drawer-title {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #9ca3af;
+        }
+
+        .session-drawer-close {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #f3f4f6;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            font-size: 16px;
+            line-height: 1;
+        }
+
+        .session-drawer-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding: 4px 12px;
+        }
+
+        .session-drawer-nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            color: #6b7280;
+            transition: background 0.12s;
+        }
+
+        .session-drawer-nav a:hover,
+        .session-drawer-nav a.active {
+            background: #111827;
+            color: #fff;
+        }
+
+        .session-drawer-nav a .session-num {
+            font-size: 11px;
+            opacity: 0.6;
+            min-width: 28px;
+        }
+
+        .session-drawer-progress {
+            margin: 12px 20px;
+            padding: 12px 0 0;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        .session-drawer-progress .session-progress-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 8px;
+        }
+
+        /* Drawer other posts */
+        .session-drawer-other {
+            margin: 0 12px 16px;
+            padding: 16px 12px 0;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        .session-drawer-other-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 10px;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .session-sidebar { display: none; }
+            .session-fab { display: inline-flex; }
+            .blog-content { padding: 32px 24px 100px; }
+            .blog-session { max-width: 100%; }
+        }
+
+        @media (max-width: 600px) {
+            .impact-row { grid-template-columns: 1fr; }
+            .dist-name { min-width: 110px; font-size: 10.5px; }
+            .arch-flow { flex-direction: column; }
+            .arch-arrow { transform: rotate(90deg); }
+        }
+    
+        /* ── PM-SPECIFIC ── */
+        .blog-tag.purple { background:#ede9fe; color:#5b21b6; }
+
+        /* Step list */
+        .step-list { display:flex; flex-direction:column; gap:10px; margin:16px 0; }
+        .step-item { display:flex; gap:14px; align-items:flex-start; padding:14px 16px; background:#f9fafb; border:1px solid #f3f4f6; border-radius:10px; }
+        .step-num { width:26px; height:26px; border-radius:50%; background:#111827; color:#fff; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .step-title { font-size:13.5px; font-weight:600; color:#111827; margin-bottom:3px; }
+        .step-desc { font-size:12.5px; color:#6b7280; line-height:1.5; }
+
+        /* Tech pills */
+        .tech-grid { display:flex; flex-wrap:wrap; gap:7px; margin:16px 0; }
+        .tech-pill { font-size:11.5px; font-weight:500; color:#374151; background:#f9fafb; border:1px solid #e5e7eb; border-radius:6px; padding:4px 11px; font-family:'Space Mono',monospace; }
+
+        /* Blog code */
+        .blog-code { background:#0f172a; border-radius:12px; padding:20px 24px; font-family:'Space Mono',monospace; font-size:12px; line-height:1.8; color:#94a3b8; margin:16px 0; overflow-x:auto; white-space:pre; }
+        .blog-code .comment { color:#475569; }
+        .blog-code .string { color:#86efac; }
+        .blog-code .number { color:#fbbf24; }
+        .blog-code .keyword { color:#c084fc; }
+
+        /* Architecture */
+        .arch-flow { display:flex; align-items:center; gap:12px; flex-wrap:nowrap; overflow-x:auto; padding:4px 0 8px; }
+        .arch-box { background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px 16px; text-align:center; flex-shrink:0; min-width:100px; }
+        .arch-arrow { color:#9ca3af; font-size:18px; flex-shrink:0; }
+        .arch-icon { font-size:20px; margin-bottom:4px; }
+        .arch-name { font-size:12px; font-weight:700; color:#111827; margin-bottom:2px; }
+        .arch-label { font-size:10px; color:#6b7280; }
+
+        /* Stats grid */
+        .stats-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:12px; margin:16px 0; }
+        .stat-card { background:#f9fafb; border:1px solid #f3f4f6; border-radius:10px; padding:16px; text-align:center; }
+        .stat-value { font-size:24px; font-weight:800; color:#111827; }
+        .stat-label { font-size:11px; color:#9ca3af; font-weight:500; margin-top:2px; }
+
+        /* Blog link buttons */
+        .blog-link-row { display:flex; flex-wrap:wrap; gap:10px; margin:16px 0; }
+        .blog-link-btn { display:inline-flex; align-items:center; gap:8px; padding:10px 18px; border-radius:9px; font-size:13px; font-weight:600; text-decoration:none; transition:all 0.15s; }
+        .blog-link-btn.primary { background:#111827; color:#fff; }
+        .blog-link-btn.primary:hover { background:#1f2937; }
+        .blog-link-btn.secondary { background:#f9fafb; color:#374151; border:1px solid #e5e7eb; }
+        .blog-link-btn.secondary:hover { background:#f3f4f6; }
+        .blog-link-btn svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+        /* Chat demo */
+        .chat-demo { background:#0f172a; border-radius:16px; overflow:hidden; margin:20px 0; border:1px solid #1e293b; }
+        .chat-demo-bar { display:flex; align-items:center; gap:8px; padding:12px 16px; background:#1e293b; border-bottom:1px solid #334155; }
+        .chat-demo-dot { width:10px; height:10px; border-radius:50%; }
+        .chat-demo-dot.green { background:#22c55e; animation:pulse-green 2s ease-in-out infinite; }
+        @keyframes pulse-green { 0%,100%{opacity:1} 50%{opacity:0.5} }
+        .chat-demo-dot.yellow { background:#fbbf24; }
+        .chat-demo-dot.red { background:#f87171; }
+        .chat-demo-title { font-size:11px; font-weight:600; color:#64748b; margin-left:4px; font-family:'Space Mono',monospace; }
+        .chat-demo-body { padding:20px 18px; display:flex; flex-direction:column; gap:14px; }
+        .chat-msg { display:flex; gap:10px; align-items:flex-end; }
+        .chat-msg.user { flex-direction:row-reverse; }
+        .chat-avatar { width:28px; height:28px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0; }
+        .chat-avatar.ai { background:rgba(124,99,255,0.2); color:#a78bfa; border:1px solid rgba(124,99,255,0.3); }
+        .chat-avatar.user { background:rgba(59,130,246,0.15); color:#60a5fa; border:1px solid rgba(59,130,246,0.2); }
+        .chat-bubble { max-width:78%; padding:10px 14px; border-radius:12px; font-size:13px; line-height:1.65; }
+        .chat-bubble.ai { background:#1e293b; color:#cbd5e1; border:1px solid #334155; border-bottom-left-radius:3px; }
+        .chat-bubble.user { background:#3b2d8a; color:#e2d9ff; border-bottom-right-radius:3px; }
+        .chat-bubble strong { color:#a78bfa; }
+        .chat-bubble.user strong { color:#c4b5fd; }
+        .chat-bubble code { font-family:'Space Mono',monospace; font-size:11px; background:rgba(124,99,255,0.15); padding:1px 5px; border-radius:3px; color:#a78bfa; }
+        .chat-time { font-size:10px; color:#475569; margin-top:3px; }
+        .chat-msg.user .chat-time { text-align:right; }
+        .chat-msg-wrap { display:flex; flex-direction:column; max-width:78%; }
+        .chat-msg.user .chat-msg-wrap { align-items:flex-end; }
+        .chat-divider { text-align:center; font-size:10px; color:#334155; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 0; }
+
+        /* Media */
+        .blog-media { border-radius:12px; overflow:hidden; margin:16px 0; border:1px solid #e5e7eb; background:#000; }
+        .blog-media video { width:100%; display:block; max-height:480px; object-fit:contain; }
+        .blog-media img { width:100%; display:block; }
+        .blog-media-caption { font-size:12px; color:#9ca3af; text-align:center; padding:8px 16px 12px; background:#f9fafb; border-top:1px solid #e5e7eb; }
+
+    </style>
+</head>
+<body>
+    <div class="mobile-topbar">
+        <img class="mobile-topbar-avatar" src="assets/avatar_rafi.png" alt="Rafi Avatar">
+        <span class="mobile-topbar-title">Muhammad Rafi Arsya</span>
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <div class="portfolio-app">
+        <!-- MAIN SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-logo-wrap">
+                    <img class="sidebar-logo-avatar" src="assets/avatar_rafi.png" alt="Rafi Avatar">
+                    <span class="sidebar-logo-name">Muhammad Rafi Arsya</span>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="index.html">
+                        <span class="nav-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg></span>
+                        <span>Home</span>
+                    </a>
+                    <a href="blog.html">
+                        <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+                        <span>Blog</span>
+                    </a>
+                </nav>
+                <div class="sidebar-group-label">Me</div>
+                <nav class="sidebar-nav">
+                    <a href="resume.html">
+                        <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 3H8a1 1 0 0 0-1 1v3h10V4a1 1 0 0 0-1-1z"/></svg></span>
+                        <span>Resume / CV</span>
+                    </a>
+                    <a href="course.html">
+                        <span class="nav-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        <span>Course &amp; Certificate</span>
+                    </a>
+                    <a href="contact.html">
+                        <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+                        <span>Contact</span>
+                    </a>
+                </nav>
+                <div class="sidebar-group-label">Projects</div>
+                <div class="sidebar-projects">
+                    <a href="projects/project1.html"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#064e3b 0%,#10b981 100%);color:#fff;font-size:0.55rem;font-weight:900;letter-spacing:0.01em;box-shadow:inset 0 1px 0 rgba(255,255,255,0.18);">HG</span><span class="project-label">HandGesture</span></a>
+                    <a href="projects/project2.html"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#1b2d5e 0%,#2a4a8a 100%);color:#fff;font-size:0.55rem;font-weight:900;letter-spacing:-0.01em;">CB</span><span class="project-label">CampusBay</span></a>
+                    <a href="blog-papermind.html" class="active" style="background:#111827;border-radius:8px;"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#0a0a1a 0%,#3b2d8a 100%);color:#fff;font-size:0.55rem;font-weight:900;letter-spacing:-0.01em;">PM</span><span class="project-label">PaperMind</span></a>
+                    <a href="projects/project3.html"><span class="project-icon text-icon" style="background:#1d4ed8;color:#fff;font-size:0.58rem;font-weight:900;">NS</span><span class="project-label">NASE Accessibility</span></a>
+                    <a href="projects/project4.html"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#052e16 0%,#16a34a 100%);color:#fff;font-size:0.52rem;font-weight:900;letter-spacing:-0.01em;">CD</span><span class="project-label">Crop Disease Detector</span></a>
+                    <a href="projects/projects.html" class="project-more">
+                        <span class="nav-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+                        <span>All Projects</span>
+                    </a>
+                </div>
+                <div class="sidebar-group-label">Social</div>
+                <nav class="sidebar-social">
+                    <a href="https://github.com/rafiarsya07" target="_blank" rel="noopener noreferrer">
+                        <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></span>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rafi-arsya-557335394/" target="_blank" rel="noopener noreferrer">
+                        <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://www.instagram.com/rarsya.03/" target="_blank" rel="noopener noreferrer">
+                        <span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span>
+                        <span>Instagram</span>
+                    </a>
+                </nav>
+            </div>
+            <div class="sidebar-footer">
+                <p>Designed with focus on clarity and craft.</p>
+            </div>
+        </aside>
+
+        <!-- BLOG LAYOUT -->
+        <div class="blog-layout">
+
+            <!-- SESSION SIDEBAR -->
+            <nav class="session-sidebar">
+                <div class="session-sidebar-label">In this post</div>
+                <div class="session-nav">
+                    <a href="#" class="active" onclick="goToSession(1); return false;">
+                        <span class="session-num">1/6</span>
+                        <span>The Problem</span>
+                    </a>
+                    <a href="#" onclick="goToSession(2); return false;">
+                        <span class="session-num">2/6</span>
+                        <span>What is RAG?</span>
+                    </a>
+                    <a href="#" onclick="goToSession(3); return false;">
+                        <span class="session-num">3/6</span>
+                        <span>The Architecture</span>
+                    </a>
+                    <a href="#" onclick="goToSession(4); return false;">
+                        <span class="session-num">4/6</span>
+                        <span>Building It</span>
+                    </a>
+                    <a href="#" onclick="goToSession(5); return false;">
+                        <span class="session-num">5/6</span>
+                        <span>Self-Hosting</span>
+                    </a>
+                    <a href="#" onclick="goToSession(6); return false;">
+                        <span class="session-num">6/6</span>
+                        <span>What's Next</span>
+                    </a>
+                </div>
+                <div class="session-progress">
+                    <div class="session-progress-label">Progress</div>
+                    <div class="session-progress-bar">
+                        <div class="session-progress-fill" id="progress-fill" style="width: 16.6%"></div>
+                    </div>
+                    <div class="session-progress-text" id="progress-text">1 of 6</div>
+                </div>
+
+                <!-- Other Posts (desktop) -->
+                <div class="other-posts-section">
+                    <div class="other-posts-label">Other Posts</div>
+
+                    <a href="blog.html" class="other-post-thumb">
+                        <div class="other-post-thumb-bg" style="background: linear-gradient(135deg, #052e16 0%, #14532d 45%, #16a34a 100%);">
+                            <span class="other-post-thumb-emoji" style="font-size:11px;font-weight:900;color:rgba(255,255,255,0.5);letter-spacing:-0.02em;">CD</span>
+                        </div>
+                        <div class="other-post-thumb-overlay"></div>
+                        <div class="other-post-thumb-info">
+                            <span class="other-post-thumb-badge">ML · Web App</span>
+                            <div class="other-post-thumb-title">Crop Disease Detector</div>
+                        </div>
+                    </a>
+
+                    <div class="other-post-coming">More posts coming soon ·</div>
+                </div>
+            </nav>
+
+            <!-- MOBILE: Session FAB + Drawer -->
+            <button class="session-fab" id="session-fab" onclick="openSessionDrawer()">
+                <span class="session-fab-num" id="fab-num">1/6</span>
+                <span id="fab-title">The Problem</span>
+                <svg class="session-fab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"/>
+                </svg>
+            </button>
+
+            <div class="session-drawer-backdrop" id="drawer-backdrop" onclick="closeSessionDrawer()"></div>
+            <div class="session-drawer" id="session-drawer">
+                <div class="session-drawer-handle"></div>
+                <div class="session-drawer-header">
+                    <span class="session-drawer-title">In this post</span>
+                    <button class="session-drawer-close" onclick="closeSessionDrawer()"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+                </div>
+                <div class="session-drawer-nav" id="drawer-nav">
+                    <a href="#" class="active" onclick="goToSessionMobile(1); return false;">
+                        <span class="session-num">1/6</span><span>The Problem</span>
+                    </a>
+                    <a href="#" onclick="goToSessionMobile(2); return false;">
+                        <span class="session-num">2/6</span><span>What is RAG?</span>
+                    </a>
+                    <a href="#" onclick="goToSessionMobile(3); return false;">
+                        <span class="session-num">3/6</span><span>The Architecture</span>
+                    </a>
+                    <a href="#" onclick="goToSessionMobile(4); return false;">
+                        <span class="session-num">4/6</span><span>Building It</span>
+                    </a>
+                    <a href="#" onclick="goToSessionMobile(5); return false;">
+                        <span class="session-num">5/6</span><span>Self-Hosting</span>
+                    </a>
+                    <a href="#" onclick="goToSessionMobile(6); return false;">
+                        <span class="session-num">6/6</span><span>What's Next</span>
+                    </a>
+                </div>
+                <div class="session-drawer-progress">
+                    <div class="session-progress-label">Progress</div>
+                    <div class="session-progress-bar">
+                        <div class="session-progress-fill" id="drawer-progress-fill" style="width:16.6%"></div>
+                    </div>
+                    <div class="session-progress-text" id="drawer-progress-text">1 of 6</div>
+                </div>
+                <div class="session-drawer-other">
+                    <div class="session-drawer-other-label">Other Posts</div>
+                    <a href="blog.html" class="other-post-thumb">
+                        <div class="other-post-thumb-bg" style="background: linear-gradient(135deg, #052e16 0%, #14532d 45%, #16a34a 100%);">
+                            <span class="other-post-thumb-emoji" style="font-size:11px;font-weight:900;color:rgba(255,255,255,0.5);letter-spacing:-0.02em;">CD</span>
+                        </div>
+                        <div class="other-post-thumb-overlay"></div>
+                        <div class="other-post-thumb-info">
+                            <span class="other-post-thumb-badge">ML · Web App</span>
+                            <div class="other-post-thumb-title">Crop Disease Detector</div>
+                        </div>
+                    </a>
+                    <div class="other-post-coming">More posts coming soon ·</div>
+                </div>
+            </div>
+
+            <!-- BLOG CONTENT -->
+            <main class="blog-content">
+                <a href="blog.html" class="blog-back">
+                    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                    Back to Blog
+                </a>
+
+                <div class="blog-session active" id="session-1">
+                    <div class="blog-session-label">Session 1 / 6</div>
+                    <div class="blog-tag-row">
+                        <span class="blog-tag purple">RAG</span>
+                        <span class="blog-tag blue">LLM</span>
+                        <span class="blog-tag">Self-Hosted</span>
+                        <span class="blog-tag">2026</span>
+                    </div>
+                    <h1 class="blog-title">PaperMind — Local RAG Paper Analyzer</h1>
+                    <p class="blog-subtitle">I built an AI that reads, understands, and answers questions about research papers — running entirely on my own hardware, with zero cloud dependency.</p>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">The Problem</div>
+                        <div class="blog-body">
+                            <p>Reading research papers is hard. A single paper can be 30+ pages of dense academic language, packed with methodology sections, statistical findings, and domain-specific terminology. For students — especially those not in the paper's field — it takes hours just to extract the core ideas.</p>
+                            <p>Tools like ChatGPT can help, but they have a fundamental problem: <strong>they hallucinate</strong>. Ask ChatGPT about a specific paper it hasn't seen, and it will confidently invent details. It doesn't actually read your document — it guesses based on patterns from its training data.</p>
+                            <div class="blog-callout purple">
+                                What if the AI could actually read the paper first — then answer questions strictly based on what's written inside it?
+                            </div>
+                            <p>That's the problem PaperMind solves. It's not a general-purpose AI. It's an AI that is grounded to your document — it can only answer based on what it actually reads from your PDF.</p>
+                        </div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">Why Self-Hosted?</div>
+                        <div class="blog-body">
+                            <p>Research papers often contain sensitive or unpublished work. Uploading them to a third-party API — OpenAI, Anthropic, Google — means your data leaves your machine and goes through someone else's servers.</p>
+                            <p>PaperMind runs entirely locally. The LLM runs on my own Linux mini PC. The vector database lives on my own disk. No paper you upload ever leaves your network.</p>
+                            <div class="blog-callout green">
+                                Zero cost. Zero data leakage. Zero cloud dependency. Everything runs on a RM800 mini PC sitting on my desk.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">What PaperMind Can Do</div>
+                        <div class="blog-body">
+                            <p>Upload any academic PDF, then:</p>
+                        </div>
+                        <div class="step-list">
+                            <div class="step-item"><div class="step-num">1</div><div><div class="step-title">Ask anything about the paper</div><div class="step-desc">"What methodology was used?" · "What are the key findings?" · "What limitations did the authors mention?"</div></div></div>
+                            <div class="step-item"><div class="step-num">2</div><div><div class="step-title">Generate a structured summary</div><div class="step-desc">Auto-extracts main topic, objectives, methodology, findings, and conclusions in one click.</div></div></div>
+                            <div class="step-item"><div class="step-num">3</div><div><div class="step-title">Manage multiple papers</div><div class="step-desc">Upload and switch between multiple PDFs — each with its own indexed knowledge base.</div></div></div>
+                        </div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">PaperMind in Action</div>
+                        <div class="blog-body">
+                            <p>This is what a real conversation with PaperMind looks like — asking questions about my own CV PDF:</p>
+                        </div>
+
+                        <div class="chat-demo">
+                            <div class="chat-demo-bar">
+                                <div class="chat-demo-dot red"></div>
+                                <div class="chat-demo-dot yellow"></div>
+                                <div class="chat-demo-dot green"></div>
+                                <span class="chat-demo-title">PaperMind · RAFI_ARSYA_CV.pdf · 10 chunks indexed</span>
+                            </div>
+                            <div class="chat-demo-body">
+
+                                <div class="chat-msg ai">
+                                    <div class="chat-avatar ai">🧠</div>
+                                    <div class="chat-msg-wrap">
+                                        <div class="chat-bubble ai">I've loaded <strong>RAFI_ARSYA_CV.pdf</strong>. What would you like to know about this paper?</div>
+                                        <div class="chat-time">10:42 AM</div>
+                                    </div>
+                                </div>
+
+                                <div class="chat-msg user">
+                                    <div class="chat-avatar user">R</div>
+                                    <div class="chat-msg-wrap">
+                                        <div class="chat-bubble user">What is Rafi's full name and university?</div>
+                                        <div class="chat-time">10:43 AM</div>
+                                    </div>
+                                </div>
+
+                                <div class="chat-msg ai">
+                                    <div class="chat-avatar ai">🧠</div>
+                                    <div class="chat-msg-wrap">
+                                        <div class="chat-bubble ai">The name in this document is <strong>Muhammad Rafi Arsya</strong>, and he is a student at <strong>Universiti Malaya</strong>, Kuala Lumpur, Malaysia.</div>
+                                        <div class="chat-time">10:43 AM</div>
+                                    </div>
+                                </div>
+
+                                <div class="chat-divider">— a few seconds later —</div>
+
+                                <div class="chat-msg user">
+                                    <div class="chat-avatar user">R</div>
+                                    <div class="chat-msg-wrap">
+                                        <div class="chat-bubble user">What are all the technical skills listed?</div>
+                                        <div class="chat-time">10:44 AM</div>
+                                    </div>
+                                </div>
+
+                                <div class="chat-msg ai">
+                                    <div class="chat-avatar ai">🧠</div>
+                                    <div class="chat-msg-wrap">
+                                        <div class="chat-bubble ai">
+                                            Based on the document, the technical skills include:<br><br>
+                                            <strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6+), TypeScript, React, Next.js, Tailwind CSS, Zustand, TanStack React Query<br><br>
+                                            <strong>Backend:</strong> Node.js, Express.js, Python, Java, REST APIs, PostgreSQL, MySQL, Redis, Socket.IO, Sequelize ORM<br><br>
+                                            <strong>AI / ML:</strong> TensorFlow, Keras, PyTorch, NumPy, OpenCV, MediaPipe<br><br>
+                                            <strong>Cloud & DevOps:</strong> AWS (AIF-C01 certified), Docker, Docker Compose, Bash, NGINX, Kiro, Git, GitHub, Ubuntu Linux
+                                        </div>
+                                        <div class="chat-time">10:44 AM</div>
+                                    </div>
+                                </div>
+
+                                <div class="chat-divider">— switching topic —</div>
+
+                                <div class="chat-msg user">
+                                    <div class="chat-avatar user">R</div>
+                                    <div class="chat-msg-wrap">
+                                        <div class="chat-bubble user">What projects has he built?</div>
+                                        <div class="chat-time">10:45 AM</div>
+                                    </div>
+                                </div>
+
+                                <div class="chat-msg ai">
+                                    <div class="chat-avatar ai">🧠</div>
+                                    <div class="chat-msg-wrap">
+                                        <div class="chat-bubble ai">
+                                            The document mentions these projects:<br><br>
+                                            1. <strong>CampusBay</strong> — A full-stack containerized marketplace using React 18, Node.js, PostgreSQL, and Docker Compose with real-time Socket.IO chat and Stripe payments.<br><br>
+                                            2. <strong>Crop Disease Detector</strong> — An image classification web app using MobileNetV2 transfer learning, deployed on Hugging Face Spaces.<br><br>
+                                            3. <strong>HandGesture</strong> — A real-time hand gesture drawing app using MediaPipe and OpenCV, detecting 21 landmarks per hand.
+                                        </div>
+                                        <div class="chat-time">10:45 AM</div>
+                                    </div>
+                                </div>
+
+                                <div class="chat-msg user">
+                                    <div class="chat-avatar user">R</div>
+                                    <div class="chat-msg-wrap">
+                                        <div class="chat-bubble user">Does he have any AWS certifications?</div>
+                                        <div class="chat-time">10:46 AM</div>
+                                    </div>
+                                </div>
+
+                                <div class="chat-msg ai">
+                                    <div class="chat-avatar ai">🧠</div>
+                                    <div class="chat-msg-wrap">
+                                        <div class="chat-bubble ai">Yes. The document states he holds the <strong>AWS Certified AI Practitioner (AIF-C01)</strong> certification, completed via Udemy with Stephane Maarek in May 2026 (10.5 hours).</div>
+                                        <div class="chat-time">10:46 AM</div>
+                                    </div>
+                                </div>
+
+                                <div class="chat-msg user">
+                                    <div class="chat-avatar user">R</div>
+                                    <div class="chat-msg-wrap">
+                                        <div class="chat-bubble user">What is his IELTS score?</div>
+                                        <div class="chat-time">10:47 AM</div>
+                                    </div>
+                                </div>
+
+                                <div class="chat-msg ai">
+                                    <div class="chat-avatar ai">🧠</div>
+                                    <div class="chat-msg-wrap">
+                                        <div class="chat-bubble ai">According to the document, his IELTS Academic overall band score is <strong>5.5 (CEFR B2)</strong>, obtained from British Council IDP in June 2025.</div>
+                                        <div class="chat-time">10:47 AM</div>
+                                    </div>
+                                </div>
+
+                                <div class="chat-msg user">
+                                    <div class="chat-avatar user">R</div>
+                                    <div class="chat-msg-wrap">
+                                        <div class="chat-bubble user">What leadership roles has he held?</div>
+                                        <div class="chat-time">10:48 AM</div>
+                                    </div>
+                                </div>
+
+                                <div class="chat-msg ai">
+                                    <div class="chat-avatar ai">🧠</div>
+                                    <div class="chat-msg-wrap">
+                                        <div class="chat-bubble ai">
+                                            The document lists these leadership and experience roles:<br><br>
+                                            • <strong>Head of Website Division</strong> — PPI Malaysia University Chapter (2025–Present)<br>
+                                            • <strong>Head of Department</strong> — IDFEST Art Exhibition, Universiti Malaya (2026–Present)<br>
+                                            • <strong>LARAS Transportation Team</strong> — Coordinated logistics for large-scale events (2026)<br>
+                                            • <strong>LARAS Field Committee</strong> — On-ground field operations and team deployment (2026)
+                                        </div>
+                                        <div class="chat-time">10:48 AM</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="blog-body" style="margin-top:8px;">
+                            <p style="font-size:13px;color:#6b7280;">Every answer above came directly from the PDF — not from the model's training data. That's RAG in action.</p>
+                        </div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">Live Demo — Asking Questions</div>
+                        <div class="blog-body">
+                            <p>Here's a real screen recording of PaperMind answering questions about an uploaded PDF in real time:</p>
+                        </div>
+                        <div class="blog-media">
+                            <video controls preload="metadata" poster="">
+                                <source src="assets/doc-chat-rag.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="blog-media-caption">PaperMind — Q&amp;A mode. Asking questions about a PDF, answered by local Mistral/Phi3 running on self-hosted hardware.</div>
+                        </div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">Tech Stack Overview</div>
+                        <div class="tech-grid">
+                            <span class="tech-pill">React 18</span>
+                            <span class="tech-pill">FastAPI (Python)</span>
+                            <span class="tech-pill">ChromaDB</span>
+                            <span class="tech-pill">Ollama</span>
+                            <span class="tech-pill">Mistral 7B / Phi3 Mini</span>
+                            <span class="tech-pill">nomic-embed-text</span>
+                            <span class="tech-pill">PyMuPDF</span>
+                            <span class="tech-pill">LangChain</span>
+                            <span class="tech-pill">Docker Compose</span>
+                            <span class="tech-pill">Nginx</span>
+                            <span class="tech-pill">Ubuntu Linux</span>
+                        </div>
+                    </div>
+
+                    <div class="session-nav-btns">
+                        <span></span>
+                        <button class="session-btn next" onclick="goToSession(2)">Next: What is RAG? <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+                    </div>
+                </div>
+<div class="blog-session" id="session-2">
+                    <div class="blog-session-label">Session 2 / 6</div>
+                    <h1 class="blog-title">What is RAG?</h1>
+                    <p class="blog-subtitle">Retrieval Augmented Generation — the technique that makes PaperMind actually read your document instead of guessing.</p>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">The Simple Explanation</div>
+                        <div class="blog-body">
+                            <p>Imagine you have a brilliant friend who has read millions of books — but they haven't read your specific research paper. If you ask them about it, they'll give you a confident but made-up answer.</p>
+                            <p>Now imagine you hand them your paper first, highlight the relevant sections, then ask your question. Suddenly, they're giving you accurate, grounded answers — because they're reading from the actual source.</p>
+                            <div class="blog-callout blue">
+                                RAG = give the AI your document as context before asking the question. The AI answers based on what it actually reads — not what it guesses.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">How RAG Works — Step by Step</div>
+                        <div class="step-list">
+                            <div class="step-item"><div class="step-num">1</div><div><div class="step-title">Extract text from PDF</div><div class="step-desc">PyMuPDF reads every page and extracts all text content from your uploaded document.</div></div></div>
+                            <div class="step-item"><div class="step-num">2</div><div><div class="step-title">Chunk the text</div><div class="step-desc">The text is split into overlapping chunks of ~800 characters. Overlap ensures context isn't lost at chunk boundaries.</div></div></div>
+                            <div class="step-item"><div class="step-num">3</div><div><div class="step-title">Embed each chunk</div><div class="step-desc">Each chunk is converted into a vector (a list of numbers) using nomic-embed-text. Similar chunks produce similar vectors.</div></div></div>
+                            <div class="step-item"><div class="step-num">4</div><div><div class="step-title">Store in ChromaDB</div><div class="step-desc">All vectors and their corresponding text chunks are stored in a local vector database.</div></div></div>
+                            <div class="step-item"><div class="step-num">5</div><div><div class="step-title">Query time: find relevant chunks</div><div class="step-desc">When you ask a question, it's converted to a vector too. ChromaDB finds the 5 most similar chunks using cosine similarity.</div></div></div>
+                            <div class="step-item"><div class="step-num">6</div><div><div class="step-title">Send to LLM with context</div><div class="step-desc">The relevant chunks + your question are sent to Mistral/Phi3. The LLM is instructed to answer only from the provided context.</div></div></div>
+                        </div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">RAG vs ChatGPT — Key Difference</div>
+                        <div class="blog-body">
+                            <p>ChatGPT answers from its training data — it doesn't actually read your PDF. RAG answers from your actual document content. The difference is critical for accuracy.</p>
+                            <div class="blog-callout orange">
+                                PaperMind will say "This information is not found in the paper" rather than invent an answer. Honesty over hallucination.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="session-nav-btns">
+                        <button class="session-btn prev" onclick="goToSession(1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> Previous</button>
+                        <button class="session-btn next" onclick="goToSession(3)">Next: The Architecture <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+                    </div>
+                </div>
+<div class="blog-session" id="session-3">
+                    <div class="blog-session-label">Session 3 / 6</div>
+                    <h1 class="blog-title">The Architecture</h1>
+                    <p class="blog-subtitle">Five services, one Docker Compose file — how PaperMind's components connect.</p>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">System Architecture</div>
+                        <div class="arch-diagram">
+                            <div class="arch-diagram-title">PaperMind — Service Flow</div>
+                            <div class="arch-flow">
+                                <div class="arch-box user">Browser<div class="arch-label">User</div></div>
+                                <div class="arch-arrow">→</div>
+                                <div class="arch-box nginx">Nginx<div class="arch-label">Port 3001</div></div>
+                                <div class="arch-arrow">→</div>
+                                <div class="arch-box react">React<div class="arch-label">Frontend</div></div>
+                                <div class="arch-arrow">→</div>
+                                <div class="arch-box fastapi">FastAPI<div class="arch-label">Backend</div></div>
+                                <div class="arch-arrow">→</div>
+                                <div class="arch-box chroma">ChromaDB<div class="arch-label">Vectors</div></div>
+                                <div class="arch-arrow">→</div>
+                                <div class="arch-box ollama">Ollama<div class="arch-label">LLM</div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">Component Breakdown</div>
+                        <div class="step-list">
+                            <div class="step-item"><div class="step-num" style="background:#3b2d8a;">FE</div><div><div class="step-title">React 18 + Vite — Frontend</div><div class="step-desc">Clean dark UI with Lucide icons. Handles PDF upload, chat interface, and summary panel. Compiled to static files served by Nginx.</div></div></div>
+                            <div class="step-item"><div class="step-num" style="background:#166534;">BE</div><div><div class="step-title">FastAPI (Python) — Backend API</div><div class="step-desc">REST API with endpoints: /upload, /ask, /summarize, /papers, /paper (DELETE). Handles PDF processing, embedding, and LLM communication.</div></div></div>
+                            <div class="step-item"><div class="step-num" style="background:#4c1d95;">DB</div><div><div class="step-title">ChromaDB — Vector Database</div><div class="step-desc">Persistent local vector store. Each paper's chunks are stored with metadata (paper_id, filename, chunk_index) for filtered retrieval.</div></div></div>
+                            <div class="step-item"><div class="step-num" style="background:#92400e;">AI</div><div><div class="step-title">Ollama — Local LLM Runtime</div><div class="step-desc">Runs Mistral 7B or Phi3 Mini locally. Also runs nomic-embed-text for generating embeddings. Runs on host machine, accessible by Docker containers.</div></div></div>
+                            <div class="step-item"><div class="step-num" style="background:#1e3a5f;">NX</div><div><div class="step-title">Nginx — Reverse Proxy</div><div class="step-desc">Routes /api/* to FastAPI backend, serves React static files, handles all inbound traffic on port 3001.</div></div></div>
+                        </div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">The RAG Pipeline Code</div>
+                        <div class="blog-code"><span class="comment"># rag.py — Core RAG Engine</span>
+
+<span class="keyword">def</span> process_pdf(self, pdf_path, filename):
+    text = self._extract_text(pdf_path)   <span class="comment"># PyMuPDF</span>
+    chunks = self._chunk_text(text)        <span class="comment"># 800 chars, 100 overlap</span>
+    
+    <span class="keyword">for</span> chunk <span class="keyword">in</span> chunks:
+        embedding = self._embed(chunk)     <span class="comment"># nomic-embed-text</span>
+        self.collection.add(               <span class="comment"># → ChromaDB</span>
+            ids=[chunk_id],
+            embeddings=[embedding],
+            documents=[chunk],
+            metadatas=[{<span class="string">"paper_id"</span>: paper_id}]
+        )
+
+<span class="keyword">def</span> ask(self, question, paper_id):
+    query_embedding = self._embed(question)
+    results = self.collection.query(       <span class="comment"># cosine similarity search</span>
+        query_embeddings=[query_embedding],
+        n_results=<span class="number">5</span>,
+        where={<span class="string">"paper_id"</span>: paper_id}
+    )
+    context = <span class="string">"\n\n"</span>.join(results[<span class="string">"documents"</span>][<span class="number">0</span>])
+    
+    response = ollama.chat(                <span class="comment"># → Mistral / Phi3</span>
+        model=self.model,
+        messages=[{<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: prompt}]
+    )
+    <span class="keyword">return</span> response[<span class="string">"message"</span>][<span class="string">"content"</span>]</div>
+                    </div>
+
+                    <div class="session-nav-btns">
+                        <button class="session-btn prev" onclick="goToSession(2)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> Previous</button>
+                        <button class="session-btn next" onclick="goToSession(4)">Next: Building It <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+                    </div>
+                </div>
+<div class="blog-session" id="session-4">
+                    <div class="blog-session-label">Session 4 / 6</div>
+                    <h1 class="blog-title">Building It</h1>
+                    <p class="blog-subtitle">The challenges, decisions, and problems I ran into while building PaperMind from scratch.</p>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">Challenge 1 — Campus Firewall</div>
+                        <div class="blog-body">
+                            <p>My mini PC is hosted on Universiti Malaya's campus network. The campus firewall blocks all outbound traffic on non-standard ports — including npm install, pip install, and Docker pulls.</p>
+                            <p>This meant I couldn't install dependencies directly on the Linux server. My workaround:</p>
+                        </div>
+                        <div class="step-list">
+                            <div class="step-item"><div class="step-num">1</div><div><div class="step-title">Download everything on Windows (RTX 5070 Ti machine)</div><div class="step-desc">Run npm install, docker pull, and ollama pull on the Windows machine which has unrestricted internet.</div></div></div>
+                            <div class="step-item"><div class="step-num">2</div><div><div class="step-title">Transfer via SCP to Linux server</div><div class="step-desc">scp node_modules/, docker save → .tar files, and .ollama/models/ all transferred over LAN at ~110 MB/s.</div></div></div>
+                            <div class="step-item"><div class="step-num">3</div><div><div class="step-title">Load Docker images and Ollama models locally</div><div class="step-desc">docker load -i node-alpine.tar on Linux, then copy Ollama model blobs to /home/ollama/.ollama/models/.</div></div></div>
+                        </div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">Challenge 2 — Ollama Not Accessible from Docker</div>
+                        <div class="blog-body">
+                            <p>By default, Ollama listens on <strong>127.0.0.1:11434</strong> — localhost only. Docker containers can't reach localhost of the host machine.</p>
+                            <div class="blog-code"><span class="comment"># Problem: Ollama only listening on localhost</span>
+LISTEN 0  4096  <span class="string">127.0.0.1</span>:11434  0.0.0.0:*
+
+<span class="comment"># Fix: Set OLLAMA_HOST to listen on all interfaces</span>
+Environment=<span class="string">"OLLAMA_HOST=0.0.0.0:11434"</span>
+
+<span class="comment"># Result: Now accessible from Docker containers</span>
+LISTEN 0  4096  <span class="string">*</span>:11434  *:*</div>
+                            <p>Also needed to allow UFW firewall to permit Docker's subnet to reach port 11434:</p>
+                            <div class="blog-code">sudo ufw allow from <span class="number">172.0.0.0/8</span> to any port <span class="number">11434</span></div>
+                        </div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">Challenge 3 — Nginx Timeout</div>
+                        <div class="blog-body">
+                            <p>Mistral 7B on a CPU-only machine takes 2–5 minutes to generate a response. The default Nginx proxy timeout is 60 seconds — causing every request to fail with 504 Gateway Timeout.</p>
+                            <div class="blog-code"><span class="comment"># nginx/default.conf — Extended timeouts for LLM responses</span>
+location /api/ {
+    proxy_pass http://backend:<span class="number">8000</span>/;
+    proxy_read_timeout <span class="number">300</span>;
+    proxy_connect_timeout <span class="number">300</span>;
+    proxy_send_timeout <span class="number">300</span>;
+}</div>
+                        </div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">Challenge 4 — Model Speed on CPU</div>
+                        <div class="blog-body">
+                            <p>Mistral 7B uses ~8GB RAM and takes 2–5 minutes per response on CPU-only hardware. For a portfolio demo, this is too slow.</p>
+                            <p>I switched to <strong>Phi3 Mini</strong> — Microsoft's 2.2GB model that runs in 30–60 seconds on the same hardware, while still giving accurate, structured answers.</p>
+                            <div class="blog-callout orange">
+                                Trade-off: Phi3 Mini is less detailed than Mistral 7B, but for a demo environment, speed matters more than depth.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="session-nav-btns">
+                        <button class="session-btn prev" onclick="goToSession(3)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> Previous</button>
+                        <button class="session-btn next" onclick="goToSession(5)">Next: Self-Hosting <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+                    </div>
+                </div>
+<div class="blog-session" id="session-5">
+                    <div class="blog-session-label">Session 5 / 6</div>
+                    <h1 class="blog-title">Self-Hosting</h1>
+                    <p class="blog-subtitle">Why running AI on your own hardware is more impressive than paying for an API — and what I learned from it.</p>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">The Setup</div>
+                        <div class="blog-body">
+                            <p>PaperMind runs on a Linux mini PC sitting on my desk at Kolej Kediaman Ke-13, Universiti Malaya. Everything — the React frontend, FastAPI backend, ChromaDB vector database, and Mistral LLM — runs on this single machine.</p>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-card"><div class="stat-value">16GB</div><div class="stat-label">RAM</div></div>
+                            <div class="stat-card"><div class="stat-value">512GB</div><div class="stat-label">Storage</div></div>
+                            <div class="stat-card"><div class="stat-value">0</div><div class="stat-label">Cloud Cost (RM)</div></div>
+                            <div class="stat-card"><div class="stat-value">100%</div><div class="stat-label">Private</div></div>
+                        </div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">Why Self-Hosting Matters</div>
+                        <div class="blog-body">
+                            <p>Most students build projects that call OpenAI's API — they pay per token, their data goes through external servers, and if OpenAI goes down, their app goes down.</p>
+                            <p>PaperMind is different. The LLM lives on my disk. The vector database lives on my disk. Nothing leaves the machine. This demonstrates a different and more advanced skill set: <strong>infrastructure thinking</strong>.</p>
+                            <div class="blog-callout green">
+                                Running a 4.4GB language model on your own hardware, solving firewall constraints, managing Docker networking, and configuring systemd services — this is real DevOps, not just coding.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">Docker Compose Stack</div>
+                        <div class="blog-code"><span class="comment"># docker-compose.yml — PaperMind Stack</span>
+services:
+  backend:
+    build: ./backend
+    container_name: papermind_backend
+    environment:
+      - OLLAMA_HOST=http://host.docker.internal:<span class="number">11434</span>
+    extra_hosts:
+      - <span class="string">"host.docker.internal:host-gateway"</span>
+
+  frontend:
+    image: nginx:alpine
+    container_name: papermind_frontend
+    volumes:
+      - ./frontend/dist:/usr/share/nginx/html
+
+  nginx:
+    image: nginx:alpine
+    container_name: papermind_nginx
+    ports:
+      - <span class="string">"3001:80"</span>         <span class="comment"># CampusBay uses 80 & 3000</span></div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">What Runs Alongside PaperMind</div>
+                        <div class="blog-body">
+                            <p>The same mini PC also runs CampusBay — my peer-to-peer student marketplace with React, Node.js, PostgreSQL, Redis, Socket.IO, and Stripe. Both stacks coexist on the same machine via Docker Compose with careful port management.</p>
+                        </div>
+                        <div class="tech-grid">
+                            <span class="tech-pill">CampusBay (Port 80)</span>
+                            <span class="tech-pill">PaperMind (Port 3001)</span>
+                            <span class="tech-pill">Ollama (Port 11434)</span>
+                            <span class="tech-pill">PostgreSQL (Port 5432)</span>
+                            <span class="tech-pill">Redis (Port 6379)</span>
+                            <span class="tech-pill">Cloudflare Tunnel</span>
+                        </div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">Live Demo — Auto Summary</div>
+                        <div class="blog-body">
+                            <p>One click generates a full structured summary of the paper — main topic, objectives, methodology, findings, and conclusion — entirely from the local LLM:</p>
+                        </div>
+                        <div class="blog-media">
+                            <video controls preload="metadata">
+                                <source src="assets/doc-summarize-rag.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="blog-media-caption">PaperMind — Summary mode. One-click structured summary generated by Phi3 Mini running locally.</div>
+                        </div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">Summary Output — Screenshot</div>
+                        <div class="blog-body">
+                            <p>This is what the summary looks like for a real CV PDF — the AI correctly identifies main topic, objectives, methodology, key findings, and conclusion from the document content:</p>
+                        </div>
+                        <div class="blog-media">
+                            <img src="assets/summarize-pages-rag.png" alt="PaperMind summary output showing structured analysis of RAFI_ARSYA_CV.pdf" loading="lazy">
+                            <div class="blog-media-caption">PaperMind Summary output — structured 5-point analysis generated from RAFI_ARSYA_CV.pdf. All answers grounded in the document.</div>
+                        </div>
+                    </div>
+
+                    <div class="session-nav-btns">
+                        <button class="session-btn prev" onclick="goToSession(4)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> Previous</button>
+                        <button class="session-btn next" onclick="goToSession(6)">Next: What's Next <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+                    </div>
+                </div>
+<div class="blog-session" id="session-6">
+                    <div class="blog-session-label">Session 6 / 6</div>
+                    <h1 class="blog-title">What's Next</h1>
+                    <p class="blog-subtitle">What I learned, what I'd improve, and where PaperMind goes from here.</p>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">What I Learned</div>
+                        <div class="blog-body">
+                            <p>PaperMind taught me that building an AI application is not the same as using AI. Using ChatGPT is easy. Building the infrastructure that makes a grounded, private, self-hosted AI work — that's a different skill entirely.</p>
+                            <div class="blog-callout purple">
+                                The hardest parts weren't the AI. They were the firewall, the Docker networking, the Ollama systemd configuration, and the Nginx timeouts. Real engineering is mostly infrastructure.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">What I Would Improve</div>
+                        <div class="step-list">
+                            <div class="step-item"><div class="step-num">1</div><div><div class="step-title">Streaming responses</div><div class="step-desc">Currently the UI waits for the full response before showing anything. Streaming would make it feel much faster.</div></div></div>
+                            <div class="step-item"><div class="step-num">2</div><div><div class="step-title">GPU acceleration</div><div class="step-desc">A dedicated GPU would bring response time from 2–5 minutes to 5–10 seconds. Night and day for user experience.</div></div></div>
+                            <div class="step-item"><div class="step-num">3</div><div><div class="step-title">Citation highlighting</div><div class="step-desc">Show which exact chunk of the paper each answer came from — so users can verify the source.</div></div></div>
+                            <div class="step-item"><div class="step-num">4</div><div><div class="step-title">Multi-document comparison</div><div class="step-desc">Ask a question across multiple papers simultaneously — useful for literature reviews.</div></div></div>
+                        </div>
+                    </div>
+
+                    <div class="blog-section">
+                        <div class="blog-section-title">Links</div>
+                        <div class="blog-link-row">
+                            <a href="https://github.com/rafiarsya07" target="_blank" class="blog-link-btn primary">
+                                <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                View on GitHub
+                            </a>
+                            <a href="projects/projects.html" class="blog-link-btn secondary">
+                                <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                                Back to All Projects
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="session-nav-btns">
+                        <button class="session-btn prev" onclick="goToSession(5)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> Previous</button>
+                        <span style="font-size:13px;color:#9ca3af;">End of post</span>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <div class="home-copyright">
+        <p>© 2026 Muhammad Rafi Arsya. All rights reserved.</p>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        const TOTAL = 6;
+        let current = 1;
+
+        const SESSION_TITLES = ['The Problem', 'What is RAG?', 'The Architecture', 'Building It', 'Self-Hosting', "What's Next"];
+
+        function updateFab(n) {
+            const fab = document.getElementById('session-fab');
+            if (!fab) return;
+            document.getElementById('fab-num').textContent = n + '/' + TOTAL;
+            document.getElementById('fab-title').textContent = SESSION_TITLES[n - 1];
+        }
+
+        function updateDrawerNav(n) {
+            document.querySelectorAll('#drawer-nav a').forEach((a, i) => {
+                a.classList.toggle('active', i + 1 === n);
+            });
+            const pct = (n / TOTAL) * 100;
+            const df = document.getElementById('drawer-progress-fill');
+            const dt = document.getElementById('drawer-progress-text');
+            if (df) df.style.width = pct + '%';
+            if (dt) dt.textContent = n + ' of ' + TOTAL;
+        }
+
+        function goToSession(n) {
+            document.getElementById('session-' + current).classList.remove('active');
+            document.querySelectorAll('.session-nav a')[current - 1].classList.remove('active');
+
+            current = n;
+            document.getElementById('session-' + current).classList.add('active');
+            document.querySelectorAll('.session-nav a')[current - 1].classList.add('active');
+
+            const pct = (current / TOTAL) * 100;
+            document.getElementById('progress-fill').style.width = pct + '%';
+            document.getElementById('progress-text').textContent = current + ' of ' + TOTAL;
+
+            updateFab(current);
+            updateDrawerNav(current);
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goToSessionMobile(n) {
+            goToSession(n);
+            closeSessionDrawer();
+        }
+
+        function openSessionDrawer() {
+            updateDrawerNav(current);
+            document.getElementById('drawer-backdrop').classList.add('open');
+            document.getElementById('session-drawer').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSessionDrawer() {
+            document.getElementById('drawer-backdrop').classList.remove('open');
+            document.getElementById('session-drawer').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // Init
+        updateFab(1);
+    </script>
+</body>
+</html>

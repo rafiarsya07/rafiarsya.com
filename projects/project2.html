@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusBay — Muhammad Rafi Arsya</title>
+    <link rel="icon" type="image/png" href="../assets/avatar_rafi.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        :root {
+            --accent-a: #111827;
+            --accent-b: #374151;
+        }
+
+        /* ─── PAGE BASE ─── */
+        .project-main { padding:0; min-height:100vh; background:#f8f9fb; }
+        .project-page { max-width:1040px; width:min(100%,1040px); margin:0 auto; padding:40px 40px 100px; }
+
+        /* ─── BACK BUTTON ─── */
+        .project-back {
+            display:inline-flex; align-items:center; gap:6px;
+            font-size:12.5px; font-weight:600; color:#6b7280;
+            text-decoration:none; margin-bottom:32px;
+            padding:6px 12px 6px 8px; border-radius:8px;
+            border:1px solid #e5e7eb; background:#fff;
+            transition:all 0.15s; letter-spacing:0.01em;
+        }
+        .project-back:hover { color:#111827; border-color:#d1d5db; background:#f9fafb; transform:translateX(-2px); }
+        .project-back svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+
+        /* ─── HERO ─── */
+        .p-hero {
+            width:100%; border-radius:16px; overflow:hidden; margin-bottom:28px;
+            position:relative; min-height:280px;
+            display:flex; flex-direction:column; justify-content:flex-end;
+            padding:32px 36px; box-shadow:0 4px 24px rgba(0,0,0,0.14);
+            background:#111827;
+        }
+        .p-hero-grid {
+            position:absolute; inset:0;
+            background-image: linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);
+            background-size:40px 40px; pointer-events:none;
+        }
+        .p-hero-overlay {
+            position:absolute; inset:0;
+            background:radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.04) 0%, transparent 60%);
+            pointer-events:none;
+        }
+        .p-hero-badge {
+            display:inline-flex; align-items:center; gap:6px;
+            font-size:11px; font-weight:700; letter-spacing:0.12em;
+            text-transform:uppercase; color:rgba(255,255,255,0.45);
+            margin-bottom:10px; position:relative; z-index:1;
+        }
+        .p-hero-dot {
+            width:6px; height:6px; border-radius:50%; background:#9ca3af;
+            animation:pdot 2.5s ease-in-out infinite;
+        }
+        @keyframes pdot { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .p-hero-title {
+            font-family:'Syne',sans-serif; font-size:48px; font-weight:800;
+            color:#fff; letter-spacing:-0.03em; line-height:1.05;
+            margin-bottom:10px; position:relative; z-index:1;
+        }
+        .p-hero-title span { color:#9ca3af; }
+        .p-hero-sub { font-size:14.5px; color:rgba(255,255,255,0.5); line-height:1.7; max-width:560px; position:relative; z-index:1; }
+        .p-hero-tags { display:flex; flex-wrap:wrap; gap:7px; margin-top:18px; position:relative; z-index:1; }
+        .p-hero-tag {
+            font-size:11px; font-weight:600; letter-spacing:0.04em;
+            padding:4px 11px; border-radius:20px;
+            background:rgba(255,255,255,0.07); color:rgba(255,255,255,0.6);
+            border:1px solid rgba(255,255,255,0.1);
+        }
+
+        /* ─── DEV BANNER ─── */
+        .p-dev-banner {
+            display:flex; align-items:center; gap:12px;
+            padding:12px 18px; border-radius:10px; margin-bottom:24px;
+            background:#fff; border:1px solid #e5e7eb;
+        }
+        .p-dev-banner svg { width:16px; height:16px; stroke:#374151; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
+        .p-dev-banner-text { font-size:13px; color:#111827; font-weight:600; }
+        .p-dev-banner-sub { font-size:12px; color:#6b7280; font-weight:400; margin-left:4px; }
+
+        /* ─── META STRIP ─── */
+        .p-meta-strip {
+            display:flex; flex-wrap:wrap; border:1px solid #e5e7eb;
+            border-radius:12px; overflow:hidden; margin-bottom:32px; background:#fff;
+        }
+        .p-meta-item { flex:1; min-width:110px; padding:14px 20px; border-right:1px solid #f3f4f6; }
+        .p-meta-item:last-child { border-right:none; }
+        .p-meta-label { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#9ca3af; margin-bottom:4px; }
+        .p-meta-value { font-size:13.5px; font-weight:600; color:#111827; }
+        .p-meta-value.inprogress { color:#374151; display:flex; align-items:center; gap:6px; }
+        .p-meta-value.inprogress::before { content:''; width:6px; height:6px; border-radius:50%; background:#374151; display:inline-block; animation:pdot 2.5s ease-in-out infinite; }
+
+        /* ─── LAYOUT ─── */
+        .p-layout { display:grid; grid-template-columns:1fr 290px; gap:24px; align-items:start; }
+        .p-main-col { display:flex; flex-direction:column; gap:22px; }
+        .p-side-col { display:flex; flex-direction:column; gap:16px; }
+
+        /* ─── CARDS ─── */
+        .p-card { background:#fff; border:1px solid #e5e7eb; border-radius:14px; padding:24px 26px; }
+        .p-card-title { font-size:10.5px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#9ca3af; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid #f3f4f6; }
+
+        /* ─── BODY TEXT ─── */
+        .p-body { font-size:15px; color:#374151; line-height:1.85; }
+        .p-body p { margin:0 0 14px; }
+        .p-body p:last-child { margin-bottom:0; }
+        .p-body strong { color:#111827; font-weight:600; }
+
+        /* ─── FEATURES ─── */
+        .p-features { display:flex; flex-direction:column; gap:9px; }
+        .p-feature-item {
+            display:flex; gap:12px; align-items:flex-start;
+            padding:13px 15px; border-radius:10px;
+            background:#f9fafb; border:1px solid #f3f4f6;
+            transition:border-color 0.15s, background 0.15s;
+        }
+        .p-feature-item:hover { border-color:#d1d5db; background:#f3f4f6; }
+        .p-feature-icon {
+            width:32px; height:32px; border-radius:8px; background:#111827;
+            display:flex; align-items:center; justify-content:center; flex-shrink:0;
+        }
+        .p-feature-icon svg { width:14px; height:14px; stroke:#fff; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .p-feature-title { font-size:13px; font-weight:600; color:#111827; margin-bottom:2px; }
+        .p-feature-desc { font-size:12px; color:#6b7280; line-height:1.5; }
+
+        /* ─── TECH ─── */
+        .p-tech-grid { display:flex; flex-wrap:wrap; gap:7px; }
+        .p-tech-pill {
+            font-size:11.5px; font-weight:500; color:#374151;
+            background:#f9fafb; border:1px solid #e5e7eb; border-radius:6px;
+            padding:4px 11px; font-family:'Space Mono',monospace;
+            transition:all 0.15s;
+        }
+        .p-tech-pill:hover { background:#f3f4f6; border-color:#d1d5db; color:#111827; }
+
+        /* ─── TIMELINE ─── */
+        .p-timeline { display:flex; flex-direction:column; }
+        .p-tl-item { display:flex; gap:12px; padding-bottom:20px; }
+        .p-tl-item:last-child { padding-bottom:0; }
+        .p-tl-line { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
+        .p-tl-dot {
+            width:26px; height:26px; border-radius:50%; color:white;
+            font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; z-index:1;
+        }
+        .p-tl-dot.done { background:#111827; }
+        .p-tl-dot.upcoming { background:#f3f4f6; color:#9ca3af; border:2px dashed #d1d5db; }
+        .p-tl-connector { flex:1; width:1px; background:#e5e7eb; margin-top:4px; }
+        .p-tl-item:last-child .p-tl-connector { display:none; }
+        .p-tl-body { padding-top:3px; }
+        .p-tl-date { font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#9ca3af; margin-bottom:3px; }
+        .p-tl-date.future { color:#d1d5db; }
+        .p-tl-title { font-size:13.5px; font-weight:600; color:#111827; margin-bottom:3px; }
+        .p-tl-title.dim { color:#6b7280; }
+        .p-tl-desc { font-size:12px; color:#6b7280; line-height:1.55; }
+
+        /* ─── PROGRESS ─── */
+        .p-progress-label { display:flex; justify-content:space-between; font-size:12px; color:#6b7280; margin-bottom:5px; }
+        .p-progress-label span:last-child { font-weight:600; color:#111827; }
+        .p-progress-track { height:4px; border-radius:3px; background:#f3f4f6; overflow:hidden; margin-bottom:12px; }
+        .p-progress-fill { height:100%; border-radius:3px; background:#111827; transition:width 1s cubic-bezier(.2,.7,.2,1); }
+        .p-progress-fill.partial { background:#9ca3af; }
+
+        /* ─── NUMBERS ─── */
+        .p-numbers { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+        .p-num-card { border-radius:10px; padding:13px 15px; background:#f9fafb; border:1px solid #f3f4f6; }
+        .p-num-val { font-family:'Syne',sans-serif; font-size:24px; font-weight:800; color:#111827; line-height:1; margin-bottom:3px; }
+        .p-num-label { font-size:11px; font-weight:600; color:#6b7280; }
+
+        /* ─── STATUS BADGE ─── */
+        .p-status-badge {
+            display:inline-flex; align-items:center; gap:6px;
+            background:#f9fafb; color:#374151; font-size:12px; font-weight:600;
+            padding:5px 12px; border-radius:20px; border:1px solid #e5e7eb;
+            margin-bottom:12px;
+        }
+        .p-status-badge svg { width:12px; height:12px; stroke:#374151; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+        /* ─── LINK BTNS ─── */
+        .p-link-btn {
+            display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600;
+            padding:10px 16px; border-radius:9px; text-decoration:none; transition:all 0.15s;
+            width:100%; margin-bottom:7px;
+        }
+        .p-link-btn:last-child { margin-bottom:0; }
+        .p-link-btn.primary { background:#111827; color:white; }
+        .p-link-btn.primary:hover { background:#1f2937; transform:translateY(-1px); }
+        .p-link-btn.secondary { background:#f9fafb; color:#374151; border:1px solid #e5e7eb; }
+        .p-link-btn.secondary:hover { background:#f3f4f6; transform:translateY(-1px); }
+        .p-link-btn svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
+        .p-link-btn-label { flex:1; }
+
+        /* ─── ARCH ─── */
+        .p-arch-stack { display:flex; flex-direction:column; gap:8px; margin-top:4px; }
+        .p-arch-row {
+            display:flex; align-items:center; gap:10px;
+            padding:10px 14px; border-radius:9px; background:#f9fafb; border:1px solid #f3f4f6;
+        }
+        .p-arch-icon {
+            width:28px; height:28px; border-radius:7px; background:#111827;
+            display:flex; align-items:center; justify-content:center; flex-shrink:0;
+        }
+        .p-arch-icon svg { width:13px; height:13px; stroke:#fff; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .p-arch-name { font-size:12.5px; font-weight:600; color:#111827; flex:1; }
+        .p-arch-desc { font-size:11px; color:#9ca3af; }
+
+        /* ─── CLOSING ─── */
+        .p-closing {
+            margin-top:32px; padding:24px 28px;
+            background:#111827; border-radius:14px;
+            display:flex; align-items:center; justify-content:space-between;
+            flex-wrap:wrap; gap:16px;
+        }
+        .p-closing-title { font-family:'Syne',sans-serif; font-size:18px; font-weight:800; color:#fff; margin-bottom:6px; }
+        .p-closing-desc { font-size:13px; color:rgba(255,255,255,0.5); line-height:1.6; max-width:480px; }
+        .p-closing-btn {
+            display:inline-flex; align-items:center; gap:8px;
+            background:#fff; color:#111827; font-size:13px; font-weight:700;
+            padding:10px 20px; border-radius:9px; text-decoration:none;
+            flex-shrink:0; transition:opacity 0.15s; white-space:nowrap;
+        }
+        .p-closing-btn:hover { opacity:0.88; }
+        .p-closing-btn svg { width:14px; height:14px; stroke:#111827; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+        /* ─── RESPONSIVE ─── */
+        @media(max-width:860px){ .p-layout{grid-template-columns:1fr;} .p-hero-title{font-size:36px;} }
+        @media(max-width:540px){
+            .project-page{padding:20px 16px 60px;} .p-hero-title{font-size:28px;}
+            .p-meta-strip{flex-direction:column;} .p-meta-item{border-right:none;border-bottom:1px solid #f3f4f6;}
+            .p-meta-item:last-child{border-bottom:none;}
+            .p-closing{flex-direction:column; align-items:flex-start;}
+            .p-closing-btn{width:100%; justify-content:center;}
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-topbar">
+        <span class="mobile-topbar-title">Muhammad Rafi Arsya</span>
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <div class="portfolio-app">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-logo-wrap">
+                    <img class="sidebar-logo-avatar" src="../assets/avatar_rafi.png" alt="Rafi Avatar">
+                    <span class="sidebar-logo-name">Muhammad Rafi Arsya</span>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="../index.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg></span><span>Home</span></a>
+                    <a href="../blog.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span>Blog</span></a>
+                </nav>
+                <div class="sidebar-group-label">Me</div>
+                <nav class="sidebar-nav">
+                    <a href="../resume.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 3H8a1 1 0 0 0-1 1v3h10V4a1 1 0 0 0-1-1z"/></svg></span><span>Resume / CV</span></a>
+                    <a href="../course.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>Course &amp; Certificate</span></a>
+                    <a href="../contact.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span><span>Contact</span></a>
+                </nav>
+                <div class="sidebar-group-label">Projects</div>
+                <div class="sidebar-projects">
+                    <a href="project1.html"><span class="project-icon text-icon" style="background:#111827;color:#fff;font-size:0.55rem;font-weight:900;letter-spacing:0.01em;">HG</span><span class="project-label">HandGesture</span></a>
+                    <a href="project2.html" class="active"><span class="project-icon text-icon" style="background:#111827;color:#fff;font-size:0.55rem;font-weight:900;letter-spacing:-0.01em;">CB</span><span class="project-label">CampusBay</span></a>
+                    <a href="project5.html"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#0a0a1a 0%,#3b2d8a 100%);color:#fff;font-size:0.55rem;font-weight:900;letter-spacing:-0.01em;">PM</span><span class="project-label">PaperMind</span></a>
+                    <a href="project3.html"><span class="project-icon text-icon" style="background:#1d4ed8;color:#fff;font-size:0.58rem;font-weight:900;letter-spacing:-0.01em;">NS</span><span class="project-label">NASE Accessibility</span></a>
+                    <a href="project4.html"><span class="project-icon text-icon" style="background:#6b7280;color:#fff;font-size:0.52rem;font-weight:900;letter-spacing:-0.01em;">CD</span><span class="project-label">Crop Disease Detector</span></a>
+                    <a href="projects.html"><span class="nav-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span>All Projects</span></a>
+                </div>
+                <div class="sidebar-group-label">Social</div>
+                <nav class="sidebar-social">
+                    <a href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></span><span>GitHub</span></a>
+                    <a href="https://www.linkedin.com/in/rafi-arsya-557335394/" target="_blank" rel="noopener noreferrer"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span><span>LinkedIn</span></a>
+                    <a href="https://www.instagram.com/rarsya.03/" target="_blank" rel="noopener noreferrer"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span><span>Instagram</span></a>
+                </nav>
+            </div>
+            <div class="sidebar-footer"><p>Designed with focus on clarity and craft.</p></div>
+        </aside>
+
+        <main class="project-main">
+            <div class="project-page">
+                <a href="projects.html" class="project-back">
+                    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                    Back to All Projects
+                </a>
+
+                <!-- HERO -->
+                <div class="p-hero">
+                    <div class="p-hero-grid"></div>
+                    <div class="p-hero-overlay"></div>
+                    <div class="p-hero-badge">
+                        <span class="p-hero-dot"></span>
+                        Full Stack · Self-Development · Ongoing · 2026
+                    </div>
+                    <h1 class="p-hero-title">Campus<span>Bay</span></h1>
+                    <p class="p-hero-sub">A peer-to-peer student marketplace for Universiti Malaya — verified, campus-safe. Real-time chat, Stripe payments, COD scheduling, flash sales, and more. Still actively developing.</p>
+                    <div class="p-hero-tags">
+                        <span class="p-hero-tag">Marketplace</span>
+                        <span class="p-hero-tag">Full Stack</span>
+                        <span class="p-hero-tag">React + Vite</span>
+                        <span class="p-hero-tag">Node.js + Express</span>
+                        <span class="p-hero-tag">PostgreSQL</span>
+                        <span class="p-hero-tag">Docker</span>
+                        <span class="p-hero-tag">Self-Hosted</span>
+                    </div>
+                </div>
+
+                <!-- DEV BANNER -->
+                <div class="p-dev-banner">
+                    <!-- Lucide: activity -->
+                    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    <div>
+                        <span class="p-dev-banner-text">Actively developing &amp; self-hosted</span>
+                        <span class="p-dev-banner-sub">— Solo self-development project. New features ship regularly on a Linux mini PC running 24/7.</span>
+                    </div>
+                </div>
+
+                <!-- META STRIP -->
+                <div class="p-meta-strip">
+                    <div class="p-meta-item"><div class="p-meta-label">Status</div><div class="p-meta-value inprogress">In Development</div></div>
+                    <div class="p-meta-item"><div class="p-meta-label">Year</div><div class="p-meta-value">2026</div></div>
+                    <div class="p-meta-item"><div class="p-meta-label">Role</div><div class="p-meta-value">Solo Developer</div></div>
+                    <div class="p-meta-item"><div class="p-meta-label">Platform</div><div class="p-meta-value">Web</div></div>
+                    <div class="p-meta-item"><div class="p-meta-label">Live at</div><div class="p-meta-value"><a href="https://campusbay.store" target="_blank" rel="noopener" style="color:#111827;text-decoration:none;font-weight:700;">campusbay.store ↗</a></div></div>
+                </div>
+
+                <!-- LAYOUT -->
+                <div class="p-layout">
+                    <div class="p-main-col">
+
+                        <!-- OVERVIEW -->
+                        <div class="p-card">
+                            <div class="p-card-title">Overview</div>
+                            <div class="p-body">
+                                <p><strong>CampusBay</strong> is a campus-exclusive peer-to-peer marketplace I'm building for University of Malaya students — entirely solo, as a self-development project. A trusted, verified space to buy and sell textbooks, electronics, hostel furniture, and more within the UM community.</p>
+                                <p>Registration is gated to <code style="background:#f3f4f6;padding:2px 7px;border-radius:5px;font-size:11.5px;color:#111827;font-weight:600;">@siswa.um.edu.my</code> and <code style="background:#f3f4f6;padding:2px 7px;border-radius:5px;font-size:11.5px;color:#111827;font-weight:600;">@um.edu.my</code> email addresses, verified via OTP — every user is a real UM student, eliminating scammers common on Carousell or Facebook Marketplace.</p>
+                                <p>The stack is production-grade: <strong>React 18 + Vite</strong> frontend, <strong>Node.js + Express</strong> backend, <strong>PostgreSQL + Redis</strong> for data and caching, <strong>Socket.io</strong> for real-time features, and <strong>Stripe</strong> for payments — containerised with Docker Compose and self-hosted on a Linux mini PC.</p>
+                            </div>
+                        </div>
+
+                        <!-- KEY FEATURES -->
+                        <div class="p-card">
+                            <div class="p-card-title">Key Features</div>
+                            <div class="p-features">
+                                <div class="p-feature-item">
+                                    <div class="p-feature-icon">
+                                        <!-- Lucide: shield-check -->
+                                        <svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.4-8 9-4.6-.6-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+                                    </div>
+                                    <div><div class="p-feature-title">UM Email Verification + OTP</div><div class="p-feature-desc">Registration gated to @siswa.um.edu.my accounts. 6-digit OTP via email, stored in Redis with TTL. Unverified accounts can't transact.</div></div>
+                                </div>
+                                <div class="p-feature-item">
+                                    <div class="p-feature-icon">
+                                        <!-- Lucide: message-circle -->
+                                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    </div>
+                                    <div><div class="p-feature-title">Real-Time Chat</div><div class="p-feature-desc">Socket.io-powered buyer–seller messaging with typing indicators, read receipts, and push notifications when the recipient is offline.</div></div>
+                                </div>
+                                <div class="p-feature-item">
+                                    <div class="p-feature-icon">
+                                        <!-- Lucide: credit-card -->
+                                        <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                                    </div>
+                                    <div><div class="p-feature-title">Stripe Payment + COD Scheduling</div><div class="p-feature-desc">Full Stripe Checkout integration (MYR) with webhook-driven order fulfillment and atomic stock decrement. COD via in-app meetup scheduler.</div></div>
+                                </div>
+                                <div class="p-feature-item">
+                                    <div class="p-feature-icon">
+                                        <!-- Lucide: clock -->
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                    </div>
+                                    <div><div class="p-feature-title">Flash Sales &amp; Vouchers</div><div class="p-feature-desc">Sellers can create time-bounded flash sales with discounted pricing. Buyer-redeemable vouchers with usage limits and expiry.</div></div>
+                                </div>
+                                <div class="p-feature-item">
+                                    <div class="p-feature-icon">
+                                        <!-- Lucide: heart -->
+                                        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                                    </div>
+                                    <div><div class="p-feature-title">Wishlist, Reviews &amp; Seller Follows</div><div class="p-feature-desc">Buyers can wishlist items and follow sellers. Product ratings and reviews. Notification bell for live updates across all activity.</div></div>
+                                </div>
+                                <div class="p-feature-item">
+                                    <div class="p-feature-icon">
+                                        <!-- Lucide: layout-dashboard -->
+                                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                                    </div>
+                                    <div><div class="p-feature-title">Admin Dashboard</div><div class="p-feature-desc">Platform-wide analytics, user management, product moderation. Role-based access: buyer, seller, admin.</div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ARCHITECTURE -->
+                        <div class="p-card">
+                            <div class="p-card-title">Architecture Overview</div>
+                            <div class="p-arch-stack">
+                                <div class="p-arch-row">
+                                    <div class="p-arch-icon">
+                                        <!-- Lucide: monitor -->
+                                        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                    </div>
+                                    <div class="p-arch-name">React 18 + Vite + Tailwind CSS</div>
+                                    <div class="p-arch-desc">SPA · Zustand · TanStack Query</div>
+                                </div>
+                                <div class="p-arch-row">
+                                    <div class="p-arch-icon">
+                                        <!-- Lucide: server -->
+                                        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                                    </div>
+                                    <div class="p-arch-name">Node.js + Express REST API</div>
+                                    <div class="p-arch-desc">15+ route modules · JWT auth · Zod validation</div>
+                                </div>
+                                <div class="p-arch-row">
+                                    <div class="p-arch-icon">
+                                        <!-- Lucide: database -->
+                                        <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                                    </div>
+                                    <div class="p-arch-name">PostgreSQL 16 + Redis 7</div>
+                                    <div class="p-arch-desc">Sequelize ORM · OTP/session cache</div>
+                                </div>
+                                <div class="p-arch-row">
+                                    <div class="p-arch-icon">
+                                        <!-- Lucide: zap -->
+                                        <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                    </div>
+                                    <div class="p-arch-name">Socket.io</div>
+                                    <div class="p-arch-desc">Real-time chat · order tracking · notifications</div>
+                                </div>
+                                <div class="p-arch-row">
+                                    <div class="p-arch-icon">
+                                        <!-- Lucide: credit-card -->
+                                        <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                                    </div>
+                                    <div class="p-arch-name">Stripe</div>
+                                    <div class="p-arch-desc">Checkout sessions · webhook fulfillment · MYR</div>
+                                </div>
+                                <div class="p-arch-row">
+                                    <div class="p-arch-icon">
+                                        <!-- Lucide: box -->
+                                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                                    </div>
+                                    <div class="p-arch-name">Docker Compose + nginx</div>
+                                    <div class="p-arch-desc">5-container stack · self-hosted Linux mini PC</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TIMELINE -->
+                        <div class="p-card">
+                            <div class="p-card-title">Development Timeline</div>
+                            <div class="p-timeline">
+                                <div class="p-tl-item">
+                                    <div class="p-tl-line"><div class="p-tl-dot done">1</div><div class="p-tl-connector"></div></div>
+                                    <div class="p-tl-body"><div class="p-tl-date">Early 2026</div><div class="p-tl-title">Foundation</div><div class="p-tl-desc">React + Express scaffold, JWT auth, OTP email verification, PostgreSQL schema design, Docker Compose setup.</div></div>
+                                </div>
+                                <div class="p-tl-item">
+                                    <div class="p-tl-line"><div class="p-tl-dot done">2</div><div class="p-tl-connector"></div></div>
+                                    <div class="p-tl-body"><div class="p-tl-date">Mid 2026</div><div class="p-tl-title">Core Commerce</div><div class="p-tl-desc">Product listings, shopping cart, Stripe payment integration with webhook, COD meetup scheduler, order management.</div></div>
+                                </div>
+                                <div class="p-tl-item">
+                                    <div class="p-tl-line"><div class="p-tl-dot done">3</div><div class="p-tl-connector"></div></div>
+                                    <div class="p-tl-body"><div class="p-tl-date">Mid 2026</div><div class="p-tl-title">Real-Time + Social</div><div class="p-tl-desc">Socket.io chat, typing indicators, read receipts, notification bell, wishlist, seller follows, reviews, flash sales, vouchers.</div></div>
+                                </div>
+                                <div class="p-tl-item">
+                                    <div class="p-tl-line"><div class="p-tl-dot upcoming">4</div><div class="p-tl-connector"></div></div>
+                                    <div class="p-tl-body"><div class="p-tl-date future">Upcoming</div><div class="p-tl-title dim">Polish &amp; Growth</div><div class="p-tl-desc">Payment analytics, seller tiers, campus meetup map, mobile PWA, onboarding flow, public launch to UM students.</div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- SIDE COLUMN -->
+                    <div class="p-side-col">
+
+                        <!-- PROGRESS -->
+                        <div class="p-card">
+                            <div class="p-card-title">Build Progress</div>
+                            <div class="p-status-badge">
+                                <!-- Lucide: circle-dot -->
+                                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+                                In Development
+                            </div>
+                            <div class="p-progress-label"><span>Auth + OTP</span><span>100%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill" style="width:100%;"></div></div>
+                            <div class="p-progress-label"><span>Core Marketplace</span><span>100%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill" style="width:100%;"></div></div>
+                            <div class="p-progress-label"><span>Stripe + COD</span><span>100%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill" style="width:100%;"></div></div>
+                            <div class="p-progress-label"><span>Real-Time Chat</span><span>100%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill" style="width:100%;"></div></div>
+                            <div class="p-progress-label"><span>Flash Sales + Vouchers</span><span>100%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill" style="width:100%;"></div></div>
+                            <div class="p-progress-label"><span>Public Launch</span><span>~60%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill partial" style="width:60%;"></div></div>
+                        </div>
+
+                        <!-- TECH STACK -->
+                        <div class="p-card">
+                            <div class="p-card-title">Tech Stack</div>
+                            <div class="p-tech-grid">
+                                <span class="p-tech-pill">React 18</span>
+                                <span class="p-tech-pill">Vite</span>
+                                <span class="p-tech-pill">Tailwind</span>
+                                <span class="p-tech-pill">Zustand</span>
+                                <span class="p-tech-pill">Node.js</span>
+                                <span class="p-tech-pill">Express</span>
+                                <span class="p-tech-pill">PostgreSQL</span>
+                                <span class="p-tech-pill">Redis</span>
+                                <span class="p-tech-pill">Sequelize</span>
+                                <span class="p-tech-pill">Socket.io</span>
+                                <span class="p-tech-pill">Stripe</span>
+                                <span class="p-tech-pill">Docker</span>
+                                <span class="p-tech-pill">nginx</span>
+                                <span class="p-tech-pill">Nodemailer</span>
+                            </div>
+                        </div>
+
+                        <!-- NUMBERS -->
+                        <div class="p-card">
+                            <div class="p-card-title">By the Numbers</div>
+                            <div class="p-numbers">
+                                <div class="p-num-card"><div class="p-num-val">15+</div><div class="p-num-label">API Route Modules</div></div>
+                                <div class="p-num-card"><div class="p-num-val">5</div><div class="p-num-label">Docker Containers</div></div>
+                                <div class="p-num-card"><div class="p-num-val">9</div><div class="p-num-label">DB Models</div></div>
+                                <div class="p-num-card"><div class="p-num-val">24/7</div><div class="p-num-label">Self-Hosted</div></div>
+                            </div>
+                        </div>
+
+                        <!-- LINKS -->
+                        <div class="p-card">
+                            <div class="p-card-title">Links</div>
+                            <a href="https://campusbay.store" target="_blank" rel="noopener noreferrer" class="p-link-btn primary">
+                                <!-- Lucide: globe -->
+                                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                                <span class="p-link-btn-label">campusbay.store</span>
+                                <!-- Lucide: external-link -->
+                                <svg viewBox="0 0 24 24" style="opacity:0.4;width:12px;height:12px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            </a>
+                            <a href="https://github.com/rafiarsya07/CampusMarket" target="_blank" rel="noopener noreferrer" class="p-link-btn secondary">
+                                <!-- Lucide: github -->
+                                <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                <span class="p-link-btn-label">GitHub Repository</span>
+                                <svg viewBox="0 0 24 24" style="opacity:0.35;width:12px;height:12px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- CLOSING -->
+                <div class="p-closing">
+                    <div class="p-closing-text">
+                        <div class="p-closing-title">A self-development project, built from scratch.</div>
+                        <div class="p-closing-desc">Every line of code — from the Docker Compose stack to the Stripe webhook — written solo. CampusBay is where I apply and stretch everything I learn, shipping real features to a real domain.</div>
+                    </div>
+                    <a href="https://campusbay.store" target="_blank" rel="noopener noreferrer" class="p-closing-btn">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        Visit campusbay.store
+                    </a>
+                </div>
+
+            </div>
+        </main>
+    </div>
+    <script src="../script.js"></script>
+</body>
+</html>

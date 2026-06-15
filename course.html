@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course & Certificate | Muhammad Rafi Arsya</title>
+    <link rel="icon" type="image/png" href="assets/avatar_rafi.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ═══════════════════════════════════════
+           COURSE PAGE — FULL-DISPLAY LAYOUT
+           Maximizes use of available screen space
+        ═══════════════════════════════════════ */
+
+        /* ─── BASE (mobile) ─── */
+        .course-main {
+            background: #fff;
+            min-height: 100vh;
+            padding-bottom: 60px;
+            overflow-x: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .course-header {
+            padding: 20px 16px 0;
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .course-breadcrumb {
+            display: flex; align-items: center; gap: 6px;
+            font-size: 0.78rem; color: #9ca3af; margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+        .course-breadcrumb svg { width:13px; height:13px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
+
+        .course-page-title {
+            font-size: clamp(1.6rem, 5vw, 2.4rem);
+            font-weight: 800; color: #111827;
+            margin: 0 0 4px; letter-spacing: -0.04em;
+        }
+        .course-page-subtitle {
+            font-size: clamp(0.78rem, 2vw, 0.9rem);
+            color: #9ca3af; margin: 0 0 18px;
+            line-height: 1.5;
+        }
+
+        /* ─── FILTER BAR ─── */
+        .course-filter-bar {
+            margin-bottom: 14px;
+            width: 100%;
+            overflow: hidden;
+        }
+        .filter-scroll-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding-bottom: 2px;
+        }
+        .filter-scroll-wrap::-webkit-scrollbar { display: none; }
+        .filter-group {
+            display: inline-flex; align-items: center;
+            gap: 2px; background: #f3f4f6; border-radius: 10px;
+            padding: 3px; white-space: nowrap;
+            min-width: max-content;
+        }
+        .filter-btn {
+            padding: 6px 14px; border-radius: 7px; border: none;
+            background: transparent; color: #6b7280;
+            font-size: clamp(0.72rem, 1.5vw, 0.82rem);
+            font-weight: 600; cursor: pointer; transition: all 0.15s;
+            font-family: inherit; display: inline-flex;
+            align-items: center; gap: 5px; white-space: nowrap; flex-shrink: 0;
+        }
+        .filter-btn:hover { color:#374151; background:rgba(255,255,255,0.6); }
+        .filter-btn.active { background:#111827; color:#fff; box-shadow:0 1px 4px rgba(0,0,0,0.18); }
+        .filter-btn.active .filter-count { opacity:0.55; }
+        .filter-count { font-size: 0.68rem; font-weight: 700; opacity: 0.5; }
+
+        /* ─── SUMMARY ─── */
+        .cert-summary {
+            padding: 0 16px 14px;
+            display: flex; align-items: center; gap: 10px;
+            box-sizing: border-box; width: 100%;
+        }
+        .cert-count-pill {
+            background: #f3f4f6; border-radius: 999px;
+            padding: 4px 14px; font-size: 0.77rem;
+            font-weight: 700; color: #374151; letter-spacing: 0.01em;
+            white-space: nowrap;
+        }
+
+        /* ─── GRID — single column on mobile ─── */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            padding: 0 16px;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        /* ─── CARD ─── */
+        .cert-card {
+            border: 1px solid #e5e7eb; border-radius: 12px;
+            overflow: hidden; background: #fff; cursor: pointer;
+            transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+            display: flex; flex-direction: column;
+            min-width: 0; width: 100%; box-sizing: border-box;
+        }
+        .cert-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.1); border-color: #d1d5db; transform: translateY(-2px); }
+        .cert-card.hidden { display: none; }
+
+        /* IMAGE */
+        .cert-img-wrap {
+            position: relative;
+            width: 100%;
+            height: 130px;
+            overflow: hidden;
+            background: #f3f4f6;
+            flex-shrink: 0;
+        }
+        .cert-img-wrap img {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: top;
+            display: block; transition: transform 0.3s ease;
+        }
+        .cert-card:hover .cert-img-wrap img { transform: scale(1.04); }
+
+        /* BADGES */
+        .cert-status {
+            position: absolute; top: 7px; right: 7px;
+            padding: 2px 7px; border-radius: 999px;
+            font-size: 0.6rem; font-weight: 700; letter-spacing: 0.02em;
+            backdrop-filter: blur(4px);
+        }
+        .cert-status.completed { background: rgba(17,24,39,0.82); color: #fff; border: 1px solid rgba(255,255,255,0.12); }
+        .cert-status.ielts { background: rgba(17,24,39,0.82); color: #e5e7eb; border: 1px solid rgba(255,255,255,0.12); }
+        .cert-platform-badge {
+            position: absolute; top: 7px; left: 7px;
+            width: 24px; height: 24px; border-radius: 5px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.54rem; font-weight: 800; letter-spacing: -0.02em;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .badge-udemy    { background:#a435f0; color:#fff; }
+        .badge-revou    { background:#e91e8c; color:#fff; }
+        .badge-ibmi     { background:#1e3a5f; color:#fff; }
+        .badge-dibimbing{ background:#0ea5e9; color:#fff; }
+        .badge-ielts    { background:#1d4ed8; color:#fff; font-size:0.48rem; }
+        .badge-dicoding { background:#00c2a8; color:#fff; font-size:0.5rem; }
+        .badge-educly   { background:#f97316; color:#fff; font-size:0.5rem; }
+        .badge-coursiv  { background:#6366f1; color:#fff; font-size:0.5rem; }
+        .badge-fkip     { background:#1e3a5f; color:#d4af37; font-size:0.46rem; font-weight:800; }
+        .badge-fcc      { background:#0a0a23; color:#fff; font-size:0.48rem; font-weight:800; }
+
+        /* BODY */
+        .cert-body {
+            padding: 10px 12px 12px;
+            display: flex; flex-direction: column;
+            gap: 3px; flex: 1; min-width: 0;
+        }
+        .cert-issuer {
+            font-size: 0.64rem; font-weight: 600; color: #9ca3af;
+            text-transform: uppercase; letter-spacing: 0.07em;
+        }
+        .cert-title {
+            font-size: clamp(0.78rem, 1.5vw, 0.88rem);
+            font-weight: 700; color: #111827; line-height: 1.35;
+            margin: 2px 0 4px;
+            display: -webkit-box; -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2; overflow: hidden;
+        }
+        .cert-meta {
+            display: flex; align-items: center;
+            gap: 4px; flex-wrap: wrap;
+        }
+        .cert-tag {
+            display: inline-flex; align-items: center;
+            background: #f3f4f6; color: #6b7280; border-radius: 4px;
+            padding: 1px 6px; font-size: 0.6rem; font-weight: 600;
+        }
+        .cert-date {
+            font-size: 0.62rem; color: #9ca3af; margin-top: 2px;
+        }
+
+        /* ─── LIGHTBOX ─── */
+        .lightbox-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.9); z-index: 999;
+            align-items: center; justify-content: center;
+            padding: 12px; backdrop-filter: blur(8px);
+        }
+        .lightbox-overlay.open { display: flex; }
+        .lightbox-img-wrap {
+            position: relative;
+            max-width: 80vw;
+            max-height: 84vh;
+            width: 100%;
+        }
+        .lightbox-img-wrap img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+            display: block;
+            margin: 0 auto;
+        }
+        .lightbox-close {
+            position: fixed; top: 12px; right: 12px;
+            width: 36px; height: 36px; border-radius: 50%;
+            background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2);
+            color: #fff; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; backdrop-filter: blur(4px); transition: background 0.15s;
+        }
+        .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+        .lightbox-close svg { width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+        /* ═══════════════════════════════════════
+           SCALE UP — FILLS FULL AVAILABLE WIDTH
+        ═══════════════════════════════════════ */
+
+        /* Tablet (≥ 640px) */
+        @media(min-width: 640px) {
+            .course-main { padding-bottom: 80px; }
+            .course-header { padding: 28px 24px 0; }
+            .cert-summary { padding: 0 24px 16px; }
+            .course-grid {
+                grid-template-columns: repeat(3, 1fr);
+                padding: 0 24px; gap: 14px;
+            }
+            .cert-img-wrap { height: 148px; }
+        }
+
+        /* Desktop (≥ 900px) — 4 columns */
+        @media(min-width: 900px) {
+            .course-header { padding: 32px 28px 0; }
+            .cert-summary { padding: 0 28px 18px; }
+            .course-grid {
+                grid-template-columns: repeat(4, 1fr);
+                padding: 0 28px; gap: 16px;
+            }
+            .cert-img-wrap { height: 155px; }
+        }
+
+        /* Wide desktop (≥ 1200px) — 5 columns */
+        @media(min-width: 1200px) {
+            .course-header { padding: 36px 32px 0; }
+            .cert-summary { padding: 0 32px 20px; }
+            .course-grid {
+                grid-template-columns: repeat(5, 1fr);
+                padding: 0 32px; gap: 16px;
+            }
+            .cert-img-wrap { height: 150px; }
+        }
+
+        /* Ultra-wide (≥ 1600px) — 6 columns */
+        @media(min-width: 1600px) {
+            .course-grid { grid-template-columns: repeat(6, 1fr); }
+        }
+
+        /* ═══════════════════════════════════════
+           UNIVERSITY COURSES SECTION — FULL WIDTH
+        ═══════════════════════════════════════ */
+        .uni-wrap {
+            padding: 28px 16px 0;
+            box-sizing: border-box;
+            width: 100%;
+        }
+        .uni-header {
+            display: flex; align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px; margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .uni-header-left {}
+        .uni-eyebrow {
+            font-size: 0.68rem; font-weight: 700;
+            letter-spacing: 0.16em; text-transform: uppercase;
+            color: #9ca3af; margin-bottom: 3px;
+        }
+        .uni-title {
+            font-size: clamp(1.25rem, 5vw, 1.6rem);
+            font-weight: 800; color: #111827;
+            letter-spacing: -0.025em; margin: 0;
+            line-height: 1.15;
+        }
+        .uni-stats-row {
+            display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;
+        }
+        .uni-stat-pill {
+            display: inline-flex; align-items: center; gap: 5px;
+            background: #f3f4f6; border-radius: 999px;
+            padding: 4px 11px; font-size: 0.7rem; font-weight: 600;
+            color: #374151;
+        }
+        .uni-stat-pill .dot {
+            width: 6px; height: 6px; border-radius: 50%;
+        }
+
+        /* ── SEMESTER BLOCK ── */
+        .uni-sem-block { margin-bottom: 24px; }
+        .uni-sem-head {
+            display: flex; align-items: center; gap: 8px;
+            margin-bottom: 12px; padding-bottom: 10px;
+            border-bottom: 1.5px solid #f3f4f6;
+        }
+        .uni-sem-badge {
+            font-size: 0.63rem; font-weight: 800;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            padding: 3px 10px; border-radius: 999px;
+        }
+        .uni-sem-badge.done {
+            background: #111827; color: #fff;
+        }
+        .uni-sem-badge.live {
+            background: #10b981; color: #fff;
+            box-shadow: 0 0 0 3px rgba(16,185,129,0.2);
+            animation: sem-pulse 2s ease-in-out infinite;
+        }
+        @keyframes sem-pulse {
+            0%,100% { box-shadow: 0 0 0 2px rgba(16,185,129,0.2); }
+            50%      { box-shadow: 0 0 0 6px rgba(16,185,129,0.07); }
+        }
+        .uni-sem-label-text {
+            font-size: 0.75rem; font-weight: 700;
+            color: #6b7280; letter-spacing: 0.03em;
+        }
+        .uni-sem-count {
+            margin-left: auto;
+            font-size: 0.65rem; font-weight: 700;
+            color: #9ca3af; background: #f3f4f6;
+            padding: 2px 9px; border-radius: 999px;
+        }
+
+        /* ── GRID ── */
+        .uni-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        /* ── CARD ── */
+        .uni-card {
+            border-radius: 14px;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-top: 3.5px solid var(--c, #e5e7eb);
+            padding: 18px 18px 16px;
+            display: flex; flex-direction: column;
+            gap: 12px;
+            cursor: default;
+            transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+            position: relative; overflow: hidden;
+        }
+        .uni-card::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at top left, rgba(var(--cr,99,102,241),0.06), transparent 65%);
+            pointer-events: none;
+        }
+        .uni-card:hover {
+            box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+            border-color: var(--c, #d1d5db);
+        }
+        .uni-card-top {
+            display: flex; align-items: flex-start;
+            justify-content: space-between; gap: 8px;
+        }
+        .uni-card-icon {
+            width: 42px; height: 42px; border-radius: 11px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+        .uni-card-icon svg {
+            width: 19px; height: 19px;
+            stroke: #fff; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .uni-card-status {
+            font-size: 0.58rem; font-weight: 700;
+            padding: 3px 8px; border-radius: 999px;
+            letter-spacing: 0.04em; flex-shrink: 0;
+        }
+        .uni-card-status.done {
+            background: #f0fdf4; color: #16a34a;
+            border: 1px solid #bbf7d0;
+        }
+        .uni-card-status.ongoing {
+            background: #eff6ff; color: #2563eb;
+            border: 1px solid #bfdbfe;
+        }
+        .uni-card-body {}
+        .uni-card-name {
+            font-size: clamp(0.82rem, 1.5vw, 0.95rem);
+            font-weight: 750; color: #111827; line-height: 1.35;
+            margin: 0 0 5px;
+            letter-spacing: -0.01em;
+        }
+        .uni-card-desc {
+            font-size: 0.7rem; color: #9ca3af;
+            line-height: 1.5; margin: 0;
+        }
+        .uni-card-tags {
+            display: flex; flex-wrap: wrap; gap: 5px;
+            margin-top: 2px;
+        }
+        .uni-card-tag {
+            font-size: 0.6rem; font-weight: 600;
+            background: #f3f4f6; color: #6b7280;
+            border-radius: 5px; padding: 2px 7px;
+        }
+
+        /* ── SEPARATOR ── */
+        .uni-sep {
+            height: 1px; background: #f3f4f6;
+            margin: 4px 0 24px;
+        }
+
+        @media(min-width: 640px) {
+            .uni-wrap { padding: 32px 24px 0; }
+            .uni-grid { grid-template-columns: repeat(4, 1fr); gap: 14px; }
+            .uni-sep  { margin: 4px 0 28px; }
+        }
+        @media(min-width: 900px) {
+            .uni-wrap { padding: 36px 28px 0; }
+            .uni-card { padding: 20px 18px 16px; }
+            .uni-card-icon { width: 44px; height: 44px; }
+            .uni-card-icon svg { width: 20px; height: 20px; }
+        }
+        @media(min-width: 1200px) {
+            .uni-wrap { padding: 40px 32px 0; }
+            .uni-card { padding: 22px 20px 18px; }
+            .uni-card-icon { width: 46px; height: 46px; border-radius: 12px; }
+            .uni-card-icon svg { width: 21px; height: 21px; }
+            .uni-card-name { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- MOBILE TOPBAR -->
+    <div class="mobile-topbar">
+        <img class="mobile-topbar-avatar" src="assets/avatar_rafi.png" alt="Rafi Avatar">
+        <span class="mobile-topbar-title">Muhammad Rafi Arsya</span>
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <!-- SIDEBAR OVERLAY -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+<div class="portfolio-app">
+    <aside class="sidebar">
+        <div class="sidebar-top">
+            <div class="sidebar-logo-wrap">
+                    <img class="sidebar-logo-avatar" src="assets/avatar_rafi.png" alt="Rafi Avatar">
+                    <span class="sidebar-logo-name">Muhammad Rafi Arsya</span>
+                </div>
+            <nav class="sidebar-nav">
+                <a href="index.html"><span class="nav-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg></span><span>Home</span></a>
+                <a href="blog.html"><span class="nav-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span>Blog</span></a>
+            </nav>
+            <div class="sidebar-group-label">Me</div>
+            <nav class="sidebar-nav">
+                <a href="resume.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 3H8a1 1 0 0 0-1 1v3h10V4a1 1 0 0 0-1-1z"/></svg></span><span>Resume / CV</span></a>
+                <a href="course.html" class="active"><span class="nav-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>Course &amp; Certificate</span></a>
+                <a href="contact.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span><span>Contact</span></a>
+            </nav>
+            <div class="sidebar-group-label">Projects</div>
+            <div class="sidebar-projects">
+                <a href="projects/project1.html"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#064e3b 0%,#10b981 100%);color:#fff;font-size:0.55rem;font-weight:900;letter-spacing:0.01em;box-shadow:inset 0 1px 0 rgba(255,255,255,0.18);">HG</span><span class="project-label">HandGesture</span></a>
+                <a href="projects/project2.html"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#1b2d5e 0%,#2a4a8a 100%);color:#fff;font-size:0.55rem;font-weight:900;letter-spacing:-0.01em;">CB</span><span class="project-label">CampusBay</span></a>
+                                    <a href="projects/project5.html"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#0a0a1a 0%,#3b2d8a 100%);color:#fff;font-size:0.55rem;font-weight:900;letter-spacing:-0.01em;">PM</span><span class="project-label">PaperMind</span></a>
+                    <a href="projects/project3.html"><span class="project-icon text-icon" style="background:#1d4ed8;color:#fff;font-size:0.58rem;font-weight:900;letter-spacing:-0.01em;">NS</span><span class="project-label">NASE Accessibility</span></a>
+                <a href="projects/project4.html"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#052e16 0%,#16a34a 100%);color:#fff;font-size:0.52rem;font-weight:900;letter-spacing:-0.01em;">CD</span><span class="project-label">Crop Disease Detector</span></a>
+                <a href="projects/projects.html" class="project-more"><span class="nav-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span>All Projects</span></a>
+            </div>
+            <div class="sidebar-group-label">Social</div>
+            <nav class="sidebar-social">
+                <a href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></span><span>GitHub</span></a>
+                <a href="https://www.linkedin.com/in/rafi-arsya-557335394/" target="_blank" rel="noopener noreferrer"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span><span>LinkedIn</span></a>
+                <a href="https://www.instagram.com/rarsya.03/" target="_blank" rel="noopener noreferrer"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span><span>Instagram</span></a>
+            </nav>
+        </div>
+        <div class="sidebar-footer"><p>Designed with focus on clarity and craft.</p></div>
+    </aside>
+
+    <main class="course-main">
+        <div class="course-header">
+            <div class="course-breadcrumb">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Course &amp; Certificate
+            </div>
+            <h1 class="course-page-title" id="page-title">All</h1>
+            <p class="course-page-subtitle">Certifications &amp; completed courses by Muhammad Rafi Arsya</p>
+            <div class="course-filter-bar">
+                <div class="filter-scroll-wrap">
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">All <span class="filter-count" id="fc-all"></span></button>
+                    <button class="filter-btn" data-filter="udemy">Udemy <span class="filter-count" id="fc-udemy"></span></button>
+                    <button class="filter-btn" data-filter="dicoding">Dicoding <span class="filter-count" id="fc-dicoding"></span></button>
+                    <button class="filter-btn" data-filter="freecodecamp">freeCodeCamp <span class="filter-count" id="fc-freecodecamp"></span></button>
+                    <button class="filter-btn" data-filter="other">Other <span class="filter-count" id="fc-other"></span></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cert-summary">
+            <span class="cert-count-pill" id="cert-count"></span>
+        </div>
+
+        <!-- ══ UNIVERSITY COURSES SECTION ══ -->
+        <div class="uni-wrap">
+            <div class="uni-header">
+                <div class="uni-header-left" style="display:flex;align-items:flex-start;gap:14px;">
+                    <img src="../assets/UM.png" alt="Universiti Malaya"
+                        style="width:52px;height:52px;object-fit:contain;flex-shrink:0;margin-top:2px;">
+                    <div>
+                        <div class="uni-eyebrow">Universiti Malaya &middot; Faculty of Computer Science &amp; IT</div>
+                        <h2 class="uni-title">Academic Curriculum</h2>
+                        <div class="uni-stats-row">
+                            <span class="uni-stat-pill"><span class="dot" style="background:#111827;"></span>Sem 1 &mdash; 6 subjects</span>
+                            <span class="uni-stat-pill"><span class="dot" style="background:#10b981;animation:sem-pulse 2s ease-in-out infinite;"></span>Current &mdash; 6 subjects</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+
+            <!-- Current Semester — Ongoing -->
+            <div class="uni-sem-block">
+                <div class="uni-sem-head">
+                    <span class="uni-sem-badge live">Current Semester</span>
+                    <span class="uni-sem-label-text">Session 2</span>
+                    <span class="uni-sem-count">6 subjects</span>
+                </div>
+                <div class="uni-grid">
+                    <div class="uni-card" style="--c:#1e40af;--cr:30,64,175;">
+                        <div class="uni-card-top">
+                            <div class="uni-card-icon" style="background:linear-gradient(135deg,#1e3a5f,#2563eb);">
+                                <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h1v6H9M15 9h-1v6h1M11 12h2"/></svg>
+                            </div>
+                            <span class="uni-card-status ongoing">Ongoing</span>
+                        </div>
+                        <div class="uni-card-body">
+                            <p class="uni-card-name">Computer System Architecture</p>
+                            <p class="uni-card-desc">ISA, pipelining, cache design, parallel processing & performance.</p>
+                        </div>
+                        <div class="uni-card-tags"><span class="uni-card-tag">CPU and Bus Systems</span><span class="uni-card-tag">Internal Memory</span><span class="uni-card-tag">Cache</span><span class="uni-card-tag">Performance</span></div>
+                    </div>
+                    <div class="uni-card" style="--c:#16a34a;--cr:22,163,74;">
+                        <div class="uni-card-top">
+                            <div class="uni-card-icon" style="background:linear-gradient(135deg,#065f46,#16a34a);">
+                                <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <span class="uni-card-status ongoing">Ongoing</span>
+                        </div>
+                        <div class="uni-card-body">
+                            <p class="uni-card-name">Data Structure</p>
+                            <p class="uni-card-desc">Arrays, linked lists, trees, graphs, sorting & algorithmic complexity.</p>
+                        </div>
+                        <div class="uni-card-tags"><span class="uni-card-tag">Algorithms</span><span class="uni-card-tag">Java</span><span class="uni-card-tag">Data Structures</span></div>
+                    </div>
+                    <div class="uni-card" style="--c:#7c3aed;--cr:124,58,237;">
+                        <div class="uni-card-top">
+                            <div class="uni-card-icon" style="background:linear-gradient(135deg,#5b21b6,#8b5cf6);">
+                                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                            </div>
+                            <span class="uni-card-status ongoing">Ongoing</span>
+                        </div>
+                        <div class="uni-card-body">
+                            <p class="uni-card-name">Network Technology Foundation</p>
+                            <p class="uni-card-desc">OSI model, TCP/IP stack, routing, switching & network security basics.</p>
+                        </div>
+                        <div class="uni-card-tags"><span class="uni-card-tag">TCP/IP</span><span class="uni-card-tag">Routing</span><span class="uni-card-tag">Protocols</span></div>
+                    </div>
+                    <div class="uni-card" style="--c:#d97706;--cr:217,119,6;">
+                        <div class="uni-card-top">
+                            <div class="uni-card-icon" style="background:linear-gradient(135deg,#92400e,#d97706);">
+                                <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                            </div>
+                            <span class="uni-card-status ongoing">Ongoing</span>
+                        </div>
+                        <div class="uni-card-body">
+                            <p class="uni-card-name">Machine Learning</p>
+                            <p class="uni-card-desc">Supervised/unsupervised learning, neural networks & model evaluation.</p>
+                        </div>
+                        <div class="uni-card-tags"><span class="uni-card-tag">Python</span><span class="uni-card-tag">TensorFlow</span><span class="uni-card-tag">AI/ML</span></div>
+                    </div>
+                    <div class="uni-card" style="--c:#545fc2;--cr:217,119,6;">
+                        <div class="uni-card-top">
+                            <div class="uni-card-icon" style="background:linear-gradient(135deg,#4e409b,#cfc0e4);">
+                                <svg viewBox="0 0 24 24"><path d="M5 7a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H9l-4 4V7z"/></svg>
+                            </div>
+                            <span class="uni-card-status ongoing">Ongoing</span>
+                        </div>
+                        <div class="uni-card-body">
+                            <p class="uni-card-name">Effective Oral Communication</p>
+                            <p class="uni-card-desc">Focus on developing confident and effective oral communication skills for academic and professional settings.</p>
+                        </div>
+                        <div class="uni-card-tags"><span class="uni-card-tag">Communication</span><span class="uni-card-tag">Public Speaking</span><span class="uni-card-tag">Presentation Skills</span></div>
+                    </div>
+                    <div class="uni-card" style="--c:#d600d6;--cr:217,119,6;">
+                        <div class="uni-card-top">
+                            <div class="uni-card-icon" style="background:linear-gradient(135deg,#a30044,#d906d9);">
+                                <svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 9h16"/><path d="M8 13h4"/></svg>
+                            </div>
+                            <span class="uni-card-status ongoing">Ongoing</span>
+                        </div>
+                        <div class="uni-card-body">
+                            <p class="uni-card-name">Malay Language Communication</p>
+                            <p class="uni-card-desc">Focus on developing confident and effective communication skills in the Malay language for academic and professional settings.</p>
+                        </div>
+                        <div class="uni-card-tags"><span class="uni-card-tag">Communication</span><span class="uni-card-tag">Malay Language</span><span class="uni-card-tag">Interpersonal Skills</span></div>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Semester 1 — Completed -->
+            <div class="uni-sem-block">
+                <div class="uni-sem-head">
+                    <span class="uni-sem-badge done">Semester 1</span>
+                    <span class="uni-sem-label-text">Session 1</span>
+                    <span class="uni-sem-count">6 subjects</span>
+                </div>
+                <div class="uni-grid">
+                    <div class="uni-card" style="--c:#6366f1;--cr:99,102,241;">
+                        <div class="uni-card-top">
+                            <div class="uni-card-icon" style="background:linear-gradient(135deg,#4f46e5,#818cf8);">
+                                <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            </div>
+                            <span class="uni-card-status done">Completed</span>
+                        </div>
+                        <div class="uni-card-body">
+                            <p class="uni-card-name">Fundamental of Programming</p>
+                            <p class="uni-card-desc">Control flow, functions, OOP basics & problem-solving in Python.</p>
+                        </div>
+                        <div class="uni-card-tags"><span class="uni-card-tag">Python</span><span class="uni-card-tag">Logic</span><span class="uni-card-tag">OOP</span></div>
+                    </div>
+                    <div class="uni-card" style="--c:#0ea5e9;--cr:14,165,233;">
+                        <div class="uni-card-top">
+                            <div class="uni-card-icon" style="background:linear-gradient(135deg,#0284c7,#38bdf8);">
+                                <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                            </div>
+                            <span class="uni-card-status done">Completed</span>
+                        </div>
+                        <div class="uni-card-body">
+                            <p class="uni-card-name">Computing Mathematics</p>
+                            <p class="uni-card-desc">Discrete math, propositional logic, set theory & graph theory.</p>
+                        </div>
+                        <div class="uni-card-tags"><span class="uni-card-tag">Discrete Math</span><span class="uni-card-tag">Proofs</span><span class="uni-card-tag">Logic</span></div>
+                    </div>
+                    <div class="uni-card" style="--c:#f59e0b;--cr:245,158,11;">
+                        <div class="uni-card-top">
+                            <div class="uni-card-icon" style="background:linear-gradient(135deg,#d97706,#fbbf24);">
+                                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                            </div>
+                            <span class="uni-card-status done">Completed</span>
+                        </div>
+                        <div class="uni-card-body">
+                            <p class="uni-card-name">Computer System Organization</p>
+                            <p class="uni-card-desc">CPU design, memory hierarchy, I/O systems & data representation.</p>
+                        </div>
+                        <div class="uni-card-tags"><span class="uni-card-tag">Hardware</span><span class="uni-card-tag">Digital Logic</span><span class="uni-card-tag">Memory</span></div>
+                    </div>
+                    <div class="uni-card" style="--c:#ec4899;--cr:236,72,153;">
+                        <div class="uni-card-top">
+                            <div class="uni-card-icon" style="background:linear-gradient(135deg,#be185d,#f472b6);">
+                                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            </div>
+                            <span class="uni-card-status done">Completed</span>
+                        </div>
+                        <div class="uni-card-body">
+                            <p class="uni-card-name">Human Computer Interaction</p>
+                            <p class="uni-card-desc">User research, usability testing, accessibility & interaction design.</p>
+                        </div>
+                        <div class="uni-card-tags"><span class="uni-card-tag">UI/UX Research</span><span class="uni-card-tag">Usability</span><span class="uni-card-tag">Accessibility</span></div>
+                    </div>
+                    <div class="uni-card" style="--c:#c4b215;--cr:236,72,153;">
+                        <div class="uni-card-top">
+                            <div class="uni-card-icon" style="background:linear-gradient(135deg,#bdb329,#414006);">
+                                <svg viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M8 8h8"/><path d="M8 12h8"/></svg>
+                            </div>
+                            <span class="uni-card-status done">Completed</span>
+                        </div>
+                        <div class="uni-card-body">
+                            <p class="uni-card-name">Proficiency In English III</p>
+                            <p class="uni-card-desc">Focused on advanced English communication skills for academic and professional environments, including presentation delivery, formal writing, critical reading, and effective interpersonal communication.</p>
+                        </div>
+                        <div class="uni-card-tags"><span class="uni-card-tag">Communication</span><span class="uni-card-tag">Academic Writing</span><span class="uni-card-tag">Presentation</span></div>
+                    </div>
+                    <div class="uni-card" style="--c:#fd6cb5;--cr:236,72,153;">
+                        <div class="uni-card-top">
+                            <div class="uni-card-icon" style="background:linear-gradient(135deg,#dd9aee,#ffa5a5);">
+                                <svg viewBox="0 0 24 24"><path d="M12 2a6 6 0 0 0-6 6c0 2.3 1.5 4.3 3.5 5.2V16a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2.8A5.99 5.99 0 0 0 18 8a6 6 0 0 0-6-6z"/><path d="M9 18h6"/><path d="M10 14h4"/></svg>
+                            </div>
+                            <span class="uni-card-status done">Completed</span>
+                        </div>
+                        <div class="uni-card-body">
+                            <p class="uni-card-name">Basic Entrepreneurship Enculturation</p>
+                            <p class="uni-card-desc">Introduction to entrepreneurial mindset, business planning, and innovation.</p>
+                        </div>
+                        <div class="uni-card-tags"><span class="uni-card-tag">Entrepreneurship</span><span class="uni-card-tag">Business Planning</span><span class="uni-card-tag">Innovation</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="uni-sep" style="margin-left:16px;margin-right:16px;"></div>
+
+        <div class="course-grid" id="cert-grid">       
+
+            <!-- FREECODECAMP -->
+            <div class="cert-card" data-platform="freecodecamp" onclick="openLightbox('sertifikat/js_ds_sertif.png')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/js_ds_sertif.png" alt="Legacy JavaScript Algorithms and Data Structures V7" loading="lazy">
+                    <span class="cert-platform-badge badge-fcc">FCC</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">freeCodeCamp</div>
+                    <div class="cert-title">Legacy JavaScript Algorithms and Data Structures V7</div>
+                    <div class="cert-meta"><span class="cert-tag">JavaScript</span><span class="cert-tag">Algorithms</span><span class="cert-tag">DS</span></div>
+                    <div class="cert-date">May 23, 2026 · 300 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="udemy" onclick="openLightbox('sertifikat/docker_beginner.png')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/docker_beginner.png" alt="Docker for the Absolute Beginner" loading="lazy">
+                    <span class="cert-platform-badge badge-udemy">U</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Udemy</div>
+                    <div class="cert-title">Docker for the Absolute Beginner - Hands On - DevOps</div>
+                    <div class="cert-meta"><span class="cert-tag">Docker</span><span class="cert-tag">DevOps</span></div>
+                    <div class="cert-date">Jun 9, 2026 · 3 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="udemy" onclick="openLightbox('sertifikat/aws-aifco1-sertif.png')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/aws-aifco1-sertif.png" alt="AWS Certified AI Practitioner AIF-C01" loading="lazy">
+                    <span class="cert-platform-badge badge-udemy">U</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Udemy</div>
+                    <div class="cert-title">[NEW] Ultimate AWS Certified AI Practitioner AIF-C01</div>
+                    <div class="cert-meta"><span class="cert-tag">AWS</span><span class="cert-tag">AI</span><span class="cert-tag">Cloud</span></div>
+                    <div class="cert-date">May 19, 2026 · 10.5 hrs</div>
+                </div>
+            </div>
+            <div class="cert-card" data-platform="udemy" onclick="openLightbox('sertifikat/aws-dvac02-sertif.png')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/aws-dva-c02-sertif.png" alt="AWS Certified Developer Associate DVA-C02" loading="lazy">
+                    <span class="cert-platform-badge badge-udemy">U</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Udemy</div>
+                    <div class="cert-title">[NEW] Ultimate AWS Certified Developer Associate DVA-C02</div>
+                    <div class="cert-meta"><span class="cert-tag">AWS</span><span class="cert-tag">Development</span><span class="cert-tag">Cloud</span></div>
+                    <div class="cert-date">June 15, 2026 · 31.5 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="udemy" onclick="openLightbox('sertifikat/sertif8.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/sertif8.jpeg" alt="Complete Full Stack Web Development Bootcamp - AI Integrated" loading="lazy">
+                    <span class="cert-platform-badge badge-udemy">U</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Udemy</div>
+                    <div class="cert-title">Complete Full Stack Web Development Bootcamp – AI Integrated</div>
+                    <div class="cert-meta"><span class="cert-tag">Full Stack</span><span class="cert-tag">AI</span></div>
+                    <div class="cert-date">Dec 31, 2025 · 62.5 hrs</div>
+                </div>
+            </div>
+
+            <!-- <div class="cert-card" data-platform="udemy" onclick="openLightbox('sertifikat/sertif3.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/sertif3.jpeg" alt="The Complete JavaScript Course 2025" loading="lazy">
+                    <span class="cert-platform-badge badge-udemy">U</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Udemy</div>
+                    <div class="cert-title">The Complete JavaScript Course 2025: From Zero to Expert!</div>
+                    <div class="cert-meta"><span class="cert-tag">JavaScript</span></div>
+                    <div class="cert-date">Dec 29, 2025 · 71 hrs</div>
+                </div>
+            </div> -->
+
+            <div class="cert-card" data-platform="udemy" onclick="openLightbox('sertifikat/sertif13.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/sertif13.jpeg" alt="The Complete Full-Stack Web Development Bootcamp" loading="lazy">
+                    <span class="cert-platform-badge badge-udemy">U</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Udemy</div>
+                    <div class="cert-title">The Complete Full-Stack Web Development Bootcamp</div>
+                    <div class="cert-meta"><span class="cert-tag">Full Stack</span></div>
+                    <div class="cert-date">Jan 16, 2026 · 62 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="udemy" onclick="openLightbox('sertifikat/sertif7.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/sertif7.jpeg" alt="The Complete JavaScript Course 2025: From Zero to Expert!" loading="lazy">
+                    <span class="cert-platform-badge badge-udemy">U</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Udemy</div>
+                    <div class="cert-title">The Complete JavaScript Course 2025: From Zero to Expert!</div>
+                    <div class="cert-meta"><span class="cert-tag">JavaScript</span><span class="cert-tag">Web Development</span></div>
+                    <div class="cert-date">Dec 29, 2025 · 71 hrs</div>
+                </div>
+            </div>
+
+            <!-- <div class="cert-card" data-platform="udemy" onclick="openLightbox('sertifikat/sertif5.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/sertif5.jpeg" alt="React JS Bootcamp" loading="lazy">
+                    <span class="cert-platform-badge badge-udemy">U</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Udemy</div>
+                    <div class="cert-title">React JS Bootcamp: Build Netflix, YouTube Clone and 3 Projects</div>
+                    <div class="cert-meta"><span class="cert-tag">React</span></div>
+                    <div class="cert-date">Dec 29, 2025 · 37 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="udemy" onclick="openLightbox('sertifikat/sertif6.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/sertif6.jpeg" alt="Build Responsive Real-World Websites with HTML and CSS" loading="lazy">
+                    <span class="cert-platform-badge badge-udemy">U</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Udemy</div>
+                    <div class="cert-title">Build Responsive Real-World Websites with HTML and CSS</div>
+                    <div class="cert-meta"><span class="cert-tag">HTML</span><span class="cert-tag">CSS</span></div>
+                    <div class="cert-date">Dec 30, 2025 · 37.5 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="udemy" onclick="openLightbox('sertifikat/sertif10.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/sertif10.jpeg" alt="Build 30 Web Projects with HTML, CSS, and JavaScript" loading="lazy">
+                    <span class="cert-platform-badge badge-udemy">U</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Udemy</div>
+                    <div class="cert-title">Build 30 Web Projects with HTML, CSS, and JavaScript</div>
+                    <div class="cert-meta"><span class="cert-tag">HTML</span><span class="cert-tag">CSS</span><span class="cert-tag">JS</span></div>
+                    <div class="cert-date">Jan 5, 2026 · 12.5 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="udemy" onclick="openLightbox('sertifikat/sertif14.png')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/sertif14.png" alt="50 Projects In 50 Days - HTML, CSS & JavaScript" loading="lazy">
+                    <span class="cert-platform-badge badge-udemy">U</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Udemy</div>
+                    <div class="cert-title">50 Projects In 50 Days – HTML, CSS &amp; JavaScript</div>
+                    <div class="cert-meta"><span class="cert-tag">HTML</span><span class="cert-tag">CSS</span><span class="cert-tag">JS</span></div>
+                    <div class="cert-date">Mar 13, 2026 · 19.5 hrs</div>
+                </div>
+            </div> -->
+
+            <div class="cert-card" data-platform="udemy" onclick="openLightbox('sertifikat/sertif4.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/sertif4.jpeg" alt="From Java Dev to AI Engineer: Spring AI Fast Track" loading="lazy">
+                    <span class="cert-platform-badge badge-udemy">U</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Udemy</div>
+                    <div class="cert-title">From Java Dev to AI Engineer: Spring AI Fast Track</div>
+                    <div class="cert-meta"><span class="cert-tag">Java</span><span class="cert-tag">AI</span></div>
+                    <div class="cert-date">Dec 29, 2025 · 14 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="udemy" onclick="openLightbox('sertifikat/sertif3.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/sertif3.jpeg" alt="Learn Game Development with JavaScript" loading="lazy">
+                    <span class="cert-platform-badge badge-udemy">U</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Udemy</div>
+                    <div class="cert-title">Learn Game Development with JavaScript</div>
+                    <div class="cert-meta"><span class="cert-tag">JavaScript</span><span class="cert-tag">Game Dev</span></div>
+                    <div class="cert-date">Dec 29, 2025 · 3 hrs</div>
+                </div>
+            </div>
+
+            <!-- <div class="cert-card" data-platform="udemy" onclick="openLightbox('sertifikat/sertif9.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/sertif9.jpeg" alt="Creating a Responsive HTML Email" loading="lazy">
+                    <span class="cert-platform-badge badge-udemy">U</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Udemy</div>
+                    <div class="cert-title">Creating a Responsive HTML Email</div>
+                    <div class="cert-meta"><span class="cert-tag">HTML</span><span class="cert-tag">Email</span></div>
+                    <div class="cert-date">Dec 31, 2025 · 1.5 hrs</div>
+                </div>
+            </div> -->
+
+            <!-- <div class="cert-card" data-platform="other" onclick="openLightbox('sertifikat/um-health-sertif.png')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/um-health-sertif.png" alt="KIOS Mental Health 2026" loading="lazy">
+                    <span class="cert-platform-badge badge-fkip">UM</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">PPI Universiti Malaya</div>
+                    <div class="cert-title">KIOS Mental Health 2026: Let's Talk Mental Health</div>
+                    <div class="cert-meta"><span class="cert-tag">Mental Health</span><span class="cert-tag">Awareness</span></div>
+                    <div class="cert-date">2026</div>
+                </div>
+            </div> -->
+
+            <div class="cert-card" data-platform="other" onclick="openLightbox('sertifikat/sertif_ielts.png')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/sertif_ielts.png" alt="IELTS Academic" loading="lazy">
+                    <span class="cert-platform-badge badge-ielts">IE</span>
+                    <span class="cert-status ielts">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">British Council · IDP</div>
+                    <div class="cert-title">IELTS Academic – Overall Band Score 5.5 (CEFR B2)</div>
+                    <div class="cert-meta"><span class="cert-tag">English</span><span class="cert-tag">B2</span></div>
+                    <div class="cert-date">Jun 14, 2025 &bullet; Valid until Jun 13, 2027</div>
+                </div>
+            </div>
+            
+            
+
+            <!-- DICODING -->
+            <div class="cert-card" data-platform="dicoding" onclick="openLightbox('sertifikat/dicoding_spec-driven.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/dicoding_spec-driven.jpeg" alt="Spec-Driven Development dengan Kiro" loading="lazy">
+                    <span class="cert-platform-badge badge-dicoding">DC</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Dicoding</div>
+                    <div class="cert-title">Spec-Driven Development dengan Kiro</div>
+                    <div class="cert-meta"><span class="cert-tag">AI</span><span class="cert-tag">Dev Tools</span></div>
+                    <div class="cert-date">May 4, 2026 · Valid until 4 May 2029</div>
+                </div>
+            </div>
+            <div class="cert-card" data-platform="dicoding" onclick="openLightbox('sertifikat/dicoding_genAI.png')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/dicoding_genAI.png" alt="Belajar Dasar Cloud dan Gen AI di AWS" loading="lazy">
+                    <span class="cert-platform-badge badge-dicoding">DC</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Dicoding</div>
+                    <div class="cert-title">Belajar Dasar Cloud dan Gen AI di AWS</div>
+                    <div class="cert-meta"><span class="cert-tag">AI</span><span class="cert-tag">Dev Tools</span></div>
+                    <div class="cert-date">May 6, 2026 · Valid until 6 May 2029</div>
+                </div>
+            </div>
+
+            <!-- EDUCLY -->
+            <!-- <div class="cert-card" data-platform="educly" onclick="openLightbox('sertifikat/educly_chatgpt_sertif.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/educly_chatgpt_sertif.jpeg" alt="Specialization in ChatGPT" loading="lazy">
+                    <span class="cert-platform-badge badge-educly">EL</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Educly</div>
+                    <div class="cert-title">Specialization in ChatGPT – Junior Level</div>
+                    <div class="cert-meta"><span class="cert-tag">AI</span><span class="cert-tag">ChatGPT</span></div>
+                    <div class="cert-date">May 1, 2026 · 32 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="educly" onclick="openLightbox('sertifikat/educly_deepseek_sertif.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/educly_deepseek_sertif.jpeg" alt="Specialization in DeepSeek" loading="lazy">
+                    <span class="cert-platform-badge badge-educly">EL</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Educly</div>
+                    <div class="cert-title">Specialization in DeepSeek – Junior Level</div>
+                    <div class="cert-meta"><span class="cert-tag">AI</span><span class="cert-tag">DeepSeek</span></div>
+                    <div class="cert-date">May 2, 2026 · 24 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="educly" onclick="openLightbox('sertifikat/educly_gamma_sertif.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/educly_gamma_sertif.jpeg" alt="Specialization in Gamma" loading="lazy">
+                    <span class="cert-platform-badge badge-educly">EL</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Educly</div>
+                    <div class="cert-title">Specialization in Gamma – Junior Level</div>
+                    <div class="cert-meta"><span class="cert-tag">AI</span><span class="cert-tag">Gamma</span></div>
+                    <div class="cert-date">May 1, 2026 · 28 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="educly" onclick="openLightbox('sertifikat/educly_grok_sertif.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/educly_grok_sertif.jpeg" alt="Specialization in xAI Grok" loading="lazy">
+                    <span class="cert-platform-badge badge-educly">EL</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Educly</div>
+                    <div class="cert-title">Specialization in xAI Grok – Junior Level</div>
+                    <div class="cert-meta"><span class="cert-tag">AI</span><span class="cert-tag">Grok</span></div>
+                    <div class="cert-date">May 1, 2026 · 24 hrs</div>
+                </div>
+            </div> -->
+
+            <!-- COURSIV -->
+            <!-- <div class="cert-card" data-platform="coursiv" onclick="openLightbox('sertifikat/master_chatgpt_sertif.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/master_chatgpt_sertif.jpeg" alt="Master of ChatGPT" loading="lazy">
+                    <span class="cert-platform-badge badge-coursiv">CV</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Coursiv</div>
+                    <div class="cert-title">Master of ChatGPT</div>
+                    <div class="cert-meta"><span class="cert-tag">AI</span><span class="cert-tag">ChatGPT</span></div>
+                    <div class="cert-date">May 1, 2026 · 6 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="coursiv" onclick="openLightbox('sertifikat/master_claude_sertif.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/master_claude_sertif.jpeg" alt="Master of Claude" loading="lazy">
+                    <span class="cert-platform-badge badge-coursiv">CV</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Coursiv</div>
+                    <div class="cert-title">Master of Claude</div>
+                    <div class="cert-meta"><span class="cert-tag">AI</span><span class="cert-tag">Claude</span></div>
+                    <div class="cert-date">Apr 30, 2026 · 5 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="coursiv" onclick="openLightbox('sertifikat/master_creativeincome_sertif.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/master_creativeincome_sertif.jpeg" alt="AI-Powered Creative Income" loading="lazy">
+                    <span class="cert-platform-badge badge-coursiv">CV</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Coursiv</div>
+                    <div class="cert-title">AI-Powered Creative Income</div>
+                    <div class="cert-meta"><span class="cert-tag">AI</span><span class="cert-tag">Creative</span></div>
+                    <div class="cert-date">May 4, 2026 · 2 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="coursiv" onclick="openLightbox('sertifikat/master_canvaai_sertif.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/master_canvaai_sertif.jpeg" alt="Master of Canva AI" loading="lazy">
+                    <span class="cert-platform-badge badge-coursiv">CV</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Coursiv</div>
+                    <div class="cert-title">Master of Canva AI</div>
+                    <div class="cert-meta"><span class="cert-tag">AI</span><span class="cert-tag">Canva</span></div>
+                    <div class="cert-date">May 1, 2026 · 3 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="coursiv" onclick="openLightbox('sertifikat/master_deepseek_sertif.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/master_deepseek_sertif.jpeg" alt="Master of DeepSeek" loading="lazy">
+                    <span class="cert-platform-badge badge-coursiv">CV</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Coursiv</div>
+                    <div class="cert-title">Master of DeepSeek</div>
+                    <div class="cert-meta"><span class="cert-tag">AI</span><span class="cert-tag">DeepSeek</span></div>
+                    <div class="cert-date">May 1, 2026 · 5 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="coursiv" onclick="openLightbox('sertifikat/master_gemini_sertif.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/master_gemini_sertif.jpeg" alt="Master of Gemini" loading="lazy">
+                    <span class="cert-platform-badge badge-coursiv">CV</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Coursiv</div>
+                    <div class="cert-title">Master of Gemini</div>
+                    <div class="cert-meta"><span class="cert-tag">AI</span><span class="cert-tag">Gemini</span></div>
+                    <div class="cert-date">May 1, 2026 · 4 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="coursiv" onclick="openLightbox('sertifikat/master_jasperai_sertif.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/master_jasperai_sertif.jpeg" alt="Master of Jasper AI" loading="lazy">
+                    <span class="cert-platform-badge badge-coursiv">CV</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Coursiv</div>
+                    <div class="cert-title">Master of Jasper AI</div>
+                    <div class="cert-meta"><span class="cert-tag">AI</span><span class="cert-tag">Jasper</span></div>
+                    <div class="cert-date">May 2, 2026 · 5 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="coursiv" onclick="openLightbox('sertifikat/master_kling_sertif.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/master_kling_sertif.jpeg" alt="Master of Kling" loading="lazy">
+                    <span class="cert-platform-badge badge-coursiv">CV</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Coursiv</div>
+                    <div class="cert-title">Master of Kling</div>
+                    <div class="cert-meta"><span class="cert-tag">AI</span><span class="cert-tag">Video Gen</span></div>
+                    <div class="cert-date">May 1, 2026 · 3 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="coursiv" onclick="openLightbox('sertifikat/master_lovable_sertif.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/master_lovable_sertif.jpeg" alt="Master of Lovable" loading="lazy">
+                    <span class="cert-platform-badge badge-coursiv">CV</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Coursiv</div>
+                    <div class="cert-title">Master of Lovable</div>
+                    <div class="cert-meta"><span class="cert-tag">AI</span><span class="cert-tag">No-Code</span></div>
+                    <div class="cert-date">May 1, 2026 · 4 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="coursiv" onclick="openLightbox('sertifikat/master_midjourney_sertif.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/master_midjourney_sertif.jpeg" alt="Master of Midjourney" loading="lazy">
+                    <span class="cert-platform-badge badge-coursiv">CV</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Coursiv</div>
+                    <div class="cert-title">Master of Midjourney</div>
+                    <div class="cert-meta"><span class="cert-tag">AI</span><span class="cert-tag">Image Gen</span></div>
+                    <div class="cert-date">May 1, 2026 · 6 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="coursiv" onclick="openLightbox('sertifikat/master_perplexity_sertif.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/master_perplexity_sertif.jpeg" alt="Master of Perplexity" loading="lazy">
+                    <span class="cert-platform-badge badge-coursiv">CV</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Coursiv</div>
+                    <div class="cert-title">Master of Perplexity</div>
+                    <div class="cert-meta"><span class="cert-tag">AI</span><span class="cert-tag">Search</span></div>
+                    <div class="cert-date">May 1, 2026 · 5 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="coursiv" onclick="openLightbox('sertifikat/master_stablediffusion_sertif.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/master_stablediffusion_sertif.jpeg" alt="Master of Stable Diffusion" loading="lazy">
+                    <span class="cert-platform-badge badge-coursiv">CV</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Coursiv</div>
+                    <div class="cert-title">Master of Stable Diffusion</div>
+                    <div class="cert-meta"><span class="cert-tag">AI</span><span class="cert-tag">Image Gen</span></div>
+                    <div class="cert-date">May 2, 2026 · 4 hrs</div>
+                </div>
+            </div>
+
+            <div class="cert-card" data-platform="coursiv" onclick="openLightbox('sertifikat/master_veo_sertif.jpeg')">
+                <div class="cert-img-wrap">
+                    <img src="sertifikat/master_veo_sertif.jpeg" alt="Master of Veo" loading="lazy">
+                    <span class="cert-platform-badge badge-coursiv">CV</span>
+                    <span class="cert-status completed">Completed</span>
+                </div>
+                <div class="cert-body">
+                    <div class="cert-issuer">Coursiv</div>
+                    <div class="cert-title">Master of Veo</div>
+                    <div class="cert-meta"><span class="cert-tag">AI</span><span class="cert-tag">Video Gen</span></div>
+                    <div class="cert-date">May 2, 2026 · 4 hrs</div>
+                </div>
+            </div>
+
+        </div> -->
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-img-wrap" id="lightbox-content">
+        <img src="" alt="Certificate" id="lightbox-img">
+    </div>
+    <button class="lightbox-close" onclick="closeLightbox()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+</div>
+
+<div class="floating-avatar">
+    <img src="assets/rafi_logo.jpeg" alt="Rafi">
+</div>
+
+<script src="script.js"></script>
+<script>
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const certCards = document.querySelectorAll('.cert-card');
+    const certCount = document.getElementById('cert-count');
+    const pageTitle = document.getElementById('page-title');
+
+    // Populate filter counts
+    const platforms = ['all','udemy','dicoding','freecodecamp','other'];
+    platforms.forEach(p => {
+        const el = document.getElementById('fc-' + p);
+        if (!el) return;
+        const n = p === 'all' ? certCards.length : Array.from(certCards).filter(c => c.dataset.platform === p).length;
+        el.textContent = n;
+    });
+
+    // Initialize cert count pill from actual card count
+    certCount.textContent = certCards.length + ' certificate' + (certCards.length !== 1 ? 's' : '');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+            let visible = 0;
+            certCards.forEach(card => {
+                const match = filter === 'all' || card.dataset.platform === filter;
+                card.classList.toggle('hidden', !match);
+                if (match) visible++;
+            });
+            certCount.textContent = visible + ' certificate' + (visible !== 1 ? 's' : '');
+            pageTitle.textContent = btn.textContent.replace(/[0-9]+$/, '').trim();
+        });
+    });
+
+    function openLightbox(src) {
+        document.getElementById('lightbox-img').src = src;
+        document.getElementById('lightbox').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(e) {
+        if (!e || e.target === document.getElementById('lightbox') || e.currentTarget.classList.contains('lightbox-close')) {
+            document.getElementById('lightbox').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+    <!-- Floating Avatar -->
+    <div class="floating-avatar" style="background:transparent;overflow:hidden;">
+        <video
+            src="assets/rafi_avatar.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+            style="width:100%;height:100%;object-fit:cover;mix-blend-mode:screen;border-radius:50%;"
+        ></video>
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="home-copyright">
+        <p>© 2026 Muhammad Rafi Arsya. All rights reserved.</p>
+    </div>
+
+</body>
+</html>

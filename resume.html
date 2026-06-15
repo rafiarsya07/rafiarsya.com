@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Resume / CV — Muhammad Rafi Arsya</title>
+<link href="assets/avatar_rafi.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- MOBILE TOPBAR -->
+<div class="mobile-topbar">
+<span class="mobile-topbar-title">Muhammad Rafi Arsya</span>
+<button aria-expanded="false" aria-label="Open menu" class="hamburger-btn" id="hamburger-btn">
+<span></span><span></span><span></span>
+</button>
+</div>
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<div class="portfolio-app">
+<aside class="sidebar">
+<div class="sidebar-top">
+<div class="sidebar-logo-wrap">
+<img alt="Rafi Avatar" class="sidebar-logo-avatar" src="assets/avatar_rafi.png"/>
+<span class="sidebar-logo-name">Muhammad Rafi Arsya</span>
+</div>
+<nav class="sidebar-nav">
+<a href="index.html">
+<span class="nav-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg></span>
+<span>Home</span>
+</a>
+<a href="blog.html">
+<span class="nav-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+<span>Blog</span>
+</a>
+</nav>
+<div class="sidebar-group-label">Me</div>
+<nav class="sidebar-nav">
+<a class="active" href="resume.html">
+<span class="nav-icon"><svg viewbox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path><path d="M16 3H8a1 1 0 0 0-1 1v3h10V4a1 1 0 0 0-1-1z"></path></svg></span>
+<span>Resume / CV</span>
+</a>
+<a href="course.html">
+<span class="nav-icon"><svg viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+<span>Course &amp; Certificate</span>
+</a>
+<a href="contact.html">
+<span class="nav-icon"><svg viewbox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span>
+<span>Contact</span>
+</a>
+</nav>
+<div class="sidebar-group-label">Projects</div>
+<div class="sidebar-projects">
+<a href="projects/project1.html"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#064e3b 0%,#10b981 100%);color:#fff;font-size:0.55rem;font-weight:900;letter-spacing:0.01em;box-shadow:inset 0 1px 0 rgba(255,255,255,0.18);">HG</span><span class="project-label">HandGesture</span></a>
+<a href="projects/project2.html"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#1b2d5e 0%,#2a4a8a 100%);color:#fff;font-size:0.55rem;font-weight:900;letter-spacing:-0.01em;">CB</span><span class="project-label">CampusBay</span></a>
+                    <a href="projects/project5.html"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#0a0a1a 0%,#3b2d8a 100%);color:#fff;font-size:0.55rem;font-weight:900;letter-spacing:-0.01em;">PM</span><span class="project-label">PaperMind</span></a>
+                    <a href="projects/project3.html"><span class="project-icon text-icon" style="background:#1d4ed8;color:#fff;font-size:0.58rem;font-weight:900;letter-spacing:-0.01em;">NS</span><span class="project-label">NASE Accessibility</span>
+</a>
+<a href="projects/project4.html"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#052e16 0%,#16a34a 100%);color:#fff;font-size:0.52rem;font-weight:900;letter-spacing:-0.01em;">CD</span><span class="project-label">Crop Disease Detector</span></a>
+<a class="project-more" href="projects/projects.html">
+<span class="nav-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+<span>All Projects</span>
+</a>
+</div>
+<div class="sidebar-group-label">Social</div>
+<nav class="sidebar-social">
+<a href="https://github.com/rafiarsya07?tab=repositories" rel="noopener noreferrer" target="_blank">
+<span class="nav-icon"><svg viewbox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></span>
+<span>GitHub</span>
+</a>
+<a href="https://www.linkedin.com/in/rafi-arsya-557335394/" rel="noopener noreferrer" target="_blank">
+<span class="nav-icon"><svg viewbox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect height="12" width="4" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></span>
+<span>LinkedIn</span>
+</a>
+<a href="https://www.instagram.com/rarsya.03/" rel="noopener noreferrer" target="_blank">
+<span class="nav-icon"><svg viewbox="0 0 24 24"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></span>
+<span>Instagram</span>
+</a>
+</nav>
+</div>
+<div class="sidebar-footer">
+<p>Designed with focus on clarity and craft.</p>
+</div>
+</aside>
+<main class="cv-main" id="resume">
+<!-- TOP BAR -->
+<div class="cv-topbar">
+<span class="cv-last-updated">Last updated: 9 June 2026</span>
+<a class="cv-download-btn" href="https://drive.google.com/file/d/1XMnutCpNOSRbGiF5A--IzIqvdOEgMDLr/view?usp=sharing" rel="noopener" target="_blank">
+<svg viewbox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
+                    CV
+                </a>
+</div>
+<!-- HEADER -->
+<div class="cv-header">
+<div class="cv-name">M. Rafi Arsya</div>
+<div class="cv-role">Software Engineering · Full Stack Developer</div>
+<div class="cv-contacts">
+<span>+60 179415768</span>
+<span class="cv-sep">·</span>
+<a href="mailto:rafiarsya.work@gmail.com">rafiarsya.work@gmail.com</a>
+<span class="cv-sep">·</span>
+<a href="https://rafiarsya.pages.dev/" rel="noopener" target="_blank">rafiarsya.pages.dev</a>
+<span class="cv-sep">·</span>
+<a href="https://github.com/rafiarsya07?tab=repositories" rel="noopener" target="_blank">GitHub</a>
+<span class="cv-sep">·</span>
+<a href="https://www.linkedin.com/in/rafi-arsya-557335394/" rel="noopener" target="_blank">LinkedIn</a>
+</div>
+<div class="cv-address">Kolej Kediaman Ke-13, Universiti Malaya · Kuala Lumpur, Malaysia</div>
+<div class="cv-address">Jl. Kubang Jaya, Gg. Anggrek, Kecamatan Siak Hulu, Kabupaten Kampar, Riau, 28452. Indonesia</div>
+</div>
+<!-- ABOUT -->
+<section class="cv-section">
+<div class="cv-section-title">About</div>
+<p class="cv-about">Software Engineering student at Universiti Malaya with hands-on experience in building scalable, containerized full-stack applications. Proficient in <strong>React</strong>, <strong>Node.js</strong>, and modern state management, with practical expertise in <strong>Docker Compose</strong>, <strong>Nginx reverse proxying</strong>, and <strong>self-hosted Linux infrastructure</strong>. Proven track record in engineering real-time communication systems and integrating <strong>AI/ML technologies</strong> to solve practical, real-world problems through robust software solutions.</p>
+</section>
+<!-- EDUCATION -->
+<section class="cv-section">
+<div class="cv-section-title">Education</div>
+<div class="cv-entry">
+<div>
+<div class="cv-entry-title">Bachelor of Software Engineering</div>
+<div class="cv-entry-org">University of Malaya — Kuala Lumpur, Malaysia</div>
+<div class="cv-entry-desc">Pursuing a degree with focus on software architecture, data structures, and systems engineering.</div>
+</div>
+<div class="cv-entry-date">2025 — Present</div>
+</div>
+<div class="cv-entry">
+<div>
+<div class="cv-entry-title">Senior High School</div>
+<div class="cv-entry-org">International Program ICBS — Riau, Indonesia</div>
+<div class="cv-entry-desc">International curriculum with English-medium instruction. Active in student leadership and language programs.</div>
+</div>
+<div class="cv-entry-date">2022 — 2025</div>
+</div>
+</section>
+<!-- EXPERIENCE -->
+<section class="cv-section">
+<div class="cv-section-title">Projects</div>
+<div class="cv-entry">
+<div>
+<div class="cv-entry-title">CampusBay — Campus Marketplace</div>
+<div class="cv-entry-org">Personal Project · Universiti Malaya</div>
+<ul class="cv-exp-ul">
+<li>Developed a full-stack, containerized marketplace (5-service stack) utilizing React 18, Node.js, PostgreSQL, and Docker Compose</li>
+<li>Engineered a real-time communication architecture using Socket.io to power persistent chat, typing indicators, and live order tracking</li>
+<li>Secured user authentication by implementing a JWT Dual-Token strategy integrated with a Redis Blacklist for instant token revocation upon logout</li>
+<li>Configured Nginx as a reverse proxy with SSL termination, and integrated Stripe Checkout payments driven by secure webhook verification</li>
+</ul>
+</div>
+<div class="cv-entry-date">2026 — Present</div>
+</div>
+<div class="cv-entry">
+<div>
+<div class="cv-entry-title">HandGesture — Real-Time Drawing App</div>
+<div class="cv-entry-org">Personal Project</div>
+<ul class="cv-exp-ul">
+<li>Built a real-time hand gesture drawing app using MediaPipe and OpenCV — draw on screen by raising only the index finger via webcam</li>
+<li>Detects 21 hand landmarks per hand supporting up to 4 simultaneous hands, with gesture-based controls for color switching, canvas clear, and draw mode toggle</li>
+<li>Implemented on-screen menu interaction without mouse or keyboard — all actions triggered by fingertip position detection</li>
+</ul>
+</div>
+<div class="cv-entry-date">2025</div>
+</div>
+<div class="cv-entry">
+<div>
+<div class="cv-entry-title">Crop Disease Detector</div>
+<div class="cv-entry-org">Personal Project</div>
+<ul class="cv-exp-ul">
+<li>Built an image classification web app to detect plant diseases from leaf photos across 38 crop disease categories using the PlantVillage dataset (54K+ images)</li>
+<li>Implemented transfer learning with MobileNetV2 (pre-trained on ImageNet), applying data augmentation and two-phase fine-tuning via TensorFlow/Keras</li>
+<li>Deployed the model to Hugging Face Spaces for public access with real-time leaf disease prediction and top-3 confidence scores</li>
+</ul>
+</div>
+<div class="cv-entry-date">2026</div>
+</div>
+<div class="cv-entry">
+<div>
+<div class="cv-entry-title">BriskWalk — Event Registration Platform</div>
+<div class="cv-entry-org">Personal Project</div>
+<ul class="cv-exp-ul">
+<li>Developed a responsive single-page registration web app for a community walking event using vanilla HTML, CSS, and JavaScript</li>
+<li>Implemented client-side image compression via Canvas API (auto-resize to 1400px, WebP conversion at 78% quality) before upload to reduce payload size</li>
+<li>Integrated Google Apps Script backend to handle form submissions, storing participant data in Google Sheets and payment proofs in Google Drive</li>
+</ul>
+</div>
+<div class="cv-entry-date">2026</div>
+</div>
+<div class="cv-entry">
+<div>
+<div class="cv-entry-title">NASE Accessibility Tool</div>
+<div class="cv-entry-org">Personal Project</div>
+<ul class="cv-exp-ul">
+<li>Built an accessible bilingual SPA for Malaysia's National Association of Special Education, implementing Web Speech API for text-to-speech with real-time paragraph highlighting and adjustable playback speed</li>
+<li>Engineered a client-side i18n system supporting 4 languages (EN/BM/ID/ZH) and a multi-theme toggle with high-contrast color schemes for users with visual impairments</li>
+<li>Applied WCAG accessibility standards including semantic HTML5, ARIA labels, keyboard navigation, and dynamic font scaling via CSS custom properties</li>
+</ul>
+</div>
+<div class="cv-entry-date">2025</div>
+</div>
+</section><section class="cv-section">
+<div class="cv-section-title">Experience</div>
+<div class="cv-entry">
+<div>
+<div class="cv-entry-title">Head of Website Division</div>
+<div class="cv-entry-org">PPI Malaysia — University Chapter</div>
+<ul class="cv-exp-ul">
+<li>Leading the web development team to manage and maintain the organization’s official platform</li>
+<li>Ensuring effective digital communication for Indonesian students in Malaysia</li>
+</ul>
+</div>
+<div class="cv-entry-date">2025 — Present</div>
+</div>
+<div class="cv-entry">
+<div>
+<div class="cv-entry-title">Head of Department: IDFEST Art Exhibition</div>
+<div class="cv-entry-org">Universiti Malaya — IDFEST</div>
+<ul class="cv-exp-ul">
+<li>Directed the planning and execution of the Art Exhibition department for ID FEST</li>
+<li>Overseeing creative curation, logistics, and team coordination</li>
+</ul>
+</div>
+<div class="cv-entry-date">Apr 2026 — Dec 2026</div>
+</div>
+<div class="cv-entry">
+<div>
+<div class="cv-entry-title">Volunteer — LARAS, PPI Malaysia</div>
+<div class="cv-entry-org">PPI Malaysia · Transportation Team & Field Committee</div>
+<ul class="cv-exp-ul">
+<li>Served as Transportation Team member — coordinated logistics, transport schedules, and on-ground participant management</li>
+<li>Served as Field Committee — assisted in end-to-end event operations, setup, and on-site coordination during the event</li>
+</ul>
+</div>
+<div class="cv-entry-date">2026</div>
+</div>
+</section>
+<!-- SKILLS -->
+<section class="cv-section">
+<div class="cv-section-title">Skills</div>
+<div class="cv-skill-row"><span class="cv-skill-cat">Frontend — </span>HTML5, CSS3, JavaScript (ES6+), TypeScript, React, Next.js, Tailwind CSS, Zustand, TanStack React Query</div><div class="cv-skill-row"><span class="cv-skill-cat">Backend — </span>Node.js, Express.js, Python, Java, REST APIs, PostgreSQL, MySQL, Redis, Socket.IO, Sequelize ORM</div><div class="cv-skill-row"><span class="cv-skill-cat">AI / ML — </span>TensorFlow, Keras, PyTorch, NumPy, OpenCV, MediaPipe</div><div class="cv-skill-row"><span class="cv-skill-cat">DevOps — </span>AWS (AIF-C01 certified), Docker, Docker Compose, NGINX, Bourne Again Shell, Kiro, VS Code, Git, GitHub, Ubuntu Linux (Self-Hosting)</div><div class="cv-skill-row"><span class="cv-skill-cat">Design — </span>Figma, Canva — UI/UX prototyping and visual design</div><div class="cv-skill-row"><span class="cv-skill-cat">Soft Skills — </span>Public speaking, team leadership, project management, cross-cultural communication</div></section>
+<!-- LANGUAGES -->
+<section class="cv-section">
+<div class="cv-section-title">Languages</div>
+<div class="cv-lang-grid">
+<div>
+<div class="cv-lang-name">Bahasa Indonesia</div>
+<div class="cv-lang-level">Native</div>
+</div>
+<div>
+<div class="cv-lang-name">English <span class="cv-lang-badge">IELTS 5.5</span></div>
+<div class="cv-lang-level">Professional Working Proficiency</div>
+</div>
+<div>
+<div class="cv-lang-name">Malay</div>
+<div class="cv-lang-level">Professional Working Proficiency</div>
+</div>
+</div>
+</section>
+<!-- CERTIFICATIONS -->
+<section class="cv-section">
+<div class="cv-section-title">Professional Certifications</div>
+<div class="cv-cert-grid">
+    <div>
+        <div class="cv-cert-title">Docker for the Absolute Beginner - Hands On - DevOps</div>
+        <div class="cv-cert-sub">Udemy · Jun 2026 · 3 hrs · <em>Mumshad Mannambeth, KodeKloud Training</em></div>
+    </div>
+    <div>
+        <div class="cv-cert-title">Legacy JavaScript Algorithms and Data Structures V7</div>
+        <div class="cv-cert-sub">freeCodeCamp · May 2026 · 300 hrs · <em>Quincy Larson</em></div>
+    </div>
+    <div>
+        <div class="cv-cert-title">[NEW] Ultimate AWS Certified AI Practitioner AIF-C01</div>
+        <div class="cv-cert-sub">Udemy · May 2026 · 10.5 hrs · <em>Stephane Maarek</em></div>
+    </div>
+    <div>
+        <div class="cv-cert-title">Ultimate AWS Certified Developer Associate 2026 DVA-C02</div>
+        <div class="cv-cert-sub">Udemy · June 2026 · 31.5 hrs · <em>Stephane Maarek</em></div>
+    </div>
+    <div>
+        <div class="cv-cert-title">Complete Full Stack Web Development Bootcamp – AI Integrated</div>
+        <div class="cv-cert-sub">Udemy · Dec 2025 · 62.5 hrs · <em>Manik (Cloudaffle)</em></div>
+    </div>
+    <div>
+        <div class="cv-cert-title">The Complete JavaScript Course 2025: From Zero to Expert!</div>
+        <div class="cv-cert-sub">Udemy · Dec 2025 · 71 hrs · <em>Jonas Schmedtmann</em></div>
+    </div>
+    <div>
+        <div class="cv-cert-title">The Complete Full-Stack Web Development Bootcamp</div>
+        <div class="cv-cert-sub">Udemy · Jan 2026 · 62 hrs · <em>Dr. Angela Yu</em></div>
+    </div>
+    <div>
+        <div class="cv-cert-title">From Java Dev to AI Engineer: Spring AI Fast Track</div>
+        <div class="cv-cert-sub">Udemy · Dec 2025 · 14 hrs · <em>Madan Reddy, Eazy Bytes</em></div>
+    </div>
+    <div>
+        <div class="cv-cert-title">Learn Game Development with JavaScript</div>
+        <div class="cv-cert-sub">Udemy · Dec 2025 · 3 hrs · <em>Frank Dvorak</em></div>
+    </div>
+    <div>
+        <div class="cv-cert-title">Spec-Driven Development with Kiro</div>
+        <div class="cv-cert-sub">Dicoding · May 2026 · <em>Narenda Wicaksono</em></div>
+    </div>
+    <div>
+        <div class="cv-cert-title">Belajar Dasar Cloud dan Gen AI di AWS</div>
+        <div class="cv-cert-sub">Dicoding · May 2026 · <em>Narenda Wicaksono</em></div>
+    </div>
+    <div>
+        <div class="cv-cert-title">Intro to Digital Marketing</div>
+        <div class="cv-cert-sub">RevoU · Jan 2026 · <em>Matteo Sutto</em></div>
+    </div>
+    <div>
+        <div class="cv-cert-title">IELTS Academic – Overall Band Score 5.5 (CEFR B2)</div>
+        <div class="cv-cert-sub">British Council · IDP · Jun 2025</div>
+    </div>
+</div>
+</section>
+<!-- FOOTER -->
+<div class="cv-footer">
+<span>© 2026 Muhammad Rafi Arsya. All rights reserved.</span>
+<span>rafiarsya.work@gmail.com</span>
+</div>
+</main>
+</div>
+<style>
+        /* Bullet list for experience entries */
+        .cv-cert-sub em {
+            font-style: normal;
+            color: #6b7280;
+        }
+        .cv-exp-ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 8px;
+        }
+        .cv-exp-ul li {
+            font-size: 14px;
+            color: #555555;
+            line-height: 1.75;
+            padding-left: 16px;
+            position: relative;
+        }
+        .cv-exp-ul li::before {
+            content: "\2013";
+            position: absolute;
+            left: 0;
+            color: #bbbbbb;
+        }
+    </style>
+<script src="script.js"></script>
+</body>
+</html>

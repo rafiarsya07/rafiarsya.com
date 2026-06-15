@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaperMind — Muhammad Rafi Arsya</title>
+    <link rel="icon" type="image/png" href="../assets/avatar_rafi.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        :root { --accent-a:#0a0a1a; --accent-b:#3b2d8a; }
+        .project-main { padding:0; min-height:100vh; background:#f8f9fb; }
+        .project-page { max-width:1040px; width:min(100%,1040px); margin:0 auto; padding:40px 40px 100px; }
+        .project-back { display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:600; color:#6b7280; text-decoration:none; margin-bottom:32px; padding:6px 12px 6px 8px; border-radius:8px; border:1px solid #e5e7eb; background:#fff; transition:all 0.15s; letter-spacing:0.01em; }
+        .project-back:hover { color:#111827; border-color:#d1d5db; background:#f9fafb; transform:translateX(-2px); }
+        .project-back svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+        .p-hero { width:100%; border-radius:16px; overflow:hidden; margin-bottom:28px; position:relative; min-height:280px; display:flex; flex-direction:column; justify-content:flex-end; padding:32px 36px; box-shadow:0 4px 24px rgba(0,0,0,0.14); background:linear-gradient(135deg,#0a0a1a 0%,#1a1030 50%,#3b2d8a 100%); }
+        .p-hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px); background-size:40px 40px; pointer-events:none; }
+        .p-hero-overlay { position:absolute; inset:0; background:radial-gradient(ellipse at 80% 20%,rgba(167,139,250,0.08) 0%,transparent 60%); pointer-events:none; }
+        .p-hero-badge { display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:10px; position:relative; z-index:1; }
+        .p-hero-dot { width:6px; height:6px; border-radius:50%; background:#a78bfa; animation:pdot 2.5s ease-in-out infinite; }
+        @keyframes pdot { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .p-hero-title { font-family:'Syne',sans-serif; font-size:48px; font-weight:800; color:#fff; letter-spacing:-0.03em; line-height:1.05; margin-bottom:10px; position:relative; z-index:1; }
+        .p-hero-title span { color:#a78bfa; }
+        .p-hero-sub { font-size:14.5px; color:rgba(255,255,255,0.5); line-height:1.7; max-width:560px; position:relative; z-index:1; }
+        .p-hero-tags { display:flex; flex-wrap:wrap; gap:7px; margin-top:18px; position:relative; z-index:1; }
+        .p-hero-tag { font-size:11px; font-weight:600; letter-spacing:0.04em; padding:4px 11px; border-radius:20px; background:rgba(255,255,255,0.07); color:rgba(255,255,255,0.6); border:1px solid rgba(255,255,255,0.1); }
+        .p-dev-banner { display:flex; align-items:center; gap:12px; padding:12px 18px; border-radius:10px; margin-bottom:24px; background:#fff; border:1px solid #e5e7eb; }
+        .p-dev-banner svg { width:16px; height:16px; stroke:#374151; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
+        .p-dev-banner-text { font-size:13px; color:#111827; font-weight:600; }
+        .p-dev-banner-sub { font-size:12px; color:#6b7280; font-weight:400; margin-left:4px; }
+        .p-meta-strip { display:flex; flex-wrap:wrap; border:1px solid #e5e7eb; border-radius:12px; overflow:hidden; margin-bottom:32px; background:#fff; }
+        .p-meta-item { flex:1; min-width:110px; padding:14px 20px; border-right:1px solid #f3f4f6; }
+        .p-meta-item:last-child { border-right:none; }
+        .p-meta-label { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#9ca3af; margin-bottom:4px; }
+        .p-meta-value { font-size:13.5px; font-weight:600; color:#111827; }
+        .p-meta-value.inprogress { color:#374151; display:flex; align-items:center; gap:6px; }
+        .p-meta-value.inprogress::before { content:''; width:6px; height:6px; border-radius:50%; background:#a78bfa; display:inline-block; animation:pdot 2.5s ease-in-out infinite; }
+        .p-layout { display:grid; grid-template-columns:1fr 290px; gap:24px; align-items:start; }
+        .p-main-col { display:flex; flex-direction:column; gap:22px; }
+        .p-side-col { display:flex; flex-direction:column; gap:16px; }
+        .p-card { background:#fff; border:1px solid #e5e7eb; border-radius:14px; padding:24px 26px; }
+        .p-card-title { font-size:10.5px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#9ca3af; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid #f3f4f6; }
+        .p-body { font-size:15px; color:#374151; line-height:1.85; }
+        .p-body p { margin:0 0 14px; }
+        .p-body p:last-child { margin-bottom:0; }
+        .p-body strong { color:#111827; font-weight:600; }
+        .p-features { display:flex; flex-direction:column; gap:9px; }
+        .p-feature-item { display:flex; gap:12px; align-items:flex-start; padding:13px 15px; border-radius:10px; background:#f9fafb; border:1px solid #f3f4f6; transition:border-color 0.15s,background 0.15s; }
+        .p-feature-item:hover { border-color:#d1d5db; background:#f3f4f6; }
+        .p-feature-icon { width:32px; height:32px; border-radius:8px; background:#3b2d8a; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .p-feature-icon svg { width:14px; height:14px; stroke:#fff; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .p-feature-title { font-size:13px; font-weight:600; color:#111827; margin-bottom:2px; }
+        .p-feature-desc { font-size:12px; color:#6b7280; line-height:1.5; }
+        .p-tech-grid { display:flex; flex-wrap:wrap; gap:7px; }
+        .p-tech-pill { font-size:11.5px; font-weight:500; color:#374151; background:#f9fafb; border:1px solid #e5e7eb; border-radius:6px; padding:4px 11px; font-family:'Space Mono',monospace; transition:all 0.15s; }
+        .p-tech-pill:hover { background:#f3f4f6; border-color:#d1d5db; color:#111827; }
+        .p-arch-stack { display:flex; flex-direction:column; gap:8px; margin-top:4px; }
+        .p-arch-row { display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:9px; background:#f9fafb; border:1px solid #f3f4f6; }
+        .p-arch-icon { width:28px; height:28px; border-radius:7px; background:#3b2d8a; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .p-arch-icon svg { width:13px; height:13px; stroke:#fff; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .p-arch-name { font-size:12.5px; font-weight:600; color:#111827; flex:1; }
+        .p-arch-desc { font-size:11px; color:#9ca3af; }
+        .p-progress-label { display:flex; justify-content:space-between; font-size:12px; color:#6b7280; margin-bottom:5px; }
+        .p-progress-label span:last-child { font-weight:600; color:#111827; }
+        .p-progress-track { height:4px; border-radius:3px; background:#f3f4f6; overflow:hidden; margin-bottom:12px; }
+        .p-progress-fill { height:100%; border-radius:3px; background:#3b2d8a; transition:width 1s cubic-bezier(.2,.7,.2,1); }
+        .p-progress-fill.partial { background:#9ca3af; }
+        .p-numbers { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+        .p-num-card { border-radius:10px; padding:13px 15px; background:#f9fafb; border:1px solid #f3f4f6; }
+        .p-num-val { font-family:'Syne',sans-serif; font-size:24px; font-weight:800; color:#111827; line-height:1; margin-bottom:3px; }
+        .p-num-label { font-size:11px; font-weight:600; color:#6b7280; }
+        .p-status-badge { display:inline-flex; align-items:center; gap:6px; background:#f9fafb; color:#374151; font-size:12px; font-weight:600; padding:5px 12px; border-radius:20px; border:1px solid #e5e7eb; margin-bottom:12px; }
+        .p-status-badge svg { width:12px; height:12px; stroke:#374151; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .p-link-btn { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600; padding:10px 16px; border-radius:9px; text-decoration:none; transition:all 0.15s; width:100%; margin-bottom:7px; }
+        .p-link-btn:last-child { margin-bottom:0; }
+        .p-link-btn.primary { background:#3b2d8a; color:white; }
+        .p-link-btn.primary:hover { background:#4c3aaa; transform:translateY(-1px); }
+        .p-link-btn.secondary { background:#f9fafb; color:#374151; border:1px solid #e5e7eb; }
+        .p-link-btn.secondary:hover { background:#f3f4f6; transform:translateY(-1px); }
+        .p-link-btn svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
+        .p-link-btn-label { flex:1; }
+        .p-closing { margin-top:32px; padding:24px 28px; background:linear-gradient(135deg,#0a0a1a 0%,#3b2d8a 100%); border-radius:14px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+        .p-closing-title { font-family:'Syne',sans-serif; font-size:18px; font-weight:800; color:#fff; margin-bottom:6px; }
+        .p-closing-desc { font-size:13px; color:rgba(255,255,255,0.5); line-height:1.6; max-width:480px; }
+        .p-closing-btn { display:inline-flex; align-items:center; gap:8px; background:#fff; color:#3b2d8a; font-size:13px; font-weight:700; padding:10px 20px; border-radius:9px; text-decoration:none; flex-shrink:0; transition:opacity 0.15s; white-space:nowrap; }
+        .p-closing-btn:hover { opacity:0.88; }
+        .p-closing-btn svg { width:14px; height:14px; stroke:#3b2d8a; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        @media(max-width:860px){ .p-layout{grid-template-columns:1fr;} .p-hero-title{font-size:36px;} }
+        @media(max-width:540px){ .project-page{padding:20px 16px 60px;} .p-hero-title{font-size:28px;} .p-meta-strip{flex-direction:column;} .p-meta-item{border-right:none;border-bottom:1px solid #f3f4f6;} .p-meta-item:last-child{border-bottom:none;} .p-closing{flex-direction:column;align-items:flex-start;} .p-closing-btn{width:100%;justify-content:center;} }
+    </style>
+</head>
+<body>
+    <div class="mobile-topbar">
+        <span class="mobile-topbar-title">Muhammad Rafi Arsya</span>
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <div class="portfolio-app">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-logo-wrap">
+                    <img class="sidebar-logo-avatar" src="../assets/avatar_rafi.png" alt="Rafi Avatar">
+                    <span class="sidebar-logo-name">Muhammad Rafi Arsya</span>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="../index.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg></span><span>Home</span></a>
+                    <a href="../blog.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span>Blog</span></a>
+                </nav>
+                <div class="sidebar-group-label">Me</div>
+                <nav class="sidebar-nav">
+                    <a href="../resume.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 3H8a1 1 0 0 0-1 1v3h10V4a1 1 0 0 0-1-1z"/></svg></span><span>Resume / CV</span></a>
+                    <a href="../course.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>Course &amp; Certificate</span></a>
+                    <a href="../contact.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span><span>Contact</span></a>
+                </nav>
+                <div class="sidebar-group-label">Projects</div>
+                <div class="sidebar-projects">
+                    <a href="project1.html"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#064e3b,#10b981);color:#fff;font-size:0.55rem;font-weight:900;">HG</span><span class="project-label">HandGesture</span></a>
+                    <a href="project2.html"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#1b2d5e 0%,#2a4a8a 100%);color:#fff;font-size:0.55rem;font-weight:900;letter-spacing:-0.01em;">CB</span><span class="project-label">CampusBay</span></a>
+                    <a href="project5.html" class="active"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#0a0a1a,#3b2d8a);color:#fff;font-size:0.55rem;font-weight:900;">PM</span><span class="project-label">PaperMind</span></a>
+                    <a href="project3.html"><span class="project-icon text-icon" style="background:#1d4ed8;color:#fff;font-size:0.58rem;font-weight:900;">NS</span><span class="project-label">NASE Accessibility</span></a>
+                    <a href="project4.html"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#052e16,#16a34a);color:#fff;font-size:0.52rem;font-weight:900;">CD</span><span class="project-label">Crop Disease Detector</span></a>
+                    <a href="projects.html"><span class="nav-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span>All Projects</span></a>
+                </div>
+                <div class="sidebar-group-label">Social</div>
+                <nav class="sidebar-social">
+                    <a href="https://github.com/rafiarsya07" target="_blank" rel="noopener noreferrer"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></span><span>GitHub</span></a>
+                    <a href="https://www.linkedin.com/in/rafi-arsya-557335394/" target="_blank" rel="noopener noreferrer"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span><span>LinkedIn</span></a>
+                    <a href="https://www.instagram.com/rarsya.03/" target="_blank" rel="noopener noreferrer"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/></svg></span><span>Instagram</span></a>
+                </nav>
+            </div>
+            <div class="sidebar-footer"><p>Designed with focus on clarity and craft.</p></div>
+        </aside>
+
+        <main class="project-main">
+            <div class="project-page">
+                <a href="projects.html" class="project-back">
+                    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                    Back to All Projects
+                </a>
+
+                <!-- HERO -->
+                <div class="p-hero">
+                    <div class="p-hero-grid"></div>
+                    <div class="p-hero-overlay"></div>
+                    <div class="p-hero-badge">
+                        <span class="p-hero-dot"></span>
+                        RAG · AI · Self-Hosted · Ongoing · 2026
+                    </div>
+                    <h1 class="p-hero-title">Paper<span>Mind</span></h1>
+                    <p class="p-hero-sub">A local RAG-powered academic paper analyzer. Upload any PDF, ask questions, and get structured summaries — running 100% privately on self-hosted hardware. Zero cloud. Zero cost. Zero data leakage.</p>
+                    <div class="p-hero-tags">
+                        <span class="p-hero-tag">RAG</span>
+                        <span class="p-hero-tag">LLM</span>
+                        <span class="p-hero-tag">React + Vite</span>
+                        <span class="p-hero-tag">FastAPI</span>
+                        <span class="p-hero-tag">ChromaDB</span>
+                        <span class="p-hero-tag">Ollama</span>
+                        <span class="p-hero-tag">Self-Hosted</span>
+                    </div>
+                </div>
+
+                <!-- DEV BANNER -->
+                <div class="p-dev-banner">
+                    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    <div>
+                        <span class="p-dev-banner-text">Actively developing &amp; self-hosted</span>
+                        <span class="p-dev-banner-sub">— Local LLM running on a Linux mini PC 24/7. No cloud API. No cost per query.</span>
+                    </div>
+                </div>
+
+                <!-- META STRIP -->
+                <div class="p-meta-strip">
+                    <div class="p-meta-item"><div class="p-meta-label">Status</div><div class="p-meta-value inprogress">In Development</div></div>
+                    <div class="p-meta-item"><div class="p-meta-label">Year</div><div class="p-meta-value">2026</div></div>
+                    <div class="p-meta-item"><div class="p-meta-label">Role</div><div class="p-meta-value">Solo Developer</div></div>
+                    <div class="p-meta-item"><div class="p-meta-label">Platform</div><div class="p-meta-value">Web</div></div>
+                    <div class="p-meta-item"><div class="p-meta-label">Blog</div><div class="p-meta-value"><a href="../blog-papermind.html" style="color:#3b2d8a;text-decoration:none;font-weight:700;">Read Blog ↗</a></div></div>
+                </div>
+
+                <!-- LAYOUT -->
+                <div class="p-layout">
+                    <div class="p-main-col">
+
+                        <!-- OVERVIEW -->
+                        <div class="p-card">
+                            <div class="p-card-title">Overview</div>
+                            <div class="p-body">
+                                <p><strong>PaperMind</strong> is a local RAG (Retrieval Augmented Generation) system I built to solve a real problem: reading dense academic papers is time-consuming, and existing AI tools like ChatGPT hallucinate when asked about documents they haven't seen.</p>
+                                <p>PaperMind actually reads your PDF first — splitting it into chunks, converting each chunk to a vector embedding using <strong>nomic-embed-text</strong>, and storing them in <strong>ChromaDB</strong>. When you ask a question, it finds the most relevant chunks and sends them as context to <strong>Mistral 7B / Phi3 Mini</strong> running locally via <strong>Ollama</strong>. The LLM answers strictly from the paper — no hallucination, no guessing.</p>
+                                <p>The entire stack — React frontend, FastAPI backend, ChromaDB, and local LLM — runs on a Linux mini PC via Docker Compose. No cloud dependency. No API cost. All data stays on-device.</p>
+                            </div>
+                        </div>
+
+                        <!-- KEY FEATURES -->
+                        <div class="p-card">
+                            <div class="p-card-title">Key Features</div>
+                            <div class="p-features">
+                                <div class="p-feature-item">
+                                    <div class="p-feature-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+                                    <div><div class="p-feature-title">Natural Language Q&amp;A</div><div class="p-feature-desc">Ask anything about your paper in plain English. PaperMind retrieves the 5 most relevant chunks via cosine similarity and answers strictly from the document.</div></div>
+                                </div>
+                                <div class="p-feature-item">
+                                    <div class="p-feature-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                                    <div><div class="p-feature-title">Structured Auto-Summary</div><div class="p-feature-desc">One-click structured summary covering main topic, objectives, methodology, key findings, and conclusions — extracted from the paper, not guessed.</div></div>
+                                </div>
+                                <div class="p-feature-item">
+                                    <div class="p-feature-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                                    <div><div class="p-feature-title">100% Local LLM</div><div class="p-feature-desc">Runs Mistral 7B or Phi3 Mini via Ollama on local hardware. No OpenAI API key. No per-token cost. No data leaves the machine.</div></div>
+                                </div>
+                                <div class="p-feature-item">
+                                    <div class="p-feature-icon"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
+                                    <div><div class="p-feature-title">Multi-Paper Library</div><div class="p-feature-desc">Upload and manage multiple PDFs simultaneously. Each paper has its own isolated vector store in ChromaDB with metadata filtering.</div></div>
+                                </div>
+                                <div class="p-feature-item">
+                                    <div class="p-feature-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                                    <div><div class="p-feature-title">Privacy-First Design</div><div class="p-feature-desc">Everything runs locally — ideal for unpublished research or sensitive academic work. No third-party API receives your documents.</div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ARCHITECTURE -->
+                        <div class="p-card">
+                            <div class="p-card-title">RAG Architecture</div>
+                            <div class="p-arch-stack">
+                                <div class="p-arch-row">
+                                    <div class="p-arch-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+                                    <div class="p-arch-name">Nginx — Reverse Proxy</div>
+                                    <div class="p-arch-desc">Port 3001 · Routes /api/* → FastAPI</div>
+                                </div>
+                                <div class="p-arch-row">
+                                    <div class="p-arch-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+                                    <div class="p-arch-name">React 18 + Vite — Frontend</div>
+                                    <div class="p-arch-desc">Static build · Lucide icons · Mobile responsive</div>
+                                </div>
+                                <div class="p-arch-row">
+                                    <div class="p-arch-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                                    <div class="p-arch-name">FastAPI — Backend API</div>
+                                    <div class="p-arch-desc">Python · /upload /ask /summarize /papers</div>
+                                </div>
+                                <div class="p-arch-row">
+                                    <div class="p-arch-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+                                    <div class="p-arch-name">ChromaDB — Vector Database</div>
+                                    <div class="p-arch-desc">Persistent · Cosine similarity · Metadata filtering</div>
+                                </div>
+                                <div class="p-arch-row">
+                                    <div class="p-arch-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+                                    <div class="p-arch-name">Ollama — Local LLM Runtime</div>
+                                    <div class="p-arch-desc">Mistral 7B / Phi3 Mini · nomic-embed-text · Host machine</div>
+                                </div>
+                                <div class="p-arch-row">
+                                    <div class="p-arch-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></div>
+                                    <div class="p-arch-name">PyMuPDF — PDF Processing</div>
+                                    <div class="p-arch-desc">Text extraction · 800-char chunks · 100-char overlap</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- SIDE COLUMN -->
+                    <div class="p-side-col">
+
+                        <!-- PROGRESS -->
+                        <div class="p-card">
+                            <div class="p-card-title">Build Progress</div>
+                            <div class="p-status-badge">
+                                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+                                In Development
+                            </div>
+                            <div class="p-progress-label"><span>PDF Upload + Chunking</span><span>100%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill" style="width:100%;"></div></div>
+                            <div class="p-progress-label"><span>Vector Embedding</span><span>100%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill" style="width:100%;"></div></div>
+                            <div class="p-progress-label"><span>Q&amp;A via RAG</span><span>100%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill" style="width:100%;"></div></div>
+                            <div class="p-progress-label"><span>Auto Summary</span><span>100%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill" style="width:100%;"></div></div>
+                            <div class="p-progress-label"><span>Streaming Responses</span><span>~20%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill partial" style="width:20%;"></div></div>
+                            <div class="p-progress-label"><span>Citation Highlighting</span><span>0%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill partial" style="width:0%;"></div></div>
+                        </div>
+
+                        <!-- TECH STACK -->
+                        <div class="p-card">
+                            <div class="p-card-title">Tech Stack</div>
+                            <div class="p-tech-grid">
+                                <span class="p-tech-pill">React 18</span>
+                                <span class="p-tech-pill">Vite</span>
+                                <span class="p-tech-pill">FastAPI</span>
+                                <span class="p-tech-pill">Python</span>
+                                <span class="p-tech-pill">ChromaDB</span>
+                                <span class="p-tech-pill">Ollama</span>
+                                <span class="p-tech-pill">Mistral 7B</span>
+                                <span class="p-tech-pill">Phi3 Mini</span>
+                                <span class="p-tech-pill">nomic-embed-text</span>
+                                <span class="p-tech-pill">PyMuPDF</span>
+                                <span class="p-tech-pill">LangChain</span>
+                                <span class="p-tech-pill">Docker</span>
+                                <span class="p-tech-pill">Nginx</span>
+                                <span class="p-tech-pill">Ubuntu Linux</span>
+                            </div>
+                        </div>
+
+                        <!-- NUMBERS -->
+                        <div class="p-card">
+                            <div class="p-card-title">By the Numbers</div>
+                            <div class="p-numbers">
+                                <div class="p-num-card"><div class="p-num-val">4.4GB</div><div class="p-num-label">Local LLM Size</div></div>
+                                <div class="p-num-card"><div class="p-num-val">RM 0</div><div class="p-num-label">API Cost/Month</div></div>
+                                <div class="p-num-card"><div class="p-num-val">800</div><div class="p-num-label">Chars per Chunk</div></div>
+                                <div class="p-num-card"><div class="p-num-val">5</div><div class="p-num-label">Chunks per Query</div></div>
+                            </div>
+                        </div>
+
+                        <!-- LINKS -->
+                        <div class="p-card">
+                            <div class="p-card-title">Links</div>
+                            <a href="../blog-papermind.html" class="p-link-btn primary">
+                                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                <span class="p-link-btn-label">Read Full Blog Post</span>
+                                <svg viewBox="0 0 24 24" style="opacity:0.5;width:12px;height:12px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            </a>
+                            <a href="https://github.com/rafiarsya07" target="_blank" rel="noopener noreferrer" class="p-link-btn secondary">
+                                <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                <span class="p-link-btn-label">GitHub</span>
+                                <svg viewBox="0 0 24 24" style="opacity:0.35;width:12px;height:12px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- CLOSING -->
+                <div class="p-closing">
+                    <div class="p-closing-text">
+                        <div class="p-closing-title">Local AI. Zero cost. Zero cloud.</div>
+                        <div class="p-closing-desc">A 4.4GB language model running on my own hardware, answering questions about research papers without sending a single byte to any external server. Built from scratch — RAG pipeline, Docker stack, systemd config and all.</div>
+                    </div>
+                    <a href="../blog-papermind.html" class="p-closing-btn">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        Read the Full Blog
+                    </a>
+                </div>
+
+            </div>
+        </main>
+    </div>
+    <script src="../script.js"></script>
+</body>
+</html>

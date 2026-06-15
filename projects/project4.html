@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Disease Detector — Muhammad Rafi Arsya</title>
+    <link rel="icon" type="image/png" href="../assets/avatar_rafi.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        :root { --accent-a:#052e16; --accent-b:#16a34a; }
+
+        /* ─── PAGE BASE ─────────────────────────────────────── */
+        .project-main { padding:0; min-height:100vh; background:#f8f9fb; }
+        .project-page { max-width:1040px; width:min(100%,1040px); margin:0 auto; padding:40px 40px 100px; }
+
+        /* ─── BACK BUTTON ─── */
+        .project-back {
+            display:inline-flex; align-items:center; gap:6px;
+            font-size:12.5px; font-weight:600; color:#6b7280;
+            text-decoration:none; margin-bottom:32px;
+            padding:6px 12px 6px 8px; border-radius:8px;
+            border:1px solid #e5e7eb; background:#fff;
+            transition:all 0.15s; letter-spacing:0.01em;
+        }
+        .project-back:hover { color:#111827; border-color:#d1d5db; background:#f9fafb; transform:translateX(-2px); }
+        .project-back svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+
+        /* ─── HERO ─── */
+        .p-hero {
+            width:100%; border-radius:16px; overflow:hidden; margin-bottom:36px;
+            position:relative; min-height:280px;
+            display:flex; flex-direction:column; justify-content:flex-end;
+            padding:32px 36px; box-shadow:0 4px 24px rgba(0,0,0,0.12);
+        }
+        .p-hero-grid {
+            position:absolute; inset:0;
+            background-image: linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);
+            background-size:40px 40px; pointer-events:none;
+        }
+        .p-hero-glow {
+            position:absolute; width:420px; height:420px; border-radius:50%;
+            top:-130px; right:-60px; pointer-events:none;
+        }
+        .p-hero-badge {
+            display:inline-flex; align-items:center; gap:6px;
+            font-size:11px; font-weight:700; letter-spacing:0.12em;
+            text-transform:uppercase; color:rgba(255,255,255,0.6);
+            margin-bottom:10px; position:relative; z-index:1;
+        }
+        .p-hero-dot {
+            width:6px; height:6px; border-radius:50%;
+            animation:pdot 2s ease-in-out infinite;
+        }
+        @keyframes pdot { 0%,100%{box-shadow:0 0 0 2px rgba(255,255,255,0.2)} 50%{box-shadow:0 0 0 5px rgba(255,255,255,0.08)} }
+        .p-hero-title {
+            font-family:'Syne',sans-serif; font-size:44px; font-weight:800;
+            color:#fff; letter-spacing:-0.03em; line-height:1.05;
+            margin-bottom:8px; position:relative; z-index:1;
+        }
+        .p-hero-title span { background:linear-gradient(90deg,#86efac,#34d399); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .p-hero-sub { font-size:14.5px; color:rgba(255,255,255,0.55); line-height:1.6; max-width:540px; position:relative; z-index:1; }
+        .p-hero-tags { display:flex; flex-wrap:wrap; gap:7px; margin-top:18px; position:relative; z-index:1; }
+        .p-hero-tag {
+            font-size:11px; font-weight:600; letter-spacing:0.05em;
+            padding:4px 12px; border-radius:20px;
+            background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.75);
+            border:1px solid rgba(255,255,255,0.12); backdrop-filter:blur(4px);
+        }
+
+        /* ─── META STRIP ─── */
+        .p-meta-strip {
+            display:flex; flex-wrap:wrap; border:1px solid #e5e7eb;
+            border-radius:12px; overflow:hidden; margin-bottom:32px; background:#fff;
+        }
+        .p-meta-item { flex:1; min-width:90px; padding:14px 16px; border-right:1px solid #f3f4f6; }
+        .p-meta-item:last-child { border-right:none; }
+        .p-meta-label { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#9ca3af; margin-bottom:4px; }
+        .p-meta-value { font-size:13px; font-weight:600; color:#111827; }
+        .p-meta-value.live { color:#16a34a; display:flex; align-items:center; gap:5px; }
+        .p-meta-value.live::before { content:''; width:6px; height:6px; border-radius:50%; background:#16a34a; display:inline-block; animation:pdot 2s ease-in-out infinite; }
+
+        /* ─── LAYOUT ─── */
+        .p-layout { display:grid; grid-template-columns:1fr 290px; gap:24px; align-items:start; }
+        .p-main-col { display:flex; flex-direction:column; gap:22px; }
+        .p-side-col { display:flex; flex-direction:column; gap:16px; }
+
+        /* ─── CARDS ─── */
+        .p-card { background:#fff; border:1px solid #e5e7eb; border-radius:14px; padding:24px 26px; }
+        .p-card-title { font-size:10.5px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#9ca3af; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid #f3f4f6; }
+
+        /* ─── BODY TEXT ─── */
+        .p-body { font-size:15px; color:#374151; line-height:1.85; }
+        .p-body p { margin:0 0 14px; }
+        .p-body p:last-child { margin-bottom:0; }
+        .p-body strong { color:#111827; font-weight:600; }
+
+        /* ─── FEATURES ─── */
+        .p-features { display:flex; flex-direction:column; gap:10px; }
+        .p-feature-item {
+            display:flex; gap:12px; align-items:flex-start;
+            padding:13px 15px; border-radius:10px;
+            background:#f9fafb; border:1px solid #f3f4f6;
+            transition:border-color 0.15s, background 0.15s;
+        }
+        .p-feature-item:hover { border-color:#bbf7d0; background:#f0fdf4; }
+        .p-feature-icon {
+            width:32px; height:32px; border-radius:8px;
+            display:flex; align-items:center; justify-content:center; flex-shrink:0;
+        }
+        .p-feature-icon svg { width:14px; height:14px; stroke:#fff; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .p-feature-title { font-size:13px; font-weight:600; color:#111827; margin-bottom:2px; }
+        .p-feature-desc { font-size:12px; color:#6b7280; line-height:1.5; }
+
+        /* ─── TECH ─── */
+        .p-tech-grid { display:flex; flex-wrap:wrap; gap:8px; }
+        .p-tech-pill {
+            font-size:12px; font-weight:500; color:#374151;
+            background:#f9fafb; border:1px solid #e5e7eb; border-radius:6px;
+            padding:5px 12px; font-family:'Space Mono',monospace;
+            transition:all 0.15s;
+        }
+        .p-tech-pill:hover { background:#f0fdf4; border-color:#bbf7d0; color:#16a34a; }
+
+        /* ─── TIMELINE ─── */
+        .p-timeline { display:flex; flex-direction:column; }
+        .p-tl-item { display:flex; gap:12px; padding-bottom:20px; }
+        .p-tl-item:last-child { padding-bottom:0; }
+        .p-tl-line { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
+        .p-tl-dot {
+            width:26px; height:26px; border-radius:50%; color:white;
+            font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; z-index:1;
+        }
+        .p-tl-dot.done { background:linear-gradient(135deg,var(--accent-a),var(--accent-b)); }
+        .p-tl-connector { flex:1; width:1px; background:#e5e7eb; margin-top:4px; }
+        .p-tl-item:last-child .p-tl-connector { display:none; }
+        .p-tl-body { padding-top:3px; }
+        .p-tl-date { font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#9ca3af; margin-bottom:3px; }
+        .p-tl-title { font-size:13.5px; font-weight:600; color:#111827; margin-bottom:3px; }
+        .p-tl-desc { font-size:12px; color:#6b7280; line-height:1.55; }
+
+        /* ─── PROGRESS ─── */
+        .p-progress-label { display:flex; justify-content:space-between; font-size:12px; color:#6b7280; margin-bottom:5px; }
+        .p-progress-label span:last-child { font-weight:600; color:#111827; }
+        .p-progress-track { height:5px; border-radius:3px; background:#f3f4f6; overflow:hidden; margin-bottom:12px; }
+        .p-progress-fill { height:100%; border-radius:3px; }
+
+        /* ─── NUMBERS ─── */
+        .p-numbers { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+        .p-num-card { border-radius:10px; padding:13px 15px; }
+        .p-num-val { font-family:'Syne',sans-serif; font-size:24px; font-weight:800; color:#111827; line-height:1; margin-bottom:3px; }
+        .p-num-label { font-size:11px; font-weight:600; color:#6b7280; }
+
+        /* ─── LINK BTNS ─── */
+        .p-link-btn {
+            display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600;
+            padding:10px 16px; border-radius:9px; text-decoration:none; transition:all 0.15s;
+            width:100%; margin-bottom:7px;
+        }
+        .p-link-btn:last-child { margin-bottom:0; }
+        .p-link-btn.primary { background:#111827; color:white; }
+        .p-link-btn.primary:hover { background:#1f2937; transform:translateY(-1px); }
+        .p-link-btn.secondary { background:#f9fafb; color:#374151; border:1px solid #e5e7eb; }
+        .p-link-btn.secondary:hover { background:#f3f4f6; transform:translateY(-1px); }
+        .p-link-btn.hf { background:#ffd21e; color:#1a1a1a; }
+        .p-link-btn.hf:hover { background:#f5c600; transform:translateY(-1px); }
+        .p-link-btn svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
+        .p-link-btn-label { flex:1; }
+
+        /* ─── DEMO CARDS ─── */
+        .p-demo-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:4px; }
+
+        /* ─── DISEASE CLASS TABLE ─── */
+        .p-disease-grid {
+            display:grid; grid-template-columns:1fr 1fr; gap:8px;
+        }
+        .p-disease-pill {
+            display:flex; align-items:center; gap:8px;
+            padding:8px 12px; border-radius:8px;
+            background:#f0fdf4; border:1px solid #bbf7d0;
+            font-size:12px; font-weight:500; color:#065f46;
+        }
+        .p-disease-dot {
+            width:7px; height:7px; border-radius:50%; background:#16a34a; flex-shrink:0;
+        }
+
+        /* ─── CLOSING BANNER ─── */
+        .p-closing {
+            margin-top:32px; padding:24px 28px;
+            background:linear-gradient(135deg,#052e16 0%,#166534 60%,#16a34a 100%);
+            border-radius:14px;
+            display:flex; align-items:center; justify-content:space-between;
+            flex-wrap:wrap; gap:16px;
+        }
+        .p-closing-title { font-family:'Syne',sans-serif; font-size:18px; font-weight:800; color:#fff; margin-bottom:6px; }
+        .p-closing-desc { font-size:13px; color:rgba(255,255,255,0.6); line-height:1.6; max-width:480px; }
+        .p-closing-btn {
+            display:inline-flex; align-items:center; gap:8px;
+            background:#fff; color:#166534; font-size:13px; font-weight:700;
+            padding:10px 20px; border-radius:9px; text-decoration:none;
+            flex-shrink:0; transition:opacity 0.15s; white-space:nowrap;
+        }
+        .p-closing-btn:hover { opacity:.85; }
+        .p-closing-btn svg { width:15px; height:15px; stroke:#166534; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+        /* ─── RESPONSIVE ─────────────────────────────────────── */
+        @media(max-width:860px) {
+            .p-layout { grid-template-columns:1fr; }
+            .p-hero-title { font-size:34px; }
+            .p-demo-grid { grid-template-columns:1fr 1fr; }
+        }
+        @media(max-width:600px) {
+            .project-page { padding:16px 14px 60px; }
+            .p-hero { padding:22px 20px; min-height:220px; }
+            .p-hero-title { font-size:26px; }
+            .p-hero-sub { font-size:13px; }
+            .p-card { padding:18px 16px; }
+            .p-meta-strip { flex-direction:column; }
+            .p-meta-item { flex:none; width:100%; min-width:0; border-right:none; border-bottom:1px solid #f3f4f6; padding:11px 16px; }
+            .p-meta-item:last-child { border-bottom:none; }
+            .p-demo-grid { grid-template-columns:1fr; }
+            .p-closing { flex-direction:column; align-items:flex-start; }
+            .p-closing-btn { width:100%; justify-content:center; }
+            .p-disease-grid { grid-template-columns:1fr; }
+            .p-num-val { font-size:20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="mobile-topbar">
+    <span class="mobile-topbar-title">Muhammad Rafi Arsya</span>
+    <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+</div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<div class="portfolio-app">
+    <aside class="sidebar">
+        <div class="sidebar-top">
+            <div class="sidebar-logo-wrap">
+                <img class="sidebar-logo-avatar" src="../assets/avatar_rafi.png" alt="Rafi Avatar">
+                <span class="sidebar-logo-name">Muhammad Rafi Arsya</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="../index.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg></span><span>Home</span></a>
+                <a href="../blog.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span>Blog</span></a>
+            </nav>
+            <div class="sidebar-group-label">Me</div>
+            <nav class="sidebar-nav">
+                <a href="../resume.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 3H8a1 1 0 0 0-1 1v3h10V4a1 1 0 0 0-1-1z"/></svg></span><span>Resume / CV</span></a>
+                <a href="../course.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>Course &amp; Certificate</span></a>
+                <a href="../contact.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span><span>Contact</span></a>
+            </nav>
+            <div class="sidebar-group-label">Projects</div>
+            <div class="sidebar-projects">
+                <a href="project1.html"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#064e3b 0%,#10b981 100%);color:#fff;font-size:0.55rem;font-weight:900;letter-spacing:0.01em;">HG</span><span class="project-label">HandGesture</span></a>
+                <a href="project2.html"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#1b2d5e 0%,#2a4a8a 100%);color:#fff;font-size:0.55rem;font-weight:900;letter-spacing:-0.01em;">CB</span><span class="project-label">CampusBay</span></a>
+                <a href="project5.html"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#0a0a1a 0%,#3b2d8a 100%);color:#fff;font-size:0.55rem;font-weight:900;letter-spacing:-0.01em;">PM</span><span class="project-label">PaperMind</span></a>
+                <a href="project3.html"><span class="project-icon text-icon" style="background:#1d4ed8;color:#fff;font-size:0.58rem;font-weight:900;letter-spacing:-0.01em;">NS</span><span class="project-label">NASE Accessibility</span></a>
+                <a href="project4.html" class="active"><span class="project-icon text-icon" style="background:linear-gradient(135deg,#052e16 0%,#16a34a 100%);color:#fff;font-size:0.52rem;font-weight:900;letter-spacing:-0.01em;">CD</span><span class="project-label">Crop Disease Detector</span></a>
+                <a href="projects.html"><span class="nav-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span>All Projects</span></a>
+            </div>
+            <div class="sidebar-group-label">Social</div>
+            <nav class="sidebar-social">
+                <a href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></span><span>GitHub</span></a>
+                <a href="https://www.linkedin.com/in/rafi-arsya-557335394/" target="_blank" rel="noopener noreferrer"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span><span>LinkedIn</span></a>
+                <a href="https://www.instagram.com/rarsya.03/" target="_blank" rel="noopener noreferrer"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span><span>Instagram</span></a>
+            </nav>
+        </div>
+        <div class="sidebar-footer">
+            <p>Designed with focus on clarity and craft.</p>
+        </div>
+    </aside>
+
+    <main class="project-main">
+        <div class="project-page">
+
+            <!-- BACK -->
+            <a href="projects.html" class="project-back">
+                <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                All Projects
+            </a>
+
+            <!-- HERO -->
+            <div class="p-hero" style="background:linear-gradient(135deg,#052e16 0%,#166534 55%,#15803d 100%);">
+                <div class="p-hero-grid"></div>
+                <div class="p-hero-glow" style="background:radial-gradient(circle,rgba(22,163,74,0.25),transparent 70%);"></div>
+                <div class="p-hero-badge">
+                    <span class="p-hero-dot" style="background:#4ade80;"></span>
+                    Completed · 2026
+                </div>
+                <div class="p-hero-title">Crop Disease <span>Detector</span></div>
+                <div class="p-hero-sub">An AI model that identifies plant diseases from a single leaf photo — trained on 87,000+ images using MobileNetV2 Transfer Learning, deployed live on Hugging Face Spaces.</div>
+                <div class="p-hero-tags">
+                    <span class="p-hero-tag">Machine Learning</span>
+                    <span class="p-hero-tag">Transfer Learning</span>
+                    <span class="p-hero-tag">TensorFlow</span>
+                    <span class="p-hero-tag">Agriculture</span>
+                    <span class="p-hero-tag">Gradio</span>
+                    <span class="p-hero-tag">Hugging Face</span>
+                </div>
+            </div>
+
+            <!-- META STRIP -->
+            <div class="p-meta-strip">
+                <div class="p-meta-item">
+                    <div class="p-meta-label">Status</div>
+                    <div class="p-meta-value live">Live on HF Spaces</div>
+                </div>
+                <div class="p-meta-item">
+                    <div class="p-meta-label">Year</div>
+                    <div class="p-meta-value">2026</div>
+                </div>
+                <div class="p-meta-item">
+                    <div class="p-meta-label">Type</div>
+                    <div class="p-meta-value">ML / Computer Vision</div>
+                </div>
+                <div class="p-meta-item">
+                    <div class="p-meta-label">Model</div>
+                    <div class="p-meta-value">MobileNetV2</div>
+                </div>
+                <div class="p-meta-item">
+                    <div class="p-meta-label">Accuracy</div>
+                    <div class="p-meta-value">~97%</div>
+                </div>
+                <div class="p-meta-item">
+                    <div class="p-meta-label">Classes</div>
+                    <div class="p-meta-value">38 disease classes</div>
+                </div>
+            </div>
+
+            <!-- LAYOUT -->
+            <div class="p-layout">
+                <div class="p-main-col">
+
+                    <!-- OVERVIEW -->
+                    <div class="p-card">
+                        <div class="p-card-title">Overview</div>
+                        <div class="p-body">
+                            <p>Crop Disease Detector is a deep learning computer vision system built to help farmers and agricultural workers identify plant diseases instantly — just by photographing a leaf. The model can classify <strong>38 distinct disease conditions</strong> across 14 common crop types, from apple scab to tomato mosaic virus.</p>
+                            <p>The model is trained on the <strong>PlantVillage dataset</strong> containing over 87,000 leaf images using <strong>MobileNetV2 Transfer Learning</strong> — a lightweight but powerful CNN architecture pre-trained on ImageNet. Fine-tuning was performed with data augmentation (random flips, rotation, zoom) to improve generalization on real-world images.</p>
+                            <p>The final model achieves <strong>~97% validation accuracy</strong> and is deployed as an interactive web app via <strong>Gradio on Hugging Face Spaces</strong> — making it freely accessible to anyone with a browser, no setup required.</p>
+                        </div>
+                    </div>
+
+                    <!-- KEY FEATURES -->
+                    <div class="p-card">
+                        <div class="p-card-title">Key Features</div>
+                        <div class="p-features">
+                            <div class="p-feature-item">
+                                <div class="p-feature-icon" style="background:linear-gradient(135deg,#052e16,#16a34a);">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M12 8v4l3 3"/></svg>
+                                </div>
+                                <div>
+                                    <div class="p-feature-title">Real-Time Inference</div>
+                                    <div class="p-feature-desc">Upload any leaf photo and get an instant diagnosis with confidence score — no queue, no waiting. Deployed on Hugging Face Spaces for zero-friction access.</div>
+                                </div>
+                            </div>
+                            <div class="p-feature-item">
+                                <div class="p-feature-icon" style="background:linear-gradient(135deg,#1e3a5f,#2563eb);">
+                                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                </div>
+                                <div>
+                                    <div class="p-feature-title">MobileNetV2 Transfer Learning</div>
+                                    <div class="p-feature-desc">Built on a pre-trained ImageNet backbone, fine-tuned on 87,000+ PlantVillage leaf images. Achieves high accuracy with a model small enough to run efficiently on CPU.</div>
+                                </div>
+                            </div>
+                            <div class="p-feature-item">
+                                <div class="p-feature-icon" style="background:linear-gradient(135deg,#7c2d12,#ea580c);">
+                                    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                </div>
+                                <div>
+                                    <div class="p-feature-title">38-Class Disease Classification</div>
+                                    <div class="p-feature-desc">Covers 38 disease/healthy categories across 14 crops — apple, blueberry, cherry, corn, grape, orange, peach, pepper, potato, raspberry, soybean, squash, strawberry, and tomato.</div>
+                                </div>
+                            </div>
+                            <div class="p-feature-item">
+                                <div class="p-feature-icon" style="background:linear-gradient(135deg,#4c1d95,#7c3aed);">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                                </div>
+                                <div>
+                                    <div class="p-feature-title">Data Augmentation Pipeline</div>
+                                    <div class="p-feature-desc">Training includes random horizontal/vertical flips, rotation, zoom, and contrast adjustments to make the model robust to real-world photo conditions like angle, lighting, and background.</div>
+                                </div>
+                            </div>
+                            <div class="p-feature-item">
+                                <div class="p-feature-icon" style="background:linear-gradient(135deg,#fbbf24,#d97706);">
+                                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                </div>
+                                <div>
+                                    <div class="p-feature-title">Gradio Interactive UI</div>
+                                    <div class="p-feature-desc">The app is wrapped in a clean Gradio interface — drag and drop a leaf image, hit submit, and see the predicted disease class with a top-5 confidence breakdown in seconds.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HOW IT WORKS -->
+                    <div class="p-card">
+                        <div class="p-card-title">How It Works</div>
+                        <div class="p-body">
+                            <p>The system follows a standard deep learning pipeline — data preparation, model training with transfer learning, evaluation, and deployment.</p>
+                        </div>
+                        <div style="margin-top:16px;" class="p-timeline">
+                            <div class="p-tl-item">
+                                <div class="p-tl-line"><div class="p-tl-dot done">1</div><div class="p-tl-connector"></div></div>
+                                <div class="p-tl-body"><div class="p-tl-date">Step 1</div><div class="p-tl-title">Dataset Preparation</div><div class="p-tl-desc">PlantVillage dataset loaded and split 80/20 into train and validation sets. Image size normalized to 224×224 px to match MobileNetV2 input. Labels one-hot encoded for 38 classes.</div></div>
+                            </div>
+                            <div class="p-tl-item">
+                                <div class="p-tl-line"><div class="p-tl-dot done">2</div><div class="p-tl-connector"></div></div>
+                                <div class="p-tl-body"><div class="p-tl-date">Step 2</div><div class="p-tl-title">Transfer Learning with MobileNetV2</div><div class="p-tl-desc">MobileNetV2 pre-trained on ImageNet loaded as the base model with frozen layers. A custom classification head added on top: GlobalAveragePooling → Dense(256, ReLU) → Dropout(0.3) → Dense(38, Softmax).</div></div>
+                            </div>
+                            <div class="p-tl-item">
+                                <div class="p-tl-line"><div class="p-tl-dot done">3</div><div class="p-tl-connector"></div></div>
+                                <div class="p-tl-body"><div class="p-tl-date">Step 3</div><div class="p-tl-title">Training &amp; Fine-Tuning</div><div class="p-tl-desc">Model trained using Adam optimizer with learning rate scheduling. After initial training, top layers unfrozen for fine-tuning with a lower learning rate to adapt ImageNet features to leaf morphology.</div></div>
+                            </div>
+                            <div class="p-tl-item">
+                                <div class="p-tl-line"><div class="p-tl-dot done">4</div><div class="p-tl-connector"></div></div>
+                                <div class="p-tl-body"><div class="p-tl-date">Step 4</div><div class="p-tl-title">Evaluation</div><div class="p-tl-desc">Model evaluated on validation set achieving ~97% accuracy. Confusion matrix generated to identify most common misclassifications between visually similar disease classes.</div></div>
+                            </div>
+                            <div class="p-tl-item">
+                                <div class="p-tl-line"><div class="p-tl-dot done">5</div><div class="p-tl-connector"></div></div>
+                                <div class="p-tl-body"><div class="p-tl-date">Step 5</div><div class="p-tl-title">Deployment on Hugging Face</div><div class="p-tl-desc">Model exported as .h5 and wrapped in a Gradio app. Deployed to Hugging Face Spaces for free public access — no installation needed, runs directly in the browser.</div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DISEASE CLASSES -->
+                    <div class="p-card">
+                        <div class="p-card-title">Supported Disease Classes (Sample)</div>
+                        <div class="p-body" style="margin-bottom:16px;"><p>The model is trained to identify <strong>38 classes</strong> including both diseased and healthy conditions:</p></div>
+                        <div class="p-disease-grid">
+                            <div class="p-disease-pill"><span class="p-disease-dot"></span>Apple — Scab</div>
+                            <div class="p-disease-pill"><span class="p-disease-dot"></span>Apple — Black Rot</div>
+                            <div class="p-disease-pill"><span class="p-disease-dot"></span>Apple — Cedar Rust</div>
+                            <div class="p-disease-pill"><span class="p-disease-dot"></span>Apple — Healthy</div>
+                            <div class="p-disease-pill"><span class="p-disease-dot"></span>Corn — Gray Leaf Spot</div>
+                            <div class="p-disease-pill"><span class="p-disease-dot"></span>Corn — Common Rust</div>
+                            <div class="p-disease-pill"><span class="p-disease-dot"></span>Grape — Black Rot</div>
+                            <div class="p-disease-pill"><span class="p-disease-dot"></span>Grape — Leaf Blight</div>
+                            <div class="p-disease-pill"><span class="p-disease-dot"></span>Potato — Early Blight</div>
+                            <div class="p-disease-pill"><span class="p-disease-dot"></span>Potato — Late Blight</div>
+                            <div class="p-disease-pill"><span class="p-disease-dot"></span>Tomato — Bacterial Spot</div>
+                            <div class="p-disease-pill"><span class="p-disease-dot"></span>Tomato — Mosaic Virus</div>
+                            <div class="p-disease-pill"><span class="p-disease-dot"></span>Tomato — Late Blight</div>
+                            <div class="p-disease-pill"><span class="p-disease-dot"></span>Tomato — Healthy</div>
+                            <div class="p-disease-pill"><span class="p-disease-dot"></span>Pepper — Bacterial Spot</div>
+                            <div class="p-disease-pill"><span class="p-disease-dot" style="background:#9ca3af;"></span>+ 22 more classes</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- SIDE COLUMN -->
+                <div class="p-side-col">
+
+                    <!-- BUILD PROGRESS -->
+                    <div class="p-card">
+                        <div class="p-card-title">Build Progress</div>
+                        <div style="margin-bottom:10px;"><span style="display:inline-flex;align-items:center;gap:6px;background:#f0fdf4;color:#16a34a;font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;border:1px solid #bbf7d0;"><span style="width:6px;height:6px;border-radius:50%;background:#16a34a;display:inline-block;"></span>Completed</span></div>
+                        <div class="p-progress-label"><span>Data Preparation</span><span>100%</span></div>
+                        <div class="p-progress-track"><div class="p-progress-fill" style="background:linear-gradient(90deg,#052e16,#16a34a);width:100%;"></div></div>
+                        <div class="p-progress-label"><span>Model Training</span><span>100%</span></div>
+                        <div class="p-progress-track"><div class="p-progress-fill" style="background:linear-gradient(90deg,#052e16,#16a34a);width:100%;"></div></div>
+                        <div class="p-progress-label"><span>Fine-Tuning</span><span>100%</span></div>
+                        <div class="p-progress-track"><div class="p-progress-fill" style="background:linear-gradient(90deg,#052e16,#16a34a);width:100%;"></div></div>
+                        <div class="p-progress-label"><span>HF Deployment</span><span>100%</span></div>
+                        <div class="p-progress-track"><div class="p-progress-fill" style="background:linear-gradient(90deg,#052e16,#16a34a);width:100%;"></div></div>
+                    </div>
+
+                    <!-- TECH STACK -->
+                    <div class="p-card">
+                        <div class="p-card-title">Tech Stack</div>
+                        <div class="p-tech-grid">
+                            <span class="p-tech-pill">Python</span>
+                            <span class="p-tech-pill">TensorFlow</span>
+                            <span class="p-tech-pill">Keras</span>
+                            <span class="p-tech-pill">MobileNetV2</span>
+                            <span class="p-tech-pill">NumPy</span>
+                            <span class="p-tech-pill">Gradio</span>
+                            <span class="p-tech-pill">Hugging Face</span>
+                            <span class="p-tech-pill">Matplotlib</span>
+                        </div>
+                    </div>
+
+                    <!-- BY THE NUMBERS -->
+                    <div class="p-card">
+                        <div class="p-card-title">By the Numbers</div>
+                        <div class="p-numbers">
+                            <div class="p-num-card" style="background:#f0fdf4;border:1px solid #bbf7d0;">
+                                <div class="p-num-val" style="color:#16a34a;">~97%</div>
+                                <div class="p-num-label">Val Accuracy</div>
+                            </div>
+                            <div class="p-num-card" style="background:#eff6ff;border:1px solid #dbeafe;">
+                                <div class="p-num-val" style="color:#1d4ed8;">38</div>
+                                <div class="p-num-label">Disease Classes</div>
+                            </div>
+                            <div class="p-num-card" style="background:#fdf4ff;border:1px solid #e9d5ff;">
+                                <div class="p-num-val" style="color:#7c3aed;">87K+</div>
+                                <div class="p-num-label">Training Images</div>
+                            </div>
+                            <div class="p-num-card" style="background:#fef9c3;border:1px solid #fde68a;">
+                                <div class="p-num-val" style="color:#b45309;">14</div>
+                                <div class="p-num-label">Crop Types</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LINKS -->
+                    <div class="p-card">
+                        <div class="p-card-title">Links</div>
+                        <a href="https://huggingface.co/spaces/rafiarsya/crop-disease-detector" target="_blank" rel="noopener noreferrer" class="p-link-btn hf">
+                            <svg viewBox="0 0 24 24" style="stroke:none;fill:#1a1a1a;width:16px;height:16px;"><text y="18" font-size="16">🤗</text></svg>
+                            <span class="p-link-btn-label">Try on Hugging Face</span>
+                            <svg viewBox="0 0 24 24" style="opacity:0.5;width:13px;height:13px;stroke:#1a1a1a;fill:none;stroke-width:2;stroke-linecap:round;"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                        </a>
+                        <a href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer" class="p-link-btn primary">
+                            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                            <span class="p-link-btn-label">GitHub</span>
+                            <svg viewBox="0 0 24 24" style="opacity:0.4;width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- HOW TO USE -->
+            <div class="p-card" style="margin-top:24px;">
+                <div class="p-card-title">How to Use</div>
+                <div class="p-demo-grid">
+                    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:14px 16px;">
+                        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#16a34a;margin-bottom:6px;">① Upload</div>
+                        <div style="font-size:13px;color:#374151;line-height:1.55;">Go to the Hugging Face Space and drag & drop a photo of a plant leaf — or use the sample images provided.</div>
+                    </div>
+                    <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:14px 16px;">
+                        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2563eb;margin-bottom:6px;">② Predict</div>
+                        <div style="font-size:13px;color:#374151;line-height:1.55;">Click Submit. The model runs inference in seconds and returns the predicted disease class with a confidence score.</div>
+                    </div>
+                    <div style="background:#fdf4ff;border:1px solid #e9d5ff;border-radius:10px;padding:14px 16px;">
+                        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#7c3aed;margin-bottom:6px;">③ Interpret</div>
+                        <div style="font-size:13px;color:#374151;line-height:1.55;">Review the top-5 predicted classes and their confidence percentages to understand the model's certainty and possible alternatives.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CLOSING -->
+            <div class="p-closing">
+                <div class="p-closing-text">
+                    <div class="p-closing-title">Try it live — no setup needed.</div>
+                    <div class="p-closing-desc">The model is deployed on Hugging Face Spaces. Open it in your browser, upload a leaf photo, and get an instant AI diagnosis for free.</div>
+                </div>
+                <a href="https://huggingface.co/spaces/rafiarsya/crop-disease-detector" target="_blank" rel="noopener noreferrer" class="p-closing-btn">
+                    <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    Open on Hugging Face
+                </a>
+            </div>
+
+        </div>
+    </main>
+</div>
+<script src="../script.js"></script>
+</body>
+</html>
