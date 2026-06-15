@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RafiFinance — Muhammad Rafi Arsya</title>
+    <link rel="icon" type="image/png" href="../assets/avatar_rafi.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        :root { --accent:#6c5ce7; --accent-dark:#1a0a2e; }
+        .project-main { padding:0; min-height:100vh; background:#f8f9fb; }
+        .project-page { max-width:1040px; width:min(100%,1040px); margin:0 auto; padding:40px 40px 100px; }
+        .project-back { display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:600; color:#6b7280; text-decoration:none; margin-bottom:32px; padding:6px 12px 6px 8px; border-radius:8px; border:1px solid #e5e7eb; background:#fff; transition:all 0.15s; }
+        .project-back:hover { color:#111827; border-color:#d1d5db; transform:translateX(-2px); }
+        .project-back svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+
+        .p-hero { width:100%; border-radius:16px; overflow:hidden; margin-bottom:28px; position:relative; min-height:280px; display:flex; flex-direction:column; justify-content:flex-end; padding:32px 36px; box-shadow:0 4px 24px rgba(0,0,0,0.14); background:linear-gradient(135deg,#1a0a2e 0%,#2d1b69 50%,#6c5ce7 100%); }
+        .p-hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px); background-size:40px 40px; pointer-events:none; }
+        .p-hero-overlay { position:absolute; inset:0; background:radial-gradient(ellipse at 80% 20%,rgba(108,92,231,0.18) 0%,transparent 60%); pointer-events:none; }
+        .p-hero-badge { display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:10px; position:relative; z-index:1; }
+        .p-hero-dot { width:6px; height:6px; border-radius:50%; background:#a78bfa; }
+        .p-hero-title { font-family:'Syne',sans-serif; font-size:48px; font-weight:800; color:#fff; letter-spacing:-0.03em; line-height:1.05; margin-bottom:10px; position:relative; z-index:1; }
+        .p-hero-title span { color:#c4b5fd; }
+        .p-hero-sub { font-size:14.5px; color:rgba(255,255,255,0.5); line-height:1.7; max-width:560px; position:relative; z-index:1; }
+        .p-hero-tags { display:flex; flex-wrap:wrap; gap:7px; margin-top:18px; position:relative; z-index:1; }
+        .p-hero-tag { font-size:11px; font-weight:600; letter-spacing:0.04em; padding:4px 11px; border-radius:20px; background:rgba(255,255,255,0.07); color:rgba(255,255,255,0.6); border:1px solid rgba(255,255,255,0.1); }
+
+        .p-meta-strip { display:flex; flex-wrap:wrap; border:1px solid #e5e7eb; border-radius:12px; overflow:hidden; margin-bottom:32px; background:#fff; }
+        .p-meta-item { flex:1; min-width:110px; padding:14px 20px; border-right:1px solid #f3f4f6; }
+        .p-meta-item:last-child { border-right:none; }
+        .p-meta-label { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#9ca3af; margin-bottom:4px; }
+        .p-meta-value { font-size:13.5px; font-weight:600; color:#111827; }
+
+        .p-layout { display:grid; grid-template-columns:1fr 290px; gap:24px; align-items:start; }
+        .p-main-col { display:flex; flex-direction:column; gap:22px; }
+        .p-side-col { display:flex; flex-direction:column; gap:16px; }
+        .p-card { background:#fff; border:1px solid #e5e7eb; border-radius:14px; padding:24px 26px; }
+        .p-card-title { font-size:10.5px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#9ca3af; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid #f3f4f6; }
+        .p-body { font-size:15px; color:#374151; line-height:1.85; }
+        .p-body p { margin:0 0 14px; }
+        .p-body p:last-child { margin-bottom:0; }
+        .p-body strong { color:#111827; font-weight:600; }
+
+        .p-features { display:flex; flex-direction:column; gap:9px; }
+        .p-feature { display:flex; align-items:flex-start; gap:12px; padding:13px 15px; background:#f9fafb; border:1px solid #f3f4f6; border-radius:10px; }
+        .p-feature-icon { width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; background:#ede9fe; color:#6c5ce7; }
+        .p-feature-icon svg { width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .p-feature-name { font-size:13px; font-weight:700; color:#111827; margin-bottom:2px; }
+        .p-feature-desc { font-size:12px; color:#6b7280; line-height:1.5; }
+
+        .p-stack-pills { display:flex; flex-wrap:wrap; gap:7px; }
+        .p-stack-pill { font-size:11.5px; font-weight:500; color:#374151; background:#f9fafb; border:1px solid #e5e7eb; border-radius:6px; padding:4px 11px; font-family:'JetBrains Mono', monospace; }
+
+        .p-link-btn { display:flex; align-items:center; gap:8px; padding:11px 16px; border-radius:9px; text-decoration:none; font-size:13px; font-weight:600; transition:all 0.15s; margin-bottom:8px; }
+        .p-link-btn:last-child { margin-bottom:0; }
+        .p-link-btn.primary { background:#6c5ce7; color:#fff; }
+        .p-link-btn.primary:hover { background:#5b4bd4; }
+        .p-link-btn.secondary { background:#f9fafb; color:#374151; border:1px solid #e5e7eb; }
+        .p-link-btn.secondary:hover { background:#f3f4f6; }
+        .p-link-btn svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
+
+        .p-score-card { background:linear-gradient(135deg,#1a0a2e,#2d1b69); border-radius:14px; padding:24px; color:#fff; }
+        .p-score-value { font-size:52px; font-weight:800; color:#c4b5fd; letter-spacing:-0.03em; line-height:1; margin-bottom:4px; font-family:'JetBrains Mono',monospace; }
+        .p-score-label { font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:16px; }
+        .p-score-bar { height:6px; background:rgba(255,255,255,0.1); border-radius:100px; overflow:hidden; margin-bottom:10px; }
+        .p-score-fill { height:100%; background:#6c5ce7; border-radius:100px; width:78%; }
+        .p-score-items { display:flex; flex-direction:column; gap:6px; margin-top:12px; }
+        .p-score-item { display:flex; justify-content:space-between; font-size:11.5px; }
+        .p-score-item-label { color:rgba(255,255,255,0.5); }
+        .p-score-item-val { color:rgba(255,255,255,0.85); font-weight:600; font-family:'JetBrains Mono',monospace; }
+
+        .p-callout { background:#f5f3ff; border-left:3px solid #6c5ce7; border-radius:0 8px 8px 0; padding:14px 18px; font-size:13.5px; color:#374151; line-height:1.65; margin:16px 0; font-style:italic; }
+
+        @media (max-width:900px) { .p-layout { grid-template-columns:1fr; } }
+        /* Screenshots */
+        .p-screenshots { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:16px 0; }
+        .p-screenshot { border-radius:14px; overflow:hidden; border:1px solid #e5e7eb; background:#080810; cursor:zoom-in; transition:transform 0.2s,box-shadow 0.2s; aspect-ratio:9/19.5; position:relative; }
+        .p-screenshot:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(0,0,0,0.13); }
+        .p-screenshot img { width:100%; height:100%; object-fit:cover; display:block; }
+        .p-screenshot-cap { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top,rgba(0,0,0,0.8),transparent); padding:16px 8px 8px; font-size:10px; font-weight:700; color:rgba(255,255,255,0.85); text-transform:uppercase; letter-spacing:0.05em; text-align:center; }
+        .lightbox-ov { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; align-items:center; justify-content:center; cursor:zoom-out; }
+        .lightbox-ov.open { display:flex; }
+        .lightbox-ov img { max-width:min(420px,90vw); max-height:90vh; border-radius:20px; object-fit:contain; }
+        .lightbox-x { position:absolute; top:20px; right:24px; color:#fff; width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:20px; }
+        .lightbox-x:hover { background:rgba(255,255,255,0.2); }
+        .apk-dl { display:flex; align-items:center; gap:14px; background:linear-gradient(135deg,#1a0a2e,#2d1b69,#6c5ce7); border-radius:12px; padding:18px 20px; text-decoration:none; transition:opacity 0.2s; margin-bottom:10px; }
+        .apk-dl:hover { opacity:0.9; }
+        .apk-dl-icon { width:44px; height:44px; border-radius:10px; background:rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .apk-dl-icon svg { width:22px; height:22px; stroke:#fff; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .apk-dl-title { font-size:14px; font-weight:700; color:#fff; }
+        .apk-dl-sub { font-size:11px; color:rgba(255,255,255,0.5); margin-top:2px; }
+        .apk-dl-arr svg { width:18px; height:18px; stroke:rgba(255,255,255,0.4); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        @media (max-width:600px) { .p-screenshots { grid-template-columns:repeat(2,1fr); } }
+        @media (max-width:600px) { .project-page { padding:24px 18px 60px; } .p-hero { padding:24px; min-height:200px; } .p-hero-title { font-size:32px; } }
+    </style>
+</head>
+<body>
+    <div class="mobile-topbar">
+        <span class="mobile-topbar-title">Muhammad Rafi Arsya</span>
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <div class="portfolio-app">
+                <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-logo-wrap">
+                    <img class="sidebar-logo-avatar" src="../assets/avatar_rafi.png" alt="Rafi Avatar">
+                    <span class="sidebar-logo-name">Muhammad Rafi Arsya</span>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="../index.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg></span><span>Home</span></a>
+                    <a href="../blog.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8z"/></svg></span><span>Blog</span></a>
+                </nav>
+                <div class="sidebar-group-label">Me</div>
+                <nav class="sidebar-nav">
+                    <a href="../resume.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></span><span>Resume / CV</span></a>
+                    <a href="../course.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><span>Course &amp; Certificate</span></a>
+                    <a href="../contact.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span><span>Contact</span></a>
+                </nav>
+                <div class="sidebar-group-label">Projects</div>
+                <div class="sidebar-projects">
+                    <a href="project1.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6l-6-4-6 4v5"/><path d="M6 10v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8"/><path d="M10 22v-6h4v6"/></svg></span><span class="project-label">HandGesture</span></a>
+                    <a href="project2.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><span class="project-label">CampusBay</span></a>
+                    <a href="project5.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><circle cx="10" cy="14" r="2"/><path d="m20 20-2.5-2.5"/></svg></span><span class="project-label">PaperMind</span></a>
+                    <a href="project3.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="4" r="2"/><path d="m18 19 1-7-5.87.94"/><path d="m5 8 3-3 4.5 3-2.5 3"/><path d="M4.24 14.5A5 5 0 0 0 9 21c1.5 0 2.87-.56 3.9-1.47"/><path d="M14 21v-5"/></svg></span><span class="project-label">NASE Accessibility</span></a>
+                    <a href="project4.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span><span class="project-label">Crop Disease Detector</span></a>
+                    <a href="projects.html" class="project-more"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span>All Projects</span></a>
+                </div>
+                <div class="sidebar-group-label">Social</div>
+                <nav class="sidebar-social">
+                    <a href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></span><span>GitHub</span></a>
+                    <a href="https://www.linkedin.com/in/rafi-arsya-557335394/" target="_blank" rel="noopener noreferrer"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span><span>LinkedIn</span></a>
+                    <a href="https://www.instagram.com/rarsya.03/" target="_blank" rel="noopener noreferrer"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span><span>Instagram</span></a>
+                </nav>
+            </div>
+            <div class="sidebar-footer"><p>Designed with focus on clarity and craft.</p></div>
+        </aside>
+
+        <main class="project-main">
+            <div class="project-page">
+                <a href="projects.html" class="project-back">
+                    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                    All Projects
+                </a>
+
+                <!-- HERO -->
+                <div class="p-hero">
+                    <div class="p-hero-grid"></div>
+                    <div class="p-hero-overlay"></div>
+                    <div class="p-hero-badge"><span class="p-hero-dot"></span> Completed · 2026</div>
+                    <div class="p-hero-title">Rafi<span>Finance</span></div>
+                    <div class="p-hero-sub">A complete personal finance tracker built as a single HTML file — no server, no database, no framework. Works offline as a PWA.</div>
+                    <div class="p-hero-tags">
+                        <span class="p-hero-tag">Finance</span>
+                        <span class="p-hero-tag">PWA</span>
+                        <span class="p-hero-tag">Single-File</span>
+                        <span class="p-hero-tag">Vanilla JS</span>
+                        <span class="p-hero-tag">localStorage</span>
+                    </div>
+                </div>
+
+                <!-- META STRIP -->
+                <div class="p-meta-strip">
+                    <div class="p-meta-item"><div class="p-meta-label">Type</div><div class="p-meta-value">Personal Tool</div></div>
+                    <div class="p-meta-item"><div class="p-meta-label">Year</div><div class="p-meta-value">2026</div></div>
+                    <div class="p-meta-item"><div class="p-meta-label">Status</div><div class="p-meta-value">Live</div></div>
+                    <div class="p-meta-item"><div class="p-meta-label">Deployed</div><div class="p-meta-value">finance.rafiarsya.com</div></div>
+                    <div class="p-meta-item"><div class="p-meta-label">File size</div><div class="p-meta-value">1 HTML file</div></div>
+                </div>
+
+                <!-- CONTENT LAYOUT -->
+                <div class="p-layout">
+                    <div class="p-main-col">
+
+                        <!-- Overview -->
+                        <div class="p-card">
+                            <div class="p-card-title">Overview</div>
+                            <div class="p-body">
+                                <p>RafiFinance v4 is a personal finance tracker I built because I couldn't find an existing app that worked the way I think about money. Most apps are too complex, require an account, or send your data to a server.</p>
+                                <p>So I built my own — with a deliberate constraint: <strong>one HTML file</strong>. No npm. No build step. No server. Open it in a browser and it just works. Your data stays on your device in localStorage, exportable as a single JSON file at any time.</p>
+                                <div class="p-callout">The single-file constraint forced better code. When you can't hide complexity behind folder structures, you have to actually understand what you're building.</div>
+                                <p>Deployed on Cloudflare Pages at <strong>finance.rafiarsya.com</strong> — free hosting, global CDN, automatic HTTPS, zero configuration.</p>
+                            </div>
+                        </div>
+
+
+                        <!-- Screenshots -->
+                        <div class="p-card">
+                            <div class="p-card-title">Screenshots</div>
+                            <div class="p-screenshots">
+                                <div class="p-screenshot" onclick="openLb(this)">
+                                    <img src="../foto-finance2.png" alt="Dashboard" loading="lazy">
+                                    <div class="p-screenshot-cap">Dashboard</div>
+                                </div>
+                                <div class="p-screenshot" onclick="openLb(this)">
+                                    <img src="../foto-finance3.png" alt="Transactions" loading="lazy">
+                                    <div class="p-screenshot-cap">Transaksi</div>
+                                </div>
+                                <div class="p-screenshot" onclick="openLb(this)">
+                                    <img src="../foto-finance4.png" alt="Budget" loading="lazy">
+                                    <div class="p-screenshot-cap">Budget</div>
+                                </div>
+                                <div class="p-screenshot" onclick="openLb(this)">
+                                    <img src="../foto-finance5.png" alt="Goals" loading="lazy">
+                                    <div class="p-screenshot-cap">Goals</div>
+                                </div>
+                                <div class="p-screenshot" onclick="openLb(this)">
+                                    <img src="../foto-finance6.png" alt="Reminder" loading="lazy">
+                                    <div class="p-screenshot-cap">Reminder</div>
+                                </div>
+                                <div class="p-screenshot" onclick="openLb(this)">
+                                    <img src="../foto-finance7.png" alt="Analysis" loading="lazy">
+                                    <div class="p-screenshot-cap">Analisis</div>
+                                </div>
+                                <div class="p-screenshot" onclick="openLb(this)">
+                                    <img src="../foto-finance1.png" alt="Settings" loading="lazy">
+                                    <div class="p-screenshot-cap">Settings</div>
+                                </div>
+                            </div>
+                            <p style="font-size:11.5px;color:#9ca3af;text-align:center;margin-top:4px;">Tap screenshot to zoom</p>
+                        </div>
+
+                        <!-- Features -->
+                        <div class="p-card">
+                            <div class="p-card-title">Features</div>
+                            <div class="p-features">
+                                <div class="p-feature">
+                                    <div class="p-feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                                    <div><div class="p-feature-name">Transactions</div><div class="p-feature-desc">Log income and expenses with category, date, and notes. Filter and search across all history.</div></div>
+                                </div>
+                                <div class="p-feature">
+                                    <div class="p-feature-icon"><svg viewBox="0 0 24 24"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg></div>
+                                    <div><div class="p-feature-name">Budget Tracking</div><div class="p-feature-desc">Set monthly budgets per category with visual progress bars and over-budget alerts.</div></div>
+                                </div>
+                                <div class="p-feature">
+                                    <div class="p-feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                                    <div><div class="p-feature-name">Saving Goals</div><div class="p-feature-desc">Set a target and deadline. Auto-calculates required monthly savings to hit the goal on time.</div></div>
+                                </div>
+                                <div class="p-feature">
+                                    <div class="p-feature-icon"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+                                    <div><div class="p-feature-name">Recurring Reminders</div><div class="p-feature-desc">Set browser notifications for bills and subscriptions with configurable frequency.</div></div>
+                                </div>
+                                <div class="p-feature">
+                                    <div class="p-feature-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+                                    <div><div class="p-feature-name">6-Month Analysis</div><div class="p-feature-desc">Visual income vs expense trends across the last 6 months with spending breakdown by category.</div></div>
+                                </div>
+                                <div class="p-feature">
+                                    <div class="p-feature-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                                    <div><div class="p-feature-name">Financial Health Score</div><div class="p-feature-desc">A real-time 0–100 score based on savings rate, budget adherence, and goal progress.</div></div>
+                                </div>
+                                <div class="p-feature">
+                                    <div class="p-feature-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+                                    <div><div class="p-feature-name">Export / Import</div><div class="p-feature-desc">Full data export as JSON. Import on any device and all history, budgets, and goals are restored instantly.</div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Architecture -->
+                        <div class="p-card">
+                            <div class="p-card-title">Single-File Architecture</div>
+                            <div class="p-body">
+                                <p>The entire app — HTML structure, 800+ lines of CSS, and 1800+ lines of vanilla JavaScript — lives in one file. State is managed with a single global object persisted to localStorage under the key <code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;font-size:12px;font-family:'JetBrains Mono',monospace;">rfv4</code>.</p>
+                                <p>The PWA manifest is embedded inline as a <code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;font-size:12px;font-family:'JetBrains Mono',monospace;">data:</code> URL. The service worker is generated from a Blob URL at runtime — no external <code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;font-size:12px;font-family:'JetBrains Mono',monospace;">sw.js</code> file needed. Everything is self-contained.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- SIDE COLUMN -->
+                    <div class="p-side-col">
+
+                        <!-- Health Score demo -->
+                        <div class="p-score-card">
+                            <div class="p-score-value">78</div>
+                            <div class="p-score-label">Financial Health Score</div>
+                            <div class="p-score-bar"><div class="p-score-fill"></div></div>
+                            <div class="p-score-items">
+                                <div class="p-score-item"><span class="p-score-item-label">Savings Rate</span><span class="p-score-item-val">+31</span></div>
+                                <div class="p-score-item"><span class="p-score-item-label">Budget Adherence</span><span class="p-score-item-val">+28</span></div>
+                                <div class="p-score-item"><span class="p-score-item-label">Goal Progress</span><span class="p-score-item-val">+19</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Stack -->
+                        <div class="p-card">
+                            <div class="p-card-title">Tech Stack</div>
+                            <div class="p-stack-pills">
+                                <span class="p-stack-pill">Vanilla JS</span>
+                                <span class="p-stack-pill">CSS Custom Props</span>
+                                <span class="p-stack-pill">PWA</span>
+                                <span class="p-stack-pill">localStorage</span>
+                                <span class="p-stack-pill">Lucide Icons</span>
+                                <span class="p-stack-pill">Inter Font</span>
+                                <span class="p-stack-pill">JetBrains Mono</span>
+                                <span class="p-stack-pill">Cloudflare Pages</span>
+                            </div>
+                        </div>
+
+                        <!-- Links -->
+                        <div class="p-card">
+                            <div class="p-card-title">Links</div>
+                            <a href="https://finance.rafiarsya.com" target="_blank" rel="noopener noreferrer" class="p-link-btn primary">
+                                <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                Live App
+                            </a>
+                            <a href="https://github.com/rafiarsya07/rafifinance/releases" target="_blank" rel="noopener noreferrer" class="apk-dl">
+                                <div class="apk-dl-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M9 12l-2-2 2-2"/><path d="M15 12l2-2-2-2"/><path d="M9 14s.5 2 3 2 3-2 3-2"/></svg></div>
+                                <div style="flex:1"><div class="apk-dl-title">Download APK</div><div class="apk-dl-sub">Android · Signed · v4.0</div></div>
+                                <div class="apk-dl-arr"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+                            </a>
+                            <a href="../blog-rafifinance.html" class="p-link-btn secondary">
+                                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                Read Blog Post
+                            </a>
+                            <a href="https://github.com/rafiarsya07/rafifinance" target="_blank" rel="noopener noreferrer" class="p-link-btn secondary">
+                                <svg viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                                GitHub
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../script.js"></script>
+    <div class="lightbox-ov" id="plb" onclick="closeLb(event)">
+        <div class="lightbox-x" onclick="closeLb()"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+        <img id="plb-img" src="" alt="">
+    </div>
+    <script>
+        function openLb(el){document.getElementById('plb-img').src=el.querySelector('img').src;document.getElementById('plb').classList.add('open');document.body.style.overflow='hidden';}
+        function closeLb(e){if(e&&e.target!==document.getElementById('plb')&&!e.target.closest('.lightbox-x'))return;document.getElementById('plb').classList.remove('open');document.body.style.overflow='';}
+        document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('plb').classList.remove('open');document.body.style.overflow='';}});
+    </script>
+</body>
+</html>
