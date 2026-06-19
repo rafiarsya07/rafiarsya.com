@@ -5,263 +5,1304 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Projects — Muhammad Rafi Arsya</title>
     <link rel="icon" type="image/png" href="../assets/avatar_rafi.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .ap-main { padding: 0; min-height: 100vh; background: #ffffff; }
-        .ap-page { max-width: 1280px; margin: 0 auto; padding: 48px 48px 80px; }
-        .ap-header { margin-bottom: 44px; position: relative; }
-        .ap-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #9ca3af; margin-bottom: 0px; }
-        .ap-title { font-size: 38px; font-weight: 800; color: #111827; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 10px; position: relative; display: inline-block; }
-
-        /* Animated accent bar that draws under the title */
-        .ap-title::after {
-            content: '';
-            position: absolute;
-            left: 0; bottom: -6px;
-            width: 100%; height: 3px;
-            background: linear-gradient(90deg, #1a2744 0%, #6366f1 60%, #10b981 100%);
-            border-radius: 2px;
-            transform: scaleX(0);
-            transform-origin: left center;
-            animation: ap-bar-draw 0.7s cubic-bezier(.7,0,.2,1) forwards;
-            animation-delay: 0.55s;
-        }
-        @keyframes ap-bar-draw {
-            to { transform: scaleX(1); }
-        }
-        .ap-sub { font-size: 16px; color: #6b7280; margin-top: 18px; }
-
-        /* ── Status sections ── */
-        .ap-section { margin-bottom: 44px; }
-        .ap-section:last-child { margin-bottom: 0; }
-        .ap-section-head {
-            display: flex; align-items: center; gap: 10px;
-            margin-bottom: 18px; padding-bottom: 12px;
-            position: relative;
-        }
-        .ap-section-head::after {
-            content: '';
-            position: absolute;
-            left: 0; bottom: 0; right: 0; height: 1px;
-            background: #e5e7eb;
-            transform: scaleX(0);
-            transform-origin: left center;
-            animation: ap-bar-draw 0.6s cubic-bezier(.7,0,.2,1) forwards;
-        }
-        .ap-section[data-status="ongoing"]   .ap-section-head::after { animation-delay: 0.5s; }
-        .ap-section[data-status="completed"] .ap-section-head::after { animation-delay: 0.85s; }
-
-        .ap-section-title { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #111827; margin: 0; }
-        .ap-section-count { font-size: 11px; font-weight: 700; color: #6b7280; background: #f3f4f6; border-radius: 10px; padding: 2px 9px; margin-left: 2px; }
-
-        /* Ongoing pulse dot — pops in with bounce */
-        .ap-section-pulse {
-            position: relative; width: 8px; height: 8px; border-radius: 50%;
-            background: #10b981; flex-shrink: 0;
-            transform: scale(0);
-            animation: ap-dot-pop 0.5s cubic-bezier(.34,1.56,.64,1) forwards;
-            animation-delay: 0.6s;
-        }
-        @keyframes ap-dot-pop {
-            0%   { transform: scale(0); }
-            70%  { transform: scale(1.4); }
-            100% { transform: scale(1); }
-        }
-        .ap-section-pulse::after {
-            content: ''; position: absolute; inset: -2px; border-radius: 50%;
-            background: #10b981; opacity: 0.4;
-            animation: ap-pulse-ring 1.8s ease-out infinite;
-            animation-delay: 1.1s;
-        }
-        @keyframes ap-pulse-ring {
-            0%   { transform: scale(0.7); opacity: 0.55; }
-            100% { transform: scale(2.4); opacity: 0; }
-        }
-
-        /* Completed check icon */
-        .ap-section-check { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; color: #6b7280; flex-shrink: 0; }
-        .ap-section-check svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
-
-        .ap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 22px; }
-
-        /* ── CARD: modern hover with 3D tilt, spotlight, shine sweep, CTA reveal ── */
-        .ap-card {
-            --tilt-x: 0deg;
-            --tilt-y: 0deg;
-            --lift: 0px;
-            --mx: 50%;
-            --my: 50%;
-            text-decoration: none; color: inherit; background: #fff;
-            border: 1px solid #e5e7eb; border-radius: 14px; overflow: hidden;
-            display: flex; flex-direction: column;
-            position: relative;
-            transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(var(--lift));
-            transform-style: preserve-3d;
-            transition: transform 0.35s cubic-bezier(.2,.7,.2,1), box-shadow 0.35s ease, border-color 0.25s ease;
-            will-change: transform, opacity;
-        }
-        .ap-card:hover {
-            --lift: -6px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.14), 0 4px 12px rgba(0,0,0,0.05);
-            border-color: #d1d5db;
-        }
-        .ap-card:active {
-            --lift: -2px;
-            transition: transform 0.1s ease;
-        }
-
-        /* HERO with cursor-follow spotlight + shine sweep (top → bottom) */
-        .ap-card-hero {
-            aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;
-            position: relative; overflow: hidden;
-        }
-        /* Spotlight that follows cursor */
-        .ap-card-hero::before {
-            content: '';
-            position: absolute; inset: 0;
-            background: radial-gradient(220px circle at var(--mx) var(--my), rgba(255,255,255,0.22), transparent 65%);
-            opacity: 0;
-            transition: opacity 0.35s ease;
-            pointer-events: none;
-            z-index: 1;
-        }
-        .ap-card:hover .ap-card-hero::before { opacity: 1; }
-
-        /* Shine sweep that travels top → bottom on hover */
-        .ap-card-hero::after {
-            content: '';
-            position: absolute; inset: -50% 0;
-            background: linear-gradient(180deg, transparent 35%, rgba(255,255,255,0.18) 50%, transparent 65%);
-            transform: translateY(-120%);
-            pointer-events: none;
-            z-index: 2;
-        }
-        .ap-card:hover .ap-card-hero::after {
-            animation: ap-shine-down 0.9s cubic-bezier(.2,.7,.2,1) forwards;
-        }
-        @keyframes ap-shine-down {
-            from { transform: translateY(-120%); }
-            to   { transform: translateY(120%); }
-        }
-
-        .ap-card-letter {
-            font-size: 64px; font-weight: 800; color: rgba(255,255,255,0.1);
-            letter-spacing: -0.04em; user-select: none; position: relative; z-index: 0;
-            transition: transform 0.5s cubic-bezier(.2,.7,.2,1), color 0.4s ease;
-        }
-        .ap-card:hover .ap-card-letter { transform: scale(1.12); color: rgba(255,255,255,0.22); }
-        .ap-card-year {
-            position: absolute; top: 14px; right: 14px; font-size: 11px; font-weight: 600;
-            color: rgba(255,255,255,0.75); background: rgba(0,0,0,0.22);
-            padding: 3px 10px; border-radius: 20px;
-            transition: background 0.25s ease;
-            z-index: 3;
-        }
-        .ap-card:hover .ap-card-year { background: rgba(0,0,0,0.4); }
-
-        .ap-card-body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
-        .ap-tag-row { display: flex; flex-wrap: wrap; gap: 5px; }
-        .ap-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #f3f4f6; color: #374151; border-radius: 4px; padding: 2px 8px; }
-        .ap-card-name { font-size: 17px; font-weight: 700; color: #111827; }
-        .ap-card-desc { font-size: 13.5px; color: #6b7280; line-height: 1.6; }
-        .ap-card-stack { font-size: 12px; color: #9ca3af; font-weight: 500; margin-top: 4px; }
-
-        /* "View Project →" CTA — slides up from bottom on hover */
-        .ap-card-cta {
-            display: flex; align-items: center; gap: 6px;
-            font-size: 12.5px; font-weight: 700; color: #1a2744;
-            margin-top: auto; padding-top: 14px;
-            max-height: 0;
-            opacity: 0;
-            transform: translateY(8px);
-            overflow: hidden;
-            transition: max-height 0.35s ease, opacity 0.25s ease, transform 0.35s cubic-bezier(.2,.7,.2,1), padding-top 0.35s ease;
-        }
-        .ap-card:hover .ap-card-cta {
-            max-height: 40px;
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .ap-card-cta svg {
-            width: 14px; height: 14px;
-            stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; fill: none;
-            transition: transform 0.35s cubic-bezier(.2,.7,.2,1);
-        }
-        .ap-card:hover .ap-card-cta svg { transform: translateX(4px); }
-
-        /* ── PAGE REVEAL: whole page comes into focus ── */
-        @keyframes ap-page-reveal {
-            from { opacity: 0; transform: scale(0.985); filter: blur(6px); }
-            to   { opacity: 1; transform: scale(1);     filter: blur(0); }
-        }
-        .ap-page { animation: ap-page-reveal 0.6s cubic-bezier(.2,.7,.2,1) both; }
-
-        /* ── Page LEAVE: when clicking a card, fade the page out before navigating ── */
-        @keyframes ap-page-leave {
-            from { opacity: 1; transform: scale(1); }
-            to   { opacity: 0; transform: scale(0.985); }
-        }
-        body.ap-leaving .ap-page { animation: ap-page-leave 0.32s ease forwards; }
-
-        /* ── Staggered entrance for each element ── */
-        @keyframes ap-fade-up {
-            from { opacity: 0; transform: translateY(18px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes ap-card-in {
-            from { opacity: 0; transform: translateY(28px) scale(0.96) rotate(-0.6deg); }
-            to   { opacity: 1; transform: translateY(0)    scale(1)    rotate(0); }
-        }
-        .ap-eyebrow, .ap-title, .ap-sub, .ap-section-head {
-            opacity: 0;
-            animation: ap-fade-up 0.6s cubic-bezier(.2,.7,.2,1) forwards;
-        }
-        .ap-card {
-            opacity: 0;
-            animation: ap-card-in 0.65s cubic-bezier(.34,1.2,.64,1) forwards;
-        }
-        .ap-eyebrow { animation-delay: 0.15s; }
-        .ap-title   { animation-delay: 0.25s; }
-        .ap-sub     { animation-delay: 0.45s; }
-        .ap-section[data-status="ongoing"]   .ap-section-head { animation-delay: 0.55s; }
-        .ap-section[data-status="ongoing"]   .ap-card:nth-child(1) { animation-delay: 0.7s; }
-        .ap-section[data-status="ongoing"]   .ap-card:nth-child(2) { animation-delay: 0.8s; }
-        .ap-section[data-status="completed"] .ap-section-head { animation-delay: 0.9s; }
-        .ap-section[data-status="completed"] .ap-card:nth-child(1) { animation-delay: 1.05s; }
-        .ap-section[data-status="completed"] .ap-card:nth-child(2) { animation-delay: 1.15s; }
-        .ap-section[data-status="completed"] .ap-card:nth-child(3) { animation-delay: 1.25s; }
-        .ap-section[data-status="completed"] .ap-card:nth-child(4) { animation-delay: 1.35s; }
-        .ap-section[data-status="completed"] .ap-card:nth-child(5) { animation-delay: 1.45s; }
-
-        /* Respect users who prefer reduced motion — kill all animations */
-        @media (prefers-reduced-motion: reduce) {
-            .ap-page,
-            .ap-eyebrow, .ap-title, .ap-sub, .ap-section-head, .ap-card {
-                animation: none; opacity: 1; transform: none; filter: none;
-            }
-            .ap-title::after, .ap-section-head::after { animation: none; transform: scaleX(1); }
-            .ap-section-pulse { animation: none; transform: scale(1); }
-            .ap-section-pulse::after { animation: none; }
-            .ap-card { transform: none !important; }
-            .ap-card:hover { transform: none; }
-            .ap-card-hero::before, .ap-card-hero::after { display: none; }
-            .ap-card-cta { max-height: 40px; opacity: 1; transform: none; }
-            body.ap-leaving .ap-page { animation: none; }
-        }
-
-        @media (max-width: 1024px) {
-            .ap-page { padding: 40px 32px 60px; }
-        }
-        @media (max-width: 768px) {
-            .ap-page { padding: 24px 18px 60px; }
-            .ap-title { font-size: 28px; }
-            .ap-grid { grid-template-columns: 1fr; }
-            /* Disable 3D tilt on touch — feels jittery */
-            .ap-card { transform: translateY(var(--lift)) !important; }
+        /* BASE STYLES replaces external styles.css */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'IBM Plex Sans', sans-serif; background: #f8f9fb; color: #374151; -webkit-font-smoothing: antialiased; }
+        .mobile-topbar { display: none; position: sticky; top: 0; z-index: 100; align-items: center; justify-content: space-between; padding: 0 16px; height: 52px; background: rgba(248,249,251,0.96); border-bottom: 1px solid #e5e7eb; backdrop-filter: blur(12px); }
+        .mobile-topbar-title { font-size: 14px; font-weight: 700; color: #111827; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: calc(100% - 52px); }
+        .hamburger-btn { width: 36px; height: 36px; border: none; background: #f3f4f6; border-radius: 8px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4.5px; padding: 0; flex-shrink: 0; }
+        .hamburger-btn span { display: block; width: 18px; height: 1.5px; background: #111827; border-radius: 2px; transition: all 0.2s ease; }
+        .hamburger-btn.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        .hamburger-btn.open span:nth-child(2) { opacity: 0; }
+        .hamburger-btn.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+        .portfolio-app { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; align-items: start; }
+        .sidebar { width: 240px; border-right: 1px solid #e5e7eb; background: #fff; display: flex; flex-direction: column; height: 100vh; position: sticky; top: 0; overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: #e5e7eb transparent; transition: transform 0.3s cubic-bezier(.4,0,.2,1); will-change: transform; flex-shrink: 0; } .sidebar::-webkit-scrollbar { width: 3px; } .sidebar::-webkit-scrollbar-track { background: transparent; } .sidebar::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 3px; }
+        .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 199; opacity: 0; pointer-events: none; transition: opacity 0.28s ease; }
+        .sidebar-top { padding: 20px 16px 16px; flex: 1; }
+        .sidebar-logo-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #f3f4f6; }
+        .sidebar-logo-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+        .sidebar-logo-name { font-size: 13px; font-weight: 700; color: #111827; }
+        .sidebar-group-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #9ca3af; margin: 16px 0 6px; padding: 0 4px; }
+        .sidebar-nav { display: flex; flex-direction: column; gap: 1px; }
+        .sidebar-nav a, .sidebar-projects a, .sidebar-social a { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 7px; font-size: 13px; font-weight: 500; color: #374151; text-decoration: none; transition: all 0.15s; }
+        .sidebar-nav a:hover, .sidebar-projects a:hover, .sidebar-social a:hover { background: #f3f4f6; color: #111827; }
+        .sidebar-nav a.active, .sidebar-projects a.active { background: #111827; color: #fff; }
+        .nav-icon { width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .nav-icon svg { width: 15px; height: 15px; }
+        .sidebar-projects { display: flex; flex-direction: column; gap: 1px; }
+        .project-label { font-size: 13px; }
+        .project-more { opacity: 0.65; }
+        .sidebar-social { display: flex; flex-direction: column; gap: 1px; }
+        .sidebar-social a { color: #6b7280; }
+        .sidebar-footer { padding: 16px; border-top: 1px solid #f3f4f6; }
+        .sidebar-footer p { font-size: 11px; color: #9ca3af; }
+        @media (max-width: 900px) {
+            .mobile-topbar { display: flex; }
+            .portfolio-app { display: block; width: 100%; }
+            .sidebar { position: fixed; left: 0; top: 0; height: 100vh; z-index: 200; transform: translateX(-100%); }
+            .sidebar.sb-open { transform: translateX(0); box-shadow: 4px 0 32px rgba(0,0,0,0.12); }
+            .sidebar-overlay { display: block; }
+            .sidebar-overlay.sb-open { opacity: 1; pointer-events: all; }
+            body.sb-open { overflow: hidden; }
         }
     </style>
-</head>
+    <style>
+        /* ── ROOT ─────────────────────────────────────────── */
+        :root {
+            --bg:       #0c0c0c;
+            --bg2:      #141414;
+            --bg3:      #1c1c1c;
+            --line:     #2a2a2a;
+            --line2:    #333;
+            --muted: #828282;
+            --sub:      #888;
+            --body:     #c0c0c0;
+            --heading:  #f0f0f0;
+            --white:    #fafafa;
+            --hi:       #ffffff;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        .ap-main {
+            padding: 0; min-height: 100vh;
+            background: var(--bg);
+            color: var(--body);
+        }
+        .ap-page {
+            max-width: 1280px; margin: 0 auto;
+            padding: 56px 52px 100px;
+        }
+
+        /* ── HEADER ───────────────────────────────────────── */
+        .ap-header { margin-bottom: 56px; }
+        .ap-eyebrow {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px; font-weight: 400; letter-spacing: 0.2em;
+            text-transform: uppercase; color: var(--muted);
+            margin-bottom: 14px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .ap-eyebrow::before {
+            content: '';
+            display: inline-block; width: 28px; height: 1px;
+            background: var(--muted);
+        }
+        .ap-title {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 56px; font-weight: 700;
+            color: var(--hi); letter-spacing: -0.04em;
+            line-height: 1; margin-bottom: 16px;
+        }
+        .ap-title-dot {
+            display: inline-block; width: 8px; height: 8px;
+            border-radius: 50%; background: #fff;
+            margin-left: 4px; vertical-align: middle;
+            animation: dot-blink 2.4s ease-in-out infinite;
+        }
+        @keyframes dot-blink {
+            0%, 100% { opacity: 1; } 50% { opacity: 0.15; }
+        }
+        .ap-sub {
+            font-size: 15px; color: var(--sub); line-height: 1.7;
+            max-width: 520px;
+        }
+        .ap-stats {
+            display: flex; gap: 32px; margin-top: 28px;
+            padding-top: 28px; border-top: 1px solid var(--line);
+        }
+        .ap-stat-val {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 28px; font-weight: 700; color: var(--white);
+            line-height: 1; margin-bottom: 4px;
+        }
+        .ap-stat-label {
+            font-size: 11px; font-weight: 500; color: var(--muted);
+            letter-spacing: 0.08em; text-transform: uppercase;
+        }
+
+        /* ── SECTION HEADERS ──────────────────────────────── */
+        .ap-section { margin-bottom: 60px; }
+        .ap-section-head {
+            display: flex; align-items: center; gap: 12px;
+            margin-bottom: 24px;
+        }
+        .ap-section-line {
+            flex: 1; height: 1px; background: var(--line);
+        }
+        .ap-section-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px; font-weight: 700;
+            letter-spacing: 0.18em; text-transform: uppercase;
+            color: var(--muted);
+        }
+        .ap-section-count {
+            font-size: 10px; font-weight: 700;
+            color: var(--bg); background: var(--muted);
+            border-radius: 20px; padding: 2px 8px;
+        }
+        .ap-section-pulse {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #fff; flex-shrink: 0;
+            box-shadow: 0 0 0 0 rgba(255,255,255,0.5);
+            animation: pulse-ring 2s ease-out infinite;
+        }
+        @keyframes pulse-ring {
+            0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0.5); }
+            100% { box-shadow: 0 0 0 8px rgba(255,255,255,0); }
+        }
+
+        /* ── GRID ─────────────────────────────────────────── */
+        .ap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 12px;
+        }
+
+        /* ── CARD ─────────────────────────────────────────── */
+        .ap-card {
+            text-decoration: none; color: inherit;
+            background: var(--bg2);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            display: flex; flex-direction: column;
+            position: relative; overflow: hidden;
+            transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+        .ap-card:hover {
+            background: var(--bg3);
+            border-color: var(--line2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            z-index: 2;
+        }
+
+        /* Top colored bar per card */
+        .ap-card-bar {
+            height: 2px;
+            background: var(--card-color, #555);
+            transition: height 0.3s ease;
+        }
+        .ap-card:hover .ap-card-bar { height: 3px; }
+
+        .ap-card-inner { padding: 24px 26px 22px; display: flex; flex-direction: column; gap: 0; flex: 1; }
+
+        .ap-card-top {
+            display: flex; align-items: flex-start;
+            justify-content: space-between; margin-bottom: 14px;
+        }
+        .ap-card-icon {
+            width: 40px; height: 40px; border-radius: 8px;
+            background: var(--bg3); border: 1px solid var(--line2);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .ap-card-icon svg {
+            width: 18px; height: 18px;
+            stroke: var(--sub); fill: none;
+            stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .ap-card-badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+            padding: 3px 8px; border-radius: 3px;
+            color: var(--muted); border: 1px solid var(--line2);
+        }
+        .ap-card-badge.ongoing {
+            color: #e0e0e0; border-color: #444;
+            background: rgba(255,255,255,0.04);
+        }
+
+        .ap-card-name {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 20px; font-weight: 700;
+            color: var(--heading); letter-spacing: -0.02em;
+            margin-bottom: 8px; line-height: 1.1;
+        }
+        .ap-card-desc {
+            font-size: 13px; color: var(--sub);
+            line-height: 1.65; margin-bottom: 18px; flex: 1;
+        }
+
+        .ap-tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
+        .ap-tag {
+            font-size: 9.5px; font-weight: 600; letter-spacing: 0.07em;
+            text-transform: uppercase; color: var(--muted);
+            background: var(--bg); border: 1px solid var(--line2);
+            border-radius: 3px; padding: 2px 8px;
+        }
+
+        .ap-card-footer {
+            display: flex; align-items: center;
+            justify-content: space-between;
+            padding-top: 16px; border-top: 1px solid var(--line);
+        }
+        .ap-card-stack {
+            font-size: 11px; color: var(--muted);
+            font-family: 'IBM Plex Mono', monospace;
+        }
+        .ap-card-cta {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 11px; font-weight: 700;
+            color: var(--sub); letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: color 0.15s, gap 0.2s;
+        }
+        .ap-card:hover .ap-card-cta { color: var(--white); gap: 10px; }
+        .ap-card-cta svg {
+            width: 13px; height: 13px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        /* ── HOVER PREVIEW TOOLTIP ────────────────────────── */
+        .ap-preview {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            width: 300px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 20px 22px;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.7), 0 4px 16px rgba(0,0,0,0.4);
+            opacity: 0; transform: scale(0.94) translateY(6px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .ap-preview.visible {
+            opacity: 1; transform: scale(1) translateY(0);
+        }
+        .ap-preview-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+            color: #828282; margin-bottom: 10px;
+        }
+        .ap-preview-title {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 17px; font-weight: 700;
+            color: #f0f0f0; margin-bottom: 8px; line-height: 1.2;
+        }
+        .ap-preview-desc {
+            font-size: 12px; color: #888;
+            line-height: 1.65; margin-bottom: 14px;
+        }
+        .ap-preview-kv { display: flex; flex-direction: column; gap: 6px; }
+        .ap-preview-row {
+            display: flex; align-items: baseline; gap: 8px;
+            font-size: 11px;
+        }
+        .ap-preview-key {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #828282; min-width: 64px; font-size: 10px;
+        }
+        .ap-preview-val { color: #aaa; line-height: 1.4; }
+        .ap-preview-accent {
+            display: inline-block;
+            width: 8px; height: 8px; border-radius: 50%;
+            margin-right: 6px; vertical-align: middle;
+            flex-shrink: 0;
+        }
+        .ap-preview-btn {
+            margin-top: 16px; width: 100%;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+            background: #fff; color: #0c0c0c;
+            font-size: 11px; font-weight: 800;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            padding: 9px 16px; border-radius: 6px;
+            text-decoration: none;
+            transition: opacity 0.15s;
+            pointer-events: auto;
+        }
+        .ap-preview-btn:hover { opacity: 0.85; }
+        .ap-preview-btn svg {
+            width: 12px; height: 12px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        /* ── RESPONSIVE ───────────────────────────────────── */
+        html, body { max-width: 100%; overflow-x: clip; }
+
+        @media (max-width: 1024px) { .ap-page { padding: 40px 32px 80px; } }
+        @media (max-width: 768px) {
+            .ap-page { padding: 24px 16px calc(84px + env(safe-area-inset-bottom, 0px)); }
+            .ap-title { font-size: 36px; }
+            .ap-sub { font-size: 14px; max-width: 100%; }
+            .ap-stats { gap: 20px; flex-wrap: wrap; margin-top: 20px; padding-top: 20px; }
+            .ap-stat-val { font-size: 26px; }
+            .ap-grid { grid-template-columns: 1fr; gap: 10px; }
+            .ap-card { border-radius: 14px; }
+            .ap-preview { display: none; }
+            .ap-card-cta { color: var(--hi); }
+            .ap-card-inner { padding: 18px 18px 16px; }
+            .ap-section { margin-bottom: 44px; }
+            .ap-section-head { margin-bottom: 16px; }
+            .ap-header { margin-bottom: 40px; }
+        }
+        @media (max-width: 480px) {
+            .ap-page { padding: 18px 14px calc(80px + env(safe-area-inset-bottom, 0px)); }
+            .ap-title { font-size: 28px; letter-spacing: -0.03em; }
+            .ap-sub { font-size: 13px; line-height: 1.65; }
+            .ap-stat-val { font-size: 22px; }
+            .ap-stats { gap: 16px; margin-top: 18px; padding-top: 18px; }
+            .ap-grid { gap: 8px; }
+            .ap-card-name { font-size: 17px; }
+            .ap-card-desc { font-size: 12.5px; line-height: 1.6; }
+            .ap-card-inner { padding: 16px 14px 14px; }
+            .ap-card-footer { flex-direction: row; align-items: center; padding-top: 12px; }
+            .ap-card-cta { font-size: 10px; }
+            .ap-tag { font-size: 9px; padding: 2px 6px; }
+            .ap-card-stack { font-size: 10px; }
+        }
+        @media (max-width: 360px) {
+            .ap-title { font-size: 24px; }
+            .ap-card-footer { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .ap-card-cta { align-self: flex-end; }
+        }
+
+        /* ── MOBILE BOTTOM SHEET MODAL ────────────────────── */
+        /* Hidden on desktop via display:none only — NO pointer-events !important here */
+        .mob-sheet-overlay,
+        .mob-sheet { display: none; }
+
+        @media (max-width: 900px) {
+            .mob-sheet-overlay {
+                display: block;
+                position: fixed; inset: 0; z-index: 500;
+                background: rgba(0,0,0,0);
+                pointer-events: none;
+                transition: background 0.3s ease;
+            }
+            .mob-sheet-overlay.active {
+                background: rgba(0,0,0,0.45);
+                pointer-events: auto;
+            }
+            .mob-sheet {
+                display: block;
+                position: fixed;
+                bottom: 0; left: 0; right: 0;
+                z-index: 501;
+                background: var(--bg2);
+                border-radius: 20px 20px 0 0;
+                padding: 0 0 calc(24px + env(safe-area-inset-bottom, 0px));
+                transform: translateY(100%);
+                transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+                max-height: 90vh;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                overscroll-behavior: contain;
+                border-top: 1px solid var(--line);
+                box-shadow: 0 -8px 48px rgba(0,0,0,0.18);
+                pointer-events: none;
+            }
+            .mob-sheet.active {
+                transform: translateY(0);
+                pointer-events: auto !important;
+            }
+        }
+        .mob-sheet-handle {
+            display: flex; justify-content: center;
+            padding: 12px 0 8px;
+            position: sticky; top: 0;
+            background: var(--bg2);
+            z-index: 2;
+        }
+        .mob-sheet-handle::after {
+            content: '';
+            display: block; width: 36px; height: 4px;
+            background: var(--line2); border-radius: 100px;
+        }
+        .mob-sheet-color-bar {
+            height: 3px;
+            background: var(--sheet-color, var(--muted));
+            margin: 0 20px 0;
+            border-radius: 0 0 3px 3px;
+        }
+        .mob-sheet-body { padding: 20px 20px 8px; }
+        .mob-sheet-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+            color: var(--muted); margin-bottom: 8px;
+        }
+        .mob-sheet-title {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 24px; font-weight: 700;
+            color: var(--hi); letter-spacing: -0.03em;
+            line-height: 1.1; margin-bottom: 10px;
+        }
+        .mob-sheet-desc {
+            font-size: 14px; color: var(--sub);
+            line-height: 1.7; margin-bottom: 18px;
+        }
+        .mob-sheet-meta {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 10px; margin-bottom: 20px;
+        }
+        .mob-sheet-meta-item {
+            background: var(--bg3);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 12px 14px;
+        }
+        .mob-sheet-meta-key {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 8.5px; letter-spacing: 0.14em; text-transform: uppercase;
+            color: var(--muted); margin-bottom: 4px;
+        }
+        .mob-sheet-meta-val {
+            font-size: 13px; font-weight: 600;
+            color: var(--hi); line-height: 1.3;
+        }
+        .mob-sheet-stack {
+            background: var(--bg3); border: 1px solid var(--line);
+            border-radius: 10px; padding: 12px 14px;
+            margin-bottom: 20px;
+        }
+        .mob-sheet-stack-key {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 8.5px; letter-spacing: 0.14em; text-transform: uppercase;
+            color: var(--muted); margin-bottom: 6px;
+        }
+        .mob-sheet-stack-val {
+            font-size: 12.5px; color: var(--sub);
+            font-family: 'IBM Plex Mono', monospace; line-height: 1.6;
+        }
+        .mob-sheet-actions {
+            display: flex; flex-direction: column; gap: 10px;
+            padding: 0 20px;
+        }
+        .mob-sheet-btn-primary {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            background: var(--hi); color: #fff;
+            border: none; border-radius: 12px;
+            padding: 15px 20px;
+            font-size: 13.5px; font-weight: 700;
+            letter-spacing: 0.04em; text-transform: uppercase;
+            text-decoration: none; cursor: pointer;
+            font-family: inherit;
+            transition: opacity 0.15s;
+        }
+        .mob-sheet-btn-primary:active { opacity: 0.82; }
+        .mob-sheet-btn-primary svg {
+            width: 14px; height: 14px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .mob-sheet-btn-close {
+            display: flex; align-items: center; justify-content: center;
+            background: var(--bg3); color: var(--sub);
+            border: 1px solid var(--line2); border-radius: 12px;
+            padding: 13px 20px;
+            font-size: 13px; font-weight: 600;
+            letter-spacing: 0.01em;
+            cursor: pointer; font-family: inherit;
+            transition: background 0.15s;
+        }
+        .mob-sheet-btn-close:active { background: var(--line2); }
+
+        /* Cards get tap highlight on mobile */
+        @media (hover: none) {
+            .ap-card { -webkit-tap-highlight-color: transparent; cursor: pointer; }
+            .ap-card:active { background: var(--bg3); }
+        }
+    
+        /* ── Sidebar slide animation ── */
+        .sidebar { transition: transform 0.32s cubic-bezier(.4,0,.2,1); will-change: transform; }
+        .sidebar-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.3); z-index:199; opacity:0; pointer-events:none; transition:opacity 0.28s ease; }
+        @media(max-width:900px) {
+            .sidebar { position:fixed; left:0; top:0; height:100vh; z-index:200; transform:translateX(-100%); }
+            .sidebar.sb-open { transform:translateX(0); box-shadow:4px 0 40px rgba(0,0,0,0.15); }
+            .sidebar-overlay.sb-open { opacity:1; pointer-events:all; }
+        }
+
+        /* ── Mobile topbar ── */
+        .mobile-topbar {
+            display: none;
+            position: sticky; top: 0; z-index: 100;
+            align-items: center; justify-content: space-between;
+            padding: 0 16px; height: 52px;
+            background: rgba(248,249,251,0.96);
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4);
+        }
+        @media (max-width: 900px) { .mobile-topbar { display: flex; } }
+        .mobile-topbar-title { font-size: 14px; font-weight: 700; color: var(--hi); letter-spacing: -0.01em; }
+        .hamburger-btn {
+            width: 36px; height: 36px; border: none; background: var(--bg3);
+            border-radius: 8px; cursor: pointer; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 4.5px; padding: 0; flex-shrink: 0;
+        }
+        .hamburger-btn span { display: block; width: 18px; height: 1.5px; background: var(--hi); border-radius: 2px; transition: all 0.2s ease; }
+        .hamburger-btn.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        .hamburger-btn.open span:nth-child(2) { opacity: 0; }
+        .hamburger-btn.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+        /* ── Mobile FAB (back home) ── */
+        .ap-fab {
+            display: none; position: fixed;
+            bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+            left: 50%; transform: translateX(-50%);
+            z-index: 200; background: var(--hi); color: #fff;
+            border: none; border-radius: 100px;
+            padding: 12px 22px 12px 18px; font-size: 13.5px; font-weight: 600;
+            font-family: inherit; cursor: pointer;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+            align-items: center; gap: 8px; white-space: nowrap;
+            text-decoration: none;
+            transition: background 0.15s, box-shadow 0.15s;
+        }
+        .ap-fab svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+        @media (max-width: 900px) { .ap-fab { display: inline-flex; } }
+
+
+        /* ── Light theme overrides ── */
+        :root {
+            --bg: #f8f9fb; --bg2: #ffffff; --bg3: #f3f4f6;
+            --line: #e5e7eb; --line2: #d1d5db;
+            --muted: #9ca3af; --sub: #6b7280; --body: #374151;
+            --heading: #1f2937; --white: #ffffff; --hi: #111827;
+            --acc: #111827;
+        }
+        .project-main, .ap-main { background: var(--bg); color: var(--body); }
+        .p-card { background: var(--bg2); border-color: var(--line); }
+        .p-card-title { color: var(--muted); border-color: var(--line); }
+        .p-num { background: var(--muted); color: #fff; }
+        .p-body { color: var(--body); }
+        .p-body strong { color: var(--hi); }
+        .p-body p { color: var(--body); }
+        code.inline { background: var(--bg3); border-color: var(--line2); color: #374151; font-weight: 600; }
+        .p-callout { background: #f9fafb; border-color: #d1d5db; color: var(--sub); }
+        .p-callout strong { color: var(--hi); }
+        .p-math-block { background: var(--bg3); border-color: var(--line2); }
+        .p-math-title { color: var(--muted); }
+        .p-math-formula { color: #374151; }
+        .p-math-desc { color: var(--sub); }
+        .p-pipe-step { background: var(--bg3); border-color: var(--line2); }
+        .p-pipe-step-num { color: var(--muted); }
+        .p-pipe-step-label { color: var(--hi); }
+        .p-pipe-step-sub { color: var(--muted); }
+        .p-pipe-arrow { color: var(--line2); }
+        .p-features { gap: 12px; }
+        .p-feature-item { align-items: flex-start; }
+        .p-feature-icon { background: var(--bg3); border-color: var(--line2); }
+        .p-feature-icon svg { stroke: #374151; }
+        .p-feature-title { color: var(--hi); }
+        .p-feature-desc { color: var(--sub); }
+        .p-step-dot { background: var(--bg3); border-color: var(--line2); color: var(--muted); }
+        .p-step-title { color: var(--hi); }
+        .p-step-desc { color: var(--sub); }
+        .p-usecase { background: var(--bg3); border-color: var(--line); }
+        .p-usecase-title { color: var(--hi); }
+        .p-usecase-desc { color: var(--sub); }
+        .p-audit-item { background: var(--bg3); border-color: var(--line); }
+        .p-audit-desc { color: var(--sub); }
+        .p-wcag-row { border-color: var(--line); }
+        .p-wcag-code { color: #374151; }
+        .p-wcag-desc { color: var(--sub); }
+        .p-wcag-pass { color: #fff; background: #374151; }
+        .p-arch-row { border-color: var(--line); }
+        .p-arch-icon { background: var(--bg3); border-color: var(--line2); }
+        .p-arch-icon svg { stroke: var(--sub); }
+        .p-arch-name { color: var(--hi); }
+        .p-arch-desc { color: var(--muted); }
+        .p-flow::before { background: linear-gradient(to bottom, var(--line2), transparent); }
+        .p-order-state { background: var(--bg3); border-color: var(--line2); color: var(--hi); }
+        .p-order-arrow { color: var(--muted); }
+        .p-tech-pill { background: var(--bg2); border-color: var(--line2); color: var(--sub); }
+        .p-tech-pill:hover { background: var(--bg3); color: var(--hi); border-color: #9ca3af; }
+        .p-num-card { background: var(--bg3); border-color: var(--line); }
+        .p-num-val { color: var(--hi); }
+        .p-num-label { color: var(--muted); }
+        .p-progress-track { background: var(--line2); }
+        .p-progress-fill { background: #374151; }
+        .p-progress-label { color: var(--muted); }
+        .p-progress-label span:last-child { color: var(--hi); }
+        .p-link-btn { background: var(--bg2); border-color: var(--line2); color: var(--sub); }
+        .p-link-btn:hover { background: var(--bg3); color: var(--hi); border-color: var(--muted); }
+        .p-link-btn.primary { background: var(--hi); color: #fff; }
+        .p-link-btn.primary:hover { background: #374151; }
+        .p-closing { background: var(--hi); color: #fff; border-color: var(--hi); }
+        .p-closing-title { color: #fff; }
+        .p-closing-desc { color: rgba(255,255,255,0.7); }
+        .p-closing-btn { background: #fff; color: var(--hi); }
+        .p-closing-btn:hover { opacity: .88; }
+        .project-back { background: var(--bg2); border-color: var(--line2); color: var(--muted); }
+        .project-back:hover { color: var(--hi); border-color: #9ca3af; }
+        .p-meta-strip { background: var(--bg2); border-color: var(--line); }
+        .p-meta-item { border-color: var(--line); }
+        .p-meta-label { color: var(--muted); }
+        .p-meta-value { color: var(--hi); }
+        .p-meta-value a { color: #374151; }
+        .p-live-banner { background: #f9fafb; border-color: var(--line2); color: var(--sub); }
+        .p-live-banner strong { color: var(--hi); }
+        .p-class-item { background: var(--bg3); border-color: var(--line); color: var(--sub); }
+        .p-wcag-pass { background: #374151; color: #fff; }
+        .p-schema { background: var(--bg3); border-color: var(--line2); }
+        .p-schema-key { color: #374151; }
+        .p-schema-type { color: var(--muted); }
+        .p-schema-row { border-color: var(--line); }
+        .p-pwa-step-num { background: var(--muted); color: #fff; }
+        .p-pwa-step-title { color: var(--hi); }
+        .p-pwa-step-desc { color: var(--sub); }
+        .p-swatch-name { color: var(--hi); }
+        .p-type-meta { color: var(--muted); }
+        .p-health-bar-label { color: var(--muted); }
+        .p-health-bar-track { background: var(--line2); }
+        .p-health-bar-fill { background: #374151; }
+        .p-score-val { color: var(--hi); }
+        /* Hero stays dark always */
+        .p-hero { background: linear-gradient(145deg,#111827 0%,#1f2937 60%,#374151 100%) !important; }
+        .p-hero-title { color: #fff; }
+        .p-hero-title em { -webkit-text-stroke-color: rgba(255,255,255,0.35); }
+        .p-hero-sub { color: rgba(255,255,255,0.6); }
+        /* All Projects page */
+        .ap-main { background: var(--bg); }
+        .ap-title { color: var(--hi); }
+        .ap-sub { color: var(--sub); }
+        .ap-stat-val { color: var(--hi); }
+        .ap-stat-label { color: var(--muted); }
+        .ap-section-title { color: var(--hi); }
+        .ap-section-count { background: var(--bg3); color: var(--sub); }
+        .ap-section-line { background: var(--line); }
+        .ap-card { background: var(--bg2); border-color: var(--line); }
+        .ap-card:hover { background: var(--bg3); border-color: #d1d5db; }
+        .ap-card-bar { height: 3px; }
+        .ap-card-icon { background: var(--bg3); border-color: var(--line2); }
+        .ap-card-icon svg { stroke: var(--sub); }
+        .ap-card-name { color: var(--hi); }
+        .ap-card-desc { color: var(--sub); }
+        .ap-tag { background: var(--bg3); border-color: var(--line2); color: var(--sub); }
+        .ap-card-stack { color: var(--muted); }
+        .ap-card-cta { color: var(--muted); }
+        .ap-card:hover .ap-card-cta { color: var(--hi); }
+        .ap-card-footer { border-color: var(--line); }
+        .ap-card-badge { border-color: var(--line2); color: var(--muted); }
+        .ap-card-badge.ongoing { background: rgba(0,0,0,0.04); color: #374151; border-color: #d1d5db; }
+        .ap-preview { background: #fff; border-color: var(--line2); box-shadow: 0 8px 40px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.06); }
+        .ap-preview-label { color: var(--muted); }
+        .ap-preview-title { color: var(--hi); }
+        .ap-preview-desc { color: var(--sub); }
+        .ap-preview-key { color: var(--muted); }
+        .ap-preview-val { color: var(--sub); }
+        .ap-preview-btn { background: var(--hi); color: #fff; }
+        .ap-stats { border-color: var(--line); }
+        .ap-eyebrow { color: var(--muted); }
+
+    </style>
+    
+
+
+
+<style id="rafi-v5">
+*, *::before, *::after { box-sizing: border-box; }
+html, body { max-width: 100%; overflow-x: clip; }
+
+#rafi-bar {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+    background: var(--white, #f5f5f5); z-index: 9999; pointer-events: none;
+    transition: width 80ms linear;
+}
+
+.mobile-topbar {
+    display: none;
+    position: fixed !important;
+    top: 0 !important; left: 0 !important; right: 0 !important;
+    height: 52px !important;
+    z-index: 600 !important;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px 0 14px;
+}
+@media (max-width: 900px) {
+    #rafi-bar { top: 52px; }
+    .mobile-topbar { display: flex !important; }
+}
+
+@media (max-width: 900px) {
+    .portfolio-app { display: block !important; }
+    .sidebar {
+        position: fixed !important;
+        top: 52px !important; left: 0 !important;
+        width: 260px !important;
+        height: calc(100vh - 52px) !important;
+        z-index: 500 !important;
+        transform: translateX(-100%) !important;
+        transition: transform 0.26s cubic-bezier(0.4,0,0.2,1) !important;
+        box-shadow: none !important;
+        overflow-y: auto !important; overflow-x: hidden !important;
+        border-right: none !important;
+    }
+    .sidebar.sb-open, .sidebar.open {
+        transform: translateX(0) !important;
+        box-shadow: 4px 0 24px rgba(0,0,0,0.4) !important;
+    }
+    .sidebar-overlay {
+        display: block !important;
+        position: fixed !important;
+        top: 52px !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+        z-index: 490 !important;
+        background: rgba(0,0,0,0.5) !important;
+        opacity: 0 !important; pointer-events: none !important;
+        transition: opacity 0.25s ease !important;
+    }
+    .sidebar-overlay.sb-open, .sidebar-overlay.visible {
+        opacity: 1 !important; pointer-events: all !important;
+    }
+    body.sb-open { overflow: hidden !important; }
+    .project-main, .home-main, .resume-main, .course-main,
+    .contact-main, .blog-main, .ap-main { padding-top: 52px !important; }
+}
+@media (max-width: 480px) {
+    .sidebar { width: 80vw !important; max-width: 280px !important; }
+}
+
+img, video, iframe, svg { max-width: 100%; height: auto; }
+.p-video-wrap { overflow: hidden; border-radius: 8px; }
+.p-video-wrap video { width: 100%; height: auto; }
+
+mark.hl {
+    background: linear-gradient(104deg, rgba(254,240,138,0) 0.9%, #fef08a 2.4%, #fde047 99.1%, rgba(253,224,71,0) 100%);
+    color: #111827; font-weight: 600;
+    padding: 0.1em 0.35em; border-radius: 3px;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+
+.project-page { max-width: 1060px; width: 100%; margin: 0 auto; padding: 40px 40px 80px; box-sizing: border-box; }
+@media (max-width: 860px) {
+    .project-page { padding: 24px 20px 80px; }
+    .p-layout { grid-template-columns: 1fr !important; gap: 14px !important; }
+    .p-side-col {
+        position: static !important; order: -1;
+        display: flex !important; flex-wrap: wrap !important; gap: 10px !important;
+    }
+    .p-side-col .p-card { flex: 1 1 calc(50% - 5px) !important; min-width: 160px !important; }
+}
+@media (max-width: 600px) {
+    .project-page { padding: 12px 12px calc(70px + env(safe-area-inset-bottom,0px)) !important; }
+    .p-side-col { flex-direction: column !important; }
+    .p-side-col .p-card { flex: 1 1 100% !important; min-width: 0 !important; }
+    .p-hero { padding: 20px 16px 24px !important; min-height: 180px !important; border-radius: 10px !important; }
+    .p-hero-title { font-size: clamp(22px,7.5vw,32px) !important; line-height: 1.05 !important; word-break: break-word !important; }
+    .p-hero-sub { font-size: 13px !important; }
+    .p-hero-tags { gap: 5px !important; margin-top: 12px !important; }
+    .p-hero-tag { font-size: 8px !important; padding: 3px 7px !important; }
+    .p-meta-strip { flex-direction: column !important; }
+    .p-meta-item { border-right: none !important; border-bottom: 1px solid var(--line, #242424) !important; padding: 9px 13px !important; }
+    .p-meta-item:last-child { border-bottom: none !important; }
+    .p-card { padding: 16px 14px !important; border-radius: 10px !important; }
+    .p-card-title { font-size: 9px !important; padding-bottom: 11px !important; margin-bottom: 13px !important; }
+    .p-main-col { gap: 10px !important; }
+    .p-body { font-size: 14px !important; line-height: 1.8 !important; }
+    .p-body p { margin-bottom: 12px !important; }
+    .p-callout { font-size: 13px !important; padding: 11px 13px !important; }
+    .p-numbers { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+    .p-num-val { font-size: 22px !important; }
+    .p-num-card { padding: 11px 12px !important; }
+    .p-usecases { grid-template-columns: 1fr !important; gap: 8px !important; }
+    .p-classes-grid { grid-template-columns: 1fr 1fr !important; gap: 5px !important; }
+    .p-design-grid { grid-template-columns: 1fr !important; }
+    .p-arch-row { flex-wrap: wrap !important; }
+    .p-arch-desc { max-width: 100% !important; text-align: left !important; margin-left: 44px !important; }
+    .p-tech-pill { font-size: 9.5px !important; padding: 4px 9px !important; }
+    .p-link-btn { font-size: 12px !important; padding: 9px 12px !important; }
+    .p-closing { flex-direction: column !important; padding: 18px 14px !important; }
+    .p-closing-btn { width: 100% !important; justify-content: center !important; }
+    .p-progress-label { flex-wrap: wrap !important; font-size: 10.5px !important; }
+    .project-back { font-size: 9.5px !important; margin-bottom: 12px !important; }
+    .p-order-state { font-size: 10px !important; padding: 5px 8px !important; }
+    code.inline { font-size: 10px !important; padding: 1px 5px !important; word-break: break-word !important; }
+    .p-ctrl-table-wrap, .p-wcag-table-wrap {
+        overflow-x: auto !important; -webkit-overflow-scrolling: touch !important;
+        margin: 0 -14px !important; padding: 0 14px !important;
+    }
+}
+@media (max-width: 380px) {
+    .project-page { padding: 10px 10px calc(68px + env(safe-area-inset-bottom,0px)) !important; }
+    .p-hero-title { font-size: clamp(19px,7vw,24px) !important; }
+    .p-card { padding: 13px 11px !important; }
+}
+
+.ap-page { max-width: 1280px; margin: 0 auto; padding: 44px 40px 80px; box-sizing: border-box; }
+@media (max-width: 640px) {
+    .ap-page { padding: 14px 14px 60px !important; }
+    .ap-title { font-size: clamp(26px,8.5vw,40px) !important; }
+    .ap-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
+    .ap-card-overlay { display: none !important; }
+}
+
+.p-body, .p-body p, .p-feature-desc, .p-step-desc,
+.p-usecase-desc, .p-arch-desc, .p-callout {
+    overflow-wrap: break-word; word-break: break-word; max-width: 100%;
+}
+.p-arch-name { flex: 1; min-width: 0; overflow-wrap: break-word; }
+
+.p-usecase-icon {
+    width: 38px !important; height: 38px !important;
+    background: var(--bg3, #1c1c1c) !important;
+    border: 1px solid var(--line2, #333) !important;
+    border-radius: 9px !important;
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    margin-bottom: 10px !important; flex-shrink: 0;
+}
+.p-usecase-icon svg {
+    width: 18px !important; height: 18px !important;
+    stroke: var(--acc, #d0d0d0) !important; fill: none !important;
+    stroke-width: 1.8 !important; stroke-linecap: round !important; stroke-linejoin: round !important;
+}
+.p-feature-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--bg3, #1c1c1c); border: 1px solid var(--line2, #333);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.p-feature-icon svg {
+    width: 17px; height: 17px; stroke: var(--acc, #d0d0d0); fill: none;
+    stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+
+.p-pipeline-outer, .p-pipeline-wrap {
+    position: relative; margin: 10px 0; border-radius: 8px;
+    background: var(--bg, #0c0c0c); border: 1px solid var(--line, #242424);
+    overflow: hidden;
+}
+.p-pipeline-outer::after, .p-pipeline-wrap::after {
+    content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 36px;
+    background: linear-gradient(to left, var(--bg, #0c0c0c), transparent);
+    pointer-events: none; z-index: 2; transition: opacity 0.2s;
+}
+.p-pipeline-outer.at-end::after, .p-pipeline-wrap.at-end::after { opacity: 0; }
+.p-pipeline-scroll {
+    overflow-x: auto !important; -webkit-overflow-scrolling: touch !important;
+    cursor: grab; padding: 14px 16px 6px !important;
+    scrollbar-width: thin !important; scrollbar-color: var(--line2,#333) transparent;
+}
+.p-pipeline-scroll:active { cursor: grabbing; }
+.p-pipeline-scroll::-webkit-scrollbar { height: 5px; }
+.p-pipeline-scroll::-webkit-scrollbar-track { background: transparent; }
+.p-pipeline-scroll::-webkit-scrollbar-thumb { background: var(--line2,#333); border-radius: 3px; }
+.p-pipeline { display: inline-flex !important; align-items: center !important; gap: 0 !important; width: max-content !important; min-width: 100% !important; }
+.p-pipe-step {
+    flex-shrink: 0; min-width: 100px; background: var(--bg2, #141414);
+    border: 1.5px solid var(--line2, #333); border-radius: 7px;
+    padding: 11px 13px; text-align: center; cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.12s;
+}
+.p-pipe-step:hover { border-color: var(--muted,#555); transform: translateY(-1px); }
+.p-pipe-step.ps-active { border-color: var(--white,#f5f5f5); box-shadow: 0 0 0 1px var(--white,#f5f5f5); }
+.p-pipe-step-num { font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: var(--muted,#555); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
+.p-pipe-step-label { font-size: 11.5px; font-weight: 700; color: var(--heading,#e8e8e8); line-height: 1.3; }
+.p-pipe-step-sub { font-size: 9px; color: var(--muted,#555); margin-top: 3px; }
+.p-pipe-arrow { font-size: 13px; color: var(--line2,#333); margin: 0 4px; flex-shrink: 0; display: flex; align-items: center; }
+.p-pipe-detail {
+    margin: 0 16px 12px; padding: 11px 13px;
+    background: var(--bg2, #141414); border: 1px solid var(--line, #242424); border-radius: 7px;
+    font-size: 13px; color: var(--sub, #888); line-height: 1.65;
+    display: none; animation: rfin .15s ease;
+}
+.p-pipe-detail.ps-show { display: block; }
+.p-pipe-detail strong { color: var(--heading,#e8e8e8); }
+.p-pipe-detail code { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; background: var(--bg,#0c0c0c); border: 1px solid var(--line2,#333); padding: 1px 5px; border-radius: 3px; color: var(--acc,#d0d0d0); }
+.p-pipe-dots { display: flex; justify-content: center; gap: 5px; padding: 6px 0 10px; min-height: 20px; }
+.p-pipe-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--line2,#333); transition: background .2s, width .2s; }
+.p-pipe-dot.active { background: var(--white,#f5f5f5); width: 14px; border-radius: 3px; }
+.p-pipeline-hint {
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+    text-align: center; font-size: 9.5px; color: var(--muted,#555);
+    font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.08em; padding: 0 0 9px;
+}
+.p-pipeline-hint svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 2; }
+@media (max-width: 640px) {
+    .p-pipe-step { min-width: 84px !important; padding: 10px 10px !important; }
+}
+@keyframes rfin { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+.p-steps-accordion { display: none; flex-direction: column; gap: 6px; }
+@media (max-width: 640px) {
+    .p-steps { display: none !important; }
+    .p-steps-accordion { display: flex !important; }
+}
+.p-acc-item { border: 1px solid var(--line, #242424); border-radius: 8px; overflow: hidden; background: var(--bg2, #141414); }
+.p-acc-trigger { display: flex; align-items: center; gap: 10px; padding: 12px 13px; cursor: pointer; user-select: none; background: none; border: none; width: 100%; text-align: left; }
+.p-acc-num { width: 24px; height: 24px; border-radius: 50%; background: var(--bg3,#1c1c1c); border: 1px solid var(--line2,#333); font-size: 10px; font-weight: 700; color: var(--muted,#555); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'IBM Plex Mono', monospace; transition: background .15s, color .15s, border-color .15s; }
+.p-acc-title { font-size: 13px; font-weight: 700; color: var(--heading,#e8e8e8); flex: 1; }
+.p-acc-chevron { width: 16px; height: 16px; stroke: var(--muted,#555); fill: none; stroke-width: 2; flex-shrink: 0; transition: transform .2s; }
+.p-acc-item.open .p-acc-chevron { transform: rotate(180deg); }
+.p-acc-item.open .p-acc-num { background: var(--white,#f5f5f5); color: var(--bg,#0c0c0c); border-color: var(--white,#f5f5f5); }
+.p-acc-body { max-height: 0; overflow: hidden; padding: 0 13px; transition: max-height .28s ease, padding .2s; }
+.p-acc-item.open .p-acc-body { max-height: 400px; padding: 0 13px 13px; }
+.p-acc-desc { font-size: 13px; color: var(--sub,#888); line-height: 1.65; overflow-wrap: break-word; }
+
+.p-progress-fill { transition: width 1s cubic-bezier(.4,0,.2,1); }
+.p-num-card { transition: transform .15s, box-shadow .15s; }
+.p-num-card:hover { transform: translateY(-2px); }
+
+.blog-img-wrap img, .screenshot-item img, .bl-cover img { max-width: 100% !important; height: auto !important; }
+.screenshot-gallery { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+@media (max-width: 600px) {
+    .blog-page, .bl-page { padding: 14px 14px 60px !important; }
+    .screenshot-gallery { grid-template-columns: repeat(2, 1fr) !important; }
+    .blog-img-2col { grid-template-columns: 1fr !important; }
+    .arch-wrap { font-size: 11px !important; }
+    pre, code { font-size: 11px !important; overflow-x: auto !important; }
+}
+table { max-width: 100%; }
+.p-ctrl-table-wrap, .p-wcag-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+</style>
+<style id="rafi-math-v5">/* ════════════════════════════════════════════════════════════════════════
+   MATH DERIVATION CARD — v5
+   A "lab notebook" component: numbered formula cards with a
+   Formula / Explained / Worked Example switcher. Built for the dark
+   project-page theme (--bg:#0c0c0c family). Horizontal scroll on any
+   formula/example block that overflows, with visible scroll affordance.
+   ════════════════════════════════════════════════════════════════════════ */
+
+.p-math-block {
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    margin: 14px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* left accent rail — gives it the "margin note" feel */
+.p-math-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--acc, #d0d0d0) 0%, transparent 130%);
+    opacity: 0.5;
+}
+
+.p-math-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 13px 16px 12px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+}
+
+.p-math-head-left {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    min-width: 0;
+}
+
+.p-math-index {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+}
+
+.p-math-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--heading);
+    line-height: 1.4;
+    min-width: 0;
+    overflow-wrap: break-word;
+}
+
+.p-math-title mark.hl {
+    font-size: inherit;
+}
+
+/* ── TAB SWITCHER ── */
+.p-math-tabs {
+    display: flex;
+    gap: 2px;
+    background: var(--bg);
+    border: 1px solid var(--line2);
+    border-radius: 5px;
+    padding: 2px;
+    flex-shrink: 0;
+}
+
+.p-math-tab {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+    line-height: 1.2;
+}
+
+.p-math-tab:hover { color: var(--sub); }
+
+.p-math-tab.active {
+    background: var(--line2);
+    color: var(--white);
+}
+
+.p-math-tab .p-math-tab-dot {
+    display: inline-block;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: currentColor;
+    margin-right: 5px;
+    opacity: 0.6;
+    vertical-align: middle;
+}
+
+/* ── BODY / PANELS ── */
+.p-math-body { position: relative; }
+
+.p-math-panel {
+    display: none;
+    animation: pmFadeIn 0.18s ease;
+}
+.p-math-panel.active { display: block; }
+
+@keyframes pmFadeIn {
+    from { opacity: 0; transform: translateY(2px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Formula panel — scrollable code-like surface */
+.p-math-formula-wrap {
+    position: relative;
+    overflow: hidden;
+}
+
+.p-math-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 16px 16px 14px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line2) transparent;
+}
+.p-math-scroll::-webkit-scrollbar { height: 5px; }
+.p-math-scroll::-webkit-scrollbar-track { background: transparent; }
+.p-math-scroll::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 3px; }
+.p-math-scroll::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+pre.p-math-formula {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    line-height: 1.9;
+    color: var(--body);
+    white-space: pre;
+    margin: 0;
+    width: max-content;
+    min-width: 100%;
+}
+
+pre.p-math-formula mark.hl {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: inherit;
+}
+
+/* fade-edge affordance to signal "more content →" */
+.p-math-formula-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 28px;
+    background: linear-gradient(to left, var(--bg2), transparent);
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+.p-math-formula-wrap.pm-at-end::after { opacity: 0; }
+
+.p-math-scroll-hint {
+    display: none;
+    align-items: center;
+    gap: 5px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0 16px 11px;
+}
+.p-math-scroll-hint svg {
+    width: 10px; height: 10px;
+    stroke: currentColor; fill: none;
+    stroke-width: 2;
+}
+.p-math-formula-wrap.pm-scrollable ~ .p-math-scroll-hint,
+.p-math-example-wrap.pm-scrollable ~ .p-math-scroll-hint {
+    display: flex;
+}
+
+/* Explained panel */
+.p-math-explained {
+    padding: 16px 18px;
+}
+.p-math-desc {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--sub);
+    margin: 0;
+}
+.p-math-desc + .p-math-desc { margin-top: 10px; }
+.p-math-desc strong { color: var(--heading); font-weight: 700; }
+.p-math-desc code.inline {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    background: var(--bg);
+    border: 1px solid var(--line2);
+    padding: 1px 6px;
+    border-radius: 3px;
+    color: var(--acc);
+}
+
+/* Example panel — worked-through computation */
+.p-math-example-wrap {
+    position: relative;
+    overflow: hidden;
+}
+.p-math-example {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    line-height: 1.85;
+    color: var(--body);
+    white-space: pre;
+    margin: 0;
+    width: max-content;
+    min-width: 100%;
+    border-left: 2px solid var(--line2);
+    padding: 14px 16px 14px 18px;
+    background: var(--bg);
+}
+.p-math-example-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 28px;
+    background: linear-gradient(to left, var(--bg2), transparent);
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+.p-math-example-wrap.pm-at-end::after { opacity: 0; }
+.p-math-example-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line2) transparent;
+}
+.p-math-example-scroll::-webkit-scrollbar { height: 5px; }
+.p-math-example-scroll::-webkit-scrollbar-track { background: transparent; }
+.p-math-example-scroll::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 3px; }
+
+/* footer micro-label inside example */
+.p-math-example-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 10px 16px 0;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+    .p-math-head { padding: 11px 13px 10px; flex-wrap: wrap; }
+    .p-math-title { font-size: 11.5px; }
+    .p-math-index { font-size: 9px; }
+    .p-math-tabs { width: 100%; justify-content: stretch; }
+    .p-math-tab { flex: 1; text-align: center; padding: 6px 8px; font-size: 9px; }
+    .p-math-scroll { padding: 13px 13px 11px; }
+    pre.p-math-formula { font-size: 10.5px; line-height: 1.8; }
+    .p-math-explained { padding: 13px 14px; }
+    .p-math-desc { font-size: 12.5px; }
+    .p-math-example { font-size: 10px; padding: 12px 13px 12px 15px; }
+    .p-math-example-label { padding: 8px 13px 0; }
+}
+
+@media (max-width: 380px) {
+    .p-math-tab { font-size: 8.3px; padding: 6px 4px; letter-spacing: 0.02em; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .p-math-panel { animation: none !important; }
+}
+</style><style id="rafi-minwidth-fix">
+/* ════════════════════════════════════════════════════════════════════════
+   MIN-CONTENT OVERFLOW FIX — v6
+   Root cause of "kepotong" on mobile: CSS Grid/Flex tracks default to
+   minmax(auto, 1fr) — the 'auto' minimum is the content's min-content
+   size, which can be wider than the viewport even when the track is
+   nominally "1fr". This forces every nested grid/flex container in the
+   project-page content chain to allow shrinking below its content size.
+   ════════════════════════════════════════════════════════════════════════ */
+.p-layout,
+.p-main-col,
+.p-side-col,
+.p-card,
+.p-card-title,
+.p-body,
+.p-callout,
+.p-numbers,
+.p-num-card,
+.p-classes-grid,
+.p-usecases,
+.p-usecase,
+.p-design-grid,
+.p-tech-grid,
+.p-math-block,
+.p-math-head,
+.p-math-head-left,
+.p-math-tabs,
+.p-math-body,
+.p-math-panel,
+.p-math-explained,
+.p-pipeline-wrap,
+.p-pipe-detail,
+.p-arch-row,
+.p-arch-name,
+.p-meta-strip,
+.p-meta-item,
+.p-closing,
+.p-link-btn,
+.p-progress-label,
+.p-acc-item,
+.p-acc-body,
+.ap-grid,
+.ap-card {
+    min-width: 0 !important;
+}
+
+/* Grid/flex children also need min-width:0 individually — being a grid
+   container doesn't help if the item itself refuses to shrink */
+.p-layout > *,
+.p-numbers > *,
+.p-classes-grid > *,
+.p-usecases > *,
+.p-design-grid > *,
+.ap-grid > * {
+    min-width: 0;
+}
+
+/* Long unbroken strings (URLs, identifiers) inside text containers must
+   be allowed to break rather than stretching their parent */
+.p-body, .p-body p, .p-callout, .p-math-desc, .p-acc-desc,
+.p-feature-desc, .p-step-desc, .p-usecase-desc, .p-arch-desc {
+    overflow-wrap: anywhere;
+}
+
+</style></head>
 <body>
     <div class="mobile-topbar">
         <span class="mobile-topbar-title">Muhammad Rafi Arsya</span>
@@ -271,7 +1312,7 @@
     </div>
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
     <div class="portfolio-app">
-                        <aside class="sidebar">
+        <aside class="sidebar">
             <div class="sidebar-top">
                 <div class="sidebar-logo-wrap">
                     <img class="sidebar-logo-avatar" src="../assets/avatar_rafi.png" alt="Rafi Avatar">
@@ -293,8 +1334,8 @@
                     <a href="project2.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><span class="project-label">CampusBay</span></a>
                     <a href="project5.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><circle cx="10" cy="14" r="2"/><path d="m20 20-2.5-2.5"/></svg></span><span class="project-label">PaperMind</span></a>
                     <a href="project3.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="4" r="2"/><path d="m18 19 1-7-5.87.94"/><path d="m5 8 3-3 4.5 3-2.5 3"/><path d="M4.24 14.5A5 5 0 0 0 9 21c1.5 0 2.87-.56 3.9-1.47"/><path d="M14 21v-5"/></svg></span><span class="project-label">NASE Accessibility</span></a>
-                    <a href="project4.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span><span class="project-label">Crop Disease Detector</span></a>
-                    <a href="projects.html" class="active" class="active project-more"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span>All Projects</span></a>
+                    <a href="project4.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span><span class="project-label">Crop Disease</span></a>
+                    <a href="projects.html" class="project-more active"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span>All Projects</span></a>
                 </div>
                 <div class="sidebar-group-label">Social</div>
                 <nav class="sidebar-social">
@@ -305,180 +1346,752 @@
             </div>
             <div class="sidebar-footer"><p>Designed with focus on clarity and craft.</p></div>
         </aside>
+
         <main class="ap-main">
             <div class="ap-page">
-                <div class="ap-header">
-                    <div class="ap-eyebrow">---></div>
-                    <h1 class="ap-title">All Projects</h1>
-                    <p class="ap-sub"></p>
-                    <p class="ap-sub">Notes: This page is still under development. Some project may not be displayed.</p>
-                </div>
-                <div class="ap-grid" style="display:block;">
-                    <section class="ap-section" data-status="ongoing">
-                        <div class="ap-section-head">
-                            <span class="ap-section-pulse" aria-hidden="true"></span>
-                            <h2 class="ap-section-title">Ongoing</h2>
-                            <span class="ap-section-count">2</span>
-                        </div>
-                        <div class="ap-grid">
-                            <a href="project5.html" class="ap-card">
-                                <div class="ap-card-hero" style="background:linear-gradient(135deg,#0a0a1a,#1a1030 40%,#3b2d8a 100%);">
-                                    <span class="ap-card-letter" style="font-size:1.1rem;letter-spacing:-0.02em;font-weight:900;">PM</span>
-                                    <span class="ap-card-year">2026</span>
-                                    <span style="position:absolute;bottom:10px;left:12px;font-size:9.5px;font-weight:700;letter-spacing:.12em;color:rgba(255,255,255,.55);text-transform:uppercase;">Ongoing</span>
-                                </div>
-                                <div class="ap-card-body">
-                                    <div class="ap-tag-row"><span class="ap-tag" style="background:#ede9fe;color:#4c1d95;">RAG</span><span class="ap-tag">AI / LLM</span><span class="ap-tag">Self-Hosted</span></div>
-                                    <div class="ap-card-name">PaperMind</div>
-                                    <div class="ap-card-desc">Local RAG-powered academic paper analyzer. Upload any PDF and ask questions or get structured summaries — running 100% privately on self-hosted hardware via Ollama + Mistral.</div>
-                                    <div class="ap-card-stack">React · FastAPI · ChromaDB · Ollama · Mistral · Docker</div>
-                                    <div class="ap-card-cta">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-                                </div>
-                            </a>
-                            <a href="project2.html" class="ap-card">
-                                <div class="ap-card-hero" style="background:linear-gradient(135deg,#0f1729,#1a2744 50%,#2d3f8a 100%);">
-                                    <span class="ap-card-letter" style="font-size:1.1rem;letter-spacing:-0.02em;font-weight:900;">CB</span>
-                                    <span class="ap-card-year">2026</span>
-                                    <span style="position:absolute;bottom:10px;left:12px;font-size:9.5px;font-weight:700;letter-spacing:.12em;color:rgba(255,255,255,.55);text-transform:uppercase;">Ongoing</span>
-                                </div>
-                                <div class="ap-card-body">
-                                    <div class="ap-tag-row"><span class="ap-tag">Marketplace</span><span class="ap-tag">Full Stack</span></div>
-                                    <div class="ap-card-name">CampusBay</div>
-                                    <div class="ap-card-desc">A peer-to-peer student marketplace — verified, campus-safe, Stripe payments, real-time chat. Self-hosted, still actively developing.</div>
-                                    <div class="ap-card-stack">React · Node.js · PostgreSQL · Redis · Socket.io · Stripe · Docker</div>
-                                    <div class="ap-card-cta">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-                                </div>
-                            </a>
-                        </div>
-                    </section>
 
-                    <section class="ap-section" data-status="completed">
-                        <div class="ap-section-head">
-                            <span class="ap-section-check" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
-                            <h2 class="ap-section-title">Completed</h2>
-                            <span class="ap-section-count">5</span>
+                <!-- HEADER -->
+                <div class="ap-header">
+                    <div class="ap-eyebrow">Portfolio · Projects</div>
+                    <h1 class="ap-title">All Projects<span class="ap-title-dot"></span></h1>
+                    <p class="ap-sub">Things I've built — some finished, some still breaking. A mix of AI, full-stack web, and tools I needed that didn't exist yet.</p>
+                    <div class="ap-stats">
+                        <div>
+                            <div class="ap-stat-val">7</div>
+                            <div class="ap-stat-label">Projects</div>
                         </div>
-                        <div class="ap-grid">
-                            <a href="project1.html" class="ap-card">
-                                <div class="ap-card-hero" style="background:linear-gradient(135deg,#022c22,#064e3b 50%,#10b981 100%);">
-                                    <span class="ap-card-letter" style="font-size:2.2rem;">HandGesture</span>
-                                    <span class="ap-card-year">2024</span>
-                                </div>
-                                <div class="ap-card-body">
-                                    <div class="ap-tag-row"><span class="ap-tag" style="background:#d1fae5;color:#065f46;">Computer Vision</span><span class="ap-tag">Python</span><span class="ap-tag">AI / ML</span></div>
-                                    <div class="ap-card-name">HandGesture</div>
-                                    <div class="ap-card-desc">Real-time hand gesture recognition using MediaPipe and OpenCV. Detects 21 landmarks and classifies 7+ gestures at 30+ FPS.</div>
-                                    <div class="ap-card-stack">Python · MediaPipe · OpenCV · NumPy</div>
-                                    <div class="ap-card-cta">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-                                </div>
-                            </a>
-                            <a href="project_briskwalk.html" class="ap-card">
-                                <div class="ap-card-hero" style="background:linear-gradient(135deg,#1e293b 0%,#334155 40%,#fbbf24 100%);">
-                                    <span class="ap-card-letter">BriskWalk</span>
-                                    <span class="ap-card-year">2026</span>
-                                </div>
-                                <div class="ap-card-body">
-                                    <div class="ap-tag-row"><span class="ap-tag">UI/UX Design</span><span class="ap-tag">Event Form</span><span class="ap-tag">Mobile-First</span></div>
-                                    <div class="ap-card-name">BriskWalk Registration</div>
-                                    <div class="ap-card-desc">Mobile-first event registration form for BriskWalk — the annual PPIM community walk. Designed in Figma and built for seamless on-the-go sign-ups.</div>
-                                    <div class="ap-card-stack">Figma · HTML · CSS · JavaScript</div>
-                                    <div class="ap-card-cta">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-                                </div>
-                            </a>
-                            <a href="project3.html" class="ap-card">
-                                <div class="ap-card-hero" style="background:linear-gradient(135deg,#14532d,#16a34a);">
-                                    <span class="ap-card-letter">NASE</span>
-                                    <span class="ap-card-year">2025</span>
-                                </div>
-                                <div class="ap-card-body">
-                                    <div class="ap-tag-row"><span class="ap-tag">Help</span><span class="ap-tag">Blinded</span><span class="ap-tag">Volunteering</span></div>
-                                    <div class="ap-card-name">NASE Accessibility</div>
-                                    <div class="ap-card-desc">Projects designed to assist visually impaired people by creating accessible and user-friendly solutions that help improve their daily activities, independence, and overall quality of life.</div>
-                                    <div class="ap-card-stack">HTML · CSS · JavaScript</div>
-                                    <div class="ap-card-cta">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-                                </div>
-                            </a>
-                            <a href="project4.html" class="ap-card">
-                                <div class="ap-card-hero" style="background:linear-gradient(135deg,#052e16 0%,#166534 50%,#15803d 100%);">
-                                    <span class="ap-card-letter" style="font-size:2.2rem;">Detector</span>
-                                    <span class="ap-card-year">2026</span>
-                                </div>
-                                <div class="ap-card-body">
-                                    <div class="ap-tag-row">
-                                        <span class="ap-tag" style="background:#dcfce7;color:#166534;">Machine Learning</span>
-                                        <span class="ap-tag">Agriculture</span>
-                                        <span class="ap-tag">Python</span>
-                                    </div>
-                                    <div class="ap-card-name">Crop Disease Detector</div>
-                                    <div class="ap-card-desc">An AI that identifies plant diseases from a single leaf photo. Built with MobileNetV2 + Transfer Learning, deployed live on Hugging Face Spaces.</div>
-                                    <div class="ap-card-stack">Python · TensorFlow · MobileNetV2 · Gradio · Hugging Face</div>
-                                    <div class="ap-card-cta">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-                                </div>
-                            </a>
-                            <a href="project6.html" class="ap-card">
-                                <div class="ap-card-hero" style="background:linear-gradient(135deg,#1a0a2e 0%,#2d1b69 50%,#6c5ce7 100%);">
-                                    <span class="ap-card-letter" style="font-size:1.1rem;letter-spacing:-0.02em;font-weight:900;">RF</span>
-                                    <span class="ap-card-year">2026</span>
-                                </div>
-                                <div class="ap-card-body">
-                                    <div class="ap-tag-row"><span class="ap-tag" style="background:#e0e7ff;color:#3730a3;">Finance</span><span class="ap-tag">PWA</span><span class="ap-tag">Single-File</span></div>
-                                    <div class="ap-card-name">RafiFinance</div>
-                                    <div class="ap-card-desc">A complete personal finance tracker built as a single HTML file. Transactions, budgets, saving goals, 6-month analysis, financial health score, and PWA offline support — zero dependencies.</div>
-                                    <div class="ap-card-stack">Vanilla JS · CSS · PWA · localStorage · Cloudflare Pages</div>
-                                    <div class="ap-card-cta">View Project <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-                                </div>
-                            </a>
+                        <div>
+                            <div class="ap-stat-val">2</div>
+                            <div class="ap-stat-label">Ongoing</div>
                         </div>
-                    </section>
+                        <div>
+                            <div class="ap-stat-val">5</div>
+                            <div class="ap-stat-label">Completed</div>
+                        </div>
+                        <div>
+                            <div class="ap-stat-val">2026</div>
+                            <div class="ap-stat-label">Latest</div>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- ONGOING -->
+                <section class="ap-section" data-status="ongoing">
+                    <div class="ap-section-head">
+                        <span class="ap-section-pulse"></span>
+                        <span class="ap-section-title">Ongoing</span>
+                        <span class="ap-section-count">2</span>
+                        <div class="ap-section-line"></div>
+                    </div>
+                    <div class="ap-grid">
+
+                        <a href="project2.html" class="ap-card"
+                           data-preview-title="CampusBay"
+                           data-preview-desc="A peer-to-peer student marketplace for Malaysian universities — verified email-gated access, real-time chat, Stripe payments, escrow system, flash sales, and AI support. Self-hosted on a Linux mini PC via Docker Compose."
+                           data-preview-stack="React 18 · Node.js · PostgreSQL · Redis · Socket.IO · Stripe · Docker"
+                           data-preview-year="2026"
+                           data-preview-status="In Development"
+                           data-preview-role="Solo Founder & Developer"
+                           data-preview-url="project2.html"
+                           data-color="#c0c0c0">
+                            <div class="ap-card-bar" style="--card-color:#c0c0c0;"></div>
+                            <div class="ap-card-inner">
+                                <div class="ap-card-top">
+                                    <div class="ap-card-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                                    </div>
+                                    <span class="ap-card-badge ongoing">Live · Ongoing</span>
+                                </div>
+                                <div class="ap-card-name">CampusBay</div>
+                                <div class="ap-card-desc">Production-grade peer-to-peer student marketplace. Escrow payments, real-time messaging, flash sales, wallet system, and AI support — built and hosted solo.</div>
+                                <div class="ap-tag-row">
+                                    <span class="ap-tag">Marketplace</span>
+                                    <span class="ap-tag">Full Stack</span>
+                                    <span class="ap-tag">Self-Hosted</span>
+                                    <span class="ap-tag">Real-Time</span>
+                                </div>
+                                <div class="ap-card-footer">
+                                    <span class="ap-card-stack">React · Node · PostgreSQL</span>
+                                    <span class="ap-card-cta">Project Details <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="project5.html" class="ap-card"
+                           data-preview-title="PaperMind"
+                           data-preview-desc="A local RAG-powered research assistant. Upload any academic PDF, ask questions, and receive structured summaries — 100% private, running on self-hosted hardware via Ollama and ChromaDB with no cloud dependency."
+                           data-preview-stack="React · FastAPI · ChromaDB · Ollama · phi3:mini · Docker"
+                           data-preview-year="2026"
+                           data-preview-status="In Development"
+                           data-preview-role="Solo Developer"
+                           data-preview-url="project5.html"
+                           data-color="#888">
+                            <div class="ap-card-bar" style="--card-color:#888;"></div>
+                            <div class="ap-card-inner">
+                                <div class="ap-card-top">
+                                    <div class="ap-card-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><circle cx="10" cy="14" r="2"/><path d="m20 20-2.5-2.5"/></svg>
+                                    </div>
+                                    <span class="ap-card-badge ongoing">Local AI · Ongoing</span>
+                                </div>
+                                <div class="ap-card-name">PaperMind</div>
+                                <div class="ap-card-desc">Self-hosted academic paper analyzer using RAG. Ask questions about any PDF research paper with a local LLM — fully private, zero cloud cost.</div>
+                                <div class="ap-tag-row">
+                                    <span class="ap-tag">RAG</span>
+                                    <span class="ap-tag">LLM</span>
+                                    <span class="ap-tag">Self-Hosted</span>
+                                    <span class="ap-tag">AI</span>
+                                </div>
+                                <div class="ap-card-footer">
+                                    <span class="ap-card-stack">FastAPI · ChromaDB · Ollama</span>
+                                    <span class="ap-card-cta">Project Details <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                </section>
+
+                <!-- COMPLETED -->
+                <section class="ap-section" data-status="completed">
+                    <div class="ap-section-head">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span class="ap-section-title">Completed</span>
+                        <span class="ap-section-count">5</span>
+                        <div class="ap-section-line"></div>
+                    </div>
+                    <div class="ap-grid">
+
+                        <a href="project1.html" class="ap-card"
+                           data-preview-title="HandGesture"
+                           data-preview-desc="Real-time hand-gesture drawing application. MediaPipe tracks 21 landmarks per hand at 30+ FPS. A rule-based classifier detects the drawing gesture (index finger isolated) and renders strokes onto a live webcam overlay using OpenCV."
+                           data-preview-stack="Python · MediaPipe · OpenCV · NumPy"
+                           data-preview-year="2024"
+                           data-preview-status="Completed"
+                           data-preview-role="Solo Developer"
+                           data-preview-url="project1.html"
+                           data-color="#e0e0e0">
+                            <div class="ap-card-bar" style="--card-color:#e0e0e0;"></div>
+                            <div class="ap-card-inner">
+                                <div class="ap-card-top">
+                                    <div class="ap-card-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M18 11V6l-6-4-6 4v5"/><path d="M6 10v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8"/><path d="M10 22v-6h4v6"/></svg>
+                                    </div>
+                                    <span class="ap-card-badge">2024</span>
+                                </div>
+                                <div class="ap-card-name">HandGesture</div>
+                                <div class="ap-card-desc">Draw on screen with just your index finger. MediaPipe detects 21 hand landmarks at 30+ FPS — no mouse, no touch, no hardware needed.</div>
+                                <div class="ap-tag-row">
+                                    <span class="ap-tag">Computer Vision</span>
+                                    <span class="ap-tag">Python</span>
+                                    <span class="ap-tag">Real-Time</span>
+                                </div>
+                                <div class="ap-card-footer">
+                                    <span class="ap-card-stack">Python · MediaPipe · OpenCV</span>
+                                    <span class="ap-card-cta">Project Details <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="project4.html" class="ap-card"
+                           data-preview-title="Crop Disease Detector"
+                           data-preview-desc="AI model that identifies 38 plant disease classes from a single leaf photo. Built with MobileNetV2 + Transfer Learning trained on 87K+ images, achieving ~97% test accuracy. Deployed live on Hugging Face Spaces — free, public, zero setup."
+                           data-preview-stack="Python · TensorFlow · MobileNetV2 · Gradio · Hugging Face"
+                           data-preview-year="2026"
+                           data-preview-status="Completed · Live"
+                           data-preview-role="Solo Developer"
+                           data-preview-url="project4.html"
+                           data-color="#aaa">
+                            <div class="ap-card-bar" style="--card-color:#aaa;"></div>
+                            <div class="ap-card-inner">
+                                <div class="ap-card-top">
+                                    <div class="ap-card-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                                    </div>
+                                    <span class="ap-card-badge">2026 · Live</span>
+                                </div>
+                                <div class="ap-card-name">Crop Disease Detector</div>
+                                <div class="ap-card-desc">Upload a leaf photo → instant AI diagnosis. MobileNetV2 trained on 87K images across 38 disease classes. ~97% accuracy. Live on Hugging Face.</div>
+                                <div class="ap-tag-row">
+                                    <span class="ap-tag">Machine Learning</span>
+                                    <span class="ap-tag">Agriculture</span>
+                                    <span class="ap-tag">TensorFlow</span>
+                                </div>
+                                <div class="ap-card-footer">
+                                    <span class="ap-card-stack">TensorFlow · MobileNetV2</span>
+                                    <span class="ap-card-cta">Project Details <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="project6.html" class="ap-card"
+                           data-preview-title="RafiFinance"
+                           data-preview-desc="A complete personal finance tracker in a single HTML file. No server, no database, no framework. Tracks transactions, budgets, saving goals with auto-estimation, reminders, 6-month analysis, and a financial health score. PWA-enabled for offline use."
+                           data-preview-stack="Vanilla JS · CSS · PWA · localStorage · Cloudflare Pages"
+                           data-preview-year="2026"
+                           data-preview-status="Completed · Live"
+                           data-preview-role="Solo Developer"
+                           data-preview-url="project6.html"
+                           data-color="#d0d0d0">
+                            <div class="ap-card-bar" style="--card-color:#d0d0d0;"></div>
+                            <div class="ap-card-inner">
+                                <div class="ap-card-top">
+                                    <div class="ap-card-icon">
+                                        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                    </div>
+                                    <span class="ap-card-badge">2026 · Live</span>
+                                </div>
+                                <div class="ap-card-name">RafiFinance</div>
+                                <div class="ap-card-desc">Full-featured finance tracker in one HTML file. Zero dependencies, works offline as a PWA. Health score, 6-month trends, saving goals with smart estimation.</div>
+                                <div class="ap-tag-row">
+                                    <span class="ap-tag">Finance</span>
+                                    <span class="ap-tag">PWA</span>
+                                    <span class="ap-tag">Single-File</span>
+                                    <span class="ap-tag">Vanilla JS</span>
+                                </div>
+                                <div class="ap-card-footer">
+                                    <span class="ap-card-stack">Vanilla JS · PWA</span>
+                                    <span class="ap-card-cta">Project Details <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="project3.html" class="ap-card"
+                           data-preview-title="NASE Accessibility"
+                           data-preview-desc="A set of web tools designed to help visually impaired users navigate digital interfaces more independently. Built with accessibility-first principles: screen-reader compatibility, high-contrast modes, keyboard-only navigation, and WCAG 2.1 compliance."
+                           data-preview-stack="HTML · CSS · JavaScript · WCAG 2.1"
+                           data-preview-year="2025"
+                           data-preview-status="Completed"
+                           data-preview-role="Solo Developer"
+                           data-preview-url="project3.html"
+                           data-color="#777">
+                            <div class="ap-card-bar" style="--card-color:#777;"></div>
+                            <div class="ap-card-inner">
+                                <div class="ap-card-top">
+                                    <div class="ap-card-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="16" cy="4" r="2"/><path d="m18 19 1-7-5.87.94"/><path d="m5 8 3-3 4.5 3-2.5 3"/><path d="M4.24 14.5A5 5 0 0 0 9 21c1.5 0 2.87-.56 3.9-1.47"/><path d="M14 21v-5"/></svg>
+                                    </div>
+                                    <span class="ap-card-badge">2025</span>
+                                </div>
+                                <div class="ap-card-name">NASE Accessibility</div>
+                                <div class="ap-card-desc">Accessibility tools for visually impaired users. Screen-reader compatible, keyboard-navigable, high-contrast — built to WCAG 2.1 standards.</div>
+                                <div class="ap-tag-row">
+                                    <span class="ap-tag">Accessibility</span>
+                                    <span class="ap-tag">WCAG 2.1</span>
+                                    <span class="ap-tag">Volunteering</span>
+                                </div>
+                                <div class="ap-card-footer">
+                                    <span class="ap-card-stack">HTML · CSS · JavaScript</span>
+                                    <span class="ap-card-cta">Project Details <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="projects.html" class="ap-card"
+                           data-preview-title="BriskWalk Registration"
+                           data-preview-desc="Mobile-first event registration form for BriskWalk — the annual PPI Malaysia community charity walk. Designed in Figma, built with clean HTML/CSS/JS with full form validation, multi-step flow, and fast mobile performance."
+                           data-preview-stack="Figma · HTML · CSS · JavaScript"
+                           data-preview-year="2026"
+                           data-preview-status="Completed"
+                           data-preview-role="Designer & Developer"
+                           data-preview-url="projects.html"
+                           data-color="#999">
+                            <div class="ap-card-bar" style="--card-color:#999;"></div>
+                            <div class="ap-card-inner">
+                                <div class="ap-card-top">
+                                    <div class="ap-card-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+                                    </div>
+                                    <span class="ap-card-badge">2026</span>
+                                </div>
+                                <div class="ap-card-name">BriskWalk Registration</div>
+                                <div class="ap-card-desc">Mobile-first event registration for PPIM's annual community walk. Multi-step form, Figma-designed, built for fast on-the-go sign-up.</div>
+                                <div class="ap-tag-row">
+                                    <span class="ap-tag">UI/UX Design</span>
+                                    <span class="ap-tag">Mobile-First</span>
+                                    <span class="ap-tag">Figma</span>
+                                </div>
+                                <div class="ap-card-footer">
+                                    <span class="ap-card-stack">Figma · HTML · CSS · JS</span>
+                                    <span class="ap-card-cta">Project Details <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                </section>
+
             </div>
         </main>
     </div>
+
+    <!-- MOBILE BOTTOM SHEET -->
+    <div class="mob-sheet-overlay" id="mob-sheet-overlay"></div>
+    <div class="mob-sheet" id="mob-sheet" role="dialog" aria-modal="true" aria-label="Project details">
+        <div class="mob-sheet-handle"></div>
+        <div class="mob-sheet-color-bar" id="mob-sheet-bar"></div>
+        <div class="mob-sheet-body">
+            <div class="mob-sheet-label">Project Overview</div>
+            <div class="mob-sheet-title" id="mob-sheet-title"></div>
+            <div class="mob-sheet-desc" id="mob-sheet-desc"></div>
+            <div class="mob-sheet-meta">
+                <div class="mob-sheet-meta-item">
+                    <div class="mob-sheet-meta-key">Year</div>
+                    <div class="mob-sheet-meta-val" id="mob-sheet-year"></div>
+                </div>
+                <div class="mob-sheet-meta-item">
+                    <div class="mob-sheet-meta-key">Status</div>
+                    <div class="mob-sheet-meta-val" id="mob-sheet-status"></div>
+                </div>
+                <div class="mob-sheet-meta-item" style="grid-column:1/-1">
+                    <div class="mob-sheet-meta-key">Role</div>
+                    <div class="mob-sheet-meta-val" id="mob-sheet-role"></div>
+                </div>
+            </div>
+            <div class="mob-sheet-stack">
+                <div class="mob-sheet-stack-key">Tech Stack</div>
+                <div class="mob-sheet-stack-val" id="mob-sheet-stack"></div>
+            </div>
+        </div>
+        <div class="mob-sheet-actions">
+            <a class="mob-sheet-btn-primary" id="mob-sheet-goto" href="#">
+                View Project Page
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <button class="mob-sheet-btn-close" id="mob-sheet-close">Dismiss</button>
+        </div>
+    </div>
+
+    <!-- HOVER PREVIEW TOOLTIP -->
+    <div class="ap-preview" id="ap-preview" role="tooltip" aria-hidden="true">
+        <div class="ap-preview-label" id="prev-label">Project Overview</div>
+        <div class="ap-preview-title" id="prev-title"></div>
+        <div class="ap-preview-desc" id="prev-desc"></div>
+        <div class="ap-preview-kv">
+            <div class="ap-preview-row">
+                <span class="ap-preview-key">Year</span>
+                <span class="ap-preview-val" id="prev-year"></span>
+            </div>
+            <div class="ap-preview-row">
+                <span class="ap-preview-key">Status</span>
+                <span class="ap-preview-val" id="prev-status"></span>
+            </div>
+            <div class="ap-preview-row">
+                <span class="ap-preview-key">Role</span>
+                <span class="ap-preview-val" id="prev-role"></span>
+            </div>
+            <div class="ap-preview-row">
+                <span class="ap-preview-key">Stack</span>
+                <span class="ap-preview-val" id="prev-stack"></span>
+            </div>
+        </div>
+        <a class="ap-preview-btn" id="prev-btn" href="#">
+            Project Details
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+    </div>
+
     <script src="../script.js"></script>
     <script>
-        (function() {
-            var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            var isTouch = window.matchMedia('(hover: none)').matches;
-            var cards = document.querySelectorAll('.ap-card');
+    // Sidebar toggle for mobile
+    (function() {
+        var btn = document.getElementById('hamburger-btn');
+        var overlay = document.getElementById('sidebar-overlay');
+        var sidebar = document.querySelector('.sidebar');
+        if (!btn || !sidebar) return;
+        function openSidebar() {
+            sidebar.classList.add('sb-open');
+            overlay.classList.add('sb-open');
+            btn.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeSidebar() {
+            sidebar.classList.remove('sb-open');
+            overlay.classList.remove('sb-open');
+            btn.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+        btn.addEventListener('click', function() {
+            sidebar.classList.contains('sb-open') ? closeSidebar() : openSidebar();
+        });
+        overlay.addEventListener('click', closeSidebar);
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSidebar(); });
+    })();
+    </script>
+    <script>
+    // ── DESKTOP: Hover preview tooltip ──────────────────────────────
+    (function() {
+        var preview   = document.getElementById('ap-preview');
+        var prevTitle = document.getElementById('prev-title');
+        var prevDesc  = document.getElementById('prev-desc');
+        var prevYear  = document.getElementById('prev-year');
+        var prevStatus = document.getElementById('prev-status');
+        var prevRole  = document.getElementById('prev-role');
+        var prevStack = document.getElementById('prev-stack');
+        var prevBtn   = document.getElementById('prev-btn');
 
-            cards.forEach(function(card) {
-                // ── 3D tilt + cursor-follow spotlight ──
-                if (!reduceMotion && !isTouch) {
-                    var rect = null;
-                    card.addEventListener('mouseenter', function() {
-                        rect = card.getBoundingClientRect();
-                    });
-                    card.addEventListener('mousemove', function(e) {
-                        if (!rect) rect = card.getBoundingClientRect();
-                        var x = (e.clientX - rect.left) / rect.width;   // 0 → 1
-                        var y = (e.clientY - rect.top)  / rect.height;  // 0 → 1
-                        var tiltX = (y - 0.5) * -5;   // -2.5° → +2.5° (negative so it tilts toward cursor)
-                        var tiltY = (x - 0.5) *  5;
-                        card.style.setProperty('--tilt-x', tiltX.toFixed(2) + 'deg');
-                        card.style.setProperty('--tilt-y', tiltY.toFixed(2) + 'deg');
-                        card.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
-                        card.style.setProperty('--my', (y * 100).toFixed(1) + '%');
-                    });
-                    card.addEventListener('mouseleave', function() {
-                        card.style.setProperty('--tilt-x', '0deg');
-                        card.style.setProperty('--tilt-y', '0deg');
-                        rect = null;
-                    });
+        // Desktop = viewport > 900px (matches sidebar breakpoint)
+        function isDesktop() { return window.innerWidth > 900; }
+        if (!isDesktop()) return; // mobile handled separately
+
+        var currentCard = null, hideTimer = null, PAD = 20;
+
+        function showPreview(card, e) {
+            var d = card.dataset;
+            prevTitle.textContent  = d.previewTitle  || '';
+            prevDesc.textContent   = d.previewDesc   || '';
+            prevYear.textContent   = d.previewYear   || '';
+            prevStatus.textContent = d.previewStatus || '';
+            prevRole.textContent   = d.previewRole   || '';
+            prevStack.textContent  = d.previewStack  || '';
+            prevBtn.href = d.previewUrl || card.href || '#';
+            preview.classList.add('visible');
+            positionPreview(e);
+        }
+
+        function positionPreview(e) {
+            var pw = preview.offsetWidth, ph = preview.offsetHeight;
+            var vw = window.innerWidth,   vh = window.innerHeight;
+            var x = e.clientX + PAD, y = e.clientY + PAD;
+            if (x + pw > vw - 12) x = e.clientX - pw - PAD;
+            if (y + ph > vh - 12) y = e.clientY - ph - PAD;
+            preview.style.left = x + 'px';
+            preview.style.top  = y + 'px';
+        }
+
+        function hidePreview() {
+            preview.classList.remove('visible');
+            currentCard = null;
+        }
+
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        document.querySelectorAll('.ap-card').forEach(function(card) {
+            card.addEventListener('mouseenter', function(e) {
+                if (!isDesktop()) return;
+                clearTimeout(hideTimer);
+                currentCard = card;
+                showPreview(card, e);
+            });
+            card.addEventListener('mousemove', function(e) {
+                if (!isDesktop()) return;
+                if (currentCard === card) positionPreview(e);
+            });
+            card.addEventListener('mouseleave', function() {
+                if (!isDesktop()) return;
+                hideTimer = setTimeout(hidePreview, 80);
+            });
+            if (!reduceMotion) {
+                card.addEventListener('click', function(e) {
+                    if (!isDesktop()) return; // mobile click handled by sheet
+                    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+                    var href = card.getAttribute('href');
+                    if (!href) return;
+                    e.preventDefault();
+                    document.body.classList.add('ap-leaving');
+                    hidePreview();
+                    setTimeout(function() { window.location.href = href; }, 250);
+                });
+            }
+        });
+
+        preview.addEventListener('mouseenter', function() { clearTimeout(hideTimer); });
+        preview.addEventListener('mouseleave', function() { hideTimer = setTimeout(hidePreview, 80); });
+    })();
+
+    // ── MOBILE: Bottom sheet modal ───────────────────────────────────
+    (function() {
+        // Only activate on mobile (≤900px) — desktop uses hover tooltip
+        if (window.innerWidth > 900) return;
+
+        var overlay  = document.getElementById('mob-sheet-overlay');
+        var sheet    = document.getElementById('mob-sheet');
+        var bar      = document.getElementById('mob-sheet-bar');
+        var titleEl  = document.getElementById('mob-sheet-title');
+        var descEl   = document.getElementById('mob-sheet-desc');
+        var yearEl   = document.getElementById('mob-sheet-year');
+        var statusEl = document.getElementById('mob-sheet-status');
+        var roleEl   = document.getElementById('mob-sheet-role');
+        var stackEl  = document.getElementById('mob-sheet-stack');
+        var gotoBtn  = document.getElementById('mob-sheet-goto');
+        var closeBtn = document.getElementById('mob-sheet-close');
+
+        function openSheet(card) {
+            var d = card.dataset;
+            titleEl.textContent  = d.previewTitle  || '';
+            descEl.textContent   = d.previewDesc   || '';
+            yearEl.textContent   = d.previewYear   || '';
+            statusEl.textContent = d.previewStatus || '';
+            roleEl.textContent   = d.previewRole   || '';
+            stackEl.textContent  = d.previewStack  || '';
+            gotoBtn.href = d.previewUrl || card.getAttribute('href') || '#';
+            var color = d.color || '#9ca3af';
+            bar.style.background = color;
+
+            overlay.classList.add('active');
+            sheet.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            sheet.scrollTop = 0;
+        }
+
+        function closeSheet() {
+            sheet.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.ap-card').forEach(function(card) {
+            card.addEventListener('click', function(e) {
+                e.preventDefault();
+                openSheet(card);
+            });
+        });
+
+        closeBtn.addEventListener('click', closeSheet);
+        overlay.addEventListener('click', closeSheet);
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSheet(); });
+
+        // Swipe down to close
+        var startY = 0;
+        sheet.addEventListener('touchstart', function(e) {
+            startY = e.touches[0].clientY;
+        }, { passive: true });
+        sheet.addEventListener('touchend', function(e) {
+            var dy = e.changedTouches[0].clientY - startY;
+            if (dy > 80 && sheet.scrollTop <= 2) closeSheet();
+        }, { passive: true });
+    })();
+    </script>
+
+    <!-- Mobile FAB -->
+    <a href="../index.html" class="ap-fab">
+        <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg>
+        Home
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="rafi-bar"></div>
+<script>
+(function(){
+'use strict';
+var bar = document.getElementById('rafi-bar');
+if (bar) {
+    window.addEventListener('scroll', function() {
+        var d = document.documentElement;
+        var s = d.scrollTop || document.body.scrollTop;
+        var h = d.scrollHeight - d.clientHeight;
+        bar.style.width = (h > 0 ? (s / h * 100) : 0) + '%';
+    }, { passive: true });
+}
+var hbtn = document.getElementById('hamburger-btn');
+var sbEl  = document.querySelector('.sidebar');
+var ovEl  = document.getElementById('sidebar-overlay');
+if (hbtn && sbEl && !hbtn._rafi) {
+    hbtn._rafi = true;
+    function openSb() {
+        sbEl.classList.add('open', 'sb-open');
+        if (ovEl) ovEl.classList.add('visible', 'sb-open');
+        hbtn.classList.add('open');
+        hbtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('sb-open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeSb() {
+        sbEl.classList.remove('open', 'sb-open');
+        if (ovEl) ovEl.classList.remove('visible', 'sb-open');
+        hbtn.classList.remove('open');
+        hbtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('sb-open');
+        document.body.style.overflow = '';
+    }
+    hbtn.addEventListener('click', function() {
+        (sbEl.classList.contains('open') || sbEl.classList.contains('sb-open')) ? closeSb() : openSb();
+    });
+    if (ovEl) ovEl.addEventListener('click', closeSb);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSb(); });
+    sbEl.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+            if (window.innerWidth <= 900) setTimeout(closeSb, 60);
+        });
+    });
+}
+function initPipeline(wrap) {
+    var scroll = wrap.querySelector('.p-pipeline-scroll');
+    if (!scroll || scroll._rafi) return;
+    scroll._rafi = true;
+    var dots   = wrap.querySelector('.p-pipe-dots');
+    var detail = wrap.querySelector('.p-pipe-detail');
+    var steps  = Array.from(wrap.querySelectorAll('.p-pipe-step'));
+    if (dots && steps.length > 1) {
+        dots.innerHTML = '';
+        steps.forEach(function(_, i) {
+            var d = document.createElement('div');
+            d.className = 'p-pipe-dot' + (i === 0 ? ' active' : '');
+            dots.appendChild(d);
+        });
+    }
+    function updateState() {
+        var atEnd = scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 8;
+        wrap.classList.toggle('at-end', atEnd);
+        if (dots && steps.length > 1) {
+            var range = scroll.scrollWidth - scroll.clientWidth;
+            var idx = range > 0 ? Math.round(scroll.scrollLeft / range * (steps.length - 1)) : 0;
+            idx = Math.max(0, Math.min(idx, steps.length - 1));
+            dots.querySelectorAll('.p-pipe-dot').forEach(function(d, i) {
+                d.classList.toggle('active', i === idx);
+            });
+        }
+    }
+    scroll.addEventListener('scroll', updateState, { passive: true });
+    setTimeout(updateState, 120);
+    steps.forEach(function(step) {
+        step.addEventListener('click', function() {
+            var wasActive = step.classList.contains('ps-active');
+            steps.forEach(function(s) { s.classList.remove('ps-active'); });
+            if (detail) {
+                if (!wasActive && step.dataset.detail) {
+                    step.classList.add('ps-active');
+                    detail.innerHTML = step.dataset.detail;
+                    detail.classList.add('ps-show');
+                } else {
+                    detail.classList.remove('ps-show');
+                    detail.innerHTML = '';
                 }
+            }
+        });
+    });
+    var drag = false, startX, startLeft;
+    scroll.addEventListener('mousedown', function(e) {
+        if (e.button !== 0) return;
+        drag = true; startX = e.pageX; startLeft = scroll.scrollLeft;
+        scroll.style.cursor = 'grabbing'; e.preventDefault();
+    });
+    window.addEventListener('mousemove', function(e) {
+        if (!drag) return;
+        scroll.scrollLeft = startLeft - (e.pageX - startX);
+    });
+    window.addEventListener('mouseup', function() {
+        if (!drag) return;
+        drag = false; scroll.style.cursor = 'grab';
+    });
+}
+document.querySelectorAll('.p-pipeline-wrap, .p-pipeline-outer').forEach(initPipeline);
+document.querySelectorAll('.p-acc-trigger').forEach(function(trigger) {
+    if (trigger._rafi) return;
+    trigger._rafi = true;
+    trigger.addEventListener('click', function() {
+        var item = trigger.closest('.p-acc-item');
+        var acc  = item.closest('.p-steps-accordion');
+        var wasOpen = item.classList.contains('open');
+        if (acc) acc.querySelectorAll('.p-acc-item').forEach(function(el) { el.classList.remove('open'); });
+        if (!wasOpen) item.classList.add('open');
+    });
+});
+var fills = document.querySelectorAll('.p-progress-fill');
+if (fills.length && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(ens) {
+        ens.forEach(function(e) {
+            if (e.isIntersecting) {
+                e.target.style.width = e.target.dataset.w || e.target.style.width;
+                io.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.4 });
+    fills.forEach(function(el) {
+        el.dataset.w = el.style.width || '100%';
+        el.style.width = '0%'; io.observe(el);
+    });
+}
+document.querySelectorAll('.skill-tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        var nav = btn.closest('.skills-tab-nav');
+        if (!nav) return;
+        nav.querySelectorAll('.skill-tab-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var target = btn.dataset.tab;
+        document.querySelectorAll('.skill-tab-panel').forEach(function(p) {
+            p.classList.toggle('active', p.dataset.panel === target);
+        });
+    });
+});
+})();
+</script>
+<script>/* ════════════════════════════════════════════════════════════════════════
+   MATH DERIVATION CARD — interaction layer
+   Tab switching + scroll-affordance detection for formula/example panels.
+   ════════════════════════════════════════════════════════════════════════ */
+(function () {
+    function setupScrollAffordance(wrap) {
+        if (!wrap || wrap._pmBound) return;
+        wrap._pmBound = true;
+        var scroller = wrap.querySelector('.p-math-scroll, .p-math-example-scroll');
+        if (!scroller) return;
 
-                // ── Smooth page-leave transition on click ──
-                if (!reduceMotion) {
-                    card.addEventListener('click', function(e) {
-                        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-                        var href = card.getAttribute('href');
-                        if (!href) return;
-                        e.preventDefault();
-                        document.body.classList.add('ap-leaving');
-                        setTimeout(function() { window.location.href = href; }, 280);
-                    });
+        function update() {
+            var scrollable = scroller.scrollWidth > scroller.clientWidth + 2;
+            var atEnd = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 2;
+            wrap.classList.toggle('pm-scrollable', scrollable);
+            wrap.classList.toggle('pm-at-end', !scrollable || atEnd);
+        }
+        scroller.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+        // Re-check after fonts/layout settle
+        setTimeout(update, 150);
+    }
+
+    function initMathBlock(block) {
+        if (block._pmBound) return;
+        block._pmBound = true;
+
+        var tabs = Array.prototype.slice.call(block.querySelectorAll('.p-math-tab'));
+        var panels = Array.prototype.slice.call(block.querySelectorAll('.p-math-panel'));
+
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                if (tab.classList.contains('active')) return;
+                var targetName = tab.getAttribute('data-tab');
+                tabs.forEach(function (t) { t.classList.toggle('active', t === tab); });
+                panels.forEach(function (p) {
+                    var match = p.getAttribute('data-panel') === targetName;
+                    p.classList.toggle('active', match);
+                });
+                // Re-check scroll affordance for the panel we just revealed
+                var activePanel = block.querySelector('.p-math-panel.active');
+                if (activePanel) {
+                    var wrap = activePanel.querySelector('.p-math-formula-wrap, .p-math-example-wrap');
+                    if (wrap) setupScrollAffordance(wrap);
                 }
             });
-        })();
-    </script>
+        });
+
+        // Bind scroll affordance for every wrap inside this block (formula tab is visible by default)
+        block.querySelectorAll('.p-math-formula-wrap, .p-math-example-wrap').forEach(setupScrollAffordance);
+    }
+
+    function init() {
+        document.querySelectorAll('.p-math-block').forEach(initMathBlock);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+</script>
 </body>
 </html>

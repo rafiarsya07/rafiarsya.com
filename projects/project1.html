@@ -7,279 +7,1413 @@
     <link rel="icon" type="image/png" href="../assets/avatar_rafi.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --accent-a:#064e3b; --accent-b:#10b981; }
-
-        /* ─── PAGE BASE ─────────────────────────────────────── */
-        .project-main { padding:0; min-height:100vh; background:#f8f9fb; }
-        .project-page { max-width:1040px; width:min(100%,1040px); margin:0 auto; padding:40px 40px 100px; }
-
-        /* ─── BACK BUTTON ─── */
-        .project-back {
-            display:inline-flex; align-items:center; gap:6px;
-            font-size:12.5px; font-weight:600; color:#6b7280;
-            text-decoration:none; margin-bottom:32px;
-            padding:6px 12px 6px 8px; border-radius:8px;
-            border:1px solid #e5e7eb; background:#fff;
-            transition:all 0.15s; letter-spacing:0.01em;
-        }
-        .project-back:hover { color:#111827; border-color:#d1d5db; background:#f9fafb; transform:translateX(-2px); }
-        .project-back svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
-
-        /* ─── HERO ─── */
-        .p-hero {
-            width:100%; border-radius:16px; overflow:hidden; margin-bottom:36px;
-            position:relative; min-height:280px;
-            display:flex; flex-direction:column; justify-content:flex-end;
-            padding:32px 36px; box-shadow:0 4px 24px rgba(0,0,0,0.12);
-        }
-        .p-hero-grid {
-            position:absolute; inset:0;
-            background-image: linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);
-            background-size:40px 40px; pointer-events:none;
-        }
-        .p-hero-glow {
-            position:absolute; width:420px; height:420px; border-radius:50%;
-            top:-130px; right:-60px; pointer-events:none;
-        }
-        .p-hero-badge {
-            display:inline-flex; align-items:center; gap:6px;
-            font-size:11px; font-weight:700; letter-spacing:0.12em;
-            text-transform:uppercase; color:rgba(255,255,255,0.6);
-            margin-bottom:10px; position:relative; z-index:1;
-        }
-        .p-hero-dot {
-            width:6px; height:6px; border-radius:50%;
-            animation:pdot 2s ease-in-out infinite;
-        }
-        @keyframes pdot { 0%,100%{box-shadow:0 0 0 2px rgba(255,255,255,0.2)} 50%{box-shadow:0 0 0 5px rgba(255,255,255,0.08)} }
-        .p-hero-title {
-            font-family:'Syne',sans-serif; font-size:44px; font-weight:800;
-            color:#fff; letter-spacing:-0.03em; line-height:1.05;
-            margin-bottom:8px; position:relative; z-index:1;
-        }
-        .p-hero-title span { background:linear-gradient(90deg,#93c5fd,#c4b5fd); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-        .p-hero-sub { font-size:14.5px; color:rgba(255,255,255,0.55); line-height:1.6; max-width:540px; position:relative; z-index:1; }
-        .p-hero-tags { display:flex; flex-wrap:wrap; gap:7px; margin-top:18px; position:relative; z-index:1; }
-        .p-hero-tag {
-            font-size:11px; font-weight:600; letter-spacing:0.05em;
-            padding:4px 12px; border-radius:20px;
-            background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.75);
-            border:1px solid rgba(255,255,255,0.12); backdrop-filter:blur(4px);
-        }
-
-        /* ─── META STRIP ─── */
-        .p-meta-strip {
-            display:flex; flex-wrap:wrap; border:1px solid #e5e7eb;
-            border-radius:12px; overflow:hidden; margin-bottom:32px; background:#fff;
-        }
-        .p-meta-item { flex:1; min-width:90px; padding:14px 16px; border-right:1px solid #f3f4f6; }
-        .p-meta-item:last-child { border-right:none; }
-        .p-meta-label { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#9ca3af; margin-bottom:4px; }
-        .p-meta-value { font-size:13px; font-weight:600; color:#111827; }
-        .p-meta-value.live { color:#16a34a; display:flex; align-items:center; gap:5px; }
-        .p-meta-value.live::before { content:''; width:6px; height:6px; border-radius:50%; background:#16a34a; display:inline-block; animation:pdot 2s ease-in-out infinite; }
-        .p-meta-value.inprogress { color:#2563eb; display:flex; align-items:center; gap:5px; }
-        .p-meta-value.inprogress::before { content:''; width:6px; height:6px; border-radius:50%; background:#2563eb; display:inline-block; animation:pdot 2s ease-in-out infinite; }
-
-        /* ─── LAYOUT ─── */
-        .p-layout { display:grid; grid-template-columns:1fr 290px; gap:24px; align-items:start; }
-        .p-main-col { display:flex; flex-direction:column; gap:22px; }
-        .p-side-col { display:flex; flex-direction:column; gap:16px; }
-
-        /* ─── CARDS ─── */
-        .p-card { background:#fff; border:1px solid #e5e7eb; border-radius:14px; padding:24px 26px; }
-        .p-card-title { font-size:10.5px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#9ca3af; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid #f3f4f6; }
-
-        /* ─── BODY TEXT ─── */
-        .p-body { font-size:15px; color:#374151; line-height:1.85; }
-        .p-body p { margin:0 0 14px; }
-        .p-body p:last-child { margin-bottom:0; }
-        .p-body strong { color:#111827; font-weight:600; }
-
-        /* ─── FEATURES ─── */
-        .p-features { display:flex; flex-direction:column; gap:10px; }
-        .p-feature-item {
-            display:flex; gap:12px; align-items:flex-start;
-            padding:13px 15px; border-radius:10px;
-            background:#f9fafb; border:1px solid #f3f4f6;
-            transition:border-color 0.15s, background 0.15s;
-        }
-        .p-feature-item:hover { border-color:#dbeafe; background:#eff6ff; }
-        .p-feature-icon {
-            width:32px; height:32px; border-radius:8px;
-            display:flex; align-items:center; justify-content:center; flex-shrink:0;
-        }
-        .p-feature-icon svg { width:14px; height:14px; stroke:#fff; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-        .p-feature-title { font-size:13px; font-weight:600; color:#111827; margin-bottom:2px; }
-        .p-feature-desc { font-size:12px; color:#6b7280; line-height:1.5; }
-
-        /* ─── TECH ─── */
-        .p-tech-grid { display:flex; flex-wrap:wrap; gap:8px; }
-        .p-tech-pill {
-            font-size:12px; font-weight:500; color:#374151;
-            background:#f9fafb; border:1px solid #e5e7eb; border-radius:6px;
-            padding:5px 12px; font-family:'Space Mono',monospace;
-            transition:all 0.15s;
-        }
-        .p-tech-pill:hover { background:#eff6ff; border-color:#bfdbfe; color:#1d4ed8; }
-
-        /* ─── TIMELINE ─── */
-        .p-timeline { display:flex; flex-direction:column; }
-        .p-tl-item { display:flex; gap:12px; padding-bottom:20px; }
-        .p-tl-item:last-child { padding-bottom:0; }
-        .p-tl-line { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
-        .p-tl-dot {
-            width:26px; height:26px; border-radius:50%; color:white;
-            font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; z-index:1;
-        }
-        .p-tl-dot.done { background:linear-gradient(135deg,var(--accent-a),var(--accent-b)); }
-        .p-tl-dot.upcoming { background:#f3f4f6; color:#9ca3af; border:2px dashed #d1d5db; }
-        .p-tl-connector { flex:1; width:1px; background:#e5e7eb; margin-top:4px; }
-        .p-tl-item:last-child .p-tl-connector { display:none; }
-        .p-tl-body { padding-top:3px; }
-        .p-tl-date { font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#9ca3af; margin-bottom:3px; }
-        .p-tl-date.future { color:#bfdbfe; }
-        .p-tl-title { font-size:13.5px; font-weight:600; color:#111827; margin-bottom:3px; }
-        .p-tl-title.dim { color:#6b7280; }
-        .p-tl-desc { font-size:12px; color:#6b7280; line-height:1.55; }
-
-        /* ─── PROGRESS ─── */
-        .p-progress-label { display:flex; justify-content:space-between; font-size:12px; color:#6b7280; margin-bottom:5px; }
-        .p-progress-label span:last-child { font-weight:600; color:#111827; }
-        .p-progress-track { height:5px; border-radius:3px; background:#f3f4f6; overflow:hidden; margin-bottom:12px; }
-        .p-progress-fill { height:100%; border-radius:3px; transition:width 1s cubic-bezier(.2,.7,.2,1); }
-
-        /* ─── NUMBERS ─── */
-        .p-numbers { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
-        .p-num-card { border-radius:10px; padding:13px 15px; }
-        .p-num-val { font-family:'Syne',sans-serif; font-size:24px; font-weight:800; color:#111827; line-height:1; margin-bottom:3px; }
-        .p-num-label { font-size:11px; font-weight:600; color:#6b7280; }
-
-        /* ─── LINK BTNS ─── */
-        .p-link-btn {
-            display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600;
-            padding:10px 16px; border-radius:9px; text-decoration:none; transition:all 0.15s;
-            width:100%; margin-bottom:7px;
-        }
-        .p-link-btn:last-child { margin-bottom:0; }
-        .p-link-btn.primary { background:#111827; color:white; }
-        .p-link-btn.primary:hover { background:#1f2937; transform:translateY(-1px); }
-        .p-link-btn.secondary { background:#f9fafb; color:#374151; border:1px solid #e5e7eb; }
-        .p-link-btn.secondary:hover { background:#f3f4f6; transform:translateY(-1px); }
-        .p-link-btn svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
-        .p-link-btn-label { flex:1; }
-        .p-link-soon { font-size:10px; font-weight:600; color:#9ca3af; background:#f3f4f6; padding:2px 7px; border-radius:4px; }
-
-        /* ─── DEMO CARDS ─── */
-        .p-demo-grid {
-            display:grid;
-            grid-template-columns:1fr 1fr 1fr;
-            gap:12px;
-            margin-top:4px;
-        }
-
-        /* ─── USAGE FLOW ─── */
-        .p-usage-flow { position:relative; padding-left:20px; }
-        .p-usage-step { display:flex; gap:16px; margin-bottom:20px; align-items:flex-start; }
-        .p-usage-step:last-child { margin-bottom:0; }
-        .p-usage-num {
-            flex-shrink:0; width:32px; height:32px; border-radius:50%;
-            background:linear-gradient(135deg,#064e3b,#10b981); color:#fff;
-            font-size:12px; font-weight:800;
-            display:flex; align-items:center; justify-content:center;
-            box-shadow:0 2px 8px rgba(16,185,129,0.3);
-            position:relative; z-index:1;
-        }
-        .p-usage-connector {
-            position:absolute; left:35px; top:32px;
-            width:1px; height:calc(100% - 56px);
-            background:linear-gradient(to bottom,#10b981,#e5e7eb);
-            pointer-events:none;
-        }
-        .p-usage-body { padding-top:5px; }
-        .p-usage-title { font-size:13.5px; font-weight:700; color:#111827; margin-bottom:4px; }
-        .p-usage-desc { font-size:12.5px; color:#6b7280; line-height:1.6; }
-        .p-usage-tip {
-            background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px;
-            padding:12px 15px; margin-top:16px;
-            display:flex; gap:10px; align-items:flex-start;
-        }
-        .p-usage-tip-icon { font-size:16px; line-height:1; flex-shrink:0; }
-        .p-usage-tip-text { font-size:12px; color:#065f46; line-height:1.6; }
-
-        /* ─── CLOSING BANNER ─── */
-        .p-closing {
-            margin-top:32px; padding:24px 28px;
-            background:linear-gradient(135deg,#022c22 0%,#064e3b 60%,#10b981 100%);
-            border-radius:14px;
-            display:flex; align-items:center; justify-content:space-between;
-            flex-wrap:wrap; gap:16px;
-        }
-        .p-closing-text {}
-        .p-closing-title { font-family:'Syne',sans-serif; font-size:18px; font-weight:800; color:#fff; margin-bottom:6px; }
-        .p-closing-desc { font-size:13px; color:rgba(255,255,255,0.6); line-height:1.6; max-width:480px; }
-        .p-closing-btn {
-            display:inline-flex; align-items:center; gap:8px;
-            background:#fff; color:#064e3b; font-size:13px; font-weight:700;
-            padding:10px 20px; border-radius:9px; text-decoration:none;
-            flex-shrink:0; transition:opacity 0.15s; white-space:nowrap;
-        }
-        .p-closing-btn:hover { opacity:.85; }
-        .p-closing-btn svg { width:15px; height:15px; stroke:#064e3b; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-
-        /* ─── RESPONSIVE ─────────────────────────────────────── */
-        @media(max-width:860px) {
-            .p-layout { grid-template-columns:1fr; }
-            .p-hero-title { font-size:34px; }
-            .p-demo-grid { grid-template-columns:1fr 1fr; }
-        }
-
-        @media(max-width:600px) {
-            .project-page { padding:16px 14px 60px; }
-            .p-hero { padding:22px 20px; min-height:220px; }
-            .p-hero-title { font-size:26px; }
-            .p-hero-sub { font-size:13px; }
-            .p-card { padding:18px 16px; }
-
-            /* meta strip: stack vertically */
-            .p-meta-strip { flex-direction:column; }
-            .p-meta-item {
-                flex:none; width:100%; min-width:0;
-                border-right:none; border-bottom:1px solid #f3f4f6;
-                padding:11px 16px;
-            }
-            .p-meta-item:last-child { border-bottom:none; }
-
-            /* demo grid: single column */
-            .p-demo-grid { grid-template-columns:1fr; }
-
-            /* usage flow: remove absolute connector, use padding */
-            .p-usage-flow { padding-left:0; }
-            .p-usage-connector { display:none; }
-
-            /* closing: stack vertically */
-            .p-closing { flex-direction:column; align-items:flex-start; }
-            .p-closing-btn { width:100%; justify-content:center; }
-
-            /* controls table: allow horizontal scroll */
-            .p-controls-table { overflow-x:auto; -webkit-overflow-scrolling:touch; }
-
-            /* numbers grid stays 2 cols but smaller */
-            .p-num-val { font-size:20px; }
-        }
-
-        @media(max-width:400px) {
-            .p-hero-title { font-size:22px; }
-            .p-numbers { gap:7px; }
-            .p-num-card { padding:10px 12px; }
+        /* BASE STYLES replaces external styles.css */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'IBM Plex Sans', sans-serif; background: #f8f9fb; color: #374151; -webkit-font-smoothing: antialiased; }
+        .mobile-topbar { display: none; position: sticky; top: 0; z-index: 100; align-items: center; justify-content: space-between; padding: 0 16px; height: 52px; background: rgba(248,249,251,0.96); border-bottom: 1px solid #e5e7eb; backdrop-filter: blur(12px); }
+        .mobile-topbar-title { font-size: 14px; font-weight: 700; color: #111827; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: calc(100% - 52px); }
+        .hamburger-btn { width: 36px; height: 36px; border: none; background: #f3f4f6; border-radius: 8px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4.5px; padding: 0; flex-shrink: 0; }
+        .hamburger-btn span { display: block; width: 18px; height: 1.5px; background: #111827; border-radius: 2px; transition: all 0.2s ease; }
+        .hamburger-btn.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        .hamburger-btn.open span:nth-child(2) { opacity: 0; }
+        .hamburger-btn.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+        .portfolio-app { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; align-items: start; }
+        .sidebar { width: 240px; border-right: 1px solid #e5e7eb; background: #fff; display: flex; flex-direction: column; height: 100vh; position: sticky; top: 0; overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: #e5e7eb transparent; transition: transform 0.3s cubic-bezier(.4,0,.2,1); will-change: transform; flex-shrink: 0; } .sidebar::-webkit-scrollbar { width: 3px; } .sidebar::-webkit-scrollbar-track { background: transparent; } .sidebar::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 3px; }
+        .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 199; opacity: 0; pointer-events: none; transition: opacity 0.28s ease; }
+        .sidebar-top { padding: 20px 16px 16px; flex: 1; }
+        .sidebar-logo-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #f3f4f6; }
+        .sidebar-logo-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+        .sidebar-logo-name { font-size: 13px; font-weight: 700; color: #111827; }
+        .sidebar-group-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #9ca3af; margin: 16px 0 6px; padding: 0 4px; }
+        .sidebar-nav { display: flex; flex-direction: column; gap: 1px; }
+        .sidebar-nav a, .sidebar-projects a, .sidebar-social a { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 7px; font-size: 13px; font-weight: 500; color: #374151; text-decoration: none; transition: all 0.15s; }
+        .sidebar-nav a:hover, .sidebar-projects a:hover, .sidebar-social a:hover { background: #f3f4f6; color: #111827; }
+        .sidebar-nav a.active, .sidebar-projects a.active { background: #111827; color: #fff; }
+        .nav-icon { width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .nav-icon svg { width: 15px; height: 15px; }
+        .sidebar-projects { display: flex; flex-direction: column; gap: 1px; }
+        .project-label { font-size: 13px; }
+        .project-more { opacity: 0.65; }
+        .sidebar-social { display: flex; flex-direction: column; gap: 1px; }
+        .sidebar-social a { color: #6b7280; }
+        .sidebar-footer { padding: 16px; border-top: 1px solid #f3f4f6; }
+        .sidebar-footer p { font-size: 11px; color: #9ca3af; }
+        @media (max-width: 900px) {
+            .mobile-topbar { display: flex; }
+            .portfolio-app { display: block; width: 100%; }
+            .sidebar { position: fixed; left: 0; top: 0; height: 100vh; z-index: 200; transform: translateX(-100%); }
+            .sidebar.sb-open { transform: translateX(0); box-shadow: 4px 0 32px rgba(0,0,0,0.12); }
+            .sidebar-overlay { display: block; }
+            .sidebar-overlay.sb-open { opacity: 1; pointer-events: all; }
+            body.sb-open { overflow: hidden; }
         }
     </style>
-</head>
-<body>
+    <style>
+        :root {
+            --bg:      #0c0c0c;
+            --bg2:     #141414;
+            --bg3:     #1c1c1c;
+            --line:    #242424;
+            --line2:   #333;
+            --muted: #828282;
+            --sub:     #888;
+            --body:    #b8b8b8;
+            --heading: #e8e8e8;
+            --white:   #f5f5f5;
+            --hi:      #ffffff;
+            --acc:     #e0e0e0; /* per-project highlight */
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+        .project-main { padding: 0; min-height: 100vh; background: var(--bg); color: var(--body); }
+        .project-page { max-width: 1060px; width: min(100%, 1060px); margin: 0 auto; padding: 44px 44px 100px; }
+
+        /* ── BACK ── */
+        .project-back {
+            display: inline-flex; align-items: center; gap: 7px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+            color: var(--muted); text-decoration: none;
+            padding: 7px 13px 7px 9px; border: 1px solid var(--line2);
+            border-radius: 4px; background: var(--bg2);
+            margin-bottom: 36px; transition: color 0.15s, border-color 0.15s;
+        }
+        .project-back:hover { color: var(--white); border-color: var(--muted); }
+        .project-back svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+        /* ── HERO ── */
+        .p-hero {
+            width: 100%; border-radius: 2px; overflow: hidden;
+            margin-bottom: 2px; position: relative;
+            min-height: 300px; display: flex; flex-direction: column;
+            justify-content: flex-end; padding: 36px 40px;
+            background: linear-gradient(145deg, #0a0a0a 0%, #181818 50%, #222 100%);
+        }
+        .p-hero-grid {
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 48px 48px;
+        }
+        .p-hero-noise {
+            position: absolute; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none; opacity: 0.4;
+        }
+        .p-hero-badge {
+            display: inline-flex; align-items: center; gap: 7px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase;
+            color: var(--muted); margin-bottom: 14px; position: relative; z-index: 1;
+        }
+        .p-hero-dot {
+            width: 5px; height: 5px; border-radius: 50%;
+            background: var(--acc); display: inline-block;
+        }
+        .p-hero-title {
+            font-family: 'IBM Plex Sans', sans-serif; font-size: 60px; font-weight: 700;
+            color: var(--hi); letter-spacing: -0.04em; line-height: 1.02;
+            margin-bottom: 14px; position: relative; z-index: 1;
+        }
+        .p-hero-title em {
+            font-style: normal; color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+        }
+        .p-hero-sub {
+            font-size: 14px; color: var(--sub); line-height: 1.7;
+            max-width: 520px; position: relative; z-index: 1;
+        }
+        .p-hero-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; position: relative; z-index: 1; }
+        .p-hero-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+            padding: 4px 10px; border-radius: 2px;
+            background: rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.45);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* ── META STRIP ── */
+        .p-meta-strip {
+            display: flex; flex-wrap: wrap;
+            border: 1px solid var(--line); border-top: none;
+            border-radius: 0 0 2px 2px; overflow: hidden;
+            margin-bottom: 32px; background: var(--bg2);
+        }
+        .p-meta-item { flex: 1; min-width: 100px; padding: 13px 18px; border-right: 1px solid var(--line); }
+        .p-meta-item:last-child { border-right: none; }
+        .p-meta-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+            color: var(--muted); margin-bottom: 5px;
+        }
+        .p-meta-value { font-size: 12.5px; font-weight: 600; color: var(--heading); }
+
+        /* ── LAYOUT ── */
+        .p-layout { display: grid; grid-template-columns: 1fr 272px; gap: 2px; align-items: start; }
+        .p-main-col { display: flex; flex-direction: column; gap: 2px; }
+        .p-side-col { display: flex; flex-direction: column; gap: 2px; position: sticky; top: 24px; }
+
+        /* ── CARDS ── */
+        .p-card {
+            background: var(--bg2); border: 1px solid var(--line);
+            border-radius: 2px; padding: 26px 28px;
+        }
+        .p-card-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9.5px; font-weight: 700; letter-spacing: 0.2em;
+            text-transform: uppercase; color: var(--muted);
+            margin-bottom: 18px; padding-bottom: 14px;
+            border-bottom: 1px solid var(--line);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .p-card-title-num {
+            font-size: 9px; color: var(--bg);
+            background: var(--muted); border-radius: 2px;
+            padding: 1px 6px; font-weight: 700;
+        }
+
+        /* ── BODY TEXT ── */
+        .p-body { font-size: 14.5px; color: var(--body); line-height: 1.85; }
+        .p-body p { margin-bottom: 14px; }
+        .p-body p:last-child { margin-bottom: 0; }
+        .p-body strong { color: var(--hi); font-weight: 600; }
+        .p-body .hi { color: var(--hi); font-weight: 700; background: rgba(255,255,255,0.06); padding: 1px 6px; border-radius: 3px; }
+        code.inline {
+            font-family: 'IBM Plex Mono', monospace;
+            background: var(--bg3); border: 1px solid var(--line2);
+            padding: 2px 8px; border-radius: 3px;
+            font-size: 11.5px; color: var(--acc);
+        }
+
+        /* ── HIGHLIGHT CALLOUT ── */
+        .p-callout {
+            border-left: 2px solid var(--acc);
+            background: rgba(255,255,255,0.03);
+            padding: 14px 18px; border-radius: 0 4px 4px 0;
+            margin: 16px 0; font-size: 13.5px; color: var(--sub); line-height: 1.7;
+        }
+        .p-callout strong { color: var(--acc); }
+
+        /* ── FEATURES ── */
+        .p-features { display: flex; flex-direction: column; gap: 18px; }
+        .p-feature-item { display: flex; gap: 14px; align-items: flex-start; }
+        .p-feature-icon {
+            width: 34px; height: 34px; border-radius: 6px;
+            background: var(--bg3); border: 1px solid var(--line2);
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .p-feature-icon svg { width: 15px; height: 15px; stroke: var(--acc); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+        .p-feature-title { font-size: 13.5px; font-weight: 700; color: var(--heading); margin-bottom: 3px; }
+        .p-feature-desc { font-size: 12.5px; color: var(--sub); line-height: 1.6; }
+
+        /* ── MATH BLOCK ── */
+        .p-math-block {
+            background: var(--bg); border: 1px solid var(--line2);
+            border-radius: 4px; padding: 20px 24px; margin: 16px 0;
+        }
+        .p-math-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+            color: var(--muted); margin-bottom: 12px;
+        }
+        .p-math-formula {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px; color: var(--acc);
+            line-height: 1.8; white-space:pre-wrap;
+            overflow-x: auto;
+        }
+        .p-math-desc { font-size: 12px; color: var(--sub); margin-top: 10px; line-height: 1.6; }
+
+        /* ── PIPELINE DIAGRAM ── */
+        .p-pipeline {
+            display: flex; align-items: center; gap: 0;
+            overflow-x: auto; padding: 4px 0 8px; margin: 4px 0;
+        }
+        .p-pipe-step {
+            flex-shrink: 0; background: var(--bg3);
+            border: 1px solid var(--line2); border-radius: 4px;
+            padding: 10px 14px; text-align: center; min-width: 90px;
+        }
+        .p-pipe-step-num {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 8px; color: var(--muted); letter-spacing: 0.1em;
+            text-transform: uppercase; margin-bottom: 5px;
+        }
+        .p-pipe-step-label {
+            font-size: 11px; font-weight: 700; color: var(--heading);
+            line-height: 1.3;
+        }
+        .p-pipe-step-sub { font-size: 9.5px; color: var(--muted); margin-top: 3px; }
+        .p-pipe-arrow {
+            font-size: 13px; color: var(--line2); margin: 0 4px;
+            flex-shrink: 0;
+        }
+
+        /* ── USE CASES ── */
+        .p-usecases { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .p-usecase {
+            background: var(--bg3); border: 1px solid var(--line);
+            border-radius: 4px; padding: 14px 16px;
+        }
+        .p-usecase-icon { font-size: 18px; margin-bottom: 7px; }
+        .p-usecase-title { font-size: 12.5px; font-weight: 700; color: var(--heading); margin-bottom: 4px; }
+        .p-usecase-desc { font-size: 11.5px; color: var(--muted); line-height: 1.55; }
+
+        /* ── HOW IT WORKS STEPS ── */
+        .p-steps { display: flex; flex-direction: column; position: relative; padding-left: 26px; }
+        .p-steps::before {
+            content: ''; position: absolute; left: 8px; top: 10px;
+            width: 1px; height: calc(100% - 30px);
+            background: linear-gradient(to bottom, var(--line2), transparent);
+        }
+        .p-step { margin-bottom: 20px; position: relative; }
+        .p-step:last-child { margin-bottom: 0; }
+        .p-step-dot {
+            position: absolute; left: -22px; top: 2px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: var(--bg3); border: 1px solid var(--line2);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 7px; color: var(--muted); font-weight: 700;
+        }
+        .p-step-title { font-size: 13px; font-weight: 700; color: var(--heading); margin-bottom: 4px; }
+        .p-step-desc { font-size: 12.5px; color: var(--sub); line-height: 1.6; }
+
+        /* ── TECH PILLS ── */
+        .p-tech-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+        .p-tech-pill {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10.5px; color: var(--sub);
+            background: var(--bg); border: 1px solid var(--line2);
+            border-radius: 3px; padding: 5px 11px;
+            transition: all 0.15s;
+        }
+        .p-tech-pill:hover { color: var(--white); border-color: var(--muted); }
+
+        /* ── NUMBERS ── */
+        .p-numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .p-num-card {
+            background: var(--bg3); border: 1px solid var(--line);
+            border-radius: 4px; padding: 14px 16px;
+        }
+        .p-num-val {
+            font-family: 'IBM Plex Sans', sans-serif; font-size: 28px; font-weight: 700;
+            color: var(--hi); line-height: 1; margin-bottom: 4px;
+        }
+        .p-num-label { font-size: 10.5px; color: var(--muted); font-weight: 500; }
+
+        /* ── PROGRESS ── */
+        .p-progress-label { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--muted); margin-bottom: 5px; }
+        .p-progress-label span:last-child { color: var(--acc); font-weight: 700; font-family: 'IBM Plex Mono', monospace; }
+        .p-progress-track { height: 2px; border-radius: 1px; background: var(--line2); overflow: hidden; margin-bottom: 13px; }
+        .p-progress-fill { height: 100%; border-radius: 1px; background: var(--acc); }
+
+        /* ── LINKS ── */
+        .p-link-btn {
+            display: flex; align-items: center; gap: 9px;
+            font-size: 12.5px; font-weight: 600;
+            padding: 10px 16px; border-radius: 3px;
+            text-decoration: none; transition: all 0.15s;
+            width: 100%; margin-bottom: 6px;
+            border: 1px solid var(--line2); color: var(--sub);
+            background: var(--bg);
+        }
+        .p-link-btn:last-child { margin-bottom: 0; }
+        .p-link-btn:hover { color: var(--white); border-color: var(--muted); background: var(--bg3); }
+        .p-link-btn.primary { background: var(--hi); color: var(--bg); border-color: transparent; }
+        .p-link-btn.primary:hover { background: var(--acc); }
+        .p-link-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+        .p-link-btn-label { flex: 1; }
+
+        /* ── CONTROLS TABLE ── */
+        .p-ctrl-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+        .p-ctrl-table th { text-align: left; padding: 8px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--line2); }
+        .p-ctrl-table td { padding: 10px 12px; color: var(--body); border-bottom: 1px solid var(--line); }
+        .p-ctrl-table tr:last-child td { border-bottom: none; }
+        .p-ctrl-badge { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; padding: 2px 9px; border-radius: 2px; border: 1px solid var(--line2); color: var(--acc); background: var(--bg); }
+
+        /* ── CLOSING ── */
+        .p-closing {
+            margin-top: 32px; padding: 28px 32px;
+            background: var(--bg2); border: 1px solid var(--line2);
+            border-radius: 2px;
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 18px;
+        }
+        .p-closing-title { font-family: 'IBM Plex Sans', sans-serif; font-size: 20px; font-weight: 700; color: var(--hi); margin-bottom: 6px; }
+        .p-closing-desc { font-size: 13px; color: var(--sub); line-height: 1.6; max-width: 480px; }
+        .p-closing-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--hi); color: var(--bg);
+            font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+            padding: 11px 22px; border-radius: 3px; text-decoration: none;
+            flex-shrink: 0; transition: opacity 0.15s;
+        }
+        .p-closing-btn:hover { opacity: 0.85; }
+        .p-closing-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+        /* ── DEMO VIDEO ── */
+        .p-video-wrap {
+            border-radius: 4px; overflow: hidden; background: #000;
+            border: 1px solid var(--line2); margin-bottom: 16px;
+        }
+        .p-video-wrap video { width: 100%; display: block; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 860px) {
+            .p-layout { grid-template-columns: 1fr; }
+            .p-side-col { position: static; order: -1; }
+            .p-hero-title { font-size: 42px; }
+        }
+        @media (max-width: 600px) {
+            .project-page { padding: 16px 16px 60px; }
+            .p-hero { padding: 24px 22px; min-height: 240px; }
+            .p-hero-title { font-size: 32px; }
+            .p-meta-strip { flex-direction: column; }
+            .p-meta-item { border-right: none; border-bottom: 1px solid var(--line); }
+            .p-meta-item:last-child { border-bottom: none; }
+            .p-closing { flex-direction: column; }
+            .p-closing-btn { width: 100%; justify-content: center; }
+            .p-usecases { grid-template-columns: 1fr; }
+        }
+    
+        /* ── Sidebar slide animation ── */
+        .sidebar { transition: transform 0.32s cubic-bezier(.4,0,.2,1); will-change: transform; }
+        .sidebar-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.3); z-index:199; opacity:0; pointer-events:none; transition:opacity 0.28s ease; }
+        @media(max-width:900px) {
+            .sidebar { position:fixed; left:0; top:0; height:100vh; z-index:200; transform:translateX(-100%); }
+            .sidebar.sb-open { transform:translateX(0); box-shadow:4px 0 40px rgba(0,0,0,0.15); }
+            .sidebar-overlay.sb-open { opacity:1; pointer-events:all; }
+        }
+
+
+        /* ── Light theme overrides ── */
+        :root {
+            --bg: #f8f9fb; --bg2: #ffffff; --bg3: #f3f4f6;
+            --line: #e5e7eb; --line2: #d1d5db;
+            --muted: #9ca3af; --sub: #6b7280; --body: #374151;
+            --heading: #1f2937; --white: #ffffff; --hi: #111827;
+            --acc: #111827;
+        }
+        .project-main, .ap-main { background: var(--bg); color: var(--body); }
+        .p-card { background: var(--bg2); border-color: var(--line); }
+        .p-card-title { color: var(--muted); border-color: var(--line); }
+        .p-num { background: var(--muted); color: #fff; }
+        .p-body { color: var(--body); }
+        .p-body strong { color: var(--hi); }
+        .p-body p { color: var(--body); }
+        code.inline { background: var(--bg3); border-color: var(--line2); color: #374151; font-weight: 600; }
+        .p-callout { background: #f9fafb; border-color: #d1d5db; color: var(--sub); }
+        .p-callout strong { color: var(--hi); }
+        .p-math-block { background: var(--bg3); border-color: var(--line2); }
+        .p-math-title { color: var(--muted); }
+        .p-math-formula { color: #374151; }
+        .p-math-desc { color: var(--sub); }
+        .p-pipe-step { background: var(--bg3); border-color: var(--line2); }
+        .p-pipe-step-num { color: var(--muted); }
+        .p-pipe-step-label { color: var(--hi); }
+        .p-pipe-step-sub { color: var(--muted); }
+        .p-pipe-arrow { color: var(--line2); }
+        .p-features { gap: 12px; }
+        .p-feature-item { align-items: flex-start; }
+        .p-feature-icon { background: var(--bg3); border-color: var(--line2); }
+        .p-feature-icon svg { stroke: #374151; }
+        .p-feature-title { color: var(--hi); }
+        .p-feature-desc { color: var(--sub); }
+        .p-step-dot { background: var(--bg3); border-color: var(--line2); color: var(--muted); }
+        .p-step-title { color: var(--hi); }
+        .p-step-desc { color: var(--sub); }
+        .p-usecase { background: var(--bg3); border-color: var(--line); }
+        .p-usecase-title { color: var(--hi); }
+        .p-usecase-desc { color: var(--sub); }
+        .p-audit-item { background: var(--bg3); border-color: var(--line); }
+        .p-audit-desc { color: var(--sub); }
+        .p-wcag-row { border-color: var(--line); }
+        .p-wcag-code { color: #374151; }
+        .p-wcag-desc { color: var(--sub); }
+        .p-wcag-pass { color: #fff; background: #374151; }
+        .p-arch-row { border-color: var(--line); }
+        .p-arch-icon { background: var(--bg3); border-color: var(--line2); }
+        .p-arch-icon svg { stroke: var(--sub); }
+        .p-arch-name { color: var(--hi); }
+        .p-arch-desc { color: var(--muted); }
+        .p-flow::before { background: linear-gradient(to bottom, var(--line2), transparent); }
+        .p-order-state { background: var(--bg3); border-color: var(--line2); color: var(--hi); }
+        .p-order-arrow { color: var(--muted); }
+        .p-tech-pill { background: var(--bg2); border-color: var(--line2); color: var(--sub); }
+        .p-tech-pill:hover { background: var(--bg3); color: var(--hi); border-color: #9ca3af; }
+        .p-num-card { background: var(--bg3); border-color: var(--line); }
+        .p-num-val { color: var(--hi); }
+        .p-num-label { color: var(--muted); }
+        .p-progress-track { background: var(--line2); }
+        .p-progress-fill { background: #374151; }
+        .p-progress-label { color: var(--muted); }
+        .p-progress-label span:last-child { color: var(--hi); }
+        .p-link-btn { background: var(--bg2); border-color: var(--line2); color: var(--sub); }
+        .p-link-btn:hover { background: var(--bg3); color: var(--hi); border-color: var(--muted); }
+        .p-link-btn.primary { background: var(--hi); color: #fff; }
+        .p-link-btn.primary:hover { background: #374151; }
+        .p-closing { background: var(--hi); color: #fff; border-color: var(--hi); }
+        .p-closing-title { color: #fff; }
+        .p-closing-desc { color: rgba(255,255,255,0.7); }
+        .p-closing-btn { background: #fff; color: var(--hi); }
+        .p-closing-btn:hover { opacity: .88; }
+        .project-back { background: var(--bg2); border-color: var(--line2); color: var(--muted); }
+        .project-back:hover { color: var(--hi); border-color: #9ca3af; }
+        .p-meta-strip { background: var(--bg2); border-color: var(--line); }
+        .p-meta-item { border-color: var(--line); }
+        .p-meta-label { color: var(--muted); }
+        .p-meta-value { color: var(--hi); }
+        .p-meta-value a { color: #374151; }
+        .p-live-banner { background: #f9fafb; border-color: var(--line2); color: var(--sub); }
+        .p-live-banner strong { color: var(--hi); }
+        .p-class-item { background: var(--bg3); border-color: var(--line); color: var(--sub); }
+        .p-wcag-pass { background: #374151; color: #fff; }
+        .p-schema { background: var(--bg3); border-color: var(--line2); }
+        .p-schema-key { color: #374151; }
+        .p-schema-type { color: var(--muted); }
+        .p-schema-row { border-color: var(--line); }
+        .p-pwa-step-num { background: var(--muted); color: #fff; }
+        .p-pwa-step-title { color: var(--hi); }
+        .p-pwa-step-desc { color: var(--sub); }
+        .p-swatch-name { color: var(--hi); }
+        .p-type-meta { color: var(--muted); }
+        .p-health-bar-label { color: var(--muted); }
+        .p-health-bar-track { background: var(--line2); }
+        .p-health-bar-fill { background: #374151; }
+        .p-score-val { color: var(--hi); }
+        /* Hero stays dark always */
+        .p-hero { background: linear-gradient(145deg,#111827 0%,#1f2937 60%,#374151 100%) !important; }
+        .p-hero-title { color: #fff; }
+        .p-hero-title em { -webkit-text-stroke-color: rgba(255,255,255,0.35); }
+        .p-hero-sub { color: rgba(255,255,255,0.6); }
+        /* All Projects page */
+        .ap-main { background: var(--bg); }
+        .ap-title { color: var(--hi); }
+        .ap-sub { color: var(--sub); }
+        .ap-stat-val { color: var(--hi); }
+        .ap-stat-label { color: var(--muted); }
+        .ap-section-title { color: var(--hi); }
+        .ap-section-count { background: var(--bg3); color: var(--sub); }
+        .ap-section-line { background: var(--line); }
+        .ap-card { background: var(--bg2); border-color: var(--line); }
+        .ap-card:hover { background: var(--bg3); border-color: #d1d5db; }
+        .ap-card-bar { height: 3px; }
+        .ap-card-icon { background: var(--bg3); border-color: var(--line2); }
+        .ap-card-icon svg { stroke: var(--sub); }
+        .ap-card-name { color: var(--hi); }
+        .ap-card-desc { color: var(--sub); }
+        .ap-tag { background: var(--bg3); border-color: var(--line2); color: var(--sub); }
+        .ap-card-stack { color: var(--muted); }
+        .ap-card-cta { color: var(--muted); }
+        .ap-card:hover .ap-card-cta { color: var(--hi); }
+        .ap-card-footer { border-color: var(--line); }
+        .ap-card-badge { border-color: var(--line2); color: var(--muted); }
+        .ap-card-badge.ongoing { background: rgba(0,0,0,0.04); color: #374151; border-color: #d1d5db; }
+        .ap-preview { background: #fff; border-color: var(--line2); box-shadow: 0 8px 40px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.06); }
+        .ap-preview-label { color: var(--muted); }
+        .ap-preview-title { color: var(--hi); }
+        .ap-preview-desc { color: var(--sub); }
+        .ap-preview-key { color: var(--muted); }
+        .ap-preview-val { color: var(--sub); }
+        .ap-preview-btn { background: var(--hi); color: #fff; }
+        .ap-stats { border-color: var(--line); }
+        .ap-eyebrow { color: var(--muted); }
+
+    
+        /* ════════════════════════════════════════════
+           MOBILE FIX — comprehensive responsive patch
+           ════════════════════════════════════════════ */
+
+        /* Mobile topbar */
+        .mobile-topbar {
+            position: sticky; top: 0; z-index: 100;
+            display: none; align-items: center; justify-content: space-between;
+            padding: 0 16px; height: 52px;
+            background: rgba(248,249,251,0.95);
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+        }
+        .mobile-topbar-title {
+            font-size: 14px; font-weight: 700; color: var(--hi);
+            letter-spacing: -0.01em; white-space: nowrap;
+            overflow: hidden; text-overflow: ellipsis; max-width: 200px;
+        }
+        .hamburger-btn {
+            width: 36px; height: 36px; border: none;
+            background: var(--bg3); border-radius: 8px; cursor: pointer;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 4.5px;
+            padding: 0; flex-shrink: 0;
+        }
+        .hamburger-btn span {
+            display: block; width: 18px; height: 1.5px;
+            background: var(--hi); border-radius: 2px; transition: all 0.2s ease;
+        }
+        .hamburger-btn.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        .hamburger-btn.open span:nth-child(2) { opacity: 0; }
+        .hamburger-btn.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+        /* Prevent body scroll when sidebar open */
+        body.sb-open { overflow: hidden; }
+
+        /* Cards: rounded corners for modern look */
+        .p-card { border-radius: 10px !important; }
+        .p-hero { border-radius: 12px !important; }
+        .p-meta-strip { border-radius: 0 0 10px 10px !important; }
+        .project-page { max-width: 1060px; width: min(100%, 1060px); margin: 0 auto; }
+
+        /* ── TABLET (≤ 900px) ── */
+        @media (max-width: 900px) {
+            .mobile-topbar { display: flex; }
+        }
+
+        /* ── TABLET LAYOUT (≤ 860px) ── */
+        @media (max-width: 860px) {
+            .p-layout { grid-template-columns: 1fr !important; gap: 12px !important; }
+            .p-side-col { position: static !important; order: -1; display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; }
+            .p-side-col .p-card { flex: 1 1 calc(50% - 6px); min-width: 200px; }
+            .p-hero-title { font-size: 40px !important; }
+            .project-page { padding: 28px 24px 80px; }
+        }
+
+        /* ── MOBILE (≤ 600px) ── */
+        @media (max-width: 600px) {
+            .project-page { padding: 16px 16px calc(72px + env(safe-area-inset-bottom, 0px)) !important; }
+
+            /* Hero */
+            .p-hero { padding: 24px 20px 28px !important; min-height: 200px !important; border-radius: 10px !important; }
+            .p-hero-title { font-size: 28px !important; line-height: 1.05 !important; margin-bottom: 10px !important; }
+            .p-hero-sub { font-size: 13px !important; }
+            .p-hero-tags { margin-top: 14px !important; gap: 5px !important; }
+            .p-hero-tag { font-size: 8.5px !important; padding: 3px 8px !important; }
+
+            /* Meta strip */
+            .p-meta-strip { flex-direction: column !important; }
+            .p-meta-item {
+                border-right: none !important; border-bottom: 1px solid var(--line) !important;
+                padding: 11px 16px !important;
+            }
+            .p-meta-item:last-child { border-bottom: none !important; }
+            .p-meta-label { font-size: 8.5px !important; }
+            .p-meta-value { font-size: 12px !important; }
+
+            /* Cards */
+            .p-card { padding: 18px 16px !important; border-radius: 10px !important; }
+            .p-card-title { font-size: 9px !important; margin-bottom: 14px !important; padding-bottom: 12px !important; }
+            .p-main-col { gap: 10px !important; }
+
+            /* Sidebar cards stacked full-width on mobile */
+            .p-side-col { flex-direction: column !important; }
+            .p-side-col .p-card { flex: 1 1 100% !important; min-width: unset !important; }
+
+            /* Body text */
+            .p-body { font-size: 14px !important; line-height: 1.8 !important; }
+            .p-body p { margin-bottom: 12px !important; }
+
+            /* Callout */
+            .p-callout { font-size: 13px !important; padding: 12px 14px !important; }
+
+            /* Features */
+            .p-features { gap: 14px !important; }
+            .p-feature-title { font-size: 13px !important; }
+            .p-feature-desc { font-size: 12px !important; }
+
+            /* Steps */
+            .p-step-title { font-size: 13px !important; }
+            .p-step-desc { font-size: 12px !important; }
+
+            /* Numbers grid */
+            .p-numbers { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+            .p-num-val { font-size: 24px !important; }
+            .p-num-label { font-size: 10px !important; }
+            .p-num-card { padding: 12px 14px !important; }
+
+            /* Use cases */
+            .p-usecases { grid-template-columns: 1fr !important; gap: 8px !important; }
+
+            /* Classes grid */
+            .p-classes-grid { grid-template-columns: 1fr 1fr !important; gap: 6px !important; }
+            .p-class-item { font-size: 9px !important; padding: 4px 8px !important; }
+
+            /* Design grid */
+            .p-design-grid { grid-template-columns: 1fr !important; }
+
+            /* Pipeline — horizontal scroll on mobile */
+            .p-pipeline {
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                padding-bottom: 12px !important;
+                margin: 0 -16px !important;
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+            }
+            .p-pipe-step { min-width: 80px !important; padding: 8px 10px !important; }
+            .p-pipe-step-label { font-size: 10px !important; }
+            .p-pipe-step-sub { font-size: 8.5px !important; }
+
+            /* Math formula — horizontal scroll */
+            .p-math-formula {
+                font-size: 11px !important;
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                padding-bottom: 4px !important;
+            }
+            .p-math-block { padding: 14px 14px !important; }
+
+            /* Controls table — horizontal scroll */
+            .p-ctrl-table-wrap {
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                margin: 0 -16px !important;
+                padding: 0 16px !important;
+            }
+            .p-ctrl-table { font-size: 11.5px !important; min-width: 380px !important; }
+            .p-ctrl-table th { padding: 7px 10px !important; font-size: 8px !important; }
+            .p-ctrl-table td { padding: 8px 10px !important; font-size: 11.5px !important; }
+
+            /* Progress */
+            .p-progress-label { font-size: 10.5px !important; }
+            .p-progress-track { margin-bottom: 10px !important; }
+
+            /* Tech pills */
+            .p-tech-pill { font-size: 9.5px !important; padding: 4px 9px !important; }
+
+            /* Links */
+            .p-link-btn { font-size: 12px !important; padding: 9px 14px !important; }
+
+            /* Arch rows */
+            .p-arch-name { font-size: 12.5px !important; }
+            .p-arch-desc { font-size: 11px !important; }
+
+            /* Closing */
+            .p-closing { flex-direction: column !important; padding: 22px 18px !important; }
+            .p-closing-title { font-size: 18px !important; }
+            .p-closing-desc { font-size: 12.5px !important; }
+            .p-closing-btn { width: 100% !important; justify-content: center !important; font-size: 11.5px !important; }
+
+            /* Back button */
+            .project-back { font-size: 9px !important; padding: 6px 10px 6px 8px !important; margin-bottom: 16px !important; }
+
+            /* Health bars */
+            .p-health-bar-label { font-size: 10.5px !important; }
+
+            /* PWA steps */
+            .p-pwa-step-title { font-size: 12.5px !important; }
+            .p-pwa-step-desc { font-size: 11.5px !important; }
+
+            /* Swatch design */
+            .p-swatch-name { font-size: 11px !important; }
+            .p-swatch-hex { font-size: 9.5px !important; }
+
+            /* Score */
+            .p-score-val { font-size: 32px !important; }
+
+            /* Audit grid */
+            .p-audit-grid { grid-template-columns: 1fr !important; }
+
+            /* WCAG table — horizontal scroll */
+            .p-wcag-table-wrap {
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                margin: 0 -16px !important;
+                padding: 0 16px !important;
+            }
+            .p-wcag-row { flex-wrap: wrap !important; gap: 6px !important; }
+            .p-wcag-code { font-size: 10px !important; }
+            .p-wcag-desc { font-size: 11.5px !important; }
+        }
+
+        /* ── XS (≤ 380px) ── */
+        @media (max-width: 380px) {
+            .p-hero-title { font-size: 24px !important; }
+            .p-card { padding: 14px 14px !important; }
+            .p-numbers { grid-template-columns: 1fr 1fr !important; }
+            .p-num-val { font-size: 22px !important; }
+        }
+
+    
+        /* Prevent horizontal overflow globally */
+        html, body { max-width: 100%; overflow-x: clip; }
+
+        /* ── MOBILE EXTRA POLISH ───────────────────────────────── */
+        @media (max-width: 600px) {
+            /* FAB bottom spacing */
+            .project-page { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important; }
+            /* Horizontal no-overflow */
+            html, body { max-width: 100%; overflow-x: clip; }
+            /* Tech pills wrap nicely */
+            .p-tech-pills { flex-wrap: wrap !important; gap: 6px !important; }
+            /* Link buttons full-width on small screens */
+            .p-links { flex-direction: column !important; gap: 8px !important; }
+            .p-link-btn { text-align: center; justify-content: center !important; }
+            /* Flow / order states wrap */
+            .p-flow { gap: 6px !important; flex-wrap: wrap !important; }
+            .p-order-state { font-size: 10px !important; padding: 5px 10px !important; }
+            /* Features grid ensure single col */
+            .p-features { display: flex !important; flex-direction: column !important; }
+            /* Arch rows */
+            .p-arch-rows { gap: 10px !important; }
+        }
+        @media (max-width: 380px) {
+            .project-page { padding-left: 12px !important; padding-right: 12px !important; }
+            .mob-sheet-meta { grid-template-columns: 1fr !important; }
+        }
+
+
+        /* ── SIDE-COL MOBILE OVERFLOW FIX ──────────────────── */
+        @media (max-width: 860px) {
+            /* Side col becomes a flex row of cards */
+            .p-side-col { 
+                position: static !important; 
+                display: flex !important; 
+                flex-direction: row !important; 
+                flex-wrap: wrap !important; 
+                gap: 10px !important; 
+            }
+            .p-side-col .p-card { 
+                flex: 1 1 calc(50% - 5px) !important; 
+                min-width: 160px !important;
+                max-width: 100% !important;
+            }
+            /* Tech pills in side col must wrap */
+            .p-side-col .p-tech-grid { flex-wrap: wrap !important; }
+            .p-side-col .p-tech-pill { 
+                font-size: 10px !important; 
+                word-break: break-word !important;
+                white-space: normal !important;
+            }
+            /* Links in side col full width */
+            .p-side-col .p-links { flex-direction: column !important; }
+            .p-side-col .p-link-btn { text-align: center !important; justify-content: center !important; }
+        }
+
+        @media (max-width: 600px) {
+            /* On small mobile, stack side cards vertically */
+            .p-side-col { flex-direction: column !important; }
+            .p-side-col .p-card { flex: 1 1 100% !important; min-width: unset !important; }
+            /* Progress label wrapping */
+            .p-progress-label { flex-wrap: wrap !important; }
+            /* Number cards 2-col */
+            .p-numbers { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+        }
+
+</style>
+    
+
+
+
+<style id="rafi-v5">
+*, *::before, *::after { box-sizing: border-box; }
+html, body { max-width: 100%; overflow-x: clip; }
+
+#rafi-bar {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+    background: var(--white, #f5f5f5); z-index: 9999; pointer-events: none;
+    transition: width 80ms linear;
+}
+
+.mobile-topbar {
+    display: none;
+    position: fixed !important;
+    top: 0 !important; left: 0 !important; right: 0 !important;
+    height: 52px !important;
+    z-index: 600 !important;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px 0 14px;
+}
+@media (max-width: 900px) {
+    #rafi-bar { top: 52px; }
+    .mobile-topbar { display: flex !important; }
+}
+
+@media (max-width: 900px) {
+    .portfolio-app { display: block !important; }
+    .sidebar {
+        position: fixed !important;
+        top: 52px !important; left: 0 !important;
+        width: 260px !important;
+        height: calc(100vh - 52px) !important;
+        z-index: 500 !important;
+        transform: translateX(-100%) !important;
+        transition: transform 0.26s cubic-bezier(0.4,0,0.2,1) !important;
+        box-shadow: none !important;
+        overflow-y: auto !important; overflow-x: hidden !important;
+        border-right: none !important;
+    }
+    .sidebar.sb-open, .sidebar.open {
+        transform: translateX(0) !important;
+        box-shadow: 4px 0 24px rgba(0,0,0,0.4) !important;
+    }
+    .sidebar-overlay {
+        display: block !important;
+        position: fixed !important;
+        top: 52px !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+        z-index: 490 !important;
+        background: rgba(0,0,0,0.5) !important;
+        opacity: 0 !important; pointer-events: none !important;
+        transition: opacity 0.25s ease !important;
+    }
+    .sidebar-overlay.sb-open, .sidebar-overlay.visible {
+        opacity: 1 !important; pointer-events: all !important;
+    }
+    body.sb-open { overflow: hidden !important; }
+    .project-main, .home-main, .resume-main, .course-main,
+    .contact-main, .blog-main, .ap-main { padding-top: 52px !important; }
+}
+@media (max-width: 480px) {
+    .sidebar { width: 80vw !important; max-width: 280px !important; }
+}
+
+img, video, iframe, svg { max-width: 100%; height: auto; }
+.p-video-wrap { overflow: hidden; border-radius: 8px; }
+.p-video-wrap video { width: 100%; height: auto; }
+
+mark.hl {
+    background: linear-gradient(104deg, rgba(254,240,138,0) 0.9%, #fef08a 2.4%, #fde047 99.1%, rgba(253,224,71,0) 100%);
+    color: #111827; font-weight: 600;
+    padding: 0.1em 0.35em; border-radius: 3px;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+
+.project-page { max-width: 1060px; width: 100%; margin: 0 auto; padding: 40px 40px 80px; box-sizing: border-box; }
+@media (max-width: 860px) {
+    .project-page { padding: 24px 20px 80px; }
+    .p-layout { grid-template-columns: 1fr !important; gap: 14px !important; }
+    .p-side-col {
+        position: static !important; order: -1;
+        display: flex !important; flex-wrap: wrap !important; gap: 10px !important;
+    }
+    .p-side-col .p-card { flex: 1 1 calc(50% - 5px) !important; min-width: 160px !important; }
+}
+@media (max-width: 600px) {
+    .project-page { padding: 12px 12px calc(70px + env(safe-area-inset-bottom,0px)) !important; }
+    .p-side-col { flex-direction: column !important; }
+    .p-side-col .p-card { flex: 1 1 100% !important; min-width: 0 !important; }
+    .p-hero { padding: 20px 16px 24px !important; min-height: 180px !important; border-radius: 10px !important; }
+    .p-hero-title { font-size: clamp(22px,7.5vw,32px) !important; line-height: 1.05 !important; word-break: break-word !important; }
+    .p-hero-sub { font-size: 13px !important; }
+    .p-hero-tags { gap: 5px !important; margin-top: 12px !important; }
+    .p-hero-tag { font-size: 8px !important; padding: 3px 7px !important; }
+    .p-meta-strip { flex-direction: column !important; }
+    .p-meta-item { border-right: none !important; border-bottom: 1px solid var(--line, #242424) !important; padding: 9px 13px !important; }
+    .p-meta-item:last-child { border-bottom: none !important; }
+    .p-card { padding: 16px 14px !important; border-radius: 10px !important; }
+    .p-card-title { font-size: 9px !important; padding-bottom: 11px !important; margin-bottom: 13px !important; }
+    .p-main-col { gap: 10px !important; }
+    .p-body { font-size: 14px !important; line-height: 1.8 !important; }
+    .p-body p { margin-bottom: 12px !important; }
+    .p-callout { font-size: 13px !important; padding: 11px 13px !important; }
+    .p-numbers { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+    .p-num-val { font-size: 22px !important; }
+    .p-num-card { padding: 11px 12px !important; }
+    .p-usecases { grid-template-columns: 1fr !important; gap: 8px !important; }
+    .p-classes-grid { grid-template-columns: 1fr 1fr !important; gap: 5px !important; }
+    .p-design-grid { grid-template-columns: 1fr !important; }
+    .p-arch-row { flex-wrap: wrap !important; }
+    .p-arch-desc { max-width: 100% !important; text-align: left !important; margin-left: 44px !important; }
+    .p-tech-pill { font-size: 9.5px !important; padding: 4px 9px !important; }
+    .p-link-btn { font-size: 12px !important; padding: 9px 12px !important; }
+    .p-closing { flex-direction: column !important; padding: 18px 14px !important; }
+    .p-closing-btn { width: 100% !important; justify-content: center !important; }
+    .p-progress-label { flex-wrap: wrap !important; font-size: 10.5px !important; }
+    .project-back { font-size: 9.5px !important; margin-bottom: 12px !important; }
+    .p-order-state { font-size: 10px !important; padding: 5px 8px !important; }
+    code.inline { font-size: 10px !important; padding: 1px 5px !important; word-break: break-word !important; }
+    .p-ctrl-table-wrap, .p-wcag-table-wrap {
+        overflow-x: auto !important; -webkit-overflow-scrolling: touch !important;
+        margin: 0 -14px !important; padding: 0 14px !important;
+    }
+}
+@media (max-width: 380px) {
+    .project-page { padding: 10px 10px calc(68px + env(safe-area-inset-bottom,0px)) !important; }
+    .p-hero-title { font-size: clamp(19px,7vw,24px) !important; }
+    .p-card { padding: 13px 11px !important; }
+}
+
+.ap-page { max-width: 1280px; margin: 0 auto; padding: 44px 40px 80px; box-sizing: border-box; }
+@media (max-width: 640px) {
+    .ap-page { padding: 14px 14px 60px !important; }
+    .ap-title { font-size: clamp(26px,8.5vw,40px) !important; }
+    .ap-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
+    .ap-card-overlay { display: none !important; }
+}
+
+.p-body, .p-body p, .p-feature-desc, .p-step-desc,
+.p-usecase-desc, .p-arch-desc, .p-callout {
+    overflow-wrap: break-word; word-break: break-word; max-width: 100%;
+}
+.p-arch-name { flex: 1; min-width: 0; overflow-wrap: break-word; }
+
+.p-usecase-icon {
+    width: 38px !important; height: 38px !important;
+    background: var(--bg3, #1c1c1c) !important;
+    border: 1px solid var(--line2, #333) !important;
+    border-radius: 9px !important;
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    margin-bottom: 10px !important; flex-shrink: 0;
+}
+.p-usecase-icon svg {
+    width: 18px !important; height: 18px !important;
+    stroke: var(--acc, #d0d0d0) !important; fill: none !important;
+    stroke-width: 1.8 !important; stroke-linecap: round !important; stroke-linejoin: round !important;
+}
+.p-feature-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--bg3, #1c1c1c); border: 1px solid var(--line2, #333);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.p-feature-icon svg {
+    width: 17px; height: 17px; stroke: var(--acc, #d0d0d0); fill: none;
+    stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+
+.p-pipeline-outer, .p-pipeline-wrap {
+    position: relative; margin: 10px 0; border-radius: 8px;
+    background: var(--bg, #0c0c0c); border: 1px solid var(--line, #242424);
+    overflow: hidden;
+}
+.p-pipeline-outer::after, .p-pipeline-wrap::after {
+    content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 36px;
+    background: linear-gradient(to left, var(--bg, #0c0c0c), transparent);
+    pointer-events: none; z-index: 2; transition: opacity 0.2s;
+}
+.p-pipeline-outer.at-end::after, .p-pipeline-wrap.at-end::after { opacity: 0; }
+.p-pipeline-scroll {
+    overflow-x: auto !important; -webkit-overflow-scrolling: touch !important;
+    cursor: grab; padding: 14px 16px 6px !important;
+    scrollbar-width: thin !important; scrollbar-color: var(--line2,#333) transparent;
+}
+.p-pipeline-scroll:active { cursor: grabbing; }
+.p-pipeline-scroll::-webkit-scrollbar { height: 5px; }
+.p-pipeline-scroll::-webkit-scrollbar-track { background: transparent; }
+.p-pipeline-scroll::-webkit-scrollbar-thumb { background: var(--line2,#333); border-radius: 3px; }
+.p-pipeline { display: inline-flex !important; align-items: center !important; gap: 0 !important; width: max-content !important; min-width: 100% !important; }
+.p-pipe-step {
+    flex-shrink: 0; min-width: 100px; background: var(--bg2, #141414);
+    border: 1.5px solid var(--line2, #333); border-radius: 7px;
+    padding: 11px 13px; text-align: center; cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.12s;
+}
+.p-pipe-step:hover { border-color: var(--muted,#555); transform: translateY(-1px); }
+.p-pipe-step.ps-active { border-color: var(--white,#f5f5f5); box-shadow: 0 0 0 1px var(--white,#f5f5f5); }
+.p-pipe-step-num { font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: var(--muted,#555); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
+.p-pipe-step-label { font-size: 11.5px; font-weight: 700; color: var(--heading,#e8e8e8); line-height: 1.3; }
+.p-pipe-step-sub { font-size: 9px; color: var(--muted,#555); margin-top: 3px; }
+.p-pipe-arrow { font-size: 13px; color: var(--line2,#333); margin: 0 4px; flex-shrink: 0; display: flex; align-items: center; }
+.p-pipe-detail {
+    margin: 0 16px 12px; padding: 11px 13px;
+    background: var(--bg2, #141414); border: 1px solid var(--line, #242424); border-radius: 7px;
+    font-size: 13px; color: var(--sub, #888); line-height: 1.65;
+    display: none; animation: rfin .15s ease;
+}
+.p-pipe-detail.ps-show { display: block; }
+.p-pipe-detail strong { color: var(--heading,#e8e8e8); }
+.p-pipe-detail code { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; background: var(--bg,#0c0c0c); border: 1px solid var(--line2,#333); padding: 1px 5px; border-radius: 3px; color: var(--acc,#d0d0d0); }
+.p-pipe-dots { display: flex; justify-content: center; gap: 5px; padding: 6px 0 10px; min-height: 20px; }
+.p-pipe-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--line2,#333); transition: background .2s, width .2s; }
+.p-pipe-dot.active { background: var(--white,#f5f5f5); width: 14px; border-radius: 3px; }
+.p-pipeline-hint {
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+    text-align: center; font-size: 9.5px; color: var(--muted,#555);
+    font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.08em; padding: 0 0 9px;
+}
+.p-pipeline-hint svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 2; }
+@media (max-width: 640px) {
+    .p-pipe-step { min-width: 84px !important; padding: 10px 10px !important; }
+}
+@keyframes rfin { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+.p-steps-accordion { display: none; flex-direction: column; gap: 6px; }
+@media (max-width: 640px) {
+    .p-steps { display: none !important; }
+    .p-steps-accordion { display: flex !important; }
+}
+.p-acc-item { border: 1px solid var(--line, #242424); border-radius: 8px; overflow: hidden; background: var(--bg2, #141414); }
+.p-acc-trigger { display: flex; align-items: center; gap: 10px; padding: 12px 13px; cursor: pointer; user-select: none; background: none; border: none; width: 100%; text-align: left; }
+.p-acc-num { width: 24px; height: 24px; border-radius: 50%; background: var(--bg3,#1c1c1c); border: 1px solid var(--line2,#333); font-size: 10px; font-weight: 700; color: var(--muted,#555); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'IBM Plex Mono', monospace; transition: background .15s, color .15s, border-color .15s; }
+.p-acc-title { font-size: 13px; font-weight: 700; color: var(--heading,#e8e8e8); flex: 1; }
+.p-acc-chevron { width: 16px; height: 16px; stroke: var(--muted,#555); fill: none; stroke-width: 2; flex-shrink: 0; transition: transform .2s; }
+.p-acc-item.open .p-acc-chevron { transform: rotate(180deg); }
+.p-acc-item.open .p-acc-num { background: var(--white,#f5f5f5); color: var(--bg,#0c0c0c); border-color: var(--white,#f5f5f5); }
+.p-acc-body { max-height: 0; overflow: hidden; padding: 0 13px; transition: max-height .28s ease, padding .2s; }
+.p-acc-item.open .p-acc-body { max-height: 400px; padding: 0 13px 13px; }
+.p-acc-desc { font-size: 13px; color: var(--sub,#888); line-height: 1.65; overflow-wrap: break-word; }
+
+.p-progress-fill { transition: width 1s cubic-bezier(.4,0,.2,1); }
+.p-num-card { transition: transform .15s, box-shadow .15s; }
+.p-num-card:hover { transform: translateY(-2px); }
+
+.blog-img-wrap img, .screenshot-item img, .bl-cover img { max-width: 100% !important; height: auto !important; }
+.screenshot-gallery { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+@media (max-width: 600px) {
+    .blog-page, .bl-page { padding: 14px 14px 60px !important; }
+    .screenshot-gallery { grid-template-columns: repeat(2, 1fr) !important; }
+    .blog-img-2col { grid-template-columns: 1fr !important; }
+    .arch-wrap { font-size: 11px !important; }
+    pre, code { font-size: 11px !important; overflow-x: auto !important; }
+}
+table { max-width: 100%; }
+.p-ctrl-table-wrap, .p-wcag-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+</style>
+<style id="rafi-math-v5">/* ════════════════════════════════════════════════════════════════════════
+   MATH DERIVATION CARD — v5
+   A "lab notebook" component: numbered formula cards with a
+   Formula / Explained / Worked Example switcher. Built for the dark
+   project-page theme (--bg:#0c0c0c family). Horizontal scroll on any
+   formula/example block that overflows, with visible scroll affordance.
+   ════════════════════════════════════════════════════════════════════════ */
+
+.p-math-block {
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    margin: 14px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* left accent rail — gives it the "margin note" feel */
+.p-math-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--acc, #d0d0d0) 0%, transparent 130%);
+    opacity: 0.5;
+}
+
+.p-math-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 13px 16px 12px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+}
+
+.p-math-head-left {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    min-width: 0;
+}
+
+.p-math-index {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+}
+
+.p-math-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--heading);
+    line-height: 1.4;
+    min-width: 0;
+    overflow-wrap: break-word;
+}
+
+.p-math-title mark.hl {
+    font-size: inherit;
+}
+
+/* ── TAB SWITCHER ── */
+.p-math-tabs {
+    display: flex;
+    gap: 2px;
+    background: var(--bg);
+    border: 1px solid var(--line2);
+    border-radius: 5px;
+    padding: 2px;
+    flex-shrink: 0;
+}
+
+.p-math-tab {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+    line-height: 1.2;
+}
+
+.p-math-tab:hover { color: var(--sub); }
+
+.p-math-tab.active {
+    background: var(--line2);
+    color: var(--white);
+}
+
+.p-math-tab .p-math-tab-dot {
+    display: inline-block;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: currentColor;
+    margin-right: 5px;
+    opacity: 0.6;
+    vertical-align: middle;
+}
+
+/* ── BODY / PANELS ── */
+.p-math-body { position: relative; }
+
+.p-math-panel {
+    display: none;
+    animation: pmFadeIn 0.18s ease;
+}
+.p-math-panel.active { display: block; }
+
+@keyframes pmFadeIn {
+    from { opacity: 0; transform: translateY(2px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Formula panel — scrollable code-like surface */
+.p-math-formula-wrap {
+    position: relative;
+    overflow: hidden;
+}
+
+.p-math-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 16px 16px 14px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line2) transparent;
+}
+.p-math-scroll::-webkit-scrollbar { height: 5px; }
+.p-math-scroll::-webkit-scrollbar-track { background: transparent; }
+.p-math-scroll::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 3px; }
+.p-math-scroll::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+pre.p-math-formula {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    line-height: 1.9;
+    color: var(--body);
+    white-space: pre;
+    margin: 0;
+    width: max-content;
+    min-width: 100%;
+}
+
+pre.p-math-formula mark.hl {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: inherit;
+}
+
+/* fade-edge affordance to signal "more content →" */
+.p-math-formula-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 28px;
+    background: linear-gradient(to left, var(--bg2), transparent);
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+.p-math-formula-wrap.pm-at-end::after { opacity: 0; }
+
+.p-math-scroll-hint {
+    display: none;
+    align-items: center;
+    gap: 5px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0 16px 11px;
+}
+.p-math-scroll-hint svg {
+    width: 10px; height: 10px;
+    stroke: currentColor; fill: none;
+    stroke-width: 2;
+}
+.p-math-formula-wrap.pm-scrollable ~ .p-math-scroll-hint,
+.p-math-example-wrap.pm-scrollable ~ .p-math-scroll-hint {
+    display: flex;
+}
+
+/* Explained panel */
+.p-math-explained {
+    padding: 16px 18px;
+}
+.p-math-desc {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--sub);
+    margin: 0;
+}
+.p-math-desc + .p-math-desc { margin-top: 10px; }
+.p-math-desc strong { color: var(--heading); font-weight: 700; }
+.p-math-desc code.inline {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    background: var(--bg);
+    border: 1px solid var(--line2);
+    padding: 1px 6px;
+    border-radius: 3px;
+    color: var(--acc);
+}
+
+/* Example panel — worked-through computation */
+.p-math-example-wrap {
+    position: relative;
+    overflow: hidden;
+}
+.p-math-example {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    line-height: 1.85;
+    color: var(--body);
+    white-space: pre;
+    margin: 0;
+    width: max-content;
+    min-width: 100%;
+    border-left: 2px solid var(--line2);
+    padding: 14px 16px 14px 18px;
+    background: var(--bg);
+}
+.p-math-example-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 28px;
+    background: linear-gradient(to left, var(--bg2), transparent);
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+.p-math-example-wrap.pm-at-end::after { opacity: 0; }
+.p-math-example-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line2) transparent;
+}
+.p-math-example-scroll::-webkit-scrollbar { height: 5px; }
+.p-math-example-scroll::-webkit-scrollbar-track { background: transparent; }
+.p-math-example-scroll::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 3px; }
+
+/* footer micro-label inside example */
+.p-math-example-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 10px 16px 0;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+    .p-math-head { padding: 11px 13px 10px; flex-wrap: wrap; }
+    .p-math-title { font-size: 11.5px; }
+    .p-math-index { font-size: 9px; }
+    .p-math-tabs { width: 100%; justify-content: stretch; }
+    .p-math-tab { flex: 1; text-align: center; padding: 6px 8px; font-size: 9px; }
+    .p-math-scroll { padding: 13px 13px 11px; }
+    pre.p-math-formula { font-size: 10.5px; line-height: 1.8; }
+    .p-math-explained { padding: 13px 14px; }
+    .p-math-desc { font-size: 12.5px; }
+    .p-math-example { font-size: 10px; padding: 12px 13px 12px 15px; }
+    .p-math-example-label { padding: 8px 13px 0; }
+}
+
+@media (max-width: 380px) {
+    .p-math-tab { font-size: 8.3px; padding: 6px 4px; letter-spacing: 0.02em; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .p-math-panel { animation: none !important; }
+}
+</style><style id="rafi-minwidth-fix">
+/* ════════════════════════════════════════════════════════════════════════
+   MIN-CONTENT OVERFLOW FIX — v6
+   Root cause of "kepotong" on mobile: CSS Grid/Flex tracks default to
+   minmax(auto, 1fr) — the 'auto' minimum is the content's min-content
+   size, which can be wider than the viewport even when the track is
+   nominally "1fr". This forces every nested grid/flex container in the
+   project-page content chain to allow shrinking below its content size.
+   ════════════════════════════════════════════════════════════════════════ */
+.p-layout,
+.p-main-col,
+.p-side-col,
+.p-card,
+.p-card-title,
+.p-body,
+.p-callout,
+.p-numbers,
+.p-num-card,
+.p-classes-grid,
+.p-usecases,
+.p-usecase,
+.p-design-grid,
+.p-tech-grid,
+.p-math-block,
+.p-math-head,
+.p-math-head-left,
+.p-math-tabs,
+.p-math-body,
+.p-math-panel,
+.p-math-explained,
+.p-pipeline-wrap,
+.p-pipe-detail,
+.p-arch-row,
+.p-arch-name,
+.p-meta-strip,
+.p-meta-item,
+.p-closing,
+.p-link-btn,
+.p-progress-label,
+.p-acc-item,
+.p-acc-body,
+.ap-grid,
+.ap-card {
+    min-width: 0 !important;
+}
+
+/* Grid/flex children also need min-width:0 individually — being a grid
+   container doesn't help if the item itself refuses to shrink */
+.p-layout > *,
+.p-numbers > *,
+.p-classes-grid > *,
+.p-usecases > *,
+.p-design-grid > *,
+.ap-grid > * {
+    min-width: 0;
+}
+
+/* Long unbroken strings (URLs, identifiers) inside text containers must
+   be allowed to break rather than stretching their parent */
+.p-body, .p-body p, .p-callout, .p-math-desc, .p-acc-desc,
+.p-feature-desc, .p-step-desc, .p-usecase-desc, .p-arch-desc {
+    overflow-wrap: anywhere;
+}
+
+</style></head>
+<body>
     <div class="mobile-topbar">
         <span class="mobile-topbar-title">Muhammad Rafi Arsya</span>
         <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
@@ -288,7 +1422,7 @@
     </div>
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
     <div class="portfolio-app">
-                        <aside class="sidebar">
+        <aside class="sidebar">
             <div class="sidebar-top">
                 <div class="sidebar-logo-wrap">
                     <img class="sidebar-logo-avatar" src="../assets/avatar_rafi.png" alt="Rafi Avatar">
@@ -310,7 +1444,7 @@
                     <a href="project2.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><span class="project-label">CampusBay</span></a>
                     <a href="project5.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><circle cx="10" cy="14" r="2"/><path d="m20 20-2.5-2.5"/></svg></span><span class="project-label">PaperMind</span></a>
                     <a href="project3.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="4" r="2"/><path d="m18 19 1-7-5.87.94"/><path d="m5 8 3-3 4.5 3-2.5 3"/><path d="M4.24 14.5A5 5 0 0 0 9 21c1.5 0 2.87-.56 3.9-1.47"/><path d="M14 21v-5"/></svg></span><span class="project-label">NASE Accessibility</span></a>
-                    <a href="project4.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span><span class="project-label">Crop Disease Detector</span></a>
+                    <a href="project4.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span><span class="project-label">Crop Disease</span></a>
                     <a href="projects.html" class="project-more"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span>All Projects</span></a>
                 </div>
                 <div class="sidebar-group-label">Social</div>
@@ -322,289 +1456,363 @@
             </div>
             <div class="sidebar-footer"><p>Designed with focus on clarity and craft.</p></div>
         </aside>
+
         <main class="project-main">
             <div class="project-page">
                 <a href="projects.html" class="project-back">
                     <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
                     Back to All Projects
                 </a>
+
                 <!-- HERO -->
-                <div class="p-hero" style="background:linear-gradient(135deg,#022c22 0%,#064e3b 40%,#10b981 100%);">
+                <div class="p-hero">
                     <div class="p-hero-grid"></div>
-                    <div class="p-hero-glow" style="background:radial-gradient(circle,rgba(16,185,129,0.35) 0%,transparent 70%);"></div>
+                    <div class="p-hero-noise"></div>
                     <div class="p-hero-badge">
-                        <span class="p-hero-dot" style="background:#10b981;box-shadow:0 0 0 2px #10b98133;"></span>
-                        AI / Computer Vision · 2024
+                        <span class="p-hero-dot"></span>
+                        Computer Vision &nbsp;·&nbsp; Python &nbsp;·&nbsp; 2024
                     </div>
-                    <h1 class="p-hero-title">Hand <span style="background:linear-gradient(90deg,#6ee7b7,#a7f3d0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Gesture</span></h1>
-                    <p class="p-hero-sub">Draw on screen with just your finger — a real-time hand gesture drawing app built with Python, MediaPipe, and OpenCV. Switch colors, clear canvas, all hands-free through your webcam.</p>
+                    <h1 class="p-hero-title">Hand<em>Gesture</em></h1>
+                    <p class="p-hero-sub">Draw on screen with just your index finger — real-time hand landmark detection, gesture classification, and canvas rendering from a live webcam feed. No hardware required.</p>
                     <div class="p-hero-tags">
                         <span class="p-hero-tag">Python</span>
                         <span class="p-hero-tag">MediaPipe</span>
                         <span class="p-hero-tag">OpenCV</span>
                         <span class="p-hero-tag">Computer Vision</span>
-                        <span class="p-hero-tag">Real-Time</span>
+                        <span class="p-hero-tag">Real-Time · 30+ FPS</span>
                         <span class="p-hero-tag">Machine Learning</span>
                     </div>
                 </div>
+
                 <!-- META STRIP -->
                 <div class="p-meta-strip">
                     <div class="p-meta-item"><div class="p-meta-label">Status</div><div class="p-meta-value">Completed</div></div>
                     <div class="p-meta-item"><div class="p-meta-label">Year</div><div class="p-meta-value">2024</div></div>
                     <div class="p-meta-item"><div class="p-meta-label">Role</div><div class="p-meta-value">Solo Developer</div></div>
-                    <div class="p-meta-item"><div class="p-meta-label">Language</div><div class="p-meta-value">Python</div></div>
-                    <div class="p-meta-item"><div class="p-meta-label">Type</div><div class="p-meta-value">Computer Vision</div></div>
+                    <div class="p-meta-item"><div class="p-meta-label">Language</div><div class="p-meta-value">Python 3</div></div>
+                    <div class="p-meta-item"><div class="p-meta-label">Category</div><div class="p-meta-value">Computer Vision</div></div>
                 </div>
-                <!-- LAYOUT -->
+
+                <!-- MAIN LAYOUT -->
                 <div class="p-layout">
                     <div class="p-main-col">
+
+                        <!-- OVERVIEW -->
                         <div class="p-card">
-                            <div class="p-card-title">Overview</div>
+                            <div class="p-card-title"><span class="p-card-title-num">01</span> Project Overview</div>
                             <div class="p-body">
-                                <p><strong>HandGesture</strong> is a real-time hand gesture drawing app that lets you draw on screen using just your index finger — no mouse, no stylus, no touch required. Point your finger at the webcam and start painting.</p>
-                                <p>Built entirely in <strong>Python</strong>, the project combines <strong>OpenCV</strong> for video capture and canvas rendering with <strong>MediaPipe Hands</strong> for accurate 21-point hand landmark detection. It can track up to 4 hands simultaneously, and all controls — color switching, start/stop, clear — are triggered purely through on-screen gesture interaction.</p>
-                                <p>The project demonstrates practical human-computer interaction through computer vision, showing how a simple camera feed can replace traditional input devices entirely.</p>
+                                <p><strong>HandGesture</strong> turns your webcam into a drawing canvas. Raise your index finger, draw freely on screen. No mouse, stylus, or touchscreen — just a camera and your hand. Raise your index finger and draw freely on screen; hover over on-screen buttons to switch colors, start, stop, or clear. No mouse, stylus, or touchscreen needed.</p>
+                                <p>Built in <strong><mark class="hl">Python</mark></strong> using <strong><mark class="hl">OpenCV</mark></strong> for video capture and canvas compositing, and <strong><mark class="hl">MediaPipe Hands</mark></strong> for multi-hand 21-landmark detection. The system can track up to 4 hands simultaneously at <mark class="hl">30+ FPS</mark>, all on a standard laptop CPU — no GPU required.</p>
+                                <div class="p-callout">
+                                    <strong>What I learned:</strong> Every physical hand posture produces a unique spatial relationship between 21 detected joint coordinates. A simple rule-based classifier on those coordinates is enough to reliably distinguish "drawing mode" from "idle mode" in real time.
+                                </div>
                             </div>
                         </div>
+
+                        <!-- HOW IT WORKS -->
                         <div class="p-card">
-                            <div class="p-card-title">Key Features</div>
+                            <div class="p-card-title"><span class="p-card-title-num">02</span> How It Works</div>
+                            <div class="p-steps">
+                                <div class="p-step">
+                                    <div class="p-step-dot">1</div>
+                                    <div class="p-step-title">Video Capture &amp; Preprocessing</div>
+                                    <div class="p-step-desc">OpenCV opens the default webcam, reads frames in a loop, mirrors the image horizontally (so movement feels natural), and converts from BGR → RGB colour space for MediaPipe processing.</div>
+                                </div>
+                                <div class="p-step">
+                                    <div class="p-step-dot">2</div>
+                                    <div class="p-step-title">21-Point Landmark Detection</div>
+                                    <div class="p-step-desc">MediaPipe Hands processes each RGB frame and returns normalised (x, y, z) coordinates for 21 keypoints per hand — wrist (0), MCP joints (1,5,9,13,17), PIP joints (2,6,10,14,18), DIP joints (3,7,11,15,19), and fingertips (4,8,12,16,20).</div>
+                                </div>
+                                <div class="p-step">
+                                    <div class="p-step-dot">3</div>
+                                    <div class="p-step-title">Gesture Classification (Rule-Based)</div>
+                                    <div class="p-step-desc">A geometric classifier checks the y-coordinates of each finger's tip vs. its proximal knuckle (MCP). If only the index fingertip (landmark 8) is above its MCP (landmark 5) while all other tips are below theirs → drawing mode active.</div>
+                                </div>
+                                <div class="p-step">
+                                    <div class="p-step-dot">4</div>
+                                    <div class="p-step-title">Canvas Drawing</div>
+                                    <div class="p-step-desc">When in drawing mode, the app tracks the index fingertip pixel position (landmark 8 × frame dimensions) and calls <code class="inline">cv2.line()</code> between the current and previous position onto a persistent canvas layer.</div>
+                                </div>
+                                <div class="p-step">
+                                    <div class="p-step-dot">5</div>
+                                    <div class="p-step-title">Button Hit-Testing &amp; Overlay</div>
+                                    <div class="p-step-desc">On-screen buttons are fixed pixel regions. Each frame, if the fingertip coordinate falls within a button's bounding box, the action fires. The canvas layer is composited onto the live frame using <code class="inline"><mark class="hl">cv2.addWeighted</mark>()</code> and displayed in real time.</div>
+                                </div>
+                            <div class="p-steps-accordion">
+                                <div class="p-acc-item">
+                                    <button class="p-acc-trigger"><span class="p-acc-num">1</span><span class="p-acc-title">Video Capture &amp; Preprocessing</span><svg class="p-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+                                    <div class="p-acc-body"><p class="p-acc-desc">OpenCV opens the default webcam, reads frames in a loop, mirrors the image horizontally (so movement feels natural), and converts from BGR → RGB colour space for MediaPipe processing.</p></div>
+                                </div>
+                                <div class="p-acc-item">
+                                    <button class="p-acc-trigger"><span class="p-acc-num">2</span><span class="p-acc-title">21-Point Landmark Detection</span><svg class="p-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+                                    <div class="p-acc-body"><p class="p-acc-desc">MediaPipe Hands processes each RGB frame and returns normalised (x, y, z) coordinates for 21 keypoints per hand — wrist, MCP joints, PIP joints, DIP joints, and fingertips.</p></div>
+                                </div>
+                                <div class="p-acc-item">
+                                    <button class="p-acc-trigger"><span class="p-acc-num">3</span><span class="p-acc-title">Gesture Classification (Rule-Based)</span><svg class="p-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+                                    <div class="p-acc-body"><p class="p-acc-desc">A geometric classifier checks the y-coordinates of each finger's tip vs. its proximal knuckle (MCP). If only the index fingertip is above its MCP while all others are below → drawing mode.</p></div>
+                                </div>
+                                <div class="p-acc-item">
+                                    <button class="p-acc-trigger"><span class="p-acc-num">4</span><span class="p-acc-title">Canvas Drawing</span><svg class="p-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+                                    <div class="p-acc-body"><p class="p-acc-desc">When in drawing mode, the app tracks the index fingertip pixel position and calls <code style="font-family:monospace;font-size:11px;background:#f3f4f6;padding:1px 5px;border-radius:3px;">cv2.line()</code> between the current and previous position onto a persistent canvas layer.</p></div>
+                                </div>
+                                <div class="p-acc-item">
+                                    <button class="p-acc-trigger"><span class="p-acc-num">5</span><span class="p-acc-title">Button Hit-Testing &amp; Overlay</span><svg class="p-acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+                                    <div class="p-acc-body"><p class="p-acc-desc">On-screen buttons are fixed pixel regions. Each frame, if the fingertip coordinate falls within a button's bounding box, the action fires. The canvas layer is composited onto the live frame using cv2.addWeighted() and displayed in real time.</p></div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <!-- PIPELINE DIAGRAM -->
+                        <div class="p-card">
+                            <div class="p-card-title"><span class="p-card-title-num">03</span> Processing Pipeline</div>
+                            <div class="p-pipeline-wrap"><div class="p-pipeline-scroll"><div class="p-pipeline">
+                                <div class="p-pipe-step">
+                                    <div class="p-pipe-step-num">Input</div>
+                                    <div class="p-pipe-step-label">Webcam Frame</div>
+                                    <div class="p-pipe-step-sub">BGR · 640×480</div>
+                                </div>
+                                <div class="p-pipe-arrow">→</div>
+                                <div class="p-pipe-step">
+                                    <div class="p-pipe-step-num">Preprocess</div>
+                                    <div class="p-pipe-step-label">Flip + BGR→RGB</div>
+                                    <div class="p-pipe-step-sub">Mirror image</div>
+                                </div>
+                                <div class="p-pipe-arrow">→</div>
+                                <div class="p-pipe-step">
+                                    <div class="p-pipe-step-num">Detect</div>
+                                    <div class="p-pipe-step-label">MediaPipe Hands</div>
+                                    <div class="p-pipe-step-sub">21 landmarks/hand</div>
+                                </div>
+                                <div class="p-pipe-arrow">→</div>
+                                <div class="p-pipe-step">
+                                    <div class="p-pipe-step-num">Classify</div>
+                                    <div class="p-pipe-step-label">Gesture Check</div>
+                                    <div class="p-pipe-step-sub">Rule-based logic</div>
+                                </div>
+                                <div class="p-pipe-arrow">→</div>
+                                <div class="p-pipe-step">
+                                    <div class="p-pipe-step-num">Render</div>
+                                    <div class="p-pipe-step-label">Canvas Overlay</div>
+                                    <div class="p-pipe-step-sub"><mark class="hl">cv2.addWeighted</mark></div>
+                                </div>
+                                <div class="p-pipe-arrow">→</div>
+                                <div class="p-pipe-step">
+                                    <div class="p-pipe-step-num">Output</div>
+                                    <div class="p-pipe-step-label">Display Window</div>
+                                    <div class="p-pipe-step-sub">imshow · 30+ FPS</div>
+                                </div>
+                            </div></div><div class="p-pipeline-hint"><svg viewBox="0 0 24 24"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/></svg>swipe to explore the full pipeline<svg viewBox="0 0 24 24"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/></svg></div><div class="p-pipe-dots"></div><div class="p-pipe-detail"></div></div>
+                        </div>
+
+                        <!-- MATH & LOGIC -->
+                        <div class="p-card">
+                            <div class="p-card-title"><span class="p-card-title-num">04</span> The Math &amp; Gesture Logic</div>
+                            <div class="p-body">
+                                <p>MediaPipe returns normalised landmark coordinates in the range [0.0, 1.0]. To convert to pixel coordinates on the actual frame:</p>
+                            </div>
+                            <div class="p-math-block"><div class="p-math-head"><div class="p-math-head-left"><span class="p-math-index">01</span><span class="p-math-title">Coordinate Denormalisation</span></div><div class="p-math-tabs"><button class="p-math-tab active" data-tab="formula"><span class="p-math-tab-dot"></span>Formula</button><button class="p-math-tab" data-tab="explained"><span class="p-math-tab-dot"></span>Explained</button><button class="p-math-tab" data-tab="example"><span class="p-math-tab-dot"></span>Worked Example</button></div></div><div class="p-math-body"><div class="p-math-panel active" data-panel="formula"><div class="p-math-formula-wrap"><div class="p-math-scroll"><pre class="p-math-formula">pixel_x = landmark.x × frame_width
+pixel_y = landmark.y × frame_height</pre></div></div><div class="p-math-scroll-hint" data-for="formula"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>scroll for full derivation</div></div><div class="p-math-panel" data-panel="explained"><div class="p-math-explained"><p class="p-math-desc">Where <code class="inline">landmark.x</code> and <code class="inline">landmark.y</code> are values from MediaPipe in range [0,1]. Multiplying by frame dimensions gives screen coordinates in pixels — this is what makes the same gesture-tracking code work identically on a 640×480 webcam or a 1920×1080 one, since the model never has to know the resolution.</p></div></div><div class="p-math-panel" data-panel="example"><div class="p-math-example-wrap"><div class="p-math-example-scroll"><pre class="p-math-example"># Webcam frame: 640 × 480
+landmark.x = 0.512   landmark.y = 0.347
+
+pixel_x = 0.512 × 640  = 327.68  →  328 px
+pixel_y = 0.347 × 480  = 166.56  →  167 px
+
+# Same landmark, 1920×1080 frame:
+pixel_x = 0.512 × 1920 = 983.04  →  983 px
+pixel_y = 0.347 × 1080 = 374.76  →  375 px</pre></div></div><div class="p-math-scroll-hint" data-for="example"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>scroll to see full computation</div></div></div></div>
+                            <div class="p-math-block"><div class="p-math-head"><div class="p-math-head-left"><span class="p-math-index">02</span><span class="p-math-title">Drawing Gesture Classifier</span></div><div class="p-math-tabs"><button class="p-math-tab active" data-tab="formula"><span class="p-math-tab-dot"></span>Formula</button><button class="p-math-tab" data-tab="explained"><span class="p-math-tab-dot"></span>Explained</button><button class="p-math-tab" data-tab="example"><span class="p-math-tab-dot"></span>Worked Example</button></div></div><div class="p-math-body"><div class="p-math-panel active" data-panel="formula"><div class="p-math-formula-wrap"><div class="p-math-scroll"><pre class="p-math-formula">is_drawing = (
+    tip_y[INDEX]   < mcp_y[INDEX]   AND   # index finger up
+    tip_y[MIDDLE]  > mcp_y[MIDDLE]  AND   # middle finger down
+    tip_y[RING]    > mcp_y[RING]    AND   # ring finger down
+    tip_y[PINKY]   > mcp_y[PINKY]         # pinky down
+)</pre></div></div><div class="p-math-scroll-hint" data-for="formula"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>scroll for full derivation</div></div><div class="p-math-panel" data-panel="explained"><div class="p-math-explained"><p class="p-math-desc">Since MediaPipe's y-axis is top-down (y=0 at top), a fingertip <strong>above</strong> its knuckle means <code class="inline">tip_y &lt; mcp_y</code>. This gives a clean binary classifier that reliably fires only when the drawing pose — index extended, all other fingers curled — is held. No machine learning needed; pure landmark geometry checked every frame.</p></div></div><div class="p-math-panel" data-panel="example"><div class="p-math-example-wrap"><div class="p-math-example-scroll"><pre class="p-math-example"># Hand landmarks (normalised, from MediaPipe)
+tip_y[INDEX]  = 0.31   mcp_y[INDEX]  = 0.52   → 0.31 < 0.52  ✓ UP
+tip_y[MIDDLE] = 0.58   mcp_y[MIDDLE] = 0.54   → 0.58 > 0.54  ✓ DOWN
+tip_y[RING]   = 0.61   mcp_y[RING]   = 0.55   → 0.61 > 0.55  ✓ DOWN
+tip_y[PINKY]  = 0.63   mcp_y[PINKY]  = 0.56   → 0.63 > 0.56  ✓ DOWN
+
+→ all 4 conditions true → is_drawing = True</pre></div></div><div class="p-math-scroll-hint" data-for="example"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>scroll to see full computation</div></div></div></div>
+                            <div class="p-math-block"><div class="p-math-head"><div class="p-math-head-left"><span class="p-math-index">03</span><span class="p-math-title">Button Hit Test (AABB)</span></div><div class="p-math-tabs"><button class="p-math-tab active" data-tab="formula"><span class="p-math-tab-dot"></span>Formula</button><button class="p-math-tab" data-tab="explained"><span class="p-math-tab-dot"></span>Explained</button><button class="p-math-tab" data-tab="example"><span class="p-math-tab-dot"></span>Worked Example</button></div></div><div class="p-math-body"><div class="p-math-panel active" data-panel="formula"><div class="p-math-formula-wrap"><div class="p-math-scroll"><pre class="p-math-formula">is_hitting_button = (
+    btn.x1 <= finger_x <= btn.x2  AND
+    btn.y1 <= finger_y <= btn.y2
+)</pre></div></div><div class="p-math-scroll-hint" data-for="formula"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>scroll for full derivation</div></div><div class="p-math-panel" data-panel="explained"><div class="p-math-explained"><p class="p-math-desc">Each on-screen button is an axis-aligned bounding box (AABB) — the simplest possible collision test, borrowed straight from 2D game physics. The fingertip's denormalised pixel coordinate is checked against every button's rectangle on every frame; no click event, no debounce logic beyond a short hold-to-confirm, just geometry re-evaluated 30 times a second.</p></div></div><div class="p-math-panel" data-panel="example"><div class="p-math-example-wrap"><div class="p-math-example-scroll"><pre class="p-math-example"># "Clear Canvas" button region:
+btn = { x1: 500, y1: 20, x2: 620, y2: 70 }
+
+# Fingertip at frame coordinate (560, 45):
+500 <= 560 <= 620   →  True
+ 20 <=  45 <=  70   →  True
+
+→ is_hitting_button = True  →  canvas.clear()</pre></div></div><div class="p-math-scroll-hint" data-for="example"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>scroll to see full computation</div></div></div></div>
+                        </div>
+
+                        <!-- KEY FEATURES -->
+                        <div class="p-card">
+                            <div class="p-card-title"><span class="p-card-title-num">05</span> Key Features</div>
                             <div class="p-features">
                                 <div class="p-feature-item">
-                                    <div class="p-feature-icon" style="background:linear-gradient(135deg,#064e3b,#10b981);">
-                                        <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                                    <div class="p-feature-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+                                    <div>
+                                        <div class="p-feature-title">Real-Time Finger Drawing</div>
+                                        <div class="p-feature-desc">Tracks index fingertip position at 30+ FPS and draws continuous strokes on a canvas overlay composited onto the live video feed. Sub-frame latency on standard hardware.</div>
                                     </div>
-                                    <div><div class="p-feature-title">Finger Drawing</div><div class="p-feature-desc">Draw freely on screen by raising only your index finger. The app tracks your fingertip and draws a continuous line in real time.</div></div>
                                 </div>
                                 <div class="p-feature-item">
-                                    <div class="p-feature-icon" style="background:linear-gradient(135deg,#1e3a5f,#2563eb);">
-                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></svg>
+                                    <div class="p-feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg></div>
+                                    <div>
+                                        <div class="p-feature-title">4-Color Brush System</div>
+                                        <div class="p-feature-desc">Blue, Green, Red, and Pink brushes selectable by hovering your fingertip over on-screen buttons. Color switches instantly — no pause in drawing required.</div>
                                     </div>
-                                    <div><div class="p-feature-title">Color Switching</div><div class="p-feature-desc">Hover your fingertip over on-screen color buttons to instantly switch brush color — choose from Blue, Green, Red, or Pink.</div></div>
                                 </div>
                                 <div class="p-feature-item">
-                                    <div class="p-feature-icon" style="background:linear-gradient(135deg,#4c1d95,#7c3aed);">
-                                        <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                                    <div class="p-feature-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="9" height="9"/><rect x="13" y="2" width="9" height="9"/><rect x="2" y="13" width="9" height="9"/><rect x="13" y="13" width="9" height="9"/></svg></div>
+                                    <div>
+                                        <div class="p-feature-title">Multi-Hand Tracking (up to 4)</div>
+                                        <div class="p-feature-desc">MediaPipe processes up to 4 simultaneous hands in a single frame — enabling collaborative multi-finger drawing or left/right hand switching mid-session.</div>
                                     </div>
-                                    <div><div class="p-feature-title">Gesture-Based Controls</div><div class="p-feature-desc">All controls are on-screen buttons activated by your fingertip — Start drawing, Stop drawing, and Clear canvas. No keyboard or mouse needed.</div></div>
                                 </div>
                                 <div class="p-feature-item">
-                                    <div class="p-feature-icon" style="background:linear-gradient(135deg,#92400e,#d97706);">
-                                        <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                                    <div class="p-feature-icon"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg></div>
+                                    <div>
+                                        <div class="p-feature-title">Gesture-Only Controls</div>
+                                        <div class="p-feature-desc">Start/Stop drawing and Clear canvas are all triggered by fingertip bounding-box collision with on-screen button regions — zero keyboard/mouse interaction required.</div>
                                     </div>
-                                    <div><div class="p-feature-title">Multi-Hand Support</div><div class="p-feature-desc">Detects and tracks up to 4 hands at once in the same frame — enabling collaborative or multi-finger drawing.</div></div>
-                                </div>
-                                <div class="p-feature-item">
-                                    <div class="p-feature-icon" style="background:linear-gradient(135deg,#065f46,#16a34a);">
-                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                                    </div>
-                                    <div><div class="p-feature-title">Real-Time Processing</div><div class="p-feature-desc">Processes live webcam feed at 30+ FPS with minimal latency, powered by MediaPipe's optimised landmark model.</div></div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- USE CASES -->
                         <div class="p-card">
-                            <div class="p-card-title">How It Works</div>
-                            <div class="p-body">
-                                <p><strong>1. Video Capture</strong> — OpenCV opens the default webcam and reads frames in a continuous loop, mirroring the feed so movement feels natural.</p>
-                                <p><strong>2. Preprocessing</strong> — Each frame is flipped horizontally and converted from BGR to RGB colour space as required by MediaPipe before processing.</p>
-                                <p><strong>3. Landmark Detection</strong> — MediaPipe Hands processes the RGB frame and returns normalised (x, y, z) coordinates for 21 hand keypoints per detected hand — covering every joint from wrist to fingertip.</p>
-                                <p><strong>4. Writing Gesture Check</strong> — A rule-based function checks whether only the index finger is raised (tip above MCP knuckle) while other fingers are folded. If true → drawing mode is active for that hand.</p>
-                                <p><strong>5. Canvas Drawing</strong> — When in drawing mode, the app draws a line between the current and previous index fingertip position on a persistent canvas layer using OpenCV's drawing functions.</p>
-                                <p><strong>6. Button Interaction</strong> — On-screen buttons (Start, Stop, Clear, colour pickers) are fixed regions on the frame. When a fingertip enters a button's bounding box, the corresponding action triggers automatically — no click needed.</p>
-                                <p><strong>7. Overlay & Display</strong> — The canvas layer is composited onto the live video frame and displayed in real time. Press <strong>Q</strong> to quit.</p>
+                            <div class="p-card-title"><span class="p-card-title-num">06</span> Use Cases</div>
+                            <div class="p-usecases">
+                                <div class="p-usecase">
+                                    <div class="p-usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></div>
+                                    <div class="p-usecase-title">Touchless Digital Art</div>
+                                    <div class="p-usecase-desc">Sketch and paint on screen without any physical input device — useful for hygiene-sensitive or hardware-constrained environments.</div>
+                                </div>
+                                <div class="p-usecase">
+                                    <div class="p-usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+                                    <div class="p-usecase-title">Interactive Presentations</div>
+                                    <div class="p-usecase-desc">Draw annotations on slides or whiteboards in real time during a live lecture or webinar without touching a keyboard.</div>
+                                </div>
+                                <div class="p-usecase">
+                                    <div class="p-usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="4" r="1"/><path d="m18 19 1-7-5.87.94"/><path d="m5 8 3-3 4.5 3-2.5 3"/><path d="M4.24 14.5A5 5 0 0 0 9 21c1.5 0 2.87-.56 3.9-1.47"/><path d="M14 21v-5"/></svg></div>
+                                    <div class="p-usecase-title">Assistive Technology</div>
+                                    <div class="p-usecase-desc">Enables users with limited hand mobility to interact with digital interfaces using only gross motor movements captured by webcam.</div>
+                                </div>
+                                <div class="p-usecase">
+                                    <div class="p-usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/><rect x="2" y="6" width="20" height="12" rx="2"/></svg></div>
+                                    <div class="p-usecase-title">Gesture-Based Games</div>
+                                    <div class="p-usecase-desc">Foundation for building gesture-controlled mini-games, interactive installations, or educational drawing apps for children.</div>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- DEMO VIDEO -->
                         <div class="p-card">
-                            <div class="p-card-title">Usage Flow</div>
-                            <div class="p-usage-flow">
-                                <div class="p-usage-connector"></div>
-
-                                <div class="p-usage-step">
-                                    <div class="p-usage-num">1</div>
-                                    <div class="p-usage-body">
-                                        <div class="p-usage-title">Launch the App</div>
-                                        <div class="p-usage-desc">Run <code style="background:#f3f4f6;padding:2px 7px;border-radius:5px;font-size:11.5px;color:#064e3b;font-weight:600;">python handgesture.py</code> in your terminal. Make sure your webcam is plugged in and the room is well-lit before running.</div>
-                                    </div>
-                                </div>
-
-                                <div class="p-usage-step">
-                                    <div class="p-usage-num">2</div>
-                                    <div class="p-usage-body">
-                                        <div class="p-usage-title">Show Your Hand to the Camera</div>
-                                        <div class="p-usage-desc">Hold your hand in front of the webcam. MediaPipe will detect it instantly and overlay the 21 landmark skeleton on screen.</div>
-                                    </div>
-                                </div>
-
-                                <div class="p-usage-step">
-                                    <div class="p-usage-num">3</div>
-                                    <div class="p-usage-body">
-                                        <div class="p-usage-title">Hover Fingertip Over <em>Start</em></div>
-                                        <div class="p-usage-desc">Raise only your index finger and move it to the <strong>Start</strong> button on screen. Once your fingertip enters the button area, drawing mode activates automatically.</div>
-                                    </div>
-                                </div>
-
-                                <div class="p-usage-step">
-                                    <div class="p-usage-num">4</div>
-                                    <div class="p-usage-body">
-                                        <div class="p-usage-title">Draw with Your Index Finger</div>
-                                        <div class="p-usage-desc">Keep only your index finger raised and move your hand around — the app draws a line following your fingertip in real time on the canvas overlay.</div>
-                                    </div>
-                                </div>
-
-                                <div class="p-usage-step">
-                                    <div class="p-usage-num">5</div>
-                                    <div class="p-usage-body">
-                                        <div class="p-usage-title">Switch Colors</div>
-                                        <div class="p-usage-desc">Hover your fingertip over the color buttons (<span style="color:#2563eb;font-weight:600;">Blue</span>, <span style="color:#16a34a;font-weight:600;">Green</span>, <span style="color:#dc2626;font-weight:600;">Red</span>, <span style="color:#db2777;font-weight:600;">Pink</span>) to instantly change your brush color. No pause in drawing needed.</div>
-                                    </div>
-                                </div>
-
-                                <div class="p-usage-step">
-                                    <div class="p-usage-num">6</div>
-                                    <div class="p-usage-body">
-                                        <div class="p-usage-title">Stop or Clear</div>
-                                        <div class="p-usage-desc">Hover over <strong>Stop</strong> to pause drawing (hand tracking stays active). Hover over <strong>Clear</strong> to wipe the canvas and start fresh. Press <code style="background:#f3f4f6;padding:2px 7px;border-radius:5px;font-size:11.5px;color:#064e3b;font-weight:600;">Q</code> to quit the app.</div>
-                                    </div>
-                                </div>
-
-                                <div class="p-usage-tip">
-                                    <span class="p-usage-tip-icon">💡</span>
-                                    <div class="p-usage-tip-text"><strong>Pro tip:</strong> Use a plain, contrasting background behind your hand and make sure your room is well-lit for best detection accuracy.</div>
-                                </div>
+                            <div class="p-card-title"><span class="p-card-title-num">07</span> Video Demonstration</div>
+                            <div class="p-body" style="margin-bottom:16px;">
+                                <p>MediaPipe detecting 21 hand landmarks in real time, the index-finger drawing engine tracing strokes on the canvas overlay, and gesture-based button interactions — all at 30+ FPS directly from a standard webcam.</p>
+                            </div>
+                            <div class="p-video-wrap">
+                                <video src="../assets/demo_handgesture.mp4" controls loop></video>
                             </div>
                         </div>
+
+                        <!-- CONTROLS -->
                         <div class="p-card">
-                            <div class="p-card-title">Controls Reference</div>
-                            <div class="p-controls-table">
-                                <table style="width:100%;border-collapse:collapse;font-size:13px;">
-                                    <thead>
-                                        <tr style="border-bottom:1px solid #e5e7eb;">
-                                            <th style="text-align:left;padding:8px 12px;font-size:10.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#9ca3af;">Button</th>
-                                            <th style="text-align:left;padding:8px 12px;font-size:10.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#9ca3af;">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr style="border-bottom:1px solid #f3f4f6;">
-                                            <td style="padding:10px 12px;"><span style="background:#f0fdf4;color:#16a34a;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:6px;border:1px solid #bbf7d0;">Start</span></td>
-                                            <td style="padding:10px 12px;color:#374151;">Enable drawing mode — fingertip starts tracing lines</td>
-                                        </tr>
-                                        <tr style="border-bottom:1px solid #f3f4f6;">
-                                            <td style="padding:10px 12px;"><span style="background:#fef2f2;color:#dc2626;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:6px;border:1px solid #fecaca;">Stop</span></td>
-                                            <td style="padding:10px 12px;color:#374151;">Disable drawing mode — hand tracked but nothing drawn</td>
-                                        </tr>
-                                        <tr style="border-bottom:1px solid #f3f4f6;">
-                                            <td style="padding:10px 12px;"><span style="background:#f3f4f6;color:#111827;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:6px;border:1px solid #e5e7eb;">Clear</span></td>
-                                            <td style="padding:10px 12px;color:#374151;">Wipe the entire canvas clean</td>
-                                        </tr>
-                                        <tr style="border-bottom:1px solid #f3f4f6;">
-                                            <td style="padding:10px 12px;white-space:nowrap;"><span style="background:#eff6ff;color:#2563eb;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:6px;border:1px solid #bfdbfe;">Blue</span> <span style="background:#f0fdf4;color:#16a34a;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:6px;border:1px solid #bbf7d0;">Green</span> <span style="background:#fef2f2;color:#dc2626;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:6px;border:1px solid #fecaca;">Red</span> <span style="background:#fdf2f8;color:#db2777;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:6px;border:1px solid #fbcfe8;">Pink</span></td>
-                                            <td style="padding:10px 12px;color:#374151;">Switch brush color instantly</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding:10px 12px;"><code style="background:#f3f4f6;padding:3px 10px;border-radius:6px;font-size:11.5px;color:#374151;font-weight:600;">Q</code></td>
-                                            <td style="padding:10px 12px;color:#374151;">Quit the application</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <div class="p-card-title"><span class="p-card-title-num">08</span> Controls Reference</div>
+                            <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -4px;"><div class="p-ctrl-table-wrap"><table class="p-ctrl-table">
+                                <thead>
+                                    <tr>
+                                        <th>Control</th>
+                                        <th>Trigger</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="p-ctrl-badge">START</span></td>
+                                        <td style="color:var(--muted);font-size:12px;">Fingertip hover</td>
+                                        <td>Enable drawing mode — fingertip traces strokes</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="p-ctrl-badge">STOP</span></td>
+                                        <td style="color:var(--muted);font-size:12px;">Fingertip hover</td>
+                                        <td>Disable drawing — tracking stays active, no strokes</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="p-ctrl-badge">CLEAR</span></td>
+                                        <td style="color:var(--muted);font-size:12px;">Fingertip hover</td>
+                                        <td>Wipe entire canvas clean</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="p-ctrl-badge">COLOR</span></td>
+                                        <td style="color:var(--muted);font-size:12px;">Hover color button</td>
+                                        <td>Switch brush: Blue / Green / Red / Pink</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="p-ctrl-badge">Q</span></td>
+                                        <td style="color:var(--muted);font-size:12px;">Keyboard</td>
+                                        <td>Quit the application</td>
+                                    </tr>
+                                </tbody>
+                            </table></div></div>
                         </div>
-                        <div class="p-card">
-                            <div class="p-card-title">Project Timeline</div>
-                            <div class="p-timeline">
-                                <div class="p-tl-item">
-                                    <div class="p-tl-line"><div class="p-tl-dot done">1</div><div class="p-tl-connector"></div></div>
-                                    <div class="p-tl-body"><div class="p-tl-date">Week 1 · 2024</div><div class="p-tl-title">Research & Setup</div><div class="p-tl-desc">Studied MediaPipe documentation, set up Python environment with OpenCV and MediaPipe dependencies.</div></div>
-                                </div>
-                                <div class="p-tl-item">
-                                    <div class="p-tl-line"><div class="p-tl-dot done">2</div><div class="p-tl-connector"></div></div>
-                                    <div class="p-tl-body"><div class="p-tl-date">Week 2 · 2024</div><div class="p-tl-title">Landmark Detection</div><div class="p-tl-desc">Integrated MediaPipe Hands, validated 21-point detection accuracy across different lighting conditions and skin tones.</div></div>
-                                </div>
-                                <div class="p-tl-item">
-                                    <div class="p-tl-line"><div class="p-tl-dot done">3</div><div class="p-tl-connector"></div></div>
-                                    <div class="p-tl-body"><div class="p-tl-date">Week 3 · 2024</div><div class="p-tl-title">Gesture Classifier</div><div class="p-tl-desc">Built the rule-based classifier, defined landmark thresholds for each gesture, iteratively tested and refined classification logic.</div></div>
-                                </div>
-                                <div class="p-tl-item">
-                                    <div class="p-tl-line"><div class="p-tl-dot done">4</div><div class="p-tl-connector"></div></div>
-                                    <div class="p-tl-body"><div class="p-tl-date">Week 4 · 2024</div><div class="p-tl-title">Overlay & Polish</div><div class="p-tl-desc">Added visual overlays, gesture label display, and performance optimisation. Cleaned up the codebase and wrote documentation.</div></div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
+
+                    <!-- SIDEBAR -->
                     <div class="p-side-col">
-                        <div class="p-card">
-                            <div class="p-card-title">Build Progress</div>
-                            <div style="margin-bottom:10px;"><span style="display:inline-flex;align-items:center;gap:6px;background:#f0fdf4;color:#16a34a;font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;border:1px solid #bbf7d0;"><span style="width:6px;height:6px;border-radius:50%;background:#16a34a;display:inline-block;"></span>Completed</span></div>
-                            <div class="p-progress-label"><span>MediaPipe Integration</span><span>100%</span></div>
-                            <div class="p-progress-track"><div class="p-progress-fill" style="background:linear-gradient(90deg,#064e3b,#10b981);width:100%;"></div></div>
-                            <div class="p-progress-label"><span>Finger Drawing Engine</span><span>100%</span></div>
-                            <div class="p-progress-track"><div class="p-progress-fill" style="background:linear-gradient(90deg,#064e3b,#10b981);width:100%;"></div></div>
-                            <div class="p-progress-label"><span>Gesture-Based Controls</span><span>100%</span></div>
-                            <div class="p-progress-track"><div class="p-progress-fill" style="background:linear-gradient(90deg,#064e3b,#10b981);width:100%;"></div></div>
-                            <div class="p-progress-label"><span>Multi-Hand Support</span><span>100%</span></div>
-                            <div class="p-progress-track"><div class="p-progress-fill" style="background:linear-gradient(90deg,#064e3b,#10b981);width:100%;"></div></div>
-                        </div>
-                        <div class="p-card">
-                            <div class="p-card-title">Tech Stack</div>
-                            <div class="p-tech-grid">
-                                <span class="p-tech-pill">Python</span>
-                                <span class="p-tech-pill">MediaPipe</span>
-                                <span class="p-tech-pill">OpenCV</span>
-                                <span class="p-tech-pill">NumPy</span>
-                                <span class="p-tech-pill">Real-Time CV</span>
-                                <span class="p-tech-pill">Landmark Model</span>
-                            </div>
-                        </div>
                         <div class="p-card">
                             <div class="p-card-title">By the Numbers</div>
                             <div class="p-numbers">
-                                <div class="p-num-card" style="background:#f0fdf4;border:1px solid #bbf7d0;"><div class="p-num-val" style="color:#16a34a;">21</div><div class="p-num-label">Hand Landmarks</div></div>
-                                <div class="p-num-card" style="background:#eff6ff;border:1px solid #dbeafe;"><div class="p-num-val" style="color:#1d4ed8;">30+</div><div class="p-num-label">FPS Real-Time</div></div>
-                                <div class="p-num-card" style="background:#fdf4ff;border:1px solid #e9d5ff;"><div class="p-num-val" style="color:#7c3aed;">4</div><div class="p-num-label">Colors Available</div></div>
-                                <div class="p-num-card" style="background:#fef9c3;border:1px solid #fde68a;"><div class="p-num-val" style="color:#b45309;">4</div><div class="p-num-label">Hands Tracked</div></div>
+                                <div class="p-num-card"><div class="p-num-val">21</div><div class="p-num-label">Landmarks / hand</div></div>
+                                <div class="p-num-card"><div class="p-num-val">30+</div><div class="p-num-label">FPS real-time</div></div>
+                                <div class="p-num-card"><div class="p-num-val">4</div><div class="p-num-label">Hands tracked</div></div>
+                                <div class="p-num-card"><div class="p-num-val">4</div><div class="p-num-label">Brush colors</div></div>
                             </div>
                         </div>
+
+                        <div class="p-card">
+                            <div class="p-card-title">Completion</div>
+                            <div class="p-progress-label"><span>Landmark Detection</span><span>100%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill" style="width:100%;"></div></div>
+                            <div class="p-progress-label"><span>Gesture Classifier</span><span>100%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill" style="width:100%;"></div></div>
+                            <div class="p-progress-label"><span>Canvas Drawing</span><span>100%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill" style="width:100%;"></div></div>
+                            <div class="p-progress-label"><span>Multi-Hand Support</span><span>100%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill" style="width:100%;"></div></div>
+                        </div>
+
+                        <div class="p-card">
+                            <div class="p-card-title">Tech Stack</div>
+                            <div class="p-tech-grid">
+                                <span class="p-tech-pill">Python 3</span>
+                                <span class="p-tech-pill">MediaPipe</span>
+                                <span class="p-tech-pill">OpenCV</span>
+                                <span class="p-tech-pill">NumPy</span>
+                                <span class="p-tech-pill">Webcam API</span>
+                                <span class="p-tech-pill"><mark class="hl">cv2.addWeighted</mark></span>
+                            </div>
+                        </div>
+
                         <div class="p-card">
                             <div class="p-card-title">Links</div>
                             <a href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer" class="p-link-btn primary">
                                 <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                                <span class="p-link-btn-label">GitHub</span>
-                                <svg viewBox="0 0 24 24" style="opacity:0.4;width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                                <span class="p-link-btn-label">View on GitHub</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- DEMO VIDEO -->
-                <div class="p-card" style="margin-top:32px;">
-                    <div class="p-card-title">Demo Video</div>
-                    <p style="font-size:15px;color:#374151;margin:0 0 6px;line-height:1.75;font-weight:500;">See it live — HandGesture in action.</p>
-                    <p style="font-size:13.5px;color:#6b7280;margin:0 0 20px;line-height:1.7;">The clip below shows the full experience: MediaPipe detecting hand landmarks in real time, the index-finger drawing engine tracing strokes on the canvas overlay, and gesture-based button interactions switching colors and clearing the board — all running at 30+ FPS directly from a webcam feed, with zero external hardware.</p>
-                    <video
-                        src="../assets/demo_handgesture.mp4"
-                        controls
-                        loop
-                        style="width:100%;border-radius:12px;display:block;background:#000;box-shadow:0 4px 20px rgba(0,0,0,0.12);margin-bottom:20px;"
-                    ></video>
-                    <div class="p-demo-grid">
-                        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:14px 16px;">
-                            <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#16a34a;margin-bottom:4px;">Detection</div>
-                            <div style="font-size:13px;color:#374151;line-height:1.55;">21 hand landmarks tracked per hand, covering every joint from wrist to fingertip.</div>
-                        </div>
-                        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:14px 16px;">
-                            <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2563eb;margin-bottom:4px;">Performance</div>
-                            <div style="font-size:13px;color:#374151;line-height:1.55;">Runs at 30+ FPS on a standard laptop webcam with no GPU required.</div>
-                        </div>
-                        <div style="background:#fdf4ff;border:1px solid #e9d5ff;border-radius:10px;padding:14px 16px;">
-                            <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px;">Input</div>
-                            <div style="font-size:13px;color:#374151;line-height:1.55;">No mouse, stylus, or touch — just your hand and a webcam is all it takes.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CLOSING NOTE -->
+                <!-- CLOSING -->
                 <div class="p-closing">
-                    <div class="p-closing-text">
-                        <div class="p-closing-title">Want to try it yourself?</div>
-                        <div class="p-closing-desc">Clone the repo, install the dependencies, and run <code style="background:rgba(255,255,255,0.12);padding:2px 8px;border-radius:5px;font-size:12px;color:#6ee7b7;">python handgesture.py</code>. A webcam and a well-lit room is all you need.</div>
+                    <div>
+                        <div class="p-closing-title">Try it yourself</div>
+                        <div class="p-closing-desc">Clone the repo, install dependencies, and run <code class="inline">python handgesture.py</code>. All you need is a webcam and a well-lit room.</div>
                     </div>
                     <a href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer" class="p-closing-btn">
                         <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
@@ -616,5 +1824,228 @@
         </main>
     </div>
     <script src="../script.js"></script>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+<div id="rafi-bar"></div>
+<script>
+(function(){
+'use strict';
+var bar = document.getElementById('rafi-bar');
+if (bar) {
+    window.addEventListener('scroll', function() {
+        var d = document.documentElement;
+        var s = d.scrollTop || document.body.scrollTop;
+        var h = d.scrollHeight - d.clientHeight;
+        bar.style.width = (h > 0 ? (s / h * 100) : 0) + '%';
+    }, { passive: true });
+}
+var hbtn = document.getElementById('hamburger-btn');
+var sbEl  = document.querySelector('.sidebar');
+var ovEl  = document.getElementById('sidebar-overlay');
+if (hbtn && sbEl && !hbtn._rafi) {
+    hbtn._rafi = true;
+    function openSb() {
+        sbEl.classList.add('open', 'sb-open');
+        if (ovEl) ovEl.classList.add('visible', 'sb-open');
+        hbtn.classList.add('open');
+        hbtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('sb-open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeSb() {
+        sbEl.classList.remove('open', 'sb-open');
+        if (ovEl) ovEl.classList.remove('visible', 'sb-open');
+        hbtn.classList.remove('open');
+        hbtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('sb-open');
+        document.body.style.overflow = '';
+    }
+    hbtn.addEventListener('click', function() {
+        (sbEl.classList.contains('open') || sbEl.classList.contains('sb-open')) ? closeSb() : openSb();
+    });
+    if (ovEl) ovEl.addEventListener('click', closeSb);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSb(); });
+    sbEl.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+            if (window.innerWidth <= 900) setTimeout(closeSb, 60);
+        });
+    });
+}
+function initPipeline(wrap) {
+    var scroll = wrap.querySelector('.p-pipeline-scroll');
+    if (!scroll || scroll._rafi) return;
+    scroll._rafi = true;
+    var dots   = wrap.querySelector('.p-pipe-dots');
+    var detail = wrap.querySelector('.p-pipe-detail');
+    var steps  = Array.from(wrap.querySelectorAll('.p-pipe-step'));
+    if (dots && steps.length > 1) {
+        dots.innerHTML = '';
+        steps.forEach(function(_, i) {
+            var d = document.createElement('div');
+            d.className = 'p-pipe-dot' + (i === 0 ? ' active' : '');
+            dots.appendChild(d);
+        });
+    }
+    function updateState() {
+        var atEnd = scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 8;
+        wrap.classList.toggle('at-end', atEnd);
+        if (dots && steps.length > 1) {
+            var range = scroll.scrollWidth - scroll.clientWidth;
+            var idx = range > 0 ? Math.round(scroll.scrollLeft / range * (steps.length - 1)) : 0;
+            idx = Math.max(0, Math.min(idx, steps.length - 1));
+            dots.querySelectorAll('.p-pipe-dot').forEach(function(d, i) {
+                d.classList.toggle('active', i === idx);
+            });
+        }
+    }
+    scroll.addEventListener('scroll', updateState, { passive: true });
+    setTimeout(updateState, 120);
+    steps.forEach(function(step) {
+        step.addEventListener('click', function() {
+            var wasActive = step.classList.contains('ps-active');
+            steps.forEach(function(s) { s.classList.remove('ps-active'); });
+            if (detail) {
+                if (!wasActive && step.dataset.detail) {
+                    step.classList.add('ps-active');
+                    detail.innerHTML = step.dataset.detail;
+                    detail.classList.add('ps-show');
+                } else {
+                    detail.classList.remove('ps-show');
+                    detail.innerHTML = '';
+                }
+            }
+        });
+    });
+    var drag = false, startX, startLeft;
+    scroll.addEventListener('mousedown', function(e) {
+        if (e.button !== 0) return;
+        drag = true; startX = e.pageX; startLeft = scroll.scrollLeft;
+        scroll.style.cursor = 'grabbing'; e.preventDefault();
+    });
+    window.addEventListener('mousemove', function(e) {
+        if (!drag) return;
+        scroll.scrollLeft = startLeft - (e.pageX - startX);
+    });
+    window.addEventListener('mouseup', function() {
+        if (!drag) return;
+        drag = false; scroll.style.cursor = 'grab';
+    });
+}
+document.querySelectorAll('.p-pipeline-wrap, .p-pipeline-outer').forEach(initPipeline);
+document.querySelectorAll('.p-acc-trigger').forEach(function(trigger) {
+    if (trigger._rafi) return;
+    trigger._rafi = true;
+    trigger.addEventListener('click', function() {
+        var item = trigger.closest('.p-acc-item');
+        var acc  = item.closest('.p-steps-accordion');
+        var wasOpen = item.classList.contains('open');
+        if (acc) acc.querySelectorAll('.p-acc-item').forEach(function(el) { el.classList.remove('open'); });
+        if (!wasOpen) item.classList.add('open');
+    });
+});
+var fills = document.querySelectorAll('.p-progress-fill');
+if (fills.length && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(ens) {
+        ens.forEach(function(e) {
+            if (e.isIntersecting) {
+                e.target.style.width = e.target.dataset.w || e.target.style.width;
+                io.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.4 });
+    fills.forEach(function(el) {
+        el.dataset.w = el.style.width || '100%';
+        el.style.width = '0%'; io.observe(el);
+    });
+}
+document.querySelectorAll('.skill-tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        var nav = btn.closest('.skills-tab-nav');
+        if (!nav) return;
+        nav.querySelectorAll('.skill-tab-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var target = btn.dataset.tab;
+        document.querySelectorAll('.skill-tab-panel').forEach(function(p) {
+            p.classList.toggle('active', p.dataset.panel === target);
+        });
+    });
+});
+})();
+</script>
+<script>/* ════════════════════════════════════════════════════════════════════════
+   MATH DERIVATION CARD — interaction layer
+   Tab switching + scroll-affordance detection for formula/example panels.
+   ════════════════════════════════════════════════════════════════════════ */
+(function () {
+    function setupScrollAffordance(wrap) {
+        if (!wrap || wrap._pmBound) return;
+        wrap._pmBound = true;
+        var scroller = wrap.querySelector('.p-math-scroll, .p-math-example-scroll');
+        if (!scroller) return;
+
+        function update() {
+            var scrollable = scroller.scrollWidth > scroller.clientWidth + 2;
+            var atEnd = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 2;
+            wrap.classList.toggle('pm-scrollable', scrollable);
+            wrap.classList.toggle('pm-at-end', !scrollable || atEnd);
+        }
+        scroller.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+        // Re-check after fonts/layout settle
+        setTimeout(update, 150);
+    }
+
+    function initMathBlock(block) {
+        if (block._pmBound) return;
+        block._pmBound = true;
+
+        var tabs = Array.prototype.slice.call(block.querySelectorAll('.p-math-tab'));
+        var panels = Array.prototype.slice.call(block.querySelectorAll('.p-math-panel'));
+
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                if (tab.classList.contains('active')) return;
+                var targetName = tab.getAttribute('data-tab');
+                tabs.forEach(function (t) { t.classList.toggle('active', t === tab); });
+                panels.forEach(function (p) {
+                    var match = p.getAttribute('data-panel') === targetName;
+                    p.classList.toggle('active', match);
+                });
+                // Re-check scroll affordance for the panel we just revealed
+                var activePanel = block.querySelector('.p-math-panel.active');
+                if (activePanel) {
+                    var wrap = activePanel.querySelector('.p-math-formula-wrap, .p-math-example-wrap');
+                    if (wrap) setupScrollAffordance(wrap);
+                }
+            });
+        });
+
+        // Bind scroll affordance for every wrap inside this block (formula tab is visible by default)
+        block.querySelectorAll('.p-math-formula-wrap, .p-math-example-wrap').forEach(setupScrollAffordance);
+    }
+
+    function init() {
+        document.querySelectorAll('.p-math-block').forEach(initMathBlock);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+</script>
 </body>
 </html>

@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="assets/avatar_rafi.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
         .entry-sub-link {
@@ -38,7 +38,550 @@
             transform: translate(2px, -2px);
         }
     </style>
-</head>
+
+
+<style id="rafi-v5">
+*, *::before, *::after { box-sizing: border-box; }
+html, body { max-width: 100%; overflow-x: clip; }
+
+#rafi-bar {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+    background: var(--white, #f5f5f5); z-index: 9999; pointer-events: none;
+    transition: width 80ms linear;
+}
+
+.mobile-topbar {
+    display: none;
+    position: fixed !important;
+    top: 0 !important; left: 0 !important; right: 0 !important;
+    height: 52px !important;
+    z-index: 600 !important;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px 0 14px;
+}
+@media (max-width: 900px) {
+    #rafi-bar { top: 52px; }
+    .mobile-topbar { display: flex !important; }
+}
+
+@media (max-width: 900px) {
+    .portfolio-app { display: block !important; }
+    .sidebar {
+        position: fixed !important;
+        top: 52px !important; left: 0 !important;
+        width: 260px !important;
+        height: calc(100vh - 52px) !important;
+        z-index: 500 !important;
+        transform: translateX(-100%) !important;
+        transition: transform 0.26s cubic-bezier(0.4,0,0.2,1) !important;
+        box-shadow: none !important;
+        overflow-y: auto !important; overflow-x: hidden !important;
+        border-right: none !important;
+    }
+    .sidebar.sb-open, .sidebar.open {
+        transform: translateX(0) !important;
+        box-shadow: 4px 0 24px rgba(0,0,0,0.4) !important;
+    }
+    .sidebar-overlay {
+        display: block !important;
+        position: fixed !important;
+        top: 52px !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+        z-index: 490 !important;
+        background: rgba(0,0,0,0.5) !important;
+        opacity: 0 !important; pointer-events: none !important;
+        transition: opacity 0.25s ease !important;
+    }
+    .sidebar-overlay.sb-open, .sidebar-overlay.visible {
+        opacity: 1 !important; pointer-events: all !important;
+    }
+    body.sb-open { overflow: hidden !important; }
+    .project-main, .home-main, .resume-main, .course-main,
+    .contact-main, .blog-main, .ap-main { padding-top: 52px !important; }
+}
+@media (max-width: 480px) {
+    .sidebar { width: 80vw !important; max-width: 280px !important; }
+}
+
+img, video, iframe, svg { max-width: 100%; height: auto; }
+.p-video-wrap { overflow: hidden; border-radius: 8px; }
+.p-video-wrap video { width: 100%; height: auto; }
+
+mark.hl {
+    background: linear-gradient(104deg, rgba(254,240,138,0) 0.9%, #fef08a 2.4%, #fde047 99.1%, rgba(253,224,71,0) 100%);
+    color: #111827; font-weight: 600;
+    padding: 0.1em 0.35em; border-radius: 3px;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+
+.project-page { max-width: 1060px; width: 100%; margin: 0 auto; padding: 40px 40px 80px; box-sizing: border-box; }
+@media (max-width: 860px) {
+    .project-page { padding: 24px 20px 80px; }
+    .p-layout { grid-template-columns: 1fr !important; gap: 14px !important; }
+    .p-side-col {
+        position: static !important; order: -1;
+        display: flex !important; flex-wrap: wrap !important; gap: 10px !important;
+    }
+    .p-side-col .p-card { flex: 1 1 calc(50% - 5px) !important; min-width: 160px !important; }
+}
+@media (max-width: 600px) {
+    .project-page { padding: 12px 12px calc(70px + env(safe-area-inset-bottom,0px)) !important; }
+    .p-side-col { flex-direction: column !important; }
+    .p-side-col .p-card { flex: 1 1 100% !important; min-width: 0 !important; }
+    .p-hero { padding: 20px 16px 24px !important; min-height: 180px !important; border-radius: 10px !important; }
+    .p-hero-title { font-size: clamp(22px,7.5vw,32px) !important; line-height: 1.05 !important; word-break: break-word !important; }
+    .p-hero-sub { font-size: 13px !important; }
+    .p-hero-tags { gap: 5px !important; margin-top: 12px !important; }
+    .p-hero-tag { font-size: 8px !important; padding: 3px 7px !important; }
+    .p-meta-strip { flex-direction: column !important; }
+    .p-meta-item { border-right: none !important; border-bottom: 1px solid var(--line, #242424) !important; padding: 9px 13px !important; }
+    .p-meta-item:last-child { border-bottom: none !important; }
+    .p-card { padding: 16px 14px !important; border-radius: 10px !important; }
+    .p-card-title { font-size: 9px !important; padding-bottom: 11px !important; margin-bottom: 13px !important; }
+    .p-main-col { gap: 10px !important; }
+    .p-body { font-size: 14px !important; line-height: 1.8 !important; }
+    .p-body p { margin-bottom: 12px !important; }
+    .p-callout { font-size: 13px !important; padding: 11px 13px !important; }
+    .p-numbers { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+    .p-num-val { font-size: 22px !important; }
+    .p-num-card { padding: 11px 12px !important; }
+    .p-usecases { grid-template-columns: 1fr !important; gap: 8px !important; }
+    .p-classes-grid { grid-template-columns: 1fr 1fr !important; gap: 5px !important; }
+    .p-design-grid { grid-template-columns: 1fr !important; }
+    .p-arch-row { flex-wrap: wrap !important; }
+    .p-arch-desc { max-width: 100% !important; text-align: left !important; margin-left: 44px !important; }
+    .p-tech-pill { font-size: 9.5px !important; padding: 4px 9px !important; }
+    .p-link-btn { font-size: 12px !important; padding: 9px 12px !important; }
+    .p-closing { flex-direction: column !important; padding: 18px 14px !important; }
+    .p-closing-btn { width: 100% !important; justify-content: center !important; }
+    .p-progress-label { flex-wrap: wrap !important; font-size: 10.5px !important; }
+    .project-back { font-size: 9.5px !important; margin-bottom: 12px !important; }
+    .p-order-state { font-size: 10px !important; padding: 5px 8px !important; }
+    code.inline { font-size: 10px !important; padding: 1px 5px !important; word-break: break-word !important; }
+    .p-ctrl-table-wrap, .p-wcag-table-wrap {
+        overflow-x: auto !important; -webkit-overflow-scrolling: touch !important;
+        margin: 0 -14px !important; padding: 0 14px !important;
+    }
+}
+@media (max-width: 380px) {
+    .project-page { padding: 10px 10px calc(68px + env(safe-area-inset-bottom,0px)) !important; }
+    .p-hero-title { font-size: clamp(19px,7vw,24px) !important; }
+    .p-card { padding: 13px 11px !important; }
+}
+
+.ap-page { max-width: 1280px; margin: 0 auto; padding: 44px 40px 80px; box-sizing: border-box; }
+@media (max-width: 640px) {
+    .ap-page { padding: 14px 14px 60px !important; }
+    .ap-title { font-size: clamp(26px,8.5vw,40px) !important; }
+    .ap-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
+    .ap-card-overlay { display: none !important; }
+}
+
+.p-body, .p-body p, .p-feature-desc, .p-step-desc,
+.p-usecase-desc, .p-arch-desc, .p-callout {
+    overflow-wrap: break-word; word-break: break-word; max-width: 100%;
+}
+.p-arch-name { flex: 1; min-width: 0; overflow-wrap: break-word; }
+
+.p-usecase-icon {
+    width: 38px !important; height: 38px !important;
+    background: var(--bg3, #1c1c1c) !important;
+    border: 1px solid var(--line2, #333) !important;
+    border-radius: 9px !important;
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    margin-bottom: 10px !important; flex-shrink: 0;
+}
+.p-usecase-icon svg {
+    width: 18px !important; height: 18px !important;
+    stroke: var(--acc, #d0d0d0) !important; fill: none !important;
+    stroke-width: 1.8 !important; stroke-linecap: round !important; stroke-linejoin: round !important;
+}
+.p-feature-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--bg3, #1c1c1c); border: 1px solid var(--line2, #333);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.p-feature-icon svg {
+    width: 17px; height: 17px; stroke: var(--acc, #d0d0d0); fill: none;
+    stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+
+.p-pipeline-outer, .p-pipeline-wrap {
+    position: relative; margin: 10px 0; border-radius: 8px;
+    background: var(--bg, #0c0c0c); border: 1px solid var(--line, #242424);
+    overflow: hidden;
+}
+.p-pipeline-outer::after, .p-pipeline-wrap::after {
+    content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 36px;
+    background: linear-gradient(to left, var(--bg, #0c0c0c), transparent);
+    pointer-events: none; z-index: 2; transition: opacity 0.2s;
+}
+.p-pipeline-outer.at-end::after, .p-pipeline-wrap.at-end::after { opacity: 0; }
+.p-pipeline-scroll {
+    overflow-x: auto !important; -webkit-overflow-scrolling: touch !important;
+    cursor: grab; padding: 14px 16px 6px !important;
+    scrollbar-width: thin !important; scrollbar-color: var(--line2,#333) transparent;
+}
+.p-pipeline-scroll:active { cursor: grabbing; }
+.p-pipeline-scroll::-webkit-scrollbar { height: 5px; }
+.p-pipeline-scroll::-webkit-scrollbar-track { background: transparent; }
+.p-pipeline-scroll::-webkit-scrollbar-thumb { background: var(--line2,#333); border-radius: 3px; }
+.p-pipeline { display: inline-flex !important; align-items: center !important; gap: 0 !important; width: max-content !important; min-width: 100% !important; }
+.p-pipe-step {
+    flex-shrink: 0; min-width: 100px; background: var(--bg2, #141414);
+    border: 1.5px solid var(--line2, #333); border-radius: 7px;
+    padding: 11px 13px; text-align: center; cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.12s;
+}
+.p-pipe-step:hover { border-color: var(--muted,#555); transform: translateY(-1px); }
+.p-pipe-step.ps-active { border-color: var(--white,#f5f5f5); box-shadow: 0 0 0 1px var(--white,#f5f5f5); }
+.p-pipe-step-num { font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: var(--muted,#555); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
+.p-pipe-step-label { font-size: 11.5px; font-weight: 700; color: var(--heading,#e8e8e8); line-height: 1.3; }
+.p-pipe-step-sub { font-size: 9px; color: var(--muted,#555); margin-top: 3px; }
+.p-pipe-arrow { font-size: 13px; color: var(--line2,#333); margin: 0 4px; flex-shrink: 0; display: flex; align-items: center; }
+.p-pipe-detail {
+    margin: 0 16px 12px; padding: 11px 13px;
+    background: var(--bg2, #141414); border: 1px solid var(--line, #242424); border-radius: 7px;
+    font-size: 13px; color: var(--sub, #888); line-height: 1.65;
+    display: none; animation: rfin .15s ease;
+}
+.p-pipe-detail.ps-show { display: block; }
+.p-pipe-detail strong { color: var(--heading,#e8e8e8); }
+.p-pipe-detail code { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; background: var(--bg,#0c0c0c); border: 1px solid var(--line2,#333); padding: 1px 5px; border-radius: 3px; color: var(--acc,#d0d0d0); }
+.p-pipe-dots { display: flex; justify-content: center; gap: 5px; padding: 6px 0 10px; min-height: 20px; }
+.p-pipe-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--line2,#333); transition: background .2s, width .2s; }
+.p-pipe-dot.active { background: var(--white,#f5f5f5); width: 14px; border-radius: 3px; }
+.p-pipeline-hint {
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+    text-align: center; font-size: 9.5px; color: var(--muted,#555);
+    font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.08em; padding: 0 0 9px;
+}
+.p-pipeline-hint svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 2; }
+@media (max-width: 640px) {
+    .p-pipe-step { min-width: 84px !important; padding: 10px 10px !important; }
+}
+@keyframes rfin { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+.p-steps-accordion { display: none; flex-direction: column; gap: 6px; }
+@media (max-width: 640px) {
+    .p-steps { display: none !important; }
+    .p-steps-accordion { display: flex !important; }
+}
+.p-acc-item { border: 1px solid var(--line, #242424); border-radius: 8px; overflow: hidden; background: var(--bg2, #141414); }
+.p-acc-trigger { display: flex; align-items: center; gap: 10px; padding: 12px 13px; cursor: pointer; user-select: none; background: none; border: none; width: 100%; text-align: left; }
+.p-acc-num { width: 24px; height: 24px; border-radius: 50%; background: var(--bg3,#1c1c1c); border: 1px solid var(--line2,#333); font-size: 10px; font-weight: 700; color: var(--muted,#555); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'IBM Plex Mono', monospace; transition: background .15s, color .15s, border-color .15s; }
+.p-acc-title { font-size: 13px; font-weight: 700; color: var(--heading,#e8e8e8); flex: 1; }
+.p-acc-chevron { width: 16px; height: 16px; stroke: var(--muted,#555); fill: none; stroke-width: 2; flex-shrink: 0; transition: transform .2s; }
+.p-acc-item.open .p-acc-chevron { transform: rotate(180deg); }
+.p-acc-item.open .p-acc-num { background: var(--white,#f5f5f5); color: var(--bg,#0c0c0c); border-color: var(--white,#f5f5f5); }
+.p-acc-body { max-height: 0; overflow: hidden; padding: 0 13px; transition: max-height .28s ease, padding .2s; }
+.p-acc-item.open .p-acc-body { max-height: 400px; padding: 0 13px 13px; }
+.p-acc-desc { font-size: 13px; color: var(--sub,#888); line-height: 1.65; overflow-wrap: break-word; }
+
+.p-progress-fill { transition: width 1s cubic-bezier(.4,0,.2,1); }
+.p-num-card { transition: transform .15s, box-shadow .15s; }
+.p-num-card:hover { transform: translateY(-2px); }
+
+.blog-img-wrap img, .screenshot-item img, .bl-cover img { max-width: 100% !important; height: auto !important; }
+.screenshot-gallery { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+@media (max-width: 600px) {
+    .blog-page, .bl-page { padding: 14px 14px 60px !important; }
+    .screenshot-gallery { grid-template-columns: repeat(2, 1fr) !important; }
+    .blog-img-2col { grid-template-columns: 1fr !important; }
+    .arch-wrap { font-size: 11px !important; }
+    pre, code { font-size: 11px !important; overflow-x: auto !important; }
+}
+table { max-width: 100%; }
+.p-ctrl-table-wrap, .p-wcag-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+</style>
+<style id="rafi-math-v5">/* ════════════════════════════════════════════════════════════════════════
+   MATH DERIVATION CARD — v5
+   A "lab notebook" component: numbered formula cards with a
+   Formula / Explained / Worked Example switcher. Built for the dark
+   project-page theme (--bg:#0c0c0c family). Horizontal scroll on any
+   formula/example block that overflows, with visible scroll affordance.
+   ════════════════════════════════════════════════════════════════════════ */
+
+.p-math-block {
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    margin: 14px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* left accent rail — gives it the "margin note" feel */
+.p-math-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--acc, #d0d0d0) 0%, transparent 130%);
+    opacity: 0.5;
+}
+
+.p-math-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 13px 16px 12px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+}
+
+.p-math-head-left {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    min-width: 0;
+}
+
+.p-math-index {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+}
+
+.p-math-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--heading);
+    line-height: 1.4;
+    min-width: 0;
+    overflow-wrap: break-word;
+}
+
+.p-math-title mark.hl {
+    font-size: inherit;
+}
+
+/* ── TAB SWITCHER ── */
+.p-math-tabs {
+    display: flex;
+    gap: 2px;
+    background: var(--bg);
+    border: 1px solid var(--line2);
+    border-radius: 5px;
+    padding: 2px;
+    flex-shrink: 0;
+}
+
+.p-math-tab {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+    line-height: 1.2;
+}
+
+.p-math-tab:hover { color: var(--sub); }
+
+.p-math-tab.active {
+    background: var(--line2);
+    color: var(--white);
+}
+
+.p-math-tab .p-math-tab-dot {
+    display: inline-block;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: currentColor;
+    margin-right: 5px;
+    opacity: 0.6;
+    vertical-align: middle;
+}
+
+/* ── BODY / PANELS ── */
+.p-math-body { position: relative; }
+
+.p-math-panel {
+    display: none;
+    animation: pmFadeIn 0.18s ease;
+}
+.p-math-panel.active { display: block; }
+
+@keyframes pmFadeIn {
+    from { opacity: 0; transform: translateY(2px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Formula panel — scrollable code-like surface */
+.p-math-formula-wrap {
+    position: relative;
+    overflow: hidden;
+}
+
+.p-math-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 16px 16px 14px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line2) transparent;
+}
+.p-math-scroll::-webkit-scrollbar { height: 5px; }
+.p-math-scroll::-webkit-scrollbar-track { background: transparent; }
+.p-math-scroll::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 3px; }
+.p-math-scroll::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+pre.p-math-formula {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    line-height: 1.9;
+    color: var(--body);
+    white-space: pre;
+    margin: 0;
+    width: max-content;
+    min-width: 100%;
+}
+
+pre.p-math-formula mark.hl {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: inherit;
+}
+
+/* fade-edge affordance to signal "more content →" */
+.p-math-formula-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 28px;
+    background: linear-gradient(to left, var(--bg2), transparent);
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+.p-math-formula-wrap.pm-at-end::after { opacity: 0; }
+
+.p-math-scroll-hint {
+    display: none;
+    align-items: center;
+    gap: 5px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0 16px 11px;
+}
+.p-math-scroll-hint svg {
+    width: 10px; height: 10px;
+    stroke: currentColor; fill: none;
+    stroke-width: 2;
+}
+.p-math-formula-wrap.pm-scrollable ~ .p-math-scroll-hint,
+.p-math-example-wrap.pm-scrollable ~ .p-math-scroll-hint {
+    display: flex;
+}
+
+/* Explained panel */
+.p-math-explained {
+    padding: 16px 18px;
+}
+.p-math-desc {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--sub);
+    margin: 0;
+}
+.p-math-desc + .p-math-desc { margin-top: 10px; }
+.p-math-desc strong { color: var(--heading); font-weight: 700; }
+.p-math-desc code.inline {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    background: var(--bg);
+    border: 1px solid var(--line2);
+    padding: 1px 6px;
+    border-radius: 3px;
+    color: var(--acc);
+}
+
+/* Example panel — worked-through computation */
+.p-math-example-wrap {
+    position: relative;
+    overflow: hidden;
+}
+.p-math-example {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    line-height: 1.85;
+    color: var(--body);
+    white-space: pre;
+    margin: 0;
+    width: max-content;
+    min-width: 100%;
+    border-left: 2px solid var(--line2);
+    padding: 14px 16px 14px 18px;
+    background: var(--bg);
+}
+.p-math-example-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 28px;
+    background: linear-gradient(to left, var(--bg2), transparent);
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+.p-math-example-wrap.pm-at-end::after { opacity: 0; }
+.p-math-example-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line2) transparent;
+}
+.p-math-example-scroll::-webkit-scrollbar { height: 5px; }
+.p-math-example-scroll::-webkit-scrollbar-track { background: transparent; }
+.p-math-example-scroll::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 3px; }
+
+/* footer micro-label inside example */
+.p-math-example-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 10px 16px 0;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+    .p-math-head { padding: 11px 13px 10px; flex-wrap: wrap; }
+    .p-math-title { font-size: 11.5px; }
+    .p-math-index { font-size: 9px; }
+    .p-math-tabs { width: 100%; justify-content: stretch; }
+    .p-math-tab { flex: 1; text-align: center; padding: 6px 8px; font-size: 9px; }
+    .p-math-scroll { padding: 13px 13px 11px; }
+    pre.p-math-formula { font-size: 10.5px; line-height: 1.8; }
+    .p-math-explained { padding: 13px 14px; }
+    .p-math-desc { font-size: 12.5px; }
+    .p-math-example { font-size: 10px; padding: 12px 13px 12px 15px; }
+    .p-math-example-label { padding: 8px 13px 0; }
+}
+
+@media (max-width: 380px) {
+    .p-math-tab { font-size: 8.3px; padding: 6px 4px; letter-spacing: 0.02em; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .p-math-panel { animation: none !important; }
+}
+</style></head>
 <body>
     <!-- MOBILE TOPBAR -->
     <div class="mobile-topbar">
@@ -273,7 +816,7 @@
                         <div class="skill-icon-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"><span class="skill-icon-label">React</span></div>
                         <div class="skill-icon-item"><img src="https://cdn.worldvectorlogo.com/logos/next-js.svg" alt="Next.js"><span class="skill-icon-label">Next.js</span></div>
                         <div class="skill-icon-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/960px-Tailwind_CSS_Logo.svg.png" alt="Tailwind CSS"><span class="skill-icon-label">Tailwind CSS</span></div>
-                        <div class="skill-icon-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpHj4UwTW4ANSlNjzQOiiOqfDa6kal9RpF0A&s" alt="Zustand"><span class="skill-icon-label">Zustand</span></div>
+                        <div class="skill-icon-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" alt="Vite"><span class="skill-icon-label">Vite</span></div>
                         <div class="skill-icon-item"><img src="https://media.theirstack.com/technology/logo/react-query/logo.png" alt="TanStack React Query"><span class="skill-icon-label">TanStack React Query</span></div>
                         
                     </div>
@@ -288,9 +831,9 @@
                         <div class="skill-icon-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"><span class="skill-icon-label">Java</span></div>
                         <div class="skill-icon-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvXnQDVwDj8wqp_mgvACXgDgmVwqd6rfQODQ&s" alt="Node.js"><span class="skill-icon-label">Node.js</span></div>
                         <div class="skill-icon-item"><img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Socket-io.svg" alt="Socket.io"><span class="skill-icon-label">Socket.IO</span></div>
+                        <div class="skill-icon-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis"><span class="skill-icon-label">Redis</span></div>
+                        <div class="skill-icon-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI"><span class="skill-icon-label">FastAPI</span></div>
                         <div class="skill-icon-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbaa90od4jPrZxQ_Rbo721GYTiR3ESbwZinQ&s" alt="Sequelize ORM"><span class="skill-icon-label">Sequelize ORM</span></div>
-                        <div class="skill-icon-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2Bh8Cgz1HP623XpnVajWfwODcBSa2XC9m8Q&s" alt="Firebase"><span class="skill-icon-label">Firebase</span></div>
-                        <div class="skill-icon-item"><img src="https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" alt="MongoDB"><span class="skill-icon-label">MongoDB</span></div>
                         <div class="skill-icon-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1280px-Postgresql_elephant.svg.png" alt="PostgreSQL"><span class="skill-icon-label">PostgreSQL</span></div>
                         <div class="skill-icon-item"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968313.png" alt="MySQL"><span class="skill-icon-label">MySQL</span></div>
                     </div>
@@ -314,6 +857,7 @@
                         <div class="skill-icon-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmg0SrXaYcnUt5NFG_V5fUN3FH8hOJyszTxQ&s" alt="Docker"><span class="skill-icon-label">Docker</span></div>
                         <div class="skill-icon-item"><img src="https://superset.apache.org/img/docker-compose.webp" alt="Docker Compose"><span class="skill-icon-label">Docker Compose</span></div>
                         <div class="skill-icon-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/960px-Amazon_Web_Services_Logo.svg.png" alt="AWS"><span class="skill-icon-label">AWS</span></div>
+                        <div class="skill-icon-item"><img src="https://www.svgrepo.com/show/353564/cloudflare.svg" alt="Cloudflare"><span class="skill-icon-label">Cloudflare</span></div>
                         <div class="skill-icon-item"><img src="https://img.icons8.com/color/1200/nginx.jpg" alt="Nginx"><span class="skill-icon-label">NGINX</span></div>
                         <div class="skill-icon-item"><img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" alt="Git"><span class="skill-icon-label">Git</span></div>
                         <div class="skill-icon-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"><span class="skill-icon-label">GitHub</span></div>
@@ -329,10 +873,6 @@
                     <div class="skill-icons-grid">
                         <div class="skill-icon-item"><img src="https://rafidaffa.com/skills/figma.jpg" alt="Figma"><span class="skill-icon-label">Figma</span></div>
                         <div class="skill-icon-item"><img src="https://rafidaffa.com/skills/canva.jpg" alt="Canva"><span class="skill-icon-label">Canva</span></div>
-                        <div class="skill-icon-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Microsoft_Office_logo_%282013%E2%80%932019%29.svg/250px-Microsoft_Office_logo_%282013%E2%80%932019%29.svg.png" alt="MS Office"><span class="skill-icon-label">MS Office</span></div>
-                        <div class="skill-icon-item"><img src="https://rafidaffa.com/skills/excel.jpg" alt="Excel"><span class="skill-icon-label">Excel</span></div>
-                        <div class="skill-icon-item"><img src="https://rafidaffa.com/skills/powerpoint.jpg" alt="PowerPoint"><span class="skill-icon-label">PowerPoint</span></div>
-                        <div class="skill-icon-item"><img src="https://rafidaffa.com/skills/word.jpg" alt="Word"><span class="skill-icon-label">Word</span></div>
                     </div>
                 </div>
             </div>
@@ -341,7 +881,7 @@
 
             <!-- COPYRIGHT -->
             <div class="home-copyright">
-                <p>© 2026 Muhammad Rafi Arsya. All rights reserved.</p>
+                <p>© Muhammad Rafi Arsya. All rights reserved.</p>
             </div>
 
         </main>
@@ -360,5 +900,221 @@
     </div>
 
     <script src="script.js"></script>
+
+
+
+
+
+
+<div id="rafi-bar"></div>
+<script>
+(function(){
+'use strict';
+var bar = document.getElementById('rafi-bar');
+if (bar) {
+    window.addEventListener('scroll', function() {
+        var d = document.documentElement;
+        var s = d.scrollTop || document.body.scrollTop;
+        var h = d.scrollHeight - d.clientHeight;
+        bar.style.width = (h > 0 ? (s / h * 100) : 0) + '%';
+    }, { passive: true });
+}
+var hbtn = document.getElementById('hamburger-btn');
+var sbEl  = document.querySelector('.sidebar');
+var ovEl  = document.getElementById('sidebar-overlay');
+if (hbtn && sbEl && !hbtn._rafi) {
+    hbtn._rafi = true;
+    function openSb() {
+        sbEl.classList.add('open', 'sb-open');
+        if (ovEl) ovEl.classList.add('visible', 'sb-open');
+        hbtn.classList.add('open');
+        hbtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('sb-open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeSb() {
+        sbEl.classList.remove('open', 'sb-open');
+        if (ovEl) ovEl.classList.remove('visible', 'sb-open');
+        hbtn.classList.remove('open');
+        hbtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('sb-open');
+        document.body.style.overflow = '';
+    }
+    hbtn.addEventListener('click', function() {
+        (sbEl.classList.contains('open') || sbEl.classList.contains('sb-open')) ? closeSb() : openSb();
+    });
+    if (ovEl) ovEl.addEventListener('click', closeSb);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSb(); });
+    sbEl.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+            if (window.innerWidth <= 900) setTimeout(closeSb, 60);
+        });
+    });
+}
+function initPipeline(wrap) {
+    var scroll = wrap.querySelector('.p-pipeline-scroll');
+    if (!scroll || scroll._rafi) return;
+    scroll._rafi = true;
+    var dots   = wrap.querySelector('.p-pipe-dots');
+    var detail = wrap.querySelector('.p-pipe-detail');
+    var steps  = Array.from(wrap.querySelectorAll('.p-pipe-step'));
+    if (dots && steps.length > 1) {
+        dots.innerHTML = '';
+        steps.forEach(function(_, i) {
+            var d = document.createElement('div');
+            d.className = 'p-pipe-dot' + (i === 0 ? ' active' : '');
+            dots.appendChild(d);
+        });
+    }
+    function updateState() {
+        var atEnd = scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 8;
+        wrap.classList.toggle('at-end', atEnd);
+        if (dots && steps.length > 1) {
+            var range = scroll.scrollWidth - scroll.clientWidth;
+            var idx = range > 0 ? Math.round(scroll.scrollLeft / range * (steps.length - 1)) : 0;
+            idx = Math.max(0, Math.min(idx, steps.length - 1));
+            dots.querySelectorAll('.p-pipe-dot').forEach(function(d, i) {
+                d.classList.toggle('active', i === idx);
+            });
+        }
+    }
+    scroll.addEventListener('scroll', updateState, { passive: true });
+    setTimeout(updateState, 120);
+    steps.forEach(function(step) {
+        step.addEventListener('click', function() {
+            var wasActive = step.classList.contains('ps-active');
+            steps.forEach(function(s) { s.classList.remove('ps-active'); });
+            if (detail) {
+                if (!wasActive && step.dataset.detail) {
+                    step.classList.add('ps-active');
+                    detail.innerHTML = step.dataset.detail;
+                    detail.classList.add('ps-show');
+                } else {
+                    detail.classList.remove('ps-show');
+                    detail.innerHTML = '';
+                }
+            }
+        });
+    });
+    var drag = false, startX, startLeft;
+    scroll.addEventListener('mousedown', function(e) {
+        if (e.button !== 0) return;
+        drag = true; startX = e.pageX; startLeft = scroll.scrollLeft;
+        scroll.style.cursor = 'grabbing'; e.preventDefault();
+    });
+    window.addEventListener('mousemove', function(e) {
+        if (!drag) return;
+        scroll.scrollLeft = startLeft - (e.pageX - startX);
+    });
+    window.addEventListener('mouseup', function() {
+        if (!drag) return;
+        drag = false; scroll.style.cursor = 'grab';
+    });
+}
+document.querySelectorAll('.p-pipeline-wrap, .p-pipeline-outer').forEach(initPipeline);
+document.querySelectorAll('.p-acc-trigger').forEach(function(trigger) {
+    if (trigger._rafi) return;
+    trigger._rafi = true;
+    trigger.addEventListener('click', function() {
+        var item = trigger.closest('.p-acc-item');
+        var acc  = item.closest('.p-steps-accordion');
+        var wasOpen = item.classList.contains('open');
+        if (acc) acc.querySelectorAll('.p-acc-item').forEach(function(el) { el.classList.remove('open'); });
+        if (!wasOpen) item.classList.add('open');
+    });
+});
+var fills = document.querySelectorAll('.p-progress-fill');
+if (fills.length && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(ens) {
+        ens.forEach(function(e) {
+            if (e.isIntersecting) {
+                e.target.style.width = e.target.dataset.w || e.target.style.width;
+                io.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.4 });
+    fills.forEach(function(el) {
+        el.dataset.w = el.style.width || '100%';
+        el.style.width = '0%'; io.observe(el);
+    });
+}
+document.querySelectorAll('.skill-tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        var nav = btn.closest('.skills-tab-nav');
+        if (!nav) return;
+        nav.querySelectorAll('.skill-tab-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var target = btn.dataset.tab;
+        document.querySelectorAll('.skill-tab-panel').forEach(function(p) {
+            p.classList.toggle('active', p.dataset.panel === target);
+        });
+    });
+});
+})();
+</script>
+<script>/* ════════════════════════════════════════════════════════════════════════
+   MATH DERIVATION CARD — interaction layer
+   Tab switching + scroll-affordance detection for formula/example panels.
+   ════════════════════════════════════════════════════════════════════════ */
+(function () {
+    function setupScrollAffordance(wrap) {
+        if (!wrap || wrap._pmBound) return;
+        wrap._pmBound = true;
+        var scroller = wrap.querySelector('.p-math-scroll, .p-math-example-scroll');
+        if (!scroller) return;
+
+        function update() {
+            var scrollable = scroller.scrollWidth > scroller.clientWidth + 2;
+            var atEnd = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 2;
+            wrap.classList.toggle('pm-scrollable', scrollable);
+            wrap.classList.toggle('pm-at-end', !scrollable || atEnd);
+        }
+        scroller.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+        // Re-check after fonts/layout settle
+        setTimeout(update, 150);
+    }
+
+    function initMathBlock(block) {
+        if (block._pmBound) return;
+        block._pmBound = true;
+
+        var tabs = Array.prototype.slice.call(block.querySelectorAll('.p-math-tab'));
+        var panels = Array.prototype.slice.call(block.querySelectorAll('.p-math-panel'));
+
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                if (tab.classList.contains('active')) return;
+                var targetName = tab.getAttribute('data-tab');
+                tabs.forEach(function (t) { t.classList.toggle('active', t === tab); });
+                panels.forEach(function (p) {
+                    var match = p.getAttribute('data-panel') === targetName;
+                    p.classList.toggle('active', match);
+                });
+                // Re-check scroll affordance for the panel we just revealed
+                var activePanel = block.querySelector('.p-math-panel.active');
+                if (activePanel) {
+                    var wrap = activePanel.querySelector('.p-math-formula-wrap, .p-math-example-wrap');
+                    if (wrap) setupScrollAffordance(wrap);
+                }
+            });
+        });
+
+        // Bind scroll affordance for every wrap inside this block (formula tab is visible by default)
+        block.querySelectorAll('.p-math-formula-wrap, .p-math-example-wrap').forEach(setupScrollAffordance);
+    }
+
+    function init() {
+        document.querySelectorAll('.p-math-block').forEach(initMathBlock);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+</script>
 </body>
 </html>

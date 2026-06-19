@@ -7,96 +7,1190 @@
     <link rel="icon" type="image/png" href="../assets/avatar_rafi.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --accent:#6c5ce7; --accent-dark:#1a0a2e; }
-        .project-main { padding:0; min-height:100vh; background:#f8f9fb; }
-        .project-page { max-width:1040px; width:min(100%,1040px); margin:0 auto; padding:40px 40px 100px; }
-        .project-back { display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:600; color:#6b7280; text-decoration:none; margin-bottom:32px; padding:6px 12px 6px 8px; border-radius:8px; border:1px solid #e5e7eb; background:#fff; transition:all 0.15s; }
-        .project-back:hover { color:#111827; border-color:#d1d5db; transform:translateX(-2px); }
-        .project-back svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
-
-        .p-hero { width:100%; border-radius:16px; overflow:hidden; margin-bottom:28px; position:relative; min-height:280px; display:flex; flex-direction:column; justify-content:flex-end; padding:32px 36px; box-shadow:0 4px 24px rgba(0,0,0,0.14); background:linear-gradient(135deg,#1a0a2e 0%,#2d1b69 50%,#6c5ce7 100%); }
-        .p-hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px); background-size:40px 40px; pointer-events:none; }
-        .p-hero-overlay { position:absolute; inset:0; background:radial-gradient(ellipse at 80% 20%,rgba(108,92,231,0.18) 0%,transparent 60%); pointer-events:none; }
-        .p-hero-badge { display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:10px; position:relative; z-index:1; }
-        .p-hero-dot { width:6px; height:6px; border-radius:50%; background:#a78bfa; }
-        .p-hero-title { font-family:'Syne',sans-serif; font-size:48px; font-weight:800; color:#fff; letter-spacing:-0.03em; line-height:1.05; margin-bottom:10px; position:relative; z-index:1; }
-        .p-hero-title span { color:#c4b5fd; }
-        .p-hero-sub { font-size:14.5px; color:rgba(255,255,255,0.5); line-height:1.7; max-width:560px; position:relative; z-index:1; }
-        .p-hero-tags { display:flex; flex-wrap:wrap; gap:7px; margin-top:18px; position:relative; z-index:1; }
-        .p-hero-tag { font-size:11px; font-weight:600; letter-spacing:0.04em; padding:4px 11px; border-radius:20px; background:rgba(255,255,255,0.07); color:rgba(255,255,255,0.6); border:1px solid rgba(255,255,255,0.1); }
-
-        .p-meta-strip { display:flex; flex-wrap:wrap; border:1px solid #e5e7eb; border-radius:12px; overflow:hidden; margin-bottom:32px; background:#fff; }
-        .p-meta-item { flex:1; min-width:110px; padding:14px 20px; border-right:1px solid #f3f4f6; }
-        .p-meta-item:last-child { border-right:none; }
-        .p-meta-label { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#9ca3af; margin-bottom:4px; }
-        .p-meta-value { font-size:13.5px; font-weight:600; color:#111827; }
-
-        .p-layout { display:grid; grid-template-columns:1fr 290px; gap:24px; align-items:start; }
-        .p-main-col { display:flex; flex-direction:column; gap:22px; }
-        .p-side-col { display:flex; flex-direction:column; gap:16px; }
-        .p-card { background:#fff; border:1px solid #e5e7eb; border-radius:14px; padding:24px 26px; }
-        .p-card-title { font-size:10.5px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#9ca3af; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid #f3f4f6; }
-        .p-body { font-size:15px; color:#374151; line-height:1.85; }
-        .p-body p { margin:0 0 14px; }
-        .p-body p:last-child { margin-bottom:0; }
-        .p-body strong { color:#111827; font-weight:600; }
-
-        .p-features { display:flex; flex-direction:column; gap:9px; }
-        .p-feature { display:flex; align-items:flex-start; gap:12px; padding:13px 15px; background:#f9fafb; border:1px solid #f3f4f6; border-radius:10px; }
-        .p-feature-icon { width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; background:#ede9fe; color:#6c5ce7; }
-        .p-feature-icon svg { width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-        .p-feature-name { font-size:13px; font-weight:700; color:#111827; margin-bottom:2px; }
-        .p-feature-desc { font-size:12px; color:#6b7280; line-height:1.5; }
-
-        .p-stack-pills { display:flex; flex-wrap:wrap; gap:7px; }
-        .p-stack-pill { font-size:11.5px; font-weight:500; color:#374151; background:#f9fafb; border:1px solid #e5e7eb; border-radius:6px; padding:4px 11px; font-family:'JetBrains Mono', monospace; }
-
-        .p-link-btn { display:flex; align-items:center; gap:8px; padding:11px 16px; border-radius:9px; text-decoration:none; font-size:13px; font-weight:600; transition:all 0.15s; margin-bottom:8px; }
-        .p-link-btn:last-child { margin-bottom:0; }
-        .p-link-btn.primary { background:#6c5ce7; color:#fff; }
-        .p-link-btn.primary:hover { background:#5b4bd4; }
-        .p-link-btn.secondary { background:#f9fafb; color:#374151; border:1px solid #e5e7eb; }
-        .p-link-btn.secondary:hover { background:#f3f4f6; }
-        .p-link-btn svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
-
-        .p-score-card { background:linear-gradient(135deg,#1a0a2e,#2d1b69); border-radius:14px; padding:24px; color:#fff; }
-        .p-score-value { font-size:52px; font-weight:800; color:#c4b5fd; letter-spacing:-0.03em; line-height:1; margin-bottom:4px; font-family:'JetBrains Mono',monospace; }
-        .p-score-label { font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:16px; }
-        .p-score-bar { height:6px; background:rgba(255,255,255,0.1); border-radius:100px; overflow:hidden; margin-bottom:10px; }
-        .p-score-fill { height:100%; background:#6c5ce7; border-radius:100px; width:78%; }
-        .p-score-items { display:flex; flex-direction:column; gap:6px; margin-top:12px; }
-        .p-score-item { display:flex; justify-content:space-between; font-size:11.5px; }
-        .p-score-item-label { color:rgba(255,255,255,0.5); }
-        .p-score-item-val { color:rgba(255,255,255,0.85); font-weight:600; font-family:'JetBrains Mono',monospace; }
-
-        .p-callout { background:#f5f3ff; border-left:3px solid #6c5ce7; border-radius:0 8px 8px 0; padding:14px 18px; font-size:13.5px; color:#374151; line-height:1.65; margin:16px 0; font-style:italic; }
-
-        @media (max-width:900px) { .p-layout { grid-template-columns:1fr; } }
-        /* Screenshots */
-        .p-screenshots { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:16px 0; }
-        .p-screenshot { border-radius:14px; overflow:hidden; border:1px solid #e5e7eb; background:#080810; cursor:zoom-in; transition:transform 0.2s,box-shadow 0.2s; aspect-ratio:9/19.5; position:relative; }
-        .p-screenshot:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(0,0,0,0.13); }
-        .p-screenshot img { width:100%; height:100%; object-fit:cover; display:block; }
-        .p-screenshot-cap { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top,rgba(0,0,0,0.8),transparent); padding:16px 8px 8px; font-size:10px; font-weight:700; color:rgba(255,255,255,0.85); text-transform:uppercase; letter-spacing:0.05em; text-align:center; }
-        .lightbox-ov { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; align-items:center; justify-content:center; cursor:zoom-out; }
-        .lightbox-ov.open { display:flex; }
-        .lightbox-ov img { max-width:min(420px,90vw); max-height:90vh; border-radius:20px; object-fit:contain; }
-        .lightbox-x { position:absolute; top:20px; right:24px; color:#fff; width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:20px; }
-        .lightbox-x:hover { background:rgba(255,255,255,0.2); }
-        .apk-dl { display:flex; align-items:center; gap:14px; background:linear-gradient(135deg,#1a0a2e,#2d1b69,#6c5ce7); border-radius:12px; padding:18px 20px; text-decoration:none; transition:opacity 0.2s; margin-bottom:10px; }
-        .apk-dl:hover { opacity:0.9; }
-        .apk-dl-icon { width:44px; height:44px; border-radius:10px; background:rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-        .apk-dl-icon svg { width:22px; height:22px; stroke:#fff; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-        .apk-dl-title { font-size:14px; font-weight:700; color:#fff; }
-        .apk-dl-sub { font-size:11px; color:rgba(255,255,255,0.5); margin-top:2px; }
-        .apk-dl-arr svg { width:18px; height:18px; stroke:rgba(255,255,255,0.4); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-        @media (max-width:600px) { .p-screenshots { grid-template-columns:repeat(2,1fr); } }
-        @media (max-width:600px) { .project-page { padding:24px 18px 60px; } .p-hero { padding:24px; min-height:200px; } .p-hero-title { font-size:32px; } }
+        /* BASE STYLES replaces external styles.css */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'IBM Plex Sans', sans-serif; background: #f8f9fb; color: #374151; -webkit-font-smoothing: antialiased; }
+        .mobile-topbar { display: none; position: sticky; top: 0; z-index: 100; align-items: center; justify-content: space-between; padding: 0 16px; height: 52px; background: rgba(248,249,251,0.96); border-bottom: 1px solid #e5e7eb; backdrop-filter: blur(12px); }
+        .mobile-topbar-title { font-size: 14px; font-weight: 700; color: #111827; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: calc(100% - 52px); }
+        .hamburger-btn { width: 36px; height: 36px; border: none; background: #f3f4f6; border-radius: 8px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4.5px; padding: 0; flex-shrink: 0; }
+        .hamburger-btn span { display: block; width: 18px; height: 1.5px; background: #111827; border-radius: 2px; transition: all 0.2s ease; }
+        .hamburger-btn.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        .hamburger-btn.open span:nth-child(2) { opacity: 0; }
+        .hamburger-btn.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+        .portfolio-app { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; align-items: start; }
+        .sidebar { width: 240px; border-right: 1px solid #e5e7eb; background: #fff; display: flex; flex-direction: column; height: 100vh; position: sticky; top: 0; overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: #e5e7eb transparent; transition: transform 0.3s cubic-bezier(.4,0,.2,1); will-change: transform; flex-shrink: 0; } .sidebar::-webkit-scrollbar { width: 3px; } .sidebar::-webkit-scrollbar-track { background: transparent; } .sidebar::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 3px; }
+        .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 199; opacity: 0; pointer-events: none; transition: opacity 0.28s ease; }
+        .sidebar-top { padding: 20px 16px 16px; flex: 1; }
+        .sidebar-logo-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #f3f4f6; }
+        .sidebar-logo-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+        .sidebar-logo-name { font-size: 13px; font-weight: 700; color: #111827; }
+        .sidebar-group-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #9ca3af; margin: 16px 0 6px; padding: 0 4px; }
+        .sidebar-nav { display: flex; flex-direction: column; gap: 1px; }
+        .sidebar-nav a, .sidebar-projects a, .sidebar-social a { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 7px; font-size: 13px; font-weight: 500; color: #374151; text-decoration: none; transition: all 0.15s; }
+        .sidebar-nav a:hover, .sidebar-projects a:hover, .sidebar-social a:hover { background: #f3f4f6; color: #111827; }
+        .sidebar-nav a.active, .sidebar-projects a.active { background: #111827; color: #fff; }
+        .nav-icon { width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .nav-icon svg { width: 15px; height: 15px; }
+        .sidebar-projects { display: flex; flex-direction: column; gap: 1px; }
+        .project-label { font-size: 13px; }
+        .project-more { opacity: 0.65; }
+        .sidebar-social { display: flex; flex-direction: column; gap: 1px; }
+        .sidebar-social a { color: #6b7280; }
+        .sidebar-footer { padding: 16px; border-top: 1px solid #f3f4f6; }
+        .sidebar-footer p { font-size: 11px; color: #9ca3af; }
+        @media (max-width: 900px) {
+            .mobile-topbar { display: flex; }
+            .portfolio-app { display: block; width: 100%; }
+            .sidebar { position: fixed; left: 0; top: 0; height: 100vh; z-index: 200; transform: translateX(-100%); }
+            .sidebar.sb-open { transform: translateX(0); box-shadow: 4px 0 32px rgba(0,0,0,0.12); }
+            .sidebar-overlay { display: block; }
+            .sidebar-overlay.sb-open { opacity: 1; pointer-events: all; }
+            body.sb-open { overflow: hidden; }
+        }
     </style>
-</head>
+    <style>
+        :root{--bg:#0c0c0c;--bg2:#141414;--bg3:#1c1c1c;--line:#242424;--line2:#333;--muted: #828282;--sub:#888;--body:#b8b8b8;--heading:#e8e8e8;--white:#f5f5f5;--hi:#ffffff;--acc:#d4d4d4;}
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+        .project-main{padding:0;min-height:100vh;background:var(--bg);color:var(--body);}
+        .project-page{max-width:1060px;width:min(100%,1060px);margin:0 auto;padding:44px 44px 100px;}
+        .project-back{display:inline-flex;align-items:center;gap:7px;font-family: 'IBM Plex Mono', monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:7px 13px 7px 9px;border:1px solid var(--line2);border-radius:4px;background:var(--bg2);margin-bottom:36px;transition:color .15s,border-color .15s;}
+        .project-back:hover{color:var(--white);border-color:var(--muted);}
+        .project-back svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+        .p-hero{width:100%;border-radius:2px;overflow:hidden;margin-bottom:2px;position:relative;min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;padding:36px 40px;background:linear-gradient(145deg,#080808,#101010,#181818);}
+        .p-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:48px 48px;}
+        .p-hero-badge{display:inline-flex;align-items:center;gap:7px;font-family: 'IBM Plex Mono', monospace;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;position:relative;z-index:1;}
+        .p-hero-dot{width:5px;height:5px;border-radius:50%;background:var(--acc);display:inline-block;}
+        .p-hero-title{font-family: 'IBM Plex Sans', sans-serif;font-size:60px;font-weight: 700;color:var(--hi);letter-spacing:-0.04em;line-height:1.02;margin-bottom:14px;position:relative;z-index:1;}
+        .p-hero-title em{font-style:normal;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,0.3);}
+        .p-hero-sub{font-size:14px;color:var(--sub);line-height:1.7;max-width:520px;position:relative;z-index:1;}
+        .p-hero-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px;position:relative;z-index:1;}
+        .p-hero-tag{font-family: 'IBM Plex Mono', monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border-radius:2px;background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.08);}
+        .p-meta-strip{display:flex;flex-wrap:wrap;border:1px solid var(--line);border-top:none;border-radius:0 0 2px 2px;overflow:hidden;margin-bottom:32px;background:var(--bg2);}
+        .p-meta-item{flex:1;min-width:100px;padding:13px 18px;border-right:1px solid var(--line);}
+        .p-meta-item:last-child{border-right:none;}
+        .p-meta-label{font-family: 'IBM Plex Mono', monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+        .p-meta-value{font-size:12.5px;font-weight:600;color:var(--heading);}
+        .p-meta-value a{color:var(--acc);text-decoration:none;}
+        .p-layout{display:grid;grid-template-columns:1fr 272px;gap:2px;align-items:start;}
+        .p-main-col{display:flex;flex-direction:column;gap:2px;}
+        .p-side-col{display:flex;flex-direction:column;gap:2px;position:sticky;top:24px;}
+        .p-card{background:var(--bg2);border:1px solid var(--line);border-radius:2px;padding:26px 28px;}
+        .p-card-title{font-family: 'IBM Plex Mono', monospace;font-size:9.5px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;}
+        .p-num{font-family: 'IBM Plex Mono', monospace;font-size:9px;color:var(--bg);background:var(--muted);border-radius:2px;padding:1px 6px;font-weight:700;}
+        .p-body{font-size:14.5px;color:var(--body);line-height:1.85;}
+        .p-body p{margin-bottom:14px;}
+        .p-body p:last-child{margin-bottom:0;}
+        .p-body strong{color:var(--hi);font-weight:600;}
+        code.inline{font-family: 'IBM Plex Mono', monospace;background:var(--bg3);border:1px solid var(--line2);padding:2px 8px;border-radius:3px;font-size:11.5px;color:var(--acc);}
+        .p-callout{border-left:2px solid var(--acc);background:rgba(255,255,255,0.03);padding:14px 18px;border-radius:0 4px 4px 0;margin:16px 0;font-size:13.5px;color:var(--sub);line-height:1.7;}
+        .p-callout strong{color:var(--acc);}
+        .p-features{display:flex;flex-direction:column;gap:18px;}
+        .p-feature-item{display:flex;gap:14px;align-items:flex-start;}
+        .p-feature-icon{width:34px;height:34px;border-radius:6px;background:var(--bg3);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+        .p-feature-icon svg{width:15px;height:15px;stroke:var(--acc);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+        .p-feature-title{font-size:13.5px;font-weight:700;color:var(--heading);margin-bottom:3px;}
+        .p-feature-desc{font-size:12.5px;color:var(--sub);line-height:1.6;}
+        .p-math-block{background:var(--bg);border:1px solid var(--line2);border-radius:4px;padding:20px 24px;margin:12px 0;}
+        .p-math-title{font-family: 'IBM Plex Mono', monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+        .p-math-formula{font-family: 'IBM Plex Mono', monospace;font-size:12px;color:var(--acc);line-height:1.9;white-space:pre-wrap;overflow-x:auto;}
+        .p-math-desc{font-size:12px;color:var(--sub);margin-top:10px;line-height:1.6;}
+        /* DESIGN SYSTEM TOKENS */
+        .p-design-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+        .p-design-section-title{font-family: 'IBM Plex Mono', monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+        .p-color-swatches{display:flex;flex-direction:column;gap:6px;}
+        .p-swatch{display:flex;align-items:center;gap:10px;font-size:12px;}
+        .p-swatch-dot{width:24px;height:24px;border-radius:4px;flex-shrink:0;border:1px solid var(--line2);}
+        .p-swatch-name{color:var(--heading);font-weight:600;font-size:11.5px;}
+        .p-swatch-hex{font-family: 'IBM Plex Mono', monospace;font-size:10px;color:var(--muted);}
+        .p-type-row{display:flex;flex-direction:column;gap:8px;}
+        .p-type-item{}
+        .p-type-sample{margin-bottom:2px;}
+        .p-type-meta{font-family: 'IBM Plex Mono', monospace;font-size:9.5px;color:var(--muted);}
+        .p-schema{background:var(--bg);border:1px solid var(--line2);border-radius:4px;padding:16px 20px;}
+        .p-schema-key{font-family: 'IBM Plex Mono', monospace;font-size:11px;color:var(--acc);}
+        .p-schema-type{font-family: 'IBM Plex Mono', monospace;font-size:11px;color:var(--muted);}
+        .p-schema-row{display:flex;gap:10px;padding:4px 0;border-bottom:1px solid var(--line);}
+        .p-schema-row:last-child{border-bottom:none;}
+        .p-pwa-steps{display:flex;flex-direction:column;gap:12px;}
+        .p-pwa-step{display:flex;gap:12px;align-items:flex-start;}
+        .p-pwa-step-num{font-family: 'IBM Plex Mono', monospace;font-size:9px;color:var(--bg);background:var(--muted);border-radius:2px;padding:2px 6px;font-weight:700;flex-shrink:0;margin-top:2px;}
+        .p-pwa-step-body{}
+        .p-pwa-step-title{font-size:13px;font-weight:700;color:var(--heading);margin-bottom:2px;}
+        .p-pwa-step-desc{font-size:12px;color:var(--sub);line-height:1.55;}
+        .p-usecases{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+        .p-usecase{background:var(--bg3);border:1px solid var(--line);border-radius:4px;padding:14px 16px;}
+        .p-usecase-icon{font-size:18px;margin-bottom:7px;}
+        .p-usecase-title{font-size:12.5px;font-weight:700;color:var(--heading);margin-bottom:4px;}
+        .p-usecase-desc{font-size:11.5px;color:var(--muted);line-height:1.55;}
+        /* SCORE WIDGET */
+        .p-score-ring{width:80px;height:80px;flex-shrink:0;}
+        .p-score-ring circle{fill:none;stroke-width:6;stroke-linecap:round;}
+        .p-score-val{font-family: 'IBM Plex Sans', sans-serif;font-size:22px;font-weight: 700;color:var(--hi);}
+        .p-health-bars{display:flex;flex-direction:column;gap:10px;margin-top:16px;}
+        .p-health-bar-label{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:4px;}
+        .p-health-bar-track{height:3px;border-radius:2px;background:var(--line2);}
+        .p-health-bar-fill{height:100%;border-radius:2px;background:var(--acc);}
+        .p-tech-grid{display:flex;flex-wrap:wrap;gap:6px;}
+        .p-tech-pill{font-family: 'IBM Plex Mono', monospace;font-size:10.5px;color:var(--sub);background:var(--bg);border:1px solid var(--line2);border-radius:3px;padding:5px 11px;transition:all .15s;}
+        .p-tech-pill:hover{color:var(--white);border-color:var(--muted);}
+        .p-numbers{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+        .p-num-card{background:var(--bg3);border:1px solid var(--line);border-radius:4px;padding:14px 16px;}
+        .p-num-val{font-family: 'IBM Plex Sans', sans-serif;font-size:28px;font-weight: 700;color:var(--hi);line-height:1;margin-bottom:4px;}
+        .p-num-label{font-size:10.5px;color:var(--muted);font-weight:500;}
+        .p-progress-label{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-bottom:5px;}
+        .p-progress-label span:last-child{color:var(--acc);font-weight:700;font-family: 'IBM Plex Mono', monospace;}
+        .p-progress-track{height:2px;border-radius:1px;background:var(--line2);overflow:hidden;margin-bottom:13px;}
+        .p-progress-fill{height:100%;border-radius:1px;background:var(--acc);}
+        .p-link-btn{display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;padding:10px 16px;border-radius:3px;text-decoration:none;transition:all .15s;width:100%;margin-bottom:6px;border:1px solid var(--line2);color:var(--sub);background:var(--bg);}
+        .p-link-btn:last-child{margin-bottom:0;}
+        .p-link-btn:hover{color:var(--white);border-color:var(--muted);background:var(--bg3);}
+        .p-link-btn.primary{background:var(--hi);color:var(--bg);border-color:transparent;}
+        .p-link-btn.primary:hover{background:var(--acc);}
+        .p-link-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+        .p-link-btn-label{flex:1;}
+        .p-closing{margin-top:32px;padding:28px 32px;background:var(--bg2);border:1px solid var(--line2);border-radius:2px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;}
+        .p-closing-title{font-family: 'IBM Plex Sans', sans-serif;font-size:20px;font-weight: 700;color:var(--hi);margin-bottom:6px;}
+        .p-closing-desc{font-size:13px;color:var(--sub);line-height:1.6;max-width:480px;}
+        .p-closing-btn{display:inline-flex;align-items:center;gap:8px;background:var(--hi);color:var(--bg);font-size:12px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;padding:11px 22px;border-radius:3px;text-decoration:none;flex-shrink:0;transition:opacity .15s;}
+        .p-closing-btn:hover{opacity:.85;}
+        .p-closing-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+        @media(max-width:860px){.p-layout{grid-template-columns:1fr;}.p-side-col{position:static;order:-1;}.p-hero-title{font-size:42px;}}
+        @media(max-width:600px){.project-page{padding:16px 16px 60px;}.p-hero{padding:24px 22px;min-height:240px;}.p-hero-title{font-size:32px;}.p-meta-strip{flex-direction:column;}.p-meta-item{border-right:none;border-bottom:1px solid var(--line);}.p-meta-item:last-child{border-bottom:none;}.p-closing{flex-direction:column;}.p-closing-btn{width:100%;justify-content:center;}.p-usecases,.p-design-grid{grid-template-columns:1fr;}}
+    
+        /* ── Sidebar slide animation ── */
+        .sidebar { transition: transform 0.32s cubic-bezier(.4,0,.2,1); will-change: transform; }
+        .sidebar-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.3); z-index:199; opacity:0; pointer-events:none; transition:opacity 0.28s ease; }
+        @media(max-width:900px) {
+            .sidebar { position:fixed; left:0; top:0; height:100vh; z-index:200; transform:translateX(-100%); }
+            .sidebar.sb-open { transform:translateX(0); box-shadow:4px 0 40px rgba(0,0,0,0.15); }
+            .sidebar-overlay.sb-open { opacity:1; pointer-events:all; }
+        }
+
+
+        /* ── Light theme overrides ── */
+        :root {
+            --bg: #f8f9fb; --bg2: #ffffff; --bg3: #f3f4f6;
+            --line: #e5e7eb; --line2: #d1d5db;
+            --muted: #9ca3af; --sub: #6b7280; --body: #374151;
+            --heading: #1f2937; --white: #ffffff; --hi: #111827;
+            --acc: #111827;
+        }
+        .project-main, .ap-main { background: var(--bg); color: var(--body); }
+        .p-card { background: var(--bg2); border-color: var(--line); }
+        .p-card-title { color: var(--muted); border-color: var(--line); }
+        .p-num { background: var(--muted); color: #fff; }
+        .p-body { color: var(--body); }
+        .p-body strong { color: var(--hi); }
+        .p-body p { color: var(--body); }
+        code.inline { background: var(--bg3); border-color: var(--line2); color: #374151; font-weight: 600; }
+        .p-callout { background: #f9fafb; border-color: #d1d5db; color: var(--sub); }
+        .p-callout strong { color: var(--hi); }
+        .p-math-block { background: var(--bg3); border-color: var(--line2); }
+        .p-math-title { color: var(--muted); }
+        .p-math-formula { color: #374151; }
+        .p-math-desc { color: var(--sub); }
+        .p-pipe-step { background: var(--bg3); border-color: var(--line2); }
+        .p-pipe-step-num { color: var(--muted); }
+        .p-pipe-step-label { color: var(--hi); }
+        .p-pipe-step-sub { color: var(--muted); }
+        .p-pipe-arrow { color: var(--line2); }
+        .p-features { gap: 12px; }
+        .p-feature-item { align-items: flex-start; }
+        .p-feature-icon { background: var(--bg3); border-color: var(--line2); }
+        .p-feature-icon svg { stroke: #374151; }
+        .p-feature-title { color: var(--hi); }
+        .p-feature-desc { color: var(--sub); }
+        .p-step-dot { background: var(--bg3); border-color: var(--line2); color: var(--muted); }
+        .p-step-title { color: var(--hi); }
+        .p-step-desc { color: var(--sub); }
+        .p-usecase { background: var(--bg3); border-color: var(--line); }
+        .p-usecase-title { color: var(--hi); }
+        .p-usecase-desc { color: var(--sub); }
+        .p-audit-item { background: var(--bg3); border-color: var(--line); }
+        .p-audit-desc { color: var(--sub); }
+        .p-wcag-row { border-color: var(--line); }
+        .p-wcag-code { color: #374151; }
+        .p-wcag-desc { color: var(--sub); }
+        .p-wcag-pass { color: #fff; background: #374151; }
+        .p-arch-row { border-color: var(--line); }
+        .p-arch-icon { background: var(--bg3); border-color: var(--line2); }
+        .p-arch-icon svg { stroke: var(--sub); }
+        .p-arch-name { color: var(--hi); }
+        .p-arch-desc { color: var(--muted); }
+        .p-flow::before { background: linear-gradient(to bottom, var(--line2), transparent); }
+        .p-order-state { background: var(--bg3); border-color: var(--line2); color: var(--hi); }
+        .p-order-arrow { color: var(--muted); }
+        .p-tech-pill { background: var(--bg2); border-color: var(--line2); color: var(--sub); }
+        .p-tech-pill:hover { background: var(--bg3); color: var(--hi); border-color: #9ca3af; }
+        .p-num-card { background: var(--bg3); border-color: var(--line); }
+        .p-num-val { color: var(--hi); }
+        .p-num-label { color: var(--muted); }
+        .p-progress-track { background: var(--line2); }
+        .p-progress-fill { background: #374151; }
+        .p-progress-label { color: var(--muted); }
+        .p-progress-label span:last-child { color: var(--hi); }
+        .p-link-btn { background: var(--bg2); border-color: var(--line2); color: var(--sub); }
+        .p-link-btn:hover { background: var(--bg3); color: var(--hi); border-color: var(--muted); }
+        .p-link-btn.primary { background: var(--hi); color: #fff; }
+        .p-link-btn.primary:hover { background: #374151; }
+        .p-closing { background: var(--hi); color: #fff; border-color: var(--hi); }
+        .p-closing-title { color: #fff; }
+        .p-closing-desc { color: rgba(255,255,255,0.7); }
+        .p-closing-btn { background: #fff; color: var(--hi); }
+        .p-closing-btn:hover { opacity: .88; }
+        .project-back { background: var(--bg2); border-color: var(--line2); color: var(--muted); }
+        .project-back:hover { color: var(--hi); border-color: #9ca3af; }
+        .p-meta-strip { background: var(--bg2); border-color: var(--line); }
+        .p-meta-item { border-color: var(--line); }
+        .p-meta-label { color: var(--muted); }
+        .p-meta-value { color: var(--hi); }
+        .p-meta-value a { color: #374151; }
+        .p-live-banner { background: #f9fafb; border-color: var(--line2); color: var(--sub); }
+        .p-live-banner strong { color: var(--hi); }
+        .p-class-item { background: var(--bg3); border-color: var(--line); color: var(--sub); }
+        .p-wcag-pass { background: #374151; color: #fff; }
+        .p-schema { background: var(--bg3); border-color: var(--line2); }
+        .p-schema-key { color: #374151; }
+        .p-schema-type { color: var(--muted); }
+        .p-schema-row { border-color: var(--line); }
+        .p-pwa-step-num { background: var(--muted); color: #fff; }
+        .p-pwa-step-title { color: var(--hi); }
+        .p-pwa-step-desc { color: var(--sub); }
+        .p-swatch-name { color: var(--hi); }
+        .p-type-meta { color: var(--muted); }
+        .p-health-bar-label { color: var(--muted); }
+        .p-health-bar-track { background: var(--line2); }
+        .p-health-bar-fill { background: #374151; }
+        .p-score-val { color: var(--hi); }
+        /* Hero stays dark always */
+        .p-hero { background: linear-gradient(145deg,#111827 0%,#1f2937 60%,#374151 100%) !important; }
+        .p-hero-title { color: #fff; }
+        .p-hero-title em { -webkit-text-stroke-color: rgba(255,255,255,0.35); }
+        .p-hero-sub { color: rgba(255,255,255,0.6); }
+        /* All Projects page */
+        .ap-main { background: var(--bg); }
+        .ap-title { color: var(--hi); }
+        .ap-sub { color: var(--sub); }
+        .ap-stat-val { color: var(--hi); }
+        .ap-stat-label { color: var(--muted); }
+        .ap-section-title { color: var(--hi); }
+        .ap-section-count { background: var(--bg3); color: var(--sub); }
+        .ap-section-line { background: var(--line); }
+        .ap-card { background: var(--bg2); border-color: var(--line); }
+        .ap-card:hover { background: var(--bg3); border-color: #d1d5db; }
+        .ap-card-bar { height: 3px; }
+        .ap-card-icon { background: var(--bg3); border-color: var(--line2); }
+        .ap-card-icon svg { stroke: var(--sub); }
+        .ap-card-name { color: var(--hi); }
+        .ap-card-desc { color: var(--sub); }
+        .ap-tag { background: var(--bg3); border-color: var(--line2); color: var(--sub); }
+        .ap-card-stack { color: var(--muted); }
+        .ap-card-cta { color: var(--muted); }
+        .ap-card:hover .ap-card-cta { color: var(--hi); }
+        .ap-card-footer { border-color: var(--line); }
+        .ap-card-badge { border-color: var(--line2); color: var(--muted); }
+        .ap-card-badge.ongoing { background: rgba(0,0,0,0.04); color: #374151; border-color: #d1d5db; }
+        .ap-preview { background: #fff; border-color: var(--line2); box-shadow: 0 8px 40px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.06); }
+        .ap-preview-label { color: var(--muted); }
+        .ap-preview-title { color: var(--hi); }
+        .ap-preview-desc { color: var(--sub); }
+        .ap-preview-key { color: var(--muted); }
+        .ap-preview-val { color: var(--sub); }
+        .ap-preview-btn { background: var(--hi); color: #fff; }
+        .ap-stats { border-color: var(--line); }
+        .ap-eyebrow { color: var(--muted); }
+
+    
+        /* ════════════════════════════════════════════
+           MOBILE FIX — comprehensive responsive patch
+           ════════════════════════════════════════════ */
+
+        /* Mobile topbar */
+        .mobile-topbar {
+            position: sticky; top: 0; z-index: 100;
+            display: none; align-items: center; justify-content: space-between;
+            padding: 0 16px; height: 52px;
+            background: rgba(248,249,251,0.95);
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+        }
+        .mobile-topbar-title {
+            font-size: 14px; font-weight: 700; color: var(--hi);
+            letter-spacing: -0.01em; white-space: nowrap;
+            overflow: hidden; text-overflow: ellipsis; max-width: 200px;
+        }
+        .hamburger-btn {
+            width: 36px; height: 36px; border: none;
+            background: var(--bg3); border-radius: 8px; cursor: pointer;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 4.5px;
+            padding: 0; flex-shrink: 0;
+        }
+        .hamburger-btn span {
+            display: block; width: 18px; height: 1.5px;
+            background: var(--hi); border-radius: 2px; transition: all 0.2s ease;
+        }
+        .hamburger-btn.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        .hamburger-btn.open span:nth-child(2) { opacity: 0; }
+        .hamburger-btn.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+        /* Prevent body scroll when sidebar open */
+        body.sb-open { overflow: hidden; }
+
+        /* Cards: rounded corners for modern look */
+        .p-card { border-radius: 10px !important; }
+        .p-hero { border-radius: 12px !important; }
+        .p-meta-strip { border-radius: 0 0 10px 10px !important; }
+        .project-page { max-width: 1060px; width: min(100%, 1060px); margin: 0 auto; }
+
+        /* ── TABLET (≤ 900px) ── */
+        @media (max-width: 900px) {
+            .mobile-topbar { display: flex; }
+        }
+
+        /* ── TABLET LAYOUT (≤ 860px) ── */
+        @media (max-width: 860px) {
+            .p-layout { grid-template-columns: 1fr !important; gap: 12px !important; }
+            .p-side-col { position: static !important; order: -1; display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; }
+            .p-side-col .p-card { flex: 1 1 calc(50% - 6px); min-width: 200px; }
+            .p-hero-title { font-size: 40px !important; }
+            .project-page { padding: 28px 24px 80px; }
+        }
+
+        /* ── MOBILE (≤ 600px) ── */
+        @media (max-width: 600px) {
+            .project-page { padding: 16px 16px calc(72px + env(safe-area-inset-bottom, 0px)) !important; }
+
+            /* Hero */
+            .p-hero { padding: 24px 20px 28px !important; min-height: 200px !important; border-radius: 10px !important; }
+            .p-hero-title { font-size: 28px !important; line-height: 1.05 !important; margin-bottom: 10px !important; }
+            .p-hero-sub { font-size: 13px !important; }
+            .p-hero-tags { margin-top: 14px !important; gap: 5px !important; }
+            .p-hero-tag { font-size: 8.5px !important; padding: 3px 8px !important; }
+
+            /* Meta strip */
+            .p-meta-strip { flex-direction: column !important; }
+            .p-meta-item {
+                border-right: none !important; border-bottom: 1px solid var(--line) !important;
+                padding: 11px 16px !important;
+            }
+            .p-meta-item:last-child { border-bottom: none !important; }
+            .p-meta-label { font-size: 8.5px !important; }
+            .p-meta-value { font-size: 12px !important; }
+
+            /* Cards */
+            .p-card { padding: 18px 16px !important; border-radius: 10px !important; }
+            .p-card-title { font-size: 9px !important; margin-bottom: 14px !important; padding-bottom: 12px !important; }
+            .p-main-col { gap: 10px !important; }
+
+            /* Sidebar cards stacked full-width on mobile */
+            .p-side-col { flex-direction: column !important; }
+            .p-side-col .p-card { flex: 1 1 100% !important; min-width: unset !important; }
+
+            /* Body text */
+            .p-body { font-size: 14px !important; line-height: 1.8 !important; }
+            .p-body p { margin-bottom: 12px !important; }
+
+            /* Callout */
+            .p-callout { font-size: 13px !important; padding: 12px 14px !important; }
+
+            /* Features */
+            .p-features { gap: 14px !important; }
+            .p-feature-title { font-size: 13px !important; }
+            .p-feature-desc { font-size: 12px !important; }
+
+            /* Steps */
+            .p-step-title { font-size: 13px !important; }
+            .p-step-desc { font-size: 12px !important; }
+
+            /* Numbers grid */
+            .p-numbers { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+            .p-num-val { font-size: 24px !important; }
+            .p-num-label { font-size: 10px !important; }
+            .p-num-card { padding: 12px 14px !important; }
+
+            /* Use cases */
+            .p-usecases { grid-template-columns: 1fr !important; gap: 8px !important; }
+
+            /* Classes grid */
+            .p-classes-grid { grid-template-columns: 1fr 1fr !important; gap: 6px !important; }
+            .p-class-item { font-size: 9px !important; padding: 4px 8px !important; }
+
+            /* Design grid */
+            .p-design-grid { grid-template-columns: 1fr !important; }
+
+            /* Pipeline — horizontal scroll on mobile */
+            .p-pipeline {
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                padding-bottom: 12px !important;
+                margin: 0 -16px !important;
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+            }
+            .p-pipe-step { min-width: 80px !important; padding: 8px 10px !important; }
+            .p-pipe-step-label { font-size: 10px !important; }
+            .p-pipe-step-sub { font-size: 8.5px !important; }
+
+            /* Math formula — horizontal scroll */
+            .p-math-formula {
+                font-size: 11px !important;
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                padding-bottom: 4px !important;
+            }
+            .p-math-block { padding: 14px 14px !important; }
+
+            /* Controls table — horizontal scroll */
+            .p-ctrl-table-wrap {
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                margin: 0 -16px !important;
+                padding: 0 16px !important;
+            }
+            .p-ctrl-table { font-size: 11.5px !important; min-width: 380px !important; }
+            .p-ctrl-table th { padding: 7px 10px !important; font-size: 8px !important; }
+            .p-ctrl-table td { padding: 8px 10px !important; font-size: 11.5px !important; }
+
+            /* Progress */
+            .p-progress-label { font-size: 10.5px !important; }
+            .p-progress-track { margin-bottom: 10px !important; }
+
+            /* Tech pills */
+            .p-tech-pill { font-size: 9.5px !important; padding: 4px 9px !important; }
+
+            /* Links */
+            .p-link-btn { font-size: 12px !important; padding: 9px 14px !important; }
+
+            /* Arch rows */
+            .p-arch-name { font-size: 12.5px !important; }
+            .p-arch-desc { font-size: 11px !important; }
+
+            /* Closing */
+            .p-closing { flex-direction: column !important; padding: 22px 18px !important; }
+            .p-closing-title { font-size: 18px !important; }
+            .p-closing-desc { font-size: 12.5px !important; }
+            .p-closing-btn { width: 100% !important; justify-content: center !important; font-size: 11.5px !important; }
+
+            /* Back button */
+            .project-back { font-size: 9px !important; padding: 6px 10px 6px 8px !important; margin-bottom: 16px !important; }
+
+            /* Health bars */
+            .p-health-bar-label { font-size: 10.5px !important; }
+
+            /* PWA steps */
+            .p-pwa-step-title { font-size: 12.5px !important; }
+            .p-pwa-step-desc { font-size: 11.5px !important; }
+
+            /* Swatch design */
+            .p-swatch-name { font-size: 11px !important; }
+            .p-swatch-hex { font-size: 9.5px !important; }
+
+            /* Score */
+            .p-score-val { font-size: 32px !important; }
+
+            /* Audit grid */
+            .p-audit-grid { grid-template-columns: 1fr !important; }
+
+            /* WCAG table — horizontal scroll */
+            .p-wcag-table-wrap {
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                margin: 0 -16px !important;
+                padding: 0 16px !important;
+            }
+            .p-wcag-row { flex-wrap: wrap !important; gap: 6px !important; }
+            .p-wcag-code { font-size: 10px !important; }
+            .p-wcag-desc { font-size: 11.5px !important; }
+        }
+
+        /* ── XS (≤ 380px) ── */
+        @media (max-width: 380px) {
+            .p-hero-title { font-size: 24px !important; }
+            .p-card { padding: 14px 14px !important; }
+            .p-numbers { grid-template-columns: 1fr 1fr !important; }
+            .p-num-val { font-size: 22px !important; }
+        }
+
+    
+        /* Prevent horizontal overflow globally */
+        html, body { max-width: 100%; overflow-x: clip; }
+
+        /* ── MOBILE EXTRA POLISH ───────────────────────────────── */
+        @media (max-width: 600px) {
+            /* FAB bottom spacing */
+            .project-page { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important; }
+            /* Horizontal no-overflow */
+            html, body { max-width: 100%; overflow-x: clip; }
+            /* Tech pills wrap nicely */
+            .p-tech-pills { flex-wrap: wrap !important; gap: 6px !important; }
+            /* Link buttons full-width on small screens */
+            .p-links { flex-direction: column !important; gap: 8px !important; }
+            .p-link-btn { text-align: center; justify-content: center !important; }
+            /* Flow / order states wrap */
+            .p-flow { gap: 6px !important; flex-wrap: wrap !important; }
+            .p-order-state { font-size: 10px !important; padding: 5px 10px !important; }
+            /* Features grid ensure single col */
+            .p-features { display: flex !important; flex-direction: column !important; }
+            /* Arch rows */
+            .p-arch-rows { gap: 10px !important; }
+        }
+        @media (max-width: 380px) {
+            .project-page { padding-left: 12px !important; padding-right: 12px !important; }
+            .mob-sheet-meta { grid-template-columns: 1fr !important; }
+        }
+
+
+        /* ── SIDE-COL MOBILE OVERFLOW FIX ──────────────────── */
+        @media (max-width: 860px) {
+            /* Side col becomes a flex row of cards */
+            .p-side-col { 
+                position: static !important; 
+                display: flex !important; 
+                flex-direction: row !important; 
+                flex-wrap: wrap !important; 
+                gap: 10px !important; 
+            }
+            .p-side-col .p-card { 
+                flex: 1 1 calc(50% - 5px) !important; 
+                min-width: 160px !important;
+                max-width: 100% !important;
+            }
+            /* Tech pills in side col must wrap */
+            .p-side-col .p-tech-grid { flex-wrap: wrap !important; }
+            .p-side-col .p-tech-pill { 
+                font-size: 10px !important; 
+                word-break: break-word !important;
+                white-space: normal !important;
+            }
+            /* Links in side col full width */
+            .p-side-col .p-links { flex-direction: column !important; }
+            .p-side-col .p-link-btn { text-align: center !important; justify-content: center !important; }
+        }
+
+        @media (max-width: 600px) {
+            /* On small mobile, stack side cards vertically */
+            .p-side-col { flex-direction: column !important; }
+            .p-side-col .p-card { flex: 1 1 100% !important; min-width: unset !important; }
+            /* Progress label wrapping */
+            .p-progress-label { flex-wrap: wrap !important; }
+            /* Number cards 2-col */
+            .p-numbers { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+        }
+
+</style>
+    
+
+
+
+<style id="rafi-v5">
+*, *::before, *::after { box-sizing: border-box; }
+html, body { max-width: 100%; overflow-x: clip; }
+
+#rafi-bar {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+    background: var(--white, #f5f5f5); z-index: 9999; pointer-events: none;
+    transition: width 80ms linear;
+}
+
+.mobile-topbar {
+    display: none;
+    position: fixed !important;
+    top: 0 !important; left: 0 !important; right: 0 !important;
+    height: 52px !important;
+    z-index: 600 !important;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px 0 14px;
+}
+@media (max-width: 900px) {
+    #rafi-bar { top: 52px; }
+    .mobile-topbar { display: flex !important; }
+}
+
+@media (max-width: 900px) {
+    .portfolio-app { display: block !important; }
+    .sidebar {
+        position: fixed !important;
+        top: 52px !important; left: 0 !important;
+        width: 260px !important;
+        height: calc(100vh - 52px) !important;
+        z-index: 500 !important;
+        transform: translateX(-100%) !important;
+        transition: transform 0.26s cubic-bezier(0.4,0,0.2,1) !important;
+        box-shadow: none !important;
+        overflow-y: auto !important; overflow-x: hidden !important;
+        border-right: none !important;
+    }
+    .sidebar.sb-open, .sidebar.open {
+        transform: translateX(0) !important;
+        box-shadow: 4px 0 24px rgba(0,0,0,0.4) !important;
+    }
+    .sidebar-overlay {
+        display: block !important;
+        position: fixed !important;
+        top: 52px !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+        z-index: 490 !important;
+        background: rgba(0,0,0,0.5) !important;
+        opacity: 0 !important; pointer-events: none !important;
+        transition: opacity 0.25s ease !important;
+    }
+    .sidebar-overlay.sb-open, .sidebar-overlay.visible {
+        opacity: 1 !important; pointer-events: all !important;
+    }
+    body.sb-open { overflow: hidden !important; }
+    .project-main, .home-main, .resume-main, .course-main,
+    .contact-main, .blog-main, .ap-main { padding-top: 52px !important; }
+}
+@media (max-width: 480px) {
+    .sidebar { width: 80vw !important; max-width: 280px !important; }
+}
+
+img, video, iframe, svg { max-width: 100%; height: auto; }
+.p-video-wrap { overflow: hidden; border-radius: 8px; }
+.p-video-wrap video { width: 100%; height: auto; }
+
+mark.hl {
+    background: linear-gradient(104deg, rgba(254,240,138,0) 0.9%, #fef08a 2.4%, #fde047 99.1%, rgba(253,224,71,0) 100%);
+    color: #111827; font-weight: 600;
+    padding: 0.1em 0.35em; border-radius: 3px;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+
+.project-page { max-width: 1060px; width: 100%; margin: 0 auto; padding: 40px 40px 80px; box-sizing: border-box; }
+@media (max-width: 860px) {
+    .project-page { padding: 24px 20px 80px; }
+    .p-layout { grid-template-columns: 1fr !important; gap: 14px !important; }
+    .p-side-col {
+        position: static !important; order: -1;
+        display: flex !important; flex-wrap: wrap !important; gap: 10px !important;
+    }
+    .p-side-col .p-card { flex: 1 1 calc(50% - 5px) !important; min-width: 160px !important; }
+}
+@media (max-width: 600px) {
+    .project-page { padding: 12px 12px calc(70px + env(safe-area-inset-bottom,0px)) !important; }
+    .p-side-col { flex-direction: column !important; }
+    .p-side-col .p-card { flex: 1 1 100% !important; min-width: 0 !important; }
+    .p-hero { padding: 20px 16px 24px !important; min-height: 180px !important; border-radius: 10px !important; }
+    .p-hero-title { font-size: clamp(22px,7.5vw,32px) !important; line-height: 1.05 !important; word-break: break-word !important; }
+    .p-hero-sub { font-size: 13px !important; }
+    .p-hero-tags { gap: 5px !important; margin-top: 12px !important; }
+    .p-hero-tag { font-size: 8px !important; padding: 3px 7px !important; }
+    .p-meta-strip { flex-direction: column !important; }
+    .p-meta-item { border-right: none !important; border-bottom: 1px solid var(--line, #242424) !important; padding: 9px 13px !important; }
+    .p-meta-item:last-child { border-bottom: none !important; }
+    .p-card { padding: 16px 14px !important; border-radius: 10px !important; }
+    .p-card-title { font-size: 9px !important; padding-bottom: 11px !important; margin-bottom: 13px !important; }
+    .p-main-col { gap: 10px !important; }
+    .p-body { font-size: 14px !important; line-height: 1.8 !important; }
+    .p-body p { margin-bottom: 12px !important; }
+    .p-callout { font-size: 13px !important; padding: 11px 13px !important; }
+    .p-numbers { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+    .p-num-val { font-size: 22px !important; }
+    .p-num-card { padding: 11px 12px !important; }
+    .p-usecases { grid-template-columns: 1fr !important; gap: 8px !important; }
+    .p-classes-grid { grid-template-columns: 1fr 1fr !important; gap: 5px !important; }
+    .p-design-grid { grid-template-columns: 1fr !important; }
+    .p-arch-row { flex-wrap: wrap !important; }
+    .p-arch-desc { max-width: 100% !important; text-align: left !important; margin-left: 44px !important; }
+    .p-tech-pill { font-size: 9.5px !important; padding: 4px 9px !important; }
+    .p-link-btn { font-size: 12px !important; padding: 9px 12px !important; }
+    .p-closing { flex-direction: column !important; padding: 18px 14px !important; }
+    .p-closing-btn { width: 100% !important; justify-content: center !important; }
+    .p-progress-label { flex-wrap: wrap !important; font-size: 10.5px !important; }
+    .project-back { font-size: 9.5px !important; margin-bottom: 12px !important; }
+    .p-order-state { font-size: 10px !important; padding: 5px 8px !important; }
+    code.inline { font-size: 10px !important; padding: 1px 5px !important; word-break: break-word !important; }
+    .p-ctrl-table-wrap, .p-wcag-table-wrap {
+        overflow-x: auto !important; -webkit-overflow-scrolling: touch !important;
+        margin: 0 -14px !important; padding: 0 14px !important;
+    }
+}
+@media (max-width: 380px) {
+    .project-page { padding: 10px 10px calc(68px + env(safe-area-inset-bottom,0px)) !important; }
+    .p-hero-title { font-size: clamp(19px,7vw,24px) !important; }
+    .p-card { padding: 13px 11px !important; }
+}
+
+.ap-page { max-width: 1280px; margin: 0 auto; padding: 44px 40px 80px; box-sizing: border-box; }
+@media (max-width: 640px) {
+    .ap-page { padding: 14px 14px 60px !important; }
+    .ap-title { font-size: clamp(26px,8.5vw,40px) !important; }
+    .ap-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
+    .ap-card-overlay { display: none !important; }
+}
+
+.p-body, .p-body p, .p-feature-desc, .p-step-desc,
+.p-usecase-desc, .p-arch-desc, .p-callout {
+    overflow-wrap: break-word; word-break: break-word; max-width: 100%;
+}
+.p-arch-name { flex: 1; min-width: 0; overflow-wrap: break-word; }
+
+.p-usecase-icon {
+    width: 38px !important; height: 38px !important;
+    background: var(--bg3, #1c1c1c) !important;
+    border: 1px solid var(--line2, #333) !important;
+    border-radius: 9px !important;
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    margin-bottom: 10px !important; flex-shrink: 0;
+}
+.p-usecase-icon svg {
+    width: 18px !important; height: 18px !important;
+    stroke: var(--acc, #d0d0d0) !important; fill: none !important;
+    stroke-width: 1.8 !important; stroke-linecap: round !important; stroke-linejoin: round !important;
+}
+.p-feature-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--bg3, #1c1c1c); border: 1px solid var(--line2, #333);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.p-feature-icon svg {
+    width: 17px; height: 17px; stroke: var(--acc, #d0d0d0); fill: none;
+    stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+
+.p-pipeline-outer, .p-pipeline-wrap {
+    position: relative; margin: 10px 0; border-radius: 8px;
+    background: var(--bg, #0c0c0c); border: 1px solid var(--line, #242424);
+    overflow: hidden;
+}
+.p-pipeline-outer::after, .p-pipeline-wrap::after {
+    content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 36px;
+    background: linear-gradient(to left, var(--bg, #0c0c0c), transparent);
+    pointer-events: none; z-index: 2; transition: opacity 0.2s;
+}
+.p-pipeline-outer.at-end::after, .p-pipeline-wrap.at-end::after { opacity: 0; }
+.p-pipeline-scroll {
+    overflow-x: auto !important; -webkit-overflow-scrolling: touch !important;
+    cursor: grab; padding: 14px 16px 6px !important;
+    scrollbar-width: thin !important; scrollbar-color: var(--line2,#333) transparent;
+}
+.p-pipeline-scroll:active { cursor: grabbing; }
+.p-pipeline-scroll::-webkit-scrollbar { height: 5px; }
+.p-pipeline-scroll::-webkit-scrollbar-track { background: transparent; }
+.p-pipeline-scroll::-webkit-scrollbar-thumb { background: var(--line2,#333); border-radius: 3px; }
+.p-pipeline { display: inline-flex !important; align-items: center !important; gap: 0 !important; width: max-content !important; min-width: 100% !important; }
+.p-pipe-step {
+    flex-shrink: 0; min-width: 100px; background: var(--bg2, #141414);
+    border: 1.5px solid var(--line2, #333); border-radius: 7px;
+    padding: 11px 13px; text-align: center; cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.12s;
+}
+.p-pipe-step:hover { border-color: var(--muted,#555); transform: translateY(-1px); }
+.p-pipe-step.ps-active { border-color: var(--white,#f5f5f5); box-shadow: 0 0 0 1px var(--white,#f5f5f5); }
+.p-pipe-step-num { font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: var(--muted,#555); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
+.p-pipe-step-label { font-size: 11.5px; font-weight: 700; color: var(--heading,#e8e8e8); line-height: 1.3; }
+.p-pipe-step-sub { font-size: 9px; color: var(--muted,#555); margin-top: 3px; }
+.p-pipe-arrow { font-size: 13px; color: var(--line2,#333); margin: 0 4px; flex-shrink: 0; display: flex; align-items: center; }
+.p-pipe-detail {
+    margin: 0 16px 12px; padding: 11px 13px;
+    background: var(--bg2, #141414); border: 1px solid var(--line, #242424); border-radius: 7px;
+    font-size: 13px; color: var(--sub, #888); line-height: 1.65;
+    display: none; animation: rfin .15s ease;
+}
+.p-pipe-detail.ps-show { display: block; }
+.p-pipe-detail strong { color: var(--heading,#e8e8e8); }
+.p-pipe-detail code { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; background: var(--bg,#0c0c0c); border: 1px solid var(--line2,#333); padding: 1px 5px; border-radius: 3px; color: var(--acc,#d0d0d0); }
+.p-pipe-dots { display: flex; justify-content: center; gap: 5px; padding: 6px 0 10px; min-height: 20px; }
+.p-pipe-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--line2,#333); transition: background .2s, width .2s; }
+.p-pipe-dot.active { background: var(--white,#f5f5f5); width: 14px; border-radius: 3px; }
+.p-pipeline-hint {
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+    text-align: center; font-size: 9.5px; color: var(--muted,#555);
+    font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.08em; padding: 0 0 9px;
+}
+.p-pipeline-hint svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 2; }
+@media (max-width: 640px) {
+    .p-pipe-step { min-width: 84px !important; padding: 10px 10px !important; }
+}
+@keyframes rfin { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+.p-steps-accordion { display: none; flex-direction: column; gap: 6px; }
+@media (max-width: 640px) {
+    .p-steps { display: none !important; }
+    .p-steps-accordion { display: flex !important; }
+}
+.p-acc-item { border: 1px solid var(--line, #242424); border-radius: 8px; overflow: hidden; background: var(--bg2, #141414); }
+.p-acc-trigger { display: flex; align-items: center; gap: 10px; padding: 12px 13px; cursor: pointer; user-select: none; background: none; border: none; width: 100%; text-align: left; }
+.p-acc-num { width: 24px; height: 24px; border-radius: 50%; background: var(--bg3,#1c1c1c); border: 1px solid var(--line2,#333); font-size: 10px; font-weight: 700; color: var(--muted,#555); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'IBM Plex Mono', monospace; transition: background .15s, color .15s, border-color .15s; }
+.p-acc-title { font-size: 13px; font-weight: 700; color: var(--heading,#e8e8e8); flex: 1; }
+.p-acc-chevron { width: 16px; height: 16px; stroke: var(--muted,#555); fill: none; stroke-width: 2; flex-shrink: 0; transition: transform .2s; }
+.p-acc-item.open .p-acc-chevron { transform: rotate(180deg); }
+.p-acc-item.open .p-acc-num { background: var(--white,#f5f5f5); color: var(--bg,#0c0c0c); border-color: var(--white,#f5f5f5); }
+.p-acc-body { max-height: 0; overflow: hidden; padding: 0 13px; transition: max-height .28s ease, padding .2s; }
+.p-acc-item.open .p-acc-body { max-height: 400px; padding: 0 13px 13px; }
+.p-acc-desc { font-size: 13px; color: var(--sub,#888); line-height: 1.65; overflow-wrap: break-word; }
+
+.p-progress-fill { transition: width 1s cubic-bezier(.4,0,.2,1); }
+.p-num-card { transition: transform .15s, box-shadow .15s; }
+.p-num-card:hover { transform: translateY(-2px); }
+
+.blog-img-wrap img, .screenshot-item img, .bl-cover img { max-width: 100% !important; height: auto !important; }
+.screenshot-gallery { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+@media (max-width: 600px) {
+    .blog-page, .bl-page { padding: 14px 14px 60px !important; }
+    .screenshot-gallery { grid-template-columns: repeat(2, 1fr) !important; }
+    .blog-img-2col { grid-template-columns: 1fr !important; }
+    .arch-wrap { font-size: 11px !important; }
+    pre, code { font-size: 11px !important; overflow-x: auto !important; }
+}
+table { max-width: 100%; }
+.p-ctrl-table-wrap, .p-wcag-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+</style>
+<style id="rafi-math-v5">/* ════════════════════════════════════════════════════════════════════════
+   MATH DERIVATION CARD — v5
+   A "lab notebook" component: numbered formula cards with a
+   Formula / Explained / Worked Example switcher. Built for the dark
+   project-page theme (--bg:#0c0c0c family). Horizontal scroll on any
+   formula/example block that overflows, with visible scroll affordance.
+   ════════════════════════════════════════════════════════════════════════ */
+
+.p-math-block {
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    margin: 14px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* left accent rail — gives it the "margin note" feel */
+.p-math-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--acc, #d0d0d0) 0%, transparent 130%);
+    opacity: 0.5;
+}
+
+.p-math-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 13px 16px 12px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+}
+
+.p-math-head-left {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    min-width: 0;
+}
+
+.p-math-index {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+}
+
+.p-math-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--heading);
+    line-height: 1.4;
+    min-width: 0;
+    overflow-wrap: break-word;
+}
+
+.p-math-title mark.hl {
+    font-size: inherit;
+}
+
+/* ── TAB SWITCHER ── */
+.p-math-tabs {
+    display: flex;
+    gap: 2px;
+    background: var(--bg);
+    border: 1px solid var(--line2);
+    border-radius: 5px;
+    padding: 2px;
+    flex-shrink: 0;
+}
+
+.p-math-tab {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+    line-height: 1.2;
+}
+
+.p-math-tab:hover { color: var(--sub); }
+
+.p-math-tab.active {
+    background: var(--line2);
+    color: var(--white);
+}
+
+.p-math-tab .p-math-tab-dot {
+    display: inline-block;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: currentColor;
+    margin-right: 5px;
+    opacity: 0.6;
+    vertical-align: middle;
+}
+
+/* ── BODY / PANELS ── */
+.p-math-body { position: relative; }
+
+.p-math-panel {
+    display: none;
+    animation: pmFadeIn 0.18s ease;
+}
+.p-math-panel.active { display: block; }
+
+@keyframes pmFadeIn {
+    from { opacity: 0; transform: translateY(2px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Formula panel — scrollable code-like surface */
+.p-math-formula-wrap {
+    position: relative;
+    overflow: hidden;
+}
+
+.p-math-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 16px 16px 14px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line2) transparent;
+}
+.p-math-scroll::-webkit-scrollbar { height: 5px; }
+.p-math-scroll::-webkit-scrollbar-track { background: transparent; }
+.p-math-scroll::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 3px; }
+.p-math-scroll::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+pre.p-math-formula {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    line-height: 1.9;
+    color: var(--body);
+    white-space: pre;
+    margin: 0;
+    width: max-content;
+    min-width: 100%;
+}
+
+pre.p-math-formula mark.hl {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: inherit;
+}
+
+/* fade-edge affordance to signal "more content →" */
+.p-math-formula-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 28px;
+    background: linear-gradient(to left, var(--bg2), transparent);
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+.p-math-formula-wrap.pm-at-end::after { opacity: 0; }
+
+.p-math-scroll-hint {
+    display: none;
+    align-items: center;
+    gap: 5px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0 16px 11px;
+}
+.p-math-scroll-hint svg {
+    width: 10px; height: 10px;
+    stroke: currentColor; fill: none;
+    stroke-width: 2;
+}
+.p-math-formula-wrap.pm-scrollable ~ .p-math-scroll-hint,
+.p-math-example-wrap.pm-scrollable ~ .p-math-scroll-hint {
+    display: flex;
+}
+
+/* Explained panel */
+.p-math-explained {
+    padding: 16px 18px;
+}
+.p-math-desc {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--sub);
+    margin: 0;
+}
+.p-math-desc + .p-math-desc { margin-top: 10px; }
+.p-math-desc strong { color: var(--heading); font-weight: 700; }
+.p-math-desc code.inline {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    background: var(--bg);
+    border: 1px solid var(--line2);
+    padding: 1px 6px;
+    border-radius: 3px;
+    color: var(--acc);
+}
+
+/* Example panel — worked-through computation */
+.p-math-example-wrap {
+    position: relative;
+    overflow: hidden;
+}
+.p-math-example {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    line-height: 1.85;
+    color: var(--body);
+    white-space: pre;
+    margin: 0;
+    width: max-content;
+    min-width: 100%;
+    border-left: 2px solid var(--line2);
+    padding: 14px 16px 14px 18px;
+    background: var(--bg);
+}
+.p-math-example-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 28px;
+    background: linear-gradient(to left, var(--bg2), transparent);
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+.p-math-example-wrap.pm-at-end::after { opacity: 0; }
+.p-math-example-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line2) transparent;
+}
+.p-math-example-scroll::-webkit-scrollbar { height: 5px; }
+.p-math-example-scroll::-webkit-scrollbar-track { background: transparent; }
+.p-math-example-scroll::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 3px; }
+
+/* footer micro-label inside example */
+.p-math-example-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 10px 16px 0;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+    .p-math-head { padding: 11px 13px 10px; flex-wrap: wrap; }
+    .p-math-title { font-size: 11.5px; }
+    .p-math-index { font-size: 9px; }
+    .p-math-tabs { width: 100%; justify-content: stretch; }
+    .p-math-tab { flex: 1; text-align: center; padding: 6px 8px; font-size: 9px; }
+    .p-math-scroll { padding: 13px 13px 11px; }
+    pre.p-math-formula { font-size: 10.5px; line-height: 1.8; }
+    .p-math-explained { padding: 13px 14px; }
+    .p-math-desc { font-size: 12.5px; }
+    .p-math-example { font-size: 10px; padding: 12px 13px 12px 15px; }
+    .p-math-example-label { padding: 8px 13px 0; }
+}
+
+@media (max-width: 380px) {
+    .p-math-tab { font-size: 8.3px; padding: 6px 4px; letter-spacing: 0.02em; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .p-math-panel { animation: none !important; }
+}
+</style><style id="rafi-minwidth-fix">
+/* ════════════════════════════════════════════════════════════════════════
+   MIN-CONTENT OVERFLOW FIX — v6
+   Root cause of "kepotong" on mobile: CSS Grid/Flex tracks default to
+   minmax(auto, 1fr) — the 'auto' minimum is the content's min-content
+   size, which can be wider than the viewport even when the track is
+   nominally "1fr". This forces every nested grid/flex container in the
+   project-page content chain to allow shrinking below its content size.
+   ════════════════════════════════════════════════════════════════════════ */
+.p-layout,
+.p-main-col,
+.p-side-col,
+.p-card,
+.p-card-title,
+.p-body,
+.p-callout,
+.p-numbers,
+.p-num-card,
+.p-classes-grid,
+.p-usecases,
+.p-usecase,
+.p-design-grid,
+.p-tech-grid,
+.p-math-block,
+.p-math-head,
+.p-math-head-left,
+.p-math-tabs,
+.p-math-body,
+.p-math-panel,
+.p-math-explained,
+.p-pipeline-wrap,
+.p-pipe-detail,
+.p-arch-row,
+.p-arch-name,
+.p-meta-strip,
+.p-meta-item,
+.p-closing,
+.p-link-btn,
+.p-progress-label,
+.p-acc-item,
+.p-acc-body,
+.ap-grid,
+.ap-card {
+    min-width: 0 !important;
+}
+
+/* Grid/flex children also need min-width:0 individually — being a grid
+   container doesn't help if the item itself refuses to shrink */
+.p-layout > *,
+.p-numbers > *,
+.p-classes-grid > *,
+.p-usecases > *,
+.p-design-grid > *,
+.ap-grid > * {
+    min-width: 0;
+}
+
+/* Long unbroken strings (URLs, identifiers) inside text containers must
+   be allowed to break rather than stretching their parent */
+.p-body, .p-body p, .p-callout, .p-math-desc, .p-acc-desc,
+.p-feature-desc, .p-step-desc, .p-usecase-desc, .p-arch-desc {
+    overflow-wrap: anywhere;
+}
+
+</style></head>
 <body>
     <div class="mobile-topbar">
         <span class="mobile-topbar-title">Muhammad Rafi Arsya</span>
@@ -104,7 +1198,7 @@
     </div>
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
     <div class="portfolio-app">
-                <aside class="sidebar">
+        <aside class="sidebar">
             <div class="sidebar-top">
                 <div class="sidebar-logo-wrap">
                     <img class="sidebar-logo-avatar" src="../assets/avatar_rafi.png" alt="Rafi Avatar">
@@ -126,7 +1220,7 @@
                     <a href="project2.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><span class="project-label">CampusBay</span></a>
                     <a href="project5.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><circle cx="10" cy="14" r="2"/><path d="m20 20-2.5-2.5"/></svg></span><span class="project-label">PaperMind</span></a>
                     <a href="project3.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="4" r="2"/><path d="m18 19 1-7-5.87.94"/><path d="m5 8 3-3 4.5 3-2.5 3"/><path d="M4.24 14.5A5 5 0 0 0 9 21c1.5 0 2.87-.56 3.9-1.47"/><path d="M14 21v-5"/></svg></span><span class="project-label">NASE Accessibility</span></a>
-                    <a href="project4.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span><span class="project-label">Crop Disease Detector</span></a>
+                    <a href="project4.html"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span><span class="project-label">Crop Disease</span></a>
                     <a href="projects.html" class="project-more"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span>All Projects</span></a>
                 </div>
                 <div class="sidebar-group-label">Social</div>
@@ -143,198 +1237,640 @@
             <div class="project-page">
                 <a href="projects.html" class="project-back">
                     <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-                    All Projects
+                    Back to All Projects
                 </a>
 
-                <!-- HERO -->
                 <div class="p-hero">
                     <div class="p-hero-grid"></div>
-                    <div class="p-hero-overlay"></div>
-                    <div class="p-hero-badge"><span class="p-hero-dot"></span> Completed · 2026</div>
-                    <div class="p-hero-title">Rafi<span>Finance</span></div>
-                    <div class="p-hero-sub">A complete personal finance tracker built as a single HTML file — no server, no database, no framework. Works offline as a PWA.</div>
+                    <div class="p-hero-badge">
+                        <span class="p-hero-dot"></span>
+                        Personal Finance &nbsp;·&nbsp; PWA &nbsp;·&nbsp; Single-File &nbsp;·&nbsp; 2026
+                    </div>
+                    <h1 class="p-hero-title">Rafi<em>Finance</em></h1>
+                    <p class="p-hero-sub">A complete personal finance tracker built as a single HTML file. No server, no database, no framework. Transactions, budgets, saving goals, health score, 6-month analysis — works offline as a PWA.</p>
                     <div class="p-hero-tags">
-                        <span class="p-hero-tag">Finance</span>
-                        <span class="p-hero-tag">PWA</span>
-                        <span class="p-hero-tag">Single-File</span>
                         <span class="p-hero-tag">Vanilla JS</span>
+                        <span class="p-hero-tag">Single HTML File</span>
+                        <span class="p-hero-tag">PWA</span>
                         <span class="p-hero-tag">localStorage</span>
+                        <span class="p-hero-tag">Service Worker</span>
+                        <span class="p-hero-tag">Cloudflare Pages</span>
                     </div>
                 </div>
 
-                <!-- META STRIP -->
                 <div class="p-meta-strip">
-                    <div class="p-meta-item"><div class="p-meta-label">Type</div><div class="p-meta-value">Personal Tool</div></div>
+                    <div class="p-meta-item"><div class="p-meta-label">Status</div><div class="p-meta-value">Completed · Live</div></div>
                     <div class="p-meta-item"><div class="p-meta-label">Year</div><div class="p-meta-value">2026</div></div>
-                    <div class="p-meta-item"><div class="p-meta-label">Status</div><div class="p-meta-value">Live</div></div>
-                    <div class="p-meta-item"><div class="p-meta-label">Deployed</div><div class="p-meta-value">finance.rafiarsya.com</div></div>
-                    <div class="p-meta-item"><div class="p-meta-label">File size</div><div class="p-meta-value">1 HTML file</div></div>
+                    <div class="p-meta-item"><div class="p-meta-label">Type</div><div class="p-meta-value">Personal Tool · v4</div></div>
+                    <div class="p-meta-item"><div class="p-meta-label">File Size</div><div class="p-meta-value">1 HTML file</div></div>
+                    <div class="p-meta-item"><div class="p-meta-label">Live</div><div class="p-meta-value"><a href="https://finance.rafiarsya.com" target="_blank" rel="noopener">finance.rafiarsya.com ↗</a></div></div>
                 </div>
 
-                <!-- CONTENT LAYOUT -->
                 <div class="p-layout">
                     <div class="p-main-col">
 
-                        <!-- Overview -->
                         <div class="p-card">
-                            <div class="p-card-title">Overview</div>
+                            <div class="p-card-title"><span class="p-num">01</span> Project Overview</div>
                             <div class="p-body">
-                                <p>RafiFinance v4 is a personal finance tracker I built because I couldn't find an existing app that worked the way I think about money. Most apps are too complex, require an account, or send your data to a server.</p>
-                                <p>So I built my own — with a deliberate constraint: <strong>one HTML file</strong>. No npm. No build step. No server. Open it in a browser and it just works. Your data stays on your device in localStorage, exportable as a single JSON file at any time.</p>
-                                <div class="p-callout">The single-file constraint forced better code. When you can't hide complexity behind folder structures, you have to actually understand what you're building.</div>
-                                <p>Deployed on Cloudflare Pages at <strong>finance.rafiarsya.com</strong> — free hosting, global CDN, automatic HTTPS, zero configuration.</p>
+                                <p><strong>RafiFinance v4</strong> is a finance tracker I built because every other option was either too complicated, required an account, or did something weird with my data. So I made my own — in a single HTML file.</p>
+                                <p>So I built my own with a deliberate architectural constraint: <strong><mark class="hl">one HTML file</mark></strong>. No npm. No build step. No server. No framework. Open it in a browser and it works. Your data stays on your device in <strong><mark class="hl">localStorage</mark></strong> under the key <code class="inline"><mark class="hl">rfv4</mark></code>, exportable as a single JSON file at any time.</p>
+                                <div class="p-callout">
+                                    <strong>The single-file constraint made me better at JavaScript.</strong> When you can't hide behind imports and abstractions, you actually have to know what you're doing. Every feature had to earn its place — nothing's in there by accident.
+                                </div>
+                                <p>Deployed on <strong>Cloudflare Pages</strong> at finance.rafiarsya.com — free hosting, global CDN, automatic HTTPS, zero config. The PWA service worker is generated as a Blob URL at runtime, so even the offline capability requires no external files.</p>
                             </div>
                         </div>
 
-
-                        <!-- Screenshots -->
                         <div class="p-card">
-                            <div class="p-card-title">Screenshots</div>
-                            <div class="p-screenshots">
-                                <div class="p-screenshot" onclick="openLb(this)">
-                                    <img src="../assets/foto-finance2.png" alt="Dashboard" loading="lazy">
-                                    <div class="p-screenshot-cap">Dashboard</div>
-                                </div>
-                                <div class="p-screenshot" onclick="openLb(this)">
-                                    <img src="../assets/foto-finance3.png" alt="Transactions" loading="lazy">
-                                    <div class="p-screenshot-cap">Transaksi</div>
-                                </div>
-                                <div class="p-screenshot" onclick="openLb(this)">
-                                    <img src="../assets/foto-finance4.png" alt="Budget" loading="lazy">
-                                    <div class="p-screenshot-cap">Budget</div>
-                                </div>
-                                <div class="p-screenshot" onclick="openLb(this)">
-                                    <img src="../assets/foto-finance5.png" alt="Goals" loading="lazy">
-                                    <div class="p-screenshot-cap">Goals</div>
-                                </div>
-                                <div class="p-screenshot" onclick="openLb(this)">
-                                    <img src="../assets/foto-finance6.png" alt="Reminder" loading="lazy">
-                                    <div class="p-screenshot-cap">Reminder</div>
-                                </div>
-                                <div class="p-screenshot" onclick="openLb(this)">
-                                    <img src="../assets/foto-finance7.png" alt="Analysis" loading="lazy">
-                                    <div class="p-screenshot-cap">Analisis</div>
-                                </div>
-                                <div class="p-screenshot" onclick="openLb(this)">
-                                    <img src="../assets/foto-finance1.png" alt="Settings" loading="lazy">
-                                    <div class="p-screenshot-cap">Settings</div>
-                                </div>
-                            </div>
-                            <p style="font-size:11.5px;color:#9ca3af;text-align:center;margin-top:4px;">Tap screenshot to zoom</p>
-                        </div>
-
-                        <!-- Features -->
-                        <div class="p-card">
-                            <div class="p-card-title">Features</div>
+                            <div class="p-card-title"><span class="p-num">02</span> Features</div>
                             <div class="p-features">
-                                <div class="p-feature">
-                                    <div class="p-feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-                                    <div><div class="p-feature-name">Transactions</div><div class="p-feature-desc">Log income and expenses with category, date, and notes. Filter and search across all history.</div></div>
+                                <div class="p-feature-item">
+                                    <div class="p-feature-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                                    <div>
+                                        <div class="p-feature-title">Transactions</div>
+                                        <div class="p-feature-desc">Log income and expenses with category, date, and notes. Full filter, search, and sort across history. Real-time running balance.</div>
+                                    </div>
                                 </div>
-                                <div class="p-feature">
+                                <div class="p-feature-item">
                                     <div class="p-feature-icon"><svg viewBox="0 0 24 24"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg></div>
-                                    <div><div class="p-feature-name">Budget Tracking</div><div class="p-feature-desc">Set monthly budgets per category with visual progress bars and over-budget alerts.</div></div>
+                                    <div>
+                                        <div class="p-feature-title">Budget Tracking</div>
+                                        <div class="p-feature-desc">Set monthly budgets per category with visual progress bars. Over-budget alerts and spend rate indicators. Resets automatically each month.</div>
+                                    </div>
                                 </div>
-                                <div class="p-feature">
+                                <div class="p-feature-item">
                                     <div class="p-feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-                                    <div><div class="p-feature-name">Saving Goals</div><div class="p-feature-desc">Set a target and deadline. Auto-calculates required monthly savings to hit the goal on time.</div></div>
+                                    <div>
+                                        <div class="p-feature-title">Saving Goals with Smart Estimation</div>
+                                        <div class="p-feature-desc">Set a target amount and a deadline date. The app calculates the required monthly savings to hit the goal on time, and tracks progress in real time as you add transactions.</div>
+                                    </div>
                                 </div>
-                                <div class="p-feature">
+                                <div class="p-feature-item">
                                     <div class="p-feature-icon"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
-                                    <div><div class="p-feature-name">Recurring Reminders</div><div class="p-feature-desc">Set browser notifications for bills and subscriptions with configurable frequency.</div></div>
+                                    <div>
+                                        <div class="p-feature-title">Recurring Reminders</div>
+                                        <div class="p-feature-desc">Set browser notifications for bills, subscriptions, and recurring payments. Configurable frequency (daily, weekly, monthly). Uses the Notifications API — works offline.</div>
+                                    </div>
                                 </div>
-                                <div class="p-feature">
+                                <div class="p-feature-item">
                                     <div class="p-feature-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-                                    <div><div class="p-feature-name">6-Month Analysis</div><div class="p-feature-desc">Visual income vs expense trends across the last 6 months with spending breakdown by category.</div></div>
+                                    <div>
+                                        <div class="p-feature-title">6-Month Trend Analysis</div>
+                                        <div class="p-feature-desc">Visual income vs expense comparison across 6 months. Spending breakdown by category. Identifies which months were over-budget and by how much.</div>
+                                    </div>
                                 </div>
-                                <div class="p-feature">
+                                <div class="p-feature-item">
                                     <div class="p-feature-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-                                    <div><div class="p-feature-name">Financial Health Score</div><div class="p-feature-desc">A real-time 0–100 score based on savings rate, budget adherence, and goal progress.</div></div>
-                                </div>
-                                <div class="p-feature">
-                                    <div class="p-feature-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
-                                    <div><div class="p-feature-name">Export / Import</div><div class="p-feature-desc">Full data export as JSON. Import on any device and all history, budgets, and goals are restored instantly.</div></div>
+                                    <div>
+                                        <div class="p-feature-title">Financial Health Score (0–100)</div>
+                                        <div class="p-feature-desc">A real-time composite score based on savings rate, budget adherence, and goal progress. Updates live as you add data — no manual calculation needed.</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Architecture -->
                         <div class="p-card">
-                            <div class="p-card-title">Single-File Architecture</div>
-                            <div class="p-body">
-                                <p>The entire app — HTML structure, 800+ lines of CSS, and 1800+ lines of vanilla JavaScript — lives in one file. State is managed with a single global object persisted to localStorage under the key <code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;font-size:12px;font-family:'JetBrains Mono',monospace;">rfv4</code>.</p>
-                                <p>The PWA manifest is embedded inline as a <code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;font-size:12px;font-family:'JetBrains Mono',monospace;">data:</code> URL. The service worker is generated from a Blob URL at runtime — no external <code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;font-size:12px;font-family:'JetBrains Mono',monospace;">sw.js</code> file needed. Everything is self-contained.</p>
+                            <div class="p-card-title"><span class="p-num">03</span> Financial Health Score — The Math</div>
+                            <div class="p-body" style="margin-bottom:14px;">
+                                <p>The health score is a <strong>weighted composite</strong> of three independent signals about your financial habits:</p>
+                            </div>
+                            <div class="p-math-block"><div class="p-math-head"><div class="p-math-head-left"><span class="p-math-index">01</span><span class="p-math-title">Health Score Formula</span></div><div class="p-math-tabs"><button class="p-math-tab active" data-tab="formula"><span class="p-math-tab-dot"></span>Formula</button><button class="p-math-tab" data-tab="explained"><span class="p-math-tab-dot"></span>Explained</button><button class="p-math-tab" data-tab="example"><span class="p-math-tab-dot"></span>Worked Example</button></div></div><div class="p-math-body"><div class="p-math-panel active" data-panel="formula"><div class="p-math-formula-wrap"><div class="p-math-scroll"><pre class="p-math-formula">score = (savingsRate × 0.4)
+      + (budgetAdherence × 0.35)
+      + (goalProgress × 0.25)
+
+-- savingsRate (0–100):
+   savings    = totalIncome - totalExpenses
+   rate       = savings / totalIncome × 100
+   normalized = clamp(rate / 20 × 100, 0, 100)
+   -- saving 20% of income = 100 points
+
+-- budgetAdherence (0–100):
+   for each category with a budget:
+     adherence_i = clamp(1 - overspend_i/budget_i, 0, 1)
+   budgetAdherence = mean(adherence_i) × 100
+
+-- goalProgress (0–100):
+   for each saving goal:
+     progress_i = saved_i / target_i
+   goalProgress = mean(progress_i) × 100
+
+score = clamp(score, 0, 100)</pre></div></div><div class="p-math-scroll-hint" data-for="formula"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>scroll for full derivation</div></div><div class="p-math-panel" data-panel="explained"><div class="p-math-explained"><p class="p-math-desc">The weights reflect real financial priorities: savings rate has the largest impact (40%) because building a buffer is the foundation of financial health. Budget adherence (35%) prevents spending creep. Goal progress (25%) rewards intentional saving behavior — it carries less weight than the other two because not having an active goal yet shouldn't tank an otherwise healthy score.</p></div></div><div class="p-math-panel" data-panel="example"><div class="p-math-example-wrap"><div class="p-math-example-scroll"><pre class="p-math-example"># Monthly income RM 3,000, expenses RM 2,400
+savings = 3000 - 2400 = 600
+rate = 600/3000 × 100 = 20%
+savingsRate (normalized) = clamp(20/20 × 100) = 100
+
+# Budgets: Food RM400 (spent 380), Transport RM150 (spent 165)
+adherence_food      = clamp(1 - 0/400, 0, 1)   = 1.00
+adherence_transport = clamp(1 - 15/150, 0, 1)  = 0.90
+budgetAdherence = mean(1.00, 0.90) × 100 = 95
+
+# One goal: 1200/5000 saved
+goalProgress = (1200/5000) × 100 = 24
+
+score = 100×0.4 + 95×0.35 + 24×0.25
+      = 40 + 33.25 + 6
+      = 79.25  →  79 / 100</pre></div></div><div class="p-math-scroll-hint" data-for="example"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>scroll to see full computation</div></div></div></div>
+                            <div class="p-math-block"><div class="p-math-head"><div class="p-math-head-left"><span class="p-math-index">02</span><span class="p-math-title">Saving Goal — Monthly Target Calculation</span></div><div class="p-math-tabs"><button class="p-math-tab active" data-tab="formula"><span class="p-math-tab-dot"></span>Formula</button><button class="p-math-tab" data-tab="explained"><span class="p-math-tab-dot"></span>Explained</button><button class="p-math-tab" data-tab="example"><span class="p-math-tab-dot"></span>Worked Example</button></div></div><div class="p-math-body"><div class="p-math-panel active" data-panel="formula"><div class="p-math-formula-wrap"><div class="p-math-scroll"><pre class="p-math-formula">monthsRemaining = (deadline.year - today.year) × 12
+                + (deadline.month - today.month)
+
+monthlyRequired = (targetAmount - savedSoFar) / monthsRemaining</pre></div></div><div class="p-math-scroll-hint" data-for="formula"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>scroll for full derivation</div></div><div class="p-math-panel" data-panel="explained"><div class="p-math-explained"><p class="p-math-desc">This calculation updates live as transactions come in. If you overshoot in a month, the next month's target drops automatically — the system always shows the shortest path to the goal rather than a fixed plan set once and forgotten. Falling behind one month means the remaining months simply absorb a slightly higher target, recalculated the moment the app reopens.</p></div></div><div class="p-math-panel" data-panel="example"><div class="p-math-example-wrap"><div class="p-math-example-scroll"><pre class="p-math-example"># Goal: Save RM 5,000 for a laptop
+savedSoFar  = RM 1,200
+deadline    = 8 months from today
+
+monthlyRequired = (5000 - 1200) / 8
+                = 3800 / 8
+                = RM 475 / month
+
+# After month 1, saved an extra RM 600 (RM 1,075 total):
+monthsRemaining = 7
+monthlyRequired = (5000 - 1075) / 7
+                = RM 560.71 / month  ← recalculated automatically</pre></div></div><div class="p-math-scroll-hint" data-for="example"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>scroll to see full computation</div></div></div></div>
+                        </div>
+
+                        <div class="p-card">
+                            <div class="p-card-title"><span class="p-num">04</span> Single-File Architecture &amp; PWA</div>
+                            <div class="p-body" style="margin-bottom:14px;">
+                                <p>The entire app — HTML structure, ~800 lines of CSS, ~1800 lines of vanilla JavaScript — lives in <strong><mark class="hl">one HTML file</mark></strong>. All state is managed with a single global object persisted to localStorage:</p>
+                            </div>
+                            <div class="p-math-block"><div class="p-math-head"><div class="p-math-head-left"><span class="p-math-index">03</span><span class="p-math-title">localStorage Schema (key: <mark class="hl">rfv4</mark>)</span></div><div class="p-math-tabs"><button class="p-math-tab active" data-tab="formula"><span class="p-math-tab-dot"></span>Formula</button><button class="p-math-tab" data-tab="explained"><span class="p-math-tab-dot"></span>Explained</button><button class="p-math-tab" data-tab="example"><span class="p-math-tab-dot"></span>Worked Example</button></div></div><div class="p-math-body"><div class="p-math-panel active" data-panel="formula"><div class="p-math-formula-wrap"><div class="p-math-scroll"><pre class="p-math-formula">{
+  "transactions": [
+    { "id": "t_1710000000000",
+      "type": "expense",         // "income" | "expense"
+      "amount": 45.50,
+      "category": "Food",
+      "date": "2026-06-01",
+      "note": "Lunch at cafe"
+    }
+  ],
+  "budgets": {
+    "Food": 400,
+    "Transport": 150,
+    "Entertainment": 100
+  },
+  "goals": [
+    { "id": "g_1",
+      "title": "New Laptop",
+      "target": 5000,
+      "deadline": "2026-12-01",
+      "saved": 1200
+    }
+  ],
+  "reminders": [ ... ],
+  "settings": { "currency": "MYR", "theme": "dark" }
+}</pre></div></div><div class="p-math-scroll-hint" data-for="formula"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>scroll for full derivation</div></div><div class="p-math-panel" data-panel="explained"><div class="p-math-explained"><p class="p-math-desc">The entire state serializes to a single JSON string. Export = <code class="inline">JSON.stringify(state)</code> → file download. Import = <code class="inline">JSON.parse(fileContent)</code> → merge into state. One-line backup/restore, with no server round-trip and no account system required — your financial data never leaves the device unless you explicitly export it.</p></div></div><div class="p-math-panel" data-panel="example"><div class="p-math-example-wrap"><div class="p-math-example-scroll"><pre class="p-math-example"># Export button click:
+const blob = new Blob(
+  [JSON.stringify(state, null, 2)],
+  { type: 'application/json' }
+);
+// → downloads "rafifinance-backup-2026-06-19.json"
+
+# Import on a new device:
+const state = JSON.parse(fileContent);
+localStorage.setItem('rfv4', JSON.stringify(state));
+location.reload();
+// → all transactions, budgets, goals restored instantly</pre></div></div><div class="p-math-scroll-hint" data-for="example"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>scroll to see full computation</div></div></div></div>
+                            <div class="p-body" style="margin-top:16px;">
+                                <p>The <strong>PWA manifest is embedded inline</strong> as a <code class="inline">data:</code> URL. The <strong>service worker is generated from a Blob URL</strong> at runtime — no external <code class="inline">sw.js</code> file. Everything self-contained:</p>
+                            </div>
+                            <div class="p-pwa-steps" style="margin-top:14px;">
+                                <div class="p-pwa-step">
+                                    <span class="p-pwa-step-num">1</span>
+                                    <div class="p-pwa-step-body">
+                                        <div class="p-pwa-step-title">Manifest injected inline</div>
+                                        <div class="p-pwa-step-desc"><code class="inline">&lt;link rel="manifest" href="data:application/json,{...}"&gt;</code> — the manifest JSON is encoded directly into the HTML, no separate file needed.</div>
+                                    </div>
+                                </div>
+                                <div class="p-pwa-step">
+                                    <span class="p-pwa-step-num">2</span>
+                                    <div class="p-pwa-step-body">
+                                        <div class="p-pwa-step-title">Service Worker from Blob</div>
+                                        <div class="p-pwa-step-desc">SW code is defined as a JS string, converted to a <code class="inline">Blob</code>, then registered via <code class="inline">URL.createObjectURL(blob)</code> — no separate sw.js file on the server.</div>
+                                    </div>
+                                </div>
+                                <div class="p-pwa-step">
+                                    <span class="p-pwa-step-num">3</span>
+                                    <div class="p-pwa-step-body">
+                                        <div class="p-pwa-step-title">Cache-first offline strategy</div>
+                                        <div class="p-pwa-step-desc">On first load, the SW caches the HTML file. Subsequent loads serve from cache instantly. Works fully offline after the first visit.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-card">
+                            <div class="p-card-title"><span class="p-num">05</span> Design System</div>
+                            <div class="p-design-grid">
+                                <div>
+                                    <div class="p-design-section-title">Color Palette</div>
+                                    <div class="p-color-swatches">
+                                        <div class="p-swatch">
+                                            <div class="p-swatch-dot" style="background:#080810;"></div>
+                                            <div>
+                                                <div class="p-swatch-name">Background</div>
+                                                <div class="p-swatch-hex">#080810</div>
+                                            </div>
+                                        </div>
+                                        <div class="p-swatch">
+                                            <div class="p-swatch-dot" style="background:#1a1a2e;border-color:#333;"></div>
+                                            <div>
+                                                <div class="p-swatch-name">Card Surface</div>
+                                                <div class="p-swatch-hex">#1a1a2e</div>
+                                            </div>
+                                        </div>
+                                        <div class="p-swatch">
+                                            <div class="p-swatch-dot" style="background:#6c5ce7;"></div>
+                                            <div>
+                                                <div class="p-swatch-name">Accent (Purple)</div>
+                                                <div class="p-swatch-hex">#6c5ce7</div>
+                                            </div>
+                                        </div>
+                                        <div class="p-swatch">
+                                            <div class="p-swatch-dot" style="background:#f5f5f5;border-color:#333;"></div>
+                                            <div>
+                                                <div class="p-swatch-name">Primary Text</div>
+                                                <div class="p-swatch-hex">#f5f5f5</div>
+                                            </div>
+                                        </div>
+                                        <div class="p-swatch">
+                                            <div class="p-swatch-dot" style="background:#888;"></div>
+                                            <div>
+                                                <div class="p-swatch-name">Muted Text</div>
+                                                <div class="p-swatch-hex">#888888</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="p-design-section-title">Typography</div>
+                                    <div class="p-type-row">
+                                        <div class="p-type-item">
+                                            <div class="p-type-sample" style="font-family: 'IBM Plex Sans', sans-serif;font-size:18px;font-weight:700;color:var(--hi);">RafiFinance</div>
+                                            <div class="p-type-meta">Inter · 700 · Headings</div>
+                                        </div>
+                                        <div class="p-type-item" style="margin-top:10px;">
+                                            <div class="p-type-sample" style="font-family: 'IBM Plex Sans', sans-serif;font-size:14px;font-weight:400;color:var(--body);">Transaction history, labels</div>
+                                            <div class="p-type-meta">Inter · 400 · Body</div>
+                                        </div>
+                                        <div class="p-type-item" style="margin-top:10px;">
+                                            <div class="p-type-sample" style="font-family: 'IBM Plex Mono', monospace;font-size:14px;color:var(--acc);">RM 1,234.56</div>
+                                            <div class="p-type-meta">JetBrains Mono · Numbers</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-card">
+                            <div class="p-card-title"><span class="p-num">06</span> Use Cases</div>
+                            <div class="p-usecases">
+                                <div class="p-usecase">
+                                    <div class="p-usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+                                    <div class="p-usecase-title">Student Budgeting</div>
+                                    <div class="p-usecase-desc">Track allowance, food, transport, and entertainment against monthly budgets. No account signup, works on any device.</div>
+                                </div>
+                                <div class="p-usecase">
+                                    <div class="p-usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+                                    <div class="p-usecase-title">Private — No Account</div>
+                                    <div class="p-usecase-desc">Financial data never leaves your device. No signup, no cloud sync, no company storing your spending habits.</div>
+                                </div>
+                                <div class="p-usecase">
+                                    <div class="p-usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+                                    <div class="p-usecase-title">Installable PWA</div>
+                                    <div class="p-usecase-desc">Install to your home screen on Android or iOS. Works offline after the first load. Feels like a native app.</div>
+                                </div>
+                                <div class="p-usecase">
+                                    <div class="p-usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+                                    <div class="p-usecase-title">Goal-Oriented Saving</div>
+                                    <div class="p-usecase-desc">Set saving goals with deadlines and let the app tell you exactly how much to save each month to hit the target.</div>
+                                </div>
                             </div>
                         </div>
 
                     </div>
 
-                    <!-- SIDE COLUMN -->
                     <div class="p-side-col">
-
-                        <!-- Health Score demo -->
-                        <div class="p-score-card">
-                            <div class="p-score-value">78</div>
-                            <div class="p-score-label">Financial Health Score</div>
-                            <div class="p-score-bar"><div class="p-score-fill"></div></div>
-                            <div class="p-score-items">
-                                <div class="p-score-item"><span class="p-score-item-label">Savings Rate</span><span class="p-score-item-val">+31</span></div>
-                                <div class="p-score-item"><span class="p-score-item-label">Budget Adherence</span><span class="p-score-item-val">+28</span></div>
-                                <div class="p-score-item"><span class="p-score-item-label">Goal Progress</span><span class="p-score-item-val">+19</span></div>
+                        <!-- Live Health Score Widget -->
+                        <div class="p-card">
+                            <div class="p-card-title">Health Score Demo</div>
+                            <div style="display:flex;align-items:center;gap:16px;">
+                                <svg class="p-score-ring" viewBox="0 0 80 80">
+                                    <circle cx="40" cy="40" r="32" stroke="var(--line2)"/>
+                                    <circle cx="40" cy="40" r="32" stroke="var(--acc)"
+                                        stroke-dasharray="200.96" stroke-dashoffset="50.24"
+                                        transform="rotate(-90 40 40)"/>
+                                </svg>
+                                <div>
+                                    <div class="p-score-val">75</div>
+                                    <div style="font-size:11px;color:var(--muted);margin-top:2px;">Financial Health</div>
+                                    <div style="font-size:10px;color:var(--muted);margin-top:4px;">Good · Keep saving</div>
+                                </div>
+                            </div>
+                            <div class="p-health-bars">
+                                <div>
+                                    <div class="p-health-bar-label"><span>Savings Rate</span><span style="color:var(--acc);">×0.40</span></div>
+                                    <div class="p-health-bar-track"><div class="p-health-bar-fill" style="width:80%;"></div></div>
+                                </div>
+                                <div>
+                                    <div class="p-health-bar-label"><span>Budget Adherence</span><span style="color:var(--acc);">×0.35</span></div>
+                                    <div class="p-health-bar-track"><div class="p-health-bar-fill" style="width:70%;"></div></div>
+                                </div>
+                                <div>
+                                    <div class="p-health-bar-label"><span>Goal Progress</span><span style="color:var(--acc);">×0.25</span></div>
+                                    <div class="p-health-bar-track"><div class="p-health-bar-fill" style="width:65%;"></div></div>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Stack -->
+                        <div class="p-card">
+                            <div class="p-card-title">By the Numbers</div>
+                            <div class="p-numbers">
+                                <div class="p-num-card"><div class="p-num-val">1</div><div class="p-num-label">HTML File</div></div>
+                                <div class="p-num-card"><div class="p-num-val">0</div><div class="p-num-label">Dependencies</div></div>
+                                <div class="p-num-card"><div class="p-num-val">v4</div><div class="p-num-label">Version</div></div>
+                                <div class="p-num-card"><div class="p-num-val">100%</div><div class="p-num-label">Offline Ready</div></div>
+                            </div>
+                        </div>
+
+                        <div class="p-card">
+                            <div class="p-card-title">Completion</div>
+                            <div class="p-progress-label"><span>Transactions</span><span>100%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill" style="width:100%;"></div></div>
+                            <div class="p-progress-label"><span>Budget Tracking</span><span>100%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill" style="width:100%;"></div></div>
+                            <div class="p-progress-label"><span>Saving Goals</span><span>100%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill" style="width:100%;"></div></div>
+                            <div class="p-progress-label"><span>Health Score</span><span>100%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill" style="width:100%;"></div></div>
+                            <div class="p-progress-label"><span>PWA / Offline</span><span>100%</span></div>
+                            <div class="p-progress-track"><div class="p-progress-fill" style="width:100%;"></div></div>
+                        </div>
+
                         <div class="p-card">
                             <div class="p-card-title">Tech Stack</div>
-                            <div class="p-stack-pills">
-                                <span class="p-stack-pill">Vanilla JS</span>
-                                <span class="p-stack-pill">CSS Custom Props</span>
-                                <span class="p-stack-pill">PWA</span>
-                                <span class="p-stack-pill">localStorage</span>
-                                <span class="p-stack-pill">Lucide Icons</span>
-                                <span class="p-stack-pill">Inter Font</span>
-                                <span class="p-stack-pill">JetBrains Mono</span>
-                                <span class="p-stack-pill">Cloudflare Pages</span>
+                            <div class="p-tech-grid">
+                                <span class="p-tech-pill">Vanilla JS</span>
+                                <span class="p-tech-pill">HTML5</span>
+                                <span class="p-tech-pill">CSS3</span>
+                                <span class="p-tech-pill">PWA</span>
+                                <span class="p-tech-pill">localStorage</span>
+                                <span class="p-tech-pill">Service Worker</span>
+                                <span class="p-tech-pill">Notifications API</span>
+                                <span class="p-tech-pill">Lucide Icons CDN</span>
+                                <span class="p-tech-pill">Cloudflare Pages</span>
                             </div>
                         </div>
 
-                        <!-- Links -->
                         <div class="p-card">
                             <div class="p-card-title">Links</div>
                             <a href="https://finance.rafiarsya.com" target="_blank" rel="noopener noreferrer" class="p-link-btn primary">
-                                <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                Live App
+                                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                                <span class="p-link-btn-label">finance.rafiarsya.com</span>
                             </a>
-                            <a href="https://github.com/rafiarsya07/rafifinance/releases" target="_blank" rel="noopener noreferrer" class="apk-dl">
-                                <div class="apk-dl-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M9 12l-2-2 2-2"/><path d="M15 12l2-2-2-2"/><path d="M9 14s.5 2 3 2 3-2 3-2"/></svg></div>
-                                <div style="flex:1"><div class="apk-dl-title">Download APK</div><div class="apk-dl-sub">Android · Signed · v4.0</div></div>
-                                <div class="apk-dl-arr"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-                            </a>
-                            <a href="../blog-rafifinance.html" class="p-link-btn secondary">
-                                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                                Read Blog Post
-                            </a>
-                            <a href="https://github.com/rafiarsya07/rafifinance" target="_blank" rel="noopener noreferrer" class="p-link-btn secondary">
-                                <svg viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                                GitHub
+                            <a href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer" class="p-link-btn">
+                                <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                <span class="p-link-btn-label">GitHub</span>
                             </a>
                         </div>
-
                     </div>
                 </div>
+
+                <div class="p-closing">
+                    <div>
+                        <div class="p-closing-title">One file. Full finance tracker.</div>
+                        <div class="p-closing-desc">No signup, no cloud, no dependencies. Open the URL, use it immediately. Your data stays on your device, exportable as JSON whenever you want it.</div>
+                    </div>
+                    <a href="https://finance.rafiarsya.com" target="_blank" rel="noopener noreferrer" class="p-closing-btn">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        Open RafiFinance
+                    </a>
+                </div>
+
             </div>
         </main>
     </div>
     <script src="../script.js"></script>
-    <div class="lightbox-ov" id="plb" onclick="closeLb(event)">
-        <div class="lightbox-x" onclick="closeLb()"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-        <img id="plb-img" src="" alt="">
-    </div>
-    <script>
-        function openLb(el){document.getElementById('plb-img').src=el.querySelector('img').src;document.getElementById('plb').classList.add('open');document.body.style.overflow='hidden';}
-        function closeLb(e){if(e&&e.target!==document.getElementById('plb')&&!e.target.closest('.lightbox-x'))return;document.getElementById('plb').classList.remove('open');document.body.style.overflow='';}
-        document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('plb').classList.remove('open');document.body.style.overflow='';}});
-    </script>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+<div id="rafi-bar"></div>
+<script>
+(function(){
+'use strict';
+var bar = document.getElementById('rafi-bar');
+if (bar) {
+    window.addEventListener('scroll', function() {
+        var d = document.documentElement;
+        var s = d.scrollTop || document.body.scrollTop;
+        var h = d.scrollHeight - d.clientHeight;
+        bar.style.width = (h > 0 ? (s / h * 100) : 0) + '%';
+    }, { passive: true });
+}
+var hbtn = document.getElementById('hamburger-btn');
+var sbEl  = document.querySelector('.sidebar');
+var ovEl  = document.getElementById('sidebar-overlay');
+if (hbtn && sbEl && !hbtn._rafi) {
+    hbtn._rafi = true;
+    function openSb() {
+        sbEl.classList.add('open', 'sb-open');
+        if (ovEl) ovEl.classList.add('visible', 'sb-open');
+        hbtn.classList.add('open');
+        hbtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('sb-open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeSb() {
+        sbEl.classList.remove('open', 'sb-open');
+        if (ovEl) ovEl.classList.remove('visible', 'sb-open');
+        hbtn.classList.remove('open');
+        hbtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('sb-open');
+        document.body.style.overflow = '';
+    }
+    hbtn.addEventListener('click', function() {
+        (sbEl.classList.contains('open') || sbEl.classList.contains('sb-open')) ? closeSb() : openSb();
+    });
+    if (ovEl) ovEl.addEventListener('click', closeSb);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSb(); });
+    sbEl.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+            if (window.innerWidth <= 900) setTimeout(closeSb, 60);
+        });
+    });
+}
+function initPipeline(wrap) {
+    var scroll = wrap.querySelector('.p-pipeline-scroll');
+    if (!scroll || scroll._rafi) return;
+    scroll._rafi = true;
+    var dots   = wrap.querySelector('.p-pipe-dots');
+    var detail = wrap.querySelector('.p-pipe-detail');
+    var steps  = Array.from(wrap.querySelectorAll('.p-pipe-step'));
+    if (dots && steps.length > 1) {
+        dots.innerHTML = '';
+        steps.forEach(function(_, i) {
+            var d = document.createElement('div');
+            d.className = 'p-pipe-dot' + (i === 0 ? ' active' : '');
+            dots.appendChild(d);
+        });
+    }
+    function updateState() {
+        var atEnd = scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 8;
+        wrap.classList.toggle('at-end', atEnd);
+        if (dots && steps.length > 1) {
+            var range = scroll.scrollWidth - scroll.clientWidth;
+            var idx = range > 0 ? Math.round(scroll.scrollLeft / range * (steps.length - 1)) : 0;
+            idx = Math.max(0, Math.min(idx, steps.length - 1));
+            dots.querySelectorAll('.p-pipe-dot').forEach(function(d, i) {
+                d.classList.toggle('active', i === idx);
+            });
+        }
+    }
+    scroll.addEventListener('scroll', updateState, { passive: true });
+    setTimeout(updateState, 120);
+    steps.forEach(function(step) {
+        step.addEventListener('click', function() {
+            var wasActive = step.classList.contains('ps-active');
+            steps.forEach(function(s) { s.classList.remove('ps-active'); });
+            if (detail) {
+                if (!wasActive && step.dataset.detail) {
+                    step.classList.add('ps-active');
+                    detail.innerHTML = step.dataset.detail;
+                    detail.classList.add('ps-show');
+                } else {
+                    detail.classList.remove('ps-show');
+                    detail.innerHTML = '';
+                }
+            }
+        });
+    });
+    var drag = false, startX, startLeft;
+    scroll.addEventListener('mousedown', function(e) {
+        if (e.button !== 0) return;
+        drag = true; startX = e.pageX; startLeft = scroll.scrollLeft;
+        scroll.style.cursor = 'grabbing'; e.preventDefault();
+    });
+    window.addEventListener('mousemove', function(e) {
+        if (!drag) return;
+        scroll.scrollLeft = startLeft - (e.pageX - startX);
+    });
+    window.addEventListener('mouseup', function() {
+        if (!drag) return;
+        drag = false; scroll.style.cursor = 'grab';
+    });
+}
+document.querySelectorAll('.p-pipeline-wrap, .p-pipeline-outer').forEach(initPipeline);
+document.querySelectorAll('.p-acc-trigger').forEach(function(trigger) {
+    if (trigger._rafi) return;
+    trigger._rafi = true;
+    trigger.addEventListener('click', function() {
+        var item = trigger.closest('.p-acc-item');
+        var acc  = item.closest('.p-steps-accordion');
+        var wasOpen = item.classList.contains('open');
+        if (acc) acc.querySelectorAll('.p-acc-item').forEach(function(el) { el.classList.remove('open'); });
+        if (!wasOpen) item.classList.add('open');
+    });
+});
+var fills = document.querySelectorAll('.p-progress-fill');
+if (fills.length && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(ens) {
+        ens.forEach(function(e) {
+            if (e.isIntersecting) {
+                e.target.style.width = e.target.dataset.w || e.target.style.width;
+                io.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.4 });
+    fills.forEach(function(el) {
+        el.dataset.w = el.style.width || '100%';
+        el.style.width = '0%'; io.observe(el);
+    });
+}
+document.querySelectorAll('.skill-tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        var nav = btn.closest('.skills-tab-nav');
+        if (!nav) return;
+        nav.querySelectorAll('.skill-tab-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var target = btn.dataset.tab;
+        document.querySelectorAll('.skill-tab-panel').forEach(function(p) {
+            p.classList.toggle('active', p.dataset.panel === target);
+        });
+    });
+});
+})();
+</script>
+<script>/* ════════════════════════════════════════════════════════════════════════
+   MATH DERIVATION CARD — interaction layer
+   Tab switching + scroll-affordance detection for formula/example panels.
+   ════════════════════════════════════════════════════════════════════════ */
+(function () {
+    function setupScrollAffordance(wrap) {
+        if (!wrap || wrap._pmBound) return;
+        wrap._pmBound = true;
+        var scroller = wrap.querySelector('.p-math-scroll, .p-math-example-scroll');
+        if (!scroller) return;
+
+        function update() {
+            var scrollable = scroller.scrollWidth > scroller.clientWidth + 2;
+            var atEnd = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 2;
+            wrap.classList.toggle('pm-scrollable', scrollable);
+            wrap.classList.toggle('pm-at-end', !scrollable || atEnd);
+        }
+        scroller.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+        // Re-check after fonts/layout settle
+        setTimeout(update, 150);
+    }
+
+    function initMathBlock(block) {
+        if (block._pmBound) return;
+        block._pmBound = true;
+
+        var tabs = Array.prototype.slice.call(block.querySelectorAll('.p-math-tab'));
+        var panels = Array.prototype.slice.call(block.querySelectorAll('.p-math-panel'));
+
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                if (tab.classList.contains('active')) return;
+                var targetName = tab.getAttribute('data-tab');
+                tabs.forEach(function (t) { t.classList.toggle('active', t === tab); });
+                panels.forEach(function (p) {
+                    var match = p.getAttribute('data-panel') === targetName;
+                    p.classList.toggle('active', match);
+                });
+                // Re-check scroll affordance for the panel we just revealed
+                var activePanel = block.querySelector('.p-math-panel.active');
+                if (activePanel) {
+                    var wrap = activePanel.querySelector('.p-math-formula-wrap, .p-math-example-wrap');
+                    if (wrap) setupScrollAffordance(wrap);
+                }
+            });
+        });
+
+        // Bind scroll affordance for every wrap inside this block (formula tab is visible by default)
+        block.querySelectorAll('.p-math-formula-wrap, .p-math-example-wrap').forEach(setupScrollAffordance);
+    }
+
+    function init() {
+        document.querySelectorAll('.p-math-block').forEach(initMathBlock);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+</script>
 </body>
 </html>
