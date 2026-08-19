@@ -1,0 +1,231 @@
+/* ============================================================
+   JIN — Intelligence Core  (floating avatar widget)  v3
+   Glassy transparent panel · voice waveform · live reasoning
+   LaTeX math · web search · wake-word gate
+   Pairs with rafi-core.js
+   ============================================================ */
+
+#jin-root{
+  --jn-void:#0a0e1a; --jn-abyss:#050810; --jn-panel:rgba(10,15,30,.92);
+  --jn-line:rgba(160,190,255,.28); --jn-ion:#6eb8ff; --jn-ion-deep:#2a84ff;
+  --jn-plasma:#9b7eff; --jn-gold:#ffcf6b; --jn-text:#f0f6ff; --jn-mute:#a8bedd;
+  --jn-mute-dim:#7090b8; --jn-ok:#4ddd9f;
+  /* Symbol fallbacks: JetBrains Mono's Google Fonts "latin" subset omits
+     arrows (U+2190-2197), math (U+2248, U+2265) and marks (U+25CF, U+2713).
+     Without these fallbacks those characters render as tofu boxes. */
+  --jn-symbols:'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2',
+               'DejaVu Sans','Arial Unicode MS';
+  --jn-mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,var(--jn-symbols),monospace;
+  --jn-sans:'Segoe UI',system-ui,-apple-system,var(--jn-symbols),sans-serif;
+}
+
+/* ── Floating avatar launcher ── */
+#jin-fab{
+  position:fixed; bottom:22px; right:22px; width:62px; height:62px; padding:0;
+  border:none; border-radius:50%; cursor:pointer; overflow:hidden; z-index:1001;
+  background:#0a0e1a;
+  box-shadow:0 6px 24px rgba(0,0,0,.45), 0 0 0 2px rgba(76,159,255,.35), 0 0 22px rgba(76,159,255,.35);
+  transition:transform .2s, box-shadow .25s, opacity .25s;
+}
+#jin-fab video{width:100%;height:100%;object-fit:cover;mix-blend-mode:screen}
+#jin-fab:hover{transform:scale(1.07);box-shadow:0 8px 28px rgba(0,0,0,.5),0 0 0 2px rgba(76,159,255,.6),0 0 30px rgba(76,159,255,.55)}
+#jin-fab.jn-hidden{opacity:0;pointer-events:none;transform:scale(.6)}
+#jin-fab .jn-spark{position:absolute;inset:0;border-radius:50%;pointer-events:none;
+  box-shadow:0 0 0 0 rgba(76,159,255,.5);animation:rf-pulse 2.8s ease-in-out infinite;}
+@keyframes rf-pulse{0%,100%{box-shadow:0 0 0 0 rgba(76,159,255,.45)}50%{box-shadow:0 0 0 9px rgba(76,159,255,0)}}
+
+/* teaser */
+#jin-teaser{position:fixed;bottom:34px;right:96px;z-index:1001;max-width:230px;
+  font-family:var(--jn-mono);font-size:11.5px;letter-spacing:.02em;line-height:1.5;
+  color:var(--jn-text);background:var(--jn-panel);border:1px solid var(--jn-line);
+  border-radius:12px;padding:10px 30px 10px 13px;backdrop-filter:blur(8px);
+  box-shadow:0 8px 26px rgba(0,0,0,.4);opacity:0;transform:translateX(8px);
+  transition:opacity .35s,transform .35s;pointer-events:none;}
+#jin-teaser.show{opacity:1;transform:translateX(0);pointer-events:auto}
+#jin-teaser b{color:var(--jn-ion)}
+#jin-teaser-x{position:absolute;top:6px;right:8px;background:none;border:none;color:var(--jn-mute);
+  cursor:pointer;font-size:13px;line-height:1;padding:2px;}
+@media (max-width:600px){
+  #jin-teaser{
+    max-width: 62vw; font-size: 11px; line-height: 1.45;
+    padding: 9px 12px; bottom: 84px; right: 12px;
+  }
+}
+
+/* ── Panel (glassy / transparent) ── */
+#jin-panel{position:fixed;bottom:22px;right:22px;z-index:1002;
+  width:400px;max-width:calc(100vw - 28px);height:min(640px,calc(100vh - 44px));
+  display:flex;flex-direction:column;overflow:hidden;
+  /* translucent dark glass: see-through to the page behind, blurred, still readable */
+  background:
+    radial-gradient(700px 380px at 50% -20%, rgba(76,159,255,.18), transparent 60%),
+    linear-gradient(180deg, rgba(8,12,26,.72), rgba(4,7,18,.68));
+  border:1px solid rgba(150,180,240,.22);border-radius:20px;
+  box-shadow:0 24px 70px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.06);
+  -webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);
+  font-family:var(--jn-sans);color:var(--jn-text);
+  opacity:0;transform:translateY(16px) scale(.98);pointer-events:none;
+  transition:opacity .3s,transform .3s,box-shadow .4s,border-color .4s;}
+#jin-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+
+/* dormant vs awake — sleeping reads dim & cool, awake glows */
+#jin-panel.dormant{filter:saturate(.6) brightness(.92);
+  border-color:rgba(120,140,180,.18);box-shadow:0 24px 70px rgba(0,0,0,.5)}
+#jin-panel.dormant #jin-av{box-shadow:0 0 0 2px rgba(120,140,180,.3),0 0 12px rgba(120,140,180,.25);filter:grayscale(.5) brightness(.8)}
+#jin-panel.dormant #jin-status .jn-dot{background:var(--jn-mute);box-shadow:0 0 6px var(--jn-mute);animation:jn-breathe 3.4s ease-in-out infinite}
+#jin-panel.awake{border-color:rgba(76,159,255,.3);
+  box-shadow:0 24px 70px rgba(0,0,0,.55),0 0 0 1px rgba(76,159,255,.18),0 0 60px rgba(76,159,255,.12)}
+@keyframes jn-breathe{0%,100%{opacity:.35}50%{opacity:.9}}
+
+/* ignite flash */
+#jin-flash{position:absolute;inset:0;z-index:5;pointer-events:none;opacity:0;mix-blend-mode:screen;
+  background:radial-gradient(circle at 50% 22%, #fff, var(--jn-gold) 16%, transparent 52%);}
+#jin-flash.fire{animation:rf-ignite 1.3s ease-out forwards}
+@keyframes rf-ignite{0%{opacity:0;transform:scale(.4)}16%{opacity:.95;transform:scale(.8)}100%{opacity:0;transform:scale(2)}}
+
+/* header */
+#jin-head{display:flex;align-items:center;gap:11px;padding:13px 13px;
+  border-bottom:1px solid rgba(150,180,240,.16);
+  background:linear-gradient(180deg,rgba(12,17,30,.35),rgba(12,17,30,0));}
+
+/* avatar + waveform (the "voice line") */
+#jin-av{position:relative;width:36px;height:36px;border-radius:50%;flex:none;overflow:hidden;
+  background:#0a0e1a;box-shadow:0 0 0 2px rgba(76,159,255,.35),0 0 16px rgba(76,159,255,.4);
+  transition:box-shadow .3s;}
+#jin-av video{width:100%;height:100%;object-fit:cover;mix-blend-mode:screen}
+#jin-av.think{box-shadow:0 0 0 2px rgba(124,92,255,.6),0 0 18px rgba(124,92,255,.6);animation:rf-ring 1.1s ease-in-out infinite}
+@keyframes rf-ring{50%{box-shadow:0 0 0 3px rgba(124,92,255,.85),0 0 22px rgba(124,92,255,.8)}}
+#jin-wave{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:2px;
+  background:rgba(8,11,20,.5);opacity:0;transition:opacity .2s;}
+#jin-av.speaking #jin-wave{opacity:1}
+#jin-wave i{width:2.5px;height:5px;border-radius:2px;background:var(--jn-ion);box-shadow:0 0 5px var(--jn-ion)}
+#jin-av.speaking #jin-wave i{animation:rf-wave .9s ease-in-out infinite}
+#jin-wave i:nth-child(1){animation-delay:0s}#jin-wave i:nth-child(2){animation-delay:.12s}
+#jin-wave i:nth-child(3){animation-delay:.24s}#jin-wave i:nth-child(4){animation-delay:.36s}
+#jin-wave i:nth-child(5){animation-delay:.48s}
+@keyframes rf-wave{0%,100%{height:5px}50%{height:16px}}
+
+#jin-id{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+#jin-name{font-family:var(--jn-mono);font-weight:600;letter-spacing:.3em;font-size:13px}
+#jin-status{font-family:var(--jn-mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--jn-mute);display:flex;align-items:center;gap:6px;margin-top:3px}
+#jin-status .jn-dot{width:5px;height:5px;border-radius:50%;background:var(--jn-ok);box-shadow:0 0 7px var(--jn-ok)}
+#jin-status.busy .jn-dot{background:var(--jn-plasma);box-shadow:0 0 7px var(--jn-plasma);animation:rf-blink .8s infinite}
+@keyframes rf-blink{50%{opacity:.3}}
+
+#jin-tools{margin-left:auto;display:flex;align-items:center;gap:4px}
+.jn-tbtn{background:none;border:1px solid transparent;color:var(--jn-mute);cursor:pointer;
+  width:30px;height:30px;border-radius:8px;display:grid;place-items:center;transition:.2s;
+  font-family:var(--jn-mono);font-size:10px;font-weight:600;letter-spacing:.06em;}
+.jn-tbtn:hover{color:var(--jn-text);background:rgba(122,150,210,.12)}
+.jn-tbtn.on{color:var(--jn-ion);border-color:rgba(76,159,255,.3);background:rgba(76,159,255,.1)}
+.jn-tbtn.off{color:var(--jn-mute-dim)}
+
+/* thread */
+#jin-thread{flex:1;overflow-y:auto;padding:18px 16px 8px;display:flex;flex-direction:column;gap:16px}
+#jin-thread::-webkit-scrollbar{width:8px}
+#jin-thread::-webkit-scrollbar-thumb{background:rgba(122,150,210,.2);border-radius:8px}
+
+.jn-msg{display:flex;gap:10px;animation:rf-rise .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes rf-rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.jn-who{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
+  font-family:var(--jn-mono);font-size:10px;font-weight:600;margin-top:1px}
+.jn-msg.user .jn-who{background:rgba(76,159,255,.12);color:var(--jn-ion);border:1px solid rgba(76,159,255,.25)}
+.jn-msg.ai .jn-who{background:rgba(124,92,255,.12);color:var(--jn-plasma);border:1px solid rgba(124,92,255,.28)}
+.jn-bubble{flex:1;min-width:0;font-size:14px;line-height:1.65;color:#f0f6ff;padding-top:2px;word-wrap:break-word}
+.jn-msg.user .jn-bubble{color:#daeeff}
+
+.jn-bubble h1,.jn-bubble h2,.jn-bubble h3{font-weight:600;line-height:1.3;margin:.9em 0 .4em;color:#fff}
+.jn-bubble h1{font-size:1.18em}.jn-bubble h2{font-size:1.1em}.jn-bubble h3{font-size:1.02em;color:var(--jn-ion)}
+.jn-bubble p{margin:.5em 0}
+.jn-bubble ul,.jn-bubble ol{margin:.5em 0;padding-left:1.3em}
+.jn-bubble li{margin:.25em 0}
+.jn-bubble strong{color:#fff;font-weight:700}
+.jn-bubble a{color:var(--jn-ion);text-decoration:none;border-bottom:1px solid rgba(76,159,255,.4)}
+.jn-bubble code{font-family:var(--jn-mono);font-size:.85em;background:rgba(30,45,80,.85);padding:.1em .38em;border-radius:5px;color:#c0d8ff;border:1px solid rgba(110,184,255,.2)}
+.jn-bubble pre{background:rgba(4,7,18,.88);border:1px solid rgba(110,184,255,.25);border-radius:9px;padding:12px 14px;overflow-x:auto;margin:.6em 0}
+.jn-bubble pre code{background:none;padding:0;color:#d0e4ff;font-size:.82em;line-height:1.5}
+.jn-bubble blockquote{border-left:2px solid var(--jn-plasma);margin:.5em 0;padding:.05em 0 .05em 12px;color:var(--jn-mute)}
+.jn-bubble .katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden}
+.jn-bubble table{border-collapse:collapse;margin:.6em 0;font-size:.9em;width:100%}
+.jn-bubble th,.jn-bubble td{border:1px solid var(--jn-line);padding:6px 9px;text-align:left}
+.jn-bubble th{background:rgba(40,60,100,.5);font-family:var(--jn-mono);font-weight:500}
+
+.jn-think{display:flex;gap:5px;align-items:center;height:20px}
+.jn-think span{width:6px;height:6px;border-radius:50%;background:var(--jn-plasma);opacity:.5;animation:rf-tk 1.1s ease-in-out infinite}
+.jn-think span:nth-child(2){animation-delay:.18s}.jn-think span:nth-child(3){animation-delay:.36s}
+@keyframes rf-tk{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-4px);opacity:1}}
+
+/* follow-up chips */
+.jn-chips{display:flex;flex-wrap:wrap;gap:7px;padding:2px 0 2px 36px;animation:rf-rise .4s}
+.jn-chips-label{width:100%;font-family:var(--jn-mono);font-size:9px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--jn-mute-dim);margin-bottom:1px}
+.jn-chip{font-family:var(--jn-mono);font-size:10.5px;color:#c8dcf8;background:rgba(40,60,110,.55);
+  border:1px solid rgba(110,184,255,.3);border-radius:18px;padding:6px 11px;cursor:pointer;transition:.2s;text-align:left}
+.jn-chip:hover{color:#fff;border-color:rgba(110,184,255,.7);background:rgba(60,100,200,.5)}
+
+/* composer */
+#jin-comp{padding:10px 14px 14px}
+#jin-comp .box{display:flex;gap:7px;align-items:flex-end;background:rgba(10,16,36,.75);
+  border:1px solid rgba(110,184,255,.25);border-radius:14px;padding:8px 8px 8px 13px;transition:border-color .2s,box-shadow .2s}
+#jin-comp .box:focus-within{border-color:rgba(76,159,255,.45);box-shadow:0 0 0 3px rgba(76,159,255,.08)}
+#jin-ask{flex:1;background:none;border:none;outline:none;resize:none;color:var(--jn-text);
+  font-family:var(--jn-sans);font-size:16px;line-height:1.5;max-height:120px;padding:5px 0}
+#jin-ask::placeholder{color:var(--jn-mute-dim)}
+.jn-cbtn{flex:none;width:36px;height:36px;border:none;border-radius:10px;cursor:pointer;
+  display:grid;place-items:center;transition:transform .15s,opacity .2s,filter .2s,background .2s,color .2s}
+#jin-mic{background:rgba(122,150,210,.1);color:var(--jn-mute);border:1px solid var(--jn-line)}
+#jin-mic:hover{color:var(--jn-text)}
+#jin-mic.on{background:rgba(255,107,107,.16);color:#ff6b6b;border-color:rgba(255,107,107,.4);animation:rf-mic 1.1s ease-in-out infinite}
+@keyframes rf-mic{50%{box-shadow:0 0 0 4px rgba(255,107,107,0)}0%,100%{box-shadow:0 0 0 0 rgba(255,107,107,.35)}}
+#jin-send{background:linear-gradient(135deg,var(--jn-ion),var(--jn-ion-deep));color:#fff}
+#jin-send:hover{filter:brightness(1.1)}.jn-cbtn:active{transform:scale(.92)}
+#jin-send:disabled{opacity:.35;cursor:not-allowed;filter:saturate(.4)}
+#jin-note{text-align:center;font-family:var(--jn-mono);font-size:9px;letter-spacing:.1em;color:var(--jn-mute-dim);margin-top:7px}
+
+@media (max-width:600px){
+  #jin-panel{
+    width:calc(100vw - 16px);right:8px;bottom:8px;
+    height:calc(100vh - 80px);              /* fallback for old browsers */
+    height:calc(100dvh - 80px);             /* fixes mobile address-bar resize cutting off the panel */
+    -webkit-backdrop-filter:blur(14px) saturate(135%);
+    backdrop-filter:blur(14px) saturate(135%); /* lighter blur: heavy blur is a top mobile GPU/jank cost */
+  }
+  #jin-fab{bottom:16px;right:16px;width:56px;height:56px}
+  #jin-thread{-webkit-overflow-scrolling:touch}
+}
+@media (prefers-reduced-motion:reduce){
+  #jin-root *{animation-duration:.001ms !important;animation-iteration-count:1 !important}
+}
+
+/* ── sleeping nudge bubble (shown when a non-wake-word is sent while dormant) ── */
+.jn-nudge{align-self:center;max-width:84%;text-align:center;
+  font-family:var(--jn-mono);font-size:11px;letter-spacing:.02em;line-height:1.5;
+  color:var(--jn-mute);background:rgba(122,150,210,.08);
+  border:1px dashed rgba(122,150,210,.3);border-radius:12px;padding:8px 14px;
+  animation:jn-rise .35s ease;transition:opacity .5s}
+.jn-nudge.fade{opacity:0}
+
+/* ── JIN read-along (karaoke TTS): blur unread, glow the word being spoken ── */
+.jn-rw{ border-radius:4px; transition:filter .28s ease, opacity .28s ease, background .18s ease, color .18s ease, text-shadow .2s ease; }
+.jn-bubble.jn-reading .jn-rw{ filter:blur(2.6px); opacity:.4; }
+.jn-bubble.jn-reading .jn-rw.read{ filter:none; opacity:.9; }
+.jn-bubble.jn-reading .jn-rw.reading{
+  filter:none; opacity:1; color:#06121f;
+  background:var(--jn-ion,#6eb8ff);
+  border-radius:4px; padding:0 2px; margin:0 -1px;
+  box-shadow:0 0 12px rgba(110,184,255,.65);
+}
+@media (prefers-reduced-motion: reduce){ .jn-rw{ transition:none; } .jn-bubble.jn-reading .jn-rw{ filter:none; opacity:1; } }
+
+
+/* ── JIN voice: visual states the JS actually toggles ── */
+#jin-mic.va-rec{
+  background:rgba(255,107,107,.16); color:#ff6b6b;
+  border-color:rgba(255,107,107,.4);
+  animation:rf-mic 1.1s ease-in-out infinite;
+}
+#jin-mic.va-disabled{opacity:.35;cursor:not-allowed}
+@media (max-width:600px){
+  .jn-cbtn{width:44px;height:44px}      /* comfortable thumb targets */
+  #jin-ask{font-size:16px}              /* prevents iOS zoom-on-focus */
+}

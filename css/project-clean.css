@@ -1,0 +1,1525 @@
+/* ============================================================
+   PROJECT PAGES — CLEAN DESIGN SYSTEM
+   Loaded last. Replaces the nested outlined-box layout with a
+   typographic one: hairline rules + whitespace carry structure.
+
+   Rationale: the old layout nested cards inside cards (.p-card >
+   .p-usecase / .p-feature-icon),
+producing stacked outlines that
+   fragmented the page. Structure is now expressed through type
+   hierarchy and spacing,
+so content reads continuously.
+   ============================================================ */
+
+/* ---- 1. TYPOGRAPHY ------------------------------------------------ */
+
+:root {
+  --pc-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+             'Helvetica Neue', Arial, 'Segoe UI Symbol', 'Apple Symbols',
+             'Noto Sans Symbols 2', 'DejaVu Sans', sans-serif;
+  --pc-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo,
+             'Segoe UI Symbol', 'DejaVu Sans Mono', monospace;
+
+  /* Type scale — 1.25 ratio, capped for long-form reading */
+  --pc-h2: 21px;
+  --pc-h3: 15px;
+  --pc-body: 14.5px;
+  --pc-small: 13px;
+  --pc-label: 10.5px;
+
+  --pc-measure: 68ch;   /* optimal reading width */
+  --pc-gap: 34px;
+  --pc-rule: 1px;
+}/* Body copy: sans,
+generous leading. Mono is reserved for code
+   and labels only — using it for prose is what made the old
+   pages feel cramped and "terminal-ish" rather than professional. */
+.p-feature-desc,
+.p-usecase-desc,
+.p-arch-desc,
+.p-card p,
+.p-body {
+  font-family: var(--pc-sans) !important;
+  font-size: var(--pc-body) !important;
+  line-height: 1.72 !important;
+  color: var(--body) !important;
+  letter-spacing: 0 !important;
+  max-width: var(--pc-measure);
+}/* ---- 2. REMOVE THE BOXES ----------------------------------------- */
+
+/* Top-level section container: no border,
+no fill,
+no radius.
+   Separation comes from a hairline rule + space above. */
+.p-card {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 0 var(--pc-gap) 0 !important;
+  box-shadow: none !important;
+  max-width: none !important;
+  flex: none !important;
+  min-width: 0 !important;
+}/* Section heading — the structural anchor.
+   Rule sits under the title,
+not around the content. */
+.p-card-title {
+  font-family: var(--pc-sans) !important;
+  font-size: var(--pc-h2) !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.015em !important;
+  color: var(--heading) !important;
+  text-transform: none !important;
+  padding: 0 0 11px 0 !important;
+  margin: 0 0 22px 0 !important;
+  border-bottom: var(--pc-rule) solid var(--line) !important;
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 11px !important;
+}/* Section number: quiet,
+monospace,
+tabular. Encodes real order. */
+.p-card-title-num {
+  font-family: var(--pc-mono) !important;
+  font-size: var(--pc-label) !important;
+  font-weight: 500 !important;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted) !important;
+  letter-spacing: 0.08em !important;
+  background: none !important;
+  border: 0 !important;
+  padding: 0 !important;
+  flex-shrink: 0;
+}/* ---- 3. KEY FEATURES — list,
+not cards --------------------------- */
+
+.p-features {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  margin: 0 !important;
+}.p-feature-item {
+  display: grid !important;
+  grid-template-columns: 22px 1fr !important;
+  gap: 0 15px !important;
+  align-items: start !important;
+  padding: 15px 0 !important;
+  border-bottom: var(--pc-rule) solid var(--line) !important;
+}.p-feature-item:last-child { border-bottom: 0 !important; }/* Icon: stripped to a bare glyph. No box,
+no fill,
+no border —
+   this was the single biggest source of visual noise. */
+.p-feature-icon,
+.p-usecase-icon {
+  width: 20px !important;
+  height: 20px !important;
+  background: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 1px 0 0 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--muted) !important;
+  flex-shrink: 0 !important;
+  font-size: 15px !important;
+}.p-feature-icon svg,
+.p-usecase-icon svg {
+  width: 16px !important;
+  height: 16px !important;
+  stroke: currentColor !important;
+  stroke-width: 1.6 !important;
+  fill: none !important;
+  display: block;
+}.p-feature-title {
+  font-family: var(--pc-sans) !important;
+  font-size: var(--pc-h3) !important;
+  font-weight: 620 !important;
+  color: var(--heading) !important;
+  letter-spacing: -0.005em !important;
+  margin: 0 0 4px 0 !important;
+  line-height: 1.4 !important;
+}.p-feature-desc { margin: 0 !important; }/* ---- 4. USE CASES — two columns,
+rules only ---------------------- */
+
+.p-usecases {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 0 44px !important;
+  margin: 0 !important;
+}.p-usecase {
+  background: none !important;
+  border: 0 !important;
+  border-bottom: var(--pc-rule) solid var(--line) !important;
+  border-radius: 0 !important;
+  padding: 16px 0 !important;
+  margin: 0 !important;
+  display: grid !important;
+  grid-template-columns: 20px 1fr !important;
+  gap: 0 13px !important;
+  align-items: start !important;
+}/* Remove the trailing rule on the final row of each column */
+.p-usecase:nth-last-child(1),
+.p-usecase:nth-last-child(2):nth-child(odd) {
+  border-bottom: 0 !important;
+}.p-usecase-icon { grid-row: span 2; }.p-usecase-title {
+  font-family: var(--pc-sans) !important;
+  font-size: var(--pc-h3) !important;
+  font-weight: 620 !important;
+  color: var(--heading) !important;
+  letter-spacing: -0.005em !important;
+  margin: 0 0 4px 0 !important;
+  line-height: 1.4 !important;
+}.p-usecase-desc {
+  grid-column: 2 !important;
+  margin: 0 !important;
+  max-width: none !important;
+}/* ---- 5. CODE & FORMULA BLOCKS ------------------------------------ */
+
+/* Left rule instead of a full outline — marks the block as code
+   without enclosing it. */
+.p-math-body pre {
+  background: var(--bg2) !important;
+  border: 0 !important;
+  border-left: 2px solid var(--line2) !important;
+  border-radius: 0 !important;
+  padding: 15px 0 15px 18px !important;
+  margin: 0 0 16px 0 !important;
+  font-family: var(--pc-mono) !important;
+  font-size: 12.8px !important;
+  line-height: 1.68 !important;
+  overflow-x: auto;
+}/* Inline code: subtle tint,
+no border */
+.p-card code {
+  font-family: var(--pc-mono) !important;
+  font-size: 0.88em !important;
+  background: var(--bg3) !important;
+  border: 0 !important;
+  border-radius: 3px !important;
+  padding: 0.12em 0.4em !important;
+  color: var(--heading) !important;
+}/* ---- 6. TAB SWITCHER (FORMULA / EXPLAINED / EXAMPLE) ------------- */
+
+/* Was: pill buttons in an outlined container. Now: underlined tabs. */
+.p-math-tabs {
+  display: flex !important;
+  gap: 22px !important;
+  background: none !important;
+  border: 0 !important;
+  border-bottom: var(--pc-rule) solid var(--line) !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 0 18px 0 !important;
+}.p-math-tab {
+  font-family: var(--pc-mono) !important;
+  font-size: var(--pc-label) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+  background: none !important;
+  border: 0 !important;
+  border-bottom: 2px solid transparent !important;
+  border-radius: 0 !important;
+  padding: 0 0 9px 0 !important;
+  cursor: pointer;
+  transition: color 0.16s ease, border-color 0.16s ease;
+}.p-math-tab:hover,
+.p-math-tab:hover { color: var(--body) !important; }.p-math-tab.active,
+.p-math-tab.active {
+  color: var(--heading) !important;
+  border-bottom-color: var(--heading) !important;
+  background: none !important;
+}/* ---- 7. PIPELINE / PROCESS STEPS --------------------------------- */
+
+/* Was: outlined boxes joined by arrows inside another outlined
+   wrapper. Now: a rule-separated sequence. */
+.p-pipeline-wrap {
+  background: none !important;
+  border: 0 !important;
+  border-top: var(--pc-rule) solid var(--line) !important;
+  border-bottom: var(--pc-rule) solid var(--line) !important;
+  border-radius: 0 !important;
+  padding: 20px 0 !important;
+  margin: 0 0 18px 0 !important;
+  overflow: visible !important;
+}.p-pipeline-scroll,
+.p-pipeline { gap: 0 !important; }.p-pipe-step {
+  background: none !important;
+  border: 0 !important;
+  border-right: var(--pc-rule) solid var(--line) !important;
+  border-radius: 0 !important;
+  padding: 0 22px 0 0 !important;
+  margin: 0 22px 0 0 !important;
+  text-align: left !important;
+  min-width: 122px !important;
+}.p-pipe-step:last-child {
+  border-right: 0 !important;
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+}/* Arrows between boxes are redundant once rules define the order */
+.p-pipe-arrow { display: none !important; }.p-pipe-step-num {
+  font-family: var(--pc-mono) !important;
+  font-size: 9.5px !important;
+  letter-spacing: 0.13em !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+  display: block !important;
+  margin-bottom: 7px !important;
+}.p-pipe-step-label {
+  font-family: var(--pc-sans) !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  color: var(--heading) !important;
+  display: block !important;
+  line-height: 1.35 !important;
+}.p-pipe-step-sub {
+  font-family: var(--pc-mono) !important;
+  font-size: 10.5px !important;
+  color: var(--muted) !important;
+  margin-top: 4px !important;
+  display: block !important;
+  line-height: 1.45 !important;
+}.p-pipeline-hint,
+.p-pipe-dots { color: var(--muted) !important; }/* ---- 8. NUMBERED "HOW IT WORKS" STEPS ---------------------------- */
+
+.p-steps { margin: 0 !important; padding: 0 !important; }.p-step {
+  display: grid !important;
+  grid-template-columns: 26px 1fr !important;
+  gap: 0 14px !important;
+  padding: 15px 0 !important;
+  border-bottom: var(--pc-rule) solid var(--line) !important;
+  background: none !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-top: 0 !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+}.p-step:last-child { border-bottom: 0 !important; }.p-step-dot {
+  font-family: var(--pc-mono) !important;
+  font-size: var(--pc-label) !important;
+  font-weight: 500 !important;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted) !important;
+  background: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  display: block !important;
+  text-align: left !important;
+}.p-step-title {
+  grid-column: 2 !important;
+  font-family: var(--pc-sans) !important;
+  font-size: var(--pc-h3) !important;
+  font-weight: 620 !important;
+  color: var(--heading) !important;
+  margin: 0 0 4px 0 !important;
+  line-height: 1.4 !important;
+}.p-step-desc {
+  grid-column: 2 !important;
+  font-family: var(--pc-sans) !important;
+  font-size: var(--pc-body) !important;
+  line-height: 1.72 !important;
+  color: var(--body) !important;
+  margin: 0 !important;
+  max-width: var(--pc-measure);
+}/* ---- 9. CALLOUT / "WHAT I LEARNED" ------------------------------- */
+
+.p-callout {
+  background: none !important;
+  border: 0 !important;
+  border-left: 2px solid var(--line2) !important;
+  border-radius: 0 !important;
+  padding: 3px 0 3px 18px !important;
+  margin: 0 0 20px 0 !important;
+  font-family: var(--pc-sans) !important;
+  font-size: var(--pc-body) !important;
+  line-height: 1.7 !important;
+  color: var(--body) !important;
+  max-width: var(--pc-measure);
+}.p-callout strong,
+.p-callout strong {
+  color: var(--heading) !important;
+  font-weight: 640 !important;
+}/* ---- 10. SECTION HEADINGS (h2 outside cards) --------------------- */
+
+.p-body h2 {
+  font-family: var(--pc-sans) !important;
+  font-size: var(--pc-h2) !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.015em !important;
+  color: var(--heading) !important;
+  padding: 0 0 11px 0 !important;
+  margin: 40px 0 22px 0 !important;
+  border-bottom: var(--pc-rule) solid var(--line) !important;
+}
+
+/* ---- 11. RESPONSIVE ---------------------------------------------- */
+
+@media (max-width: 720px) {:root { --pc-h2: 19px; --pc-body: 14px; --pc-gap: 28px; }.p-usecases {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }.p-usecase:nth-last-child(2):nth-child(odd) {
+    border-bottom: var(--pc-rule) solid var(--line) !important;
+  }.p-usecase:last-child { border-bottom: 0 !important; }.p-pipeline,
+.p-pipeline-wrap { flex-direction: column !important; padding: 16px 0 !important; }.p-pipe-step {
+    border-right: 0 !important;
+    border-bottom: var(--pc-rule) solid var(--line) !important;
+    padding: 13px 0 !important;
+    margin: 0 !important;
+    width: 100%;
+  }.p-pipe-step:last-child { border-bottom: 0 !important; padding-bottom: 0 !important; }.p-math-tabs { gap: 16px !important; }
+}/* ---- 12. ACCESSIBILITY FLOOR ------------------------------------- */
+
+.p-math-tab:focus-visible,
+.p-card a:focus-visible {
+  outline: 2px solid var(--heading) !important;
+  outline-offset: 3px !important;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {.p-math-tab,
+.p-card a { transition: none !important; }
+}
+
+/* ---- 13. REMAINING CONTAINERS ------------------------------------ */
+
+/* Accordion rows (How It Works): outlined pill -> ruled row */
+.p-acc-item {
+  background: none !important;
+  border: 0 !important;
+  border-bottom: var(--pc-rule) solid var(--line) !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+.p-acc-item:last-child { border-bottom: 0 !important; }
+
+/* Meta strip under the hero */
+.p-meta-item {
+  border-right: var(--pc-rule) solid var(--line) !important;
+  padding: 11px 18px 11px 0 !important;
+  margin-right: 18px !important;
+}
+.p-meta-item:last-child {
+  border-right: 0 !important;
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Hero badge: filled pill -> quiet mono label */
+.p-hero-badge {
+  background: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  color: var(--muted) !important;
+  font-size: var(--pc-label) !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+/* Tech chips: keep them readable but drop the heavy outline */
+.p-tech-grid > * {
+  background: var(--bg3) !important;
+  border: 0 !important;
+  border-radius: 3px !important;
+  font-family: var(--pc-mono) !important;
+  font-size: 11px !important;
+  color: var(--body) !important;
+  padding: 4px 9px !important;
+}
+
+/* Generic outlined grids -> rule-separated */
+.p-audit-item,
+.p-class-item,
+.p-type-item,
+.p-dstep,
+.p-pwa-step {
+  background: none !important;
+  border: 0 !important;
+  border-bottom: var(--pc-rule) solid var(--line) !important;
+  border-radius: 0 !important;
+  padding: 14px 0 !important;
+  margin: 0 !important;
+}
+.p-audit-item:last-child,
+.p-class-item:last-child,
+.p-type-item:last-child,
+.p-dstep:last-child,
+.p-pwa-step:last-child { border-bottom: 0 !important; }
+
+/* Tables: horizontal rules only, no cell grid */
+.p-data-table,
+.p-ctrl-table,
+.p-vartable {
+  border: 0 !important;
+  border-collapse: collapse !important;
+  width: 100% !important;
+  font-size: var(--pc-small) !important;
+}
+.p-data-table th, .p-ctrl-table th, .p-vartable th {
+  font-family: var(--pc-mono) !important;
+  font-size: var(--pc-label) !important;
+  letter-spacing: 0.09em !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+  font-weight: 500 !important;
+  text-align: left !important;
+  background: none !important;
+  border: 0 !important;
+  border-bottom: var(--pc-rule) solid var(--line2) !important;
+  padding: 0 16px 9px 0 !important;
+}
+.p-data-table td, .p-ctrl-table td, .p-vartable td {
+  border: 0 !important;
+  border-bottom: var(--pc-rule) solid var(--line) !important;
+  padding: 11px 16px 11px 0 !important;
+  color: var(--body) !important;
+  vertical-align: top;
+}
+.p-ctrl-table-wrap, .p-table-scroll {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: none !important;
+}
+
+/* Project index cards (projects.html) — keep as cards but quieter:
+   a single hairline, no stacked inner borders. */
+.ap-card {
+  background: var(--bg2) !important;
+  border: var(--pc-rule) solid var(--line) !important;
+  border-radius: 6px !important;
+  transition: border-color 0.18s ease !important;
+}
+.ap-card:hover { border-color: var(--line2) !important; }
+.ap-card-inner,
+.ap-card-top,
+.ap-card-footer,
+.ap-card-stack {
+  background: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+.ap-card-icon {
+  background: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  color: var(--muted) !important;
+}
+.ap-card-name {
+  font-family: var(--pc-sans) !important;
+  font-weight: 620 !important;
+  letter-spacing: -0.005em !important;
+  color: var(--heading) !important;
+}
+.ap-card-desc {
+  font-family: var(--pc-sans) !important;
+  font-size: var(--pc-small) !important;
+  line-height: 1.65 !important;
+  color: var(--body) !important;
+}
+.ap-card-badge {
+  background: none !important;
+  border: var(--pc-rule) solid var(--line2) !important;
+  border-radius: 2px !important;
+  font-family: var(--pc-mono) !important;
+  font-size: 9.5px !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+  padding: 2px 7px !important;
+}
+.ap-card-bar { display: none !important; }
+
+/* ---- 14. TAB SWITCHER OVERRIDE ----------------------------------- */
+
+/* The inline sheets declare .p-math-tabs and .p-math-tab.active twice
+   each, later in source order. html-prefixed selectors raise
+   specificity above those without needing more !important. */
+html .p-math-tabs {
+  display: flex !important;
+  gap: 20px !important;
+  width: auto !important;
+  justify-content: flex-start !important;
+  background: none !important;
+  border: 0 !important;
+  border-bottom: var(--pc-rule) solid var(--line) !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 0 16px 0 !important;
+  flex-shrink: 0 !important;
+}
+
+html .p-math-tab {
+  flex: 0 0 auto !important;
+  text-align: left !important;
+  font-family: var(--pc-mono) !important;
+  font-size: var(--pc-label) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+  background: none !important;
+  border: 0 !important;
+  border-bottom: 2px solid transparent !important;
+  border-radius: 0 !important;
+  padding: 0 0 8px 0 !important;
+  cursor: pointer;
+}
+
+html .p-math-tab.active {
+  background: none !important;
+  color: var(--heading) !important;
+  border-bottom-color: var(--heading) !important;
+}
+
+html .p-math-tab:hover { color: var(--body) !important; }
+
+/* Dots were needed to distinguish pills; underline does that now */
+html .p-math-tab .p-math-tab-dot { display: none !important; }
+
+/* The header row holding title + tabs */
+html .p-math-head {
+  border: 0 !important;
+  background: none !important;
+  padding: 0 !important;
+  margin-bottom: 14px !important;
+}
+
+/* ---- 15. PAGE-SPECIFIC COMPONENTS -------------------------------- */
+
+/* project2: order-state chips (outlined boxes -> ruled rows) */
+.p-order-state {
+  background: none !important;
+  border: 0 !important;
+  border-bottom: var(--pc-rule) solid var(--line) !important;
+  border-radius: 0 !important;
+  padding: 12px 0 !important;
+  margin: 0 !important;
+}
+.p-order-state:last-child { border-bottom: 0 !important; }
+
+/* project8: console + sort toggle */
+.p-console {
+  background: var(--bg2) !important;
+  border: 0 !important;
+  border-left: 2px solid var(--line2) !important;
+  border-radius: 0 !important;
+  font-family: var(--pc-mono) !important;
+  font-size: 12.5px !important;
+}
+.p-console-tabs {
+  background: none !important;
+  border: 0 !important;
+  border-bottom: var(--pc-rule) solid var(--line) !important;
+  border-radius: 0 !important;
+  gap: 18px !important;
+  padding: 0 0 0 16px !important;
+}
+.p-console-tab {
+  background: none !important;
+  border: 0 !important;
+  border-bottom: 2px solid transparent !important;
+  border-radius: 0 !important;
+  font-family: var(--pc-mono) !important;
+  font-size: var(--pc-label) !important;
+  letter-spacing: 0.09em !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+  padding: 9px 0 !important;
+}
+.p-console-tab.active {
+  color: var(--heading) !important;
+  border-bottom-color: var(--heading) !important;
+  background: none !important;
+}
+.p-sort-toggle {
+  background: none !important;
+  border: 0 !important;
+  border-bottom: var(--pc-rule) solid var(--line) !important;
+  border-radius: 0 !important;
+  padding: 0 0 8px 0 !important;
+}
+
+/* Links/buttons keep their outline — a control should look clickable */
+.p-link-btn {
+  font-family: var(--pc-sans) !important;
+  font-size: var(--pc-small) !important;
+  font-weight: 560 !important;
+  border-radius: 5px !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+/* ---- 16. HERO — remove the outlined panel ------------------------ */
+
+/* Was: a bordered card with a faint grid pattern behind the title.
+   The border boxed in the page's most important element; the grid
+   added texture that competed with the type. Both removed — the
+   hero now sits on the page and is closed by a single rule. */
+html .p-hero {
+  background: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  border-bottom: var(--pc-rule) solid var(--line) !important;
+  padding: 4px 0 30px 0 !important;
+  min-height: 0 !important;
+  margin-bottom: 0 !important;
+}
+html .p-hero-grid { display: none !important; }
+
+html .p-hero-title {
+  font-family: var(--pc-sans) !important;
+  font-weight: 680 !important;
+  letter-spacing: -0.028em !important;
+  line-height: 1.04 !important;
+  color: var(--heading) !important;
+  margin: 0 0 14px 0 !important;
+}
+/* <em> marks the second half of each product name — weight, not italics */
+html .p-hero-title em {
+  font-style: normal !important;
+  font-weight: 400 !important;
+  color: var(--sub) !important;
+}
+
+html .p-hero-sub {
+  font-family: var(--pc-sans) !important;
+  font-size: 15px !important;
+  line-height: 1.68 !important;
+  color: var(--body) !important;
+  max-width: 62ch !important;
+  margin: 0 !important;
+}
+
+/* Tech tags: outlined pills -> plain mono row separated by dots */
+html .p-hero-tags {
+  gap: 0 !important;
+  margin-top: 18px !important;
+  align-items: baseline !important;
+}
+html .p-hero-tag {
+  background: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  font-family: var(--pc-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+}
+html .p-hero-tag:not(:last-child)::after {
+  content: "·";
+  margin: 0 9px;
+  color: var(--line2);
+}
+
+/* Meta strip: keep the ruled columns, drop the outer box */
+html .p-meta-strip {
+  background: none !important;
+  border: 0 !important;
+  border-bottom: var(--pc-rule) solid var(--line) !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 0 36px 0 !important;
+}
+html .p-meta-label {
+  font-family: var(--pc-mono) !important;
+  font-size: 9.5px !important;
+  letter-spacing: 0.13em !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+}
+html .p-meta-value {
+  font-family: var(--pc-sans) !important;
+  font-size: 13.5px !important;
+  font-weight: 560 !important;
+  color: var(--heading) !important;
+}
+
+/* Section number badge: filled chip -> quiet mono numeral */
+html .p-card-title-num,
+html .p-sec-num {
+  background: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  color: var(--muted) !important;
+  font-family: var(--pc-mono) !important;
+  font-size: var(--pc-label) !important;
+  font-weight: 500 !important;
+}
+
+@media (max-width: 600px) {
+  html .p-hero { padding: 0 0 22px 0 !important; }
+  html .p-hero-sub { font-size: 14px !important; }
+  html .p-meta-strip { margin-bottom: 26px !important; }
+}
+
+/* ============================================================
+   2026 EDITORIAL REFINEMENT
+   A calmer, human portfolio treatment shared by the project
+   index and every project case study.
+   ============================================================ */
+
+:root {
+  --project-content: 1120px;
+  --project-reading: 760px;
+  --project-radius: 14px;
+  --project-shadow: 0 18px 50px rgba(20, 24, 32, 0.06);
+}
+
+.project-main,
+.ap-main {
+  background:
+    radial-gradient(circle at 78% -10%, rgba(148, 163, 184, 0.10), transparent 30rem),
+    var(--bg) !important;
+}
+
+.project-page,
+.ap-page {
+  width: min(100%, var(--project-content)) !important;
+  max-width: var(--project-content) !important;
+  margin-inline: auto !important;
+  padding: 52px 34px 104px !important;
+}
+
+.project-back {
+  margin: 0 0 42px !important;
+  padding: 8px 0 !important;
+  font-family: var(--pc-sans) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: var(--muted) !important;
+}
+
+.project-back:hover { color: var(--heading) !important; }
+.project-back svg { width: 15px !important; height: 15px !important; }
+
+/* Typographic case-study hero */
+.p-hero {
+  min-height: 0 !important;
+  display: block !important;
+  overflow: visible !important;
+  margin: 0 !important;
+  padding: 0 0 42px !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.p-hero-grid,
+.p-hero-dot { display: none !important; }
+
+.p-hero-badge {
+  display: block !important;
+  margin: 0 0 18px !important;
+  font-family: var(--pc-sans) !important;
+  font-size: 12px !important;
+  font-weight: 650 !important;
+  letter-spacing: 0.06em !important;
+  line-height: 1.5 !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+}
+
+html .p-hero-title,
+html .p-hero-title em {
+  max-width: 900px !important;
+  margin: 0 !important;
+  font-family: var(--pc-sans) !important;
+  font-size: clamp(42px, 6.6vw, 76px) !important;
+  font-style: normal !important;
+  font-weight: 720 !important;
+  letter-spacing: -0.052em !important;
+  line-height: 0.98 !important;
+  color: var(--heading) !important;
+}
+
+html .p-hero-sub {
+  max-width: 720px !important;
+  margin: 24px 0 0 !important;
+  font-family: var(--pc-sans) !important;
+  font-size: clamp(16px, 1.8vw, 19px) !important;
+  line-height: 1.65 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--body) !important;
+}
+
+html .p-hero-tags {
+  gap: 7px 18px !important;
+  margin: 28px 0 0 !important;
+}
+
+html .p-hero-tag {
+  position: relative;
+  padding: 0 !important;
+  background: none !important;
+  border: 0 !important;
+  font-family: var(--pc-sans) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: var(--muted) !important;
+}
+
+html .p-hero-tag:not(:last-child)::after {
+  content: "·";
+  position: absolute;
+  right: -11px;
+  margin: 0;
+  color: var(--line2);
+}
+
+/* Editorial project facts */
+html .p-meta-strip {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important;
+  gap: 0 !important;
+  margin: 0 0 64px !important;
+  padding: 18px 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-top: 1px solid var(--line2) !important;
+  border-bottom: 1px solid var(--line2) !important;
+  border-radius: 0 !important;
+}
+
+html .p-meta-item {
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 22px !important;
+  border: 0 !important;
+  border-right: 1px solid var(--line) !important;
+}
+
+html .p-meta-item:first-child { padding-left: 0 !important; }
+html .p-meta-item:last-child {
+  padding-right: 0 !important;
+  border-right: 0 !important;
+}
+
+html .p-meta-label {
+  margin: 0 0 5px !important;
+  font-family: var(--pc-sans) !important;
+  font-size: 10px !important;
+  font-weight: 650 !important;
+  letter-spacing: 0.1em !important;
+}
+
+html .p-meta-value {
+  font-family: var(--pc-sans) !important;
+  font-size: 13px !important;
+  font-weight: 650 !important;
+  line-height: 1.45 !important;
+  color: var(--heading) !important;
+}
+
+/* Readable main column plus useful side notes */
+.p-layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, var(--project-reading)) minmax(220px, 1fr) !important;
+  gap: 72px !important;
+  align-items: start !important;
+}
+
+.p-main-col { min-width: 0 !important; gap: 0 !important; }
+
+.p-side-col {
+  position: sticky !important;
+  top: 36px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 30px !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+.p-card,
+.p-side-col .p-card {
+  min-width: 0 !important;
+  margin: 0 0 58px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.p-side-col .p-card { margin-bottom: 0 !important; }
+
+.p-card-title {
+  display: grid !important;
+  grid-template-columns: 34px minmax(0, 1fr) !important;
+  align-items: baseline !important;
+  gap: 12px !important;
+  margin: 0 0 22px !important;
+  padding: 0 0 13px !important;
+  border-bottom: 1px solid var(--line2) !important;
+  font-family: var(--pc-sans) !important;
+  font-size: 21px !important;
+  font-weight: 680 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.025em !important;
+  text-transform: none !important;
+  color: var(--heading) !important;
+}
+
+.p-num,
+.p-card-title-num,
+html .p-card-title-num {
+  display: block !important;
+  width: auto !important;
+  padding: 0 !important;
+  background: none !important;
+  border: 0 !important;
+  font-family: var(--pc-mono) !important;
+  font-size: 10px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em !important;
+  color: var(--muted) !important;
+}
+
+.p-part-eyebrow {
+  margin: 0 0 8px !important;
+  font-family: var(--pc-sans) !important;
+  font-size: 11px !important;
+  font-weight: 650 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+}
+
+.p-body,
+.p-body p,
+.p-text,
+.p-card p {
+  max-width: var(--project-reading) !important;
+  font-family: var(--pc-sans) !important;
+  font-size: 15px !important;
+  line-height: 1.78 !important;
+  letter-spacing: -0.002em !important;
+  color: var(--body) !important;
+}
+
+.p-body p,
+.p-card p { margin: 0 0 18px !important; }
+.p-body p:last-child,
+.p-card p:last-child { margin-bottom: 0 !important; }
+
+.p-body strong,
+.p-card strong {
+  font-weight: 680 !important;
+  color: var(--heading) !important;
+}
+
+.p-callout,
+.p-insight {
+  max-width: var(--project-reading) !important;
+  margin: 26px 0 !important;
+  padding: 4px 0 4px 20px !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-left: 2px solid var(--line2) !important;
+  border-radius: 0 !important;
+  font-family: var(--pc-sans) !important;
+  font-size: 14px !important;
+  line-height: 1.72 !important;
+  color: var(--body) !important;
+}
+
+code.inline,
+.p-card code {
+  padding: 0.12em 0.38em !important;
+  background: var(--bg3) !important;
+  border: 0 !important;
+  border-radius: 4px !important;
+  font-family: var(--pc-mono) !important;
+  font-size: 0.88em !important;
+  color: var(--heading) !important;
+}
+
+/* Data-heavy showcase blocks */
+.p-math-block,
+.p-console,
+.p-schema,
+.p-tree {
+  max-width: 100% !important;
+  margin: 24px 0 !important;
+  padding: 22px !important;
+  background: var(--bg2) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+}
+
+.p-table-scroll,
+.p-ctrl-table-wrap,
+.p-math-scroll,
+.p-math-example-scroll {
+  width: 100% !important;
+  overflow-x: auto !important;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.p-sort-toggle {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin: 20px 0 !important;
+}
+
+.p-sort-btn,
+.p-console-tab {
+  min-height: 36px !important;
+  padding: 7px 12px !important;
+  background: transparent !important;
+  border: 1px solid var(--line2) !important;
+  border-radius: 999px !important;
+  font-family: var(--pc-sans) !important;
+  font-size: 11px !important;
+  font-weight: 650 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: var(--muted) !important;
+}
+
+.p-sort-btn.active,
+.p-console-tab.active {
+  background: var(--heading) !important;
+  border-color: var(--heading) !important;
+  color: var(--bg) !important;
+}
+
+.p-closing {
+  margin: 8px 0 0 !important;
+  padding: 28px 0 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-top: 1px solid var(--line2) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.p-closing-title {
+  font-family: var(--pc-sans) !important;
+  font-size: 20px !important;
+  letter-spacing: -0.02em !important;
+}
+
+.p-closing-btn,
+.p-link-btn.primary {
+  min-height: 44px !important;
+  padding: 11px 18px !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  background: var(--heading) !important;
+  color: var(--bg) !important;
+  font-family: var(--pc-sans) !important;
+  font-size: 12px !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+/* Project index: editorial catalogue */
+.ap-header {
+  max-width: 760px !important;
+  margin: 0 0 70px !important;
+}
+
+.ap-eyebrow {
+  margin: 0 0 14px !important;
+  font-family: var(--pc-sans) !important;
+  font-size: 12px !important;
+  font-weight: 650 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+}
+
+.ap-eyebrow::before,
+.ap-title-dot,
+.ap-section-pulse { display: none !important; }
+
+.ap-title {
+  margin: 0 !important;
+  font-family: var(--pc-sans) !important;
+  font-size: clamp(44px, 7vw, 76px) !important;
+  font-weight: 720 !important;
+  letter-spacing: -0.055em !important;
+  line-height: 0.98 !important;
+  color: var(--heading) !important;
+}
+
+.ap-sub {
+  max-width: 660px !important;
+  margin: 22px 0 0 !important;
+  font-family: var(--pc-sans) !important;
+  font-size: 17px !important;
+  line-height: 1.7 !important;
+  color: var(--body) !important;
+}
+
+.ap-stats {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(80px, 1fr)) !important;
+  gap: 0 !important;
+  max-width: 520px !important;
+  margin: 34px 0 0 !important;
+  padding: 20px 0 0 !important;
+  border-top: 1px solid var(--line2) !important;
+}
+
+.ap-stat { padding-right: 24px !important; }
+.ap-stat-val {
+  font-family: var(--pc-sans) !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  letter-spacing: -0.03em !important;
+}
+
+.ap-stat-label {
+  margin-top: 7px !important;
+  font-family: var(--pc-sans) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.04em !important;
+  text-transform: none !important;
+}
+
+.ap-section { margin: 0 0 72px !important; }
+.ap-section-head {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 12px !important;
+  margin: 0 0 20px !important;
+  padding: 0 0 12px !important;
+  border-bottom: 1px solid var(--line2) !important;
+}
+
+.ap-section-title {
+  font-family: var(--pc-sans) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.01em !important;
+  text-transform: none !important;
+}
+
+.ap-section-count {
+  padding: 0 !important;
+  background: none !important;
+  border: 0 !important;
+  font-family: var(--pc-sans) !important;
+  font-size: 11px !important;
+  color: var(--muted) !important;
+}
+
+.ap-section-line { display: none !important; }
+.ap-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+}
+
+.ap-card {
+  min-width: 0 !important;
+  background: var(--bg2) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--project-radius) !important;
+  box-shadow: none !important;
+  transform: none !important;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease !important;
+}
+
+.ap-card:hover {
+  background: var(--bg2) !important;
+  border-color: var(--line2) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--project-shadow) !important;
+}
+
+.ap-card-inner {
+  min-height: 100% !important;
+  padding: 26px 26px 22px !important;
+}
+
+.ap-card-top {
+  min-height: 26px !important;
+  margin-bottom: 28px !important;
+}
+
+.ap-card-icon {
+  width: 22px !important;
+  height: 22px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  color: var(--muted) !important;
+}
+
+.ap-card-icon svg {
+  width: 20px !important;
+  height: 20px !important;
+  stroke-width: 1.55 !important;
+}
+
+.ap-card-badge,
+.ap-card-badge.ongoing {
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  font-family: var(--pc-sans) !important;
+  font-size: 10px !important;
+  font-weight: 650 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+}
+
+.ap-card-name {
+  margin: 0 0 10px !important;
+  font-family: var(--pc-sans) !important;
+  font-size: 24px !important;
+  font-weight: 690 !important;
+  line-height: 1.16 !important;
+  letter-spacing: -0.035em !important;
+  color: var(--heading) !important;
+}
+
+.ap-card-desc {
+  display: -webkit-box;
+  min-height: 0 !important;
+  margin: 0 0 20px !important;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  font-family: var(--pc-sans) !important;
+  font-size: 13px !important;
+  line-height: 1.65 !important;
+  color: var(--body) !important;
+}
+
+.ap-tag-row {
+  gap: 6px 14px !important;
+  margin: auto 0 18px !important;
+}
+
+.ap-tag {
+  position: relative;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  font-family: var(--pc-sans) !important;
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: var(--muted) !important;
+}
+
+.ap-tag:not(:last-child)::after {
+  content: "·";
+  position: absolute;
+  right: -9px;
+  color: var(--line2);
+}
+
+.ap-card-footer {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  margin: 0 !important;
+  padding: 15px 0 0 !important;
+  border-top: 1px solid var(--line) !important;
+}
+
+.ap-card-stack {
+  overflow: hidden;
+  font-family: var(--pc-sans) !important;
+  font-size: 10.5px !important;
+  line-height: 1.4 !important;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--muted) !important;
+}
+
+.ap-card-cta {
+  flex-shrink: 0;
+  gap: 5px !important;
+  font-family: var(--pc-sans) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: var(--heading) !important;
+}
+
+.ap-card:hover .ap-card-cta {
+  gap: 8px !important;
+  color: var(--heading) !important;
+}
+
+.ap-fab,
+.mob-sheet,
+.mob-sheet-overlay,
+.ap-preview { display: none !important; }
+
+.ap-card:focus-visible,
+.project-back:focus-visible,
+.p-link-btn:focus-visible,
+.p-closing-btn:focus-visible {
+  outline: 2px solid var(--heading) !important;
+  outline-offset: 4px !important;
+}
+
+@media (max-width: 1040px) {
+  .p-layout {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0 !important;
+  }
+
+  .p-main-col { width: min(100%, var(--project-reading)) !important; }
+  .p-side-col {
+    position: static !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 28px !important;
+    width: min(100%, var(--project-reading)) !important;
+    margin-top: 10px !important;
+    padding-top: 36px !important;
+    border-top: 1px solid var(--line2) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .project-page,
+  .ap-page { padding: 80px 18px 78px !important; }
+  .project-back { margin-bottom: 30px !important; }
+  .p-hero { padding-bottom: 32px !important; }
+
+  html .p-hero-title,
+  html .p-hero-title em {
+    font-size: clamp(38px, 12vw, 56px) !important;
+    line-height: 0.98 !important;
+    overflow-wrap: anywhere;
+  }
+
+  html .p-hero-sub {
+    margin-top: 20px !important;
+    font-size: 16px !important;
+  }
+
+  html .p-meta-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 18px 0 !important;
+    margin-bottom: 46px !important;
+  }
+
+  html .p-meta-item,
+  html .p-meta-item:first-child,
+  html .p-meta-item:last-child {
+    padding: 0 14px !important;
+    border: 0 !important;
+  }
+
+  html .p-meta-item:nth-child(odd) {
+    padding-left: 0 !important;
+    border-right: 1px solid var(--line) !important;
+  }
+
+  .p-card,
+  .p-side-col .p-card { margin-bottom: 46px !important; }
+  .p-card-title {
+    grid-template-columns: 28px minmax(0, 1fr) !important;
+    gap: 8px !important;
+    font-size: 19px !important;
+  }
+
+  .p-body,
+  .p-body p,
+  .p-text,
+  .p-card p {
+    font-size: 14.5px !important;
+    line-height: 1.74 !important;
+  }
+
+  .p-side-col {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+
+  .p-math-block,
+  .p-console,
+  .p-schema,
+  .p-tree {
+    padding: 16px !important;
+    border-radius: 8px !important;
+  }
+
+  .p-closing { align-items: stretch !important; }
+  .ap-header { margin-bottom: 52px !important; }
+  .ap-title { font-size: clamp(44px, 14vw, 62px) !important; }
+  .ap-sub {
+    margin-top: 18px !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+  }
+
+  .ap-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .ap-card-inner { padding: 22px 20px 18px !important; }
+  .ap-card-top { margin-bottom: 20px !important; }
+  .ap-card-name { font-size: 22px !important; }
+  .ap-card-desc {
+    display: block !important;
+    margin-bottom: 18px !important;
+    overflow: visible !important;
+    font-size: 13px !important;
+  }
+
+  .ap-section { margin-bottom: 54px !important; }
+}
+
+@media (max-width: 420px) {
+  .project-page,
+  .ap-page { padding-inline: 14px !important; }
+  .ap-stats { grid-template-columns: repeat(3, 1fr) !important; }
+  .ap-stat { padding-right: 10px !important; }
+  .ap-stat-val { font-size: 20px !important; }
+  .ap-card-inner { padding: 20px 17px 17px !important; }
+  .ap-card-footer {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    gap: 9px !important;
+  }
+  .ap-card-stack { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ap-card,
+  .ap-card-cta { transition: none !important; }
+  .ap-card:hover { transform: none !important; }
+}

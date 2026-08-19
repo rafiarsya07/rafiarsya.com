@@ -1,0 +1,2387 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Steam Market Intelligence, Muhammad Rafi Arsya</title>
+<link href="../../assets/avatar_rafi.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        /* BASE STYLES replaces external styles.css */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS',sans-serif; background: #f8f9fb; color: #374151; -webkit-font-smoothing: antialiased; }
+        /* mobile-topbar & hamburger-btn styling consolidated near the bottom of this stylesheet */
+        .portfolio-app { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; align-items: start; }
+        .sidebar {
+            --sb-font: 13.5px;
+            width: 240px;
+            background: #ffffff;
+            border-right: 1px solid #e5e7eb;
+            padding: 20px 12px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            flex-shrink: 0;
+            scrollbar-width: thin;
+            scrollbar-color: #e5e7eb transparent;
+            will-change: transform;
+        }
+        .sidebar::-webkit-scrollbar { width: 3px; }
+        .sidebar::-webkit-scrollbar-track { background: transparent; }
+        .sidebar::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 3px; }
+        .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(17,24,39,0.35); z-index: 550; opacity: 0; pointer-events: none; transition: opacity 0.22s ease; }
+        .sidebar-top {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            flex: 1;
+            min-width: 0;
+        }
+        .sidebar-logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 4px 8px 14px;
+            margin-bottom: 6px;
+            border-bottom: 1px solid #f3f4f6;
+            min-width: 0;
+        }
+        .sidebar-close-btn {
+            display: none;
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            transition: background 0.15s ease, color 0.15s ease;
+        }
+        .sidebar-close-btn:hover { background: #f3f4f6; color: #111827; }
+        .sidebar-close-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+        .sidebar-logo-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+        .sidebar-logo-name {
+            font-size: var(--sb-font);
+            font-weight: 700;
+            color: #111827;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 0;
+            flex: 1;
+        }
+        .sidebar-group-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #9ca3af;
+            font-weight: 600;
+            padding: 14px 8px 6px;
+            margin: 0;
+        }
+        .sidebar-nav,
+        .sidebar-social,
+        .sidebar-projects {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            position: relative;
+            z-index: 1;
+        }
+        .sidebar-nav a,
+        .sidebar-social a,
+        .sidebar-projects a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            color: #374151;
+            text-decoration: none;
+            background: transparent;
+            border: none;
+            transition: background 0.15s ease, color 0.15s ease;
+            font-size: var(--sb-font);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        .sidebar-social a {
+            justify-content: space-between;
+            padding: 9px 12px;
+        }
+        .sidebar-social a::after {
+            content: '↗';
+            color: #9ca3af;
+            font-size: 12px;
+            flex-shrink: 0;
+            transition: color 0.15s ease, transform 0.15s ease;
+            margin-left: auto;
+        }
+        .sidebar-nav a:not(.active):hover,
+        .sidebar-projects a:not(.active):hover {
+            background: #1f2937;
+            color: #ffffff;
+        }
+        .sidebar-nav a:not(.active):hover .nav-icon,
+        .sidebar-projects a:not(.active):hover .nav-icon { color: #ffffff; }
+        .sidebar-nav a.active,
+        .sidebar-projects a.active {
+            background: #111827;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .nav-icon {
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            flex-shrink: 0;
+        }
+        .nav-icon svg {
+            width: 17px;
+            height: 17px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .sidebar-nav a.active .nav-icon,
+        .sidebar-projects a.active .nav-icon { color: #ffffff; }
+        .project-label {
+            font-size: var(--sb-font);
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .sidebar-projects a.project-more {
+            color: #9ca3af;
+            font-size: var(--sb-font);
+        }
+        .sidebar-social a {
+            color: #1a73e8 !important;
+            font-weight: 500;
+        }
+        .sidebar-social a:hover {
+            background: #eff6ff;
+            color: #1558b0 !important;
+        }
+        .sidebar-footer {
+            color: #d1d5db;
+            font-size: 11px;
+            line-height: 1.5;
+            padding: 14px 8px 0;
+            margin-top: 8px;
+            border-top: 1px solid #f3f4f6;
+            flex-shrink: 0;
+        }
+        @media (max-width: 900px) {
+            .mobile-topbar.sidebar-is-open { opacity: 0; visibility: hidden; pointer-events: none; }
+            .sidebar-close-btn { display: flex; }
+            .portfolio-app { display: block; width: 100%; }
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 296px;
+                height: 100vh;
+                z-index: 580;
+                transform: translate3d(-100%, 0, 0);
+                transition: transform 0.24s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: none;
+                padding-top: 20px;
+                overflow-y: auto;
+                overflow-x: hidden;
+                border-right: none;
+                backface-visibility: hidden;
+            }
+            .sidebar.open {
+                transform: translate3d(0, 0, 0);
+                box-shadow: 6px 0 28px rgba(15, 23, 42, 0.16);
+            }
+            .sidebar-overlay { display: block; }
+            .sidebar-overlay.visible { opacity: 1; pointer-events: all; }
+            .sidebar-nav a,
+            .sidebar-social a,
+            .sidebar-projects a {
+                padding: 10px 12px;
+            }
+        }
+    </style>
+<style>
+        :root{--bg:#0c0c0c;--bg2:#141414;--bg3:#1c1c1c;--line:#242424;--line2:#333;--muted: #828282;--sub:#888;--body:#b8b8b8;--heading:#e8e8e8;--white:#f5f5f5;--hi:#ffffff;--acc:#d4d4d4;}
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+        .project-main{padding:0;min-height:100vh;background:var(--bg);color:var(--body);}
+        .project-page{max-width: none;width:100%;margin:0 auto;padding: 44px 56px 100px;}
+        .project-back{display:inline-flex;align-items:center;gap:7px;font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:0;border:none;background:transparent;margin-bottom:36px;transition:color .15s;}
+        .project-back:hover{color:var(--hi);}
+        .project-back svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+        .p-hero{width:100%;border-radius:12px;overflow:hidden;margin-bottom:2px;position:relative;min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;padding:36px 40px;background:#ffffff;border:1px solid #e5e7eb;}
+        .p-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(17,24,39,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(17,24,39,0.025) 1px,transparent 1px);background-size:48px 48px;}
+        .p-hero-badge{display:inline-flex;align-items:center;gap:7px;font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;position:relative;z-index:1;}
+        .p-hero-dot{width:5px;height:5px;border-radius:50%;background:var(--acc);display:inline-block;}
+        .p-hero-title{font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS',sans-serif;font-size:52px;font-weight: 700;color:var(--hi);letter-spacing:-0.025em;line-height:1.05;margin-bottom:14px;position:relative;z-index:1;}
+        .p-hero-title em{font-style:normal;color:var(--hi);font-weight:700;}
+        .p-hero-sub{font-size:15px;color:var(--sub);line-height:1.7;max-width:520px;position:relative;z-index:1;font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS',sans-serif;}
+        .p-hero-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px;position:relative;z-index:1;}
+        .p-hero-tag{font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:20px;background:var(--bg3);color:var(--sub);border:1px solid var(--line2);}
+        .p-meta-strip{display:flex;flex-wrap:wrap;border:1px solid var(--line);border-top:none;border-radius:0 0 2px 2px;overflow:hidden;margin-bottom:32px;background:var(--bg2);}
+        .p-meta-item{flex:1;min-width:100px;padding:13px 18px;border-right:1px solid var(--line);}
+        .p-meta-item:last-child{border-right:none;}
+        .p-meta-label{font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+        .p-meta-value{font-size:12.5px;font-weight:600;color:var(--heading);}
+        .p-meta-value a{color:var(--acc);text-decoration:none;}
+        .p-layout{display:grid;grid-template-columns: 1fr;gap:2px;align-items:start;}
+        .p-main-col{display:flex;flex-direction:column;gap:2px;}
+        .p-side-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; margin-top: 2px; }
+        .p-card{background:var(--bg2);border:1px solid var(--line);border-radius:2px;padding:26px 28px;}
+        .p-card-title{font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;font-size:9.5px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;}
+        .p-num{font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;font-size:9px;color:var(--bg);background:var(--muted);border-radius:2px;padding:1px 6px;font-weight:700;}
+        .p-body{font-size:14.5px;color:var(--body);line-height:1.85;}
+        .p-body p{margin-bottom:14px;}
+        .p-body p:last-child{margin-bottom:0;}
+        .p-body strong{color:var(--hi);font-weight:600;}
+        code.inline{font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;background:var(--bg3);border:1px solid var(--line2);padding:2px 8px;border-radius:3px;font-size:11.5px;color:var(--acc);}
+        .p-callout{border-left:2px solid var(--acc);background:rgba(255,255,255,0.03);padding:14px 18px;border-radius:0 4px 4px 0;margin:16px 0;font-size:13.5px;color:var(--sub);line-height:1.7;}
+        .p-callout strong{color:var(--acc);}
+        .p-features{display:flex;flex-direction:column;gap:18px;}
+        .p-feature-item{display:flex;gap:14px;align-items:flex-start;}
+        .p-feature-icon{width:34px;height:34px;border-radius:6px;background:var(--bg3);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+        .p-feature-icon svg{width:15px;height:15px;stroke:var(--acc);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+        .p-feature-title{font-size:13.5px;font-weight:700;color:var(--heading);margin-bottom:3px;}
+        .p-feature-desc{font-size:12.5px;color:var(--sub);line-height:1.6;}
+        .p-math-block{background:var(--bg);border:1px solid var(--line2);border-radius:4px;padding:20px 24px;margin:12px 0;}
+        .p-math-title{font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+        .p-math-formula{font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;font-size:12px;color:var(--acc);line-height:1.9;white-space:pre-wrap;overflow-x:auto;}
+        .p-math-desc{font-size:12px;color:var(--sub);margin-top:10px;line-height:1.6;}
+        /* DESIGN SYSTEM TOKENS */
+        .p-design-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+        .p-design-section-title{font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+        .p-color-swatches{display:flex;flex-direction:column;gap:6px;}
+        .p-swatch{display:flex;align-items:center;gap:10px;font-size:12px;}
+        .p-swatch-dot{width:24px;height:24px;border-radius:4px;flex-shrink:0;border:1px solid var(--line2);}
+        .p-swatch-name{color:var(--heading);font-weight:600;font-size:11.5px;}
+        .p-swatch-hex{font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;font-size:10px;color:var(--muted);}
+        .p-type-row{display:flex;flex-direction:column;gap:8px;}
+        .p-type-item{}
+        .p-type-sample{margin-bottom:2px;}
+        .p-type-meta{font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;font-size:9.5px;color:var(--muted);}
+        .p-schema{background:var(--bg);border:1px solid var(--line2);border-radius:4px;padding:16px 20px;}
+        .p-schema-key{font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;font-size:11px;color:var(--acc);}
+        .p-schema-type{font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;font-size:11px;color:var(--muted);}
+        .p-schema-row{display:flex;gap:10px;padding:4px 0;border-bottom:1px solid var(--line);}
+        .p-schema-row:last-child{border-bottom:none;}
+        .p-pwa-steps{display:flex;flex-direction:column;gap:12px;}
+        .p-pwa-step{display:flex;gap:12px;align-items:flex-start;}
+        .p-pwa-step-num{font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;font-size:9px;color:var(--bg);background:var(--muted);border-radius:2px;padding:2px 6px;font-weight:700;flex-shrink:0;margin-top:2px;}
+        .p-pwa-step-body{}
+        .p-pwa-step-title{font-size:13px;font-weight:700;color:var(--heading);margin-bottom:2px;}
+        .p-pwa-step-desc{font-size:12px;color:var(--sub);line-height:1.55;}
+        .p-steps { display: flex; flex-direction: column; position: relative; padding-left: 26px; }
+        .p-steps::before {
+            content: ''; position: absolute; left: 8px; top: 10px;
+            width: 1px; height: calc(100% - 30px);
+            background: linear-gradient(to bottom, var(--line2), transparent);
+        }
+        .p-step { margin-bottom: 20px; position: relative; }
+        .p-step:last-child { margin-bottom: 0; }
+        .p-step-dot {
+            position: absolute; left: -22px; top: 2px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: var(--bg3); border: 1px solid var(--line2);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;
+            font-size: 7px; color: var(--muted); font-weight: 700;
+        }
+        .p-step-title { font-size: 13px; font-weight: 700; color: var(--heading); margin-bottom: 4px; }
+        .p-step-desc { font-size: 12.5px; color: var(--sub); line-height: 1.6; }
+        .p-usecases{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+        .p-usecase{background:var(--bg3);border:1px solid var(--line);border-radius:4px;padding:14px 16px;}
+        .p-usecase-icon{font-size:18px;margin-bottom:7px;}
+        .p-usecase-title{font-size:12.5px;font-weight:700;color:var(--heading);margin-bottom:4px;}
+        .p-usecase-desc{font-size:11.5px;color:var(--muted);line-height:1.55;}
+        /* SCORE WIDGET */
+        .p-score-ring{width:80px;height:80px;flex-shrink:0;}
+        .p-score-ring circle{fill:none;stroke-width:6;stroke-linecap:round;}
+        .p-score-val{font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS',sans-serif;font-size:22px;font-weight: 700;color:var(--hi);}
+        .p-health-bars{display:flex;flex-direction:column;gap:10px;margin-top:16px;}
+        .p-health-bar-label{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:4px;}
+        .p-health-bar-track{height:3px;border-radius:2px;background:var(--line2);}
+        .p-health-bar-fill{height:100%;border-radius:2px;background:var(--acc);}
+        .p-tech-grid{display:flex;flex-wrap:wrap;gap:6px;}
+        .p-tech-pill{font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;font-size:10.5px;color:var(--sub);background:var(--bg);border:1px solid var(--line2);border-radius:3px;padding:5px 11px;transition:all .15s;}
+        .p-tech-pill:hover{color:var(--white);border-color:var(--muted);}
+        .p-numbers{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+        .p-num-card{background:var(--bg3);border:1px solid var(--line);border-radius:4px;padding:14px 16px;}
+        .p-num-val{font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS',sans-serif;font-size:28px;font-weight: 700;color:var(--hi);line-height:1;margin-bottom:4px;}
+        .p-num-label{font-size:10.5px;color:var(--muted);font-weight:500;}
+        .p-progress-label{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-bottom:5px;}
+        .p-progress-label span:last-child{color:var(--acc);font-weight:700;font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;}
+        .p-progress-track{height:2px;border-radius:1px;background:var(--line2);overflow:hidden;margin-bottom:13px;}
+        .p-progress-fill{height:100%;border-radius:1px;background:var(--acc);}
+        .p-link-btn{display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;padding:10px 16px;border-radius:3px;text-decoration:none;transition:all .15s;width:100%;margin-bottom:6px;border:1px solid var(--line2);color:var(--sub);background:var(--bg);}
+        .p-link-btn:last-child{margin-bottom:0;}
+        .p-link-btn:hover{color:var(--white);border-color:var(--muted);background:var(--bg3);}
+        .p-link-btn.primary{background:var(--hi);color:var(--bg);border-color:transparent;}
+        .p-link-btn.primary:hover{background:var(--acc);}
+        .p-link-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+        .p-link-btn-label{flex:1;}
+        .p-closing{margin-top:32px;padding:28px 32px;background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--hi);border-radius:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;}
+        .p-closing-title{font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS',sans-serif;font-size:20px;font-weight: 700;color:var(--hi);margin-bottom:6px;}
+        .p-closing-desc{font-size:13px;color:var(--sub);line-height:1.6;max-width:480px;}
+        .p-closing-btn{display:inline-flex;align-items:center;gap:8px;background:var(--hi);color:#fff;font-size:12px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;padding:11px 22px;border-radius:8px;text-decoration:none;flex-shrink:0;transition:opacity .15s;}
+        .p-closing-btn:hover{opacity:.85;}
+        .p-closing-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+        @media(max-width:860px){.p-layout{grid-template-columns:1fr;}.p-side-col{position:static;order:-1;}.p-hero-title{font-size:42px;}}
+        @media(max-width:600px){.project-page{padding:16px 16px 60px;}.p-hero{padding:24px 22px;min-height:240px;}.p-hero-title{font-size:32px;}.p-meta-strip{flex-direction:column;}.p-meta-item{border-right:none;border-bottom:1px solid var(--line);}.p-meta-item:last-child{border-bottom:none;}.p-closing{flex-direction:column;}.p-closing-btn{width:100%;justify-content:center;}.p-usecases,.p-design-grid{grid-template-columns:1fr;}}
+    
+        /* ── Light theme overrides ── */
+        :root {
+            --bg: #f8f9fb; --bg2: #ffffff; --bg3: #f3f4f6;
+            --line: #e5e7eb; --line2: #d1d5db;
+            --muted: #9ca3af; --sub: #6b7280; --body: #374151;
+            --heading: #1f2937; --white: #ffffff; --hi: #111827;
+            --acc: #111827;
+        }
+        .project-main, .ap-main { background: var(--bg); color: var(--body); }
+        .p-card { background: var(--bg2); border-color: var(--line); }
+        .p-card-title { color: var(--muted); border-color: var(--line); }
+        .p-num { background: var(--muted); color: #fff; }
+        .p-body { color: var(--body); }
+        .p-body strong { color: var(--hi); }
+        .p-body p { color: var(--body); }
+        code.inline { background: var(--bg3); border-color: var(--line2); color: #374151; font-weight: 600; }
+        .p-callout { background: #f9fafb; border-color: #d1d5db; color: var(--sub); }
+        .p-callout strong { color: var(--hi); }
+        .p-math-block { background: var(--bg3); border-color: var(--line2); }
+        .p-math-title { color: var(--muted); }
+        .p-math-formula { color: #374151; }
+        .p-math-desc { color: var(--sub); }
+        .p-pipe-step { background: var(--bg3); border-color: var(--line2); }
+        .p-pipe-step-num { color: var(--muted); }
+        .p-pipe-step-label { color: var(--hi); }
+        .p-pipe-step-sub { color: var(--muted); }
+        .p-pipe-arrow { color: var(--line2); }
+        .p-features { gap: 12px; }
+        .p-feature-item { align-items: flex-start; }
+        .p-feature-icon { background: var(--bg3); border-color: var(--line2); }
+        .p-feature-icon svg { stroke: #374151; }
+        .p-feature-title { color: var(--hi); }
+        .p-feature-desc { color: var(--sub); }
+        .p-step-dot { background: var(--bg3); border-color: var(--line2); color: var(--muted); }
+        .p-step-title { color: var(--hi); }
+        .p-step-desc { color: var(--sub); }
+        .p-usecase { background: var(--bg3); border-color: var(--line); }
+        .p-usecase-title { color: var(--hi); }
+        .p-usecase-desc { color: var(--sub); }
+        .p-audit-item { background: var(--bg3); border-color: var(--line); }
+        .p-audit-desc { color: var(--sub); }
+        .p-wcag-row { border-color: var(--line); }
+        .p-wcag-code { color: #374151; }
+        .p-wcag-desc { color: var(--sub); }
+        .p-wcag-pass { color: #fff; background: #374151; }
+        .p-arch-row { border-color: var(--line); }
+        .p-arch-icon { background: var(--bg3); border-color: var(--line2); }
+        .p-arch-icon svg { stroke: var(--sub); }
+        .p-arch-name { color: var(--hi); }
+        .p-arch-desc { color: var(--muted); }
+        .p-flow::before { background: linear-gradient(to bottom, var(--line2), transparent); }
+        .p-order-state { background: var(--bg3); border-color: var(--line2); color: var(--hi); }
+        .p-order-arrow { color: var(--muted); }
+        .p-tech-pill { background: var(--bg2); border-color: var(--line2); color: var(--sub); }
+        .p-tech-pill:hover { background: var(--bg3); color: var(--hi); border-color: #9ca3af; }
+        .p-num-card { background: var(--bg3); border-color: var(--line); }
+        .p-num-val { color: var(--hi); }
+        .p-num-label { color: var(--muted); }
+        .p-progress-track { background: var(--line2); }
+        .p-progress-fill { background: #374151; }
+        .p-progress-label { color: var(--muted); }
+        .p-progress-label span:last-child { color: var(--hi); }
+        .p-link-btn { background: var(--bg2); border-color: var(--line2); color: var(--sub); }
+        .p-link-btn:hover { background: var(--bg3); color: var(--hi); border-color: var(--muted); }
+        .p-link-btn.primary { background: var(--hi); color: #fff; }
+        .p-link-btn.primary:hover { background: #374151; }
+        .project-back { color: var(--muted); }
+        .p-meta-strip { background: var(--bg2); border-color: var(--line); }
+        .p-meta-item { border-color: var(--line); }
+        .p-meta-label { color: var(--muted); }
+        .p-meta-value { color: var(--hi); }
+        .p-meta-value a { color: #374151; }
+        .p-live-banner { background: #f9fafb; border-color: var(--line2); color: var(--sub); }
+        .p-live-banner strong { color: var(--hi); }
+        .p-class-item { background: var(--bg3); border-color: var(--line); color: var(--sub); }
+        .p-wcag-pass { background: #374151; color: #fff; }
+        .p-schema { background: var(--bg3); border-color: var(--line2); }
+        .p-schema-key { color: #374151; }
+        .p-schema-type { color: var(--muted); }
+        .p-schema-row { border-color: var(--line); }
+        .p-pwa-step-num { background: var(--muted); color: #fff; }
+        .p-pwa-step-title { color: var(--hi); }
+        .p-pwa-step-desc { color: var(--sub); }
+        .p-swatch-name { color: var(--hi); }
+        .p-type-meta { color: var(--muted); }
+        .p-health-bar-label { color: var(--muted); }
+        .p-health-bar-track { background: var(--line2); }
+        .p-health-bar-fill { background: #374151; }
+        .p-score-val { color: var(--hi); }
+        /* Hero stays dark always */
+        /* All Projects page */
+        .ap-main { background: var(--bg); }
+        .ap-title { color: var(--hi); }
+        .ap-sub { color: var(--sub); }
+        .ap-stat-val { color: var(--hi); }
+        .ap-stat-label { color: var(--muted); }
+        .ap-section-title { color: var(--hi); }
+        .ap-section-count { background: var(--bg3); color: var(--sub); }
+        .ap-section-line { background: var(--line); }
+        .ap-card { background: var(--bg2); border-color: var(--line); }
+        .ap-card:hover { background: var(--bg3); border-color: #d1d5db; }
+        .ap-card-bar { height: 3px; }
+        .ap-card-icon { background: var(--bg3); border-color: var(--line2); }
+        .ap-card-icon svg { stroke: var(--sub); }
+        .ap-card-name { color: var(--hi); }
+        .ap-card-desc { color: var(--sub); }
+        .ap-tag { background: var(--bg3); border-color: var(--line2); color: var(--sub); }
+        .ap-card-stack { color: var(--muted); }
+        .ap-card-cta { color: var(--muted); }
+        .ap-card:hover .ap-card-cta { color: var(--hi); }
+        .ap-card-footer { border-color: var(--line); }
+        .ap-card-badge { border-color: var(--line2); color: var(--muted); }
+        .ap-card-badge.ongoing { background: rgba(0,0,0,0.04); color: #374151; border-color: #d1d5db; }
+        .ap-preview { background: #fff; border-color: var(--line2); box-shadow: 0 8px 40px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.06); }
+        .ap-preview-label { color: var(--muted); }
+        .ap-preview-title { color: var(--hi); }
+        .ap-preview-desc { color: var(--sub); }
+        .ap-preview-key { color: var(--muted); }
+        .ap-preview-val { color: var(--sub); }
+        .ap-preview-btn { background: var(--hi); color: #fff; }
+        .ap-stats { border-color: var(--line); }
+        .ap-eyebrow { color: var(--muted); }
+
+    
+        /* ════════════════════════════════════════════
+           MOBILE NAV — floating hamburger only
+           ════════════════════════════════════════════ */
+
+        /* Mobile topbar: just a wrapper that positions the floating hamburger button */
+        .mobile-topbar {
+            display: none;
+            position: fixed; top: 14px; left: 14px;
+            z-index: 600; height: auto; background: transparent; border: none; padding: 0;
+        }
+        .hamburger-btn {
+            width: 40px; height: 40px; border: none;
+            background: transparent; border-radius: 10px; cursor: pointer;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 5px;
+            padding: 6px; flex-shrink: 0;
+            transition: opacity 0.15s ease;
+        }
+        .hamburger-btn:hover { opacity: 0.7; }
+        .hamburger-btn span {
+            display: block; width: 17px; height: 2px;
+            background: var(--hi, #111827); border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(15,23,42,0.4);
+            transition: transform 0.25s cubic-bezier(.4,0,.2,1), opacity 0.25s ease;
+        }
+        .hamburger-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* Cards: rounded corners for modern look */
+        .p-card { border-radius: 10px !important; }
+        .p-hero { border-radius: 12px !important; }
+        .p-meta-strip { border-radius: 0 0 10px 10px !important; }
+        .project-page { max-width: none; width: 100%; margin: 0 auto; }
+
+        /* ── TABLET (≤ 900px) ── */
+        @media (max-width: 900px) {
+            .mobile-topbar { display: flex; transition: opacity 0.18s ease, visibility 0.18s ease; }
+            .mobile-topbar.sidebar-is-open { opacity: 0; visibility: hidden; pointer-events: none; }
+            .sidebar-close-btn { display: flex; }
+        }
+
+        /* ── TABLET LAYOUT (≤ 860px) ── */
+        @media (max-width: 860px) {
+            .p-layout { grid-template-columns: 1fr !important; gap: 12px !important; }
+            .p-side-col { position: static !important; order: -1; display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; }
+            .p-side-col .p-card { flex: 1 1 calc(50% - 6px); min-width: 200px; }
+            .p-hero-title { font-size: 40px !important; }
+            .project-page { padding: 28px 24px 80px; }
+        }
+
+        /* ── MOBILE (≤ 600px) ── */
+        @media (max-width: 600px) {
+            .project-page { padding: 16px 16px calc(72px + env(safe-area-inset-bottom, 0px)) !important; }
+
+            /* Hero */
+            .p-hero { padding: 24px 20px 28px !important; min-height: 200px !important; border-radius: 10px !important; }
+            .p-hero-title { font-size: 28px !important; line-height: 1.05 !important; margin-bottom: 10px !important; }
+            .p-hero-sub { font-size: 13px !important; }
+            .p-hero-tags { margin-top: 14px !important; gap: 5px !important; }
+            .p-hero-tag { font-size: 8.5px !important; padding: 3px 8px !important; }
+
+            /* Meta strip */
+            .p-meta-strip { flex-direction: column !important; }
+            .p-meta-item {
+                border-right: none !important; border-bottom: 1px solid var(--line) !important;
+                padding: 11px 16px !important;
+            }
+            .p-meta-item:last-child { border-bottom: none !important; }
+            .p-meta-label { font-size: 8.5px !important; }
+            .p-meta-value { font-size: 12px !important; }
+
+            /* Cards */
+            .p-card { padding: 18px 16px !important; border-radius: 10px !important; }
+            .p-card-title { font-size: 9px !important; margin-bottom: 14px !important; padding-bottom: 12px !important; }
+            .p-main-col { gap: 10px !important; }
+
+            /* Sidebar cards stacked full-width on mobile */
+            .p-side-col { flex-direction: column !important; }
+            .p-side-col .p-card { flex: 1 1 100% !important; min-width: unset !important; }
+
+            /* Body text */
+            .p-body { font-size: 14px !important; line-height: 1.8 !important; }
+            .p-body p { margin-bottom: 12px !important; }
+
+            /* Callout */
+            .p-callout { font-size: 13px !important; padding: 12px 14px !important; }
+
+            /* Features */
+            .p-features { gap: 14px !important; }
+            .p-feature-title { font-size: 13px !important; }
+            .p-feature-desc { font-size: 12px !important; }
+
+            /* Steps */
+            .p-step-title { font-size: 13px !important; }
+            .p-step-desc { font-size: 12px !important; }
+
+            /* Numbers grid */
+            .p-numbers { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+            .p-num-val { font-size: 24px !important; }
+            .p-num-label { font-size: 10px !important; }
+            .p-num-card { padding: 12px 14px !important; }
+
+            /* Use cases */
+            .p-usecases { grid-template-columns: 1fr !important; gap: 8px !important; }
+
+            /* Classes grid */
+            .p-classes-grid { grid-template-columns: 1fr 1fr !important; gap: 6px !important; }
+            .p-class-item { font-size: 9px !important; padding: 4px 8px !important; }
+
+            /* Design grid */
+            .p-design-grid { grid-template-columns: 1fr !important; }
+
+            /* Pipeline — horizontal scroll on mobile */
+            .p-pipeline {
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                padding-bottom: 12px !important;
+                margin: 0 -16px !important;
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+            }
+            .p-pipe-step { min-width: 80px !important; padding: 8px 10px !important; }
+            .p-pipe-step-label { font-size: 10px !important; }
+            .p-pipe-step-sub { font-size: 8.5px !important; }
+
+            /* Math formula — horizontal scroll */
+            .p-math-formula {
+                font-size: 11px !important;
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                padding-bottom: 4px !important;
+            }
+            .p-math-block { padding: 14px 14px !important; }
+
+            /* Controls table — horizontal scroll */
+            .p-ctrl-table-wrap {
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                margin: 0 -16px !important;
+                padding: 0 16px !important;
+            }
+            .p-ctrl-table { font-size: 11.5px !important; min-width: 380px !important; }
+            .p-ctrl-table th { padding: 7px 10px !important; font-size: 8px !important; }
+            .p-ctrl-table td { padding: 8px 10px !important; font-size: 11.5px !important; }
+
+            /* Progress */
+            .p-progress-label { font-size: 10.5px !important; }
+            .p-progress-track { margin-bottom: 10px !important; }
+
+            /* Tech pills */
+            .p-tech-pill { font-size: 9.5px !important; padding: 4px 9px !important; }
+
+            /* Links */
+            .p-link-btn { font-size: 12px !important; padding: 9px 14px !important; }
+
+            /* Arch rows */
+            .p-arch-name { font-size: 12.5px !important; }
+            .p-arch-desc { font-size: 11px !important; }
+
+            /* Closing */
+            .p-closing { flex-direction: column !important; padding: 22px 18px !important; }
+            .p-closing-title { font-size: 18px !important; }
+            .p-closing-desc { font-size: 12.5px !important; }
+            .p-closing-btn { width: 100% !important; justify-content: center !important; font-size: 11.5px !important; }
+
+            /* Back button */
+            .project-back { font-size: 9px !important; padding: 0 !important; margin-bottom: 16px !important; }
+
+            /* Health bars */
+            .p-health-bar-label { font-size: 10.5px !important; }
+
+            /* PWA steps */
+            .p-pwa-step-title { font-size: 12.5px !important; }
+            .p-pwa-step-desc { font-size: 11.5px !important; }
+
+            /* Swatch design */
+            .p-swatch-name { font-size: 11px !important; }
+            .p-swatch-hex { font-size: 9.5px !important; }
+
+            /* Score */
+            .p-score-val { font-size: 32px !important; }
+
+            /* Audit grid */
+            .p-audit-grid { grid-template-columns: 1fr !important; }
+
+            /* WCAG table — horizontal scroll */
+            .p-wcag-table-wrap {
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                margin: 0 -16px !important;
+                padding: 0 16px !important;
+            }
+            .p-wcag-row { flex-wrap: wrap !important; gap: 6px !important; }
+            .p-wcag-code { font-size: 10px !important; }
+            .p-wcag-desc { font-size: 11.5px !important; }
+        }
+
+        /* ── XS (≤ 380px) ── */
+        @media (max-width: 380px) {
+            .p-hero-title { font-size: 24px !important; }
+            .p-card { padding: 14px 14px !important; }
+            .p-numbers { grid-template-columns: 1fr 1fr !important; }
+            .p-num-val { font-size: 22px !important; }
+        }
+
+    
+        /* Prevent horizontal overflow globally */
+        html, body { max-width: 100%; overflow-x: clip; }
+
+        /* ── MOBILE EXTRA POLISH ───────────────────────────────── */
+        @media (max-width: 600px) {
+            /* FAB bottom spacing */
+            .project-page { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important; }
+            /* Horizontal no-overflow */
+            html, body { max-width: 100%; overflow-x: clip; }
+            /* Tech pills wrap nicely */
+            .p-tech-pills { flex-wrap: wrap !important; gap: 6px !important; }
+            /* Link buttons full-width on small screens */
+            .p-links { flex-direction: column !important; gap: 8px !important; }
+            .p-link-btn { text-align: center; justify-content: center !important; }
+            /* Flow / order states wrap */
+            .p-flow { gap: 6px !important; flex-wrap: wrap !important; }
+            .p-order-state { font-size: 10px !important; padding: 5px 10px !important; }
+            /* Features grid ensure single col */
+            .p-features { display: flex !important; flex-direction: column !important; }
+            /* Arch rows */
+            .p-arch-rows { gap: 10px !important; }
+        }
+        @media (max-width: 380px) {
+            .project-page { padding-left: 12px !important; padding-right: 12px !important; }
+            .mob-sheet-meta { grid-template-columns: 1fr !important; }
+        }
+
+
+        /* ── SIDE-COL MOBILE OVERFLOW FIX ──────────────────── */
+        @media (max-width: 860px) {
+            /* Side col becomes a flex row of cards */
+            .p-side-col { 
+                position: static !important; 
+                display: flex !important; 
+                flex-direction: row !important; 
+                flex-wrap: wrap !important; 
+                gap: 10px !important; 
+            }
+            .p-side-col .p-card { 
+                flex: 1 1 calc(50% - 5px) !important; 
+                min-width: 160px !important;
+                max-width: 100% !important;
+            }
+            /* Tech pills in side col must wrap */
+            .p-side-col .p-tech-grid { flex-wrap: wrap !important; }
+            .p-side-col .p-tech-pill { 
+                font-size: 10px !important; 
+                word-break: break-word !important;
+                white-space: normal !important;
+            }
+            /* Links in side col full width */
+            .p-side-col .p-links { flex-direction: column !important; }
+            .p-side-col .p-link-btn { text-align: center !important; justify-content: center !important; }
+        }
+
+        @media (max-width: 600px) {
+            /* On small mobile, stack side cards vertically */
+            .p-side-col { flex-direction: column !important; }
+            .p-side-col .p-card { flex: 1 1 100% !important; min-width: unset !important; }
+            /* Progress label wrapping */
+            .p-progress-label { flex-wrap: wrap !important; }
+            /* Number cards 2-col */
+            .p-numbers { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+        }
+
+        /* ── Part section eyebrow ── */
+        .p-part-eyebrow { font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; font-size:10.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color: var(--muted); margin-bottom:6px; }
+        .p-part-eyebrow span { color: var(--hi); }
+
+        /* ── Chart wrapper ── */
+        .p-chart-wrap { margin: 16px 0 4px; }
+        .p-chart-caption { font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; font-size:10.5px; color: var(--muted); margin-top:10px; letter-spacing:0.01em; }
+        .p-chart-svg { width:100%; height:auto; display:block; overflow:visible; }
+        .p-chart-svg text { font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; }
+        .p-line-path { fill:none; stroke:var(--hi); stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+        .p-line-area { fill:var(--hi); opacity:0.05; }
+        .p-line-dot { fill:var(--hi); stroke:var(--bg2); stroke-width:2; cursor:pointer; }
+        .p-line-dot:hover { fill:var(--acc); r:5.5; }
+        .p-chart-gridline { stroke: var(--line); stroke-width:1; }
+        .p-chart-axis-label { fill: var(--muted); font-size:10px; }
+        .p-chart-tooltip-bg { fill: var(--hi); rx:4; }
+        .p-chart-tooltip-text { fill: var(--bg2); font-size:10.5px; font-weight:600; }
+
+        /* ── Horizontal bar chart (genre ratings) ── */
+        .p-hbar-list { display:flex; flex-direction:column; gap:7px; margin-top:14px; }
+        .p-hbar-row { display:grid; grid-template-columns:110px 1fr 68px; align-items:center; gap:10px; }
+        .p-hbar-label { font-size:12.5px; color: var(--body); font-weight:500; text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .p-hbar-track { background: var(--bg3); border-radius:4px; height:18px; position:relative; overflow:hidden; }
+        .p-hbar-fill { background: var(--hi); height:100%; border-radius:4px; transition: width 0.6s cubic-bezier(.4,0,.2,1); width:0%; }
+        .p-hbar-row:hover .p-hbar-fill { background: var(--acc); }
+        .p-hbar-val { font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; font-size:11px; color: var(--muted); font-weight:600; text-align:right; white-space:nowrap; }
+        .p-hbar-row.top .p-hbar-label, .p-hbar-row.top .p-hbar-val { color: var(--hi); font-weight:700; }
+
+        /* ── Sort toggle ── */
+        .p-sort-toggle { display:inline-flex; background: var(--bg3); border:1px solid var(--line2); border-radius:7px; padding:2px; margin-bottom:4px; gap:2px; }
+        .p-sort-btn { font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; font-size:10.5px; font-weight:600; letter-spacing:0.04em; padding:6px 12px; border-radius:5px; border:none; background:transparent; color: var(--sub); cursor:pointer; transition: background .15s, color .15s; }
+        .p-sort-btn.active { background: var(--hi); color: var(--bg2); }
+        .p-sort-btn:not(.active):hover { color: var(--hi); }
+
+        /* ── Grouped bar chart (price buckets) ── */
+        .p-gbar-wrap { display:flex; align-items:flex-end; justify-content:space-between; gap:10px; height:180px; margin-top:18px; padding:0 4px; border-bottom:1px solid var(--line); }
+        .p-gbar-col { display:flex; flex-direction:column; align-items:center; justify-content:flex-end; flex:1; height:100%; gap:6px; min-width:0; }
+        .p-gbar-bar-wrap { width:100%; max-width:56px; display:flex; align-items:flex-end; height:140px; position:relative; }
+        .p-gbar-bar { width:100%; background: var(--bg3); border:1px solid var(--line2); border-radius:4px 4px 0 0; transition: height 0.6s cubic-bezier(.4,0,.2,1); height:0%; position:relative; }
+        .p-gbar-col:hover .p-gbar-bar { background: var(--hi); border-color:var(--hi); }
+        .p-gbar-bar-val { position:absolute; top:-20px; left:0; right:0; text-align:center; font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; font-size:11px; font-weight:700; color: var(--hi); }
+        .p-gbar-label { font-size:10.5px; color: var(--muted); text-align:center; line-height:1.3; }
+        .p-gbar-sub { font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; font-size:9.5px; color: var(--muted); }
+
+        /* ── Data table ── */
+        .p-data-table { width:100%; border-collapse:collapse; margin-top:14px; font-size:12.5px; }
+        .p-data-table th { text-align:left; font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color: var(--muted); padding:0 10px 8px; border-bottom:1px solid var(--line2); }
+        .p-data-table td { padding:9px 10px; border-bottom:1px solid var(--line); color: var(--body); vertical-align:middle; }
+        .p-data-table tr:last-child td { border-bottom:none; }
+        .p-data-table td.num { font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; text-align:right; color: var(--hi); font-weight:600; }
+        .p-data-table tr:hover td { background: var(--bg3); }
+        .p-data-table .p-dev-name { color: var(--muted); font-size:11.5px; }
+        .p-rating-pill { display:inline-block; font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; font-size:11px; font-weight:700; padding:2px 8px; border-radius:20px; background: var(--bg3); color: var(--hi); }
+        .p-table-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+        /* ── Genre tree (recursive CTE) ── */
+        .p-tree { font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; font-size:12px; line-height:2; color: var(--body); margin-top:6px; }
+        .p-tree-root { color: var(--hi); font-weight:700; }
+        .p-tree-l1 { padding-left:24px; }
+        .p-tree-l1::before { content:'├─ '; color: var(--muted); }
+        .p-tree-l2 { padding-left:48px; }
+        .p-tree-l2::before { content:'└─ '; color: var(--muted); }
+        .p-tree-l1, .p-tree-l2 { color: var(--body); }
+        .p-tree-l1:last-child::before { content:'└─ '; }
+        .p-tree-path { color: var(--muted); font-size:10.5px; margin-left:8px; }
+
+        /* ── Two-column chart grid ── */
+        .p-chart-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:6px; }
+        @media (max-width:860px) { .p-chart-grid-2 { grid-template-columns:1fr; } }
+
+        /* ── Insight banner ── */
+        .p-insight { background: var(--bg3); border-left:3px solid var(--hi); border-radius:0 8px 8px 0; padding:12px 16px; margin-top:14px; font-size:13px; color: var(--body); line-height:1.65; }
+        .p-insight strong { color: var(--hi); }
+
+        /* ── Interactive SQL console demo ── */
+        .p-console { margin-top:16px; border:1px solid var(--line2); border-radius:10px; overflow:hidden; background: var(--bg3); }
+        .p-console-tabs { display:flex; flex-wrap:wrap; gap:2px; padding:8px; background: var(--bg2); border-bottom:1px solid var(--line); }
+        .p-console-tab { font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; font-size:10.5px; font-weight:600; letter-spacing:0.03em; padding:7px 11px; border-radius:6px; border:none; background:transparent; color: var(--sub); cursor:pointer; transition: background .15s, color .15s; }
+        .p-console-tab.active { background: var(--hi); color: var(--bg2); }
+        .p-console-tab:not(.active):hover { background: var(--line); color: var(--hi); }
+        .p-console-body { padding:16px; }
+        .p-console-sql-label { font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; font-size:9.5px; font-weight:700; letter-spacing:0.12em; color: var(--muted); margin-bottom:6px; }
+        .p-console-sql { background: var(--bg2); border:1px solid var(--line2); border-radius:8px; padding:14px 16px; font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; font-size:12px; line-height:1.7; color: #374151; overflow-x:auto; white-space:pre-wrap; word-break:break-word; }
+        .p-console-run { display:inline-flex; align-items:center; gap:7px; margin-top:12px; background: var(--hi); color: var(--bg2); border:none; border-radius:7px; padding:9px 18px; font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; font-size:11.5px; font-weight:700; letter-spacing:0.04em; cursor:pointer; transition: opacity .15s, transform .1s; }
+        .p-console-run:hover { opacity:0.85; }
+        .p-console-run:active { transform: scale(0.97); }
+        .p-console-run svg { width:13px; height:13px; fill:currentColor; stroke:none; }
+        .p-console-run.running { opacity:0.6; pointer-events:none; }
+        .p-console-result { margin-top:14px; min-height:40px; }
+        .p-console-result-meta { font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; font-size:11px; color: var(--muted); margin-bottom:8px; }
+        .p-console-result-meta.done { color: #15803d; }
+        .p-console-result .p-data-table { background: var(--bg2); border:1px solid var(--line); border-radius:8px; }
+        .p-console-result .p-data-table th { padding:9px 10px 8px; }
+        .p-console-result .p-data-table td { font-size:12px; }
+        .p-console-result .p-data-table tbody:empty::after { content:''; }
+
+</style>
+<style id="rafi-v5">
+*, *::before, *::after { box-sizing: border-box; }
+html, body { max-width: 100%; overflow-x: clip; }
+
+#rafi-bar {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+    background: var(--white, #f5f5f5); z-index: 9999; pointer-events: none;
+    transition: width 80ms linear;
+}
+
+img, video, iframe, svg { max-width: 100%; height: auto; }
+.p-video-wrap { overflow: hidden; border-radius: 8px; }
+.p-video-wrap video { width: 100%; height: auto; }
+
+mark.hl, mark.hl-green, mark.hl-blue, mark.hl-pink, mark.hl-orange, mark.hl-purple {
+    background: none; color: inherit; font-weight: 600;
+    padding: 0; border-radius: 0;
+}
+
+.project-page { max-width: none; width: 100%; margin: 0 auto; padding: 40px 56px 80px; box-sizing: border-box; }
+@media (max-width: 860px) {
+    .project-page { padding: 84px 20px 80px; }
+    .p-layout { grid-template-columns: 1fr !important; gap: 14px !important; }
+    .p-side-col {
+        position: static !important; order: -1;
+        display: flex !important; flex-wrap: wrap !important; gap: 10px !important;
+    }
+    .p-side-col .p-card { flex: 1 1 calc(50% - 5px) !important; min-width: 160px !important; }
+}
+@media (max-width: 600px) {
+    .project-page { padding: 84px 12px calc(70px + env(safe-area-inset-bottom,0px)) !important; }
+    .p-side-col { flex-direction: column !important; }
+    .p-side-col .p-card { flex: 1 1 100% !important; min-width: 0 !important; }
+    .p-hero { padding: 20px 16px 24px !important; min-height: 180px !important; border-radius: 10px !important; }
+    .p-hero-title { font-size: clamp(22px,7.5vw,32px) !important; line-height: 1.05 !important; word-break: break-word !important; }
+    .p-hero-sub { font-size: 13px !important; }
+    .p-hero-tags { gap: 5px !important; margin-top: 12px !important; }
+    .p-hero-tag { font-size: 8px !important; padding: 3px 7px !important; }
+    .p-meta-strip { flex-direction: column !important; }
+    .p-meta-item { border-right: none !important; border-bottom: 1px solid var(--line, #242424) !important; padding: 9px 13px !important; }
+    .p-meta-item:last-child { border-bottom: none !important; }
+    .p-card { padding: 16px 14px !important; border-radius: 10px !important; }
+    .p-card-title { font-size: 9px !important; padding-bottom: 11px !important; margin-bottom: 13px !important; }
+    .p-main-col { gap: 10px !important; }
+    .p-body { font-size: 14px !important; line-height: 1.8 !important; }
+    .p-body p { margin-bottom: 12px !important; }
+    .p-callout { font-size: 13px !important; padding: 11px 13px !important; }
+    .p-numbers { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+    .p-num-val { font-size: 22px !important; }
+    .p-num-card { padding: 11px 12px !important; }
+    .p-usecases { grid-template-columns: 1fr !important; gap: 8px !important; }
+    .p-classes-grid { grid-template-columns: 1fr 1fr !important; gap: 5px !important; }
+    .p-design-grid { grid-template-columns: 1fr !important; }
+    .p-arch-row { flex-wrap: wrap !important; }
+    .p-arch-desc { max-width: 100% !important; text-align: left !important; margin-left: 44px !important; }
+    .p-tech-pill { font-size: 9.5px !important; padding: 4px 9px !important; }
+    .p-link-btn { font-size: 12px !important; padding: 9px 12px !important; }
+    .p-closing { flex-direction: column !important; padding: 18px 14px !important; }
+    .p-closing-btn { width: 100% !important; justify-content: center !important; }
+    .p-progress-label { flex-wrap: wrap !important; font-size: 10.5px !important; }
+    .project-back { font-size: 9.5px !important; margin-bottom: 12px !important; }
+    .p-order-state { font-size: 10px !important; padding: 5px 8px !important; }
+    code.inline { font-size: 10px !important; padding: 1px 5px !important; word-break: break-word !important; }
+    .p-ctrl-table-wrap, .p-wcag-table-wrap {
+        overflow-x: auto !important; -webkit-overflow-scrolling: touch !important;
+        margin: 0 -14px !important; padding: 0 14px !important;
+    }
+}
+@media (max-width: 380px) {
+    .project-page { padding: 10px 10px calc(68px + env(safe-area-inset-bottom,0px)) !important; }
+    .p-hero-title { font-size: clamp(19px,7vw,24px) !important; }
+    .p-card { padding: 13px 11px !important; }
+}
+/* Clear room for the floating hamburger button (top-left, ~14px + 40px) — placed last to win the cascade */
+@media (max-width: 900px) {
+    .project-page { padding-top: 64px !important; }
+}
+
+.ap-page { max-width: 1280px; margin: 0 auto; padding: 44px 40px 80px; box-sizing: border-box; }
+@media (max-width: 640px) {
+    .ap-page { padding: 14px 14px 60px !important; }
+    .ap-title { font-size: clamp(26px,8.5vw,40px) !important; }
+    .ap-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
+    .ap-card-overlay { display: none !important; }
+}
+
+.p-body, .p-body p, .p-feature-desc, .p-step-desc,
+.p-usecase-desc, .p-arch-desc, .p-callout {
+    overflow-wrap: break-word; word-break: break-word; max-width: 100%;
+}
+.p-arch-name { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+
+@media (max-width: 600px) {
+    .p-arch-row { flex-wrap: wrap; }
+    .p-arch-name { flex: 1 1 calc(100% - 46px); white-space: normal; }
+    .p-arch-desc { flex: 1 1 100%; }
+}
+
+.p-usecase-icon {
+    width: 38px !important; height: 38px !important;
+    background: var(--bg3, #1c1c1c) !important;
+    border: 1px solid var(--line2, #333) !important;
+    border-radius: 9px !important;
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    margin-bottom: 10px !important; flex-shrink: 0;
+}
+.p-usecase-icon svg {
+    width: 18px !important; height: 18px !important;
+    stroke: var(--acc, #d0d0d0) !important; fill: none !important;
+    stroke-width: 1.8 !important; stroke-linecap: round !important; stroke-linejoin: round !important;
+}
+.p-feature-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--bg3, #1c1c1c); border: 1px solid var(--line2, #333);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.p-feature-icon svg {
+    width: 17px; height: 17px; stroke: var(--acc, #d0d0d0); fill: none;
+    stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+
+.p-pipeline-outer, .p-pipeline-wrap {
+    position: relative; margin: 10px 0; border-radius: 8px;
+    background: var(--bg, #0c0c0c); border: 1px solid var(--line, #242424);
+    overflow: hidden;
+}
+.p-pipeline-outer::after, .p-pipeline-wrap::after {
+    content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 36px;
+    background: linear-gradient(to left, var(--bg, #0c0c0c), transparent);
+    pointer-events: none; z-index: 2; transition: opacity 0.2s;
+}
+.p-pipeline-outer.at-end::after, .p-pipeline-wrap.at-end::after { opacity: 0; }
+.p-pipeline-scroll {
+    overflow-x: auto !important; -webkit-overflow-scrolling: touch !important;
+    cursor: grab; padding: 14px 16px 6px !important;
+    scrollbar-width: thin !important; scrollbar-color: var(--line2,#333) transparent;
+}
+.p-pipeline-scroll:active { cursor: grabbing; }
+.p-pipeline-scroll::-webkit-scrollbar { height: 5px; }
+.p-pipeline-scroll::-webkit-scrollbar-track { background: transparent; }
+.p-pipeline-scroll::-webkit-scrollbar-thumb { background: var(--line2,#333); border-radius: 3px; }
+.p-pipeline { display: inline-flex !important; align-items: center !important; gap: 0 !important; width: max-content !important; min-width: 100% !important; }
+.p-pipe-step {
+    flex-shrink: 0; min-width: 100px; background: var(--bg2, #141414);
+    border: 1.5px solid var(--line2, #333); border-radius: 7px;
+    padding: 11px 13px; text-align: center; cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.12s;
+}
+.p-pipe-step:hover { border-color: var(--muted,#555); transform: translateY(-1px); }
+.p-pipe-step.ps-active { border-color: var(--white,#f5f5f5); box-shadow: 0 0 0 1px var(--white,#f5f5f5); }
+.p-pipe-step-num { font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; font-size: 8px; color: var(--muted,#555); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
+.p-pipe-step-label { font-size: 11.5px; font-weight: 700; color: var(--heading,#e8e8e8); line-height: 1.3; }
+.p-pipe-step-sub { font-size: 9px; color: var(--muted,#555); margin-top: 3px; }
+.p-pipe-arrow { font-size: 13px; color: var(--line2,#333); margin: 0 4px; flex-shrink: 0; display: flex; align-items: center; }
+.p-pipe-detail {
+    margin: 0 16px 12px; padding: 11px 13px;
+    background: var(--bg2, #141414); border: 1px solid var(--line, #242424); border-radius: 7px;
+    font-size: 13px; color: var(--sub, #888); line-height: 1.65;
+    display: none; animation: rfin .15s ease;
+}
+.p-pipe-detail.ps-show { display: block; }
+.p-pipe-detail strong { color: var(--heading,#e8e8e8); }
+.p-pipe-detail code { font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; font-size: 10.5px; background: var(--bg,#0c0c0c); border: 1px solid var(--line2,#333); padding: 1px 5px; border-radius: 3px; color: var(--acc,#d0d0d0); }
+.p-pipe-dots { display: flex; justify-content: center; gap: 5px; padding: 6px 0 10px; min-height: 20px; }
+.p-pipe-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--line2,#333); transition: background .2s, width .2s; }
+.p-pipe-dot.active { background: var(--white,#f5f5f5); width: 14px; border-radius: 3px; }
+.p-pipeline-hint {
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+    text-align: center; font-size: 9.5px; color: var(--muted,#555);
+    font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; letter-spacing: 0.08em; padding: 0 0 9px;
+}
+.p-pipeline-hint svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 2; }
+@media (max-width: 640px) {
+    .p-pipe-step { min-width: 84px !important; padding: 10px 10px !important; }
+}
+@keyframes rfin { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+.p-steps-accordion { display: none; flex-direction: column; gap: 6px; }
+@media (max-width: 640px) {
+    .p-steps { display: none !important; }
+    .p-steps-accordion { display: flex !important; }
+}
+.p-acc-item { border: 1px solid var(--line, #242424); border-radius: 8px; overflow: hidden; background: var(--bg2, #141414); }
+.p-acc-trigger { display: flex; align-items: center; gap: 10px; padding: 12px 13px; cursor: pointer; user-select: none; background: none; border: none; width: 100%; text-align: left; }
+.p-acc-num { width: 24px; height: 24px; border-radius: 50%; background: var(--bg3,#1c1c1c); border: 1px solid var(--line2,#333); font-size: 10px; font-weight: 700; color: var(--muted,#555); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; transition: background .15s, color .15s, border-color .15s; }
+.p-acc-title { font-size: 13px; font-weight: 700; color: var(--heading,#e8e8e8); flex: 1; }
+.p-acc-chevron { width: 16px; height: 16px; stroke: var(--muted,#555); fill: none; stroke-width: 2; flex-shrink: 0; transition: transform .2s; }
+.p-acc-item.open .p-acc-chevron { transform: rotate(180deg); }
+.p-acc-item.open .p-acc-num { background: var(--white,#f5f5f5); color: var(--bg,#0c0c0c); border-color: var(--white,#f5f5f5); }
+.p-acc-body { max-height: 0; overflow: hidden; padding: 0 13px; transition: max-height .28s ease, padding .2s; }
+.p-acc-item.open .p-acc-body { max-height: 400px; padding: 0 13px 13px; }
+.p-acc-desc { font-size: 13px; color: var(--sub,#888); line-height: 1.65; overflow-wrap: break-word; }
+
+.p-progress-fill { transition: width 1s cubic-bezier(.4,0,.2,1); }
+.p-num-card { transition: transform .15s, box-shadow .15s; }
+.p-num-card:hover { transform: translateY(-2px); }
+
+.blog-img-wrap img, .screenshot-item img, .bl-cover img { max-width: 100% !important; height: auto !important; }
+.screenshot-gallery { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+@media (max-width: 600px) {
+    .blog-page, .bl-page { padding: 14px 14px 60px !important; }
+    .screenshot-gallery { grid-template-columns: repeat(2, 1fr) !important; }
+    .blog-img-2col { grid-template-columns: 1fr !important; }
+    .arch-wrap { font-size: 11px !important; }
+    pre, code { font-size: 11px !important; overflow-x: auto !important; }
+}
+table { max-width: 100%; }
+.p-ctrl-table-wrap, .p-wcag-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+</style>
+<style id="rafi-math-v5">/* ════════════════════════════════════════════════════════════════════════
+   MATH DERIVATION CARD — v5
+   A "lab notebook" component: numbered formula cards with a
+   Formula / Explained / Worked Example switcher. Built for the dark
+   project-page theme (--bg:#0c0c0c family). Horizontal scroll on any
+   formula/example block that overflows, with visible scroll affordance.
+   ════════════════════════════════════════════════════════════════════════ */
+
+.p-math-block {
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    margin: 14px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* left accent rail — gives it the "margin note" feel */
+.p-math-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--acc, #d0d0d0) 0%, transparent 130%);
+    opacity: 0.5;
+}
+
+.p-math-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 13px 16px 12px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+}
+
+.p-math-head-left {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    min-width: 0;
+}
+
+.p-math-index {
+    font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+}
+
+.p-math-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--heading);
+    line-height: 1.4;
+    min-width: 0;
+    overflow-wrap: break-word;
+}
+
+.p-math-title mark.hl {
+    font-size: inherit;
+}
+
+/* ── TAB SWITCHER ── */
+.p-math-tabs {
+    display: flex;
+    gap: 2px;
+    background: var(--bg);
+    border: 1px solid var(--line2);
+    border-radius: 5px;
+    padding: 2px;
+    flex-shrink: 0;
+}
+
+.p-math-tab {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+    line-height: 1.2;
+}
+
+.p-math-tab:hover { color: var(--sub); }
+
+.p-math-tab.active {
+    background: var(--line2);
+    color: var(--hi);
+}
+
+.p-math-tab .p-math-tab-dot {
+    display: inline-block;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: currentColor;
+    margin-right: 5px;
+    opacity: 0.6;
+    vertical-align: middle;
+}
+
+/* ── BODY / PANELS ── */
+.p-math-body { position: relative; }
+
+.p-math-panel {
+    display: none;
+    animation: pmFadeIn 0.18s ease;
+}
+.p-math-panel.active { display: block; }
+
+@keyframes pmFadeIn {
+    from { opacity: 0; transform: translateY(2px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Formula panel — scrollable code-like surface */
+.p-math-formula-wrap {
+    position: relative;
+    overflow: hidden;
+}
+
+.p-math-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 16px 16px 14px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line2) transparent;
+}
+.p-math-scroll::-webkit-scrollbar { height: 5px; }
+.p-math-scroll::-webkit-scrollbar-track { background: transparent; }
+.p-math-scroll::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 3px; }
+.p-math-scroll::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+pre.p-math-formula {
+    font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;
+    font-size: 12px;
+    line-height: 1.9;
+    color: var(--body);
+    white-space: pre;
+    margin: 0;
+    width: max-content;
+    min-width: 100%;
+}
+
+pre.p-math-formula mark.hl {
+    font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;
+    font-size: inherit;
+}
+
+/* fade-edge affordance to signal "more content →" */
+.p-math-formula-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 28px;
+    background: linear-gradient(to left, var(--bg2), transparent);
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+.p-math-formula-wrap.pm-at-end::after { opacity: 0; }
+
+.p-math-scroll-hint {
+    display: none;
+    align-items: center;
+    gap: 5px;
+    font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0 16px 11px;
+}
+.p-math-scroll-hint svg {
+    width: 10px; height: 10px;
+    stroke: currentColor; fill: none;
+    stroke-width: 2;
+}
+.p-math-formula-wrap.pm-scrollable ~ .p-math-scroll-hint,
+.p-math-example-wrap.pm-scrollable ~ .p-math-scroll-hint {
+    display: flex;
+}
+
+/* Explained panel */
+.p-math-explained {
+    padding: 16px 18px;
+}
+.p-math-desc {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--sub);
+    margin: 0;
+}
+.p-math-desc + .p-math-desc { margin-top: 10px; }
+.p-math-desc strong { color: var(--heading); font-weight: 700; }
+.p-math-desc code.inline {
+    font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;
+    font-size: 11px;
+    background: var(--bg);
+    border: 1px solid var(--line2);
+    padding: 1px 6px;
+    border-radius: 3px;
+    color: var(--acc);
+}
+
+/* Example panel — worked-through computation */
+.p-math-example-wrap {
+    position: relative;
+    overflow: hidden;
+}
+.p-math-example {
+    font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;
+    font-size: 11.5px;
+    line-height: 1.85;
+    color: var(--body);
+    white-space: pre;
+    margin: 0;
+    width: max-content;
+    min-width: 100%;
+    border-left: 2px solid var(--line2);
+    padding: 14px 16px 14px 18px;
+    background: var(--bg);
+}
+.p-math-example-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 28px;
+    background: linear-gradient(to left, var(--bg2), transparent);
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+.p-math-example-wrap.pm-at-end::after { opacity: 0; }
+.p-math-example-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line2) transparent;
+}
+.p-math-example-scroll::-webkit-scrollbar { height: 5px; }
+.p-math-example-scroll::-webkit-scrollbar-track { background: transparent; }
+.p-math-example-scroll::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 3px; }
+
+/* footer micro-label inside example */
+.p-math-example-label {
+    font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 10px 16px 0;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+    .p-math-head { padding: 11px 13px 10px; flex-wrap: wrap; }
+    .p-math-title { font-size: 11.5px; }
+    .p-math-index { font-size: 9px; }
+    .p-math-tabs { width: 100%; justify-content: stretch; }
+    .p-math-tab { flex: 1; text-align: center; padding: 6px 8px; font-size: 9px; }
+    .p-math-scroll { padding: 13px 13px 11px; }
+    pre.p-math-formula { font-size: 10.5px; line-height: 1.8; }
+    .p-math-explained { padding: 13px 14px; }
+    .p-math-desc { font-size: 12.5px; }
+    .p-math-example { font-size: 10px; padding: 12px 13px 12px 15px; }
+    .p-math-example-label { padding: 8px 13px 0; }
+}
+
+@media (max-width: 380px) {
+    .p-math-tab { font-size: 8.3px; padding: 6px 4px; letter-spacing: 0.02em; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .p-math-panel { animation: none !important; }
+}
+</style><style id="rafi-minwidth-fix">
+/* ════════════════════════════════════════════════════════════════════════
+   MIN-CONTENT OVERFLOW FIX — v6
+   Root cause of "kepotong" on mobile: CSS Grid/Flex tracks default to
+   minmax(auto, 1fr) — the 'auto' minimum is the content's min-content
+   size, which can be wider than the viewport even when the track is
+   nominally "1fr". This forces every nested grid/flex container in the
+   project-page content chain to allow shrinking below its content size.
+   ════════════════════════════════════════════════════════════════════════ */
+.p-layout,
+.p-main-col,
+.p-side-col,
+.p-card,
+.p-card-title,
+.p-body,
+.p-callout,
+.p-numbers,
+.p-num-card,
+.p-classes-grid,
+.p-usecases,
+.p-usecase,
+.p-design-grid,
+.p-tech-grid,
+.p-math-block,
+.p-math-head,
+.p-math-head-left,
+.p-math-tabs,
+.p-math-body,
+.p-math-panel,
+.p-math-explained,
+.p-pipeline-wrap,
+.p-pipe-detail,
+.p-arch-row,
+.p-arch-name,
+.p-meta-strip,
+.p-meta-item,
+.p-closing,
+.p-link-btn,
+.p-progress-label,
+.p-acc-item,
+.p-acc-body,
+.ap-grid,
+.ap-card {
+    min-width: 0 !important;
+}
+
+/* Grid/flex children also need min-width:0 individually — being a grid
+   container doesn't help if the item itself refuses to shrink */
+.p-layout > *,
+.p-numbers > *,
+.p-classes-grid > *,
+.p-usecases > *,
+.p-design-grid > *,
+.ap-grid > * {
+    min-width: 0;
+}
+
+/* Long unbroken strings (URLs, identifiers) inside text containers must
+   be allowed to break rather than stretching their parent */
+.p-body, .p-body p, .p-callout, .p-math-desc, .p-acc-desc,
+.p-feature-desc, .p-step-desc, .p-usecase-desc, .p-arch-desc {
+    overflow-wrap: anywhere;
+}
+
+</style> <link href="../../css/rafi-core.css" rel="stylesheet"/>
+<style id="va-math-mobile-fix">
+/* Keep wide KaTeX / math blocks readable on small screens */
+.p-math-block, .arch-wrap, .blog-code, pre.p-math-formula {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  max-width: 100%;
+}
+.p-math-block .katex-display, .p-math-block .katex { white-space: nowrap; }
+@media (max-width: 600px){
+  .p-math-block { padding: 14px 14px !important; }
+  .p-math-block .katex-display, .p-math-block .katex { font-size: 0.92em; }
+  /* let the scroll container show it's scrollable */
+  .p-math-block { scrollbar-width: thin; }
+  .p-math-block::-webkit-scrollbar { height: 5px; }
+  .p-math-block::-webkit-scrollbar-thumb { background: rgba(120,120,120,.4); border-radius: 3px; }
+}
+@media (max-width: 420px){
+  .p-math-block .katex-display, .p-math-block .katex { font-size: 0.82em; }
+}
+</style>
+<style id="rafi-casestudy">
+/* Engineering Challenges & Solutions — matches existing p-* light theme */
+.p-challenges{display:flex;flex-direction:column;gap:14px;}
+.p-challenge{border:1px solid var(--line);border-radius:10px;background:var(--bg2);
+  padding:18px 20px 16px;position:relative;overflow:hidden;}
+.p-ch-head{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-bottom:14px;
+  padding-bottom:13px;border-bottom:1px solid var(--line);}
+.p-ch-tag{font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;font-size:9px;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;color:var(--bg2);background:var(--acc);
+  padding:3px 8px;border-radius:4px;white-space:nowrap;}
+.p-ch-name{font-size:14.5px;font-weight:650;color:var(--heading);line-height:1.35;}
+.p-ch-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.p-ch-col{border-radius:8px;padding:13px 15px;border:1px solid var(--line);}
+.p-ch-col.problem{border-left:3px solid #e0533d;background:rgba(224,83,61,0.035);}
+.p-ch-col.fix{border-left:3px solid #1f9d61;background:rgba(31,157,97,0.035);}
+.p-ch-label{font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;font-size:8.5px;font-weight:700;
+  letter-spacing:0.16em;text-transform:uppercase;margin-bottom:8px;display:flex;
+  align-items:center;gap:6px;}
+.p-ch-col.problem .p-ch-label{color:#c0432f;}
+.p-ch-col.fix .p-ch-label{color:#177a4b;}
+.p-ch-label svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.2;
+  stroke-linecap:round;stroke-linejoin:round;}
+.p-ch-col p{font-size:12.8px;line-height:1.62;color:var(--body);margin:0;}
+.p-ch-col p code,.p-ch-col p .mono{font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;font-size:11px;
+  background:var(--bg3);border:1px solid var(--line2);padding:1px 5px;border-radius:3px;
+  color:var(--acc);word-break:break-word;}
+.p-ch-take{margin-top:12px;font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;font-size:10.5px;
+  line-height:1.55;color:var(--sub);display:flex;gap:8px;align-items:flex-start;
+  padding-top:11px;border-top:1px dashed var(--line);}
+.p-ch-take .p-ch-take-mark{color:var(--acc);font-weight:700;flex-shrink:0;}
+.p-ch-take strong{color:var(--heading);font-weight:700;}
+@media(max-width:720px){
+  .p-ch-grid{grid-template-columns:1fr;gap:10px;}
+  .p-challenge{padding:15px 15px 13px;}
+  .p-ch-name{font-size:13.5px;}
+  .p-ch-col p{font-size:12.4px;}
+}
+</style>
+<style id="perf-pass">
+/* Perf: calm continuous + entrance motion, respect user setting */
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}}
+/* Cut wasteful always-on decorative loops (glow/spotlight/breathing/pulse/aura) */
+[class*="glow"],[class*="spotlight"],[class*="breath"],[class*="aura"],[class*="shimmer"]{animation:none!important;}
+</style>
+
+<style id="clean-pass">
+/* rafidaffa-style clean pass: flat article, big friendly headings, quiet math */
+body, .p-body, .p-hero-sub, .p-step-desc, .p-acc-desc { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS',sans-serif; }
+.p-card { background: transparent !important; border: none !important; padding: 26px 0 6px !important; border-radius: 0 !important; }
+.p-card-title {
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS',sans-serif !important; font-size: 23px !important; font-weight: 700 !important;
+  color: #44546A !important; text-transform: none !important; letter-spacing: -0.01em !important;
+  border-bottom: none !important; padding-bottom: 0 !important; margin-bottom: 12px !important;
+}
+.p-card-title-num { display: none !important; }
+.p-main-col { gap: 0 !important; }
+.p-side-col { gap: 24px !important; margin-top: 10px !important; }
+.p-side-col .p-card { padding: 0 !important; }
+.p-hero-title { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS',sans-serif !important; letter-spacing: -0.02em !important; }
+/* math stays, but plain — no drama */
+.p-math-block { background: #f8f9fb !important; border: 1px solid #eef0f3 !important; box-shadow: none !important; }
+.p-math-title { color: #6b7280 !important; }
+.p-math-scroll-hint { display: none !important; }
+.p-callout { background: #f8f9fb !important; border-left: 2px solid #cbd5e1 !important; }
+</style>
+
+<style id="clean-pass-v2">
+/* no boxes anywhere in the article body */
+.p-callout, .p-note, .p-info-box {
+  background: transparent !important; border: none !important; box-shadow: none !important;
+  border-left: 3px solid #e5e7eb !important; border-radius: 0 !important; padding: 2px 0 2px 14px !important;
+}
+.p-step, .p-steps-grid > div, .p-acc, .p-acc-item, .p-feature, .p-feature-card,
+.p-grid-2 > div, .p-grid-3 > div, .p-timeline-item, .p-decision, .p-stat, .p-stat-card {
+  background: transparent !important; border: none !important; box-shadow: none !important;
+  border-radius: 0 !important; padding-left: 0 !important;
+}
+.p-math-block { background: transparent !important; border: none !important; padding: 6px 0 !important; box-shadow: none !important; }
+.p-math-formula { background: #f8f9fb !important; border: none !important; }
+/* tables: whisper-thin lines only */
+.p-card table, .p-card td, .p-card th { border-color: #f0f1f4 !important; }
+.p-card th { background: #fafbfc !important; }
+/* code keeps a soft bed (readability), no border */
+.p-card pre, .p-body pre, .p-code { background: #f8f9fb !important; border: none !important; }
+/* side info: flat headings, no cards */
+.p-side-col .p-card { border: none !important; background: transparent !important; padding: 0 !important; }
+</style>
+  <link href="../../css/project-clean.css" rel="stylesheet"/>
+<link href="../../css/site-polish.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="mobile-topbar">
+<button aria-expanded="false" aria-label="Open menu" class="hamburger-btn" id="hamburger-btn"><span></span><span></span><span></span></button>
+</div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<div class="portfolio-app">
+<aside class="sidebar">
+<div class="sidebar-top">
+<div class="sidebar-logo-wrap">
+<img alt="Rafi Avatar" class="sidebar-logo-avatar" decoding="async" loading="lazy" src="../../assets/avatar_rafi.png"/>
+<span class="sidebar-logo-name">Muhammad Rafi Arsya</span>
+<button aria-label="Close menu" class="sidebar-close-btn" id="sidebar-close-btn" type="button">
+<svg viewbox="0 0 24 24"><line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line></svg>
+</button>
+</div>
+<nav class="sidebar-nav">
+<a href="../../index.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"></path><polyline points="9 21 9 12 15 12 15 21"></polyline></svg></span><span>Home</span></a>
+<a href="../blog.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path><path d="M18 14h-8"></path><path d="M15 18h-5"></path><path d="M10 6h8v4h-8z"></path></svg></span><span>Blog</span></a>
+</nav>
+<div class="sidebar-group-label">Me</div>
+<nav class="sidebar-nav">
+<a href="../resume.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="14" rx="2" width="20" x="2" y="3"></rect><path d="M8 21h8"></path><path d="M12 17v4"></path></svg></span><span>Resume / CV</span></a>
+<a href="../course.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg></span><span>Course &amp; Certificate</span></a>
+<a href="../contact.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span><span>Contact</span></a>
+</nav>
+<div class="sidebar-group-label">Projects</div>
+<div class="sidebar-projects">
+<a href="project1.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M18 11V6l-6-4-6 4v5"></path><path d="M6 10v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8"></path><path d="M10 22v-6h4v6"></path></svg></span><span class="project-label">HandGesture</span></a>
+<a href="project2.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" x2="21" y1="6" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg></span><span class="project-label">CampusBay</span></a>
+<a href="project5.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="10" cy="14" r="2"></circle><path d="m20 20-2.5-2.5"></path></svg></span><span class="project-label">PaperMind</span></a>
+<a href="project11.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" x2="8.12" y1="4" y2="15.88"></line><line x1="14.47" x2="20" y1="14.48" y2="20"></line><line x1="8.12" x2="12" y1="8.12" y2="12"></line></svg></span><span class="project-label">snip</span></a>
+<a href="project4.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg></span><span class="project-label">Crop Disease Detector</span></a>
+<a class="project-more" href="projects.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="7" rx="1" width="7" x="3" y="3"></rect><rect height="7" rx="1" width="7" x="14" y="3"></rect><rect height="7" rx="1" width="7" x="3" y="14"></rect><rect height="7" rx="1" width="7" x="14" y="14"></rect></svg></span><span>All Projects</span></a>
+</div>
+<div class="sidebar-group-label">Social</div>
+<nav class="sidebar-social">
+<a href="https://github.com/rafiarsya07?tab=repositories" rel="noopener noreferrer" target="_blank"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></span><span>GitHub</span></a>
+<a href="https://www.linkedin.com/in/rafi-arsya-557335394/" rel="noopener noreferrer" target="_blank"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect height="12" width="4" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></span><span>LinkedIn</span></a>
+<a href="https://www.instagram.com/rarsya.03/" rel="noopener noreferrer" target="_blank"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></span><span>Instagram</span></a>
+</nav>
+</div>
+</aside>
+<main class="project-main">
+<div class="project-page">
+<a class="project-back" href="projects.html">
+<svg viewbox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Back to All Projects
+                </a>
+<div class="p-hero">
+<div class="p-hero-grid"></div>
+<div class="p-hero-badge">
+<span class="p-hero-dot"></span>
+                        Data &amp; SQL  ·  SQLite / WASM  ·  2026
+                    </div>
+<h1 class="p-hero-title">Steam Market<em> Intelligence</em></h1>
+<p class="p-hero-sub">A live, in-browser SQL analytics dashboard, real SQLite compiled to WebAssembly, querying a 1,400-title game-market dataset on every page load. No backend, no precomputed export, just a database and a query engine running on the visitor's machine.</p>
+<div class="p-hero-tags">
+<span class="p-hero-tag">SQLite</span>
+<span class="p-hero-tag">sql.js (WASM)</span>
+<span class="p-hero-tag">Window Functions</span>
+<span class="p-hero-tag">Recursive CTEs</span>
+<span class="p-hero-tag">Static Hosting</span>
+</div>
+</div>
+<div class="p-meta-strip">
+<div class="p-meta-item"><div class="p-meta-label">Status</div><div class="p-meta-value">Completed</div></div>
+<div class="p-meta-item"><div class="p-meta-label">Year</div><div class="p-meta-value">2026</div></div>
+<div class="p-meta-item"><div class="p-meta-label">Role</div><div class="p-meta-value">Solo Developer</div></div>
+<div class="p-meta-item"><div class="p-meta-label">Dataset</div><div class="p-meta-value">1,400 Games</div></div>
+<div class="p-meta-item"><div class="p-meta-label">Engine</div><div class="p-meta-value">SQLite / WASM</div></div>
+</div>
+<div class="p-layout">
+<div class="p-main-col">
+<div class="p-card">
+<div class="p-card-title"><span class="p-num">01</span> Project Overview</div>
+<div class="p-body">
+<p class="p-text">This started as a SQL case study: a synthetic but statistically realistic game-market dataset and seven <code class="inline">.sql</code> files covering window functions, recursive CTEs, self-joins, and rolling calculations. The first version worked, but the dashboard was static HTML reading pre-exported JSON. It looked like a live analytics tool. It wasn't.</p>
+<p class="p-text">So I rebuilt it to ship two files — <code class="inline">index.html</code> and the raw <code class="inline">steam_games.db</code> — running SQLite compiled to WebAssembly (sql.js) in the browser. Nothing is precomputed; every number on the page came from a query that just ran on your machine.</p>
+<div class="p-callout">
+<strong>The part I'm most happy with:</strong> a live SQL console at the bottom of the page, wired straight to the same <code class="inline">db.exec()</code> call the rest of the dashboard uses. You can run the sample queries or write your own <code class="inline">SELECT</code> against the real database, not a styled mockup of a terminal.
+                                </div>
+<p>The dataset covers <strong>1,400 deduplicated game listings</strong> across a <strong>17-year release window (2008–2024)</strong>, joined against a genre bridge table for category-level analysis.</p>
+</div>
+</div>
+
+<div class="p-card">
+<div class="p-part-eyebrow"><span>Part 2</span>, Genre Performance</div>
+<div class="p-card-title"><span class="p-num">03</span> Which Genres Earn the Best Reception?</div>
+<div class="p-body">
+<p>Average positive-rating ratio per genre, joined across the many-to-many game↔genre bridge table, <code class="inline">JOIN games_deduped → game_genres, GROUP BY genre_name</code>. <strong>Adventure</strong> and <strong>Sandbox</strong> titles edge out the rest, though the spread across all 15 genres is tight (65–70%).</p>
+</div>
+<div class="p-sort-toggle" role="tablist">
+<button class="p-sort-btn active" data-sort="rating">Sort by Rating</button>
+<button class="p-sort-btn" data-sort="price">Sort by Avg. Price</button>
+<button class="p-sort-btn" data-sort="count">Sort by Game Count</button>
+</div>
+<div class="p-hbar-list" id="genre-hbar-list">
+<div class="p-hbar-row top" data-count="192" data-price="13.42" data-rating="69.9">
+<div class="p-hbar-label">Adventure</div>
+<div class="p-hbar-track"><div class="p-hbar-fill" data-w-count="100" data-w-price="38.6" data-w-rating="100" style="width:100%"></div></div>
+<div class="p-hbar-val">69.9%</div>
+</div>
+<div class="p-hbar-row top" data-count="154" data-price="15.37" data-rating="69.8">
+<div class="p-hbar-label">Sandbox</div>
+<div class="p-hbar-track"><div class="p-hbar-fill" data-w-count="80.2" data-w-price="44.2" data-w-rating="99.9" style="width:99.9%"></div></div>
+<div class="p-hbar-val">69.8%</div>
+</div>
+<div class="p-hbar-row" data-count="173" data-price="14.53" data-rating="69.3">
+<div class="p-hbar-label">Indie</div>
+<div class="p-hbar-track"><div class="p-hbar-fill" data-w-count="90.1" data-w-price="41.8" data-w-rating="99.1" style="width:99.1%"></div></div>
+<div class="p-hbar-val">69.3%</div>
+</div>
+<div class="p-hbar-row" data-count="204" data-price="12.83" data-rating="69.0">
+<div class="p-hbar-label">Puzzle</div>
+<div class="p-hbar-track"><div class="p-hbar-fill" data-w-count="100" data-w-price="36.9" data-w-rating="98.7" style="width:98.7%"></div></div>
+<div class="p-hbar-val">69.0%</div>
+</div>
+<div class="p-hbar-row" data-count="170" data-price="13.60" data-rating="68.4">
+<div class="p-hbar-label">Visual Novel</div>
+<div class="p-hbar-track"><div class="p-hbar-fill" data-w-count="88.5" data-w-price="39.1" data-w-rating="97.9" style="width:97.9%"></div></div>
+<div class="p-hbar-val">68.4%</div>
+</div>
+<div class="p-hbar-row" data-count="165" data-price="12.68" data-rating="68.2">
+<div class="p-hbar-label">Strategy</div>
+<div class="p-hbar-track"><div class="p-hbar-fill" data-w-count="85.9" data-w-price="36.5" data-w-rating="97.6" style="width:97.6%"></div></div>
+<div class="p-hbar-val">68.2%</div>
+</div>
+<div class="p-hbar-row" data-count="172" data-price="13.53" data-rating="68.1">
+<div class="p-hbar-label">RPG</div>
+<div class="p-hbar-track"><div class="p-hbar-fill" data-w-count="89.6" data-w-price="38.9" data-w-rating="97.4" style="width:97.4%"></div></div>
+<div class="p-hbar-val">68.1%</div>
+</div>
+<div class="p-hbar-row" data-count="155" data-price="14.12" data-rating="68.0">
+<div class="p-hbar-label">Action</div>
+<div class="p-hbar-track"><div class="p-hbar-fill" data-w-count="80.7" data-w-price="40.6" data-w-rating="97.3" style="width:97.3%"></div></div>
+<div class="p-hbar-val">68.0%</div>
+</div>
+<div class="p-hbar-row" data-count="144" data-price="13.59" data-rating="67.7">
+<div class="p-hbar-label">Shooter</div>
+<div class="p-hbar-track"><div class="p-hbar-fill" data-w-count="70.6" data-w-price="39.0" data-w-rating="96.9" style="width:96.9%"></div></div>
+<div class="p-hbar-val">67.7%</div>
+</div>
+<div class="p-hbar-row" data-count="163" data-price="12.92" data-rating="67.5">
+<div class="p-hbar-label">Sports</div>
+<div class="p-hbar-track"><div class="p-hbar-fill" data-w-count="80.0" data-w-price="37.1" data-w-rating="96.6" style="width:96.6%"></div></div>
+<div class="p-hbar-val">67.5%</div>
+</div>
+<div class="p-hbar-row" data-count="173" data-price="13.32" data-rating="67.2">
+<div class="p-hbar-label">Horror</div>
+<div class="p-hbar-track"><div class="p-hbar-fill" data-w-count="90.1" data-w-price="38.2" data-w-rating="96.1" style="width:96.1%"></div></div>
+<div class="p-hbar-val">67.2%</div>
+</div>
+<div class="p-hbar-row" data-count="162" data-price="13.37" data-rating="66.6">
+<div class="p-hbar-label">Casual</div>
+<div class="p-hbar-track"><div class="p-hbar-fill" data-w-count="79.4" data-w-price="38.4" data-w-rating="95.3" style="width:95.3%"></div></div>
+<div class="p-hbar-val">66.6%</div>
+</div>
+<div class="p-hbar-row" data-count="185" data-price="13.06" data-rating="66.3">
+<div class="p-hbar-label">Racing</div>
+<div class="p-hbar-track"><div class="p-hbar-fill" data-w-count="90.7" data-w-price="37.5" data-w-rating="94.9" style="width:94.9%"></div></div>
+<div class="p-hbar-val">66.3%</div>
+</div>
+<div class="p-hbar-row" data-count="172" data-price="13.32" data-rating="66.2">
+<div class="p-hbar-label">Platformer</div>
+<div class="p-hbar-track"><div class="p-hbar-fill" data-w-count="84.3" data-w-price="38.2" data-w-rating="94.7" style="width:94.7%"></div></div>
+<div class="p-hbar-val">66.2%</div>
+</div>
+<div class="p-hbar-row" data-count="153" data-price="12.25" data-rating="64.9">
+<div class="p-hbar-label">Simulation</div>
+<div class="p-hbar-track"><div class="p-hbar-fill" data-w-count="75.0" data-w-price="35.1" data-w-rating="92.8" style="width:92.8%"></div></div>
+<div class="p-hbar-val">64.9%</div>
+</div>
+</div>
+<div class="p-chart-caption" id="genre-sort-caption">Sorted by average positive-rating ratio · click a tab above to re-sort live</div>
+</div>
+<div class="p-card">
+<div class="p-part-eyebrow"><span>Part 3</span>, Pricing Strategy</div>
+<div class="p-card-title"><span class="p-num">04</span> Does a Higher Price Mean a Better-Reviewed Game?</div>
+<div class="p-body">
+<p>Games are bucketed by price tier with a <code class="inline">CASE WHEN</code> expression, then averaged for rating ratio, <code class="inline">GROUP BY</code> the derived bucket, not a stored column.</p>
+</div>
+<div class="p-gbar-wrap">
+<div class="p-gbar-col">
+<div class="p-gbar-bar-wrap"><div class="p-gbar-bar" style="height:86.5%;" title="Free, 66.8% rating, 105 games"><span class="p-gbar-bar-val">66.8%</span></div></div>
+<div class="p-gbar-label">Free</div>
+<div class="p-gbar-sub">n=105</div>
+</div>
+<div class="p-gbar-col">
+<div class="p-gbar-bar-wrap"><div class="p-gbar-bar" style="height:86.1%;" title="Budget &lt;$10, 66.5% rating, 812 games"><span class="p-gbar-bar-val">66.5%</span></div></div>
+<div class="p-gbar-label">Budget<br/>&lt;$10</div>
+<div class="p-gbar-sub">n=812</div>
+</div>
+<div class="p-gbar-col">
+<div class="p-gbar-bar-wrap"><div class="p-gbar-bar" style="height:87.2%;" title="Mid $10-30, 67.3% rating, 303 games"><span class="p-gbar-bar-val">67.3%</span></div></div>
+<div class="p-gbar-label">Mid<br/>$10–30</div>
+<div class="p-gbar-sub">n=303</div>
+</div>
+<div class="p-gbar-col">
+<div class="p-gbar-bar-wrap"><div class="p-gbar-bar" style="height:100%;" title="Premium $30-60, 77.2% rating, 131 games"><span class="p-gbar-bar-val">77.2%</span></div></div>
+<div class="p-gbar-label">Premium<br/>$30–60</div>
+<div class="p-gbar-sub">n=131</div>
+</div>
+<div class="p-gbar-col">
+<div class="p-gbar-bar-wrap"><div class="p-gbar-bar" style="height:95.3%;" title="AAA $60+, 73.6% rating, 49 games"><span class="p-gbar-bar-val">73.6%</span></div></div>
+<div class="p-gbar-label">AAA<br/>$60+</div>
+<div class="p-gbar-sub">n=49</div>
+</div>
+</div>
+<div class="p-chart-caption">Average positive-rating ratio by price bucket · bar height = rating, label = exact %</div>
+<div class="p-insight"><strong>Insight, computed live from the dataset:</strong> the relationship isn't linear. Budget and Mid tiers sit flat around 66–67%, but <strong>Premium ($30–60) jumps to 77.2%</strong>: the highest of any bucket, beating even AAA ($60+, 73.6%). Crossing the $30 floor correlates with a real quality jump; going past $60 doesn't add more on top of that. The dataset has far fewer Premium/AAA titles (131 and 49) than Budget (812), so this is a real but lower-confidence signal.</div>
+</div>
+<div class="p-card">
+<div class="p-part-eyebrow"><span>Part 4</span>, Recommendation Engine</div>
+<div class="p-card-title"><span class="p-num">05</span> Hidden Gems &amp; Consistent Studios</div>
+<div class="p-body">
+<p>Two queries built for a publishing-deal use case: titles with excellent ratings but low visibility (a subquery + <code class="inline">HAVING</code> filter), and developers who are reliably good across 3+ releases rather than one lucky hit.</p>
+</div>
+<div class="p-card-title" style="margin-top:18px; font-size:12px; border:none; padding:0 0 8px;">Hidden gems: rating ≥ 85%, under 5,000 owners</div>
+<div class="p-table-scroll">
+<table class="p-data-table">
+<thead><tr><th>Game</th><th>Developer</th><th>Price</th><th style="text-align:right;">Rating</th></tr></thead>
+<tbody>
+<tr><td><strong>Lost Wasteland</strong></td><td class="p-dev-name">Quiet Harbor Games</td><td class="num">$4.99</td><td class="num"><span class="p-rating-pill">98.9%</span></td></tr>
+<tr><td><strong>Radiant Empire: Throne</strong></td><td class="p-dev-name">Nova Forge Studios</td><td class="num">$4.99</td><td class="num"><span class="p-rating-pill">98.9%</span></td></tr>
+<tr><td><strong>Hollow Throne: Throne</strong></td><td class="p-dev-name">Frostbyte Collective</td><td class="num">$4.99</td><td class="num"><span class="p-rating-pill">98.9%</span></td></tr>
+<tr><td><strong>Forgotten Sanctuary: Area</strong></td><td class="p-dev-name">Echo Chamber Games</td><td class="num">$2.99</td><td class="num"><span class="p-rating-pill">98.8%</span></td></tr>
+<tr><td><strong>Drifting Voyage: Rift</strong></td><td class="p-dev-name">Solar Anvil</td><td class="num">$0.99</td><td class="num"><span class="p-rating-pill">98.8%</span></td></tr>
+</tbody>
+</table>
+</div>
+<div class="p-card-title" style="margin-top:20px; font-size:12px; border:none; padding:0 0 8px;">Most consistent studios: 3+ releases, ranked by avg. rating</div>
+<div class="p-table-scroll">
+<table class="p-data-table">
+<thead><tr><th>Studio</th><th style="text-align:right;">Titles</th><th style="text-align:right;">Avg. Rating</th></tr></thead>
+<tbody>
+<tr><td><strong>Mega Pulse Studios</strong></td><td class="num">59</td><td class="num"><span class="p-rating-pill">77.0%</span></td></tr>
+<tr><td><strong>Solar Anvil</strong></td><td class="num">69</td><td class="num"><span class="p-rating-pill">70.5%</span></td></tr>
+<tr><td><strong>NeonByte</strong></td><td class="num">66</td><td class="num"><span class="p-rating-pill">70.5%</span></td></tr>
+<tr><td><strong>Lonewolf Dev</strong></td><td class="num">64</td><td class="num"><span class="p-rating-pill">69.4%</span></td></tr>
+<tr><td><strong>Stardust Pictures</strong></td><td class="num">69</td><td class="num"><span class="p-rating-pill">69.1%</span></td></tr>
+</tbody>
+</table>
+</div>
+<div class="p-chart-caption">Both tables computed live · the hidden-gems query nests a subquery inside a HAVING filter, the consistency query is a plain GROUP BY + HAVING COUNT(*) &gt;= 3</div>
+</div>
+<div class="p-card">
+<div class="p-card-title"><span class="p-num">06</span> The Math, SQL Techniques Applied</div>
+<div class="p-body">
+<p>Four formulas power every chart on this page. Each tab below breaks down the formula, what it means, and a worked example using real rows from this exact dataset.</p>
+</div>
+<div class="p-math-block"><div class="p-math-head"><div class="p-math-head-left"><span class="p-math-index">01</span><span class="p-math-title">Cumulative Running Total</span></div><div class="p-math-tabs"><button class="p-math-tab active" data-tab="formula"><span class="p-math-tab-dot"></span>Formula</button><button class="p-math-tab" data-tab="explained"><span class="p-math-tab-dot"></span>Explained</button><button class="p-math-tab" data-tab="example"><span class="p-math-tab-dot"></span>Worked Example</button></div></div><div class="p-math-body"><div class="p-math-panel active" data-panel="formula"><div class="p-math-formula-wrap"><div class="p-math-scroll"><pre class="p-math-formula">SELECT yr, releases,
+       SUM(releases) OVER (
+         ORDER BY yr
+         ROWS UNBOUNDED PRECEDING
+       ) AS cumulative
+FROM yearly_counts</pre></div></div></div><div class="p-math-panel" data-panel="explained"><div class="p-math-explained"><p class="p-text">A window function re-evaluates <code class="inline">SUM()</code> per row, over rows up to the current one (<code class="inline">ROWS UNBOUNDED PRECEDING</code>). Unlike <code class="inline">GROUP BY</code>, it keeps one row per year while exposing the running total — exactly what the line chart plots.</p></div></div><div class="p-math-panel" data-panel="example"><div class="p-math-example-wrap"><div class="p-math-example-scroll"><pre class="p-math-example">yr     releases   cumulative
+2008      87           87
+2009      69          156
+2010      85          241
+2011      84          325
+2012      72          397
+2013     101          498   ← single best year
+2024      88         1400   ← final total</pre></div></div></div></div></div>
+<div class="p-math-block"><div class="p-math-head"><div class="p-math-head-left"><span class="p-math-index">02</span><span class="p-math-title">Positive-Rating Ratio</span></div><div class="p-math-tabs"><button class="p-math-tab active" data-tab="formula"><span class="p-math-tab-dot"></span>Formula</button><button class="p-math-tab" data-tab="explained"><span class="p-math-tab-dot"></span>Explained</button><button class="p-math-tab" data-tab="example"><span class="p-math-tab-dot"></span>Worked Example</button></div></div><div class="p-math-body"><div class="p-math-panel active" data-panel="formula"><div class="p-math-formula-wrap"><div class="p-math-scroll"><pre class="p-math-formula">rating = positive_ratings
+       / (positive_ratings + negative_ratings)</pre></div></div></div><div class="p-math-panel" data-panel="explained"><div class="p-math-explained"><p class="p-math-desc">SQLite does integer division by default, so the numerator is cast with <code class="inline">1.0*</code> to force a float result. Every "average rating" on this page, per genre, per price bucket, per studio, is the <code class="inline">AVG()</code> of this ratio computed per game, not a single global ratio, so one outlier game can't dominate a genre's number.</p></div></div><div class="p-math-panel" data-panel="example"><div class="p-math-example-wrap"><div class="p-math-example-scroll"><pre class="p-math-example">Game: "Lost Wasteland"
+positive_ratings = 369   negative_ratings = 4
+
+rating = 1.0 × 369 / (369 + 4)
+       = 369 / 373
+       = 0.989  →  98.9%</pre></div></div></div></div></div>
+<div class="p-math-block"><div class="p-math-head"><div class="p-math-head-left"><span class="p-math-index">03</span><span class="p-math-title">RANK() Within Partition</span></div><div class="p-math-tabs"><button class="p-math-tab active" data-tab="formula"><span class="p-math-tab-dot"></span>Formula</button><button class="p-math-tab" data-tab="explained"><span class="p-math-tab-dot"></span>Explained</button><button class="p-math-tab" data-tab="example"><span class="p-math-tab-dot"></span>Worked Example</button></div></div><div class="p-math-body"><div class="p-math-panel active" data-panel="formula"><div class="p-math-formula-wrap"><div class="p-math-scroll"><pre class="p-math-formula">WITH ranked AS (
+  SELECT genre_name, name,
+    RANK() OVER (
+      PARTITION BY genre_name
+      ORDER BY positive_ratings DESC
+    ) AS rnk
+  FROM games_deduped d
+  JOIN game_genres g ON g.app_id = d.app_id
+)
+SELECT * FROM ranked WHERE rnk &lt;= 3</pre></div></div></div><div class="p-math-panel" data-panel="explained"><div class="p-math-explained"><p class="p-text"><code class="inline">PARTITION BY</code> resets the ranking counter per genre, so each genre gets its own top-3 rather than one global list dominated by the largest genre. SQLite has no <code class="inline">QUALIFY</code>, so the window function is wrapped in a CTE and filtered in an outer query.</p></div></div><div class="p-math-panel" data-panel="example"><div class="p-math-example-wrap"><div class="p-math-example-scroll"><pre class="p-math-example">genre_name   name                    rnk
+Adventure    "Sunken Citadel"          1
+Adventure    "Velvet Horizon"          2
+Adventure    "Glass Meridian"          3
+Shooter      "Iron Vanguard"           1
+Shooter      "Crimson Drift"           2
+Shooter      "Static Hollow"           3
+→ filtered from ALL ranked rows down to rnk &lt;= 3 per genre</pre></div></div></div></div></div>
+<div class="p-math-block"><div class="p-math-head"><div class="p-math-head-left"><span class="p-math-index">04</span><span class="p-math-title">Recursive CTE: Genre Hierarchy</span></div><div class="p-math-tabs"><button class="p-math-tab active" data-tab="formula"><span class="p-math-tab-dot"></span>Formula</button><button class="p-math-tab" data-tab="explained"><span class="p-math-tab-dot"></span>Explained</button><button class="p-math-tab" data-tab="example"><span class="p-math-tab-dot"></span>Worked Example</button></div></div><div class="p-math-body"><div class="p-math-panel active" data-panel="formula"><div class="p-math-formula-wrap"><div class="p-math-scroll"><pre class="p-math-formula">WITH RECURSIVE ancestry(genre_id, path, depth) AS (
+  SELECT genre_id, genre_name, 0
+  FROM genres WHERE parent_genre IS NULL
+  UNION ALL
+  SELECT g.genre_id, a.path || ' → ' || g.genre_name, a.depth+1
+  FROM genres g
+  JOIN ancestry a ON g.parent_genre = a.path
+)
+SELECT * FROM ancestry ORDER BY depth</pre></div></div></div><div class="p-math-panel" data-panel="explained"><div class="p-math-explained"><p class="p-text">The genres table is self-referencing — every row's <code class="inline">parent_genre</code> points at another row in the same table. A recursive CTE starts at the root (<code class="inline">parent_genre IS NULL</code>) and <code class="inline">UNION ALL</code>s each level down until no children remain, building the ancestry path as it goes.</p></div></div><div class="p-math-panel" data-panel="example"><div class="p-math-example-wrap"><div class="p-math-example-scroll"><pre class="p-math-example">depth 0:  Games
+depth 1:  Games → Action
+depth 1:  Games → Adventure
+depth 1:  Games → Strategy
+depth 2:  Games → Action → Shooter
+depth 2:  Games → Action → Platformer
+depth 2:  Games → Adventure → RPG
+depth 2:  Games → Strategy → Simulation
+depth 3:  Games → Strategy → Simulation → Sandbox</pre></div></div></div></div></div>
+<div class="p-card-title" style="margin-top:18px; font-size:12px; border:none; padding:0 0 8px;">The genre tree this query walks</div>
+<div class="p-tree">
+<div class="p-tree-root">Games</div>
+<div class="p-tree-l1">Action <span class="p-tree-path">→ Shooter, Platformer</span></div>
+<div class="p-tree-l1">Adventure <span class="p-tree-path">→ RPG, Visual Novel</span></div>
+<div class="p-tree-l1">Strategy <span class="p-tree-path">→ Simulation → Sandbox</span></div>
+<div class="p-tree-l1">Sports <span class="p-tree-path">→ Racing</span></div>
+<div class="p-tree-l1">Indie <span class="p-tree-path">→ Casual, Puzzle</span></div>
+<div class="p-tree-l1">Horror</div>
+</div>
+</div>
+<div class="p-card">
+<div class="p-card-title"><span class="p-num">07</span> How a Page Load Becomes a Live Query</div>
+<div class="p-body">
+<p>There's no backend and no build step that runs SQL ahead of time. Everything below happens fresh, in-browser, every time the page opens:</p>
+</div>
+<div class="p-steps">
+<div class="p-step">
+<div class="p-step-dot">1</div>
+<div class="p-step-title">Boot SQLite/WASM</div>
+<div class="p-step-desc"><code class="inline">sql.js</code> loads and initializes a real SQLite engine compiled to WebAssembly, running entirely inside the page.</div>
+</div>
+<div class="p-step">
+<div class="p-step-dot">2</div>
+<div class="p-step-title">Load the database</div>
+<div class="p-step-desc">The SQLite file is embedded directly in the page as base64, no separate <code class="inline">.db</code> fetch that can 404, just one self-contained file.</div>
+</div>
+<div class="p-step">
+<div class="p-step-dot">3</div>
+<div class="p-step-title">Run every query, timed</div>
+<div class="p-step-desc"><strong><mark class="hl">Five analysis queries execute live on load</mark></strong>: cumulative release growth, genre breakdown, price-vs-rating, a "hidden gems" subquery, and consistent-studio aggregates, each with its execution time captured.</div>
+</div>
+<div class="p-step">
+<div class="p-step-dot">4</div>
+<div class="p-step-title">Render results live</div>
+<div class="p-step-desc">Query output feeds straight into the charts. Edit a query, refresh, and the dashboard's behavior changes immediately, no rebuild, no export script.</div>
+</div>
+</div>
+<div class="p-steps-accordion">
+<div class="p-acc-item">
+<button class="p-acc-trigger"><span class="p-acc-num">1</span><span class="p-acc-title">Boot SQLite/WASM</span><svg class="p-acc-chevron" viewbox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="p-acc-body"><p class="p-acc-desc"><code class="inline">sql.js</code> loads and initializes a real SQLite engine compiled to WebAssembly, running entirely inside the page.</p></div>
+</div>
+<div class="p-acc-item">
+<button class="p-acc-trigger"><span class="p-acc-num">2</span><span class="p-acc-title">Load the database</span><svg class="p-acc-chevron" viewbox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="p-acc-body"><p class="p-acc-desc">The SQLite file is embedded directly in the page as base64, no separate <code class="inline">.db</code> fetch that can 404, just one self-contained file.</p></div>
+</div>
+<div class="p-acc-item">
+<button class="p-acc-trigger"><span class="p-acc-num">3</span><span class="p-acc-title">Run every query, timed</span><svg class="p-acc-chevron" viewbox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="p-acc-body"><p class="p-acc-desc"><strong><mark class="hl">Five analysis queries execute live on load</mark></strong>: cumulative release growth, genre breakdown, price-vs-rating, a "hidden gems" subquery, and consistent-studio aggregates, each with its execution time captured.</p></div>
+</div>
+<div class="p-acc-item">
+<button class="p-acc-trigger"><span class="p-acc-num">4</span><span class="p-acc-title">Render results live</span><svg class="p-acc-chevron" viewbox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="p-acc-body"><p class="p-acc-desc">Query output feeds straight into the charts. Edit a query, refresh, and the dashboard's behavior changes immediately, no rebuild, no export script.</p></div>
+</div>
+</div>
+</div>
+<div class="p-card">
+<div class="p-card-title"><span class="p-num">08</span> Live SQL Console</div>
+<div class="p-body">
+<p>The bottom of the live page is a real query box wired to <code class="inline">db.exec()</code>, not a styled mockup. Below is an interactive walkthrough of the five sample queries it ships with, using the actual result sets they return against this dataset. Pick one and hit <strong>Run</strong>.</p>
+</div>
+<div class="p-console">
+<div class="p-console-tabs" role="tablist">
+<button class="p-console-tab active" data-q="top">Top-Rated Games</button>
+<button class="p-console-tab" data-q="genre">Genre × Price</button>
+<button class="p-console-tab" data-q="year">Releases / Year</button>
+<button class="p-console-tab" data-q="rank">RANK() / Genre</button>
+<button class="p-console-tab" data-q="schema">Schema</button>
+</div>
+<div class="p-console-body">
+<div class="p-console-sql-wrap">
+<div class="p-console-sql-label">QUERY</div>
+<pre class="p-console-sql" id="console-sql">SELECT name, developer, positive_ratings, negative_ratings,
+       ROUND(1.0*positive_ratings/(positive_ratings+negative_ratings), 3) AS rating
+FROM games_deduped
+WHERE (positive_ratings+negative_ratings) &gt;= 100
+ORDER BY rating DESC
+LIMIT 5;</pre>
+</div>
+<button class="p-console-run" id="console-run">
+<svg viewbox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                                        Run query
+                                    </button>
+<div class="p-console-result" id="console-result">
+<div class="p-console-result-meta" id="console-meta">,  click Run query to execute, </div>
+<div class="p-table-scroll"><table class="p-data-table" id="console-table"><thead></thead><tbody></tbody></table></div>
+</div>
+</div>
+</div>
+<div class="p-chart-caption">Results shown are the real output of each query against <code class="inline">steam_games.db</code> · timing is simulated here, but identical on the live page where the engine genuinely runs the query</div>
+</div>
+<div class="p-card">
+<div class="p-card-title"><span class="p-num">09</span> Why Client-Side Over a Backend</div>
+<div class="p-body">
+<p>I deliberately didn't stand up a server to run these queries. Shipping the database file and running it client-side via WASM was a conscious trade-off, not a shortcut.</p>
+</div>
+<div class="p-usecases">
+<div class="p-usecase">
+<div class="p-usecase-title">Zero hosting cost</div>
+<div class="p-usecase-desc">It's a static site, deployable on Cloudflare Pages, Vercel, Netlify, or GitHub Pages with no compute to pay for.</div>
+</div>
+<div class="p-usecase">
+<div class="p-usecase-title">No backend to keep alive</div>
+<div class="p-usecase-desc">Nothing to monitor, nothing that goes down at 3am, nothing to patch for security updates.</div>
+</div>
+<div class="p-usecase">
+<div class="p-usecase-title">Genuinely live</div>
+<div class="p-usecase-desc">"Live" usually means "a server ran a query recently." Here it means the query runs on your machine, right now, in front of you.</div>
+</div>
+<div class="p-usecase">
+<div class="p-usecase-title">Honest about its limits</div>
+<div class="p-usecase-desc">The dataset is under 200KB, so shipping the whole database is trivial. A bigger dataset would need a real backend, and that's fine to say outright.</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="p-side-col">
+<div class="p-card">
+<div class="p-card-title">Tech Stack</div>
+<div class="p-tech-grid">
+<span class="p-tech-pill">SQLite</span>
+<span class="p-tech-pill">sql.js (WASM)</span>
+<span class="p-tech-pill">HTML5</span>
+<span class="p-tech-pill">CSS3</span>
+<span class="p-tech-pill">JavaScript</span>
+<span class="p-tech-pill">Window Functions</span>
+<span class="p-tech-pill">Recursive CTEs</span>
+<span class="p-tech-pill">Cloudflare Pages</span>
+</div>
+</div>
+<div class="p-card">
+<div class="p-card-title">Links</div>
+<a class="p-link-btn primary" href="https://steam.rafiarsya.com" rel="noopener noreferrer" target="_blank">
+<svg viewbox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" x2="21" y1="14" y2="3"></line></svg>
+<span class="p-link-btn-label">Live Dashboard</span>
+</a>
+<a class="p-link-btn" href="https://github.com/rafiarsya07/steam-sql-analytics" rel="noopener noreferrer" target="_blank">
+<svg viewbox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+<span class="p-link-btn-label">GitHub</span>
+</a>
+<a class="p-link-btn" href="https://blog.rafiarsya.com/" rel="noopener noreferrer" target="_blank">
+<svg viewbox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path><path d="M18 14h-8"></path><path d="M15 18h-5"></path><path d="M10 6h8v4h-8z"></path></svg>
+<span class="p-link-btn-label">Read Blog Post</span>
+</a>
+</div>
+</div>
+</div>
+<div class="p-closing">
+<div>
+<div class="p-closing-title">From a static export to a real, queryable database.</div>
+<div class="p-closing-desc">SQLite compiled to WebAssembly, a 1,400-title dataset, and a query console anyone can type into, designed and shipped solo as the first entry in a growing hub of live SQL case studies.</div>
+</div>
+<a class="p-closing-btn" href="https://github.com/rafiarsya07/steam-sql-analytics" rel="noopener noreferrer" target="_blank">
+<svg viewbox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        View on GitHub
+                    </a>
+</div>
+</div>
+</main>
+</div>
+<script defer="" src="../../js/script.js"></script>
+<div id="rafi-bar"></div>
+<script>
+(function(){
+'use strict';
+var bar = document.getElementById('rafi-bar');
+if (bar) {
+    window.addEventListener('scroll', function() {
+        var d = document.documentElement;
+        var s = d.scrollTop || document.body.scrollTop;
+        var h = d.scrollHeight - d.clientHeight;
+        bar.style.width = (h > 0 ? (s / h * 100) : 0) + '%';
+    }, { passive: true });
+}
+var hbtn = document.getElementById('hamburger-btn');
+var sbEl  = document.querySelector('.sidebar');
+var ovEl  = document.getElementById('sidebar-overlay');
+if (hbtn && sbEl && !hbtn._rafi) {
+    hbtn._rafi = true;
+    var topbarEl = document.querySelector('.mobile-topbar');
+    function openSb() {
+        sbEl.classList.add('open');
+        if (ovEl) ovEl.classList.add('visible');
+        hbtn.classList.add('open');
+        hbtn.setAttribute('aria-expanded', 'true');
+        if (topbarEl) topbarEl.classList.add('sidebar-is-open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeSb() {
+        sbEl.classList.remove('open');
+        if (ovEl) ovEl.classList.remove('visible');
+        hbtn.classList.remove('open');
+        hbtn.setAttribute('aria-expanded', 'false');
+        if (topbarEl) topbarEl.classList.remove('sidebar-is-open');
+        document.body.style.overflow = '';
+    }
+    hbtn.addEventListener('click', function() {
+        sbEl.classList.contains('open') ? closeSb() : openSb();
+    });
+    if (ovEl) ovEl.addEventListener('click', closeSb);
+    var closeBtnEl = document.getElementById('sidebar-close-btn');
+    if (closeBtnEl) closeBtnEl.addEventListener('click', closeSb);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSb(); });
+    sbEl.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+            if (window.innerWidth <= 900) setTimeout(closeSb, 60);
+        });
+    });
+}
+function initPipeline(wrap) {
+    var scroll = wrap.querySelector('.p-pipeline-scroll');
+    if (!scroll || scroll._rafi) return;
+    scroll._rafi = true;
+    var dots   = wrap.querySelector('.p-pipe-dots');
+    var detail = wrap.querySelector('.p-pipe-detail');
+    var steps  = Array.from(wrap.querySelectorAll('.p-pipe-step'));
+    if (dots && steps.length > 1) {
+        dots.innerHTML = '';
+        steps.forEach(function(_, i) {
+            var d = document.createElement('div');
+            d.className = 'p-pipe-dot' + (i === 0 ? ' active' : '');
+            dots.appendChild(d);
+        });
+    }
+    function updateState() {
+        var atEnd = scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 8;
+        wrap.classList.toggle('at-end', atEnd);
+        if (dots && steps.length > 1) {
+            var range = scroll.scrollWidth - scroll.clientWidth;
+            var idx = range > 0 ? Math.round(scroll.scrollLeft / range * (steps.length - 1)) : 0;
+            idx = Math.max(0, Math.min(idx, steps.length - 1));
+            dots.querySelectorAll('.p-pipe-dot').forEach(function(d, i) {
+                d.classList.toggle('active', i === idx);
+            });
+        }
+    }
+    scroll.addEventListener('scroll', updateState, { passive: true });
+    setTimeout(updateState, 120);
+    steps.forEach(function(step) {
+        step.addEventListener('click', function() {
+            var wasActive = step.classList.contains('ps-active');
+            steps.forEach(function(s) { s.classList.remove('ps-active'); });
+            if (detail) {
+                if (!wasActive && step.dataset.detail) {
+                    step.classList.add('ps-active');
+                    detail.innerHTML = step.dataset.detail;
+                    detail.classList.add('ps-show');
+                } else {
+                    detail.classList.remove('ps-show');
+                    detail.innerHTML = '';
+                }
+            }
+        });
+    });
+    var drag = false, startX, startLeft;
+    scroll.addEventListener('mousedown', function(e) {
+        if (e.button !== 0) return;
+        drag = true; startX = e.pageX; startLeft = scroll.scrollLeft;
+        scroll.style.cursor = 'grabbing'; e.preventDefault();
+    });
+    window.addEventListener('mousemove', function(e) {
+        if (!drag) return;
+        scroll.scrollLeft = startLeft - (e.pageX - startX);
+    });
+    window.addEventListener('mouseup', function() {
+        if (!drag) return;
+        drag = false; scroll.style.cursor = 'grab';
+    });
+}
+document.querySelectorAll('.p-pipeline-wrap, .p-pipeline-outer').forEach(initPipeline);
+document.querySelectorAll('.p-acc-trigger').forEach(function(trigger) {
+    if (trigger._rafi) return;
+    trigger._rafi = true;
+    trigger.addEventListener('click', function() {
+        var item = trigger.closest('.p-acc-item');
+        var acc  = item.closest('.p-steps-accordion');
+        var wasOpen = item.classList.contains('open');
+        if (acc) acc.querySelectorAll('.p-acc-item').forEach(function(el) { el.classList.remove('open'); });
+        if (!wasOpen) item.classList.add('open');
+    });
+});
+var fills = document.querySelectorAll('.p-progress-fill');
+if (fills.length && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(ens) {
+        ens.forEach(function(e) {
+            if (e.isIntersecting) {
+                e.target.style.width = e.target.dataset.w || e.target.style.width;
+                io.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.4 });
+    fills.forEach(function(el) {
+        el.dataset.w = el.style.width || '100%';
+        el.style.width = '0%'; io.observe(el);
+    });
+}
+document.querySelectorAll('.skill-tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        var nav = btn.closest('.skills-tab-nav');
+        if (!nav) return;
+        nav.querySelectorAll('.skill-tab-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var target = btn.dataset.tab;
+        document.querySelectorAll('.skill-tab-panel').forEach(function(p) {
+            p.classList.toggle('active', p.dataset.panel === target);
+        });
+    });
+});
+
+/* ── Genre bar chart: animate fill on scroll-in ── */
+var hbarFills = document.querySelectorAll('.p-hbar-fill');
+if (hbarFills.length && 'IntersectionObserver' in window) {
+    var hbarIo = new IntersectionObserver(function(ens) {
+        ens.forEach(function(e) {
+            if (e.isIntersecting) {
+                var w = e.target.dataset.wRating || e.target.style.width;
+                e.target.style.width = w + '%';
+                hbarIo.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    hbarFills.forEach(function(el) {
+        el.style.width = '0%';
+        hbarIo.observe(el);
+    });
+}
+var gbarBars = document.querySelectorAll('.p-gbar-bar');
+if (gbarBars.length && 'IntersectionObserver' in window) {
+    var gbarIo = new IntersectionObserver(function(ens) {
+        ens.forEach(function(e) {
+            if (e.isIntersecting) {
+                e.target.style.height = e.target.dataset.h || e.target.style.height;
+                gbarIo.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    gbarBars.forEach(function(el) {
+        el.dataset.h = el.style.height || '100%';
+        el.style.height = '0%';
+        gbarIo.observe(el);
+    });
+}
+
+/* ── Interactive SQL console demo ── */
+(function() {
+    var queries = {
+        top: {
+            sql: 'SELECT name, developer, positive_ratings, negative_ratings,\n       ROUND(1.0*positive_ratings/(positive_ratings+negative_ratings), 3) AS rating\nFROM games_deduped\nWHERE (positive_ratings+negative_ratings) >= 100\nORDER BY rating DESC\nLIMIT 5;',
+            cols: ['name', 'developer', 'positive_ratings', 'negative_ratings', 'rating'],
+            rows: [
+                ['Hollow Odyssey', 'Obsidian Lantern', 1163, 12, 0.99],
+                ['Iron Realm', 'Velvet Circuit', 611, 7, 0.989],
+                ['Frozen Legacy: Horizon', 'NeonByte', 461, 5, 0.989],
+                ['Iron Citadel: Nexus', 'Driftwood Interactive', 719, 8, 0.989],
+                ['Hollow Throne: Throne', 'Frostbyte Collective', 174, 2, 0.989]
+            ],
+            ms: 14
+        },
+        genre: {
+            sql: 'SELECT g.genre_name, COUNT(*) AS games, ROUND(AVG(d.price),2) AS avg_price\nFROM games_deduped d\nJOIN game_genres g ON g.app_id = d.app_id\nGROUP BY g.genre_name\nORDER BY avg_price DESC\nLIMIT 5;',
+            cols: ['genre_name', 'games', 'avg_price'],
+            rows: [
+                ['Sandbox', 154, 15.37],
+                ['Indie', 173, 14.53],
+                ['Action', 155, 14.12],
+                ['Visual Novel', 170, 13.6],
+                ['Shooter', 144, 13.59]
+            ],
+            ms: 19
+        },
+        year: {
+            sql: "SELECT strftime('%Y', release_date) AS yr, COUNT(*) AS releases\nFROM games_deduped\nGROUP BY yr\nORDER BY yr\nLIMIT 5;",
+            cols: ['yr', 'releases'],
+            rows: [
+                ['2008', 87], ['2009', 69], ['2010', 85], ['2011', 84], ['2012', 72]
+            ],
+            ms: 8
+        },
+        rank: {
+            sql: 'WITH ranked AS (\n  SELECT g.genre_name, d.name,\n         RANK() OVER (PARTITION BY g.genre_name ORDER BY d.positive_ratings DESC) AS rnk\n  FROM games_deduped d\n  JOIN game_genres g ON g.app_id = d.app_id\n)\nSELECT * FROM ranked WHERE rnk <= 3\nORDER BY genre_name, rnk\nLIMIT 6;',
+            cols: ['genre_name', 'name', 'rnk'],
+            rows: [
+                ['Action', 'Neon Throne: Horizon', 1],
+                ['Action', 'Hollow Legacy', 2],
+                ['Action', 'Eternal Throne: Citadel', 3],
+                ['Adventure', 'Neon Frontier: Kingdom', 1],
+                ['Adventure', 'Crimson Citadel: Throne', 2],
+                ['Adventure', 'Drifting Kingdom: Odyssey', 3]
+            ],
+            ms: 27
+        },
+        schema: {
+            sql: "SELECT name, type FROM sqlite_master\nWHERE type IN ('table','view');",
+            cols: ['name', 'type'],
+            rows: [
+                ['genres', 'table'], ['games', 'table'], ['game_genres', 'table'], ['games_deduped', 'view']
+            ],
+            ms: 2
+        }
+    };
+    var sqlEl = document.getElementById('console-sql');
+    var runBtn = document.getElementById('console-run');
+    var metaEl = document.getElementById('console-meta');
+    var tableEl = document.getElementById('console-table');
+    var currentQ = 'top';
+    if (!sqlEl || !runBtn) return;
+
+    function resetResult() {
+        metaEl.textContent = '— click Run query to execute —';
+        metaEl.classList.remove('done');
+        tableEl.querySelector('thead').innerHTML = '';
+        tableEl.querySelector('tbody').innerHTML = '';
+    }
+
+    document.querySelectorAll('.p-console-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.p-console-tab').forEach(function(t) { t.classList.remove('active'); });
+            tab.classList.add('active');
+            currentQ = tab.dataset.q;
+            sqlEl.textContent = queries[currentQ].sql;
+            resetResult();
+        });
+    });
+
+    runBtn.addEventListener('click', function() {
+        var q = queries[currentQ];
+        runBtn.classList.add('running');
+        metaEl.classList.remove('done');
+        metaEl.textContent = 'Running…';
+        tableEl.querySelector('thead').innerHTML = '';
+        tableEl.querySelector('tbody').innerHTML = '';
+        setTimeout(function() {
+            var thead = tableEl.querySelector('thead');
+            var tbody = tableEl.querySelector('tbody');
+            var headRow = document.createElement('tr');
+            q.cols.forEach(function(c) {
+                var th = document.createElement('th');
+                th.textContent = c;
+                headRow.appendChild(th);
+            });
+            thead.appendChild(headRow);
+            q.rows.forEach(function(row) {
+                var tr = document.createElement('tr');
+                row.forEach(function(val, i) {
+                    var td = document.createElement('td');
+                    td.textContent = val;
+                    if (typeof val === 'number') td.classList.add('num');
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+            });
+            metaEl.textContent = q.rows.length + ' rows returned in ' + q.ms + 'ms';
+            metaEl.classList.add('done');
+            runBtn.classList.remove('running');
+        }, 380);
+    });
+})();
+
+/* ── Genre performance: live re-sort by rating / price / count ── */
+(function() {
+    var list = document.getElementById('genre-hbar-list');
+    if (!list) return;
+    var caption = document.getElementById('genre-sort-caption');
+    var captions = {
+        rating: 'Sorted by average positive-rating ratio · click a tab above to re-sort live',
+        price: 'Sorted by average price (USD) · click a tab above to re-sort live',
+        count: 'Sorted by number of games in genre · click a tab above to re-sort live'
+    };
+    document.querySelectorAll('.p-sort-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var key = btn.dataset.sort;
+            document.querySelectorAll('.p-sort-btn').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            var rows = Array.prototype.slice.call(list.querySelectorAll('.p-hbar-row'));
+            rows.sort(function(a, b) {
+                return parseFloat(b.dataset[key]) - parseFloat(a.dataset[key]);
+            });
+            rows.forEach(function(row, i) {
+                list.appendChild(row);
+                row.classList.toggle('top', i < 2 && key === 'rating');
+                if (key !== 'rating') row.classList.remove('top');
+                var fill = row.querySelector('.p-hbar-fill');
+                var valEl = row.querySelector('.p-hbar-val');
+                var w = fill.dataset['w' + key.charAt(0).toUpperCase() + key.slice(1)];
+                fill.style.width = w + '%';
+                if (key === 'rating') valEl.textContent = row.dataset.rating + '%';
+                else if (key === 'price') valEl.textContent = '$' + row.dataset.price;
+                else valEl.textContent = row.dataset.count;
+            });
+            if (caption) caption.textContent = captions[key];
+        });
+    });
+})();
+})();
+</script>
+<script>/* ════════════════════════════════════════════════════════════════════════
+   MATH DERIVATION CARD — interaction layer
+   Tab switching + scroll-affordance detection for formula/example panels.
+   ════════════════════════════════════════════════════════════════════════ */
+(function () {
+    function setupScrollAffordance(wrap) {
+        if (!wrap || wrap._pmBound) return;
+        wrap._pmBound = true;
+        var scroller = wrap.querySelector('.p-math-scroll, .p-math-example-scroll');
+        if (!scroller) return;
+
+        function update() {
+            var scrollable = scroller.scrollWidth > scroller.clientWidth + 2;
+            var atEnd = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 2;
+            wrap.classList.toggle('pm-scrollable', scrollable);
+            wrap.classList.toggle('pm-at-end', !scrollable || atEnd);
+        }
+        scroller.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+        // Re-check after fonts/layout settle
+        setTimeout(update, 150);
+    }
+
+    function initMathBlock(block) {
+        if (block._pmBound) return;
+        block._pmBound = true;
+
+        var tabs = Array.prototype.slice.call(block.querySelectorAll('.p-math-tab'));
+        var panels = Array.prototype.slice.call(block.querySelectorAll('.p-math-panel'));
+
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                if (tab.classList.contains('active')) return;
+                var targetName = tab.getAttribute('data-tab');
+                tabs.forEach(function (t) { t.classList.toggle('active', t === tab); });
+                panels.forEach(function (p) {
+                    var match = p.getAttribute('data-panel') === targetName;
+                    p.classList.toggle('active', match);
+                });
+                // Re-check scroll affordance for the panel we just revealed
+                var activePanel = block.querySelector('.p-math-panel.active');
+                if (activePanel) {
+                    var wrap = activePanel.querySelector('.p-math-formula-wrap, .p-math-example-wrap');
+                    if (wrap) setupScrollAffordance(wrap);
+                }
+            });
+        });
+
+        // Bind scroll affordance for every wrap inside this block (formula tab is visible by default)
+        block.querySelectorAll('.p-math-formula-wrap, .p-math-example-wrap').forEach(setupScrollAffordance);
+    }
+
+    function init() {
+        document.querySelectorAll('.p-math-block').forEach(initMathBlock);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+</script>
+<script defer="" src="../../js/rafi-core.js"></script>
+<script defer="" src="../../js/site-polish.js"></script>
+</body>
+</html>
