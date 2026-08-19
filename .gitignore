@@ -9,17 +9,12 @@ node_modules/
 *-backup/
 *-snapshot/
 Unfinished Portfolio/
-
 # OS
 .DS_Store
 Thumbs.db
 desktop.ini
-
 # editor
 .vscode/
 .idea/
 *.swp
-
-cleanup-portfolio.ps1
-
 cleanup-portfolio.ps1
