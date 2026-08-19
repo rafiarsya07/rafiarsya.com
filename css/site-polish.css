@@ -288,3 +288,110 @@ body.rf-lb-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .rf-shot::after, .rf-file { transition: none !important; }
 }
+
+/* ============================================================
+   5. INDEX — ENTRY LAYOUT + MOBILE PROSE
+   Added Aug 2026. Scoped to .home-main so resume / course /
+   project pages keep the layout they already had.
+   ============================================================ */
+
+/* ---- 5a. Logo above the paragraph --------------------------
+
+   Before: the logo sat in a 60px column running the full height
+   of the entry, so every paragraph was locked into a narrow
+   right-hand column — worst on phones, where it left roughly
+   half the screen unusable.
+
+   Now the entry is a three-row grid:
+     row 1  logo | title
+     row 2       | organisation • dates
+     row 3  paragraph, full width from the left margin
+
+   The wrapper <div> around title/sub/desc is dissolved with
+   display:contents so those three become grid items of
+   .entry-item itself. No HTML change needed, which means the
+   inline onerror monogram fallback on each logo still works.
+   ------------------------------------------------------------ */
+
+.home-main .entry-item {
+  grid-template-columns: 60px minmax(0, 1fr);
+  grid-template-rows: auto auto auto;
+  column-gap: 20px;
+  row-gap: 2px;
+  align-items: start;
+}
+
+.home-main .entry-item > div:not(.entry-logo):not(.entry-logo-text) {
+  display: contents;
+}
+
+.home-main .entry-item > .entry-logo,
+.home-main .entry-item > .entry-logo-text {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: start;
+}
+
+.home-main .entry-item .entry-title {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+}
+
+.home-main .entry-item .entry-sub {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  margin-bottom: 0;
+}
+
+.home-main .entry-item .entry-desc {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  margin-top: 12px;
+}
+
+/* ---- 5b. Justified prose stays justified on phones ----------
+
+   styles.css drops the home bio to ragged-right below 900px and
+   site-polish did the same for entry paragraphs below 560px.
+   Both are reverted here for the index page only: the bio and
+   the entry paragraphs keep the flush left-and-right edge they
+   have on desktop.
+
+   hyphens:auto carries the weight — without it a justified
+   paragraph in a phone-width column opens rivers of white space.
+   The last line is never stretched.
+   ------------------------------------------------------------ */
+
+@media (max-width: 900px) {
+  .home-bio-text,
+  .home-bio-text2,
+  .home-bio-text3,
+  .home-main .entry-desc {
+    text-align: justify;
+    text-justify: inter-word;
+    text-align-last: left;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    hyphenate-limit-chars: 7 3 3;
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+
+  /* Slightly smaller logo so the title beside it has room to
+     breathe on a 390px screen. */
+  .home-main .entry-item {
+    grid-template-columns: 48px minmax(0, 1fr);
+    column-gap: 14px;
+  }
+
+  .home-main .entry-logo,
+  .home-main .entry-logo-text {
+    width: 48px;
+    height: 48px;
+  }
+
+  .home-main .entry-item .entry-desc { margin-top: 10px; }
+}
