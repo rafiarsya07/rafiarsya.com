@@ -18,3 +18,10 @@ desktop.ini
 .idea/
 *.swp
 cleanup-portfolio.ps1
+
+# static build output — regenerate with `python build-static.py`
+dist/
+
+# local backups made during the v7 migration
+_old-*/
+*.tgz

@@ -32,9 +32,6 @@
       { name: 'HandGesture', kw: ['handgesture', 'hand gesture', 'gesture', 'webcam', 'draw'],
         en: 'HandGesture turns your webcam into a drawing canvas: raise your index finger and draw on screen, no mouse, stylus or touchscreen. It is built in Python with OpenCV for video capture and MediaPipe Hands for 21-landmark detection, tracking up to four hands at over 30 frames per second on a normal laptop CPU.',
         id: 'HandGesture mengubah webcam jadi kanvas gambar: angkat jari telunjuk dan menggambar di layar, tanpa mouse, stylus, atau layar sentuh. Dibuat dengan Python, OpenCV untuk menangkap video, dan MediaPipe Hands untuk deteksi 21 titik tangan, melacak hingga empat tangan di atas 30 frame per detik di CPU laptop biasa.' },
-      { name: 'CampusBay', kw: ['campusbay', 'campus bay', 'marketplace', 'store'],
-        en: 'CampusBay is a production-grade peer-to-peer student marketplace Rafi is building solo. Registration is gated to institutional emails verified by a six-digit OTP, so every user is a real student. It has real-time chat, Stripe payments, an escrow-style order state machine, flash sales, a wallet system and AI support. Built with React, Node.js, PostgreSQL, Redis, Socket.IO and Docker, and live at campusbay.store.',
-        id: 'CampusBay adalah marketplace mahasiswa peer-to-peer kelas produksi yang dibangun Rafi sendiri. Pendaftaran dibatasi untuk email kampus yang diverifikasi lewat OTP enam digit, jadi setiap pengguna adalah mahasiswa asli. Ada chat real-time, pembayaran Stripe, alur pesanan bergaya escrow, flash sale, sistem dompet, dan dukungan AI. Dibuat dengan React, Node.js, PostgreSQL, Redis, Socket.IO, dan Docker, serta sudah live di campusbay.store.' },
       { name: 'Crop Disease Detector', kw: ['crop', 'disease', 'plant', 'leaf', 'tanaman', 'daun', 'penyakit'],
         en: 'Crop Disease Detector is an AI that looks at a single leaf photo and identifies which of 38 disease conditions a plant likely has. It uses MobileNetV2 with transfer learning, trained on the PlantVillage dataset of over 87,000 images across 14 crop types, reaching about 97 percent accuracy. It is live and free on Hugging Face Spaces.',
         id: 'Crop Disease Detector adalah AI yang melihat satu foto daun dan menentukan salah satu dari 38 kondisi penyakit tanaman. Menggunakan MobileNetV2 dengan transfer learning, dilatih pada dataset PlantVillage berisi lebih dari 87.000 gambar dari 14 jenis tanaman, dengan akurasi sekitar 97 persen. Sudah live dan gratis di Hugging Face Spaces.' },
@@ -344,8 +341,8 @@
       case 'projectindex':
       case 'blogindex':
         return en
-          ? { intro: 'Looking at Rafi\u2019s projects. Curious about any of them?', chips: ['His projects', 'CampusBay', 'PaperMind', 'His skills'] }
-          : { intro: 'Sedang melihat proyek Rafi. Penasaran salah satunya?', chips: ['Proyeknya', 'CampusBay', 'PaperMind', 'Keahliannya'] };
+          ? { intro: 'Looking at Rafi\u2019s projects. Curious about any of them?', chips: ['His projects', 'ThoughtLog', 'PaperMind', 'His skills'] }
+          : { intro: 'Sedang melihat proyek Rafi. Penasaran salah satunya?', chips: ['Proyeknya', 'ThoughtLog', 'PaperMind', 'Keahliannya'] };
       case 'projectpage':
       case 'blogpost':
         if (proj) {
