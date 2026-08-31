@@ -107,13 +107,13 @@
             <h4>Volunteering</h4>
             <p>
                 <span><b>Chulalongkorn University, Bangkok, Thailand</b></span><br>
-                <span>Organising Committee &amp; Documentation</span><br>
+                <span>Faculty of Computer Science &amp; Information Technology, Universiti Malaya</span><br>
             </p>
             <ul style="margin-top: -12px;">
-                <li>One of a four-person committee running a five-day programme at Chulalongkorn University,
-                    Thailand's top-ranked university.</li>
-                <li>Sole documentation photographer for the programme, covering sessions and daily activities
-                    across all five days.</li>
+                <li>One of a four-person committee running a five-day FSKTM programme at Chulalongkorn
+                    University, Thailand's top-ranked university.</li>
+                <li>Responsible for documentation across the whole programme, covering sessions and daily
+                    activities on all five days.</li>
             </ul>
             <p>
                 <span><b>LARAS, PPI Malaysia</b></span><br>
