@@ -1067,3 +1067,20 @@ img.education-image,
 }
 .p-meta-v { font-size: 14px; font-weight: 600; color: #050505; }
 @media (max-width: 560px) { .p-meta { gap: 4px 18px; } }
+
+/* ── CONTRIBUTORS, PHOTOS ONLY ──
+   No names underneath, so the avatars carry the whole block: slightly
+   larger, tighter gap, and a ring on hover to show they are clickable.
+   The name lives in title/alt, which is what a screen reader reads and
+   what a hover tooltip shows. */
+.contributors-byline.photos-only { gap: 10px; }
+.contributors-byline.photos-only .contributor-chip-avatar {
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 0 0 0 rgba(5, 5, 5, 0);
+    transition: box-shadow .15s ease, border-color .15s ease;
+}
+a.contributor-chip:hover .contributor-chip-avatar {
+    border-color: #c7cbd1;
+    box-shadow: 0 0 0 3px rgba(5, 5, 5, .07);
+}

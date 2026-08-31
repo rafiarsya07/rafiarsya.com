@@ -57,6 +57,10 @@ def render_fragment(rel):
 entries = [f[:-4] for f in sorted(os.listdir(SRC))
            if f.endswith('.php') and f not in ('sidebar.php', 'conf.php', 'router.php')]
 
+# dist/ is a build artefact, not a workspace: wipe it first so a renamed or
+# deleted source file cannot leave a stale copy behind to be deployed.
+if os.path.isdir(OUT):
+    shutil.rmtree(OUT)
 os.makedirs(OUT, exist_ok=True)
 for e in entries:
     s = read(e + '.php')

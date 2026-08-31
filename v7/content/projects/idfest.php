@@ -23,14 +23,12 @@
             <span>The official website for IDFEST 2026, an Indonesian cultural festival organized by PPI Universiti Malaya. A collaborative build translating Figma designs into a fast, static Next.js frontend across the home timeline, Art Exhibition, and Musical Theater sections.</span>
             <br>
             <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">Completed</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Website Development Committee</span></span><span class="p-meta-item"><span class="p-meta-k">Stack</span><span class="p-meta-v">Next.js, Tailwind CSS</span></span></div><a href="https://idfest.ppiunimalaya.id/" target="_blank" rel="noopener" class="ext-link">IDFEST 2026<svg class="ext-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            <div class="contributors-byline">
-<a class="contributor-chip" href="https://www.linkedin.com/in/ilhamsetiabudi/" target="_blank" rel="noopener noreferrer">
-<img class="contributor-chip-avatar" src="image/assets/idfest/contributor-ilham.png" alt="Ilham Narendra Setiabudi" loading="lazy" decoding="async">
-<span class="contributor-chip-name">Ilham Narendra Setiabudi</span>
+            <div class="contributors-byline photos-only">
+<a class="contributor-chip" href="https://www.linkedin.com/in/fathirraja/" target="_blank" rel="noopener noreferrer" title="Ahmad Fathir" aria-label="Ahmad Fathir on LinkedIn">
+<img class="contributor-chip-avatar" src="image/assets/idfest/ahmad-fathir.png" alt="Ahmad Fathir" loading="lazy" decoding="async">
 </a>
-<a class="contributor-chip" href="https://www.linkedin.com/in/fathirraja/" target="_blank" rel="noopener noreferrer">
-<img class="contributor-chip-avatar" src="image/assets/idfest/contributor-fathir.png" alt="Ahmad Fathir" loading="lazy" decoding="async">
-<span class="contributor-chip-name">Ahmad Fathir</span>
+<a class="contributor-chip" href="https://www.linkedin.com/in/ilhamsetiabudi/" target="_blank" rel="noopener noreferrer" title="Ilham Narendra Setiabudi" aria-label="Ilham Narendra Setiabudi on LinkedIn">
+<img class="contributor-chip-avatar" src="image/assets/idfest/ilham-setiabudi.png" alt="Ilham Narendra Setiabudi" loading="lazy" decoding="async">
 </a>
             </div>
         </div>
