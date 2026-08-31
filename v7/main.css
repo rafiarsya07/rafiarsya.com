@@ -998,27 +998,29 @@ a:hover > .ext-arrow { opacity: 1; }
     letter-spacing: .02em;
 }
 
-/* ── UNIFORM PHOTO FRAMES ──────────────────────────────────────────────
-   Every content photo sits in the same landscape box regardless of the
-   source aspect ratio. Portrait sources (phone screenshots, tall
-   infographics) are fitted whole inside the frame instead of being
-   cropped, so nothing is lost and nothing runs tall down the page.
-   Click any of them to open the full-size lightbox.
-   Certificate scans and avatars keep their own sizing.              */
+/* ── CONTENT PHOTOS ──────────────────────────────────────────────────
+   Sized to the image, not to a fixed box. A landscape shot fills the
+   column; a tall one (a phone screenshot, a stacked infographic) keeps
+   its own shape and is limited by height instead, so it renders as
+   large as the page allows rather than being letterboxed into a wide
+   frame with empty gutters either side. Click any of them for the
+   full-size lightbox. Certificate scans and avatars are excluded. */
 .blog-content-body img,
 .rf-figure img,
 .rf-figure-lg img,
 .blog-img,
 .blog-main-img {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    max-height: none;
+    max-width: 100%;
+    max-height: 900px;
+    width: auto;
+    height: auto;
+    aspect-ratio: auto;
     object-fit: contain;
-    background: #f7f8f9;
+    display: block;
+    margin: 0 auto;
     border: solid 1px #eeeff2;
     border-radius: 10px;
-    display: block;
-    margin-top: 0;
+    background: #fff;
     cursor: zoom-in;
 }
 @media (max-width: 768px) {
@@ -1026,19 +1028,19 @@ a:hover > .ext-arrow { opacity: 1; }
     .rf-figure img,
     .rf-figure-lg img,
     .blog-img,
-    .blog-main-img {
-        aspect-ratio: 4 / 3;
-    }
+    .blog-main-img { max-height: 560px; }
 }
-/* opt-outs: these are not content photos */
+/* excluded: not content photos */
 .cert-shot img,
 .contributor-chip-avatar,
 .imgskills,
 img.education-image,
 .course-image,
 .project-image-container img {
+    max-height: none;
     aspect-ratio: auto;
     background: none;
+    margin: 0;
     cursor: inherit;
 }
 .contributor-chip-avatar {

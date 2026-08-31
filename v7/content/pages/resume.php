@@ -81,7 +81,7 @@
             </ul>
             <p>
                 <span><b>PPI University of Malaya</b></span><br>
-                <span>Head of Department, Art Exhibition &mdash; IDFEST 2026</span><br>
+                <span>Head of Department, Art Exhibition at IDFEST</span><br>
                 <span>Since 2026</span>
             </p>
             <ul style="margin-top: -12px;">
@@ -91,8 +91,8 @@
                     exhibition layout, and delivery on event day.</li>
             </ul>
             <p>
-                <span><b>IDFEST 2026, PPI University of Malaya</b></span><br>
-                <span>Website Development Committee</span><br>
+                <span><b>PPI University of Malaya</b></span><br>
+                <span>Website Development Committee at IDFEST</span><br>
                 <span>Since Jun 2026</span>
             </p>
             <ul style="margin-top: -12px;">
