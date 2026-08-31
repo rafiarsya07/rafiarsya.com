@@ -225,7 +225,7 @@
         <div class="about-section">
             <div class="d-flex flex-wrap justify-content-between">
                 <div class="d-flex flex-wrap gap-2">
-                    <span class="education-image education-mono">CU</span>
+                    <img src="icon/chula.png" alt="Chulalongkorn University" class="education-image" />
                     <div>
                         <p><b>Documentation Photographer</b></p>
                         <span class="text-silent">Chulalongkorn University, Bangkok, Thailand</span>
