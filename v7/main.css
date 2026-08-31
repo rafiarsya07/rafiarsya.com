@@ -1,0 +1,1052 @@
+/* =========================================================
+   main.css
+   side menu   #fafafa      rules        #eeeff2
+   body text   #374151      muted text   #989898
+   bold text   #050505      background   #ffffff
+   fixed side menu from 1024px (bootstrap xl)
+   ========================================================= */
+
+body {
+    /* Bootstrap's reboot normally zeroes this. Setting it here too means the
+       layout does not shift if the CDN is slow or blocked for a visitor. */
+    margin: 0;
+    font-size: 16px;
+    color: #374151;
+    background-color: #ffffff;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+        "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* ── SHELL ──────────────────────────────────────────────── */
+.side-navbar {
+    overflow-y: auto;
+    height: 100vh;
+    background-color: #fafafa;
+    border-right: 1px solid #eeeff2;
+    font-size: 14px;
+    max-width: 300px;
+    padding-left: 10px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transform: translateX(0);
+    opacity: 1;
+}
+.col-nav {
+    width: 15.3%;
+    min-width: max(230px, 15.3%);
+    max-width: 300px;
+}
+.main-content {
+    overflow-y: auto;
+    max-height: 100dvh;
+    scroll-behavior: smooth !important;
+    position: relative;
+}
+.navbar-section {
+    padding: 5px 15px 15px 15px;
+}
+.webname {
+    padding: 5px 15px 5px 30px;
+    font-weight: 700;
+}
+.webname-mobile {
+    display: none;
+    margin-top: 8px;
+    font-weight: 700;
+}
+#limit-word {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.navtitle {
+    padding-left: 15px;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+.subtitle {
+    padding-left: 15px;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.text-silent { color: #989898; }
+.text14 { font-size: 14px; }
+.m0 { margin: 0px; }
+.w100 { width: 100%; }
+.hidden { display: none !important; }
+.no-break { white-space: nowrap; }
+.sticky-top { height: 50px; }
+
+.burger-icon { display: none; padding-left: 10px; }
+.burger-icon > button { border-radius: 50% !important; padding: 5px 7px; }
+.burger-icon-data { width: 20px; height: 20px; }
+
+/* ── BUTTONS ────────────────────────────────────────────── */
+.btn-main {
+    border: 0;
+    font-size: 14px;
+    margin: 2px;
+    color: #404040;
+    height: 34px;
+}
+.btn-main:hover { background-color: #e0e0e0; color: #000000; }
+.btn-main.active,
+.btn-main.active:active { background-color: #050505; color: #ffffff; }
+.btn-max { width: 100%; text-align: left; margin-left: 5px; }
+.btn-maxv2 { width: 100%; text-align: left; margin: 0 5px; }
+.button-border { border: solid 1px #404040; }
+.btn-badge { font-size: 14px; margin: 5px; height: 34px; border-radius: 28px; }
+.badge-secondary { border: solid 1px #9d9d9d; color: #404040; }
+.badge-secondary:hover { background-color: #e0e0e0; color: #000000; }
+
+.menu-icon { margin-top: 5px; margin-right: 10px; }
+.menu-iconv2 { margin-top: 5px; }
+.menu-ico, .menu-icov2 { width: 16px; height: 16px; margin-right: 10px; }
+.menu-icon-data { --iconsize: 18px; }
+.menu-icon-datav2 { --iconcolor: #374151; }
+.icon20 { --iconsize: 20px !important; }
+.togo-icon { margin-top: 5px; --iconcolor: #a6a6a6; --iconsize: 16px; }
+.btn-main:hover > .menu-icon > .menu-icon-data,
+.btn-main:hover > .menu-iconv2 > .menu-icon-data { --iconcolor: #000000; }
+.btn-main.active > .menu-icon > .menu-icon-data,
+.btn-main.active > .menu-icov2 > .menu-icon-data { --iconcolor: #ffffff; }
+.textlink { margin-top: -15px; color: inherit; text-decoration: inherit; cursor: pointer; }
+.hrefnocolor { color: inherit; }
+.hrefnone { text-decoration: none; color: inherit; }
+.anone { text-decoration: none; }
+
+/* ── BADGES ─────────────────────────────────────────────── */
+.badge {
+    border-radius: 4px;
+    font-size: clamp(12px, 1vw, 14px) !important;
+    font-weight: 500;
+}
+.badge-blue    { color: #49a2f5; background-color: #e6f3ff; }
+.badge-orange  { color: #f79d43; background-color: #f7ede4; }
+.badge-green   { color: #4caf50 !important; background-color: #e8f5e9; }
+.badge-purple  { color: #9c27b0; background-color: #f3e5f5; }
+.badge-neutral { color: #6b7280; background-color: #f3f4f6; }
+.badge-neutral:hover { background-color: #e5e7eb; color: #374151; }
+
+/* ── CONTENT WIDTHS ─────────────────────────────────────── */
+.content    { width: max(50%, 600px); max-width: 90%; }
+.mdcontent  { width: max(80%, 800px); max-width: min(90%, 1200px); }
+.bigcontent { width: max(80%, 1000px); max-width: min(90%, 1500px); }
+@media (min-width: 1025px) {
+    .bigcontent { width: calc(100% - 30px); }
+}
+
+/* ── HOME ───────────────────────────────────────────────── */
+.blob-wrapper {
+    max-width: 100%;
+    height: 400px;
+    width: 400px;
+    max-height: 100%;
+    margin: 0 auto;
+}
+.blob {
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+    background: url("image/rafi.jpg") center/cover;
+    transition: border-radius 3s linear;
+    box-shadow: 0 0 8px 8px white inset;
+    filter: grayscale(50%);
+}
+.blob:hover { filter: grayscale(0%); }
+.about-section { padding: 10px; color: #374151; text-align: justify; }
+.opening-about-section { font-weight: bold; }
+.title-section { padding: 10px; }
+.education-image {
+    border-radius: 50%;
+    border: solid 1px #eeeff2;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+/* highlights */
+.highlightv1 {
+    background: linear-gradient(104deg,
+            rgba(130,255,173,0) 0.9%, rgba(130,255,173,1.25) 2.4%,
+            rgba(130,255,173,0.5) 5.8%, rgba(130,255,173,0.1) 93%,
+            rgba(130,255,173,0.7) 96%, rgba(130,255,173,0) 98%),
+        linear-gradient(183deg, rgba(130,255,173,0) 0%,
+            rgba(130,255,173,0.3) 7.9%, rgba(130,255,173,0) 15%);
+    padding: 0.1em 5px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    margin: 0;
+    border-radius: 7.5px;
+}
+.markyellow, .marksalmon, .markblue, .markgreen {
+    margin: 0 -0.4em;
+    padding: 0.1em 0.4em;
+    border-radius: 0.8em 0.3em;
+    background: transparent;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+.markyellow  { background-image: linear-gradient(to right, rgba(255,225,0,0.1), rgba(255,225,0,0.7) 4%, rgba(255,225,0,0.3)); }
+.marksalmon  { background-image: linear-gradient(to right, rgba(242,124,110,0.1), rgba(242,124,110,0.5) 3%, rgba(242,124,110,0.3)); }
+.markblue    { background-image: linear-gradient(to right, rgba(73,162,245,0.1), rgba(73,162,245,0.45) 3%, rgba(73,162,245,0.28)); }
+.markgreen   { background-image: linear-gradient(to right, rgba(76,175,80,0.1), rgba(76,175,80,0.45) 3%, rgba(76,175,80,0.28)); }
+
+/* based toggle */
+.toggle-container { display: flex; align-items: center; gap: 8px; }
+.role { font-size: 13px; color: #404040; }
+.role.inactive { color: #ccc; }
+.toogle-switch {
+    position: relative;
+    width: 55px;
+    height: 30px;
+    background: #f0f0f0;
+    border-radius: 32px;
+    cursor: pointer;
+    padding: 4px;
+}
+.toogle-switch-handle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white;
+    margin-top: 1px;
+    margin-left: 3px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.toogle-switch[data-active="current"] { background: #e6ffe6; }
+.toogle-switch[data-active="main"] { background: #e6f3ff; }
+.toogle-switch[data-active="main"] .toogle-switch-handle { transform: translateX(22px); }
+.menu-icon-datav2 { --iconsize: 12px; }
+.based-image { width: 100%; height: auto; border-radius: 20px; border: solid 1px #eeeff2; }
+.based-toogle-response { transition: transform 1s ease-in-out, opacity 1s ease-in-out; }
+
+/* horizontal tab strip */
+.horizontal, .horizontalv2 {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    background-color: #ffffff;
+    padding-top: 10px;
+    scrollbar-width: none;
+}
+.horizontal { margin-bottom: -10px; }
+.horizontal::-webkit-scrollbar, .horizontalv2::-webkit-scrollbar { display: none; }
+.horizontal > .menu-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 15px;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+.horizontal > .menu-item span { margin-left: 5px; color: #9d9d9d; }
+.horizontal > .menu-item:hover { color: #007bff; }
+.horizontal > .menu-item.active span { color: black; font-weight: bold; }
+.menu-item-content > div {
+    min-height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 10px;
+}
+.imgskills {
+    width: 80%;
+    max-width: 70px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+/* ── COURSE ─────────────────────────────────────────────── */
+.course-card {
+    border-radius: 10px;
+    border: solid 1px #eeeff2;
+    padding: 10px;
+    width: 100%;
+    height: 240px;
+    margin-bottom: 20px;
+}
+.course-image {
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border: solid 1px #eeeff2;
+    border-radius: 50%;
+    object-fit: contain;
+}
+.course-source {
+    font-size: clamp(14px, 1.4vw, 16px) !important;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 8px;
+}
+.course-date {
+    font-size: clamp(12px, 1vw, 14px) !important;
+    color: #6b7280;
+    margin-left: 3px;
+    white-space: nowrap;
+}
+.course-title {
+    font-size: clamp(20px, 2vw, 24px) !important;
+    color: #404040;
+    font-weight: 500;
+    overflow-wrap: break-word;
+    margin-bottom: 12px;
+}
+.tech-stack { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0; }
+
+/* ── PROJECTS ───────────────────────────────────────────── */
+.warning-notes {
+    background-color: #f7ede4;
+    color: #b06d22;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.project-card {
+    border-radius: 10px;
+    background-color: #fbfdff;
+    padding: 15px 0px 10px;
+    border: solid 1px #c4d9ef;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+.project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border: 2px solid #e6f3ff;
+}
+.project-header { padding: 0 20px; }
+.project-title { font-size: clamp(20px, 1.5vw, 30px); font-weight: 600; color: #050505; }
+.project-desc { padding: 0 20px; font-size: 14px; }
+.project-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    opacity: 0;
+    padding: 0 20px;
+}
+.project-card:hover .project-details { max-height: 220px; opacity: 1; margin-top: 10px; }
+.project-details-short-desc { font-size: 12px; color: #666; margin-bottom: 5px; }
+.hr0-10 { border-top: solid 1px #eeeff2; margin: 10px 0; }
+.project-image-container { position: relative; margin-top: 12px; overflow: hidden; }
+.project-image-container img { width: 100%; height: 190px; object-fit: cover; display: block; }
+.image-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.82);
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.project-card:hover .image-overlay { opacity: 1; }
+.overlay-btn {
+    background-color: #e6f3ff;
+    color: #49a2f5;
+    border: solid 1px #49a2f5;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    font-size: 16px;
+    margin: 3px;
+}
+.project-card:hover .overlay-btn { transform: translateY(0); }
+.overlay-btn:hover { transform: scale(1.1); background: #f8f9fa; }
+.project-mono {
+    width: 100%;
+    height: 190px;
+    display: grid;
+    place-items: center;
+    background: #f3f6fa;
+    color: #b6c4d4;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* ── BLOG ───────────────────────────────────────────────── */
+.blog-navbar {
+    overflow-y: auto;
+    height: 100vh;
+    position: relative;
+    border-right: 1px solid #eeeff2;
+    font-size: 14px;
+    width: 320px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transform: translateX(0);
+    opacity: 1;
+}
+.blog-container { overflow-y: auto !important; height: 100vh; }
+.blog-container.idle {
+    background-image: radial-gradient(circle at 1px 1px, #eeeff2 1px, transparent 0);
+    background-size: 24px 24px;
+}
+.btn-blog {
+    width: 100%;
+    text-align: left;
+    border: 0;
+    border-bottom: solid 1px #eeeff2;
+    border-radius: 0;
+    padding: 12px 15px;
+    font-size: 14px;
+    color: #404040;
+    line-height: 1.7;
+}
+.btn-blog:hover { background-color: #f5f5f5; }
+.btn-blog.active { background-color: #f0f4f9; }
+.blog-content { width: 95%; max-width: 600px; margin-top: 20px; }
+.blog-content-header { margin-bottom: 15px; }
+.blog-content-body { margin: 15px 0; text-align: justify; }
+.blog-content-body a { text-decoration: none; }
+.blog-img, .blog-main-img {
+    width: 100%;
+    border: solid 1px #eeeff2;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+.blog-img { margin-top: 15px; }
+.blog-badge { padding: 4px 8px; }
+.blog-header { height: 45px; border-bottom: solid 1px #eeeff2; }
+.back-button-container { display: none; margin-left: 10px; }
+.blog-empty {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #989898;
+    text-align: center;
+}
+
+/* ── RESUME ─────────────────────────────────────────────── */
+.resume-section h1 { font-size: clamp(26px, 3vw, 34px); font-weight: 700; color: #050505; }
+.resume-section h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #050505;
+    margin-top: 6px;
+    margin-bottom: 10px;
+}
+.resume-section p { margin-bottom: 14px; }
+.resume-section ul { padding-left: 20px; }
+.resume-section li { margin-bottom: 4px; }
+
+/* ── CONTACT ────────────────────────────────────────────── */
+.contact-info { font-size: 16px; margin-bottom: 6px; }
+.contact-control {
+    border: solid 1px #eeeff2;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 15px;
+}
+.contact-control:focus { border-color: #404040; box-shadow: none; }
+.animated-label { font-size: 12px; color: #989898; }
+.btn-submit { min-width: 120px; height: 40px; border-radius: 8px; }
+
+/* ── LOADING ────────────────────────────────────────────── */
+.page-loading {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.page-spinner {
+    width: 34px;
+    height: 34px;
+    border: 3px solid #eeeff2;
+    border-top-color: #404040;
+    border-radius: 50%;
+    animation: page-spin 0.8s linear infinite;
+}
+@keyframes page-spin { to { transform: rotate(360deg); } }
+
+/* ── MOBILE ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .back-button-container { display: block; }
+    .side-navbar {
+        position: absolute;
+        z-index: 9999;
+        transform: translateX(-100%);
+        opacity: 0;
+        width: 100%;
+        max-width: 300px;
+    }
+    .side-navbar.show { transform: translateX(0); opacity: 1; }
+    .blog-navbar { width: 100%; border: 0; }
+    .blog-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 9999999;
+        background: #ffffff;
+    }
+    .blog-container.idle { display: none; }
+    .col-nav { min-width: min(300px, 15.3%); }
+    .burger-icon { display: block; }
+    .webname { display: none; }
+    .webname-mobile { display: block; }
+    .btn-blog { margin-left: 0; }
+    .blob-wrapper { height: 320px; width: 320px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+
+/* monogram fallback when an issuer has no logo file */
+.course-mono {
+    display: inline-grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: solid 1px #eeeff2;
+    border-radius: 50%;
+    background: #f3f4f6;
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 600;
+}
+.course-badge { padding: 3px 7px; }
+
+/* callouts, captions and the image lightbox used inside posts and projects */
+.note-callout {
+    border-left: solid 3px #49a2f5;
+    background: #f6faff;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 14px 0;
+    color: #374151;
+}
+.img-caption { font-size: 13px; color: #989898; margin: -8px 0 16px; }
+.blog-content-body pre {
+    background: #f7f8fa;
+    border: solid 1px #eeeff2;
+    border-radius: 8px;
+    padding: 12px 14px;
+    overflow-x: auto;
+    font-size: 13px;
+}
+.blog-content-body code {
+    background: #f3f4f6;
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: 0.92em;
+}
+.blog-content-body pre code { background: none; padding: 0; }
+.blog-content-body table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 12px 0;
+}
+.blog-content-body th, .blog-content-body td {
+    border: solid 1px #eeeff2;
+    padding: 7px 10px;
+    text-align: left;
+}
+.blog-content-body th { background: #fafafa; font-weight: 600; }
+.img-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(5, 5, 5, .82);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    cursor: zoom-out;
+}
+.img-lightbox img { max-width: 100%; max-height: 100%; border-radius: 8px; }
+
+/* the shell row is a layout frame, not a bootstrap grid row —
+   zero its negative gutters so the page never overflows by 8px */
+body > .row { --bs-gutter-x: 0; margin-left: 0; margin-right: 0; }
+body > .row > .col { padding-left: 0; padding-right: 0; }
+
+/* ── FIX PASS ───────────────────────────────────────────── */
+
+/* the full name has to fit before adjustNameToFit() starts dropping words */
+.webname { padding-left: 18px; }
+
+/* nav labels that wrap ("Course & Certificate") were overflowing a
+   fixed 34px button, so let the button grow instead of clipping */
+.btn-main { height: auto; min-height: 34px; padding-top: 5px; padding-bottom: 5px; }
+.btn-max, .btn-maxv2 { line-height: 1.35; }
+
+/* keep an entry's logo beside its title even when the title is long */
+.about-section .d-flex.flex-wrap.gap-2 > div { min-width: 0; flex: 1 1 200px; }
+.education-image { flex: 0 0 auto; }
+
+/* equal-height project cards, with the cover pinned to the bottom */
+.project-card { display: flex; flex-direction: column; }
+.project-card > .w100 { display: flex; flex-direction: column; height: 100%; }
+.project-image-container { margin-top: auto; }
+/* clamp the teaser to two lines rather than cutting mid-word */
+.project-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* figures carried over from the old project write-ups */
+.rf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+    margin: 16px 0;
+}
+.rf-figure { margin: 0; }
+.rf-figure img {
+    width: 100%;
+    border: solid 1px #eeeff2;
+    border-radius: 10px;
+    display: block;
+    cursor: zoom-in;
+}
+.rf-figure .img-caption { margin: 8px 0 0; }
+.blog-content-body video {
+    width: 100%;
+    border: solid 1px #eeeff2;
+    border-radius: 10px;
+    margin-bottom: 6px;
+}
+
+/* justified text needs a wide enough measure; below 600px the word
+   gaps get large enough to hurt, so fall back to a ragged right edge */
+@media (max-width: 600px) {
+    .about-section, .blog-content-body { text-align: left; }
+}
+
+/* ── INTERACTIVE BLOCKS CARRIED OVER FROM THE PROJECT WRITE-UPS ──
+   The tabbed formula blocks and the SQL console keep their original
+   markup; this is their styling in the v7 palette. Behaviour is in
+   js/project.js.                                                    */
+
+.p-math-block, .p-console {
+    border: solid 1px #eeeff2;
+    border-radius: 10px;
+    background: #ffffff;
+    margin: 16px 0;
+    overflow: hidden;
+}
+.p-math-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 14px;
+    background: #fafafa;
+    border-bottom: solid 1px #eeeff2;
+}
+.p-math-head-left { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.p-math-index {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    background: #f3f4f6;
+    border-radius: 4px;
+    padding: 2px 7px;
+}
+.p-math-title { font-weight: 600; color: #050505; font-size: 15px; }
+
+.p-math-tabs, .p-console-tabs { display: flex; flex-wrap: wrap; gap: 4px; }
+.p-math-tab, .p-console-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: solid 1px #eeeff2;
+    background: #ffffff;
+    color: #6b7280;
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 13px;
+    min-height: 32px;
+    cursor: pointer;
+    transition: all .18s ease;
+}
+.p-math-tab:hover, .p-console-tab:hover { background: #f3f4f6; color: #374151; }
+.p-math-tab.active, .p-console-tab.active {
+    background: #050505;
+    border-color: #050505;
+    color: #ffffff;
+}
+.p-math-tab-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: .55;
+}
+
+.p-math-body, .p-console-body { padding: 14px; }
+.p-math-panel { display: none; }
+.p-math-panel.active { display: block; }
+.p-math-formula, .p-math-example, .p-console-sql {
+    background: #f7f8fa;
+    border: solid 1px #eeeff2;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-x: auto;
+    margin: 0;
+    white-space: pre;
+}
+.p-math-scroll, .p-math-formula-wrap, .p-math-example-wrap { overflow-x: auto; }
+.p-math-desc { margin: 0; }
+.p-math-explained { font-size: 15px; }
+
+.p-console-sql-label {
+    font-size: 11px;
+    letter-spacing: .1em;
+    color: #989898;
+    margin-bottom: 5px;
+}
+.p-console-run {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 10px;
+    border: solid 1px #050505;
+    background: #050505;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 7px 16px;
+    font-size: 14px;
+    min-height: 36px;
+    cursor: pointer;
+}
+.p-console-run:hover { background: #262626; }
+.p-console-run svg { width: 13px; height: 13px; fill: currentColor; }
+.p-console-out { margin-top: 12px; }
+.p-console-out table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.p-console-out th, .p-console-out td {
+    border: solid 1px #eeeff2;
+    padding: 6px 9px;
+    text-align: left;
+    white-space: nowrap;
+}
+.p-console-out th { background: #fafafa; font-weight: 600; }
+.p-console-result { display: none; }
+.p-console-result.active { display: block; }
+.p-console-empty { color: #989898; font-size: 14px; }
+
+/* Inline icons inside the ported write-ups carry no width/height of their
+   own. Without a size an <svg> fills its container, which was blowing every
+   list bullet and link icon up to the full column width. */
+.blog-content-body svg,
+.p-link-btn svg,
+.p-acc-trigger svg,
+.p-usecase svg,
+.p-acc-chevron {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
+    vertical-align: -3px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+#main-content svg { max-width: 100%; }
+
+/* link buttons at the foot of a project page */
+.p-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: solid 1px #404040;
+    border-radius: 20px;
+    padding: 8px 16px;
+    margin: 4px 6px 4px 0;
+    font-size: 14px;
+    color: #404040;
+    text-decoration: none;
+    transition: all .18s ease;
+}
+.p-link-btn:hover { background: #050505; border-color: #050505; color: #ffffff; }
+
+/* a portrait screenshot as the page cover was running ~2000px tall;
+   crop it to a banner instead of letting it push the article down */
+.blog-main-img { max-height: 420px; object-fit: cover; object-position: top; }
+
+/* ── BASED MAP ──────────────────────────────────────────────
+   Display only. .map-lock covers the iframe so the map cannot be
+   panned, zoomed or searched, and no interaction is sent to Google. */
+.map-frame {
+    position: relative;
+    margin-top: 10px;
+    border: solid 1px #eeeff2;
+    border-radius: 14px;
+    overflow: hidden;
+    height: 210px;
+}
+.map-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    filter: grayscale(35%);
+}
+.map-lock { position: absolute; inset: 0; background: transparent; cursor: default; }
+.map-label { padding-left: 0; margin-top: 8px; text-align: right; }
+
+/* skill grid: logo above a small caption */
+.skill-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+.imgskills { width: 44px; max-width: 44px; height: 44px; object-fit: contain; margin-bottom: 0; }
+.skill-name { font-size: 12px; color: #6b7280; line-height: 1.3; }
+
+/* certificate scan on a course card */
+.course-card.has-shot { height: auto; min-height: 240px; }
+.cert-shot {
+    width: 100%;
+    height: 150px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: solid 1px #eeeff2;
+    background: #fafafa;
+    margin-bottom: 10px;
+}
+.cert-shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    cursor: zoom-in;
+}
+
+/* no screenshot should run taller than a screen inside an article */
+.blog-content-body img,
+.rf-figure img { max-height: 480px; object-fit: contain; }
+
+/* .rf-phone: for portrait phone screenshots that would otherwise run
+   very tall and narrow (e.g. RafiFinance app screens). Desktop keeps
+   the full screenshot but tilts it into a small stylized card instead
+   of a plain tall rectangle; mobile crops to the top of the screen
+   (the part that actually identifies the screen) so it doesn't push
+   the rest of the article down. */
+.rf-phone { overflow: visible; }
+.rf-phone img {
+    max-height: 340px;
+    object-fit: contain;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+@media (min-width: 601px) {
+    .rf-phone img {
+        width: auto;
+        max-width: 70%;
+        margin: 0 auto;
+        transform: rotate(-4deg);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, .12);
+    }
+    .rf-phone:nth-child(even) img { transform: rotate(4deg); }
+    .rf-phone:hover img { transform: rotate(0deg) scale(1.04); box-shadow: 0 14px 30px rgba(0, 0, 0, .16); }
+}
+@media (max-width: 600px) {
+    .rf-phone img {
+        max-height: 220px;
+        width: 100%;
+        object-fit: cover;
+        object-position: top;
+    }
+}
+
+/* ── CONTRIBUTORS ── compact byline at the top of a case study: just a
+   round face and a name, nothing else. Becomes a real link once a
+   LinkedIn URL is wired in (falls back to a plain span otherwise). */
+.contributors-byline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+    margin: 10px 0 2px;
+}
+.contributor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: inherit;
+}
+a.contributor-chip .contributor-chip-avatar,
+a.contributor-chip .contributor-chip-name { transition: border-color .15s ease, color .15s ease; }
+a.contributor-chip:hover .contributor-chip-name { text-decoration: underline; color: #050505; }
+a.contributor-chip:hover .contributor-chip-avatar { border-color: #c7cbd1; }
+.contributor-chip-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: 0 0 auto;
+    border: solid 1px #e5e7eb;
+    background: #f3f4f6;
+}
+.contributor-chip-name {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #374151;
+}
+
+/* a link that should visibly read as a link, not blend into plain text */
+.idfest-live-link {
+    color: #49a2f5;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: solid 1px rgba(73, 162, 245, .35);
+    transition: border-color .15s ease, color .15s ease;
+}
+.idfest-live-link:hover { color: #2f8ae0; border-color: #2f8ae0; }
+
+/* ── LIVE PREVIEW ── large, uncapped section screenshots (bigger than
+   the standard .rf-figure, which caps at 480px tall) ── */
+.rf-figure-lg { margin: 0; }
+.rf-figure-lg img {
+    width: 100%;
+    display: block;
+    border: solid 1px #eeeff2;
+    border-radius: 10px;
+    max-height: none;
+    object-fit: contain;
+    cursor: zoom-in;
+}
+.rf-figure-lg .img-caption { margin: 8px 0 0; }
+.rf-livegroup { margin: 6px 0 26px; }
+.rf-livegroup:last-child { margin-bottom: 0; }
+.rf-livegroup-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #9ca3af;
+    margin: 0 0 10px;
+}
+
+/* ── PROJECT STRUCTURE ── simple directory tree block ── */
+.project-tree {
+    background: #fafafa;
+    border: solid 1px #e5e7eb;
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 13px;
+    line-height: 1.75;
+    color: #374151;
+    overflow-x: auto;
+    white-space: pre;
+    text-align: left;
+    margin: 10px 0;
+}
+.project-tree .pt-dir { color: #49a2f5; font-weight: 600; }
+.project-tree .pt-comment { color: #9ca3af; }
+
+/* ── MONOGRAM TILE for an organisation with no logo file ── */
+.education-mono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #f3f4f6;
+    color: #6b7280;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .02em;
+}
+
+/* ── UNIFORM PHOTO FRAMES ──────────────────────────────────────────────
+   Every content photo sits in the same landscape box regardless of the
+   source aspect ratio. Portrait sources (phone screenshots, tall
+   infographics) are fitted whole inside the frame instead of being
+   cropped, so nothing is lost and nothing runs tall down the page.
+   Click any of them to open the full-size lightbox.
+   Certificate scans and avatars keep their own sizing.              */
+.blog-content-body img,
+.rf-figure img,
+.rf-figure-lg img,
+.blog-img,
+.blog-main-img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    max-height: none;
+    object-fit: contain;
+    background: #f7f8f9;
+    border: solid 1px #eeeff2;
+    border-radius: 10px;
+    display: block;
+    margin-top: 0;
+    cursor: zoom-in;
+}
+@media (max-width: 768px) {
+    .blog-content-body img,
+    .rf-figure img,
+    .rf-figure-lg img,
+    .blog-img,
+    .blog-main-img {
+        aspect-ratio: 4 / 3;
+    }
+}
+/* opt-outs: these are not content photos */
+.cert-shot img,
+.contributor-chip-avatar,
+.imgskills,
+img.education-image,
+.course-image,
+.project-image-container img {
+    aspect-ratio: auto;
+    background: none;
+    cursor: inherit;
+}
+.contributor-chip-avatar {
+    width: 34px;
+    height: 34px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: solid 1px #e5e7eb;
+    background: #f3f4f6;
+}
+
+/* ── PROJECT META ROW ── key/value pairs, spaced rather than dot-separated ── */
+.p-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 26px;
+    margin: 10px 0 4px;
+}
+.p-meta-item { display: flex; flex-direction: column; gap: 1px; }
+.p-meta-k {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #9ca3af;
+}
+.p-meta-v { font-size: 14px; font-weight: 600; color: #050505; }
+@media (max-width: 560px) { .p-meta { gap: 4px 18px; } }

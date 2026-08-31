@@ -1,0 +1,42 @@
+[
+ {
+  "id": "cropdisease",
+  "title": "Crop Disease Detector",
+  "date": "2026",
+  "category": "AI / ML",
+  "badge": "badge-green",
+  "sub": "Building an AI that identifies plant diseases from a single leaf photo, the problem, the process, and the lessons learned."
+ },
+ {
+  "id": "rafifinance",
+  "title": "RafiFinance: Personal Finance Tracker",
+  "date": "2026",
+  "category": "Code Lab",
+  "badge": "badge-purple",
+  "sub": "I built a complete personal finance app as a single HTML file, no server, no database, no framework. Just one file that runs anywhere and works offline."
+ },
+ {
+  "id": "nase",
+  "title": "NASE: Building an Accessibility Tool for Real Users",
+  "date": "2025",
+  "category": "Experience Log",
+  "badge": "badge-orange",
+  "sub": "A bilingual, screen-reader-friendly web tool for Malaysia’s National Association of Special Education: now actively used by people with disabilities, referenced in NASE’s own journal, and validated by direct testimonials from the disabled users it was built for."
+ },
+ {
+  "id": "papermind",
+  "title": "PaperMind: Local RAG Paper Analyzer",
+  "date": "2026",
+  "category": "Code Lab",
+  "badge": "badge-purple",
+  "sub": "I built an AI that reads, understands, and answers questions about research papers: running entirely on my own hardware, with zero cloud dependency."
+ },
+ {
+  "id": "thoughtlog",
+  "title": "ThoughtLog: Building My Own Blog CMS From Scratch",
+  "date": "2026",
+  "category": "Code Lab",
+  "badge": "badge-purple",
+  "sub": "No WordPress, no Ghost, no static-site generator. I built a full-stack blog with its own CMS: Markdown with live preview, scheduled posts, tags, and real authentication, self-hosted on a mini PC under my desk."
+ }
+]

@@ -1,0 +1,425 @@
+[
+ {
+  "slug": "thoughtlog",
+  "title": "ThoughtLog",
+  "sub": "A full-stack personal blog with a CMS I built from scratch, no WordPress, no Ghost, no static-site generator. Write in Markdown with live preview, save drafts, schedule posts to publish themselves, and browse by tag. Reading is public; writing sits behind real authentication. It runs on a mini PC under my desk and reaches the internet through a Cloudflare Tunnel at blog.rafiarsya.com.",
+  "tags": [
+   "Node.js",
+   "Express",
+   "PostgreSQL",
+   "JWT Auth",
+   "Markdown",
+   "Background Jobs"
+  ],
+  "cover": "",
+  "section": "Ongoing",
+  "cards": 9,
+  "meta": {
+   "Status": "Live",
+   "Year": "2026",
+   "Role": "Solo Developer",
+   "Backend": "Express · PostgreSQL",
+   "Hosting": "Self-Hosted + Tunnel"
+  }
+ },
+ {
+  "slug": "snip",
+  "title": "Snip URL Shortener",
+  "sub": "A serverless URL shortener with click analytics. Three AWS Lambda functions behind API Gateway, a single DynamoDB table, all described as infrastructure-as-code with AWS SAM. Built to turn an AWS Developer Associate (DVA-C02) certificate into something real, deployable, and honest about where it actually runs today.",
+  "tags": [
+   "AWS Lambda",
+   "DynamoDB",
+   "API Gateway",
+   "AWS SAM",
+   "IAM least-privilege",
+   "Node.js"
+  ],
+  "cover": "",
+  "section": "Ongoing",
+  "cards": 8,
+  "meta": {
+   "Status": "Working",
+   "Year": "2026",
+   "Role": "Solo Developer",
+   "Backend": "Lambda · DynamoDB",
+   "Hosting": "Local + Tunnel"
+  }
+ },
+ {
+  "slug": "papermind",
+  "title": "PaperMind",
+  "sub": "A local RAG-powered academic paper analyzer. Upload any PDF, ask questions, get structured summaries, running 100% privately on self-hosted hardware. Zero cloud, zero cost, zero data leakage.",
+  "tags": [
+   "RAG",
+   "LLM",
+   "React + Vite",
+   "FastAPI",
+   "ChromaDB",
+   "Ollama"
+  ],
+  "cover": "",
+  "section": "Ongoing",
+  "cards": 9,
+  "meta": {
+   "Status": "In Development",
+   "Year": "2026",
+   "Role": "Solo Developer",
+   "Approach": "RAG · Local LLM",
+   "Live": "papermind.rafiarsya.com ↗"
+  }
+ },
+ {
+  "slug": "idfest",
+  "title": "IDFEST 2026 Website",
+  "sub": "The official website for IDFEST 2026, an Indonesian cultural festival organized by PPI Universiti Malaya. A collaborative build translating Figma designs into a fast, static Next.js frontend across the home timeline, Art Exhibition, and Musical Theater sections.",
+  "tags": [
+   "Next.js 16",
+   "React 19",
+   "TypeScript",
+   "Tailwind CSS v4",
+   "Static Export",
+   "Sharp"
+  ],
+  "cover": "",
+  "section": "Ongoing",
+  "cards": 5,
+  "meta": {
+   "Status": "In Development",
+   "Year": "2026",
+   "Role": "Website Development Committee",
+   "Stack": "Next.js · Tailwind CSS",
+   "Team": "Collaborative Build"
+  }
+ },
+ {
+  "slug": "arenaduel",
+  "title": "Arena Duel",
+  "sub": "A server-authoritative real-time multiplayer duel. Two players connect from different devices, lock in a secret action every round, and the server resolves the outcome fairly and deterministically. No database, no accounts, no AI, just the hard parts: state machines, race conditions, and cheat-proof multiplayer architecture.",
+  "tags": [
+   "Node.js",
+   "Socket.IO",
+   "Express",
+   "React",
+   "Vite",
+   "Tailwind"
+  ],
+  "cover": "",
+  "section": "Completed",
+  "cards": 5,
+  "meta": {
+   "Status": "Working",
+   "Year": "2026",
+   "Role": "Solo Developer",
+   "Backend": "In-memory · Socket.IO",
+   "Persistence": "None (by design)"
+  }
+ },
+ {
+  "slug": "reminderme",
+  "title": "Reminder Me",
+  "sub": "A personal “companion agent” for daily life as a student, habits, focus sessions, tasks, exams, prayer times, health, and journalling, all in one offline-first app. Built as an installable PWA and wrapped as a real Android APK via a Trusted Web Activity. No backend, no account, no cloud, everything lives on the device.",
+  "tags": [
+   "React 18",
+   "Vite",
+   "PWA",
+   "Service Worker",
+   "Android TWA",
+   "Capacitor"
+  ],
+  "cover": "",
+  "section": "Completed",
+  "cards": 8,
+  "meta": {
+   "Status": "Working",
+   "Year": "2026",
+   "Role": "Solo Developer",
+   "Platform": "PWA + Android APK",
+   "Data": "On-device only"
+  }
+ },
+ {
+  "slug": "handgesture",
+  "title": "HandGesture",
+  "sub": "Draw on screen with just your index finger, real-time hand landmark detection, gesture classification, and canvas rendering from a live webcam feed. No hardware required.",
+  "tags": [
+   "Python",
+   "MediaPipe",
+   "OpenCV",
+   "Computer Vision",
+   "Real-Time",
+   "Machine Learning"
+  ],
+  "cover": "",
+  "section": "Completed",
+  "cards": 9,
+  "meta": {
+   "Status": "Completed",
+   "Year": "2024",
+   "Role": "Solo Developer",
+   "Language": "Python 3",
+   "Category": "Computer Vision"
+  }
+ },
+ {
+  "slug": "cropdisease",
+  "title": "Crop Disease Detector",
+  "sub": "An AI model that identifies plant diseases from a single leaf photo. MobileNetV2 + Transfer Learning trained on 87,000+ images across 38 disease classes. ~97% accuracy. Live on Hugging Face Spaces, free to use.",
+  "tags": [
+   "TensorFlow",
+   "MobileNetV2",
+   "Transfer Learning",
+   "PlantVillage Dataset",
+   "Gradio",
+   "Hugging Face"
+  ],
+  "cover": "",
+  "section": "Completed",
+  "cards": 7,
+  "meta": {
+   "Status": "Completed · Live",
+   "Year": "2026",
+   "Model": "MobileNetV2",
+   "Accuracy": "~97%",
+   "Classes": "38 disease types",
+   "Dataset": "87K+ images"
+  }
+ },
+ {
+  "slug": "rafifinance",
+  "title": "RafiFinance",
+  "sub": "A complete personal finance tracker built as a single HTML file. No server, no database, no framework. Transactions, budgets, saving goals, health score, 6-month analysis, works offline as a PWA.",
+  "tags": [
+   "Vanilla JS",
+   "Single HTML File",
+   "PWA",
+   "localStorage",
+   "Service Worker",
+   "Cloudflare Pages"
+  ],
+  "cover": "",
+  "section": "Completed",
+  "cards": 10,
+  "meta": {
+   "Status": "Completed · Live",
+   "Year": "2026",
+   "Type": "Personal Tool · v4",
+   "File Size": "1 HTML file",
+   "Live": "finance.rafiarsya.com ↗"
+  }
+ },
+ {
+  "slug": "nase",
+  "title": "NASE Accessibility",
+  "sub": "A full accessibility audit and redesign of the NASE platform for visually impaired users. 23 issues found, categorised by WCAG 2.1 severity, with redesigned components and an AI-powered contrast analysis pipeline.",
+  "tags": [
+   "Accessibility",
+   "WCAG 2.1 AA",
+   "HCI Course",
+   "Python + OpenCV",
+   "Figma",
+   "Screen Reader"
+  ],
+  "cover": "",
+  "section": "Completed",
+  "cards": 8,
+  "meta": {
+   "Status": "Completed",
+   "Year": "2025",
+   "Context": "HCI Course · UM",
+   "Standard": "WCAG 2.1 AA",
+   "Live": "hci.rafiarsya.com ↗"
+  }
+ },
+ {
+  "slug": "briskwalk",
+  "title": "BriskWalk",
+  "sub": "Event registration platform for PPI Malaysia's annual community charity walk. Designed in Figma, built with vanilla HTML/CSS/JS, multi-step form, client-side image compression, and a Google Sheets backend.",
+  "tags": [
+   "Figma",
+   "Vanilla JS",
+   "Canvas API",
+   "Google Apps Script",
+   "Mobile-First"
+  ],
+  "cover": "",
+  "section": "Completed",
+  "cards": 6,
+  "meta": {
+   "Status": "Completed",
+   "Year": "2026",
+   "Role": "Designer &amp; Developer",
+   "Organizer": "PPI Malaysia",
+   "Venue": "Dataran Putrajaya"
+  }
+ },
+ {
+  "slug": "steamsql",
+  "title": "Steam Market Intelligence",
+  "sub": "A live, in-browser SQL analytics dashboard, real SQLite compiled to WebAssembly, querying a 1,400-title game-market dataset on every page load. No backend, no precomputed export, just a database and a query engine running on the visitor's machine.",
+  "tags": [
+   "SQLite",
+   "sql.js (WASM)",
+   "Window Functions",
+   "Recursive CTEs",
+   "Static Hosting"
+  ],
+  "cover": "",
+  "section": "Completed",
+  "cards": 10,
+  "meta": {
+   "Status": "Completed",
+   "Year": "2026",
+   "Role": "Solo Developer",
+   "Dataset": "1,400 Games",
+   "Engine": "SQLite / WASM"
+  }
+ },
+ {
+  "slug": "csastudy",
+  "title": "CSA Study App",
+  "sub": "A self-contained exam prep tool for WRES1201 (Computer Systems Architecture). Topic guide, formula reference, MCQ drills, and interactive visualizers for cache mapping, Hamming codes, and arithmetic shifts, with every number re-randomized on each reload so it never gets stale.",
+  "tags": [
+   "Vanilla JS",
+   "Single HTML File",
+   "Procedural Question Generation",
+   "Lucide Icons",
+   "Cloudflare Pages"
+  ],
+  "cover": "",
+  "section": "Completed",
+  "cards": 9,
+  "meta": {
+   "Status": "Completed · Live",
+   "Year": "2026",
+   "Type": "Study Tool · Course Prep",
+   "File Size": "1 HTML file",
+   "Live": "csastudy.rafiarsya.com ↗"
+  }
+ },
+ {
+  "slug": "resumematch",
+  "title": "Resume Match",
+  "sub": "An algorithmic resume-to-job scoring engine, upload a resume PDF and a job description, get a fit score with a full breakdown of matched skills, missing skills, and extra value. No AI model, no API key, no database, pure tokenization, synonym canonicalization, and weighted scoring.",
+  "tags": [
+   "React + Vite",
+   "Node.js + Express",
+   "pdfjs-dist",
+   "Tailwind",
+   "Zero AI / Zero Cost"
+  ],
+  "cover": "",
+  "section": "Completed",
+  "cards": 9,
+  "meta": {
+   "Status": "Completed · Live",
+   "Year": "2026",
+   "Type": "Algorithm Engine · Full Stack",
+   "Cost": "$0, No API Calls",
+   "Live": "resumematch.rafiarsya.com ↗"
+  }
+ },
+ {
+  "slug": "aievaldashboard",
+  "title": "AI Eval Dashboard",
+  "sub": "An automated test harness for AI model output. Instead of reading answers by hand, Claude grades each one as correct, partial, incorrect or hallucinated, and the dashboard reports accuracy, latency and cost per request.",
+  "tags": [
+   "React",
+   "Node.js",
+   "Supabase",
+   "Claude API",
+   "LLM-as-Judge"
+  ],
+  "cover": "",
+  "section": "Ongoing",
+  "cards": 3,
+  "meta": {
+   "Status": "In Development",
+   "Year": "2026",
+   "Role": "Solo Developer",
+   "Stack": "React, Vite, Tailwind, Recharts"
+  }
+ },
+ {
+  "slug": "pricetracker",
+  "title": "PriceWatch",
+  "sub": "A Chrome extension that watches a product price on any site and tells you when it drops. You point at the price on the page once; it re-checks every three hours in the background.",
+  "tags": [
+   "Chrome Extension",
+   "Manifest V3",
+   "Service Worker",
+   "Vanilla JS"
+  ],
+  "cover": "",
+  "section": "Ongoing",
+  "cards": 3,
+  "meta": {
+   "Status": "In Development",
+   "Year": "2026",
+   "Role": "Solo Developer",
+   "Stack": "HTML, CSS, JavaScript"
+  }
+ },
+ {
+  "slug": "digitrecognition",
+  "title": "AI Digit Recognizer",
+  "sub": "A handwritten digit classifier with a convolutional network written from scratch in NumPy, no PyTorch and no TensorFlow. Draw a digit and watch the signal move through every layer.",
+  "tags": [
+   "NumPy",
+   "CNN",
+   "MNIST",
+   "Flask",
+   "From Scratch"
+  ],
+  "cover": "",
+  "section": "Completed",
+  "cards": 3,
+  "meta": {
+   "Status": "Complete",
+   "Year": "2026",
+   "Role": "Solo Developer",
+   "Accuracy": "99.12% on MNIST test"
+  }
+ },
+ {
+  "slug": "largenumber",
+  "title": "Large Number Arithmetic",
+  "sub": "A course project for WIA1002 Data Structures: arithmetic on numbers far larger than any built-in type, using a doubly linked list where every digit is its own node, with a visualizer that walks the algorithm step by step.",
+  "tags": [
+   "Java",
+   "Data Structures",
+   "Next.js",
+   "TypeScript",
+   "Coursework"
+  ],
+  "cover": "",
+  "section": "Completed",
+  "cards": 3,
+  "meta": {
+   "Status": "Complete",
+   "Year": "2026",
+   "Role": "Team Project",
+   "Course": "WIA1002 Data Structures"
+  }
+ },
+ {
+  "slug": "llmclassification",
+  "title": "LLM Response Preference Baseline",
+  "sub": "Given a prompt and two chatbot answers, predict which one a human preferred, or whether they called it a tie. An end-to-end TF-IDF and logistic regression pipeline, built and verified on a small synthetic stand-in before the real Chatbot Arena dataset.",
+  "tags": [
+   "scikit-learn",
+   "TF-IDF",
+   "NLP",
+   "Jupyter",
+   "Baseline"
+  ],
+  "cover": "",
+  "section": "Completed",
+  "cards": 3,
+  "meta": {
+   "Status": "Baseline",
+   "Year": "2026",
+   "Role": "Solo Developer",
+   "Scope": "Pipeline, not a competitive score"
+  }
+ }
+]

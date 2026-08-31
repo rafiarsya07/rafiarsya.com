@@ -1,0 +1,5 @@
+DefaultType application/x-httpd-php
+DirectoryIndex index.php index.html
+RewriteEngine on
+RewriteBase /
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
