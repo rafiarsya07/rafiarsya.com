@@ -19,7 +19,7 @@
             </div>
             <h1>AI Eval Dashboard</h1>
             <br>
-            <span>A test harness for AI output. You write question and expected-answer pairs, pick a model, and hit Run &mdash; the dashboard asks the model every question, has Claude grade each answer as correct, partial, incorrect or hallucinated, and reports accuracy, latency and cost per run.</span>
+            <span>A test harness for AI output. You write question and expected-answer pairs, pick a model, and hit Run. The dashboard then asks the model every question, has Claude grade each answer as correct, partial, incorrect or hallucinated, and reports accuracy, latency and cost per run.</span>
             <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">In Development</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Solo Developer</span></span><span class="p-meta-item"><span class="p-meta-k">Stack</span><span class="p-meta-v">React, Vite, Tailwind, Recharts</span></span></div>
             <a href="https://github.com/rafiarsya07/ai-eval-dashboard" target="_blank" rel="noopener" class="ext-link">View on GitHub<svg class="ext-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
         </div>
@@ -27,7 +27,7 @@
         <h3>01 Why Grading By Hand Breaks</h3>
         <div class="blog-content-body">
 <p>Change a prompt and you want to know whether the model got better or worse. The usual answer is to eyeball twenty responses, decide they look fine, and ship. That does not survive contact with a second prompt change: you cannot remember what the old answers looked like, so every comparison is against a memory rather than a record.</p>
-<p>The obvious automation &mdash; string equality against an expected answer &mdash; fails immediately. "Kuala Lumpur is the capital of Malaysia" and "The capital is KL" are the same answer and share almost no characters. Grading has to happen at the level of meaning, which is exactly the thing a language model can do and a string comparison cannot.</p>
+<p>The obvious automation, string equality against an expected answer, fails immediately. "Kuala Lumpur is the capital of Malaysia" and "The capital is KL" are the same answer and share almost no characters. Grading has to happen at the level of meaning, which is exactly the thing a language model can do and a string comparison cannot.</p>
 <p>So the tool uses a second model call as the grader. That is the LLM-as-judge pattern, and it is the same core idea behind eval tooling like Langfuse and Braintrust.</p>
         </div>
         <br>
@@ -50,7 +50,7 @@ Grade using ONE of these verdicts:
 
 Respond in this exact format, nothing else:
 VERDICT: &lt;one word&gt;
-REASON: &lt;one short sentence&gt;</pre></div></div></div><div class="p-math-panel" data-panel="explained"><div class="p-math-explained"><p class="p-math-desc">The four verdicts exist because "wrong" is not one failure mode. An answer that is merely incomplete is a different problem from one that confidently invents a fact, and lumping them together hides the distinction that actually matters when you are deciding whether a model is safe to put in front of users. <code class="inline">hallucinated</code> is defined narrowly &mdash; unsupported <em>and</em> not reasonably inferable &mdash; so a correct answer that adds harmless context does not get flagged.</p><p class="p-math-desc">The fixed <code class="inline">VERDICT:</code> / <code class="inline">REASON:</code> shape is parsed with two regexes and falls back to <code class="inline">unknown</code> rather than throwing, so one oddly formatted grader reply cannot take down a whole run. Grading itself runs on Haiku regardless of which model is being evaluated: comparing two short texts is a much easier job than answering the question was, and paying for a frontier model to do it would double the cost of every run for no gain.</p></div></div><div class="p-math-panel" data-panel="example"><div class="p-math-example-wrap"><div class="p-math-example-scroll"><pre class="p-math-example">test case
+REASON: &lt;one short sentence&gt;</pre></div></div></div><div class="p-math-panel" data-panel="explained"><div class="p-math-explained"><p class="p-math-desc">The four verdicts exist because "wrong" is not one failure mode. An answer that is merely incomplete is a different problem from one that confidently invents a fact, and lumping them together hides the distinction that actually matters when you are deciding whether a model is safe to put in front of users. <code class="inline">hallucinated</code> is defined narrowly, as unsupported <em>and</em> not reasonably inferable, so a correct answer that adds harmless context does not get flagged.</p><p class="p-math-desc">The fixed <code class="inline">VERDICT:</code> / <code class="inline">REASON:</code> shape is parsed with two regexes and falls back to <code class="inline">unknown</code> rather than throwing, so one oddly formatted grader reply cannot take down a whole run. Grading itself runs on Haiku regardless of which model is being evaluated: comparing two short texts is a much easier job than answering the question was, and paying for a frontier model to do it would double the cost of every run for no gain.</p></div></div><div class="p-math-panel" data-panel="example"><div class="p-math-example-wrap"><div class="p-math-example-scroll"><pre class="p-math-example">test case
   question: "What year did Malaysia gain independence?"
   expected: "Malaysia gained independence in 1957."
 
@@ -73,7 +73,7 @@ stored -> verdict "correct", latency 1180, cost $0.000094</pre></div></div></div
 <p>The verdict is the headline, but a run records three things per test case, because accuracy alone is not a decision:</p>
 <ul>
 <li><b>Verdict</b> and the grader's one-line reason, so a bad score can be inspected rather than just trusted.</li>
-<li><b>Latency</b>, measured around the answering call only &mdash; the grading call is a property of the harness, not of the model being judged, so folding it in would inflate every number.</li>
+<li><b>Latency</b>, measured around the answering call only. The grading call is a property of the harness, not of the model being judged, so folding it in would inflate every number.</li>
 <li><b>Cost</b>, derived from the <code class="inline">usage</code> block the API returns with each response: input tokens and output tokens priced per model rather than estimated from character counts.</li>
 </ul>
 <p>A run aggregates those into accuracy percentage, a verdict breakdown, average latency and total spend, which is what makes two runs comparable. Results stream into the detail page as each case finishes rather than appearing all at once, because two sequential API calls per case means a twenty-case run takes a few minutes and a blank screen for that long reads as broken.</p>
@@ -95,16 +95,16 @@ eval_results   id, eval_run_id -&gt; eval_runs,
                actual_answer, verdict, grading_reason,
                latency_ms, input_tokens, output_tokens,
                cost_usd, error, created_at</pre>
-<p>Test cases are separate from results on purpose: the same case can be replayed against a new model or a new prompt, and the point of the tool is comparing those runs against each other. <code class="inline">eval_results</code> cascades on delete from <code class="inline">eval_runs</code>, so discarding a bad run does not leave orphan rows, and two indexes &mdash; results by run id, runs by creation date &mdash; keep the two queries the dashboard actually makes off a sequential scan.</p>
+<p>Test cases are separate from results on purpose: the same case can be replayed against a new model or a new prompt, and the point of the tool is comparing those runs against each other. <code class="inline">eval_results</code> cascades on delete from <code class="inline">eval_runs</code>, so discarding a bad run does not leave orphan rows, and two indexes, results by run id and runs by creation date, keep the two queries the dashboard actually makes off a sequential scan.</p>
 <p><code class="inline">error</code> is a first-class verdict rather than a thrown exception. A test case whose API call fails is recorded with <code class="inline">verdict: 'error'</code> and the message, and the run continues; one rate-limit response does not discard the nineteen cases that already succeeded.</p>
         </div>
         <br>
         <h3>05 How It Is Built</h3>
         <div class="blog-content-body">
 <ul>
-<li><b>Frontend</b>: React with Vite and Tailwind, Recharts for the verdict breakdown. Three pages &mdash; test cases, run history, run detail.</li>
+<li><b>Frontend</b>: React with Vite and Tailwind, Recharts for the verdict breakdown. Three pages: test cases, run history, run detail.</li>
 <li><b>Backend</b>: Node.js and Express, split into config, services, controllers and routes. All the interesting logic lives in <code class="inline">evalService.js</code>; the controllers only move data.</li>
-<li><b>Database</b>: Supabase, reached from the backend with the service-role key. The anon key would not be enough, and putting a service-role key in the browser would hand every visitor write access to the tables &mdash; the backend exists partly to keep that key server-side.</li>
+<li><b>Database</b>: Supabase, reached from the backend with the service-role key. The anon key would not be enough, and putting a service-role key in the browser would hand every visitor write access to the tables. The backend exists partly to keep that key server-side.</li>
 <li><b>Hosting</b>: Cloudflare Pages for the frontend, Render for the backend, both free tier. Render's free instances sleep when idle and take roughly thirty seconds to wake, which is a real cost for a demo link and an acceptable one for a portfolio project.</li>
 </ul>
         </div>
@@ -131,7 +131,7 @@ eval_results   id, eval_run_id -&gt; eval_runs,
         <h3>07 Honest Limits</h3>
         <div class="blog-content-body">
 <ul>
-<li><b>The judge is a model, so the judge can be wrong.</b> Its verdicts are evidence, not ground truth &mdash; which is why every result stores the grader's reason next to it, so a suspicious score can be read rather than argued with.</li>
+<li><b>The judge is a model, so the judge can be wrong.</b> Its verdicts are evidence, not ground truth, which is why every result stores the grader's reason next to it, so a suspicious score can be read rather than argued with.</li>
 <li><b>Grading is only as good as the expected answer.</b> A vague expected answer produces vague verdicts, and the tool cannot tell you that your test case was the problem.</li>
 <li><b>No side-by-side model comparison yet.</b> Two runs can be read next to each other, but there is no diff view, and no regression view for re-running the same cases after a prompt change. Both are the obvious next things to build.</li>
 <li><b>Bulk import is half-finished.</b> The <code class="inline">/test-cases/bulk</code> endpoint accepts arrays already; the frontend has no CSV upload wired to it.</li>

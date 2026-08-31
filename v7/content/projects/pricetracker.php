@@ -26,7 +26,7 @@
         <h3>01 The Constraint</h3>
         <div class="blog-content-body">
 <p>Every price tracker that works across arbitrary shops solves the same problem the same way: a paid scraping service fetches the page, a backend stores the history, a cron job runs the comparison. That is three recurring bills and a server to keep alive, for a tool one person uses.</p>
-<p>An extension gets to cheat. It already lives inside a browser that can render any page, it already has storage, and Chrome ships a scheduler and a notification system as APIs. So the whole thing collapses into an extension with no backend at all &mdash; and the design constraint becomes: never need anything Chrome does not already provide.</p>
+<p>An extension gets to cheat. It already lives inside a browser that can render any page, it already has storage, and Chrome ships a scheduler and a notification system as APIs. So the whole thing collapses into an extension with no backend at all, and the design constraint becomes: never need anything Chrome does not already provide.</p>
         </div>
         <br>
         <h3>02 Picking the Price</h3>
@@ -44,7 +44,7 @@
         <br>
         <h3>03 Remembering Where the Price Was</h3>
         <div class="blog-content-body">
-<p>Picking the element once is easy. Finding the same element three hours later, in a freshly loaded page, is the actual engineering problem &mdash; and it is why the extension stores a selector rather than a coordinate.</p>
+<p>Picking the element once is easy. Finding the same element three hours later, in a freshly loaded page, is the actual engineering problem, and it is why the extension stores a selector rather than a coordinate.</p>
 <div class="p-math-block"><div class="p-math-head"><div class="p-math-head-left"><span class="p-math-index">01</span><span class="p-math-title">Building a Stable Selector Path</span></div><div class="p-math-tabs"><button class="p-math-tab active" data-tab="formula"><span class="p-math-tab-dot"></span>Algorithm</button><button class="p-math-tab" data-tab="explained"><span class="p-math-tab-dot"></span>Explained</button><button class="p-math-tab" data-tab="example"><span class="p-math-tab-dot"></span>Worked Example</button></div></div><div class="p-math-body"><div class="p-math-panel active" data-panel="formula"><div class="p-math-formula-wrap"><div class="p-math-scroll"><pre class="p-math-formula">path = []
 node = clicked element
 
@@ -62,7 +62,7 @@ while node is an element and not &lt;html&gt;:
         path.unshift(selector)
         node = node.parentElement
 
-stored selector = path.join(" &gt; ")</pre></div></div></div><div class="p-math-panel" data-panel="explained"><div class="p-math-explained"><p class="p-math-desc">The path is built from the clicked element upwards, so the most specific part is decided first. Classes are included because they usually carry the site's own meaning &mdash; <code class="inline">.product-price</code> survives a layout tweak that moves the element around. They are run through <code class="inline">CSS.escape</code> first, since utility frameworks emit class names full of characters that are illegal in a raw selector.</p><p class="p-math-desc"><code class="inline">:nth-of-type</code> is added only when there is more than one sibling of the same tag. Adding it unconditionally would make the selector brittle for no benefit: a <code class="inline">&lt;span&gt;</code> that is the only span in its parent is already unambiguous, and pinning it to position 1 just means it breaks the moment the site adds a second span above it.</p><p class="p-math-desc">This is a deliberate trade. A paid scraping API would parse the page structurally and be more robust; a selector path costs nothing and works on the large majority of shops. Where it loses, it loses visibly &mdash; the re-check finds nothing and the product stops updating, rather than quietly reporting a wrong number.</p></div></div><div class="p-math-panel" data-panel="example"><div class="p-math-example-wrap"><div class="p-math-example-scroll"><pre class="p-math-example">clicked:  &lt;span class="price-now"&gt;Rp 150.000&lt;/span&gt;
+stored selector = path.join(" &gt; ")</pre></div></div></div><div class="p-math-panel" data-panel="explained"><div class="p-math-explained"><p class="p-math-desc">The path is built from the clicked element upwards, so the most specific part is decided first. Classes are included because they usually carry the site's own meaning: <code class="inline">.product-price</code> survives a layout tweak that moves the element around. They are run through <code class="inline">CSS.escape</code> first, since utility frameworks emit class names full of characters that are illegal in a raw selector.</p><p class="p-math-desc"><code class="inline">:nth-of-type</code> is added only when there is more than one sibling of the same tag. Adding it unconditionally would make the selector brittle for no benefit: a <code class="inline">&lt;span&gt;</code> that is the only span in its parent is already unambiguous, and pinning it to position 1 just means it breaks the moment the site adds a second span above it.</p><p class="p-math-desc">This is a deliberate trade. A paid scraping API would parse the page structurally and be more robust; a selector path costs nothing and works on the large majority of shops. Where it loses, it loses visibly: the re-check finds nothing and the product stops updating, rather than quietly reporting a wrong number.</p></div></div><div class="p-math-panel" data-panel="example"><div class="p-math-example-wrap"><div class="p-math-example-scroll"><pre class="p-math-example">clicked:  &lt;span class="price-now"&gt;Rp 150.000&lt;/span&gt;
 
 walking up
   span.price-now                 (only span in its parent -&gt; no nth)
@@ -82,7 +82,7 @@ three hours later
         <br>
         <h3>04 The Background Loop</h3>
         <div class="blog-content-body">
-<p>A Manifest V3 service worker cannot hold a <code class="inline">setInterval</code> &mdash; Chrome tears it down when it is idle, which is the whole point of the V3 model. Scheduling therefore has to be handed to <code class="inline">chrome.alarms</code>, which wakes the worker back up on its own timetable:</p>
+<p>A Manifest V3 service worker cannot hold a <code class="inline">setInterval</code>. Chrome tears it down when it is idle, which is the whole point of the V3 model. Scheduling therefore has to be handed to <code class="inline">chrome.alarms</code>, which wakes the worker back up on its own timetable:</p>
 <pre class="p-math-formula">const CHECK_INTERVAL_MINUTES = 180;   // three hours
 
 chrome.alarms.get('priceCheck', alarm =&gt; {
@@ -90,20 +90,20 @@ chrome.alarms.get('priceCheck', alarm =&gt; {
                     { periodInMinutes: CHECK_INTERVAL_MINUTES });
 });</pre>
 <p>The alarm is created only if it does not already exist, so a browser restart or an extension reload does not stack duplicate schedules on top of each other.</p>
-<p>When it fires, each tracked product is opened in a background tab, the content script reads the stored selector, and the price comes back to the worker. Every reading is appended to a <code class="inline">history</code> array on the product &mdash; capped at 100 entries, oldest shifted off, because storage that only ever grows is a bug on a long enough timeline. If the new price is lower than the stored one, <code class="inline">chrome.notifications</code> fires; clicking the notification opens the product page directly, since a price-drop alert you have to go hunting for is worth very little.</p>
-<p>The popup also has a manual refresh, which runs the same check immediately &mdash; useful because otherwise testing the notification path means waiting three hours.</p>
+<p>When it fires, each tracked product is opened in a background tab, the content script reads the stored selector, and the price comes back to the worker. Every reading is appended to a <code class="inline">history</code> array on the product, capped at 100 entries, oldest shifted off, because storage that only ever grows is a bug on a long enough timeline. If the new price is lower than the stored one, <code class="inline">chrome.notifications</code> fires; clicking the notification opens the product page directly, since a price-drop alert you have to go hunting for is worth very little.</p>
+<p>The popup also has a manual refresh, which runs the same check immediately, useful because otherwise testing the notification path means waiting three hours.</p>
         </div>
         <br>
         <h3>05 Why It Costs Nothing</h3>
         <div class="blog-content-body">
 <p>Every moving part maps onto something already in the browser:</p>
 <ul>
-<li><b>Storage</b> &mdash; <code class="inline">chrome.storage.local</code>. No database, no account, and the data never leaves the machine.</li>
-<li><b>Scheduling</b> &mdash; <code class="inline">chrome.alarms</code>. No cron host.</li>
-<li><b>Notifications</b> &mdash; <code class="inline">chrome.notifications</code>. No push service.</li>
-<li><b>Fetching</b> &mdash; a background tab renders the real page, so JavaScript-rendered prices work without a headless browser service.</li>
+<li><b>Storage</b>: <code class="inline">chrome.storage.local</code>. No database, no account, and the data never leaves the machine.</li>
+<li><b>Scheduling</b>: <code class="inline">chrome.alarms</code>. No cron host.</li>
+<li><b>Notifications</b>: <code class="inline">chrome.notifications</code>. No push service.</li>
+<li><b>Fetching</b>: a background tab renders the real page, so JavaScript-rendered prices work without a headless browser service.</li>
 </ul>
-<p>The permissions are the honest cost of that design. <code class="inline">&lt;all_urls&gt;</code> is required because "any product on any website" cannot be enumerated in advance &mdash; which is a real thing to declare rather than gloss over, and the reason the extension is loaded unpacked rather than published.</p>
+<p>The permissions are the honest cost of that design. <code class="inline">&lt;all_urls&gt;</code> is required because "any product on any website" cannot be enumerated in advance, which is a real thing to declare rather than gloss over, and the reason the extension is loaded unpacked rather than published.</p>
         </div>
         <br>
         <h3>06 Project Structure</h3>
