@@ -228,12 +228,13 @@
                     <img src="icon/chula.png" alt="Chulalongkorn University" class="education-image" />
                     <div>
                         <p><b>Chulalongkorn University, Bangkok</b></p>
-                        <span class="text-silent">Organising Committee &amp; Documentation</span>
+                        <span class="text-silent">Faculty of Computer Science &amp; Information Technology,
+                            Universiti Malaya</span>
                     </div>
                 </div>
             </div>
-            One of a <span class="markblue">four-person committee</span> running a five-day programme at
-            Chulalongkorn University, Thailand's top-ranked university, and the sole documentation photographer
+            A five-day FSKTM programme at <span class="markblue">Chulalongkorn University</span>, Thailand's
+            top-ranked university, run by a committee of four. I handled documentation for the whole programme,
             covering sessions and daily activities across all five days.
         </div>
         <br>
