@@ -20,7 +20,7 @@
             <br>
             <span>Draw a digit in the browser and a convolutional network recognises it &mdash; written entirely in NumPy, with no PyTorch or TensorFlow anywhere in the stack. Every convolution, pooling layer, backward pass and optimiser step is hand-written. 99.12% accuracy on the real MNIST test set, with an animated visualizer that shows how the decision was reached, down to the pixel.</span>
             <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">Complete</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Solo Developer</span></span><span class="p-meta-item"><span class="p-meta-k">Test accuracy</span><span class="p-meta-v">99.12% on MNIST</span></span></div>
-            <a href="https://github.com/rafiarsya07/ai-digit-recognizer" target="_blank" rel="noopener" class="hrefnocolor">View on GitHub &#8599;</a>
+            <a href="https://github.com/rafiarsya07/ai-digit-recognizer" target="_blank" rel="noopener" class="ext-link">View on GitHub<svg class="ext-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
         </div>
         <div style="border-top: solid 1px #acb8c0; margin-bottom: 10px;"></div>
         <h3>01 The Rule</h3>

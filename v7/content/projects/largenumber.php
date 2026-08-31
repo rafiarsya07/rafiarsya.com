@@ -20,7 +20,25 @@
             <br>
             <span>Arithmetic on numbers far larger than any built-in type can hold, using a doubly linked list where every digit is its own node. A Java engine does the maths; a Next.js visualizer walks the algorithm one step at a time so you can watch the carries move.</span>
             <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">Complete</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Team Project</span></span><span class="p-meta-item"><span class="p-meta-k">Course</span><span class="p-meta-v">WIA1002 Data Structures</span></span></div>
-            <a href="https://github.com/rafiarsya07/WIA1002_LargeNumberArithmetic" target="_blank" rel="noopener" class="hrefnocolor">View on GitHub &#8599;</a>
+            <a href="https://github.com/rafiarsya07/WIA1002_LargeNumberArithmetic" target="_blank" rel="noopener" class="ext-link">View on GitHub<svg class="ext-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            <div class="contributors-byline">
+<a class="contributor-chip" href="https://www.linkedin.com/in/abqarynasution/" target="_blank" rel="noopener noreferrer">
+<img class="contributor-chip-avatar" src="image/assets/largenumber/contributor-abqary.png" alt="Abqary Nasution" loading="lazy" decoding="async">
+<span class="contributor-chip-name">Abqary Nasution</span>
+</a>
+<a class="contributor-chip" href="https://www.linkedin.com/in/gema-radya-prabowo-2ba8392b4/" target="_blank" rel="noopener noreferrer">
+<img class="contributor-chip-avatar" src="image/assets/largenumber/contributor-gema.png" alt="Gema Radya Prabowo" loading="lazy" decoding="async">
+<span class="contributor-chip-name">Gema Radya Prabowo</span>
+</a>
+<a class="contributor-chip" href="https://www.linkedin.com/in/ilhamsetiabudi/" target="_blank" rel="noopener noreferrer">
+<img class="contributor-chip-avatar" src="image/assets/largenumber/contributor-ilham.png" alt="Ilham Narendra Setiabudi" loading="lazy" decoding="async">
+<span class="contributor-chip-name">Ilham Narendra Setiabudi</span>
+</a>
+<span class="contributor-chip">
+<img class="contributor-chip-avatar" src="image/assets/largenumber/contributor-dafi.png" alt="Dafi Atha" loading="lazy" decoding="async">
+<span class="contributor-chip-name">Dafi Atha</span>
+</span>
+            </div>
         </div>
         <div style="border-top: solid 1px #acb8c0; margin-bottom: 10px;"></div>
         <h3>01 The Problem</h3>

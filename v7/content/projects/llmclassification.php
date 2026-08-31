@@ -20,7 +20,7 @@
             <br>
             <span>An end-to-end Kaggle-style pipeline for the Chatbot Arena preference task: given a prompt and two chatbot responses, predict which one a human preferred. This is the baseline pass &mdash; TF-IDF features and logistic regression, run on a small synthetic stand-in dataset to get the whole loop working before touching the real thing.</span>
             <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">Baseline, on placeholder data</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Solo</span></span><span class="p-meta-item"><span class="p-meta-k">Scope</span><span class="p-meta-v">Pipeline, not a competitive score</span></span></div>
-            <a href="https://github.com/rafiarsya07/llm-classification" target="_blank" rel="noopener" class="hrefnocolor">View on GitHub &#8599;</a>
+            <a href="https://github.com/rafiarsya07/llm-classification" target="_blank" rel="noopener" class="ext-link">View on GitHub<svg class="ext-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
         </div>
         <div style="border-top: solid 1px #acb8c0; margin-bottom: 10px;"></div>
         <h3>01 What This Is, And What It Is Not</h3>

@@ -25,7 +25,7 @@
         <br>
         <div class="d-flex">
             <a href="https://blog.rafiarsya.com" target="_blank" rel="noopener" class="btn btn-main button-border d-flex align-items-center">
-                <span>Read the full blog &#8599;</span>
+                <span>Read the full blog<svg class="ext-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
             </a>
         </div>
         <br><br>

@@ -22,7 +22,7 @@
             <br>
             <span>The official website for IDFEST 2026, an Indonesian cultural festival organized by PPI Universiti Malaya. A collaborative build translating Figma designs into a fast, static Next.js frontend across the home timeline, Art Exhibition, and Musical Theater sections.</span>
             <br>
-            <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">Completed</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Website Development Committee</span></span><span class="p-meta-item"><span class="p-meta-k">Stack</span><span class="p-meta-v">Next.js, Tailwind CSS</span></span></div><a href="https://idfest.ppiunimalaya.id/" target="_blank" rel="noopener" class="idfest-live-link">IDFEST 2026 &#8599;</a>
+            <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">Completed</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Website Development Committee</span></span><span class="p-meta-item"><span class="p-meta-k">Stack</span><span class="p-meta-v">Next.js, Tailwind CSS</span></span></div><a href="https://idfest.ppiunimalaya.id/" target="_blank" rel="noopener" class="ext-link">IDFEST 2026<svg class="ext-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
             <div class="contributors-byline">
 <a class="contributor-chip" href="https://www.linkedin.com/in/ilhamsetiabudi/" target="_blank" rel="noopener noreferrer">
 <img class="contributor-chip-avatar" src="image/assets/idfest/contributor-ilham.png" alt="Ilham Narendra Setiabudi" loading="lazy" decoding="async">
@@ -53,7 +53,7 @@
         <br>
         <h3>03 Live Preview</h3>
         <div class="blog-content-body">
-<p class="rf-media-lead">A closer look at every main section, live at <b>idfest.ppiunimalaya.id</b>.</p>
+<p class="rf-media-lead">A closer look at every main section, live at <a class="ext-link" href="https://idfest.ppiunimalaya.id/" target="_blank" rel="noopener">idfest.ppiunimalaya.id<svg class="ext-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>.</p>
 
 <div class="rf-livegroup">
 <p class="rf-livegroup-title">Home</p>
