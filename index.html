@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -7,807 +6,274 @@
 <meta content="Muhammad Rafi Arsya — Software Engineering student at Universiti Malaya. Full-stack web development, AWS and AI/ML projects, self-hosted applications." name="description"/>
 <title>Muhammad Rafi Arsya</title>
 <link href="assets/avatar_rafi.png" rel="icon" type="image/png"/>
+
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="css/styles.css" rel="stylesheet"/>
-<link href="css/rafi-core.css" rel="stylesheet"/>
-<style>
-        .entry-sub-link {
-            color: inherit;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 3px;
-            transition: opacity 0.2s ease;
-        }
-        .entry-sub-link::after {
-            content: '';
-            display: inline-block;
-            width: 11px;
-            height: 11px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='7' y1='17' x2='17' y2='7'/%3E%3Cpolyline points='7 7 17 7 17 17'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-size: contain;
-            opacity: 0.5;
-            flex-shrink: 0;
-            transition: transform 0.2s ease, opacity 0.2s ease;
-        }
-        .entry-sub-link:hover {
-            opacity: 0.8;
-        }
-        .entry-sub-link:hover::after {
-            opacity: 0.9;
-            transform: translate(2px, -2px);
-        }
-    </style>
-<style id="rafi-v5">
-*, *::before, *::after { box-sizing: border-box; }
-html, body { max-width: 100%; overflow-x: clip; }
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 
-#rafi-bar {
-    position: fixed; top: 0; left: 0; height: 2px; width: 0%;
-    background: var(--white, #f5f5f5); z-index: 9999; pointer-events: none;
-    transition: width 80ms linear;
-}
-
-img, video, iframe, svg { max-width: 100%; height: auto; }
-.p-video-wrap { overflow: hidden; border-radius: 8px; }
-.p-video-wrap video { width: 100%; height: auto; }
-
-/* ── HIGHLIGHTS · single yellow marker (consistent site-wide) ── */
-mark.hl, mark.hl-green, mark.hl-blue, mark.hl-pink, mark.hl-orange, mark.hl-purple {
-    background: none; color: inherit; font-weight: 600;
-    padding: 0; border-radius: 0;
-}
-
-
-.project-page { max-width: 1060px; width: 100%; margin: 0 auto; padding: 40px 40px 80px; box-sizing: border-box; }
-@media (max-width: 860px) {
-    .project-page { padding: 24px 20px 80px; }
-    .p-layout { grid-template-columns: 1fr !important; gap: 14px !important; }
-    .p-side-col {
-        position: static !important; order: -1;
-        display: flex !important; flex-wrap: wrap !important; gap: 10px !important;
-    }
-    .p-side-col .p-card { flex: 1 1 calc(50% - 5px) !important; min-width: 160px !important; }
-}
-@media (max-width: 600px) {
-    .project-page { padding: 12px 12px calc(70px + env(safe-area-inset-bottom,0px)) !important; }
-    .p-side-col { flex-direction: column !important; }
-    .p-side-col .p-card { flex: 1 1 100% !important; min-width: 0 !important; }
-    .p-hero { padding: 20px 16px 24px !important; min-height: 180px !important; border-radius: 10px !important; }
-    .p-hero-title { font-size: clamp(22px,7.5vw,32px) !important; line-height: 1.05 !important; word-break: break-word !important; }
-    .p-hero-sub { font-size: 13px !important; }
-    .p-hero-tags { gap: 5px !important; margin-top: 12px !important; }
-    .p-hero-tag { font-size: 8px !important; padding: 3px 7px !important; }
-    .p-meta-strip { flex-direction: column !important; }
-    .p-meta-item { border-right: none !important; border-bottom: 1px solid var(--line, #242424) !important; padding: 9px 13px !important; }
-    .p-meta-item:last-child { border-bottom: none !important; }
-    .p-card { padding: 16px 14px !important; border-radius: 10px !important; }
-    .p-card-title { font-size: 9px !important; padding-bottom: 11px !important; margin-bottom: 13px !important; }
-    .p-main-col { gap: 10px !important; }
-    .p-body { font-size: 14px !important; line-height: 1.8 !important; }
-    .p-body p { margin-bottom: 12px !important; }
-    .p-callout { font-size: 13px !important; padding: 11px 13px !important; }
-    .p-numbers { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
-    .p-num-val { font-size: 22px !important; }
-    .p-num-card { padding: 11px 12px !important; }
-    .p-usecases { grid-template-columns: 1fr !important; gap: 8px !important; }
-    .p-classes-grid { grid-template-columns: 1fr 1fr !important; gap: 5px !important; }
-    .p-design-grid { grid-template-columns: 1fr !important; }
-    .p-arch-row { flex-wrap: wrap !important; }
-    .p-arch-desc { max-width: 100% !important; text-align: left !important; margin-left: 44px !important; }
-    .p-tech-pill { font-size: 9.5px !important; padding: 4px 9px !important; }
-    .p-link-btn { font-size: 12px !important; padding: 9px 12px !important; }
-    .p-closing { flex-direction: column !important; padding: 18px 14px !important; }
-    .p-closing-btn { width: 100% !important; justify-content: center !important; }
-    .p-progress-label { flex-wrap: wrap !important; font-size: 10.5px !important; }
-    .project-back { font-size: 9.5px !important; margin-bottom: 12px !important; }
-    .p-order-state { font-size: 10px !important; padding: 5px 8px !important; }
-    code.inline { font-size: 10px !important; padding: 1px 5px !important; word-break: break-word !important; }
-    .p-ctrl-table-wrap, .p-wcag-table-wrap {
-        overflow-x: auto !important; -webkit-overflow-scrolling: touch !important;
-        margin: 0 -14px !important; padding: 0 14px !important;
-    }
-}
-@media (max-width: 380px) {
-    .project-page { padding: 10px 10px calc(68px + env(safe-area-inset-bottom,0px)) !important; }
-    .p-hero-title { font-size: clamp(19px,7vw,24px) !important; }
-    .p-card { padding: 13px 11px !important; }
-}
-
-.ap-page { max-width: 1280px; margin: 0 auto; padding: 44px 40px 80px; box-sizing: border-box; }
-@media (max-width: 640px) {
-    .ap-page { padding: 14px 14px 60px !important; }
-    .ap-title { font-size: clamp(26px,8.5vw,40px) !important; }
-    .ap-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
-    .ap-card-overlay { display: none !important; }
-}
-
-.p-body, .p-body p, .p-feature-desc, .p-step-desc,
-.p-usecase-desc, .p-arch-desc, .p-callout {
-    overflow-wrap: break-word; word-break: break-word; max-width: 100%;
-}
-.p-arch-name { flex: 1; min-width: 0; overflow-wrap: break-word; }
-
-.p-usecase-icon {
-    width: 38px !important; height: 38px !important;
-    background: var(--bg3, #1c1c1c) !important;
-    border: 1px solid var(--line2, #333) !important;
-    border-radius: 9px !important;
-    display: flex !important; align-items: center !important; justify-content: center !important;
-    margin-bottom: 10px !important; flex-shrink: 0;
-}
-.p-usecase-icon svg {
-    width: 18px !important; height: 18px !important;
-    stroke: var(--acc, #d0d0d0) !important; fill: none !important;
-    stroke-width: 1.8 !important; stroke-linecap: round !important; stroke-linejoin: round !important;
-}
-.p-feature-icon {
-    width: 36px; height: 36px; border-radius: 8px;
-    background: var(--bg3, #1c1c1c); border: 1px solid var(--line2, #333);
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.p-feature-icon svg {
-    width: 17px; height: 17px; stroke: var(--acc, #d0d0d0); fill: none;
-    stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
-}
-
-.p-pipeline-outer, .p-pipeline-wrap {
-    position: relative; margin: 10px 0; border-radius: 8px;
-    background: var(--bg, #0c0c0c); border: 1px solid var(--line, #242424);
-    overflow: hidden;
-}
-.p-pipeline-outer::after, .p-pipeline-wrap::after {
-    content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 36px;
-    background: linear-gradient(to left, var(--bg, #0c0c0c), transparent);
-    pointer-events: none; z-index: 2; transition: opacity 0.2s;
-}
-.p-pipeline-outer.at-end::after, .p-pipeline-wrap.at-end::after { opacity: 0; }
-.p-pipeline-scroll {
-    overflow-x: auto !important; -webkit-overflow-scrolling: touch !important;
-    cursor: grab; padding: 14px 16px 6px !important;
-    scrollbar-width: thin !important; scrollbar-color: var(--line2,#333) transparent;
-}
-.p-pipeline-scroll:active { cursor: grabbing; }
-.p-pipeline-scroll::-webkit-scrollbar { height: 5px; }
-.p-pipeline-scroll::-webkit-scrollbar-track { background: transparent; }
-.p-pipeline-scroll::-webkit-scrollbar-thumb { background: var(--line2,#333); border-radius: 3px; }
-.p-pipeline { display: inline-flex !important; align-items: center !important; gap: 0 !important; width: max-content !important; min-width: 100% !important; }
-.p-pipe-step {
-    flex-shrink: 0; min-width: 100px; background: var(--bg2, #141414);
-    border: 1.5px solid var(--line2, #333); border-radius: 7px;
-    padding: 11px 13px; text-align: center; cursor: pointer;
-    transition: border-color 0.15s, box-shadow 0.15s, transform 0.12s;
-}
-.p-pipe-step:hover { border-color: var(--muted,#555); transform: translateY(-1px); }
-.p-pipe-step.ps-active { border-color: var(--white,#f5f5f5); box-shadow: 0 0 0 1px var(--white,#f5f5f5); }
-.p-pipe-step-num { font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; font-size: 8px; color: var(--muted,#555); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
-.p-pipe-step-label { font-size: 11.5px; font-weight: 700; color: var(--heading,#e8e8e8); line-height: 1.3; }
-.p-pipe-step-sub { font-size: 9px; color: var(--muted,#555); margin-top: 3px; }
-.p-pipe-arrow { font-size: 13px; color: var(--line2,#333); margin: 0 4px; flex-shrink: 0; display: flex; align-items: center; }
-.p-pipe-detail {
-    margin: 0 16px 12px; padding: 11px 13px;
-    background: var(--bg2, #141414); border: 1px solid var(--line, #242424); border-radius: 7px;
-    font-size: 13px; color: var(--sub, #888); line-height: 1.65;
-    display: none; animation: rfin .15s ease;
-}
-.p-pipe-detail.ps-show { display: block; }
-.p-pipe-detail strong { color: var(--heading,#e8e8e8); }
-.p-pipe-detail code { font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; font-size: 10.5px; background: var(--bg,#0c0c0c); border: 1px solid var(--line2,#333); padding: 1px 5px; border-radius: 3px; color: var(--acc,#d0d0d0); }
-.p-pipe-dots { display: flex; justify-content: center; gap: 5px; padding: 6px 0 10px; min-height: 20px; }
-.p-pipe-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--line2,#333); transition: background .2s, width .2s; }
-.p-pipe-dot.active { background: var(--white,#f5f5f5); width: 14px; border-radius: 3px; }
-.p-pipeline-hint {
-    display: flex; align-items: center; justify-content: center; gap: 5px;
-    text-align: center; font-size: 9.5px; color: var(--muted,#555);
-    font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; letter-spacing: 0.08em; padding: 0 0 9px;
-}
-.p-pipeline-hint svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 2; }
-@media (max-width: 640px) {
-    .p-pipe-step { min-width: 84px !important; padding: 10px 10px !important; }
-}
-@keyframes rfin { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
-
-.p-steps-accordion { display: none; flex-direction: column; gap: 6px; }
-@media (max-width: 640px) {
-    .p-steps { display: none !important; }
-    .p-steps-accordion { display: flex !important; }
-}
-.p-acc-item { border: 1px solid var(--line, #242424); border-radius: 8px; overflow: hidden; background: var(--bg2, #141414); }
-.p-acc-trigger { display: flex; align-items: center; gap: 10px; padding: 12px 13px; cursor: pointer; user-select: none; background: none; border: none; width: 100%; text-align: left; }
-.p-acc-num { width: 24px; height: 24px; border-radius: 50%; background: var(--bg3,#1c1c1c); border: 1px solid var(--line2,#333); font-size: 10px; font-weight: 700; color: var(--muted,#555); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace; transition: background .15s, color .15s, border-color .15s; }
-.p-acc-title { font-size: 13px; font-weight: 700; color: var(--heading,#e8e8e8); flex: 1; }
-.p-acc-chevron { width: 16px; height: 16px; stroke: var(--muted,#555); fill: none; stroke-width: 2; flex-shrink: 0; transition: transform .2s; }
-.p-acc-item.open .p-acc-chevron { transform: rotate(180deg); }
-.p-acc-item.open .p-acc-num { background: var(--white,#f5f5f5); color: var(--bg,#0c0c0c); border-color: var(--white,#f5f5f5); }
-.p-acc-body { max-height: 0; overflow: hidden; padding: 0 13px; transition: max-height .28s ease, padding .2s; }
-.p-acc-item.open .p-acc-body { max-height: 400px; padding: 0 13px 13px; }
-.p-acc-desc { font-size: 13px; color: var(--sub,#888); line-height: 1.65; overflow-wrap: break-word; }
-
-.p-progress-fill { transition: width 1s cubic-bezier(.4,0,.2,1); }
-.p-num-card { transition: transform .15s, box-shadow .15s; }
-.p-num-card:hover { transform: translateY(-2px); }
-
-.blog-img-wrap img, .screenshot-item img, .bl-cover img { max-width: 100% !important; height: auto !important; }
-.screenshot-gallery { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
-@media (max-width: 600px) {
-    .blog-page, .bl-page { padding: 14px 14px 60px !important; }
-    .screenshot-gallery { grid-template-columns: repeat(2, 1fr) !important; }
-    .blog-img-2col { grid-template-columns: 1fr !important; }
-    .arch-wrap { font-size: 11px !important; }
-    pre, code { font-size: 11px !important; overflow-x: auto !important; }
-}
-table { max-width: 100%; }
-.p-ctrl-table-wrap, .p-wcag-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-</style>
-<style id="rafi-math-v5">/* ════════════════════════════════════════════════════════════════════════
-   MATH DERIVATION CARD — v5
-   A "lab notebook" component: numbered formula cards with a
-   Formula / Explained / Worked Example switcher. Built for the dark
-   project-page theme (--bg:#0c0c0c family). Horizontal scroll on any
-   formula/example block that overflows, with visible scroll affordance.
-   ════════════════════════════════════════════════════════════════════════ */
-
-.p-math-block {
-    background: var(--bg2);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    margin: 14px 0;
-    overflow: hidden;
-    position: relative;
-}
-
-/* left accent rail — gives it the "margin note" feel */
-.p-math-block::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; bottom: 0;
-    width: 2px;
-    background: linear-gradient(180deg, var(--acc, #d0d0d0) 0%, transparent 130%);
-    opacity: 0.5;
-}
-
-.p-math-head {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 13px 16px 12px;
-    border-bottom: 1px solid var(--line);
-    flex-wrap: wrap;
-}
-
-.p-math-head-left {
-    display: flex;
-    align-items: baseline;
-    gap: 9px;
-    min-width: 0;
-}
-
-.p-math-index {
-    font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    flex-shrink: 0;
-    letter-spacing: 0.02em;
-}
-
-.p-math-title {
-    font-size: 12.5px;
-    font-weight: 700;
-    color: var(--heading);
-    line-height: 1.4;
-    min-width: 0;
-    overflow-wrap: break-word;
-}
-
-.p-math-title mark.hl {
-    font-size: inherit;
-}
-
-/* ── TAB SWITCHER ── */
-.p-math-tabs {
-    display: flex;
-    gap: 2px;
-    background: var(--bg);
-    border: 1px solid var(--line2);
-    border-radius: 5px;
-    padding: 2px;
-    flex-shrink: 0;
-}
-
-.p-math-tab {
-    appearance: none;
-    border: none;
-    background: transparent;
-    color: var(--muted);
-    font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;
-    font-size: 9.5px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.15s ease, color 0.15s ease;
-    white-space: nowrap;
-    line-height: 1.2;
-}
-
-.p-math-tab:hover { color: var(--sub); }
-
-.p-math-tab.active {
-    background: var(--line2);
-    color: var(--white);
-}
-
-.p-math-tab .p-math-tab-dot {
-    display: inline-block;
-    width: 4px; height: 4px;
-    border-radius: 50%;
-    background: currentColor;
-    margin-right: 5px;
-    opacity: 0.6;
-    vertical-align: middle;
-}
-
-/* ── BODY / PANELS ── */
-.p-math-body { position: relative; }
-
-.p-math-panel {
-    display: none;
-    animation: pmFadeIn 0.18s ease;
-}
-.p-math-panel.active { display: block; }
-
-@keyframes pmFadeIn {
-    from { opacity: 0; transform: translateY(2px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-/* Formula panel — scrollable code-like surface */
-.p-math-formula-wrap {
-    position: relative;
-    overflow: hidden;
-}
-
-.p-math-scroll {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 16px 16px 14px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--line2) transparent;
-}
-.p-math-scroll::-webkit-scrollbar { height: 5px; }
-.p-math-scroll::-webkit-scrollbar-track { background: transparent; }
-.p-math-scroll::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 3px; }
-.p-math-scroll::-webkit-scrollbar-thumb:hover { background: var(--muted); }
-
-pre.p-math-formula {
-    font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;
-    font-size: 12px;
-    line-height: 1.9;
-    color: var(--body);
-    white-space: pre;
-    margin: 0;
-    width: max-content;
-    min-width: 100%;
-}
-
-pre.p-math-formula mark.hl {
-    font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;
-    font-size: inherit;
-}
-
-/* fade-edge affordance to signal "more content →" */
-.p-math-formula-wrap::after {
-    content: '';
-    position: absolute;
-    top: 0; right: 0; bottom: 0;
-    width: 28px;
-    background: linear-gradient(to left, var(--bg2), transparent);
-    pointer-events: none;
-    opacity: 1;
-    transition: opacity 0.2s ease;
-}
-.p-math-formula-wrap.pm-at-end::after { opacity: 0; }
-
-.p-math-scroll-hint {
-    display: none;
-    align-items: center;
-    gap: 5px;
-    font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;
-    font-size: 8.5px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding: 0 16px 11px;
-}
-.p-math-scroll-hint svg {
-    width: 10px; height: 10px;
-    stroke: currentColor; fill: none;
-    stroke-width: 2;
-}
-.p-math-formula-wrap.pm-scrollable ~ .p-math-scroll-hint,
-.p-math-example-wrap.pm-scrollable ~ .p-math-scroll-hint {
-    display: flex;
-}
-
-/* Explained panel */
-.p-math-explained {
-    padding: 16px 18px;
-}
-.p-math-desc {
-    font-size: 13px;
-    line-height: 1.8;
-    color: var(--sub);
-    margin: 0;
-}
-.p-math-desc + .p-math-desc { margin-top: 10px; }
-.p-math-desc strong { color: var(--heading); font-weight: 700; }
-.p-math-desc code.inline {
-    font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;
-    font-size: 11px;
-    background: var(--bg);
-    border: 1px solid var(--line2);
-    padding: 1px 6px;
-    border-radius: 3px;
-    color: var(--acc);
-}
-
-/* Example panel — worked-through computation */
-.p-math-example-wrap {
-    position: relative;
-    overflow: hidden;
-}
-.p-math-example {
-    font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;
-    font-size: 11.5px;
-    line-height: 1.85;
-    color: var(--body);
-    white-space: pre;
-    margin: 0;
-    width: max-content;
-    min-width: 100%;
-    border-left: 2px solid var(--line2);
-    padding: 14px 16px 14px 18px;
-    background: var(--bg);
-}
-.p-math-example-wrap::after {
-    content: '';
-    position: absolute;
-    top: 0; right: 0; bottom: 0;
-    width: 28px;
-    background: linear-gradient(to left, var(--bg2), transparent);
-    pointer-events: none;
-    opacity: 1;
-    transition: opacity 0.2s ease;
-}
-.p-math-example-wrap.pm-at-end::after { opacity: 0; }
-.p-math-example-scroll {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: var(--line2) transparent;
-}
-.p-math-example-scroll::-webkit-scrollbar { height: 5px; }
-.p-math-example-scroll::-webkit-scrollbar-track { background: transparent; }
-.p-math-example-scroll::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 3px; }
-
-/* footer micro-label inside example */
-.p-math-example-label {
-    font-family: 'JetBrains Mono', 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS', monospace;
-    font-size: 8.5px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding: 10px 16px 0;
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 640px) {
-    .p-math-head { padding: 11px 13px 10px; flex-wrap: wrap; }
-    .p-math-title { font-size: 11.5px; }
-    .p-math-index { font-size: 9px; }
-    .p-math-tabs { width: 100%; justify-content: stretch; }
-    .p-math-tab { flex: 1; text-align: center; padding: 6px 8px; font-size: 9px; }
-    .p-math-scroll { padding: 13px 13px 11px; }
-    pre.p-math-formula { font-size: 10.5px; line-height: 1.8; }
-    .p-math-explained { padding: 13px 14px; }
-    .p-math-desc { font-size: 12.5px; }
-    .p-math-example { font-size: 10px; padding: 12px 13px 12px 15px; }
-    .p-math-example-label { padding: 8px 13px 0; }
-}
-
-@media (max-width: 380px) {
-    .p-math-tab { font-size: 8.3px; padding: 6px 4px; letter-spacing: 0.02em; }
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-    .p-math-panel { animation: none !important; }
-}
-</style><style id="perf-pass">
-/* Perf: calm continuous + entrance motion, respect user setting */
-@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}}
-/* Cut wasteful always-on decorative loops (glow/spotlight/breathing/pulse/aura) */
-[class*="glow"],[class*="spotlight"],[class*="breath"],[class*="aura"],[class*="shimmer"]{animation:none!important;}
-</style>
-<style id="home-clean">
-body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans','Arial Unicode MS',sans-serif; }
-.home-section-title { color: #6b7a90; font-weight: 500; }
-.home-bio-heading { letter-spacing: -0.02em; }
-
-/* soft pastel highlights on key phrases — like the reference */
-mark.hl, mark.hl-green, mark.hl-blue, mark.hl-pink, mark.hl-orange, mark.hl-purple {
-    padding: 1px 5px; border-radius: 4px; color: inherit; font-weight: 500;
-}
-mark.hl        { background: #fef3c7; }
-mark.hl-blue   { background: #dbeafe; }
-mark.hl-green  { background: #d1fae5; }
-mark.hl-orange { background: #ffedd5; }
-mark.hl-pink   { background: #fce7f3; }
-mark.hl-purple { background: #ede9fe; }
-</style><link href="css/site-polish.css" rel="stylesheet"/>
+<link href="css/rafi-editorial.css" rel="stylesheet"/>
+<link href="css/rafi-editorial-pages.css" rel="stylesheet"/>
 </head>
+
 <body>
-<!-- MOBILE TOPBAR (floating hamburger only) -->
+
+<div id="rafi-bar"></div>
+
+<!-- ── MOBILE TOPBAR ───────────────────────────────────── -->
 <div class="mobile-topbar">
-<button aria-expanded="false" aria-label="Open menu" class="hamburger-btn" id="hamburger-btn">
+<button aria-expanded="false" aria-label="Open menu" class="hamburger-btn" id="hamburger-btn" type="button">
 <span></span><span></span><span></span>
 </button>
 </div>
-<!-- SIDEBAR OVERLAY -->
+
 <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
 <div class="portfolio-app">
-<!-- SIDEBAR -->
+
+<!-- ── SIDEBAR ─────────────────────────────────────────── -->
 <aside class="sidebar">
-<div class="sidebar-top">
 <div class="sidebar-logo-wrap">
-<img alt="Rafi Avatar" class="sidebar-logo-avatar" decoding="async" loading="lazy" src="assets/avatar_rafi.png"/>
-<span class="sidebar-logo-name">Muhammad Rafi Arsya</span>
+<img alt="Rafi Arsya" class="sidebar-logo-avatar" decoding="async" src="assets/avatar_rafi.png"/>
+<span class="sidebar-logo-name">Muhammad<br/>Rafi Arsya</span>
 <button aria-label="Close menu" class="sidebar-close-btn" id="sidebar-close-btn" type="button">
-<svg viewbox="0 0 24 24"><line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line></svg>
+<svg viewBox="0 0 24 24"><line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line></svg>
 </button>
 </div>
-<nav class="sidebar-nav">
-<a class="active" href="index.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"></path><polyline points="9 21 9 12 15 12 15 21"></polyline></svg></span><span>Home</span></a>
-<a href="pages/blog.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path><path d="M18 14h-8"></path><path d="M15 18h-5"></path><path d="M10 6h8v4h-8z"></path></svg></span><span>Blog</span></a>
+
+<nav class="sidebar-nav" aria-label="Main">
+<a class="active" href="index.html" aria-current="page"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"></path><polyline points="9 21 9 12 15 12 15 21"></polyline></svg></span><span>Home</span></a>
+<a href="pages/blog.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path><path d="M18 14h-8"></path><path d="M15 18h-5"></path><path d="M10 6h8v4h-8z"></path></svg></span><span>Blog</span></a>
 </nav>
+
 <div class="sidebar-group-label">Me</div>
-<nav class="sidebar-nav">
-<a href="pages/resume.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="14" rx="2" width="20" x="2" y="3"></rect><path d="M8 21h8"></path><path d="M12 17v4"></path></svg></span><span>Resume / CV</span></a>
-<a href="pages/course.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg></span><span>Course &amp; Certificate</span></a>
-<a href="pages/contact.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span><span>Contact</span></a>
+<nav class="sidebar-nav" aria-label="About me">
+<a href="pages/resume.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><rect height="14" rx="2" width="20" x="2" y="3"></rect><path d="M8 21h8"></path><path d="M12 17v4"></path></svg></span><span>Resume / CV</span></a>
+<a href="pages/course.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg></span><span>Course &amp; Certificate</span></a>
+<a href="pages/contact.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span><span>Contact</span></a>
 </nav>
+
 <div class="sidebar-group-label">Projects</div>
 <div class="sidebar-projects">
-<a href="pages/projects/project1.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M18 11V6l-6-4-6 4v5"></path><path d="M6 10v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8"></path><path d="M10 22v-6h4v6"></path></svg></span><span class="project-label">HandGesture</span></a>
-<a href="pages/projects/project2.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" x2="21" y1="6" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg></span><span class="project-label">CampusBay</span></a>
-<a href="pages/projects/project5.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="10" cy="14" r="2"></circle><path d="m20 20-2.5-2.5"></path></svg></span><span class="project-label">PaperMind</span></a>
-<a href="pages/projects/project11.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" x2="8.12" y1="4" y2="15.88"></line><line x1="14.47" x2="20" y1="14.48" y2="20"></line><line x1="8.12" x2="12" y1="8.12" y2="12"></line></svg></span><span class="project-label">snip</span></a>
-<a href="pages/projects/project4.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg></span><span class="project-label">Crop Disease Detector</span></a>
-<a class="project-more" href="pages/projects/projects.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="7" rx="1" width="7" x="3" y="3"></rect><rect height="7" rx="1" width="7" x="14" y="3"></rect><rect height="7" rx="1" width="7" x="3" y="14"></rect><rect height="7" rx="1" width="7" x="14" y="14"></rect></svg></span><span>All Projects</span></a>
+<a href="pages/projects/project1.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M18 11V6l-6-4-6 4v5"></path><path d="M6 10v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8"></path><path d="M10 22v-6h4v6"></path></svg></span><span class="project-label">HandGesture</span></a>
+<a href="pages/projects/project5.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="10" cy="14" r="2"></circle><path d="m20 20-2.5-2.5"></path></svg></span><span class="project-label">PaperMind</span></a>
+<a href="pages/projects/project11.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" x2="8.12" y1="4" y2="15.88"></line><line x1="14.47" x2="20" y1="14.48" y2="20"></line><line x1="8.12" x2="12" y1="8.12" y2="12"></line></svg></span><span class="project-label">snip</span></a>
+<a href="pages/projects/project4.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg></span><span class="project-label">Crop Disease Detector</span></a>
+<a class="project-more" href="pages/projects/projects.html"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><rect height="7" rx="1" width="7" x="3" y="3"></rect><rect height="7" rx="1" width="7" x="14" y="3"></rect><rect height="7" rx="1" width="7" x="3" y="14"></rect><rect height="7" rx="1" width="7" x="14" y="14"></rect></svg></span><span>All projects</span></a>
 </div>
+
 <div class="sidebar-group-label">Social</div>
-<nav class="sidebar-social">
-<a href="https://github.com/rafiarsya07?tab=repositories" rel="noopener noreferrer" target="_blank"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></span><span>GitHub</span></a>
-<a href="https://www.linkedin.com/in/rafi-arsya-557335394/" rel="noopener noreferrer" target="_blank"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect height="12" width="4" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></span><span>LinkedIn</span></a>
-<a href="https://www.instagram.com/rarsya.03/" rel="noopener noreferrer" target="_blank"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></span><span>Instagram</span></a>
+<nav class="sidebar-social" aria-label="Social links">
+<a href="https://github.com/rafiarsya07?tab=repositories" rel="noopener noreferrer" target="_blank"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></span><span>GitHub</span></a>
+<a href="https://www.linkedin.com/in/rafi-arsya-557335394/" rel="noopener noreferrer" target="_blank"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect height="12" width="4" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></span><span>LinkedIn</span></a>
+<a href="https://www.instagram.com/rarsya.03/" rel="noopener noreferrer" target="_blank"><span class="nav-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></span><span>Instagram</span></a>
 </nav>
-</div>
 </aside>
-<!-- MAIN CONTENT -->
+
+<!-- ── MAIN ────────────────────────────────────────────── -->
 <main class="home-main" id="home">
-<!-- PHOTO + SPOTLIGHT -->
-<!-- BIO -->
-<div class="home-hero">
-<div class="home-hero-spotlight"></div>
-<img alt="Muhammad Rafi Arsya" class="home-hero-img" decoding="async" loading="lazy" src="assets/rafi_main.jpeg"/>
-</div><div class="home-bio">
-<p class="home-bio-heading">Hi there! I'm Rafi<img alt="Rafi Avatar" decoding="async" loading="lazy" src="assets/avatar_rafi.png" style="width:1.5em;height:1.5em;vertical-align:middle;margin-left:8px;border-radius:50%;object-fit:cover;display:inline-block;"/></p>
-<p class="home-bio-text">I'm a <strong>Computer Science (Software Engineering)</strong> student at the <strong>University of Malaya</strong>, focused on <mark class="hl-blue">software engineering</mark> and <mark class="hl-green">full-stack development</mark>. I got into programming through web development back in school, and I keep coding because I love building systems that are useful and <mark class="hl">solve real problems</mark>.</p>
-<p class="home-bio-text2">I serve in the <strong>Website Division of PEKOM's Technical Executive Committee</strong> at Universiti Malaya, working on the <mark class="hl-green">society's web platforms</mark> and technical operations. At <strong>PPI Malaysia</strong> I served as <strong>Head of Website Division</strong>, leading the team that <mark class="hl-orange">built and maintained</mark> the official PPI Malaysia website. I was also <strong>Head of Department</strong> for the <strong>IDFEST Art Exhibition (PPI University of Malaya)</strong> — running it end-to-end to showcase <mark class="hl-pink">Indonesian culture</mark> internationally.</p>
-<p class="home-bio-text">Outside of code, I enjoy <mark class="hl-green">sharing knowledge</mark>, explaining technical topics in a simple way, and building things that are <mark class="hl-blue">meaningful and practical</mark>.</p>
-<div class="home-bio-actions">
-<a class="bio-btn" href="pages/resume.html" rel="noopener noreferrer" target="_blank">
-<svg viewbox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path><path d="M16 3H8a1 1 0 0 0-1 1v3h10V4a1 1 0 0 0-1-1z"></path></svg>
-                        My Resume
-                    </a>
-<a class="bio-btn" href="pages/contact.html">
-<svg viewbox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                        Contact Me
-                    </a>
+
+<!-- HERO -->
+<header class="hero reveal is-in">
+<div>
+<p class="hero-eyebrow">Kuala Lumpur · Universiti Malaya</p>
+<h1 class="hero-name">Hi, I'm <em>Rafi</em>.<br/>I build things<br/>for the web.</h1>
+<p>I'm a <strong>Computer Science (Software Engineering)</strong> student at the <strong>University of Malaya</strong>, focused on <mark class="hl">full-stack development</mark>. I got into programming through <mark class="hl">web development back in school</mark>, and I've been building ever since.</p>
+<p>Active across <mark class="hl">a few student organizations</mark> at UM and PPI Malaysia, mostly leading <mark class="hl">website and technical development</mark> work — details below.</p>
+<p>Outside of code, I enjoy <mark class="hl">sharing knowledge</mark> and <mark class="hl">explaining technical topics simply</mark>.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="pages/resume.html" rel="noopener noreferrer" target="_blank">
+<svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path><path d="M16 3H8a1 1 0 0 0-1 1v3h10V4a1 1 0 0 0-1-1z"></path></svg>
+Resume
+</a>
+<a class="btn" href="pages/contact.html">
+<svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+Get in touch
+</a>
 </div>
 </div>
-<hr class="home-divider"/>
+<figure class="hero-portrait">
+<img alt="Muhammad Rafi Arsya" decoding="async" src="assets/rafi_main.jpeg"/>
+</figure>
+</header>
+
 <!-- SOCIAL -->
-<div class="home-section">
-<div class="home-section-title">Social</div>
+<section class="sec reveal">
+<p class="sec-label">Elsewhere</p>
+<div class="sec-body">
 <div class="social-links">
 <a class="social-link-item" href="https://github.com/rafiarsya07?tab=repositories" rel="noopener noreferrer" target="_blank">
-<svg viewbox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 19z"></path></svg>
-                        GitHub
-                    </a>
+<svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 19z"></path></svg>
+GitHub
+</a>
 <a class="social-link-item" href="https://www.linkedin.com/in/rafi-arsya-557335394/" rel="noopener noreferrer" target="_blank">
-<svg viewbox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect height="12" width="4" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                        LinkedIn
-                    </a>
+<svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect height="12" width="4" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+LinkedIn
+</a>
 <a class="social-link-item" href="https://www.instagram.com/rarsya.03/" rel="noopener noreferrer" target="_blank">
-<svg viewbox="0 0 24 24"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
-                        Instagram
-                    </a>
+<svg viewBox="0 0 24 24"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+Instagram
+</a>
 </div>
 </div>
-<hr class="home-divider"/>
+</section>
+
 <!-- BASED -->
-<div class="home-section">
-<div class="home-section-header">
-<div class="home-section-title">Based</div>
+<section class="sec reveal">
+<p class="sec-label">Based</p>
+<div class="sec-body">
+<div class="sec-head">
+<span></span>
 <div class="loc-toggle-wrap" onclick="toggleLocation()">
-<span class="loc-toggle-label" id="loc-label-left">Current</span>
-<div class="loc-toggle-track" id="loc-toggle-track">
-<div class="loc-toggle-thumb"></div>
-</div>
-<span class="loc-toggle-label" id="loc-label-right">Main</span>
+<span class="loc-toggle-label" id="loc-label-left" style="color:var(--ink)">Current</span>
+<div class="loc-toggle-track" id="loc-toggle-track"><div class="loc-toggle-thumb"></div></div>
+<span class="loc-toggle-label" id="loc-label-right">Home</span>
 </div>
 </div>
 <div class="map-wrapper">
-<iframe allowfullscreen="" id="map-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Puncak+Damansara+Condominium,+Jalan+Teratai,+PJU+6,+Petaling+Jaya&amp;z=16&amp;output=embed">
-</iframe>
-<div class="map-label-pill" id="map-label">
-<svg viewbox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-<span id="map-label-text">Puncak Damansara · Petaling Jaya, Selangor</span>
-</div>
-<div class="map-current-badge">
-                        Currently here
-                        <svg viewbox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+<iframe allowfullscreen="" id="map-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Kuala+Lumpur,+Malaysia&amp;z=11&amp;output=embed" title="Map of current location"></iframe>
+<div class="map-label-pill" id="map-label"><span id="map-label-text">Kuala Lumpur, Malaysia</span></div>
 </div>
 </div>
-</div>
-<hr class="home-divider"/>
+</section>
+
 <!-- EDUCATION -->
-<div class="home-section">
-<div class="home-section-title">Education</div>
+<section class="sec reveal">
+<p class="sec-label">Education</p>
+<div class="sec-body">
 <div class="entry-list">
-<div class="entry-item">
-<div class="entry-logo">
-<img alt="UM" decoding="async" loading="lazy" onerror="this.parentElement.outerHTML='&lt;div class=entry-logo-text&gt;UM&lt;/div&gt;'" src="assets/logo_um.jpg"/>
-</div>
+<article class="entry">
+<div class="entry-head">
+<div class="entry-logo"><img alt="Universiti Malaya" decoding="async" loading="lazy" src="assets/logo_um.jpg"/></div>
 <div>
-<div class="entry-title">Bachelor of Computer Science</div>
+<h3 class="entry-title">Bachelor of Computer Science</h3>
 <div class="entry-sub"><a class="entry-sub-link" href="https://www.um.edu.my" rel="noopener noreferrer" target="_blank">University of Malaya, Malaysia</a></div>
-<p class="entry-desc">Bachelor of Computer Science with <span class="entry-tag">Software Engineering</span> specialization. Focused on software engineering and full-stack development, with strong experience in <mark class="hl-green">building practical projects</mark>, problem-solving, and applying programming skills to <mark class="hl-blue">real-world applications</mark>.</p>
 </div>
 </div>
+<time class="entry-date">2025 — Present</time>
+<p class="entry-desc">Bachelor of Computer Science with a <span class="entry-tag">Software Engineering</span> specialization, focused on <mark class="hl">full-stack development</mark> and applied problem-solving.</p>
+</article>
 </div>
 </div>
-<hr class="home-divider"/>
+</section>
+
 <!-- EXPERIENCE -->
-<div class="home-section">
-<div class="home-section-title">Experience</div>
+<section class="sec reveal">
+<p class="sec-label">Experience</p>
+<div class="sec-body">
 <div class="entry-list">
-<div class="entry-item">
-<div class="entry-logo"><img alt="PEKOM" decoding="async" loading="lazy" onerror="this.parentElement.outerHTML='&lt;div class=entry-logo-text&gt;PKM&lt;/div&gt;'" src="assets/logo_pekom.jpg"/></div>
+
+<article class="entry">
+<div class="entry-head">
+<div class="entry-logo"><img alt="PEKOM" decoding="async" loading="lazy" src="assets/logo_pekom.jpg"/></div>
 <div>
-<div class="entry-title">Technical Executive Committee</div>
-<div class="entry-sub"><a class="entry-sub-link" href="https://www.fsktm.um.edu.my/" rel="noopener noreferrer" target="_blank">PEKOM — Computer Science Society, Universiti Malaya • 2026 – Present</a></div>
-<p class="entry-desc">Serving in the Website Division of PEKOM's Technical Executive Committee, the student society of the <mark class="hl-blue">Faculty of Computer Science &amp; Information Technology</mark>, for the 2026/2027 tenure. Responsible for <mark class="hl-green">building and maintaining the society's web platforms</mark> and internal tooling, and for delivering technical support across faculty-wide events and programmes — covering registration systems, on-site setup, and live troubleshooting.</p>
+<h3 class="entry-title">Technical Executive Committee</h3>
+<div class="entry-sub"><a class="entry-sub-link" href="https://www.fsktm.um.edu.my/" rel="noopener noreferrer" target="_blank">PEKOM — Computer Science Society, Universiti Malaya</a></div>
 </div>
 </div>
-<div class="entry-item">
+<time class="entry-date">2026 — Present</time>
+<p class="entry-desc">Serving in the Website Division of PEKOM, the student society of the Faculty of Computer Science &amp; IT — <mark class="hl">building and maintaining the society's web platforms</mark> and supporting faculty-wide events.</p>
+</article>
+
+<article class="entry">
+<div class="entry-head">
 <div class="entry-logo"><img alt="PPI Malaysia" decoding="async" loading="lazy" src="assets/logo_ppim.jpg"/></div>
 <div>
-<div class="entry-title">Head of Website Division, Data and Information System Bureau</div>
-<div class="entry-sub"><a class="entry-sub-link" href="https://ppimalaysia.id/" rel="noopener noreferrer" target="_blank">PPI Malaysia (Indonesian Students Association) • 2025 – Present</a></div>
-<p class="entry-desc">Led the Website Division and held full responsibility for the official PPI Malaysia website, overseeing its <mark class="hl-orange">development, maintenance, and continuous improvement</mark>. Ensured the platform functioned as a reliable source of information and digital services for Indonesian students in Malaysia, while coordinating with internal teams to support organizational needs and enhance user experience.</p>
+<h3 class="entry-title">Head of Website Division, Data &amp; Information System Bureau</h3>
+<div class="entry-sub"><a class="entry-sub-link" href="https://ppimalaysia.id/" rel="noopener noreferrer" target="_blank">PPI Malaysia (Indonesian Students Association)</a></div>
 </div>
 </div>
-<div class="entry-item">
-<div class="entry-logo"><img alt="PPI UM" decoding="async" loading="lazy" onerror="this.parentElement.outerHTML='&lt;div class=entry-logo-text&gt;UM&lt;/div&gt;'" src="assets/logo_ppium.png"/></div>
+<time class="entry-date">2025 — Present</time>
+<p class="entry-desc">Leading the Website Division, with full ownership of the official PPI Malaysia website — <mark class="hl">development, maintenance, and continuous improvement</mark> for Indonesian students across Malaysia.</p>
+</article>
+
+<article class="entry">
+<div class="entry-head">
+<div class="entry-logo"><img alt="PPI UM" decoding="async" loading="lazy" src="assets/logo_ppium.png"/></div>
 <div>
-<div class="entry-title">Head of Department, Art Exhibition – IDFEST</div>
-<div class="entry-sub"><a class="entry-sub-link" href="https://ppiunimalaya.id/" rel="noopener noreferrer" target="_blank">PPI University of Malaya • 2026 – Present</a></div>
-<p class="entry-desc">Directed the Art Exhibition division for IDFEST, an international cultural event showcasing <mark class="hl-pink">Indonesian heritage</mark> at Universiti Malaya. Managed the end-to-end exhibition process, including concept development, curation, and coordination, to deliver an <mark class="hl-purple">immersive cultural experience</mark> for a diverse international audience.</p>
+<h3 class="entry-title">Head of Department, Art Exhibition — IDFEST</h3>
+<div class="entry-sub"><a class="entry-sub-link" href="https://ppiunimalaya.id/" rel="noopener noreferrer" target="_blank">PPI University of Malaya</a></div>
 </div>
 </div>
-<div class="entry-item">
-<div class="entry-logo"><img alt="IDFEST" decoding="async" loading="lazy" onerror="this.parentElement.outerHTML='&lt;div class=entry-logo-text&gt;ID&lt;/div&gt;'" src="assets/logo_ppium.png"/></div>
+<time class="entry-date">2026 — Present</time>
+<p class="entry-desc">Directing the Art Exhibition division for IDFEST, an international event showcasing <mark class="hl">Indonesian heritage</mark> at Universiti Malaya — from concept and curation through to delivery.</p>
+</article>
+
+<article class="entry">
+<div class="entry-head">
+<div class="entry-logo"><img alt="IDFEST" decoding="async" loading="lazy" src="assets/logo_ppium.png"/></div>
 <div>
-<div class="entry-title">Website Development Committee – IDFEST</div>
-<div class="entry-sub"><a class="entry-sub-link" href="https://ppiunimalaya.id/" rel="noopener noreferrer" target="_blank">PPI University of Malaya • Jun 2026 – Present</a></div>
-<p class="entry-desc">Collaborating with the Website Division to develop the official IDFEST website, building <mark class="hl-blue">responsive and interactive user interfaces</mark> with Next.js and Tailwind CSS. Translating Figma designs into production-ready pages, implementing reusable components, animations, and responsive layouts, and working closely with designers and other committee members throughout development. <mark class="hl-green">Website currently under development.</mark></p>
+<h3 class="entry-title">Website Development Committee — IDFEST</h3>
+<div class="entry-sub"><a class="entry-sub-link" href="https://ppiunimalaya.id/" rel="noopener noreferrer" target="_blank">PPI University of Malaya</a></div>
 </div>
 </div>
+<time class="entry-date">Jun 2026 — Present</time>
+<p class="entry-desc">Building the official IDFEST website with Next.js and Tailwind CSS — <mark class="hl">responsive, interactive interfaces</mark> translated from Figma into production-ready pages.</p>
+</article>
+
 </div>
 </div>
-<hr class="home-divider"/>
-<!-- ORGANIZATION -->
-<div class="home-section">
-<div class="home-section-title">Organization</div>
-<div class="entry-list">
-<div class="entry-item">
-<div class="entry-logo"><img alt="PEKOM" decoding="async" loading="lazy" onerror="this.parentElement.outerHTML='&lt;div class=entry-logo-text&gt;PKM&lt;/div&gt;'" src="assets/logo_pekom.jpg"/></div>
-<div>
-<div class="entry-title">Technical Executive Committee</div>
-<div class="entry-sub"><a class="entry-sub-link" href="https://www.fsktm.um.edu.my/" rel="noopener noreferrer" target="_blank">PEKOM — Computer Science Society, Universiti Malaya • 2026 – Present</a></div>
-<p class="entry-desc">Member of the Website Division within PEKOM's Technical Executive Committee for the 2026/2027 tenure. Contributing to the society's <mark class="hl-green">web platforms and internal tooling</mark>, and providing technical support across faculty-wide events and programmes.</p>
-</div>
-</div>
-<div class="entry-item">
-<div class="entry-logo"><img alt="PPI Malaysia" decoding="async" loading="lazy" src="assets/logo_ppim.jpg"/></div>
-<div>
-<div class="entry-title">Head of Website Division, Data and Information System Bureau</div>
-<div class="entry-sub"><a class="entry-sub-link" href="https://ppimalaysia.id/" rel="noopener noreferrer" target="_blank">PPI Malaysia (Indonesian Students Association) • 2025 – Present</a></div>
-<p class="entry-desc">Led a team responsible for the official development, management, and maintenance of the PPI Malaysia website, ensuring <mark class="hl-blue">reliable digital services</mark> and an accessible platform for Indonesian students in Malaysia.</p>
-</div>
-</div>
-</div>
-</div>
-<hr class="home-divider"/>
+</section>
+
 <!-- VOLUNTEER -->
-<div class="home-section">
-<div class="home-section-title">Volunteer</div>
+<section class="sec reveal">
+<p class="sec-label">Volunteer</p>
+<div class="sec-body">
 <div class="entry-list">
-<div class="entry-item">
+<article class="entry">
+<div class="entry-head">
 <div class="entry-logo"><img alt="PPI Malaysia" decoding="async" loading="lazy" src="assets/logo_ppim.jpg"/></div>
 <div>
-<div class="entry-title">LARAS: Transportation Team &amp; Field Committee</div>
-<div class="entry-sub"><a class="entry-sub-link" href="https://ppimalaysia.id/" rel="noopener noreferrer" target="_blank">PPI Malaysia • 2026</a></div>
-<p class="entry-desc">Volunteered in two roles for LARAS. As part of the Transportation Team, coordinated <mark class="hl-orange">logistics, transport schedules</mark>, and on-ground participant management to ensure smooth mobility during the event. As Field Committee, assisted in end-to-end event operations including setup, on-site coordination, and ensuring the event ran smoothly from start to finish.</p>
+<h3 class="entry-title">LARAS: Transportation Team &amp; Field Committee</h3>
+<div class="entry-sub"><a class="entry-sub-link" href="https://ppimalaysia.id/" rel="noopener noreferrer" target="_blank">PPI Malaysia</a></div>
 </div>
 </div>
+<time class="entry-date">2026</time>
+<p class="entry-desc">Volunteered on the Transportation Team and Field Committee for LARAS — <mark class="hl">logistics, on-ground coordination</mark>, and event-day operations.</p>
+</article>
 </div>
 </div>
-<hr class="home-divider"/>
+</section>
+
 <!-- SKILLS -->
-<div class="home-section">
-<div class="home-section-title">Skills</div>
-<!-- Tab navbar -->
-<div class="skills-tab-nav">
-<button class="skill-tab-btn active" data-tab="frontend">Frontend</button>
-<button class="skill-tab-btn" data-tab="backend">Backend</button>
-<button class="skill-tab-btn" data-tab="aiml">AI / ML</button>
-<button class="skill-tab-btn" data-tab="devops">DevOps</button>
-<button class="skill-tab-btn" data-tab="design">Design</button>
+<section class="sec reveal">
+<p class="sec-label">Skills</p>
+<div class="sec-body">
+
+<div class="skills-tab-nav" role="tablist">
+<button class="skill-tab-btn active" data-tab="frontend" role="tab" aria-selected="true" type="button">Frontend</button>
+<button class="skill-tab-btn" data-tab="backend" role="tab" aria-selected="false" type="button">Backend</button>
+<button class="skill-tab-btn" data-tab="aiml" role="tab" aria-selected="false" type="button">AI / ML</button>
+<button class="skill-tab-btn" data-tab="devops" role="tab" aria-selected="false" type="button">DevOps</button>
+<button class="skill-tab-btn" data-tab="design" role="tab" aria-selected="false" type="button">Design</button>
 </div>
-<!-- Frontend -->
+
 <div class="skill-tab-panel active" data-panel="frontend">
 <div class="skill-icons-grid">
-<div class="skill-icon-item"><img alt="HTML5" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"/><span class="skill-icon-label">HTML5</span></div>
-<div class="skill-icon-item"><img alt="CSS3" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"/><span class="skill-icon-label">CSS3</span></div>
+<div class="skill-icon-item"><img alt="TypeScript" decoding="async" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/960px-Typescript_logo_2020.svg.png"/><span class="skill-icon-label">TypeScript</span></div>
 <div class="skill-icon-item"><img alt="JavaScript" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"/><span class="skill-icon-label">JavaScript (ES6+)</span></div>
-<div class="skill-icon-item"><img alt="TypeScript" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"/><span class="skill-icon-label">TypeScript</span></div>
 <div class="skill-icon-item"><img alt="React" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"/><span class="skill-icon-label">React</span></div>
-<div class="skill-icon-item"><img alt="Next.js" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"/><span class="skill-icon-label">Next.js</span></div>
-<div class="skill-icon-item"><img alt="Tailwind CSS" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"/><span class="skill-icon-label">Tailwind CSS</span></div>
-<div class="skill-icon-item"><img alt="Vite" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg"/><span class="skill-icon-label">Vite</span></div>
-<div class="skill-icon-item"><img alt="TanStack React Query" decoding="async" loading="lazy" src="https://cdn.simpleicons.org/reactquery"/><span class="skill-icon-label">TanStack React Query</span></div>
+<div class="skill-icon-item"><img alt="Next.js" decoding="async" loading="lazy" src="https://cdn.worldvectorlogo.com/logos/next-js.svg"/><span class="skill-icon-label">Next.js</span></div>
+<div class="skill-icon-item"><img alt="Tailwind CSS" decoding="async" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/960px-Tailwind_CSS_Logo.svg.png"/><span class="skill-icon-label">Tailwind CSS</span></div>
 <div class="skill-icon-item"><img alt="Zustand" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/zustand/zustand-original.svg"/><span class="skill-icon-label">Zustand</span></div>
+<div class="skill-icon-item"><img alt="TanStack Query" decoding="async" loading="lazy" src="https://media.theirstack.com/technology/logo/react-query/logo.png"/><span class="skill-icon-label">TanStack Query</span></div>
 </div>
 </div>
-<!-- Backend -->
+
 <div class="skill-tab-panel" data-panel="backend">
 <div class="skill-icons-grid">
-<div class="skill-icon-item"><img alt="Python" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"/><span class="skill-icon-label">Python</span></div>
-<div class="skill-icon-item"><img alt="Express.js" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"/><span class="skill-icon-label">Express.js</span></div>
-<div class="skill-icon-item"><img alt="REST APIs" decoding="async" loading="lazy" src="https://img.icons8.com/nolan/1200/api-settings.jpg"/><span class="skill-icon-label">REST APIs</span></div>
-<div class="skill-icon-item"><img alt="Java" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"/><span class="skill-icon-label">Java</span></div>
 <div class="skill-icon-item"><img alt="Node.js" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"/><span class="skill-icon-label">Node.js</span></div>
-<div class="skill-icon-item"><img alt="Socket.io" decoding="async" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/9/96/Socket-io.svg"/><span class="skill-icon-label">Socket.IO</span></div>
-<div class="skill-icon-item"><img alt="Redis" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg"/><span class="skill-icon-label">Redis</span></div>
-<div class="skill-icon-item"><img alt="FastAPI" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg"/><span class="skill-icon-label">FastAPI</span></div>
-<div class="skill-icon-item"><img alt="Sequelize ORM" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg"/><span class="skill-icon-label">Sequelize ORM</span></div>
+<div class="skill-icon-item"><img alt="Express" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"/><span class="skill-icon-label">Express</span></div>
+<div class="skill-icon-item"><img alt="Python" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"/><span class="skill-icon-label">Python</span></div>
+<div class="skill-icon-item"><img alt="Java" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"/><span class="skill-icon-label">Java</span></div>
+<div class="skill-icon-item"><img alt="REST APIs" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swagger/swagger-original.svg"/><span class="skill-icon-label">REST APIs</span></div>
 <div class="skill-icon-item"><img alt="PostgreSQL" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"/><span class="skill-icon-label">PostgreSQL</span></div>
 <div class="skill-icon-item"><img alt="MySQL" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"/><span class="skill-icon-label">MySQL</span></div>
-<div class="skill-icon-item"><img alt="JWT" decoding="async" loading="lazy" src="https://cdn.simpleicons.org/jsonwebtokens"/><span class="skill-icon-label">JWT</span></div>
-<div class="skill-icon-item"><img alt="Nodemailer" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/selfhst/icons/svg/nodemailer.svg"/><span class="skill-icon-label">Nodemailer</span></div>
-<div class="skill-icon-item"><img alt="SQLite" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg"/><span class="skill-icon-label">SQLite</span></div>
+<div class="skill-icon-item"><img alt="Redis" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg"/><span class="skill-icon-label">Redis</span></div>
+<div class="skill-icon-item"><img alt="Socket.IO" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg"/><span class="skill-icon-label">Socket.IO</span></div>
+<div class="skill-icon-item"><img alt="Sequelize" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg"/><span class="skill-icon-label">Sequelize</span></div>
 </div>
 </div>
-<!-- AI / ML -->
+
 <div class="skill-tab-panel" data-panel="aiml">
 <div class="skill-icons-grid">
 <div class="skill-icon-item"><img alt="TensorFlow" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"/><span class="skill-icon-label">TensorFlow</span></div>
@@ -815,274 +281,44 @@ mark.hl-purple { background: #ede9fe; }
 <div class="skill-icon-item"><img alt="PyTorch" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg"/><span class="skill-icon-label">PyTorch</span></div>
 <div class="skill-icon-item"><img alt="NumPy" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg"/><span class="skill-icon-label">NumPy</span></div>
 <div class="skill-icon-item"><img alt="OpenCV" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg"/><span class="skill-icon-label">OpenCV</span></div>
-<div class="skill-icon-item"><img alt="MediaPipe" decoding="async" loading="lazy" src="https://cdn.simpleicons.org/mediapipe"/><span class="skill-icon-label">MediaPipe</span></div>
-<div class="skill-icon-item"><img alt="Ollama" decoding="async" loading="lazy" src="https://cdn.simpleicons.org/ollama"/><span class="skill-icon-label">Ollama</span></div>
-<div class="skill-icon-item"><img alt="Hugging Face" decoding="async" loading="lazy" src="https://cdn.simpleicons.org/huggingface"/><span class="skill-icon-label">Hugging Face</span></div>
+<div class="skill-icon-item"><img alt="MediaPipe" decoding="async" loading="lazy" src="https://viz.mediapipe.dev/logo.png"/><span class="skill-icon-label">MediaPipe</span></div>
+<div class="skill-icon-item"><img alt="ChromaDB" decoding="async" loading="lazy" src="https://raw.githubusercontent.com/homarr-labs/dashboard-icons/main/svg/chroma.svg"/><span class="skill-icon-label">ChromaDB</span></div>
+<div class="skill-icon-item"><img alt="Ollama" decoding="async" loading="lazy" src="https://raw.githubusercontent.com/homarr-labs/dashboard-icons/main/svg/ollama.svg"/><span class="skill-icon-label">Ollama</span></div>
 </div>
 </div>
-<!-- DevOps -->
+
 <div class="skill-tab-panel" data-panel="devops">
 <div class="skill-icons-grid">
-<div class="skill-icon-item"><img alt="Docker" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"/><span class="skill-icon-label">Docker</span></div>
-<div class="skill-icon-item"><img alt="Docker Compose" decoding="async" loading="lazy" src="https://superset.apache.org/img/docker-compose.webp"/><span class="skill-icon-label">Docker Compose</span></div>
 <div class="skill-icon-item"><img alt="AWS" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"/><span class="skill-icon-label">AWS</span></div>
-<div class="skill-icon-item"><img alt="Cloudflare" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg"/><span class="skill-icon-label">Cloudflare</span></div>
-<div class="skill-icon-item"><img alt="Nginx" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg"/><span class="skill-icon-label">NGINX</span></div>
-<div class="skill-icon-item"><img alt="Git" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"/><span class="skill-icon-label">Git</span></div>
-<div class="skill-icon-item"><img alt="GitHub" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"/><span class="skill-icon-label">GitHub</span></div>
-<div class="skill-icon-item"><img alt="Ubuntu" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-original.svg"/><span class="skill-icon-label">Ubuntu</span></div>
-<div class="skill-icon-item"><img alt="Linux (Tux)" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"/><span class="skill-icon-label">Linux (Tux)</span></div>
-<div class="skill-icon-item"><img alt="VS Code" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"/><span class="skill-icon-label">VS Code</span></div>
-<div class="skill-icon-item"><img alt="Kiro" decoding="async" loading="lazy" src="https://kiro.dev/icon.svg?fe599162bb293ea0"/><span class="skill-icon-label">Kiro</span></div>
+<div class="skill-icon-item"><img alt="Docker" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"/><span class="skill-icon-label">Docker</span></div>
+<div class="skill-icon-item"><img alt="Docker Compose" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain.svg"/><span class="skill-icon-label">Docker Compose</span></div>
+<div class="skill-icon-item"><img alt="NGINX" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg"/><span class="skill-icon-label">NGINX</span></div>
 <div class="skill-icon-item"><img alt="Bash" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg"/><span class="skill-icon-label">Bash</span></div>
-<div class="skill-icon-item"><img alt="PM2" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pm2/pm2-original.svg"/><span class="skill-icon-label">PM2</span></div>
-<div class="skill-icon-item"><img alt="ZeroTier" decoding="async" loading="lazy" src="https://cdn.simpleicons.org/zerotier"/><span class="skill-icon-label">ZeroTier</span></div>
+<div class="skill-icon-item"><img alt="Git" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"/><span class="skill-icon-label">Git</span></div>
+<div class="skill-icon-item"><img alt="Ubuntu" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-original.svg"/><span class="skill-icon-label">Ubuntu</span></div>
+<div class="skill-icon-item"><img alt="ZeroTier" decoding="async" loading="lazy" src="https://raw.githubusercontent.com/homarr-labs/dashboard-icons/main/png/zerotier.png"/><span class="skill-icon-label">ZeroTier</span></div>
+<div class="skill-icon-item"><img alt="PM2" decoding="async" loading="lazy" src="https://cdn.simpleicons.org/pm2"/><span class="skill-icon-label">PM2</span></div>
 </div>
 </div>
-<!-- Design -->
+
 <div class="skill-tab-panel" data-panel="design">
 <div class="skill-icons-grid">
-<div class="skill-icon-item"><img alt="Figma" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"/><span class="skill-icon-label">Figma</span></div>
-<div class="skill-icon-item"><img alt="Canva" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg"/><span class="skill-icon-label">Canva</span></div>
-<div class="skill-icon-item"><img alt="LaTeX" decoding="async" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/latex/latex-original.svg"/><span class="skill-icon-label">LaTeX</span></div>
+<div class="skill-icon-item"><img alt="Figma" decoding="async" loading="lazy" src="assets/skills/figma.jpg"/><span class="skill-icon-label">Figma</span></div>
+<div class="skill-icon-item"><img alt="Canva" decoding="async" loading="lazy" src="assets/skills/canva.jpg"/><span class="skill-icon-label">Canva</span></div>
+<div class="skill-icon-item"><img alt="LaTeX" decoding="async" loading="lazy" src="https://cdn.simpleicons.org/latex"/><span class="skill-icon-label">LaTeX</span></div>
 </div>
 </div>
+
 </div>
-<hr class="home-divider"/>
-<!-- COPYRIGHT -->
-<div class="home-copyright">
-<p>© Muhammad Rafi Arsya. All rights reserved.</p>
-</div>
+</section>
+
+<footer class="site-footer">
+<p>© 2026 Muhammad Rafi Arsya</p>
+</footer>
+
 </main>
 </div>
-<script defer="" src="js/script.js"></script>
-<div id="rafi-bar"></div>
-<script>
-(function(){
-'use strict';
-var bar = document.getElementById('rafi-bar');
-if (bar) {
-    window.addEventListener('scroll', function() {
-        var d = document.documentElement;
-        var s = d.scrollTop || document.body.scrollTop;
-        var h = d.scrollHeight - d.clientHeight;
-        bar.style.width = (h > 0 ? (s / h * 100) : 0) + '%';
-    }, { passive: true });
-}
-var hbtn = document.getElementById('hamburger-btn');
-var sbEl  = document.querySelector('.sidebar');
-var ovEl  = document.getElementById('sidebar-overlay');
-if (hbtn && sbEl && !hbtn._rafi) {
-    hbtn._rafi = true;
-    var topbarEl = document.querySelector('.mobile-topbar');
-    function openSb() {
-        sbEl.classList.add('open');
-        if (ovEl) ovEl.classList.add('visible');
-        hbtn.classList.add('open');
-        hbtn.setAttribute('aria-expanded', 'true');
-        if (topbarEl) topbarEl.classList.add('sidebar-is-open');
-        document.body.style.overflow = 'hidden';
-    }
-    function closeSb() {
-        sbEl.classList.remove('open');
-        if (ovEl) ovEl.classList.remove('visible');
-        hbtn.classList.remove('open');
-        hbtn.setAttribute('aria-expanded', 'false');
-        if (topbarEl) topbarEl.classList.remove('sidebar-is-open');
-        document.body.style.overflow = '';
-    }
-    hbtn.addEventListener('click', function() {
-        sbEl.classList.contains('open') ? closeSb() : openSb();
-    });
-    if (ovEl) ovEl.addEventListener('click', closeSb);
-    var closeBtnEl = document.getElementById('sidebar-close-btn');
-    if (closeBtnEl) closeBtnEl.addEventListener('click', closeSb);
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSb(); });
-    sbEl.querySelectorAll('a').forEach(function(a) {
-        a.addEventListener('click', function() {
-            if (window.innerWidth <= 900) setTimeout(closeSb, 60);
-        });
-    });
-}
-function initPipeline(wrap) {
-    var scroll = wrap.querySelector('.p-pipeline-scroll');
-    if (!scroll || scroll._rafi) return;
-    scroll._rafi = true;
-    var dots   = wrap.querySelector('.p-pipe-dots');
-    var detail = wrap.querySelector('.p-pipe-detail');
-    var steps  = Array.from(wrap.querySelectorAll('.p-pipe-step'));
-    if (dots && steps.length > 1) {
-        dots.innerHTML = '';
-        steps.forEach(function(_, i) {
-            var d = document.createElement('div');
-            d.className = 'p-pipe-dot' + (i === 0 ? ' active' : '');
-            dots.appendChild(d);
-        });
-    }
-    function updateState() {
-        var atEnd = scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 8;
-        wrap.classList.toggle('at-end', atEnd);
-        if (dots && steps.length > 1) {
-            var range = scroll.scrollWidth - scroll.clientWidth;
-            var idx = range > 0 ? Math.round(scroll.scrollLeft / range * (steps.length - 1)) : 0;
-            idx = Math.max(0, Math.min(idx, steps.length - 1));
-            dots.querySelectorAll('.p-pipe-dot').forEach(function(d, i) {
-                d.classList.toggle('active', i === idx);
-            });
-        }
-    }
-    scroll.addEventListener('scroll', updateState, { passive: true });
-    setTimeout(updateState, 120);
-    steps.forEach(function(step) {
-        step.addEventListener('click', function() {
-            var wasActive = step.classList.contains('ps-active');
-            steps.forEach(function(s) { s.classList.remove('ps-active'); });
-            if (detail) {
-                if (!wasActive && step.dataset.detail) {
-                    step.classList.add('ps-active');
-                    detail.innerHTML = step.dataset.detail;
-                    detail.classList.add('ps-show');
-                } else {
-                    detail.classList.remove('ps-show');
-                    detail.innerHTML = '';
-                }
-            }
-        });
-    });
-    var drag = false, startX, startLeft;
-    scroll.addEventListener('mousedown', function(e) {
-        if (e.button !== 0) return;
-        drag = true; startX = e.pageX; startLeft = scroll.scrollLeft;
-        scroll.style.cursor = 'grabbing'; e.preventDefault();
-    });
-    window.addEventListener('mousemove', function(e) {
-        if (!drag) return;
-        scroll.scrollLeft = startLeft - (e.pageX - startX);
-    });
-    window.addEventListener('mouseup', function() {
-        if (!drag) return;
-        drag = false; scroll.style.cursor = 'grab';
-    });
-}
-document.querySelectorAll('.p-pipeline-wrap, .p-pipeline-outer').forEach(initPipeline);
-document.querySelectorAll('.p-acc-trigger').forEach(function(trigger) {
-    if (trigger._rafi) return;
-    trigger._rafi = true;
-    trigger.addEventListener('click', function() {
-        var item = trigger.closest('.p-acc-item');
-        var acc  = item.closest('.p-steps-accordion');
-        var wasOpen = item.classList.contains('open');
-        if (acc) acc.querySelectorAll('.p-acc-item').forEach(function(el) { el.classList.remove('open'); });
-        if (!wasOpen) item.classList.add('open');
-    });
-});
-var fills = document.querySelectorAll('.p-progress-fill');
-if (fills.length && 'IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(ens) {
-        ens.forEach(function(e) {
-            if (e.isIntersecting) {
-                e.target.style.width = e.target.dataset.w || e.target.style.width;
-                io.unobserve(e.target);
-            }
-        });
-    }, { threshold: 0.4 });
-    fills.forEach(function(el) {
-        el.dataset.w = el.style.width || '100%';
-        el.style.width = '0%'; io.observe(el);
-    });
-}
-document.querySelectorAll('.skill-tab-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-        var nav = btn.closest('.skills-tab-nav');
-        if (!nav) return;
-        nav.querySelectorAll('.skill-tab-btn').forEach(function(b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        var target = btn.dataset.tab;
-        document.querySelectorAll('.skill-tab-panel').forEach(function(p) {
-            p.classList.toggle('active', p.dataset.panel === target);
-        });
-    });
-});
 
-/* ── HOME HERO PHOTO GLOW ──────────────────
-   Idle: soft grayscale breathing glow.
-   Hover (desktop) or touch (mobile): warm natural cream glow. */
-var heroEl = document.querySelector('.home-hero');
-if (heroEl) {
-    heroEl.addEventListener('mouseenter', function() { heroEl.classList.add('is-glowing'); });
-    heroEl.addEventListener('mouseleave', function() { heroEl.classList.remove('is-glowing'); });
-    heroEl.addEventListener('touchstart', function() { heroEl.classList.add('is-glowing'); }, { passive: true });
-    heroEl.addEventListener('touchend', function() { heroEl.classList.remove('is-glowing'); });
-    heroEl.addEventListener('touchcancel', function() { heroEl.classList.remove('is-glowing'); });
-}
-})();
-</script>
-<script>/* ════════════════════════════════════════════════════════════════════════
-   MATH DERIVATION CARD — interaction layer
-   Tab switching + scroll-affordance detection for formula/example panels.
-   ════════════════════════════════════════════════════════════════════════ */
-(function () {
-    function setupScrollAffordance(wrap) {
-        if (!wrap || wrap._pmBound) return;
-        wrap._pmBound = true;
-        var scroller = wrap.querySelector('.p-math-scroll, .p-math-example-scroll');
-        if (!scroller) return;
-
-        function update() {
-            var scrollable = scroller.scrollWidth > scroller.clientWidth + 2;
-            var atEnd = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 2;
-            wrap.classList.toggle('pm-scrollable', scrollable);
-            wrap.classList.toggle('pm-at-end', !scrollable || atEnd);
-        }
-        scroller.addEventListener('scroll', update, { passive: true });
-        window.addEventListener('resize', update);
-        update();
-        // Re-check after fonts/layout settle
-        setTimeout(update, 150);
-    }
-
-    function initMathBlock(block) {
-        if (block._pmBound) return;
-        block._pmBound = true;
-
-        var tabs = Array.prototype.slice.call(block.querySelectorAll('.p-math-tab'));
-        var panels = Array.prototype.slice.call(block.querySelectorAll('.p-math-panel'));
-
-        tabs.forEach(function (tab) {
-            tab.addEventListener('click', function () {
-                if (tab.classList.contains('active')) return;
-                var targetName = tab.getAttribute('data-tab');
-                tabs.forEach(function (t) { t.classList.toggle('active', t === tab); });
-                panels.forEach(function (p) {
-                    var match = p.getAttribute('data-panel') === targetName;
-                    p.classList.toggle('active', match);
-                });
-                // Re-check scroll affordance for the panel we just revealed
-                var activePanel = block.querySelector('.p-math-panel.active');
-                if (activePanel) {
-                    var wrap = activePanel.querySelector('.p-math-formula-wrap, .p-math-example-wrap');
-                    if (wrap) setupScrollAffordance(wrap);
-                }
-            });
-        });
-
-        // Bind scroll affordance for every wrap inside this block (formula tab is visible by default)
-        block.querySelectorAll('.p-math-formula-wrap, .p-math-example-wrap').forEach(setupScrollAffordance);
-    }
-
-    function init() {
-        document.querySelectorAll('.p-math-block').forEach(initMathBlock);
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
-    }
-})();
-</script>
-<script defer="" src="js/rafi-core.js"></script>
-<script defer="" src="js/img-fallback.js"></script>
-<script defer="" src="js/site-polish.js"></script>
+<script src="js/rafi-editorial.js"></script>
 </body>
 </html>

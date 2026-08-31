@@ -73,7 +73,7 @@
   var ABOUT_RAFI =
     "Full name: Muhammad Rafi Arsya. Goes by Rafi.\n" +
     "Currently: Computer Science (Software Engineering) student at Universiti Malaya (UM), Kuala Lumpur, Malaysia. Started 2025, ongoing.\n" +
-    "Based: Kolej Kediaman Ke-13, Universiti Malaya, Kuala Lumpur, Malaysia. Originally from Kampar, Riau, Indonesia.\n\n" +
+    "Based: Kuala Lumpur, Malaysia. Originally from Pekanbaru, Riau, Indonesia.\n\n" +
 
     "ABOUT:\n" +
     "Software Engineering student with hands-on experience building scalable, containerized full-stack applications. Proficient in React, Node.js, and modern state management, with practical expertise in Docker Compose, Nginx reverse proxying, and self-hosted Linux infrastructure. Proven track record in engineering real-time communication systems and integrating AI/ML technologies to solve practical real-world problems.\n\n" +
@@ -90,20 +90,32 @@
     "- Design: Figma, Canva, VS Code, Kiro\n\n" +
 
     "PROJECTS:\n" +
-    "1. CampusBay — Campus Marketplace (2026, ongoing)\n" +
-    "   Full-stack containerized marketplace (5-service stack) with React 18, Node.js, PostgreSQL, Docker Compose. Real-time chat via Socket.io (typing indicators, live order tracking). JWT Dual-Token + Redis Blacklist auth. Nginx reverse proxy with SSL, Stripe Checkout payments.\n\n" +
-    "2. HandGesture — Real-Time Drawing App (2025)\n" +
+    "1. HandGesture — Real-Time Drawing App (2025)\n" +
     "   Real-time hand gesture drawing app using MediaPipe and OpenCV. Draws on screen by raising only index finger via webcam. Detects 21 hand landmarks per hand, up to 4 simultaneous hands. Gesture-based controls for color switching, canvas clear, draw mode toggle.\n\n" +
-    "3. Crop Disease Detector (2026)\n" +
+    "2. Crop Disease Detector (2026)\n" +
     "   Image classification web app detecting plant diseases from leaf photos across 38 categories (PlantVillage dataset, 54K+ images). Transfer learning with MobileNetV2. Deployed on Hugging Face Spaces with real-time prediction and top-3 confidence scores.\n\n" +
-    "4. BriskWalk — Event Registration Platform (2026)\n" +
+    "3. BriskWalk — Event Registration Platform (2026)\n" +
     "   Responsive single-page registration app for a community walking event. Client-side image compression via Canvas API (auto-resize, WebP). Google Apps Script backend storing data in Google Sheets and Google Drive.\n\n" +
-    "5. NASE Accessibility Tool (ongoing)\n" +
+    "4. NASE Accessibility Tool (2025)\n" +
     "   Accessible bilingual SPA for Malaysia's National Association of Special Education. Web Speech API for text-to-speech with real-time paragraph highlighting. i18n supporting 4 languages (EN/BM/ID/ZH), multi-theme toggle, WCAG accessibility standards, ARIA labels, keyboard navigation.\n\n" +
-    "6. PaperMind — AI Research Assistant\n" +
-    "   AI-powered tool to help users understand and interact with research papers.\n\n" +
-    "7. snip — Screenshot/snippet tool\n" +
-    "   Personal productivity tool for capturing and managing snippets.\n\n" +
+    "5. PaperMind — Local AI Research Assistant (2026, ongoing)\n" +
+    "   Private RAG tool for research PDFs using React, FastAPI, ChromaDB and Ollama on self-hosted hardware.\n\n" +
+    "6. Snip — Serverless URL Shortener (2026)\n" +
+    "   AWS Lambda, API Gateway, DynamoDB and SAM short-link service with click analytics.\n\n" +
+    "7. ThoughtLog — Self-Hosted Publishing Platform (2026, ongoing)\n" +
+    "   From-scratch CMS with Markdown, scheduled publishing, JWT auth, PostgreSQL full-text search and Cloudflare Tunnel deployment.\n\n" +
+    "8. RafiFinance — Offline Finance Tracker (2026)\n" +
+    "   Single-file PWA for transactions, budgets, saving goals, reminders and financial-health analysis.\n\n" +
+    "9. Steam Market Intelligence (2026)\n" +
+    "   In-browser SQLite/WASM analytics dashboard over a 1,400-title game dataset with a live SQL console.\n\n" +
+    "10. CSA Study App (2026)\n" +
+    "   Single-file WRES1201 study tool with MCQ drills and interactive cache, Hamming-code and bit-shift visualisers.\n\n" +
+    "11. Resume Match (2026)\n" +
+    "   Explainable resume-to-job scoring using tokenisation, synonym canonicalisation and weighted algorithms without an AI API.\n\n" +
+    "12. Arena Duel (2026)\n" +
+    "   Server-authoritative real-time 1v1 browser game built with Node.js, Socket.IO and React.\n\n" +
+    "13. Reminder Me — Pendamping (2026)\n" +
+    "   Offline-first student companion delivered as a PWA and Android APK with habits, tasks, exams, focus and journal tools.\n\n" +
 
     "ORGANIZATIONS & EXPERIENCE:\n" +
     "- Head of Website Division, Data and Information System Bureau — PPI Malaysia (Indonesian Students Association in Malaysia). Led full responsibility for the official PPI Malaysia website: development, maintenance, continuous improvement.\n" +
@@ -112,8 +124,8 @@
 
     "CERTIFICATIONS & COURSES:\n" +
     "- IELTS Academic Band 5.5 (CEFR B2), British Council/IDP, Jun 2025, valid until Jun 2027\n" +
-    "- AWS Certified Developer Associate (DVA-C02), Udemy, Jun 2026, 31.5 hrs\n" +
-    "- AWS Certified AI Practitioner (AIF-C01), Udemy, May 2026, 10.5 hrs\n" +
+    "- Ultimate AWS Developer Associate (DVA-C02) preparation course, Udemy, Jun 2026, 31.5 hrs\n" +
+    "- Ultimate AWS AI Practitioner (AIF-C01) preparation course, Udemy, May 2026, 10.5 hrs\n" +
     "- Complete Full Stack Web Development Bootcamp (AI Integrated), Udemy, Dec 2025, 62.5 hrs\n" +
     "- The Complete Full-Stack Web Development Bootcamp, Udemy, Jan 2026, 62 hrs\n" +
     "- The Complete JavaScript Course 2025, Udemy, Dec 2025, 71 hrs\n" +
@@ -156,7 +168,7 @@
   root.id = 'jin-root';
   root.innerHTML =
     '<button id="jin-fab" aria-label="Summon JIN"><video src="'+AVATAR+'" autoplay loop muted playsinline></video><span class="jn-spark"></span></button>' +
-    '<div id="jin-teaser" role="button" tabindex="0"><span>Call <b>JIN</b> \u2014 ask me anything about Rafi or anything else.</span><button id="jin-teaser-x" aria-label="Dismiss" data-lucide="x" data-sz="13"></button></div>' +
+    '<div id="jin-teaser" role="button" tabindex="0"><span>Questions about my work? <b>JIN</b> knows the details.</span><button id="jin-teaser-x" aria-label="Dismiss" data-lucide="x" data-sz="13"></button></div>' +
     '<div id="jin-panel" class="dormant" role="dialog" aria-label="JIN intelligence">' +
       '<div id="jin-flash"></div>' +
       '<div id="jin-head">' +
