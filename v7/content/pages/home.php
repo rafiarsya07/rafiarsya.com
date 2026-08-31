@@ -227,8 +227,8 @@
                 <div class="d-flex flex-wrap gap-2">
                     <img src="icon/chula.png" alt="Chulalongkorn University" class="education-image" />
                     <div>
-                        <p><b>Documentation Photographer</b></p>
-                        <span class="text-silent">Chulalongkorn University, Bangkok, Thailand</span>
+                        <p><b>Chulalongkorn University, Bangkok</b></p>
+                        <span class="text-silent">Organising Committee &amp; Documentation</span>
                     </div>
                 </div>
             </div>

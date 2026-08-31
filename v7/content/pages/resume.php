@@ -107,7 +107,7 @@
             <h4>Volunteering</h4>
             <p>
                 <span><b>Chulalongkorn University, Bangkok, Thailand</b></span><br>
-                <span>Documentation Photographer</span><br>
+                <span>Organising Committee &amp; Documentation</span><br>
             </p>
             <ul style="margin-top: -12px;">
                 <li>One of a four-person committee running a five-day programme at Chulalongkorn University,
