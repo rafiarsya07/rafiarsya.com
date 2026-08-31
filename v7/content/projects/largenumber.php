@@ -35,8 +35,8 @@
 <span class="contributor-chip-name">Ilham Narendra Setiabudi</span>
 </a>
 <span class="contributor-chip">
-<img class="contributor-chip-avatar" src="image/assets/largenumber/contributor-dafi.png" alt="Dafi Atha" loading="lazy" decoding="async">
-<span class="contributor-chip-name">Dafi Atha</span>
+<img class="contributor-chip-avatar" src="image/assets/largenumber/contributor-dafi.png" alt="Dafisya Muhammad Atha" loading="lazy" decoding="async">
+<span class="contributor-chip-name">Dafisya Muhammad Atha</span>
 </span>
             </div>
         </div>
