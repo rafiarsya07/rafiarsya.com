@@ -9,10 +9,10 @@
 <div class="d-flex justify-content-center">
     <div class="content">
         <div class="d-flex justify-content-between align-items-center" style="margin-bottom: -10px;">
-            <small>Last updated: 3 August 2026</small>
+            <small>Last updated: 6 September 2026</small>
             <div class="d-flex justify-content-end align-items-center">
                 <div style="margin-left: 10px">
-                    <a type="button" href="https://drive.google.com/file/d/1scCtGEB016CWs8dOhkPqqwV_lcICB99D/view?usp=sharing" target="_blank" rel="noopener"
+                    <a type="button" href="https://drive.google.com/file/d/1zuPWVwJPG_mSqoJOH703kcRyNptxJH3o/view?usp=sharing" target="_blank" rel="noopener"
                         class="btn btn-main btn-max d-flex align-items-center button-border m0">
                         <span class="menu-icon"><download-icon class="menu-icon-data icon20"></download-icon></span>
                         <span>CV</span>
@@ -23,20 +23,23 @@
         <hr>
         <div class="resume-section">
             <h1>MUHAMMAD RAFI ARSYA</h1>
-            <div class="d-flex flex-wrap">
+            <div class="resume-contact">
                 rafiarsya.work@gmail.com &nbsp;|&nbsp;
                 +60 17-941-5768 &nbsp;|&nbsp;
-                rafiarsya.com &nbsp;|&nbsp;
+                <a href="https://rafiarsya.com" target="_blank" rel="noopener">rafiarsya.com</a> &nbsp;|&nbsp;
+                <a href="https://github.com/rafiarsya07" target="_blank" rel="noopener">GitHub</a> &nbsp;|&nbsp;
+                <a href="https://www.linkedin.com/in/muhammad-rafi-arsya-557335394/" target="_blank"
+                    rel="noopener">LinkedIn</a> &nbsp;|&nbsp;
                 Kuala Lumpur, Malaysia
             </div>
             <hr>
 
             <h4>Profile</h4>
-            <p>Software Engineering student at Universiti Malaya specializing in full-stack web development and
-                AI/ML integration. Proven capability building production-grade, self-hosted applications using
-                Node.js, Next.js, and cloud/database management. Combines solid technical foundations with
-                cross-cultural communication and leadership experience, seeking a Software Engineering Internship
-                to deliver impactful tech solutions.</p>
+            <p>Software Engineering student at Universiti Malaya building full-stack and AI applications with
+                Next.js, Node.js and Python, self-hosted and containerised on a personal Linux server behind a
+                Cloudflare Tunnel. Combines infrastructure work (Docker, NGINX, PM2) with applied AI/ML (RAG,
+                CNNs written from scratch) and independent product building. Seeking a Data Engineering or
+                Software Engineering internship.</p>
             <hr>
 
             <h4>Education</h4>
@@ -46,7 +49,8 @@
                 <span>Since 2025</span>
             </p>
             <ul style="margin-top: -12px;">
-                <li>Focus on software architecture, data structures, and systems engineering.</li>
+                <li>Coursework: Data Structures &amp; Algorithms, Machine Learning, Network Technology,
+                    Human Computer Interaction, Computer Systems Architecture.</li>
             </ul>
             <p>
                 <span><b>International Program ICBS, Riau, Indonesia</b></span><br>
@@ -106,14 +110,15 @@
 
             <h4>Volunteering</h4>
             <p>
-                <span><b>Chulalongkorn University, Bangkok, Thailand</b></span><br>
-                <span>Faculty of Computer Science &amp; Information Technology, Universiti Malaya</span><br>
+                <span><b>Faculty of Computer Science &amp; Information Technology, Universiti Malaya</b></span><br>
+                <span>Student Buddy, Inbound Mobility Programme 2026</span><br>
+                <span>1 to 5 September 2026</span>
             </p>
             <ul style="margin-top: -12px;">
-                <li>One of a four-person committee running a five-day FSKTM programme at Chulalongkorn
-                    University, Thailand's top-ranked university.</li>
-                <li>Responsible for documentation across the whole programme, covering sessions and daily
-                    activities on all five days.</li>
+                <li>One of a four-person committee running a five-day FSKTM programme hosting students from
+                    Chulalongkorn University, Thailand's top-ranked university, in Kuala Lumpur.</li>
+                <li>Served as a Student Buddy to the visiting delegation and was responsible for documentation
+                    across the whole programme, covering sessions and daily activities on all five days.</li>
             </ul>
             <p>
                 <span><b>LARAS, PPI Malaysia</b></span><br>
@@ -127,7 +132,7 @@
             <hr>
 
             <h4>Projects</h4>
-            <p><b>ThoughtLog: Full-Stack Blog with Custom CMS (2026)</b> From-scratch blog CMS on Node.js,
+            <p><b>Nalar: Full-Stack Blog with Custom CMS (2026)</b> From-scratch blog CMS on Node.js,
                 Express and PostgreSQL with Markdown authoring and a three-state auto-publishing scheduler.
                 PostgreSQL full-text search (tsvector/GIN) with tag filtering, RSS, reading-time estimates and
                 email subscriptions. Self-hosted behind Cloudflare Tunnel, PM2-managed, deployed via GitHub
@@ -183,16 +188,37 @@
 
             <h4>Skills</h4>
             <p>
-                <b>Frontend:</b> TypeScript, JavaScript (ES6+), React, Next.js, Vite, Tailwind CSS, Bootstrap,
-                Framer Motion, Zustand, TanStack Query, HTML5, CSS3
-                <br><b>Backend &amp; Databases:</b> Node.js, Express, Python, Java, PHP, REST APIs, PostgreSQL,
-                MySQL, SQLite, Supabase, Redis, Socket.IO, Sequelize, FastAPI, Flask
-                <br><b>AI / ML &amp; Data:</b> TensorFlow, Keras, PyTorch, NumPy, pandas, scikit-learn, Matplotlib,
-                OpenCV, MediaPipe, Streamlit, Jupyter, ChromaDB, Ollama, Retrieval-Augmented Generation,
-                LLM-as-judge evaluation
-                <br><b>DevOps &amp; Cloud:</b> AWS (Lambda, DynamoDB, API Gateway, SAM), Cloudflare Pages &amp;
-                Tunnel, Docker, Docker Compose, NGINX, Bash, Git, Ubuntu, ZeroTier, PM2
-                <br><b>Tools:</b> Figma, Canva, LaTeX, VS Code, Kaggle
+                <b>Languages:</b> TypeScript, JavaScript (ES6+), Python, Java, PHP, SQL
+                <br><b>Frontend:</b> React, Next.js, Tailwind CSS, HTML5, CSS3
+                <br><b>Backend:</b> Node.js, Express, FastAPI, Flask, REST APIs, Socket.IO
+                <br><b>Databases:</b> PostgreSQL, MySQL, SQLite, Redis, Supabase
+                <br><b>Infrastructure &amp; Cloud:</b> Docker &amp; Compose, NGINX, Ubuntu self-hosting,
+                Cloudflare Tunnel &amp; Pages, Git, Bash, AWS (Lambda, DynamoDB, API Gateway, SAM)
+                <br><b>AI / ML &amp; Data:</b> NumPy, TensorFlow, Keras, OpenCV, MediaPipe, pandas,
+                scikit-learn, Retrieval-Augmented Generation (ChromaDB, Ollama)
+            </p>
+            <hr>
+
+            <h4>Certifications &amp; Courses</h4>
+            <ul>
+                <li>Ultimate AWS Certified Developer Associate (DVA-C02), Udemy course completion,
+                    St&eacute;phane Maarek, June 2026</li>
+                <li>Ultimate AWS Certified AI Practitioner (AIF-C01), Udemy course completion,
+                    St&eacute;phane Maarek, May 2026</li>
+                <li>IELTS Academic, Band 5.5 (CEFR B2), British Council IDP, June 2025</li>
+                <li>Additional coursework, around 570 hours across 2025 and 2026: freeCodeCamp JavaScript
+                    Algorithms &amp; Data Structures (300 hours), The Complete JavaScript Course (Jonas
+                    Schmedtmann), full-stack bootcamps with Angela Yu and Cloudaffle, Advanced SQL (Maven
+                    Analytics), The Complete SQL Bootcamp (Jose Portilla), Spring AI Fast Track, and Cloud
+                    &amp; Gen AI on AWS plus Spec-Driven Development with Kiro (Dicoding)</li>
+            </ul>
+            <hr>
+
+            <h4>Languages</h4>
+            <p>
+                Bahasa Indonesia: Native &nbsp;|&nbsp;
+                English: Professional working proficiency &nbsp;|&nbsp;
+                Malay: Professional working proficiency
             </p>
         </div>
     </div>

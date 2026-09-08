@@ -49,11 +49,11 @@
 
     <div class="navbar-section">
         <p class="text-silent navtitle">Projects</p>
-        <button id="menu" data-id="thoughtlog" type="button"
-            class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "thoughtlog") { echo "active"; } ?>"
+        <button id="menu" data-id="nalar" type="button"
+            class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "nalar") { echo "active"; } ?>"
             onclick="setActive(this)">
             <span class="menu-icov2"><blog-icon class="menu-icon-data"></blog-icon></span>
-            <span>ThoughtLog</span>
+            <span>Nalar</span>
         </button>
         <button id="menu" data-id="idfest" type="button"
             class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "idfest") { echo "active"; } ?>"
@@ -67,11 +67,11 @@
             <span class="menu-icov2"><robot-icon class="menu-icon-data"></robot-icon></span>
             <span>Crop Disease Detector</span>
         </button>
-        <button id="menu" data-id="aievaldashboard" type="button"
-            class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "aievaldashboard") { echo "active"; } ?>"
+        <button id="menu" data-id="senara" type="button"
+            class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "senara") { echo "active"; } ?>"
             onclick="setActive(this)">
-            <span class="menu-icov2"><robot-icon class="menu-icon-data"></robot-icon></span>
-            <span>AI Eval Dashboard</span>
+            <span class="menu-icov2"><website-icon class="menu-icon-data"></website-icon></span>
+            <span>SENARA Artfest</span>
         </button>
         <button id="menu" data-id="digitrecognition" type="button"
             class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "digitrecognition") { echo "active"; } ?>"

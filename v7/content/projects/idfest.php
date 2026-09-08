@@ -9,6 +9,8 @@
 <div class="d-flex justify-content-center">
     <div class="mdcontent">
 
+        <figure class="p-hero"><img alt="IDFEST 2026 homepage hero section" decoding="async" src="image/assets/idfest/idfest-mockup-hero.png"/></figure>
+
         <div class="blog-content-header">
             <div>
                 <span class="badge blog-badge badge-blue">Next.js 16</span>
@@ -56,11 +58,6 @@
 <p class="rf-media-lead">A closer look at every main section, live at <a class="ext-link" href="https://idfest.ppiunimalaya.id/" target="_blank" rel="noopener">idfest.ppiunimalaya.id<svg class="ext-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>.</p>
 
 <div class="rf-livegroup">
-<p class="rf-livegroup-title">Home</p>
-<figure class="rf-figure-lg"><img alt="IDFEST 2026 homepage hero section" decoding="async" loading="lazy" src="image/assets/idfest/live-home-hero.jpg"/><figcaption class="img-caption">Hero section with the festival mascot and coming-soon banner</figcaption></figure>
-</div>
-
-<div class="rf-livegroup">
 <p class="rf-livegroup-title">About</p>
 <figure class="rf-figure-lg"><img alt="About IDFEST 2026 page intro, with the what-is-IDFEST section" decoding="async" loading="lazy" src="image/assets/idfest/live-about-intro.jpg"/><figcaption class="img-caption">Intro banner and the "What is IDFEST?" section</figcaption></figure>
 <figure class="rf-figure-lg"><img alt="Event photo gallery strip and the Musical Theater / Art Exhibition cards" decoding="async" loading="lazy" src="image/assets/idfest/live-about-gallery-events.jpg"/><figcaption class="img-caption">Event gallery strip, plus the Musical Theater and Art Exhibition entry cards</figcaption></figure>
@@ -68,14 +65,16 @@
 
 <div class="rf-livegroup">
 <p class="rf-livegroup-title">Our Team</p>
-<figure class="rf-figure-lg"><img alt="Behind IDFEST 2026 team page, with the committee card grid" decoding="async" loading="lazy" src="image/assets/idfest/live-about-team.jpg"/><figcaption class="img-caption">Team page: group photo banner and the filterable committee grid</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="Behind IDFEST 2026 team page banner" decoding="async" loading="lazy" src="image/assets/idfest/live-about-team-banner.jpg"/><figcaption class="img-caption">Team page banner, over the committee group photo</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="Committee card grid, filterable by division" decoding="async" loading="lazy" src="image/assets/idfest/live-about-team-grid.jpg"/><figcaption class="img-caption">Committee grid, filterable by division</figcaption></figure>
 </div>
 
 <div class="rf-livegroup">
 <p class="rf-livegroup-title">Musical Theater</p>
 <figure class="rf-figure-lg"><img alt="Musical Theater page hero banner" decoding="async" loading="lazy" src="image/assets/idfest/live-musical-hero.jpg"/><figcaption class="img-caption">Hero banner with the mascot guarding the stage entrance</figcaption></figure>
-<figure class="rf-figure-lg"><img alt="About Musical Theater section with the recap video placeholder" decoding="async" loading="lazy" src="image/assets/idfest/live-musical-about.jpg"/><figcaption class="img-caption">Section intro and last year's recap video slot</figcaption></figure>
-<figure class="rf-figure-lg"><img alt="Meet the Main Characters, three story panels for Putri Tadampali, La Pasalama and La Magedda" decoding="async" loading="lazy" src="image/assets/idfest/live-musical-characters.jpg"/><figcaption class="img-caption">"Meet the Main Characters": Putri Tadampali, La Pasalama, and La Magedda</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="Meet the Main Characters panel for Putri Tadampali" decoding="async" loading="lazy" src="image/assets/idfest/live-musical-char-1.jpg"/><figcaption class="img-caption">"Meet the Main Characters", first panel: Putri Tadampali</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="Meet the Main Characters panel for La Pasalama" decoding="async" loading="lazy" src="image/assets/idfest/live-musical-char-2.jpg"/><figcaption class="img-caption">Second panel: La Pasalama, on a green ground</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="Meet the Main Characters panel for La Magedda" decoding="async" loading="lazy" src="image/assets/idfest/live-musical-char-3.jpg"/><figcaption class="img-caption">Third panel: La Magedda, closing the set</figcaption></figure>
 <figure class="rf-figure-lg"><img alt="Performers page with a filterable cast grid" decoding="async" loading="lazy" src="image/assets/idfest/live-musical-performers.jpg"/><figcaption class="img-caption">Performers page, filterable by cast, dancers, and role</figcaption></figure>
 </div>
 
@@ -87,7 +86,6 @@
 
 <div class="rf-livegroup">
 <p class="rf-livegroup-title">Partnership</p>
-<figure class="rf-figure-lg"><img alt="Partnership page hero banner with sponsorship stats" decoding="async" loading="lazy" src="image/assets/idfest/live-partner-hero.jpg"/><figcaption class="img-caption">Hero banner and reach stats for prospective partners</figcaption></figure>
 <figure class="rf-figure-lg"><img alt="Become a Sponsor and Become a Media Partner cards" decoding="async" loading="lazy" src="image/assets/idfest/live-partner-opportunities.jpg"/><figcaption class="img-caption">Sponsor and media-partner opportunity cards</figcaption></figure>
 </div>
 

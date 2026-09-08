@@ -9,6 +9,8 @@
 <div class="d-flex justify-content-center">
     <div class="mdcontent">
 
+        <figure class="p-hero"><img alt="Nalar home page, the post feed with the sidebar" decoding="async" src="image/assets/nalar/live-home.jpg"/></figure>
+
         <div class="blog-content-header">
             <div>
                 <span class="badge blog-badge badge-blue">Node.js</span>
@@ -20,7 +22,7 @@
                 <span class="badge blog-badge badge-green">Docker</span>
                 <span class="badge blog-badge badge-purple">Cloudflare Tunnel</span>
             </div>
-            <h1>ThoughtLog</h1>
+            <h1>Nalar</h1>
             <br>
             <span>A full-stack personal blog with a CMS I built from scratch, no WordPress, no Ghost, no static-site generator. Write in Markdown with live preview, save drafts, schedule posts to publish themselves, and browse by tag. Reading is public; writing sits behind real authentication. It runs on a mini PC under my desk and reaches the internet through a Cloudflare Tunnel at blog.rafiarsya.com.</span>
             <br>
@@ -29,10 +31,10 @@
         <div style="border-top: solid 1px #acb8c0; margin-bottom: 10px;"></div>
         <h3>01 Project Overview</h3>
         <div class="blog-content-body">
-<p class="p-text">ThoughtLog is a personal blog with its own CMS, built end to end without an off-the-shelf platform. Write in Markdown with live preview beside the editor, then publish immediately, save a draft, or schedule it and let the server publish on its own. Readers get a tag cloud, full-text search, related posts, and reading-time estimates. Everything behind the writing, the editor, the dashboard, the scheduler, is locked behind a login.</p>
+<p class="p-text">Nalar is a personal blog with its own CMS, built end to end without an off-the-shelf platform. Write in Markdown with live preview beside the editor, then publish immediately, save a draft, or schedule it and let the server publish on its own. Readers get a tag cloud, full-text search, related posts, and reading-time estimates. Everything behind the writing, the editor, the dashboard, the scheduler, is locked behind a login.</p>
 <p class="p-text">I wanted somewhere to write up the engineering decisions behind my other projects without learning someone else’s admin panel. Building the CMS myself meant designing what a blog platform hides: a REST API with a clean public/authenticated split, real authentication, a post-status state machine, and a background job that publishes what’s due every minute.</p>
 
-<strong>Where it runs:</strong> ThoughtLog is <mark class="hl">live right now</mark> at <code class="inline">blog.rafiarsya.com</code>. It runs on a Linux mini PC at home, kept alive with PM2, and exposed to the internet through a <strong>Cloudflare Tunnel</strong>, no inbound ports opened, no public IP, no cloud bill. The same self-hosting setup I use across my projects.
+<strong>Where it runs:</strong> Nalar is <mark class="hl">live right now</mark> at <code class="inline">blog.rafiarsya.com</code>. It runs on a Linux mini PC at home, kept alive with PM2, and exposed to the internet through a <strong>Cloudflare Tunnel</strong>, no inbound ports opened, no public IP, no cloud bill. The same self-hosting setup I use across my projects.
         </div>
         <br>
         <h3>02 Architecture</h3>
@@ -91,7 +93,7 @@ after:   { id:42, title:"Self-hosting on a mini PC",
         <br>
         <h3>06 Where It Actually Runs</h3>
         <div class="blog-content-body">
-<p>ThoughtLog needs Node and PostgreSQL, and that’s it. It runs on a Linux mini PC sitting on my desk, the same machine that hosts my other projects, kept alive across reboots and crashes with <strong>PM2</strong>.</p>
+<p>Nalar needs Node and PostgreSQL, and that’s it. It runs on a Linux mini PC sitting on my desk, the same machine that hosts my other projects, kept alive across reboots and crashes with <strong>PM2</strong>.</p>
 <p class="p-text">Instead of opening a router port or paying for a VPS, the site reaches the internet through a Cloudflare Tunnel. Cloudflare holds the public endpoint and the tunnel dials out from the mini PC, no inbound port, no exposed public IP. TLS terminates at Cloudflare’s edge.</p>
 
 <strong>It’s live now</strong> at <code class="inline">blog.rafiarsya.com</code>, a real full-stack app with a real database, running on hardware I own for effectively zero monthly cost. Self-hosting was a deliberate choice: it’s the cheapest way to run a stateful Node + Postgres app full-time, and it’s the DevOps muscle I actually want to build.

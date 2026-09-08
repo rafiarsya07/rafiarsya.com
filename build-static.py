@@ -86,9 +86,13 @@ for sub in ('pages', 'projects'):
             rel = sub + '/' + name
             open(os.path.join(OUT, 'content', sub, name + '.html'), 'w', encoding='utf-8').write(render_fragment(rel))
 
+# data/blog.json is the index the site reads, so it is also what decides
+# which post fragments ship. A .php left behind in content/blog/ after a
+# post is unlisted does not get built or deployed.
 os.makedirs(os.path.join(OUT, 'content/blog'), exist_ok=True)
+listed = {p['id'] for p in json.load(open(os.path.join(SRC, 'data/blog.json'), encoding='utf-8'))}
 for f in sorted(os.listdir(os.path.join(SRC, 'content/blog'))):
-    if f.endswith('.php'):
+    if f.endswith('.php') and f[:-4] in listed:
         shutil.copyfile(os.path.join(SRC, 'content/blog', f),
                         os.path.join(OUT, 'content/blog', f[:-4] + '.html'))
 
@@ -121,7 +125,8 @@ open(bj, 'w', encoding='utf-8').write(s)
 # Cloudflare Pages serves /resume from resume.html on its own; this makes the
 # behaviour explicit and gives every unknown path the home page.
 open(os.path.join(OUT, '_redirects'), 'w', encoding='utf-8').write(
-    "/index    /    301\n")
+    "/index    /    301\n"
+    "/thoughtlog    /nalar    301\n")
 
 n_pages_frag = len([f for f in os.listdir(os.path.join(OUT, 'content/pages')) if f.endswith('.html')])
 n_proj_frag = len([f for f in os.listdir(os.path.join(OUT, 'content/projects')) if f.endswith('.html')])
@@ -151,6 +156,19 @@ for rel in sorted(refs):
     shutil.copyfile(src_file, dst)
     total += os.path.getsize(dst)
     copied += 1
+
+# course.js builds its issuer logo path at runtime ("icon/" + issuer + ".png"),
+# so the scan above cannot see those names. The folder is tiny; copy it whole.
+icon_src = os.path.join(SRC, 'icon')
+for f in os.listdir(icon_src):
+    src_f = os.path.join(icon_src, f)
+    if os.path.isfile(src_f):
+        dst_f = os.path.join(OUT, 'icon', f)
+        os.makedirs(os.path.dirname(dst_f), exist_ok=True)
+        if not os.path.exists(dst_f):
+            shutil.copyfile(src_f, dst_f)
+            copied += 1
+            total += os.path.getsize(dst_f)
 
 print("media referenced :", len(refs))
 print("media copied     :", copied, "(%.1f MB)" % (total / 1e6))

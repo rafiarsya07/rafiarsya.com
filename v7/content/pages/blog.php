@@ -21,7 +21,7 @@
         <div class="d-flex justify-content-center">
             <div class="blog-list" style="width: 100%; max-width: 600px;">
                 <?php
-                $blogfile = __DIR__. '/../data/blog.json';
+                $blogfile = __DIR__. '/../../data/blog.json';
                 $blog = file_exists($blogfile) ? json_decode(file_get_contents($blogfile), true): [];
                 foreach ($blog as $post) {
                     echo '

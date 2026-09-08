@@ -16,11 +16,11 @@ var PAGE_SCRIPTS = {
 
 /* every project page shares one script */
 var PROJECT_PAGES = [
-    "thoughtlog", "papermind", "snip", "cropdisease", "arenaduel",
+    "nalar", "papermind", "snip", "cropdisease", "arenaduel",
     "reminderme", "handgesture", "rafifinance", "nase", "briskwalk",
     "steamsql", "csastudy", "resumematch",
     "aievaldashboard", "pricetracker", "digitrecognition",
-    "largenumber", "llmclassification", "idfest"
+    "largenumber", "llmclassification", "idfest", "senara"
 ];
 
 /* content/ is split into pages/ (site-level) and projects/ (case

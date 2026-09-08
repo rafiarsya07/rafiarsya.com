@@ -36,7 +36,7 @@
         <br>
         <h3>02 Interface</h3>
         <div class="blog-content-body">
-<p class="rf-media-lead">The registration form as participants saw it, plus the event identity it was built around.</p><figure class="rf-figure rf-crop"><img class="blog-img" alt="Participant registration form with client-side image compression" decoding="async" loading="lazy" src="image/assets/briskwalk/briswalk_form.png"/><figcaption class="img-caption"><b>Registration</b>: Participant registration form with client-side image compression</figcaption></figure><figure class="rf-figure"><img class="blog-img" alt="Event identity" decoding="async" loading="lazy" src="image/assets/briskwalk/logo_briswalk.png"/><figcaption class="img-caption"><b>BriskWalk</b>: Event identity</figcaption></figure>
+<p class="rf-media-lead">The registration form as participants saw it, plus the event identity it was built around.</p><figure class="rf-figure rf-crop rf-portrait"><img class="blog-img" alt="Participant registration form with client-side image compression" decoding="async" loading="lazy" src="image/assets/briskwalk/briswalk_form.png"/><figcaption class="img-caption"><b>Registration</b>: Participant registration form with client-side image compression</figcaption></figure><figure class="rf-figure rf-portrait"><img class="blog-img" alt="Event identity" decoding="async" loading="lazy" src="image/assets/briskwalk/logo_briswalk.png"/><figcaption class="img-caption"><b>BriskWalk</b>: Event identity</figcaption></figure>
         </div>
         <br>
         <h3>03 Image Compression Pipeline</h3>
