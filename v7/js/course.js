@@ -42,20 +42,24 @@ function coursefunc() {
         /* certificates ship a scan; university subjects do not */
         var shot = course.img
             ? '<div class="cert-shot"><img src="' + course.img + '" alt="' + course.title +
-              '" loading="lazy" onerror="this.closest(\'.cert-shot\').remove()"></div>'
+              '" loading="lazy" onerror="this.closest(\'.cert-shot\').remove()">' +
+              '<div class="cert-overlay"><span class="badge overlay-btn">View Certificate</span></div>' +
+              '</div>'
             : "";
         return '' +
             '<div class="col-12 col-sm-6 col-lg-4">' +
             '  <div class="course-card' + (shot ? " has-shot" : "") + ' d-flex align-content-between flex-wrap">' +
             shot +
-            '    <div class="d-flex flex-wrap gap-2 align-items-center justify-content-between w100">' +
+            '    <div class="course-head w100">' +
+            '      <div class="course-issuer">' +
             issuerMark(course) +
+            '        <span class="course-source">' + course.issuer_name +
+            (showStatus ? "" : '<span class="course-date">' + course.subtitle + "</span>") +
+            '        </span>' +
+            '      </div>' +
             (showStatus ? status(course.subtitle) : "") +
             '    </div>' +
             '    <div>' +
-            '      <div class="course-source">' + course.issuer_name +
-            (showStatus ? "" : ' <span class="course-date">' + course.subtitle + "</span>") +
-            '      </div>' +
             '      <div class="course-title">' + course.title + "</div>" +
             '      <div class="tech-stack">' + tags(course.tags) + "</div>" +
             '    </div>' +
@@ -81,10 +85,14 @@ function coursefunc() {
 
     /* ---- click a certificate scan to see it full size ---- */
     function bindCertZoom() {
-        document.querySelectorAll(".cert-shot img").forEach(function (img) {
-            if (img.dataset.zoomBound) return;
-            img.dataset.zoomBound = "1";
-            img.addEventListener("click", function () {
+        /* bind the whole shot, not just the <img>: the hover overlay sits on
+           top of the image, so a click lands on the overlay, not the picture */
+        document.querySelectorAll(".cert-shot").forEach(function (shot) {
+            if (shot.dataset.zoomBound) return;
+            shot.dataset.zoomBound = "1";
+            var img = shot.querySelector("img");
+            if (!img) return;
+            shot.addEventListener("click", function () {
                 var overlay = document.createElement("div");
                 overlay.className = "img-lightbox";
                 overlay.innerHTML = '<img src="' + img.src + '" alt="' + img.alt + '">';

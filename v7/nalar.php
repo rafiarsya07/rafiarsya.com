@@ -16,12 +16,12 @@
 <body>
     <div class="row" style="position: relative">
         <?php
-        $page = "thoughtlog";
+        $page = "nalar";
         include('sidebar.php');
         ?>
         <div class="col">
             <div class="main-content" id="main-content">
-                <?php include(__DIR__ . '/content/projects/thoughtlog.php'); ?>
+                <?php include(__DIR__ . '/content/projects/nalar.php'); ?>
             </div>
         </div>
     </div>

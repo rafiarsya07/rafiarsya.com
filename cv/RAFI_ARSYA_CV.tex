@@ -1,0 +1,230 @@
+% =====================================================================
+%  Muhammad Rafi Arsya  |  Curriculum Vitae
+%  Content matches rafiarsya.com/resume, except Selected Projects: the site lists
+%  all 17, this CV carries the strongest 8. Everything else stays in sync.
+%  Build:  pdflatex RAFI_ARSYA_CV.tex   (run twice so hyperref settles)
+%
+%  Fits 2 pages with room to spare. If you add entries and it spills to 3,
+%  turn these knobs in order, checking the page count after each one:
+%    1. add  \linespread{0.95}  under the microtype line
+%    2. geometry margins  1.5cm -> 1.25cm, top/bottom 1.3cm -> 1.05cm
+%    3. wrap Selected Projects in  \begingroup\small ... \endgroup
+%  Past that, cut a project instead of shrinking further.
+% =====================================================================
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1.5cm,top=1.3cm,bottom=1.3cm]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\hypersetup{
+  pdftitle={Muhammad Rafi Arsya, Curriculum Vitae},
+  pdfauthor={Muhammad Rafi Arsya},
+  pdfsubject={Software Engineering},
+}
+
+% ---- no page numbers, no headers -----------------------------------
+\pagestyle{empty}
+
+% ---- section headings: small caps over a full width rule ------------
+\titleformat{\section}
+  {\normalfont\large\bfseries}{}{0pt}{}[\vspace{-6pt}\rule{\textwidth}{0.6pt}]
+\titlespacing*{\section}{0pt}{10pt}{4pt}
+
+% ---- tighter default lists -----------------------------------------
+\setlist[itemize]{leftmargin=1.2em, topsep=2pt, itemsep=1pt, parsep=0pt}
+
+% ---- one entry header: role/place on the left, dates flush right ----
+% \entry{Bold line}{Right-aligned dates}{Subtitle line}
+\newcommand{\entry}[3]{%
+  \vspace{4pt}%
+  \noindent\textbf{#1}\hfill{\itshape #2}\par
+  \ifx\relax#3\relax\else\noindent#3\par\fi
+  \vspace{1pt}%
+}
+
+% ---- one project block: title line, then the description under it, so the
+%      name and the prose never run together. Same shape as \entry above. --
+\newcommand{\project}[3]{%
+  \vspace{6pt}%
+  \noindent\textbf{#1}\hfill{\itshape #2}\par
+  \vspace{2pt}%
+  \noindent #3\par
+}
+
+% ---- skills row -----------------------------------------------------
+\newcommand{\skillrow}[2]{\noindent\textbf{#1:} #2\par\vspace{3pt}}
+
+\begin{document}
+\raggedright
+\setlength{\parindent}{0pt}
+
+% =====================================================================
+%  HEADER
+% =====================================================================
+\begin{center}
+  {\LARGE\bfseries Muhammad Rafi Arsya}\\[2pt]
+  {\normalsize Software Engineering Student}\\[5pt]
+  \small
+  \href{mailto:rafiarsya.work@gmail.com}{rafiarsya.work@gmail.com} \quad$|$\quad
+  +60 17-941-5768 \quad$|$\quad
+  \href{https://rafiarsya.com}{rafiarsya.com} \quad$|$\quad
+  \href{https://github.com/rafiarsya07}{GitHub} \quad$|$\quad
+  \href{https://www.linkedin.com/in/muhammad-rafi-arsya-557335394/}{LinkedIn} \quad$|$\quad
+  Kuala Lumpur, Malaysia
+\end{center}
+\vspace{2pt}
+
+% =====================================================================
+\section*{Profile}
+Software Engineering student at Universiti Malaya building full-stack and AI applications with
+Next.js, Node.js and Python, self-hosted and containerised on a personal Linux server behind a
+Cloudflare Tunnel. Combines infrastructure work (Docker, NGINX, PM2) with applied AI/ML (RAG,
+CNNs written from scratch) and independent product building. Seeking a Data Engineering or
+Software Engineering internship.
+
+% =====================================================================
+\section*{Education}
+
+\entry{Universiti Malaya (UM), Malaysia}{Since 2025}{B.Sc. Computer Science (Software Engineering)}
+\begin{itemize}
+  \item Coursework: Data Structures \& Algorithms, Machine Learning, Network Technology,
+        Human Computer Interaction, Computer Systems Architecture.
+\end{itemize}
+
+\entry{International Program ICBS, Riau, Indonesia}{2022 to 2025}{Senior High School}
+\begin{itemize}
+  \item International curriculum with English-medium instruction.
+  \item Active in student leadership and language programs.
+\end{itemize}
+
+% =====================================================================
+\section*{Experience}
+
+\entry{PEKOM: Computer Science Society, Universiti Malaya}{Since 2026}{Technical Executive Committee}
+\begin{itemize}
+  \item Serving in the Website Division, building and maintaining the society's web platforms.
+  \item Supporting faculty-wide events across the Faculty of Computer Science \& IT.
+\end{itemize}
+
+\entry{PPI Malaysia (Indonesian Students Association)}{Since 2025}{Head of Website Division, Data \& Information System Bureau}
+\begin{itemize}
+  \item Full ownership of the official PPI Malaysia website: development, maintenance, and
+        continuous improvement.
+  \item Serving Indonesian students across Malaysia.
+\end{itemize}
+
+\entry{PPI University of Malaya}{Since 2026}{Head of Department, Art Exhibition at IDFEST}
+\begin{itemize}
+  \item Directing the Art Exhibition division for IDFEST, an international event showcasing
+        Indonesian heritage at Universiti Malaya, from concept and curation through to delivery.
+  \item Leading the department end to end: theme and curation, artist and submission coordination,
+        exhibition layout, and delivery on event day.
+\end{itemize}
+
+\entry{PPI University of Malaya}{Since Jun 2026}{Website Development Committee at IDFEST}
+\begin{itemize}
+  \item Building the official IDFEST website with Next.js 16, React 19 and Tailwind CSS v4,
+        translating Figma designs into production-ready pages.
+  \item Owning the homepage sections and animated timeline, hero responsiveness across
+        breakpoints, and shared navigation and mascot components reused by the Art Exhibition
+        and Musical Theater pages.
+\end{itemize}
+
+% =====================================================================
+\section*{Volunteering}
+
+\entry{Faculty of Computer Science \& Information Technology, Universiti Malaya}{1 to 5 September 2026}{Student Buddy, Inbound Mobility Programme 2026}
+\begin{itemize}
+  \item One of a four-person committee running a five-day FSKTM programme hosting students from
+        Chulalongkorn University, Thailand's top-ranked university, in Kuala Lumpur.
+  \item Served as a Student Buddy to the visiting delegation and was responsible for
+        documentation across the whole programme, covering sessions and daily activities on all
+        five days.
+\end{itemize}
+
+\entry{LARAS, PPI Malaysia}{2026}{Transportation Team \& Field Committee}
+\begin{itemize}
+  \item Handled logistics, on-ground coordination and event-day operations for LARAS,
+        PPI Malaysia's annual gathering.
+\end{itemize}
+
+% =====================================================================
+\section*{Selected Projects}
+
+\project{PaperMind: Local RAG Paper Analyzer}{2026}{Ask questions of any PDF and get grounded
+answers from a local LLM. FastAPI backend, ChromaDB vector store, Ollama (phi3:mini) inference.
+Fully offline with zero external API calls, containerised with Docker Compose and self-hosted on
+a Linux mini PC behind a Cloudflare Tunnel.}
+
+\project{AI Digit Recognizer: CNN Built From Scratch}{2026}{Convolutional network written
+entirely in NumPy: im2col-vectorized convolutions, max-pooling, backpropagation and Adam, with no
+PyTorch and no TensorFlow. 99.1\% test accuracy on MNIST, served by Flask with a visualizer
+rendering per-pixel saliency and live signal flow through every layer.}
+
+\project{ThoughtLog: Full-Stack Blog with Custom CMS}{2026}{Node.js, Express and PostgreSQL with
+Markdown authoring and a three-state auto-publishing scheduler. Full-text search on tsvector/GIN
+with tag filtering, RSS and email subscriptions. Self-hosted behind a Cloudflare Tunnel,
+PM2-managed, deployed via GitHub Actions.}
+
+\project{Steam Market Intelligence}{2026}{In-browser analytics over a 1,400-title dataset running
+real SQLite compiled to WebAssembly, with a live query console. Window functions and recursive
+CTEs execute client-side, so there is no backend and no precomputed export.}
+
+\project{snip: Serverless URL Shortener}{2026}{API Gateway, Lambda and DynamoDB defined as
+infrastructure-as-code with AWS SAM for one-command provisioning. No managed server,
+least-privilege IAM per function, scales to zero when idle.}
+
+\project{Crop Disease Detector}{2026}{Leaf-photo classifier across 38 disease categories trained
+on PlantVillage (54K+ images). MobileNetV2 transfer learning with data augmentation and two-phase
+fine-tuning in TensorFlow/Keras, deployed to Hugging Face Spaces with top-3 confidence scores.}
+
+\project{IDFEST 2026 Website}{2026}{Official site for an international cultural event at
+Universiti Malaya, built with a committee. Next.js 16 static export, React 19 and Tailwind CSS v4.
+Owned the homepage timeline, hero responsiveness across breakpoints, and the shared navigation and
+mascot components reused across sections.}
+
+\project{Arena Duel}{2026}{Server-authoritative real-time 1v1 over WebSockets. Simultaneous blind
+actions resolved deterministically server-side, with state machines, cooldowns and disconnect
+handling, so the client is never trusted with the outcome.}
+
+% =====================================================================
+\section*{Skills}
+
+\skillrow{Languages}{TypeScript, JavaScript (ES6+), Python, Java, PHP, SQL}
+\skillrow{Frontend}{React, Next.js, Tailwind CSS, HTML5, CSS3}
+\skillrow{Backend}{Node.js, Express, FastAPI, Flask, REST APIs, Socket.IO}
+\skillrow{Databases}{PostgreSQL, MySQL, SQLite, Redis, Supabase}
+\skillrow{Infrastructure \& Cloud}{Docker \& Compose, NGINX, Ubuntu self-hosting,
+Cloudflare Tunnel \& Pages, Git, Bash, AWS (Lambda, DynamoDB, API Gateway, SAM)}
+\skillrow{AI / ML \& Data}{NumPy, TensorFlow, Keras, OpenCV, MediaPipe, pandas,
+scikit-learn, Retrieval-Augmented Generation (ChromaDB, Ollama)}
+
+% =====================================================================
+\section*{Certifications \& Courses}
+\begin{itemize}
+  \item Ultimate AWS Certified Developer Associate (DVA-C02), Udemy course completion,
+        Stephane Maarek, June 2026
+  \item Ultimate AWS Certified AI Practitioner (AIF-C01), Udemy course completion,
+        Stephane Maarek, May 2026
+  \item IELTS Academic, Band 5.5 (CEFR B2), British Council IDP, June 2025
+  \item Additional coursework, around 570 hours across 2025 and 2026: freeCodeCamp JavaScript
+        Algorithms \& Data Structures (300 hours), The Complete JavaScript Course (Jonas
+        Schmedtmann), full-stack bootcamps with Angela Yu and Cloudaffle, Advanced SQL (Maven
+        Analytics), The Complete SQL Bootcamp (Jose Portilla), Spring AI Fast Track, and Cloud
+        \& Gen AI on AWS plus Spec-Driven Development with Kiro (Dicoding)
+\end{itemize}
+
+% =====================================================================
+\section*{Languages}
+Bahasa Indonesia: Native \quad$|$\quad
+English: Professional working proficiency \quad$|$\quad
+Malay: Professional working proficiency
+
+\end{document}

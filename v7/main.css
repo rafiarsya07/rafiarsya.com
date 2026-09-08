@@ -276,19 +276,31 @@ body {
     height: 240px;
     margin-bottom: 20px;
 }
+/* the logo sits bare on the card, no frame: a box either crops a wordmark
+   or pads a square mark into a stamp. Height is fixed and width is free, so
+   every logo keeps its own proportions and nothing is ever cut. */
+.course-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.course-issuer { display: flex; align-items: center; gap: 9px; min-width: 0; }
 .course-image {
-    width: 40px;
-    height: 40px;
-    padding: 5px;
-    border: solid 1px #eeeff2;
-    border-radius: 50%;
+    height: 26px;
+    width: auto;
+    max-width: 104px;
     object-fit: contain;
+    flex: 0 0 auto;
 }
 .course-source {
     font-size: clamp(14px, 1.4vw, 16px) !important;
     font-weight: 600;
     color: black;
-    margin-bottom: 8px;
+    margin-bottom: 0;
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 .course-date {
     font-size: clamp(12px, 1vw, 14px) !important;
@@ -451,6 +463,18 @@ body {
 .resume-section ul { padding-left: 20px; }
 .resume-section li { margin-bottom: 4px; }
 
+/* the contact line is running text, not a flex strip: .textlink carries a
+   -15px top margin meant for the card links, which lifted the anchors out
+   of the line and stacked the separators underneath them */
+.resume-contact { line-height: 1.9; }
+.resume-contact a { color: inherit; text-decoration: none; }
+.resume-contact a:hover { text-decoration: underline; }
+
+/* .about-section insets its text by 10px, but a bootstrap .row pulls itself
+   12px wider than its parent on both sides, so the CTA buttons hung outside
+   the text column. Zero the negative gutters and inset the columns to match. */
+.content > .row { --bs-gutter-x: 20px; margin-left: 0; margin-right: 0; }
+
 /* ── CONTACT ────────────────────────────────────────────── */
 .contact-info { font-size: 16px; margin-bottom: 6px; }
 .contact-control {
@@ -515,17 +539,18 @@ body {
 }
 
 /* monogram fallback when an issuer has no logo file */
+/* only reached if an issuer logo file is ever missing */
 .course-mono {
     display: inline-grid;
     place-items: center;
-    width: 40px;
-    height: 40px;
-    border: solid 1px #eeeff2;
-    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
     background: #f3f4f6;
     color: #6b7280;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
+    flex: 0 0 auto;
 }
 .course-badge { padding: 3px 7px; }
 
@@ -633,10 +658,16 @@ body > .row > .col { padding-left: 0; padding-right: 0; }
     margin-bottom: 6px;
 }
 
-/* justified text needs a wide enough measure; below 600px the word
-   gaps get large enough to hurt, so fall back to a ragged right edge */
+/* justified on every width, phones included. Automatic hyphenation and
+   a break-word fallback keep the word gaps from opening up on a narrow
+   measure, which is the reason justified text usually fails there. */
+.about-section, .blog-content-body {
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    overflow-wrap: break-word;
+}
 @media (max-width: 600px) {
-    .about-section, .blog-content-body { text-align: left; }
+    .about-section, .blog-content-body { text-align: justify; }
 }
 
 /* ── INTERACTIVE BLOCKS CARRIED OVER FROM THE PROJECT WRITE-UPS ──
@@ -845,9 +876,41 @@ body > .row > .col { padding-left: 0; padding-right: 0; }
     cursor: zoom-in;
 }
 
-/* no screenshot should run taller than a screen inside an article */
-.blog-content-body img,
-.rf-figure img { max-height: 480px; object-fit: contain; }
+/* certificate cards behave like the project cards on /project: the card
+   lifts on hover and the scan dims behind a button that slides up. Only
+   cards that actually carry a scan do this, because only those open
+   anything when you click them. */
+.course-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; }
+.course-card:not(.has-shot):hover { border-color: #dfe6ee; }
+.course-card.has-shot { cursor: pointer; }
+.course-card.has-shot:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border: 2px solid #e6f3ff;
+}
+.cert-shot { position: relative; }
+.cert-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.82);
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.course-card.has-shot:hover .cert-overlay { opacity: 1; }
+.cert-overlay .overlay-btn { font-size: 14px; padding: 6px 14px; }
+.course-card.has-shot:hover .cert-overlay .overlay-btn { transform: translateY(0); }
+
+/* a finger has no hover: show the button outright on touch screens */
+@media (hover: none) {
+    .course-card.has-shot:hover { transform: none; box-shadow: none; border: solid 1px #eeeff2; }
+    .cert-overlay { opacity: 0; }
+}
+
+/* superseded by the CONTENT PHOTOS block below, which gives every
+   figure the same width and lets its height follow its own shape */
 
 /* .rf-phone: for portrait phone screenshots that would otherwise run
    very tall and narrow (e.g. RafiFinance app screens). Desktop keeps
@@ -999,36 +1062,48 @@ a:hover > .ext-arrow { opacity: 1; }
 }
 
 /* ── CONTENT PHOTOS ──────────────────────────────────────────────────
-   Sized to the image, not to a fixed box. A landscape shot fills the
-   column; a tall one (a phone screenshot, a stacked infographic) keeps
-   its own shape and is limited by height instead, so it renders as
-   large as the page allows rather than being letterboxed into a wide
-   frame with empty gutters either side. Click any of them for the
-   full-size lightbox. Certificate scans and avatars are excluded. */
+   One width for every photo on the page. Each figure spans the column
+   and its height follows its own shape, so no two shots sit at
+   different widths and nothing is cropped to make them match. A shot
+   that is not landscape is letterboxed into a 16:9 frame instead of
+   running a whole screen tall, which keeps the column edge straight
+   the whole way down. Click any of them for the full-size lightbox.
+   Certificate scans, avatars and phone screenshots are excluded. */
 .blog-content-body img,
 .rf-figure img,
 .rf-figure-lg img,
 .blog-img,
-.blog-main-img {
+.p-hero img {
+    width: 100%;
     max-width: 100%;
-    max-height: 900px;
-    width: auto;
     height: auto;
+    max-height: none;
     aspect-ratio: auto;
     object-fit: contain;
     display: block;
-    margin: 0 auto;
+    margin: 0;
     border: solid 1px #eeeff2;
     border-radius: 10px;
     background: #fff;
     cursor: zoom-in;
 }
-@media (max-width: 768px) {
-    .blog-content-body img,
-    .rf-figure img,
-    .rf-figure-lg img,
-    .blog-img,
-    .blog-main-img { max-height: 560px; }
+.blog-main-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    border: solid 1px #eeeff2;
+    border-radius: 10px;
+    background: #fff;
+    cursor: zoom-in;
+}
+/* a shot that is not landscape sits inside a landscape frame, so it
+   keeps the same width as everything else without towering over it */
+.rf-portrait img {
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    background: #f7f8fa;
 }
 /* excluded: not content photos */
 .cert-shot img,
@@ -1075,4 +1150,111 @@ img.education-image,
 a.contributor-chip:hover .contributor-chip-avatar {
     border-color: #c7cbd1;
     box-shadow: 0 0 0 3px rgba(5, 5, 5, .07);
+}
+
+/* ── PROJECT COVER ── the project's own hero section, shown once at the
+   top of its case study. It takes the same width as every figure
+   further down the page, so the column edge is straight from the cover
+   to the last screenshot, and nothing is cropped to get there. ── */
+.p-hero { margin: 0 0 18px; }
+.p-hero img { border-radius: 12px; }
+
+/* ── PHONE SCREENSHOTS ── re-stated after the CONTENT PHOTOS block so a
+   portrait app screen keeps its tilted-card treatment instead of being
+   stretched to the full column width. ── */
+.rf-phone img {
+    width: auto;
+    max-height: 340px;
+    object-fit: contain;
+}
+@media (min-width: 601px) {
+    .rf-phone img { max-width: 70%; margin: 0 auto; }
+}
+@media (max-width: 600px) {
+    .rf-phone img { width: 100%; max-height: 220px; object-fit: cover; object-position: top; }
+}
+
+/* ── PROJECT CARD LINKS ── the whole card is one click target, and the
+   hover overlay carries the real links: the case study, the live site
+   and the repository. The hitbox is a stretched anchor rather than a
+   wrapper, so the overlay's own links stay valid and clickable. The
+   overlay ignores the pointer until the card is hovered, so a click
+   anywhere else on the card still reaches the hitbox underneath. ── */
+.project-card { position: relative; }
+.card-hitbox {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+}
+.image-overlay {
+    z-index: 2;
+    pointer-events: none;
+    gap: 2px;
+}
+.project-card:hover .image-overlay { pointer-events: auto; }
+.image-overlay .overlay-btn {
+    font-size: 14px;
+    padding: 6px 14px;
+    margin: 2px;
+    display: inline-block;
+}
+
+/* ── PLAIN CODE LISTING ── the blog has no js/project.js, so a listing
+   there is a plain block rather than one of the tabbed formula cards ── */
+.p-code {
+    background: #f7f8fa;
+    border: solid 1px #eeeff2;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-x: auto;
+    margin: 12px 0 16px;
+    white-space: pre;
+    color: #374151;
+}
+.p-code-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #9ca3af;
+    margin: 18px 0 6px;
+}
+.p-callout {
+    border-left: solid 3px #eeeff2;
+    padding: 2px 0 2px 14px;
+    margin: 16px 0;
+    color: #4b5563;
+}
+
+/* ── ABOUT ROWS ON A PHONE ── each entry under About, Education and
+   Experience is a title on the left and its date on the right. Left to
+   Bootstrap's flex-wrap the date drops onto its own line and loses that
+   pairing, so below 600px the row stays on one line: the title block is
+   allowed to shrink and the date is pinned to the right edge. ── */
+/* headings and the flex rows are not running text, so they keep a ragged
+   right edge: justifying a three-word job title spreads it across the
+   column and reads as a mistake */
+.about-section .d-flex, .about-section p > b, .about-section .textlink { text-align: left; }
+@media (max-width: 600px) {
+    .about-section > .d-flex.justify-content-between {
+        /* beats Bootstrap's .flex-wrap, which is declared !important */
+        flex-wrap: nowrap !important;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .about-section > .d-flex.justify-content-between > .d-flex {
+        flex-wrap: nowrap !important;
+        min-width: 0;
+    }
+    .about-section .education-image { flex: 0 0 auto; }
+    .about-section > .d-flex.justify-content-between > .text-silent {
+        flex: 0 0 auto;
+        margin-left: auto;
+        text-align: right;
+        white-space: nowrap;
+    }
 }

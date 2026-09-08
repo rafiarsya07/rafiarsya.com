@@ -21,100 +21,31 @@
                 <hr>
                 <div class="row">
                     <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <a href="/thoughtlog" class="anone">
                         <div class="project-card d-flex align-items-center">
+                            <a href="/senara" class="anone card-hitbox" aria-label="SENARA Artfest 2026, project details"></a>
                             <div class="w100">
                                 <div class="project-header d-flex align-items-end justify-content-between">
-                                    <div class="project-title">ThoughtLog</div>
+                                    <div class="project-title">SENARA Artfest 2026</div>
                                     <div class="text-silent text14">2026</div>
                                 </div>
-                                <div class="text-silent project-desc">A full-stack personal blog with a CMS I built from scratch, no WordPress, no Ghost, no static-site generator. Write in Markdown with live preview, save drafts, schedule posts to publish themselves, and browse by tag. Reading is public; writing sits behind real authentication. It runs on a mini PC under my desk and reaches the internet through a Cloudflare Tunnel at blog.rafiarsya.com.</div>
+                                <div class="text-silent project-desc">The website for SENARA Creative Artfest, the student art exhibition run by PPI Malaysia. For 2026 the event is a collaboration with Instellar, so I re-themed the existing static site around the new artwork and added a full Online Exhibition section with category pages and artwork detail pages.</div>
                                 <div class="project-details">
                                     <div class="hr0-10"></div>
-                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Node.js</span><span class="badge blog-badge badge-green">Express</span><span class="badge blog-badge badge-purple">PostgreSQL</span><span class="badge blog-badge badge-orange">JWT Auth</span></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">HTML</span><span class="badge blog-badge badge-green">CSS</span><span class="badge blog-badge badge-purple">JavaScript</span><span class="badge blog-badge badge-orange">Bootstrap 5</span></div>
                                 </div>
                                 <div class="project-image-container">
-                                    <div class="project-mono">T</div>
+                                    <img src="image/assets/senara/live-home-hero.jpg" alt="SENARA Creative Artfest 2026 homepage hero" loading="lazy" decoding="async">
                                     <div class="image-overlay">
-                                        <span class="anone badge overlay-btn">Project Details</span>
+                                        <a class="anone badge overlay-btn" href="/senara">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://senara.ppimalaysia.id/" target="_blank" rel="noopener noreferrer">Website</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        </a>
                     </div>
                     <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <a href="/snip" class="anone">
                         <div class="project-card d-flex align-items-center">
-                            <div class="w100">
-                                <div class="project-header d-flex align-items-end justify-content-between">
-                                    <div class="project-title">Snip URL Shortener</div>
-                                    <div class="text-silent text14">2026</div>
-                                </div>
-                                <div class="text-silent project-desc">A serverless URL shortener with click analytics. Three AWS Lambda functions behind API Gateway, a single DynamoDB table, all described as infrastructure-as-code with AWS SAM. Built to turn an AWS Developer Associate (DVA-C02) certificate into something real, deployable, and honest about where it actually runs today.</div>
-                                <div class="project-details">
-                                    <div class="hr0-10"></div>
-                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">AWS Lambda</span><span class="badge blog-badge badge-green">DynamoDB</span><span class="badge blog-badge badge-purple">API Gateway</span><span class="badge blog-badge badge-orange">AWS SAM</span></div>
-                                </div>
-                                <div class="project-image-container">
-                                    <div class="project-mono">SUS</div>
-                                    <div class="image-overlay">
-                                        <span class="anone badge overlay-btn">Project Details</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <a href="/papermind" class="anone">
-                        <div class="project-card d-flex align-items-center">
-                            <div class="w100">
-                                <div class="project-header d-flex align-items-end justify-content-between">
-                                    <div class="project-title">PaperMind</div>
-                                    <div class="text-silent text14">2026</div>
-                                </div>
-                                <div class="text-silent project-desc">A local RAG-powered academic paper analyzer. Upload any PDF, ask questions, get structured summaries, running 100% privately on self-hosted hardware. Zero cloud, zero cost, zero data leakage.</div>
-                                <div class="project-details">
-                                    <div class="hr0-10"></div>
-                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">RAG</span><span class="badge blog-badge badge-green">LLM</span><span class="badge blog-badge badge-purple">React + Vite</span><span class="badge blog-badge badge-orange">FastAPI</span></div>
-                                </div>
-                                <div class="project-image-container">
-                                    <div class="project-mono">P</div>
-                                    <div class="image-overlay">
-                                        <span class="anone badge overlay-btn">Project Details</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <a href="/idfest" class="anone">
-                        <div class="project-card d-flex align-items-center">
-                            <div class="w100">
-                                <div class="project-header d-flex align-items-end justify-content-between">
-                                    <div class="project-title">IDFEST 2026 Website</div>
-                                    <div class="text-silent text14">2026</div>
-                                </div>
-                                <div class="text-silent project-desc">The official website for IDFEST 2026, an Indonesian cultural festival organized by PPI Universiti Malaya. A collaborative build translating Figma designs into a fast, static Next.js frontend across the home timeline, Art Exhibition, and Musical Theater sections.</div>
-                                <div class="project-details">
-                                    <div class="hr0-10"></div>
-                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Next.js 16</span><span class="badge blog-badge badge-green">React 19</span><span class="badge blog-badge badge-purple">TypeScript</span><span class="badge blog-badge badge-orange">Tailwind CSS v4</span></div>
-                                </div>
-                                <div class="project-image-container">
-                                    <div class="project-mono">I</div>
-                                    <div class="image-overlay">
-                                        <span class="anone badge overlay-btn">Project Details</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <a href="/aievaldashboard" class="anone">
-                        <div class="project-card d-flex align-items-center">
+                            <a href="/aievaldashboard" class="anone card-hitbox" aria-label="AI Eval Dashboard, project details"></a>
                             <div class="w100">
                                 <div class="project-header d-flex align-items-end justify-content-between">
                                     <div class="project-title">AI Eval Dashboard</div>
@@ -128,16 +59,16 @@
                                 <div class="project-image-container">
                                     <div class="project-mono">AED</div>
                                     <div class="image-overlay">
-                                        <span class="anone badge overlay-btn">Project Details</span>
+                                        <a class="anone badge overlay-btn" href="/aievaldashboard">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/ai-eval-dashboard" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        </a>
                     </div>
                     <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <a href="/pricetracker" class="anone">
                         <div class="project-card d-flex align-items-center">
+                            <a href="/pricetracker" class="anone card-hitbox" aria-label="PriceWatch, project details"></a>
                             <div class="w100">
                                 <div class="project-header d-flex align-items-end justify-content-between">
                                     <div class="project-title">PriceWatch</div>
@@ -151,12 +82,12 @@
                                 <div class="project-image-container">
                                     <div class="project-mono">P</div>
                                     <div class="image-overlay">
-                                        <span class="anone badge overlay-btn">Project Details</span>
+                                        <a class="anone badge overlay-btn" href="/pricetracker">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/price-tracker-extension" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -166,238 +97,32 @@
                 <hr>
                 <div class="row">
                     <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <a href="/arenaduel" class="anone">
                         <div class="project-card d-flex align-items-center">
+                            <a href="/papermind" class="anone card-hitbox" aria-label="PaperMind, project details"></a>
                             <div class="w100">
                                 <div class="project-header d-flex align-items-end justify-content-between">
-                                    <div class="project-title">Arena Duel</div>
+                                    <div class="project-title">PaperMind</div>
                                     <div class="text-silent text14">2026</div>
                                 </div>
-                                <div class="text-silent project-desc">A server-authoritative real-time multiplayer duel. Two players connect from different devices, lock in a secret action every round, and the server resolves the outcome fairly and deterministically. No database, no accounts, no AI, just the hard parts: state machines, race conditions, and cheat-proof multiplayer architecture.</div>
+                                <div class="text-silent project-desc">A local RAG-powered academic paper analyzer. Upload any PDF, ask questions, get structured summaries, running 100% privately on self-hosted hardware. Zero cloud, zero cost, zero data leakage.</div>
                                 <div class="project-details">
                                     <div class="hr0-10"></div>
-                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Node.js</span><span class="badge blog-badge badge-green">Socket.IO</span><span class="badge blog-badge badge-purple">Express</span><span class="badge blog-badge badge-orange">React</span></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">RAG</span><span class="badge blog-badge badge-green">LLM</span><span class="badge blog-badge badge-purple">React + Vite</span><span class="badge blog-badge badge-orange">FastAPI</span></div>
                                 </div>
                                 <div class="project-image-container">
-                                    <div class="project-mono">AD</div>
+                                    <div class="project-mono">P</div>
                                     <div class="image-overlay">
-                                        <span class="anone badge overlay-btn">Project Details</span>
+                                        <a class="anone badge overlay-btn" href="/papermind">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://papermind.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        </a>
                     </div>
                     <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <a href="/reminderme" class="anone">
                         <div class="project-card d-flex align-items-center">
-                            <div class="w100">
-                                <div class="project-header d-flex align-items-end justify-content-between">
-                                    <div class="project-title">Reminder Me</div>
-                                    <div class="text-silent text14">2026</div>
-                                </div>
-                                <div class="text-silent project-desc">A personal “companion agent” for daily life as a student, habits, focus sessions, tasks, exams, prayer times, health, and journalling, all in one offline-first app. Built as an installable PWA and wrapped as a real Android APK via a Trusted Web Activity. No backend, no account, no cloud, everything lives on the device.</div>
-                                <div class="project-details">
-                                    <div class="hr0-10"></div>
-                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">React 18</span><span class="badge blog-badge badge-green">Vite</span><span class="badge blog-badge badge-purple">PWA</span><span class="badge blog-badge badge-orange">Service Worker</span></div>
-                                </div>
-                                <div class="project-image-container">
-                                    <div class="project-mono">RM</div>
-                                    <div class="image-overlay">
-                                        <span class="anone badge overlay-btn">Project Details</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <a href="/handgesture" class="anone">
-                        <div class="project-card d-flex align-items-center">
-                            <div class="w100">
-                                <div class="project-header d-flex align-items-end justify-content-between">
-                                    <div class="project-title">HandGesture</div>
-                                    <div class="text-silent text14">2024</div>
-                                </div>
-                                <div class="text-silent project-desc">Draw on screen with just your index finger, real-time hand landmark detection, gesture classification, and canvas rendering from a live webcam feed. No hardware required.</div>
-                                <div class="project-details">
-                                    <div class="hr0-10"></div>
-                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Python</span><span class="badge blog-badge badge-green">MediaPipe</span><span class="badge blog-badge badge-purple">OpenCV</span><span class="badge blog-badge badge-orange">Computer Vision</span></div>
-                                </div>
-                                <div class="project-image-container">
-                                    <div class="project-mono">H</div>
-                                    <div class="image-overlay">
-                                        <span class="anone badge overlay-btn">Project Details</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <a href="/cropdisease" class="anone">
-                        <div class="project-card d-flex align-items-center">
-                            <div class="w100">
-                                <div class="project-header d-flex align-items-end justify-content-between">
-                                    <div class="project-title">Crop Disease Detector</div>
-                                    <div class="text-silent text14">2026</div>
-                                </div>
-                                <div class="text-silent project-desc">An AI model that identifies plant diseases from a single leaf photo. MobileNetV2 + Transfer Learning trained on 87,000+ images across 38 disease classes. ~97% accuracy. Live on Hugging Face Spaces, free to use.</div>
-                                <div class="project-details">
-                                    <div class="hr0-10"></div>
-                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">TensorFlow</span><span class="badge blog-badge badge-green">MobileNetV2</span><span class="badge blog-badge badge-purple">Transfer Learning</span><span class="badge blog-badge badge-orange">PlantVillage Dataset</span></div>
-                                </div>
-                                <div class="project-image-container">
-                                    <div class="project-mono">CDD</div>
-                                    <div class="image-overlay">
-                                        <span class="anone badge overlay-btn">Project Details</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <a href="/rafifinance" class="anone">
-                        <div class="project-card d-flex align-items-center">
-                            <div class="w100">
-                                <div class="project-header d-flex align-items-end justify-content-between">
-                                    <div class="project-title">RafiFinance</div>
-                                    <div class="text-silent text14">2026</div>
-                                </div>
-                                <div class="text-silent project-desc">A complete personal finance tracker built as a single HTML file. No server, no database, no framework. Transactions, budgets, saving goals, health score, 6-month analysis, works offline as a PWA.</div>
-                                <div class="project-details">
-                                    <div class="hr0-10"></div>
-                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Vanilla JS</span><span class="badge blog-badge badge-green">Single HTML File</span><span class="badge blog-badge badge-purple">PWA</span><span class="badge blog-badge badge-orange">localStorage</span></div>
-                                </div>
-                                <div class="project-image-container">
-                                    <div class="project-mono">R</div>
-                                    <div class="image-overlay">
-                                        <span class="anone badge overlay-btn">Project Details</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <a href="/nase" class="anone">
-                        <div class="project-card d-flex align-items-center">
-                            <div class="w100">
-                                <div class="project-header d-flex align-items-end justify-content-between">
-                                    <div class="project-title">NASE Accessibility</div>
-                                    <div class="text-silent text14">2025</div>
-                                </div>
-                                <div class="text-silent project-desc">A full accessibility audit and redesign of the NASE platform for visually impaired users. 23 issues found, categorised by WCAG 2.1 severity, with redesigned components and an AI-powered contrast analysis pipeline.</div>
-                                <div class="project-details">
-                                    <div class="hr0-10"></div>
-                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Accessibility</span><span class="badge blog-badge badge-green">WCAG 2.1 AA</span><span class="badge blog-badge badge-purple">HCI Course</span><span class="badge blog-badge badge-orange">Python + OpenCV</span></div>
-                                </div>
-                                <div class="project-image-container">
-                                    <div class="project-mono">NA</div>
-                                    <div class="image-overlay">
-                                        <span class="anone badge overlay-btn">Project Details</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <a href="/briskwalk" class="anone">
-                        <div class="project-card d-flex align-items-center">
-                            <div class="w100">
-                                <div class="project-header d-flex align-items-end justify-content-between">
-                                    <div class="project-title">BriskWalk</div>
-                                    <div class="text-silent text14">2026</div>
-                                </div>
-                                <div class="text-silent project-desc">Event registration platform for PPI Malaysia&#x27;s annual community charity walk. Designed in Figma, built with vanilla HTML/CSS/JS, multi-step form, client-side image compression, and a Google Sheets backend.</div>
-                                <div class="project-details">
-                                    <div class="hr0-10"></div>
-                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Figma</span><span class="badge blog-badge badge-green">Vanilla JS</span><span class="badge blog-badge badge-purple">Canvas API</span><span class="badge blog-badge badge-orange">Google Apps Script</span></div>
-                                </div>
-                                <div class="project-image-container">
-                                    <div class="project-mono">B</div>
-                                    <div class="image-overlay">
-                                        <span class="anone badge overlay-btn">Project Details</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <a href="/steamsql" class="anone">
-                        <div class="project-card d-flex align-items-center">
-                            <div class="w100">
-                                <div class="project-header d-flex align-items-end justify-content-between">
-                                    <div class="project-title">Steam Market Intelligence</div>
-                                    <div class="text-silent text14">2026</div>
-                                </div>
-                                <div class="text-silent project-desc">A live, in-browser SQL analytics dashboard, real SQLite compiled to WebAssembly, querying a 1,400-title game-market dataset on every page load. No backend, no precomputed export, just a database and a query engine running on the visitor&#x27;s machine.</div>
-                                <div class="project-details">
-                                    <div class="hr0-10"></div>
-                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">SQLite</span><span class="badge blog-badge badge-green">sql.js (WASM)</span><span class="badge blog-badge badge-purple">Window Functions</span><span class="badge blog-badge badge-orange">Recursive CTEs</span></div>
-                                </div>
-                                <div class="project-image-container">
-                                    <div class="project-mono">SMI</div>
-                                    <div class="image-overlay">
-                                        <span class="anone badge overlay-btn">Project Details</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <a href="/csastudy" class="anone">
-                        <div class="project-card d-flex align-items-center">
-                            <div class="w100">
-                                <div class="project-header d-flex align-items-end justify-content-between">
-                                    <div class="project-title">CSA Study App</div>
-                                    <div class="text-silent text14">2026</div>
-                                </div>
-                                <div class="text-silent project-desc">A self-contained exam prep tool for WRES1201 (Computer Systems Architecture). Topic guide, formula reference, MCQ drills, and interactive visualizers for cache mapping, Hamming codes, and arithmetic shifts, with every number re-randomized on each reload so it never gets stale.</div>
-                                <div class="project-details">
-                                    <div class="hr0-10"></div>
-                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Vanilla JS</span><span class="badge blog-badge badge-green">Single HTML File</span><span class="badge blog-badge badge-purple">Procedural Question Generation</span><span class="badge blog-badge badge-orange">Lucide Icons</span></div>
-                                </div>
-                                <div class="project-image-container">
-                                    <div class="project-mono">CSA</div>
-                                    <div class="image-overlay">
-                                        <span class="anone badge overlay-btn">Project Details</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <a href="/resumematch" class="anone">
-                        <div class="project-card d-flex align-items-center">
-                            <div class="w100">
-                                <div class="project-header d-flex align-items-end justify-content-between">
-                                    <div class="project-title">Resume Match</div>
-                                    <div class="text-silent text14">2026</div>
-                                </div>
-                                <div class="text-silent project-desc">An algorithmic resume-to-job scoring engine, upload a resume PDF and a job description, get a fit score with a full breakdown of matched skills, missing skills, and extra value. No AI model, no API key, no database, pure tokenization, synonym canonicalization, and weighted scoring.</div>
-                                <div class="project-details">
-                                    <div class="hr0-10"></div>
-                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">React + Vite</span><span class="badge blog-badge badge-green">Node.js + Express</span><span class="badge blog-badge badge-purple">pdfjs-dist</span><span class="badge blog-badge badge-orange">Tailwind</span></div>
-                                </div>
-                                <div class="project-image-container">
-                                    <div class="project-mono">RM</div>
-                                    <div class="image-overlay">
-                                        <span class="anone badge overlay-btn">Project Details</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <a href="/digitrecognition" class="anone">
-                        <div class="project-card d-flex align-items-center">
+                            <a href="/digitrecognition" class="anone card-hitbox" aria-label="AI Digit Recognizer, project details"></a>
                             <div class="w100">
                                 <div class="project-header d-flex align-items-end justify-content-between">
                                     <div class="project-title">AI Digit Recognizer</div>
@@ -411,16 +136,297 @@
                                 <div class="project-image-container">
                                     <div class="project-mono">ADR</div>
                                     <div class="image-overlay">
-                                        <span class="anone badge overlay-btn">Project Details</span>
+                                        <a class="anone badge overlay-btn" href="/digitrecognition">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/ai-digit-recognizer" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        </a>
                     </div>
                     <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <a href="/largenumber" class="anone">
                         <div class="project-card d-flex align-items-center">
+                            <a href="/snip" class="anone card-hitbox" aria-label="Snip URL Shortener, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">Snip URL Shortener</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">A serverless URL shortener with click analytics. Three AWS Lambda functions behind API Gateway, a single DynamoDB table, all described as infrastructure-as-code with AWS SAM. Built to turn an AWS Developer Associate (DVA-C02) certificate into something real, deployable, and honest about where it actually runs today.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">AWS Lambda</span><span class="badge blog-badge badge-green">DynamoDB</span><span class="badge blog-badge badge-purple">API Gateway</span><span class="badge blog-badge badge-orange">AWS SAM</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <div class="project-mono">SUS</div>
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/snip">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://snip.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/Snip---Serverless-URL-Shortener" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
+                            <a href="/nalar" class="anone card-hitbox" aria-label="Nalar, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">Nalar</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">A full-stack personal blog with a CMS I built from scratch, no WordPress, no Ghost, no static-site generator. Write in Markdown with live preview, save drafts, schedule posts to publish themselves, and browse by tag. Reading is public; writing sits behind real authentication. It runs on a mini PC under my desk and reaches the internet through a Cloudflare Tunnel at blog.rafiarsya.com.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Node.js</span><span class="badge blog-badge badge-green">Express</span><span class="badge blog-badge badge-purple">PostgreSQL</span><span class="badge blog-badge badge-orange">JWT Auth</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <img src="image/assets/nalar/live-home.jpg" alt="Nalar home page" loading="lazy" decoding="async">
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/nalar">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://blog.rafiarsya.com/" target="_blank" rel="noopener noreferrer">Website</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/thoughtlog" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
+                            <a href="/cropdisease" class="anone card-hitbox" aria-label="Crop Disease Detector, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">Crop Disease Detector</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">An AI model that identifies plant diseases from a single leaf photo. MobileNetV2 + Transfer Learning trained on 87,000+ images across 38 disease classes. ~97% accuracy. Live on Hugging Face Spaces, free to use.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">TensorFlow</span><span class="badge blog-badge badge-green">MobileNetV2</span><span class="badge blog-badge badge-purple">Transfer Learning</span><span class="badge blog-badge badge-orange">PlantVillage Dataset</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <div class="project-mono">CDD</div>
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/cropdisease">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://huggingface.co/spaces/rafiarsya/crop-disease-detector" target="_blank" rel="noopener noreferrer">Website</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
+                            <a href="/idfest" class="anone card-hitbox" aria-label="IDFEST 2026 Website, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">IDFEST 2026 Website</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">The official website for IDFEST 2026, an Indonesian cultural festival organized by PPI Universiti Malaya. A collaborative build translating Figma designs into a fast, static Next.js frontend across the home timeline, Art Exhibition, and Musical Theater sections.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Next.js 16</span><span class="badge blog-badge badge-green">React 19</span><span class="badge blog-badge badge-purple">TypeScript</span><span class="badge blog-badge badge-orange">Tailwind CSS v4</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <img src="image/assets/idfest/live-home-hero.jpg" alt="IDFEST 2026 homepage hero" loading="lazy" decoding="async">
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/idfest">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://idfest.ppiunimalaya.id/" target="_blank" rel="noopener noreferrer">Website</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
+                            <a href="/steamsql" class="anone card-hitbox" aria-label="Steam Market Intelligence, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">Steam Market Intelligence</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">A live, in-browser SQL analytics dashboard, real SQLite compiled to WebAssembly, querying a 1,400-title game-market dataset on every page load. No backend, no precomputed export, just a database and a query engine running on the visitor&#x27;s machine.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">SQLite</span><span class="badge blog-badge badge-green">sql.js (WASM)</span><span class="badge blog-badge badge-purple">Window Functions</span><span class="badge blog-badge badge-orange">Recursive CTEs</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <div class="project-mono">SMI</div>
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/steamsql">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://steam.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/steam-sql-analytics" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
+                            <a href="/arenaduel" class="anone card-hitbox" aria-label="Arena Duel, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">Arena Duel</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">A server-authoritative real-time multiplayer duel. Two players connect from different devices, lock in a secret action every round, and the server resolves the outcome fairly and deterministically. No database, no accounts, no AI, just the hard parts: state machines, race conditions, and cheat-proof multiplayer architecture.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Node.js</span><span class="badge blog-badge badge-green">Socket.IO</span><span class="badge blog-badge badge-purple">Express</span><span class="badge blog-badge badge-orange">React</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <div class="project-mono">AD</div>
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/arenaduel">Project Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
+                            <a href="/resumematch" class="anone card-hitbox" aria-label="Resume Match, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">Resume Match</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">An algorithmic resume-to-job scoring engine, upload a resume PDF and a job description, get a fit score with a full breakdown of matched skills, missing skills, and extra value. No AI model, no API key, no database, pure tokenization, synonym canonicalization, and weighted scoring.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">React + Vite</span><span class="badge blog-badge badge-green">Node.js + Express</span><span class="badge blog-badge badge-purple">pdfjs-dist</span><span class="badge blog-badge badge-orange">Tailwind</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <div class="project-mono">RM</div>
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/resumematch">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://resumematch.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
+                            <a href="/nase" class="anone card-hitbox" aria-label="NASE Accessibility, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">NASE Accessibility</div>
+                                    <div class="text-silent text14">2025</div>
+                                </div>
+                                <div class="text-silent project-desc">A full accessibility audit and redesign of the NASE platform for visually impaired users. 23 issues found, categorised by WCAG 2.1 severity, with redesigned components and an AI-powered contrast analysis pipeline.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Accessibility</span><span class="badge blog-badge badge-green">WCAG 2.1 AA</span><span class="badge blog-badge badge-purple">HCI Course</span><span class="badge blog-badge badge-orange">Python + OpenCV</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <div class="project-mono">NA</div>
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/nase">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://hci.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
+                            <a href="/handgesture" class="anone card-hitbox" aria-label="HandGesture, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">HandGesture</div>
+                                    <div class="text-silent text14">2024</div>
+                                </div>
+                                <div class="text-silent project-desc">Draw on screen with just your index finger, real-time hand landmark detection, gesture classification, and canvas rendering from a live webcam feed. No hardware required.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Python</span><span class="badge blog-badge badge-green">MediaPipe</span><span class="badge blog-badge badge-purple">OpenCV</span><span class="badge blog-badge badge-orange">Computer Vision</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <div class="project-mono">H</div>
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/handgesture">Project Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
+                            <a href="/reminderme" class="anone card-hitbox" aria-label="Reminder Me, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">Reminder Me</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">A personal “companion agent” for daily life as a student, habits, focus sessions, tasks, exams, prayer times, health, and journalling, all in one offline-first app. Built as an installable PWA and wrapped as a real Android APK via a Trusted Web Activity. No backend, no account, no cloud, everything lives on the device.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">React 18</span><span class="badge blog-badge badge-green">Vite</span><span class="badge blog-badge badge-purple">PWA</span><span class="badge blog-badge badge-orange">Service Worker</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <div class="project-mono">RM</div>
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/reminderme">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://partner.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/Reminder-Rafi" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
+                            <a href="/briskwalk" class="anone card-hitbox" aria-label="BriskWalk, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">BriskWalk</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">Event registration platform for PPI Malaysia&#x27;s annual community charity walk. Designed in Figma, built with vanilla HTML/CSS/JS, multi-step form, client-side image compression, and a Google Sheets backend.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Figma</span><span class="badge blog-badge badge-green">Vanilla JS</span><span class="badge blog-badge badge-purple">Canvas API</span><span class="badge blog-badge badge-orange">Google Apps Script</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <div class="project-mono">B</div>
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/briskwalk">Project Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
+                            <a href="/rafifinance" class="anone card-hitbox" aria-label="RafiFinance, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">RafiFinance</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">A complete personal finance tracker built as a single HTML file. No server, no database, no framework. Transactions, budgets, saving goals, health score, 6-month analysis, works offline as a PWA.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Vanilla JS</span><span class="badge blog-badge badge-green">Single HTML File</span><span class="badge blog-badge badge-purple">PWA</span><span class="badge blog-badge badge-orange">localStorage</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <div class="project-mono">R</div>
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/rafifinance">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://finance.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
+                            <a href="/largenumber" class="anone card-hitbox" aria-label="Large Number Arithmetic, project details"></a>
                             <div class="w100">
                                 <div class="project-header d-flex align-items-end justify-content-between">
                                     <div class="project-title">Large Number Arithmetic</div>
@@ -434,16 +440,40 @@
                                 <div class="project-image-container">
                                     <div class="project-mono">LNA</div>
                                     <div class="image-overlay">
-                                        <span class="anone badge overlay-btn">Project Details</span>
+                                        <a class="anone badge overlay-btn" href="/largenumber">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/WIA1002_LargeNumberArithmetic" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        </a>
                     </div>
                     <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <a href="/llmclassification" class="anone">
                         <div class="project-card d-flex align-items-center">
+                            <a href="/csastudy" class="anone card-hitbox" aria-label="CSA Study App, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">CSA Study App</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">A self-contained exam prep tool for WRES1201 (Computer Systems Architecture). Topic guide, formula reference, MCQ drills, and interactive visualizers for cache mapping, Hamming codes, and arithmetic shifts, with every number re-randomized on each reload so it never gets stale.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Vanilla JS</span><span class="badge blog-badge badge-green">Single HTML File</span><span class="badge blog-badge badge-purple">Procedural Question Generation</span><span class="badge blog-badge badge-orange">Lucide Icons</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <div class="project-mono">CSA</div>
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/csastudy">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://csastudy.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
+                            <a href="/llmclassification" class="anone card-hitbox" aria-label="LLM Response Preference Baseline, project details"></a>
                             <div class="w100">
                                 <div class="project-header d-flex align-items-end justify-content-between">
                                     <div class="project-title">LLM Response Preference Baseline</div>
@@ -457,12 +487,12 @@
                                 <div class="project-image-container">
                                     <div class="project-mono">CAP</div>
                                     <div class="image-overlay">
-                                        <span class="anone badge overlay-btn">Project Details</span>
+                                        <a class="anone badge overlay-btn" href="/llmclassification">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/llm-classification" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        </a>
                     </div>
                 </div>
             </div>

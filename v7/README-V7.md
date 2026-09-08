@@ -76,7 +76,7 @@ the SVG loader is now ~20 lines at the bottom of `main.js`.
 
 ## Still to add
 
-- Cover images for ThoughtLog, snip, Arena Duel, Reminder Me, Steam
+- Cover images for Nalar, snip, Arena Duel, Reminder Me, Steam
   Market Intelligence, CSA Study App and Resume Match. Until they exist
   each card shows an initials tile, which is also what the v4 site did.
 - Issuer logos `icon/udemy.png`, `icon/freecodecamp.png`,
