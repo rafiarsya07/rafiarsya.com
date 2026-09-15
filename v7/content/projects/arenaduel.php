@@ -98,12 +98,29 @@ after:   A.hp = 60 - 18 = 42
 </div>
         </div>
         <br>
+
+        <h3>Links</h3>
+        <div class="blog-content-body">
+<a class="p-link-btn" href="https://arena.rafiarsya.com" rel="noopener noreferrer" target="_blank">
+<svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" x2="22" y1="12" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+<span class="p-link-btn-label">arena.rafiarsya.com</span>
+</a>
+<a class="p-link-btn" href="https://github.com/rafiarsya07?tab=repositories" rel="noopener noreferrer" target="_blank">
+<svg viewbox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>
+<span class="p-link-btn-label">GitHub</span>
+</a>
+        </div>
+        <br>
         <div class="d-flex">
             <a href="/project" class="btn btn-main button-border d-flex align-items-center">
                 <span class="menu-icon"><back-icon class="menu-icon-data"></back-icon></span>
                 <span>All Projects</span>
             </a>
         </div>
-        <br><br>
+        <br>
+        <div class="text-center text-silent text14">
+            &#169; MUHAMMAD RAFI ARSYA
+        </div>
+        <br>
     </div>
 </div>

@@ -8,7 +8,7 @@ import json, os, re, shutil
 
 SRC  = 'v7'
 OUT  = 'dist'
-VERSION = '1'
+VERSION = '3'
 
 def read(p):
     return open(os.path.join(SRC, p), encoding='utf-8').read()
@@ -29,10 +29,12 @@ def blog_list_html():
         out.append(
             '\n                <button class="btn btn-blog" id="blogmenu" onclick="blogActive(this)" data-id="'
             + p['id'] + '">\n'
-            '                    <span class="badge blog-badge ' + p['badge'] + '">'
-            + p['category'] + '</span><br>\n'
-            '                    ' + p['title'] + '<br>\n'
-            '                    <span style="font-weight: lighter;">' + p['date'] + '</span>\n'
+            '                    <span class="blog-card-text">\n'
+            '                        <span class="badge blog-badge ' + p['badge'] + '">'
+            + p['category'] + '</span>\n'
+            '                        <span class="blog-card-title">' + p['title'] + '</span>\n'
+            '                        <span class="blog-card-date">' + p['date'] + '</span>\n'
+            '                    </span>\n'
             '                </button>')
     return ''.join(out)
 

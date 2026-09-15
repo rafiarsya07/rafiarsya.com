@@ -48,6 +48,18 @@ document.addEventListener("click", function (event) {
     }
 });
 
+/* ---------- step accordion (.p-acc-trigger / .p-acc-desc) ----------
+   Content is loaded dynamically into #main-content, so this is bound
+   on document (delegation) rather than on the buttons themselves. */
+document.addEventListener("click", function (event) {
+    var trigger = event.target.closest(".p-acc-trigger");
+    if (!trigger) return;
+    var desc = trigger.nextElementSibling;
+    if (!desc || !desc.classList.contains("p-acc-desc")) return;
+    var collapsed = desc.classList.toggle("collapsed");
+    trigger.classList.toggle("active", !collapsed);
+});
+
 /* ---------- name in the sidebar shrinks to fit ---------- */
 function adjustNameToFit(containerId) {
     var container = document.getElementById(containerId);

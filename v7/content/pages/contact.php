@@ -51,6 +51,10 @@
                 <button type="submit" class="btn btn-main active btn-submit" id="submitContact">Submit</button>
             </div>
         </form>
-        <br><br>
+        <br>
+        <div class="text-center text-silent text14">
+            &#169; MUHAMMAD RAFI ARSYA
+        </div>
+        <br>
     </div>
 </div>

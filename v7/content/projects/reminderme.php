@@ -137,6 +137,10 @@ nudge is suppressed entirely.</pre></div></div></div></div></div>
                 <span>All Projects</span>
             </a>
         </div>
-        <br><br>
+        <br>
+        <div class="text-center text-silent text14">
+            &#169; MUHAMMAD RAFI ARSYA
+        </div>
+        <br>
     </div>
 </div>

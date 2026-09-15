@@ -1,4 +1,4 @@
 <?php
-$version = "1";
+$version = "3";
 $sitename = "Muhammad Rafi Arsya";
 ?>

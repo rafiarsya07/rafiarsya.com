@@ -130,6 +130,10 @@ after:   { code:"aZ3kQ9", clicks:47,
                 <span>All Projects</span>
             </a>
         </div>
-        <br><br>
+        <br>
+        <div class="text-center text-silent text14">
+            &#169; MUHAMMAD RAFI ARSYA
+        </div>
+        <br>
     </div>
 </div>

@@ -77,7 +77,6 @@
 <p class="rf-media-lead">The site as it stands, live at <a class="ext-link" href="https://senara.ppimalaysia.id/" target="_blank" rel="noopener">senara.ppimalaysia.id<svg class="ext-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>. Copy for the 2026 programmes is still with the committee, so some blocks carry placeholder text.</p>
 
 <div class="rf-livegroup">
-<p class="rf-livegroup-title">Home</p>
 <figure class="rf-figure-lg"><img alt="What is SENARA Creative Artfest section with the 2026 mascot poster" decoding="async" loading="lazy" src="image/assets/senara/live-home-about.jpg"/><figcaption class="img-caption">"What is SENARA" panel, with the 2026 mascot poster</figcaption></figure>
 </div>
 
@@ -89,10 +88,11 @@
 
 <div class="rf-livegroup">
 <p class="rf-livegroup-title">Online Exhibition</p>
-<figure class="rf-figure-lg"><img alt="Online Exhibition hero with the two mascots peeking behind a pink step band" decoding="async" loading="lazy" src="image/assets/senara/live-online-hero.jpg"/><figcaption class="img-caption">Hero, with both mascots peeking from behind the step band</figcaption></figure>
-<figure class="rf-figure-lg"><img alt="Four gold frames with the category buttons underneath" decoding="async" loading="lazy" src="image/assets/senara/live-online-frames.jpg"/><figcaption class="img-caption">Category frames and their buttons, sized straight from the mockup</figcaption></figure>
-<figure class="rf-figure-lg"><img alt="Digital Art category page with a grid of artwork cards" decoding="async" loading="lazy" src="image/assets/senara/live-category-grid.jpg"/><figcaption class="img-caption">A category page: title, breadcrumb, and the artwork grid</figcaption></figure>
-<figure class="rf-figure-lg"><img alt="Artwork detail page with title, author, year and description" decoding="async" loading="lazy" src="image/assets/senara/live-artwork-detail.jpg"/><figcaption class="img-caption">Artwork detail, with previous and next walking the category</figcaption></figure>
+<p class="rf-media-lead">The live nav has an open mobile-menu bug that overlaps this section, so these three are shown as the design render instead.</p>
+<figure class="rf-figure-lg"><img alt="Online Exhibition hero with the two mascots peeking behind a pink step band" decoding="async" loading="lazy" src="image/assets/senara/mockup-online-hero.jpg"/><figcaption class="img-caption">Hero, with both mascots peeking from behind the step band</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="The four category frames: Digital Art, Photography, Videography, Fashion Design" decoding="async" loading="lazy" src="image/assets/senara/mockup-online-frames.jpg"/><figcaption class="img-caption">The four category frames, one per artform</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="Digital Art category page with a grid of artwork cards" decoding="async" loading="lazy" src="image/assets/senara/mockup-category.jpg"/><figcaption class="img-caption">A category page: title, breadcrumb, and the artwork grid</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="Artwork detail page with title, author, year and description" decoding="async" loading="lazy" src="image/assets/senara/mockup-artwork-portrait.jpg"/><figcaption class="img-caption">Artwork detail, with previous and next walking the category</figcaption></figure>
 </div>
         </div>
         <br>
@@ -183,6 +183,10 @@
                 <span>All Projects</span>
             </a>
         </div>
-        <br><br>
+        <br>
+        <div class="text-center text-silent text14">
+            &#169; MUHAMMAD RAFI ARSYA
+        </div>
+        <br>
     </div>
 </div>

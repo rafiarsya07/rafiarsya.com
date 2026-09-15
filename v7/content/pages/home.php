@@ -122,7 +122,7 @@
                                 style="margin-top: -1px;"></arrow-icon></a>
                     </div>
                 </div>
-                <p class="text-silent">Since 2025</p>
+                <p class="text-silent">2025</p>
             </div>
             Bachelor of Computer Science with a <span class="markblue">Software Engineering</span> specialization,
             focused on <span class="highlightv1">full-stack development</span> and applied problem-solving.
@@ -141,7 +141,7 @@
                                 class="togo-icon" style="margin-top: -1px;"></arrow-icon></a>
                     </div>
                 </div>
-                <p class="text-silent">Since 2026</p>
+                <p class="text-silent">2026</p>
             </div>
             Serving in the Website Division of PEKOM, the student society of the Faculty of Computer Science &amp;
             IT. I help <span class="highlightv1">build and maintain the society's web platforms</span> and
@@ -159,7 +159,7 @@
                                 class="togo-icon" style="margin-top: -1px;"></arrow-icon></a>
                     </div>
                 </div>
-                <p class="text-silent">Since 2025</p>
+                <p class="text-silent">2026</p>
             </div>
             Leading the Website Division with <span class="markblue">full ownership of the official PPI Malaysia
                 website</span>: development, maintenance, and continuous improvement for Indonesian students
@@ -177,7 +177,7 @@
                                 style="margin-top: -1px;"></arrow-icon></a>
                     </div>
                 </div>
-                <p class="text-silent">Since 2026</p>
+                <p class="text-silent">2026</p>
             </div>
             Directing the Art Exhibition division for IDFEST, an international event showcasing Indonesian heritage
             at Universiti Malaya, from concept and curation through to delivery.
@@ -194,7 +194,7 @@
                                 style="margin-top: -1px;"></arrow-icon></a>
                     </div>
                 </div>
-                <p class="text-silent">Since Jun 2026</p>
+                <p class="text-silent">2026</p>
             </div>
             Building the official IDFEST website with <span class="marksalmon">Next.js and Tailwind CSS</span>,
             responsive, interactive interfaces translated from Figma into production-ready pages.
@@ -231,7 +231,7 @@
                             Malaya<arrow-icon class="togo-icon" style="margin-top: -1px;"></arrow-icon></a>
                     </div>
                 </div>
-                <p class="text-silent m0">Sep 2026</p>
+                <p class="text-silent m0">2026</p>
             </div>
             A five-day FSKTM programme <span class="markblue">hosting students from Chulalongkorn
                 University</span>, Thailand's top-ranked university, run by a committee of four. I served as a
@@ -303,6 +303,6 @@
     </div>
 </div>
 <div class="text-center text-silent text14">
-    &#169; <script>document.write(new Date().getFullYear())</script> MUHAMMAD RAFI ARSYA
+    &#169; MUHAMMAD RAFI ARSYA
 </div>
 <br>

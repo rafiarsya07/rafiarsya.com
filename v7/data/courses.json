@@ -339,5 +339,16 @@
   "tags": "Student Wellbeing, Awareness",
   "desc": "Participation in the PPI Universiti Malaya awareness session.",
   "img": "image/cert/um-health-sertif.png"
+ },
+ {
+  "priority": 12.5,
+  "type": "2",
+  "issuer": "google",
+  "issuer_name": "Google",
+  "title": "Foundations: Data, Data, Everywhere",
+  "subtitle": "September 2026",
+  "tags": "Data Analytics, Data Ecosystems, Data-Driven Decision Making",
+  "desc": "First course of the Google Data Analytics Certificate, authorized by Google and offered through Coursera. Covers data types, data life cycle and the analytical thinking behind data-driven decisions. Verifiable at coursera.org/verify/CJVQ2JKRK548.",
+  "img": "image/cert/google_data_everywhere_sertif.png"
  }
 ]

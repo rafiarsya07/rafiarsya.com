@@ -11,9 +11,10 @@
         <div class="d-flex align-items-center">
             <project-icon class="menu-icon-data"></project-icon>&nbsp;All Projects
         </div>
-        <span class="text-silent subtitle">Things I've built, some finished, some still breaking. A mix of AI,
-            full-stack web, and tools I needed that didn't exist yet.</span>
-        <br>
+        <div class="page-note">
+            <span class="page-note-label">Note:</span>
+            This page is still under development. Some project may not be displayed.
+        </div>
         <div id="project-content">
             <br>
             <div>
@@ -61,6 +62,29 @@
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/aievaldashboard">Project Details</a>
                                         <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/ai-eval-dashboard" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
+                            <a href="/marketpulse" class="anone card-hitbox" aria-label="MarketPulse ETL, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">MarketPulse ETL</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">A small but real ETL pipeline: pulls daily cryptocurrency market data from a public API, loads it into PostgreSQL, and answers analytical questions with pure SQL, window functions, CTEs, ranking, running aggregates. A FastAPI layer exposes the SQL views as JSON, visualized with a Chart.js dashboard.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Python</span><span class="badge blog-badge badge-green">PostgreSQL</span><span class="badge blog-badge badge-purple">FastAPI</span><span class="badge blog-badge badge-orange">Chart.js</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <img src="image/assets/marketpulse/hero.jpg" alt="MarketPulse ETL dashboard preview" loading="lazy" decoding="async">
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/marketpulse">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     </div>
                                 </div>
                             </div>
@@ -280,6 +304,7 @@
                                     <div class="project-mono">AD</div>
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/arenaduel">Project Details</a>
+<a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     </div>
                                 </div>
                             </div>
@@ -349,6 +374,7 @@
                                     <div class="project-mono">H</div>
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/handgesture">Project Details</a>
+<a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     </div>
                                 </div>
                             </div>
@@ -392,9 +418,10 @@
                                     <div class="tech-stack"><span class="badge blog-badge badge-blue">Figma</span><span class="badge blog-badge badge-green">Vanilla JS</span><span class="badge blog-badge badge-purple">Canvas API</span><span class="badge blog-badge badge-orange">Google Apps Script</span></div>
                                 </div>
                                 <div class="project-image-container">
-                                    <div class="project-mono">B</div>
+                                    <img src="image/assets/briskwalk/logo_briswalk.png" alt="BriskWalk event identity" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/briskwalk">Project Details</a>
+<a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     </div>
                                 </div>
                             </div>
@@ -499,7 +526,7 @@
         </div>
         <br>
         <div class="text-center text-silent text14">
-            &#169; <script>document.write(new Date().getFullYear())</script> MUHAMMAD RAFI ARSYA
+            &#169; MUHAMMAD RAFI ARSYA
         </div>
         <br>
     </div>

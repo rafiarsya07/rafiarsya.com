@@ -159,6 +159,10 @@ The experience signal saturates at the requirement Y_{req}, exceeding it can't p
                 <span>All Projects</span>
             </a>
         </div>
-        <br><br>
+        <br>
+        <div class="text-center text-silent text14">
+            &#169; MUHAMMAD RAFI ARSYA
+        </div>
+        <br>
     </div>
 </div>

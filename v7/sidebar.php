@@ -61,17 +61,17 @@
             <span class="menu-icov2"><website-icon class="menu-icon-data"></website-icon></span>
             <span>IDFEST</span>
         </button>
-        <button id="menu" data-id="cropdisease" type="button"
-            class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "cropdisease") { echo "active"; } ?>"
-            onclick="setActive(this)">
-            <span class="menu-icov2"><robot-icon class="menu-icon-data"></robot-icon></span>
-            <span>Crop Disease Detector</span>
-        </button>
         <button id="menu" data-id="senara" type="button"
             class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "senara") { echo "active"; } ?>"
             onclick="setActive(this)">
             <span class="menu-icov2"><website-icon class="menu-icon-data"></website-icon></span>
             <span>SENARA Artfest</span>
+        </button>
+        <button id="menu" data-id="cropdisease" type="button"
+            class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "cropdisease") { echo "active"; } ?>"
+            onclick="setActive(this)">
+            <span class="menu-icov2"><robot-icon class="menu-icon-data"></robot-icon></span>
+            <span>Crop Disease Detector</span>
         </button>
         <button id="menu" data-id="digitrecognition" type="button"
             class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "digitrecognition") { echo "active"; } ?>"

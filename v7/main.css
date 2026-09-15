@@ -168,6 +168,17 @@ body {
 }
 
 /* highlights */
+mark.hl {
+    margin: 0 -0.4em;
+    padding: 0.1em 0.4em;
+    border-radius: 0.8em 0.3em;
+    color: inherit;
+    background: transparent;
+    background-image: linear-gradient(to right, rgba(255,225,0,0.1), rgba(255,225,0,0.7) 4%, rgba(255,225,0,0.3));
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
 .highlightv1 {
     background: linear-gradient(104deg,
             rgba(130,255,173,0) 0.9%, rgba(130,255,173,1.25) 2.4%,
@@ -253,7 +264,9 @@ body {
 .horizontal > .menu-item:hover { color: #007bff; }
 .horizontal > .menu-item.active span { color: black; font-weight: bold; }
 .menu-item-content > div {
-    min-height: 300px;
+    /* tall enough that a one row tab does not collapse, low enough
+       that it leaves no dead space under the icons */
+    min-height: 118px;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
@@ -426,6 +439,23 @@ body {
 }
 .btn-blog:hover { background-color: #f5f5f5; }
 .btn-blog.active { background-color: #f0f4f9; }
+
+/* a post card in the list: category, title, date. No cover image. */
+.blog-card-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    min-width: 0;
+}
+.blog-card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #404040;
+    line-height: 1.45;
+}
+.btn-blog.active .blog-card-title { color: #050505; }
+.blog-card-date { font-size: 12px; color: #989898; }
 .blog-content { width: 95%; max-width: 600px; margin-top: 20px; }
 .blog-content-header { margin-bottom: 15px; }
 .blog-content-body { margin: 15px 0; text-align: justify; }
@@ -648,7 +678,6 @@ body > .row > .col { padding-left: 0; padding-right: 0; }
     border: solid 1px #eeeff2;
     border-radius: 10px;
     display: block;
-    cursor: zoom-in;
 }
 .rf-figure .img-caption { margin: 8px 0 0; }
 .blog-content-body video {
@@ -1017,7 +1046,6 @@ a:hover > .ext-arrow { opacity: 1; }
     border-radius: 10px;
     max-height: none;
     object-fit: contain;
-    cursor: zoom-in;
 }
 .rf-figure-lg .img-caption { margin: 8px 0 0; }
 .rf-livegroup { margin: 6px 0 26px; }
@@ -1067,8 +1095,9 @@ a:hover > .ext-arrow { opacity: 1; }
    different widths and nothing is cropped to make them match. A shot
    that is not landscape is letterboxed into a 16:9 frame instead of
    running a whole screen tall, which keeps the column edge straight
-   the whole way down. Click any of them for the full-size lightbox.
-   Certificate scans, avatars and phone screenshots are excluded. */
+   Certificate scans, avatars and phone screenshots are excluded.
+   Content photos are display only: the lightbox is kept for the
+   certificate scans on the course page and nothing else. */
 .blog-content-body img,
 .rf-figure img,
 .rf-figure-lg img,
@@ -1085,7 +1114,6 @@ a:hover > .ext-arrow { opacity: 1; }
     border: solid 1px #eeeff2;
     border-radius: 10px;
     background: #fff;
-    cursor: zoom-in;
 }
 .blog-main-img {
     width: 100%;
@@ -1096,7 +1124,6 @@ a:hover > .ext-arrow { opacity: 1; }
     border: solid 1px #eeeff2;
     border-radius: 10px;
     background: #fff;
-    cursor: zoom-in;
 }
 /* a shot that is not landscape sits inside a landscape frame, so it
    keeps the same width as everything else without towering over it */
@@ -1257,4 +1284,239 @@ a.contributor-chip:hover .contributor-chip-avatar {
         text-align: right;
         white-space: nowrap;
     }
+}
+
+/* ── STEP ACCORDION (.p-acc-trigger / .p-acc-desc) ──────────────────
+   Used in pipeline/process write-ups (BriskWalk, SteamSQL, HandGesture).
+   These buttons previously had no styling at all, so they rendered as
+   bare default <button> boxes. Styled here as numbered, clickable step
+   headers; toggled open/closed via the delegated click handler in main.js. */
+.p-acc-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
+    text-align: left;
+    background: #fafafa;
+    border: solid 1px #e5e7eb;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin: 14px 0 0;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+    cursor: pointer;
+    transition: background .15s ease;
+}
+.p-acc-trigger:first-of-type { margin-top: 0; }
+.p-acc-trigger:hover { background: #f3f4f6; }
+.p-acc-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #111827;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    flex: 0 0 auto;
+}
+.p-acc-title { flex: 1 1 auto; }
+.p-acc-trigger .p-acc-chevron {
+    margin-left: auto;
+    transition: transform .2s ease;
+}
+.p-acc-trigger.active .p-acc-chevron { transform: rotate(180deg); }
+.p-acc-desc {
+    overflow: hidden;
+    max-height: 300px;
+    padding: 10px 14px 2px 46px;
+    margin: 0;
+    color: var(--body);
+    opacity: 1;
+    transition: max-height .25s ease, opacity .2s ease, padding .25s ease;
+}
+.p-acc-desc.collapsed {
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* ── BLOG READER ────────────────────────────────────────────────────
+   A post renders whole and reads as one continuous page. These are
+   the pieces around it: the phone only way back to the list, and the
+   card at the end pointing at the next post. */
+
+.blog-chevron { font-size: 15px; line-height: 1; opacity: .75; }
+
+.blog-back-mobile {
+    display: none;
+    align-items: center;
+    gap: 5px;
+    margin: 16px 0 4px;
+    padding: 6px 13px;
+    font-size: 13px;
+    color: #404040;
+    background: #ffffff;
+    border: solid 1px #eeeff2;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color .2s ease, border-color .2s ease;
+}
+.blog-back-mobile:hover { background: #f5f5f5; border-color: #dfe3e8; }
+
+/* the next post in the list */
+.blog-readnext { margin-top: 30px; }
+.blog-readnext-kicker {
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #989898;
+    margin-bottom: 8px;
+}
+.blog-readnext-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+    width: 100%;
+    padding: 16px 18px;
+    background: #fafbfc;
+    border: solid 1px #eeeff2;
+    border-radius: 12px;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
+}
+.blog-readnext-card:hover { background: #f2f6fb; border-color: #dfe3e8; transform: translateY(-1px); }
+.blog-readnext-title { font-size: 16px; font-weight: 600; color: #050505; line-height: 1.4; }
+.blog-readnext-date { font-size: 13px; color: #989898; }
+.blog-readnext-card .blog-chevron {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #b3b9c2;
+}
+
+.blog-footer { margin: 30px 0 26px; }
+
+/* the article header: badges, title, one line of deck, then the meta */
+.blog-content-header h1 {
+    font-size: clamp(24px, 3.2vw, 32px);
+    font-weight: 700;
+    color: #050505;
+    line-height: 1.25;
+    margin: 12px 0 0;
+}
+.blog-content-header .badge { margin-right: 4px; }
+.blog-content-header > br { display: none; }
+.blog-content-header > span { display: block; margin-top: 12px; line-height: 1.6; }
+.blog-content-header > span:last-child {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #989898;
+    letter-spacing: .2px;
+}
+
+@media (max-width: 1024px) {
+    .blog-back-mobile { display: inline-flex; }
+}
+
+/* ── RESUME ENTRIES ─────────────────────────────────────── */
+/* mirrors the printed CV: organisation left, year right */
+.resume-entry { margin-bottom: 16px; }
+.resume-entry-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+}
+.resume-entry-top b { color: #050505; }
+.resume-role { color: #404040; }
+.resume-year {
+    font-style: italic;
+    font-size: 14px;
+    color: #989898;
+    white-space: nowrap;
+}
+.resume-entry ul { margin-top: 4px; margin-bottom: 0; }
+.resume-project { margin-bottom: 14px; }
+.resume-project b { color: #050505; }
+
+/* ── POST DIAGRAMS AND REFERENCES ───────────────────────────────────
+   Diagrams inside a post are inline SVG, so they have to opt out of
+   the 16px icon sizing that .blog-content-body svg applies. */
+.blog-content-body .rf-diagram,
+.rf-diagram { margin: 18px 0; }
+.blog-content-body .rf-diagram svg,
+.rf-diagram svg {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    flex: none;
+    vertical-align: baseline;
+    fill: none;
+    stroke: none;
+    stroke-width: 1;
+    background: #ffffff;
+    border: solid 1px #eeeff2;
+    border-radius: 10px;
+}
+.rf-diagram figcaption { margin: 8px 0 0; }
+
+.blog-refs { margin: 6px 0 0; padding: 0; list-style: none; counter-reset: ref; }
+.blog-refs li {
+    counter-increment: ref;
+    position: relative;
+    padding-left: 38px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #404040;
+    text-align: left;
+}
+.blog-refs li::before {
+    content: "[" counter(ref) "]";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: #b3b9c2;
+    font-variant-numeric: tabular-nums;
+}
+.blog-refs a { color: #2f6fb3; text-decoration: none; word-break: break-word; }
+.blog-refs a:hover { text-decoration: underline; }
+.blog-refs .ref-src { color: #989898; }
+
+
+/* ── PAGE NOTE ──────────────────────────────────────────────────────
+   A short standing notice at the top of a page, on a warm panel so it
+   reads as an aside rather than as body copy. */
+.page-note {
+    background-color: #fbecdd;
+    border-radius: 7px;
+    padding: 12px 14px;
+    margin: 10px 0 6px;
+    font-size: 14px;
+    line-height: 1.65;
+    color: #5b4736;
+    max-width: 760px;
+}
+.page-note-label {
+    display: block;
+    font-style: italic;
+    font-weight: 600;
+    margin-bottom: 1px;
 }

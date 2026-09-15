@@ -28,7 +28,7 @@
         </div>
         <br><br>
         <div class="text-center text-silent text14">
-            &#169; <script>document.write(new Date().getFullYear())</script> MUHAMMAD RAFI ARSYA
+            &#169; MUHAMMAD RAFI ARSYA
         </div>
         <br>
     </div>

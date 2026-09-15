@@ -9,6 +9,8 @@
 <div class="d-flex justify-content-center">
     <div class="mdcontent">
 
+        <figure class="p-hero"><img alt="BriskWalk event identity hero" decoding="async" src="image/assets/briskwalk/logo_briswalk_hero.png"/></figure>
+
         <div class="blog-content-header">
             <div>
                 <span class="badge blog-badge badge-blue">Figma</span>
@@ -36,28 +38,12 @@
         <br>
         <h3>02 Interface</h3>
         <div class="blog-content-body">
-<p class="rf-media-lead">The registration form as participants saw it, plus the event identity it was built around.</p><figure class="rf-figure rf-crop rf-portrait"><img class="blog-img" alt="Participant registration form with client-side image compression" decoding="async" loading="lazy" src="image/assets/briskwalk/briswalk_form.png"/><figcaption class="img-caption"><b>Registration</b>: Participant registration form with client-side image compression</figcaption></figure><figure class="rf-figure rf-portrait"><img class="blog-img" alt="Event identity" decoding="async" loading="lazy" src="image/assets/briskwalk/logo_briswalk.png"/><figcaption class="img-caption"><b>BriskWalk</b>: Event identity</figcaption></figure>
+<p class="rf-media-lead">The registration form as participants saw it, broken down by section.</p><figure class="rf-figure"><img class="blog-img" alt="Registration form header with event identity and key dates" decoding="async" loading="lazy" src="image/assets/briskwalk/briswalk_form_header.png"/><figcaption class="img-caption"><b>Header</b>: Event identity and key dates at a glance</figcaption></figure><figure class="rf-figure"><img class="blog-img" alt="Registration form fields for name, university and WhatsApp number" decoding="async" loading="lazy" src="image/assets/briskwalk/briswalk_form_fields.png"/><figcaption class="img-caption"><b>Fields</b>: Participant details section of the form</figcaption></figure><figure class="rf-figure"><img class="blog-img" alt="Payment section with QR code, bank details and the register button" decoding="async" loading="lazy" src="image/assets/briskwalk/briswalk_form_payment.png"/><figcaption class="img-caption"><b>Payment</b>: QR payment, proof upload and submit</figcaption></figure>
         </div>
         <br>
         <h3>03 Image Compression Pipeline</h3>
         <div class="blog-content-body">
 <p>Every participant uploads a payment proof screenshot before submitting. Rather than send the raw file straight to the backend, the form compresses it client-side using the <strong>Canvas API</strong> before upload:</p>
-
-1
-Read &amp; decode
-The uploaded image is read via <code class="inline">FileReader</code> and drawn onto an off-screen <code class="inline">&lt;canvas&gt;</code> element.
-
-2
-Auto-resize
-Images wider than 1400px are downscaled to fit, since a payment screenshot never needs to be larger than that to stay legible.
-
-3
-Re-encode to WebP
-The canvas exports to <strong><mark class="hl">WebP at 78% quality</mark></strong> via <code class="inline">canvas.toBlob()</code>, typically cutting file size by 70-90% versus the original camera screenshot.
-
-4
-Upload
-The compressed blob is sent to the backend, keeping every submission fast even on weak mobile data.
 
 <button class="p-acc-trigger"><span class="p-acc-num">1</span><span class="p-acc-title">Read &amp; decode</span><svg class="p-acc-chevron" viewbox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
 <p class="p-acc-desc">The uploaded image is read via <code class="inline">FileReader</code> and drawn onto an off-screen <code class="inline">&lt;canvas&gt;</code> element.</p>
@@ -76,7 +62,7 @@ The compressed blob is sent to the backend, keeping every submission fast even o
         <div class="blog-content-body">
 <p>There's no traditional server here, the whole backend runs on <strong>Google Apps Script</strong>, deployed as a web app endpoint that the registration form posts to directly.</p>
 <ul style="margin:8px 0 0 18px; color:var(--body); line-height:1.8;">
-<ul><li>Participant details (name, university, WhatsApp number) are appended as a new row in a <strong>Google Sheet</strong>, giving the PPI Malaysia organizing team a live, shareable spreadsheet of registrations with zero extra tooling.</li>
+<li>Participant details (name, university, WhatsApp number) are appended as a new row in a <strong>Google Sheet</strong>, giving the PPI Malaysia organizing team a live, shareable spreadsheet of registrations with zero extra tooling.</li>
 <li>The compressed payment proof image is uploaded straight into a <strong>Google Drive</strong> folder, named and linked back to its corresponding sheet row.</li>
 <li>This kept the entire project free to run and easy for non-technical committee members to check and verify payments without needing a dashboard or login.</li></ul>
         </div>
@@ -112,6 +98,10 @@ The compressed blob is sent to the backend, keeping every submission fast even o
                 <span>All Projects</span>
             </a>
         </div>
-        <br><br>
+        <br>
+        <div class="text-center text-silent text14">
+            &#169; MUHAMMAD RAFI ARSYA
+        </div>
+        <br>
     </div>
 </div>

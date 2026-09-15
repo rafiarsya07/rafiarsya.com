@@ -230,22 +230,6 @@ Horror
         <div class="blog-content-body">
 <p>There's no backend and no build step that runs SQL ahead of time. Everything below happens fresh, in-browser, every time the page opens:</p>
 
-1
-Boot SQLite/WASM
-<code class="inline">sql.js</code> loads and initializes a real SQLite engine compiled to WebAssembly, running entirely inside the page.
-
-2
-Load the database
-The SQLite file is embedded directly in the page as base64, no separate <code class="inline">.db</code> fetch that can 404, just one self-contained file.
-
-3
-Run every query, timed
-<strong><mark class="hl">Five analysis queries execute live on load</mark></strong>: cumulative release growth, genre breakdown, price-vs-rating, a "hidden gems" subquery, and consistent-studio aggregates, each with its execution time captured.
-
-4
-Render results live
-Query output feeds straight into the charts. Edit a query, refresh, and the dashboard's behavior changes immediately, no rebuild, no export script.
-
 <button class="p-acc-trigger"><span class="p-acc-num">1</span><span class="p-acc-title">Boot SQLite/WASM</span><svg class="p-acc-chevron" viewbox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
 <p class="p-acc-desc"><code class="inline">sql.js</code> loads and initializes a real SQLite engine compiled to WebAssembly, running entirely inside the page.</p>
 
@@ -339,6 +323,10 @@ LIMIT 5;</pre>
                 <span>All Projects</span>
             </a>
         </div>
-        <br><br>
+        <br>
+        <div class="text-center text-silent text14">
+            &#169; MUHAMMAD RAFI ARSYA
+        </div>
+        <br>
     </div>
 </div>

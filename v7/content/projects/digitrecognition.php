@@ -140,6 +140,10 @@ python -m src.train_cnn --epochs 4 --start-epoch 6 --resume</pre>
                 <span>All Projects</span>
             </a>
         </div>
-        <br><br>
+        <br>
+        <div class="text-center text-silent text14">
+            &#169; MUHAMMAD RAFI ARSYA
+        </div>
+        <br>
     </div>
 </div>

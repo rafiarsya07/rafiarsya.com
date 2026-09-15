@@ -46,20 +46,7 @@ function projectfunc() {
         }
     }
 
-    /* ---- click a screenshot to see it full size ---- */
-    document.querySelectorAll(".blog-img, .blog-main-img, .rf-figure img, .rf-figure-lg img").forEach(function (img) {
-        if (img.dataset.zoomBound) return;
-        img.dataset.zoomBound = "1";
-        img.style.cursor = "zoom-in";
-        img.addEventListener("click", function () {
-            var overlay = document.createElement("div");
-            overlay.className = "img-lightbox";
-            overlay.innerHTML = '<img src="' + img.src + '" alt="">';
-            overlay.addEventListener("click", function () { overlay.remove(); });
-            document.addEventListener("keydown", function esc(e) {
-                if (e.key === "Escape") { overlay.remove(); document.removeEventListener("keydown", esc); }
-            });
-            document.body.appendChild(overlay);
-        });
-    });
+    /* content photos are display only: no lightbox, no zoom cursor.
+       Certificate scans on the course page are the one exception and
+       are bound separately in js/course.js. */
 }

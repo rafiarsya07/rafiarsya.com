@@ -35,26 +35,6 @@
         <br>
         <h3>02 How It Works</h3>
         <div class="blog-content-body">
-1
-Video Capture &amp; Preprocessing
-OpenCV opens the default webcam, reads frames in a loop, mirrors the image horizontally (so movement feels natural), and converts from BGR → RGB colour space for MediaPipe processing.
-
-2
-21-Point Landmark Detection
-MediaPipe Hands processes each RGB frame and returns normalised (x, y, z) coordinates for 21 keypoints per hand, wrist (0), MCP joints (1,5,9,13,17), PIP joints (2,6,10,14,18), DIP joints (3,7,11,15,19), and fingertips (4,8,12,16,20).
-
-3
-Gesture Classification (Rule-Based)
-A geometric classifier checks the y-coordinates of each finger's tip vs. its proximal knuckle (MCP). If only the index fingertip (landmark 8) is above its MCP (landmark 5) while all other tips are below theirs → drawing mode active.
-
-4
-Canvas Drawing
-When in drawing mode, the app tracks the index fingertip pixel position (landmark 8 × frame dimensions) and calls <code class="inline">cv2.line()</code> between the current and previous position onto a persistent canvas layer.
-
-5
-Button Hit-Testing &amp; Overlay
-On-screen buttons are fixed pixel regions. Each frame, if the fingertip coordinate falls within a button's bounding box, the action fires. The canvas layer is composited onto the live frame using <code class="inline"><mark class="hl">cv2.addWeighted</mark>()</code> and displayed in real time.
-
 <button class="p-acc-trigger"><span class="p-acc-num">1</span><span class="p-acc-title">Video Capture &amp; Preprocessing</span><svg class="p-acc-chevron" viewbox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
 <p class="p-acc-desc">OpenCV opens the default webcam, reads frames in a loop, mirrors the image horizontally (so movement feels natural), and converts from BGR → RGB colour space for MediaPipe processing.</p>
 
@@ -229,6 +209,10 @@ btn = { x1: 500, y1: 20, x2: 620, y2: 70 }
                 <span>All Projects</span>
             </a>
         </div>
-        <br><br>
+        <br>
+        <div class="text-center text-silent text14">
+            &#169; MUHAMMAD RAFI ARSYA
+        </div>
+        <br>
     </div>
 </div>

@@ -26,9 +26,11 @@
                 foreach ($blog as $post) {
                     echo '
                 <button class="btn btn-blog" id="blogmenu" onclick="blogActive(this)" data-id="'. htmlspecialchars($post['id']). '">
-                    <span class="badge blog-badge '. htmlspecialchars($post['badge']). '">'. htmlspecialchars($post['category']). '</span><br>
-                    '. htmlspecialchars($post['title']). '<br>
-                    <span style="font-weight: lighter;">'. htmlspecialchars($post['date']). '</span>
+                    <span class="blog-card-text">
+                        <span class="badge blog-badge '. htmlspecialchars($post['badge']). '">'. htmlspecialchars($post['category']). '</span>
+                        <span class="blog-card-title">'. htmlspecialchars($post['title']). '</span>
+                        <span class="blog-card-date">'. htmlspecialchars($post['date']). '</span>
+                    </span>
                 </button>';
                 }
                 ?>
