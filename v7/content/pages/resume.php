@@ -149,6 +149,14 @@
 
             <h4>Selected Projects (2026)</h4>
             <div class="resume-project">
+                <b>CampusBay: Student Marketplace (campusbay.store)</b>
+                <p>Solo-built, live marketplace for digital and physical items with a request board, where every
+                    deal hands off to WhatsApp. Next.js 16 and TypeScript on Cloudflare Workers via OpenNext, D1
+                    (SQLite) with Drizzle, Google sign-in, and instant updates pushed over hibernating WebSockets in
+                    a Durable Object. Edge page caching kept it on the Workers Free plan; EN/MS/ID search with
+                    synonyms and typo correction, a full moderation panel, and an Android app (TWA).</p>
+            </div>
+            <div class="resume-project">
                 <b>PaperMind: Local RAG Paper Analyzer</b>
                 <p>Ask questions of any PDF and get grounded answers from a local LLM. FastAPI backend, ChromaDB
                     vector store, Ollama (phi3:mini) inference. Fully offline with zero external API calls,
@@ -200,14 +208,21 @@
 
             <h4>Skills</h4>
             <p>
-                <b>Languages:</b> TypeScript, JavaScript (ES6+), Python, Java, PHP, SQL
-                <br><b>Frontend:</b> React, Next.js, Tailwind CSS, HTML5, CSS3
-                <br><b>Backend:</b> Node.js, Express, FastAPI, Flask, REST APIs, Socket.IO
-                <br><b>Databases:</b> PostgreSQL, MySQL, SQLite, Redis, Supabase
-                <br><b>Infrastructure &amp; Cloud:</b> Docker &amp; Compose, NGINX, Ubuntu self-hosting,
-                Cloudflare Tunnel &amp; Pages, Git, Bash, AWS (Lambda, DynamoDB, API Gateway, SAM)
-                <br><b>AI / ML &amp; Data:</b> NumPy, TensorFlow, Keras, OpenCV, MediaPipe, pandas,
-                scikit-learn, Retrieval-Augmented Generation (ChromaDB, Ollama)
+                <b>Core:</b> TypeScript, JavaScript, Python, React, Next.js, Node.js, PostgreSQL / SQL, Docker,
+                Cloudflare, Git
+            </p>
+            <p class="resume-skills-more">
+                <b>Also used in projects:</b>
+                <br><b>Languages:</b> Java, PHP, Bash
+                <br><b>Frontend:</b> Tailwind CSS, Vite, Bootstrap 5, Chart.js / Recharts, PWA, Chrome Extensions
+                (Manifest V3)
+                <br><b>Backend:</b> Express, FastAPI, Flask, WebSockets / Socket.IO, Cloudflare Workers &amp;
+                Durable Objects, Zod, JWT &amp; Google OAuth
+                <br><b>Data:</b> SQLite / Cloudflare D1, Drizzle ORM, Supabase, DynamoDB, ChromaDB
+                <br><b>Infrastructure &amp; Testing:</b> AWS (Lambda, API Gateway, SAM), NGINX, Ubuntu
+                self-hosting, GitHub Actions CI, Playwright
+                <br><b>AI / ML:</b> NumPy, TensorFlow / Keras, OpenCV, MediaPipe, scikit-learn, pandas, RAG with
+                Ollama, Hugging Face, Claude API
             </p>
             <hr>
 

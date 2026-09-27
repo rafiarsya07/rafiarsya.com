@@ -25,3 +25,6 @@ dist/
 # local backups made during the v7 migration
 _old-*/
 *.tgz
+
+# local scratch screenshots, not part of the site
+Claude outputs/

@@ -73,11 +73,11 @@
             <span class="menu-icov2"><robot-icon class="menu-icon-data"></robot-icon></span>
             <span>Crop Disease Detector</span>
         </button>
-        <button id="menu" data-id="digitrecognition" type="button"
-            class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "digitrecognition") { echo "active"; } ?>"
+        <button id="menu" data-id="campusbay" type="button"
+            class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "campusbay") { echo "active"; } ?>"
             onclick="setActive(this)">
-            <span class="menu-icov2"><robot-icon class="menu-icon-data"></robot-icon></span>
-            <span>AI Digit Recognizer</span>
+            <span class="menu-icov2"><website-icon class="menu-icon-data"></website-icon></span>
+            <span>CampusBay</span>
         </button>
         <button id="menu" data-id="project" type="button"
             class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "project") { echo "active"; } ?>"

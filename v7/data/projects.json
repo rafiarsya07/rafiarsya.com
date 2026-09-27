@@ -1,5 +1,27 @@
 [
     {
+        "slug": "campusbay",
+        "title": "CampusBay",
+        "sub": "An independent student marketplace for digital and physical items plus a request board, where every deal happens on WhatsApp. Next.js 16 on Cloudflare Workers with D1, live push updates through a Durable Object, trilingual search, a full moderation panel, and an Android app.",
+        "tags": [
+            "Next.js",
+            "TypeScript",
+            "Cloudflare Workers",
+            "D1",
+            "Durable Objects"
+        ],
+        "cover": "image/assets/campusbay/hero.png",
+        "section": "Ongoing",
+        "cards": 11,
+        "meta": {
+            "Status": "Live",
+            "Year": "2026",
+            "Role": "Solo Founder & Developer",
+            "Stack": "Next.js, Cloudflare Workers, D1",
+            "Languages": "EN, MS, ID"
+        }
+    },
+    {
         "slug": "senara",
         "title": "SENARA Creative Artfest 2026",
         "sub": "The website for SENARA Creative Artfest, the student art exhibition run by PPI Malaysia. For 2026 the event is a collaboration with Instellar, so I re-themed the existing static site around the new artwork and added a full Online Exhibition section with category pages and artwork detail pages.",

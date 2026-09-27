@@ -23,6 +23,29 @@
                 <div class="row">
                     <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
                         <div class="project-card d-flex align-items-center">
+                            <a href="/campusbay" class="anone card-hitbox" aria-label="CampusBay, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">CampusBay</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">An independent student marketplace for digital and physical items plus a request board, where every deal happens on WhatsApp. Next.js 16 on Cloudflare Workers with D1, live push updates through a Durable Object, trilingual search, a full moderation panel, and an Android app.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Next.js</span><span class="badge blog-badge badge-green">Cloudflare Workers</span><span class="badge blog-badge badge-purple">D1</span><span class="badge blog-badge badge-orange">TypeScript</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <img src="image/assets/campusbay/hero.png" alt="CampusBay homepage hero with Bayo the mascot" loading="lazy" decoding="async">
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/campusbay">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://campusbay.store" target="_blank" rel="noopener noreferrer">Website</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
                             <a href="/senara" class="anone card-hitbox" aria-label="SENARA Artfest 2026, project details"></a>
                             <div class="w100">
                                 <div class="project-header d-flex align-items-end justify-content-between">
