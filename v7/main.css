@@ -1611,3 +1611,6 @@ a.contributor-chip:hover .contributor-chip-avatar {
 .resume-links { font-size: 13px; color: #8a8f98; }
 .resume-links a { color: #2563eb; text-decoration: none; }
 .resume-links a:hover { text-decoration: underline; }
+
+/* project card: wide screenshots shown whole instead of cropped at the sides */
+.project-image-container img.thumb-contain { object-fit: contain; background: #fff; }
