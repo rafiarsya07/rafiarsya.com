@@ -1,8 +1,29 @@
 [
     {
+        "slug": "umove",
+        "title": "UMOVE",
+        "sub": "Campus errands delivered by fellow UM students. Live request board, verified runners, pay on delivery, self-hosted API.",
+        "tags": [
+            "React",
+            "Hono",
+            "PostgreSQL",
+            "Docker",
+            "Cloudflare"
+        ],
+        "cover": "image/assets/umove/hero.png",
+        "section": "Upcoming",
+        "cards": 7,
+        "meta": {
+            "Status": "Launching soon",
+            "Year": "2026",
+            "Role": "Solo Developer",
+            "Stack": "React, Hono, PostgreSQL"
+        }
+    },
+    {
         "slug": "campusbay",
         "title": "CampusBay",
-        "sub": "An independent student marketplace for digital and physical items plus a request board, where every deal happens on WhatsApp. Next.js 16 on Cloudflare Workers with D1, live push updates through a Durable Object, trilingual search, a full moderation panel, and an Android app.",
+        "sub": "Student marketplace where every deal happens on WhatsApp. Next.js on Cloudflare Workers, with live updates and a full moderation panel.",
         "tags": [
             "Next.js",
             "TypeScript",
@@ -24,7 +45,7 @@
     {
         "slug": "senara",
         "title": "SENARA Creative Artfest 2026",
-        "sub": "The website for SENARA Creative Artfest, the student art exhibition run by PPI Malaysia. For 2026 the event is a collaboration with Instellar, so I re-themed the existing static site around the new artwork and added a full Online Exhibition section with category pages and artwork detail pages.",
+        "sub": "Re-themed PPI Malaysia's art exhibition site for 2026 and built a new Online Exhibition with category and artwork pages.",
         "tags": [
             "HTML",
             "CSS",
@@ -46,7 +67,7 @@
     {
         "slug": "aievaldashboard",
         "title": "AI Eval Dashboard",
-        "sub": "An automated test harness for AI model output. Instead of reading answers by hand, Claude grades each one as correct, partial, incorrect or hallucinated, and the dashboard reports accuracy, latency and cost per request.",
+        "sub": "Claude grades model answers as correct, partial, wrong or hallucinated, with accuracy, latency and cost per run.",
         "tags": [
             "React",
             "Node.js",
@@ -67,7 +88,7 @@
     {
         "slug": "marketpulse",
         "title": "MarketPulse ETL",
-        "sub": "A small but real ETL pipeline: pulls daily cryptocurrency market data from a public API, loads it into PostgreSQL, and answers analytical questions with pure SQL, window functions, CTEs, ranking, running aggregates. A FastAPI layer exposes the SQL views as JSON, visualized with a Chart.js dashboard.",
+        "sub": "Daily crypto data into PostgreSQL, analysed with window functions and CTEs, served by FastAPI to a Chart.js dashboard.",
         "tags": [
             "Python",
             "PostgreSQL",
@@ -90,7 +111,7 @@
     {
         "slug": "pricetracker",
         "title": "PriceWatch",
-        "sub": "A Chrome extension that watches a product price on any site and tells you when it drops. You point at the price on the page once; it re-checks every three hours in the background.",
+        "sub": "Chrome extension: point at a price once and get notified when it drops. Re-checks every three hours.",
         "tags": [
             "Chrome Extension",
             "Manifest V3",
@@ -110,7 +131,7 @@
     {
         "slug": "papermind",
         "title": "PaperMind",
-        "sub": "A local RAG-powered academic paper analyzer. Upload any PDF, ask questions, get structured summaries, running 100% privately on self-hosted hardware. Zero cloud, zero cost, zero data leakage.",
+        "sub": "Ask questions of any PDF with a fully local RAG stack: FastAPI, ChromaDB and Ollama on my own server.",
         "tags": [
             "RAG",
             "LLM",
@@ -133,7 +154,7 @@
     {
         "slug": "digitrecognition",
         "title": "AI Digit Recognizer",
-        "sub": "A handwritten digit classifier with a convolutional network written from scratch in NumPy, no PyTorch and no TensorFlow. Draw a digit and watch the signal move through every layer.",
+        "sub": "A CNN written from scratch in NumPy, 99.1% on MNIST, with a visualizer that shows every layer at work.",
         "tags": [
             "NumPy",
             "CNN",
@@ -154,7 +175,7 @@
     {
         "slug": "snip",
         "title": "Snip URL Shortener",
-        "sub": "A serverless URL shortener with click analytics. Three AWS Lambda functions behind API Gateway, a single DynamoDB table, all described as infrastructure-as-code with AWS SAM. Built to turn an AWS Developer Associate (DVA-C02) certificate into something real, deployable, and honest about where it actually runs today.",
+        "sub": "Serverless URL shortener with click analytics: Lambda, API Gateway and DynamoDB, defined in AWS SAM.",
         "tags": [
             "AWS Lambda",
             "DynamoDB",
@@ -177,7 +198,7 @@
     {
         "slug": "nalar",
         "title": "Nalar",
-        "sub": "A full-stack personal blog with a CMS I built from scratch, no WordPress, no Ghost, no static-site generator. Write in Markdown with live preview, save drafts, schedule posts to publish themselves, and browse by tag. Reading is public; writing sits behind real authentication. It runs on a mini PC under my desk and reaches the internet through a Cloudflare Tunnel at blog.rafiarsya.com.",
+        "sub": "Personal blog with a hand-built CMS: Markdown editor, scheduled posts and JWT auth, self-hosted behind Cloudflare Tunnel.",
         "tags": [
             "Node.js",
             "Express",
@@ -200,7 +221,7 @@
     {
         "slug": "cropdisease",
         "title": "Crop Disease Detector",
-        "sub": "An AI model that identifies plant diseases from a single leaf photo. MobileNetV2 + Transfer Learning trained on 87,000+ images across 38 disease classes. ~97% accuracy. Live on Hugging Face Spaces, free to use.",
+        "sub": "Identifies 38 plant diseases from one leaf photo. MobileNetV2 transfer learning, about 97% accuracy, live on Hugging Face.",
         "tags": [
             "TensorFlow",
             "MobileNetV2",
@@ -224,7 +245,7 @@
     {
         "slug": "idfest",
         "title": "IDFEST 2026 Website",
-        "sub": "The official website for IDFEST 2026, an Indonesian cultural festival organized by PPI Universiti Malaya. A collaborative build translating Figma designs into a fast, static Next.js frontend across the home timeline, Art Exhibition, and Musical Theater sections.",
+        "sub": "Official site for PPI UM's Indonesian cultural festival, built as a team from Figma designs in Next.js.",
         "tags": [
             "Next.js 16",
             "React 19",
@@ -247,7 +268,7 @@
     {
         "slug": "steamsql",
         "title": "Steam Market Intelligence",
-        "sub": "A live, in-browser SQL analytics dashboard, real SQLite compiled to WebAssembly, querying a 1,400-title game-market dataset on every page load. No backend, no precomputed export, just a database and a query engine running on the visitor's machine.",
+        "sub": "SQLite compiled to WebAssembly runs live SQL over 1,400 games right in the browser. No backend.",
         "tags": [
             "SQLite",
             "sql.js (WASM)",
@@ -269,7 +290,7 @@
     {
         "slug": "arenaduel",
         "title": "Arena Duel",
-        "sub": "A server-authoritative real-time multiplayer duel. Two players connect from different devices, lock in a secret action every round, and the server resolves the outcome fairly and deterministically. No database, no accounts, no AI, just the hard parts: state machines, race conditions, and cheat-proof multiplayer architecture.",
+        "sub": "Real-time 1v1 over WebSockets, with a server-authoritative state machine that keeps both players honest.",
         "tags": [
             "Node.js",
             "Socket.IO",
@@ -292,7 +313,7 @@
     {
         "slug": "resumematch",
         "title": "Resume Match",
-        "sub": "An algorithmic resume-to-job scoring engine, upload a resume PDF and a job description, get a fit score with a full breakdown of matched skills, missing skills, and extra value. No AI model, no API key, no database, pure tokenization, synonym canonicalization, and weighted scoring.",
+        "sub": "Scores a resume against a job description with skill matching and weighted scoring. No AI model needed.",
         "tags": [
             "React + Vite",
             "Node.js + Express",
@@ -314,7 +335,7 @@
     {
         "slug": "nase",
         "title": "NASE Accessibility",
-        "sub": "A full accessibility audit and redesign of the NASE platform for visually impaired users. 23 issues found, categorised by WCAG 2.1 severity, with redesigned components and an AI-powered contrast analysis pipeline.",
+        "sub": "Accessibility audit of a platform for visually impaired students: 23 WCAG 2.1 issues and redesigned components.",
         "tags": [
             "Accessibility",
             "WCAG 2.1 AA",
@@ -337,7 +358,7 @@
     {
         "slug": "handgesture",
         "title": "HandGesture",
-        "sub": "Draw on screen with just your index finger, real-time hand landmark detection, gesture classification, and canvas rendering from a live webcam feed. No hardware required.",
+        "sub": "Draw on screen with your index finger: real-time hand tracking with MediaPipe and OpenCV from a webcam.",
         "tags": [
             "Python",
             "MediaPipe",
@@ -360,7 +381,7 @@
     {
         "slug": "reminderme",
         "title": "Reminder Me",
-        "sub": "A personal “companion agent” for daily life as a student, habits, focus sessions, tasks, exams, prayer times, health, and journalling, all in one offline-first app. Built as an installable PWA and wrapped as a real Android APK via a Trusted Web Activity. No backend, no account, no cloud, everything lives on the device.",
+        "sub": "Offline-first companion for habits, tasks, exams and prayer times, installable as a PWA and an Android app.",
         "tags": [
             "React 18",
             "Vite",
@@ -383,7 +404,7 @@
     {
         "slug": "briskwalk",
         "title": "BriskWalk",
-        "sub": "Event registration platform for PPI Malaysia's annual community charity walk. Designed in Figma, built with vanilla HTML/CSS/JS, multi-step form, client-side image compression, and a Google Sheets backend.",
+        "sub": "Registration site for PPI Malaysia's charity walk: multi-step form, image compression and a Google Sheets backend.",
         "tags": [
             "Figma",
             "Vanilla JS",
@@ -405,7 +426,7 @@
     {
         "slug": "rafifinance",
         "title": "RafiFinance",
-        "sub": "A complete personal finance tracker built as a single HTML file. No server, no database, no framework. Transactions, budgets, saving goals, health score, 6-month analysis, works offline as a PWA.",
+        "sub": "Budgets, savings goals and a health score in a single HTML file that works offline as a PWA.",
         "tags": [
             "Vanilla JS",
             "Single HTML File",
@@ -428,7 +449,7 @@
     {
         "slug": "largenumber",
         "title": "Large Number Arithmetic",
-        "sub": "A course project for WIA1002 Data Structures: arithmetic on numbers far larger than any built-in type, using a doubly linked list where every digit is its own node, with a visualizer that walks the algorithm step by step.",
+        "sub": "Arithmetic on numbers of any size with a doubly linked list, plus a step-by-step visualizer.",
         "tags": [
             "Java",
             "Data Structures",
@@ -449,7 +470,7 @@
     {
         "slug": "csastudy",
         "title": "CSA Study App",
-        "sub": "A self-contained exam prep tool for WRES1201 (Computer Systems Architecture). Topic guide, formula reference, MCQ drills, and interactive visualizers for cache mapping, Hamming codes, and arithmetic shifts, with every number re-randomized on each reload so it never gets stale.",
+        "sub": "Exam prep for Computer Systems Architecture with drills and visualizers for cache mapping and Hamming codes.",
         "tags": [
             "Vanilla JS",
             "Single HTML File",
@@ -471,7 +492,7 @@
     {
         "slug": "llmclassification",
         "title": "LLM Response Preference Baseline",
-        "sub": "Given a prompt and two chatbot answers, predict which one a human preferred, or whether they called it a tie. An end-to-end TF-IDF and logistic regression pipeline, built and verified on a small synthetic stand-in before the real Chatbot Arena dataset.",
+        "sub": "Predicts which of two chatbot answers a human preferred, with a TF-IDF and logistic regression baseline.",
         "tags": [
             "scikit-learn",
             "TF-IDF",

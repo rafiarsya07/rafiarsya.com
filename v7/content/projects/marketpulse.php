@@ -22,7 +22,7 @@
             </div>
             <h1>MarketPulse ETL</h1>
             <br>
-            <span>A small but real ETL pipeline: pulls daily cryptocurrency market data for the top 25 coins from a public API, loads it into PostgreSQL, and answers analytical questions with pure SQL, window functions, CTEs, ranking, running aggregates. A FastAPI layer exposes the SQL views as JSON, and a plain HTML/Chart.js dashboard visualizes them.</span>
+            <span>An ETL pipeline that loads daily market data for the top 25 coins into PostgreSQL, answers questions in pure SQL, and charts the results.</span>
             <br>
             <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">Working</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Solo Developer</span></span><span class="p-meta-item"><span class="p-meta-k">Backend</span><span class="p-meta-v">PostgreSQL, FastAPI</span></span><span class="p-meta-item"><span class="p-meta-k">Hosting</span><span class="p-meta-v">Local</span></span></div>
         </div>

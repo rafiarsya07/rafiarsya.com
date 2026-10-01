@@ -20,7 +20,7 @@
             </div>
             <h1>HandGesture</h1>
             <br>
-            <span>Draw on screen with just your index finger, real-time hand landmark detection, gesture classification, and canvas rendering from a live webcam feed. No hardware required.</span>
+            <span>Draw on screen with your index finger. Real-time hand tracking and gesture detection from a plain webcam, no extra hardware.</span>
             <br>
             <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">Completed</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2024</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Solo Developer</span></span><span class="p-meta-item"><span class="p-meta-k">Language</span><span class="p-meta-v">Python 3</span></span><span class="p-meta-item"><span class="p-meta-k">Category</span><span class="p-meta-v">Computer Vision</span></span></div>
         </div>

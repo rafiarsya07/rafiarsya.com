@@ -22,7 +22,7 @@
             </div>
             <h1>SENARA Creative Artfest 2026</h1>
             <br>
-            <span>SENARA is the student art exhibition organised by PPI Malaysia. For 2026 the event runs as a collaboration with Instellar, so the existing site needed a full visual refresh, two new sections, and a set of pages that did not exist before. I did not rebuild the site from scratch: I re-themed it and extended it on top of the 2025 codebase.</span>
+            <span>The website for PPI Malaysia's student art exhibition. For the 2026 edition with Instellar, I re-themed the site and added a full Online Exhibition section.</span>
             <br>
             <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">In progress</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Head of Website Division, PPI Malaysia</span></span><span class="p-meta-item"><span class="p-meta-k">Stack</span><span class="p-meta-v">HTML, CSS, JavaScript</span></span></div><a href="https://senara.ppimalaysia.id/" target="_blank" rel="noopener" class="ext-link">SENARA Creative Artfest<svg class="ext-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
         </div>

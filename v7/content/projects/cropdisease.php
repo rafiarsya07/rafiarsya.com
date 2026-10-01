@@ -20,7 +20,7 @@
             </div>
             <h1>Crop Disease Detector</h1>
             <br>
-            <span>An AI model that identifies plant diseases from a single leaf photo. MobileNetV2 + Transfer Learning trained on 87,000+ images across 38 disease classes. ~97% accuracy. Live on Hugging Face Spaces, free to use.</span>
+            <span>Upload a leaf photo and the model names the disease out of 38 classes. MobileNetV2 transfer learning, about 97% accuracy, free to use on Hugging Face Spaces.</span>
             <br>
             <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">Completed, Live</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Model</span><span class="p-meta-v">MobileNetV2</span></span><span class="p-meta-item"><span class="p-meta-k">Accuracy</span><span class="p-meta-v">~97%</span></span><span class="p-meta-item"><span class="p-meta-k">Classes</span><span class="p-meta-v">38 disease types</span></span><span class="p-meta-item"><span class="p-meta-k">Dataset</span><span class="p-meta-v">87K+ images</span></span></div>
         </div>

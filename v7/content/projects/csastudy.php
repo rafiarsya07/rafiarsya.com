@@ -19,7 +19,7 @@
             </div>
             <h1>CSA Study App</h1>
             <br>
-            <span>A self-contained exam prep tool for WRES1201 (Computer Systems Architecture). Topic guide, formula reference, MCQ drills, and interactive visualizers for cache mapping, Hamming codes, and arithmetic shifts, with every number re-randomized on each reload so it never gets stale.</span>
+            <span>Exam prep for WRES1201 Computer Systems Architecture: topic guide, formulas, MCQ drills and visualizers, with new numbers on every reload.</span>
             <br>
             <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">Completed, Live</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Type</span><span class="p-meta-v">Study Tool, Course Prep</span></span><span class="p-meta-item"><span class="p-meta-k">File Size</span><span class="p-meta-v">1 HTML file</span></span></div><a href="https://csastudy.rafiarsya.com" target="_blank" rel="noopener" class="ext-link">csastudy.rafiarsya.com<svg class="ext-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
         </div>

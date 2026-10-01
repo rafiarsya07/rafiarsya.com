@@ -20,7 +20,7 @@
             </div>
             <h1>NASE Accessibility</h1>
             <br>
-            <span>A full accessibility audit and redesign of the NASE platform for visually impaired users. 23 issues found, categorised by WCAG 2.1 severity, with redesigned components and an AI-powered contrast analysis pipeline.</span>
+            <span>An accessibility audit and redesign of NASE, a platform for visually impaired students. 23 issues ranked by WCAG 2.1 severity, with fixes and redesigned components.</span>
             <br>
             <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">Completed</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2025</span></span><span class="p-meta-item"><span class="p-meta-k">Context</span><span class="p-meta-v">HCI Course, UM</span></span><span class="p-meta-item"><span class="p-meta-k">Standard</span><span class="p-meta-v">WCAG 2.1 AA</span></span></div><a href="https://hci.rafiarsya.com" target="_blank" rel="noopener" class="ext-link">hci.rafiarsya.com<svg class="ext-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
         </div>

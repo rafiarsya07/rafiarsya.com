@@ -19,7 +19,7 @@
             </div>
             <h1>Resume Match</h1>
             <br>
-            <span>An algorithmic resume-to-job scoring engine, upload a resume PDF and a job description, get a fit score with a full breakdown of matched skills, missing skills, and extra value. No AI model, no API key, no database, pure tokenization, synonym canonicalization, and weighted scoring.</span>
+            <span>Upload a resume and a job description to get a fit score with matched, missing and extra skills. Pure tokenisation, synonyms and weighted scoring, no AI model.</span>
             <br>
             <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">Completed, Live</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Type</span><span class="p-meta-v">Algorithm Engine, Full Stack</span></span><span class="p-meta-item"><span class="p-meta-k">Cost</span><span class="p-meta-v">$0, No API Calls</span></span></div><a href="https://resumematch.rafiarsya.com" target="_blank" rel="noopener" class="ext-link">resumematch.rafiarsya.com<svg class="ext-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
         </div>
