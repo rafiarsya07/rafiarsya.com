@@ -19,7 +19,7 @@
             </div>
             <h1>Steam Market Intelligence</h1>
             <br>
-            <span>A live, in-browser SQL analytics dashboard, real SQLite compiled to WebAssembly, querying a 1,400-title game-market dataset on every page load. No backend, no precomputed export, just a database and a query engine running on the visitor&#x27;s machine.</span>
+            <span>A SQL analytics dashboard that runs a real SQLite database in the browser through WebAssembly, querying 1,400 games live. No backend at all.</span>
             <br>
             <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">Completed</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Solo Developer</span></span><span class="p-meta-item"><span class="p-meta-k">Dataset</span><span class="p-meta-v">1,400 Games</span></span><span class="p-meta-item"><span class="p-meta-k">Engine</span><span class="p-meta-v">SQLite / WASM</span></span></div>
         </div>

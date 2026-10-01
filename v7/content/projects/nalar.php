@@ -24,7 +24,7 @@
             </div>
             <h1>Nalar</h1>
             <br>
-            <span>A full-stack personal blog with a CMS I built from scratch, no WordPress, no Ghost, no static-site generator. Write in Markdown with live preview, save drafts, schedule posts to publish themselves, and browse by tag. Reading is public; writing sits behind real authentication. It runs on a mini PC under my desk and reaches the internet through a Cloudflare Tunnel at blog.rafiarsya.com.</span>
+            <span>A blog with a CMS I built from scratch: Markdown with live preview, drafts, scheduled publishing and tags. Self-hosted on a mini PC at blog.rafiarsya.com.</span>
             <br>
             <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">Live</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Solo Developer</span></span><span class="p-meta-item"><span class="p-meta-k">Backend</span><span class="p-meta-v">Express, PostgreSQL</span></span><span class="p-meta-item"><span class="p-meta-k">Hosting</span><span class="p-meta-v">Self-Hosted + Tunnel</span></span></div>
         </div>

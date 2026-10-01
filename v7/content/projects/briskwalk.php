@@ -21,7 +21,7 @@
             </div>
             <h1>BriskWalk</h1>
             <br>
-            <span>Event registration platform for PPI Malaysia&#x27;s annual community charity walk. Designed in Figma, built with vanilla HTML/CSS/JS, multi-step form, client-side image compression, and a Google Sheets backend.</span>
+            <span>Registration for PPI Malaysia's annual charity walk. Designed in Figma, built in plain HTML, CSS and JavaScript, with a Google Sheets backend.</span>
             <br>
             <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">Completed</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Designer &amp; Developer</span></span><span class="p-meta-item"><span class="p-meta-k">Organizer</span><span class="p-meta-v">PPI Malaysia</span></span><span class="p-meta-item"><span class="p-meta-k">Venue</span><span class="p-meta-v">Dataran Putrajaya</span></span></div>
         </div>

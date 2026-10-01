@@ -205,6 +205,24 @@
             <p class="text-silent">Volunteering</p>
             <div class="d-flex flex-wrap justify-content-between">
                 <div class="d-flex flex-wrap gap-2">
+                    <img src="icon/UM.png" alt="Universiti Malaya" class="education-image" />
+                    <div>
+                        <p><b>Buddy, UM Week of Welcome (UM-WOW)</b></p>
+                        <a class="d-flex align-items-center gap-1 textlink" href="https://hep.um.edu.my/umwow"
+                            target="_blank">Student Affairs, Universiti Malaya<arrow-icon class="togo-icon"
+                                style="margin-top: -1px;"></arrow-icon></a>
+                    </div>
+                </div>
+                <p class="text-silent m0">2026</p>
+            </div>
+            Welcomed new students to Universiti Malaya during orientation week, <span class="markblue">guiding
+                freshies</span> through registration, campus and their first days at UM.
+        </div>
+        <br>
+
+        <div class="about-section">
+            <div class="d-flex flex-wrap justify-content-between">
+                <div class="d-flex flex-wrap gap-2">
                     <img src="icon/ppim.png" alt="PPI Malaysia" class="education-image" />
                     <div>
                         <p><b>LARAS: Transportation Team &amp; Field Committee</b></p>
@@ -287,6 +305,7 @@
                 <div id="backend-content" class="row text-center hidden">
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/nodejs.svg" alt="Node.js" class="imgskills" loading="lazy"><span class="skill-name">Node.js</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/express.svg" alt="Express" class="imgskills" loading="lazy"><span class="skill-name">Express</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/hono.svg" alt="Hono" class="imgskills" loading="lazy"><span class="skill-name">Hono</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/fastapi.svg" alt="FastAPI" class="imgskills" loading="lazy"><span class="skill-name">FastAPI</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/flask.svg" alt="Flask" class="imgskills" loading="lazy"><span class="skill-name">Flask</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/socketio.svg" alt="Socket.IO" class="imgskills" loading="lazy"><span class="skill-name">Socket.IO</span></div>

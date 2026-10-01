@@ -21,7 +21,7 @@
             </div>
             <h1>Reminder Me</h1>
             <br>
-            <span>A personal “companion agent” for daily life as a student, habits, focus sessions, tasks, exams, prayer times, health, and journalling, all in one offline-first app. Built as an installable PWA and wrapped as a real Android APK via a Trusted Web Activity. No backend, no account, no cloud, everything lives on the device.</span>
+            <span>One offline-first app for a student's day: habits, focus sessions, tasks, exams and prayer times. Installable as a PWA and an Android app. All data stays on the device.</span>
             <br>
             <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">Working</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Solo Developer</span></span><span class="p-meta-item"><span class="p-meta-k">Platform</span><span class="p-meta-v">PWA + Android APK</span></span><span class="p-meta-item"><span class="p-meta-k">Data</span><span class="p-meta-v">On-device only</span></span></div>
         </div>

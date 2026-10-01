@@ -21,7 +21,7 @@
             </div>
             <h1>Snip URL Shortener</h1>
             <br>
-            <span>A serverless URL shortener with click analytics. Three AWS Lambda functions behind API Gateway, a single DynamoDB table, all described as infrastructure-as-code with AWS SAM. Built to turn an AWS Developer Associate (DVA-C02) certificate into something real, deployable, and honest about where it actually runs today.</span>
+            <span>A URL shortener with click analytics, built from three Lambda functions, API Gateway and one DynamoDB table, all as infrastructure as code. My AWS Developer Associate study, put into practice.</span>
             <br>
             <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">Working</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Solo Developer</span></span><span class="p-meta-item"><span class="p-meta-k">Backend</span><span class="p-meta-v">Lambda, DynamoDB</span></span><span class="p-meta-item"><span class="p-meta-k">Hosting</span><span class="p-meta-v">Local + Tunnel</span></span></div>
         </div>

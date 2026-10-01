@@ -21,7 +21,7 @@
             </div>
             <h1>Arena Duel</h1>
             <br>
-            <span>A server-authoritative real-time multiplayer duel. Two players connect from different devices, lock in a secret action every round, and the server resolves the outcome fairly and deterministically. No database, no accounts, no AI, just the hard parts: state machines, race conditions, and cheat-proof multiplayer architecture.</span>
+            <span>A real-time multiplayer duel. Two players lock in a secret move each round and the server decides the outcome, so neither client can cheat.</span>
             <br>
             <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">Working</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Solo Developer</span></span><span class="p-meta-item"><span class="p-meta-k">Backend</span><span class="p-meta-v">In-memory, Socket.IO</span></span><span class="p-meta-item"><span class="p-meta-k">Persistence</span><span class="p-meta-v">None (by design)</span></span></div>
         </div>

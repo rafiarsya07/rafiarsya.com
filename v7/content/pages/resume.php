@@ -9,7 +9,7 @@
 <div class="d-flex justify-content-center">
     <div class="content">
         <div class="d-flex justify-content-between align-items-center" style="margin-bottom: -10px;">
-            <small>Last updated: 6 September 2026</small>
+            <small>Last updated: 1 October 2026</small>
             <div class="d-flex justify-content-end align-items-center">
                 <div style="margin-left: 10px">
                     <a type="button" href="https://drive.google.com/file/d/1zuPWVwJPG_mSqoJOH703kcRyNptxJH3o/view?usp=sharing" target="_blank" rel="noopener"
@@ -123,6 +123,17 @@
             <h4>Volunteering</h4>
             <div class="resume-entry">
                 <div class="resume-entry-top">
+                    <b>Universiti Malaya Week of Welcome (UM-WOW)</b>
+                    <span class="resume-year">2026</span>
+                </div>
+                <div class="resume-role">Buddy, Student Affairs Department</div>
+                <ul>
+                    <li>Welcomed and guided new students through orientation week, registration and their first
+                        days on campus at Universiti Malaya.</li>
+                </ul>
+            </div>
+            <div class="resume-entry">
+                <div class="resume-entry-top">
                     <b>Faculty of Computer Science &amp; Information Technology, Universiti Malaya</b>
                     <span class="resume-year">2026</span>
                 </div>
@@ -149,60 +160,40 @@
 
             <h4>Selected Projects (2026)</h4>
             <div class="resume-project">
-                <b>CampusBay: Student Marketplace (campusbay.store)</b>
-                <p>Solo-built, live marketplace for digital and physical items with a request board, where every
-                    deal hands off to WhatsApp. Next.js 16 and TypeScript on Cloudflare Workers via OpenNext, D1
-                    (SQLite) with Drizzle, Google sign-in, and instant updates pushed over hibernating WebSockets in
-                    a Durable Object. Edge page caching kept it on the Workers Free plan; EN/MS/ID search with
-                    synonyms and typo correction, a full moderation panel, and an Android app (TWA).</p>
+                <div class="resume-project-top"><b>CampusBay: Student Marketplace</b><span class="resume-links"><a href="https://campusbay.store" target="_blank" rel="noopener">campusbay.store</a></span></div>
+                <p>Live marketplace where students list items or post requests and close deals on WhatsApp. Next.js 16 on Cloudflare Workers with D1 and Drizzle, instant updates through a Durable Object, EN/MS/ID search and a full moderation panel. Built and run solo.</p>
             </div>
             <div class="resume-project">
-                <b>PaperMind: Local RAG Paper Analyzer</b>
-                <p>Ask questions of any PDF and get grounded answers from a local LLM. FastAPI backend, ChromaDB
-                    vector store, Ollama (phi3:mini) inference. Fully offline with zero external API calls,
-                    containerised with Docker Compose and self-hosted on a Linux mini PC behind a Cloudflare
-                    Tunnel.</p>
+                <div class="resume-project-top"><b>UMOVE: Campus Errand Delivery</b><span class="resume-links"><a href="https://umove.rafiarsya.com" target="_blank" rel="noopener">umove.rafiarsya.com</a></span></div>
+                <p>Students post errands and verified student runners deliver them, paid on delivery. React 19 front end on Cloudflare Workers; Node, Hono and PostgreSQL API in Docker on a mini PC behind Cloudflare Tunnel, with a live board over Server-Sent Events.</p>
             </div>
             <div class="resume-project">
-                <b>AI Digit Recognizer: CNN Built From Scratch</b>
-                <p>Convolutional network written entirely in NumPy: im2col-vectorized convolutions, max-pooling,
-                    backpropagation and Adam, with no PyTorch and no TensorFlow. 99.1% test accuracy on MNIST,
-                    served by Flask with a visualizer rendering per-pixel saliency and live signal flow through
-                    every layer.</p>
+                <div class="resume-project-top"><b>PaperMind: Local RAG Paper Analyzer</b><span class="resume-links"><a href="https://papermind.rafiarsya.com" target="_blank" rel="noopener">papermind.rafiarsya.com</a></span></div>
+                <p>Ask questions of any PDF with answers grounded in the text. FastAPI, ChromaDB and Ollama, fully offline, in Docker Compose on a self-hosted Linux server.</p>
             </div>
             <div class="resume-project">
-                <b>Nalar: Full-Stack Blog with Custom CMS</b>
-                <p>Node.js, Express and PostgreSQL personal blog with a hand-built CMS: JWT authentication
-                    splitting public reads from authenticated writes, Markdown authoring with live preview, and a
-                    three-state scheduler publishing posts automatically through an atomic per-minute sweep.
-                    Self-hosted behind a Cloudflare Tunnel, PM2-managed.</p>
+                <div class="resume-project-top"><b>AI Digit Recognizer: CNN From Scratch</b><span class="resume-links"><a href="https://github.com/rafiarsya07/ai-digit-recognizer" target="_blank" rel="noopener">GitHub</a></span></div>
+                <p>Convolutional network written entirely in NumPy, from convolutions to backpropagation and Adam. 99.1% on the MNIST test set, served by Flask with a layer-by-layer visualizer.</p>
             </div>
             <div class="resume-project">
-                <b>Crop Disease Detector</b>
-                <p>Leaf-photo classifier across 38 disease categories trained on PlantVillage (54K+ images).
-                    MobileNetV2 transfer learning with data augmentation and two-phase fine-tuning in
-                    TensorFlow/Keras, deployed to Hugging Face Spaces with top-3 confidence scores.</p>
+                <div class="resume-project-top"><b>Nalar: Blog with a Custom CMS</b><span class="resume-links"><a href="https://blog.rafiarsya.com/" target="_blank" rel="noopener">blog.rafiarsya.com</a> &middot; <a href="https://github.com/rafiarsya07/thoughtlog" target="_blank" rel="noopener">GitHub</a></span></div>
+                <p>Node.js, Express and PostgreSQL blog with JWT auth, Markdown editing and scheduled publishing. Self-hosted behind Cloudflare Tunnel, managed with PM2.</p>
             </div>
             <div class="resume-project">
-                <b>IDFEST 2026 Website</b>
-                <p>Official site for an international cultural event at Universiti Malaya, built with a committee.
-                    Next.js 16 static export, React 19 and Tailwind CSS v4. Owned the homepage timeline, hero
-                    responsiveness across breakpoints, and the shared navigation and mascot components reused
-                    across sections.</p>
+                <div class="resume-project-top"><b>Crop Disease Detector</b><span class="resume-links"><a href="https://huggingface.co/spaces/rafiarsya/crop-disease-detector" target="_blank" rel="noopener">Hugging Face</a></span></div>
+                <p>Classifies 38 plant diseases from a leaf photo. MobileNetV2 transfer learning with two-phase fine-tuning in TensorFlow/Keras, about 97% accuracy, deployed on Hugging Face Spaces.</p>
             </div>
             <div class="resume-project">
-                <b>SENARA Creative Artfest 2026</b>
-                <p>Visual refresh of PPI Malaysia's student art exhibition site, run this year with Instellar.
-                    Solo rebuild on the existing HTML/CSS/JavaScript and Bootstrap 5 codebase: seven
-                    aspect-ratio-driven hero variants, a rebuilt About page, and a new Online Exhibition hub with
-                    four category pages and query-string-driven artwork detail views.</p>
+                <div class="resume-project-top"><b>IDFEST 2026 Website</b><span class="resume-links"><a href="https://idfest.ppiunimalaya.id/" target="_blank" rel="noopener">idfest.ppiunimalaya.id</a></span></div>
+                <p>Official site for PPI UM's cultural festival, built as a team in Next.js 16 and Tailwind v4. Owned the homepage timeline, responsive hero and shared navigation.</p>
             </div>
             <div class="resume-project">
-                <b>RafiFinance</b>
-                <p>Personal finance tracker shipped as a single HTML file: no server, no database, no framework.
-                    Budgets, saving goals with monthly-target estimation, and a live weighted financial health
-                    score. Installable offline PWA via a Blob-generated service worker, data kept in localStorage,
-                    deployed on Cloudflare Pages.</p>
+                <div class="resume-project-top"><b>SENARA Creative Artfest 2026</b><span class="resume-links"><a href="https://senara.ppimalaysia.id/" target="_blank" rel="noopener">senara.ppimalaysia.id</a></span></div>
+                <p>Refreshed PPI Malaysia's art exhibition site and built a new Online Exhibition with category and artwork pages, in HTML, CSS, JavaScript and Bootstrap 5.</p>
+            </div>
+            <div class="resume-project">
+                <div class="resume-project-top"><b>RafiFinance</b><span class="resume-links"><a href="https://finance.rafiarsya.com" target="_blank" rel="noopener">finance.rafiarsya.com</a></span></div>
+                <p>Budget and savings tracker in a single HTML file with a financial health score. Works offline as a PWA, deployed on Cloudflare Pages.</p>
             </div>
             <hr>
 
@@ -216,11 +207,11 @@
                 <br><b>Languages:</b> Java, PHP, Bash
                 <br><b>Frontend:</b> Tailwind CSS, Vite, Bootstrap 5, Chart.js / Recharts, PWA, Chrome Extensions
                 (Manifest V3)
-                <br><b>Backend:</b> Express, FastAPI, Flask, WebSockets / Socket.IO, Cloudflare Workers &amp;
+                <br><b>Backend:</b> Express, Hono, FastAPI, Flask, WebSockets / Socket.IO, Server-Sent Events, Cloudflare Workers &amp;
                 Durable Objects, Zod, JWT &amp; Google OAuth
                 <br><b>Data:</b> SQLite / Cloudflare D1, Drizzle ORM, Supabase, DynamoDB, ChromaDB
-                <br><b>Infrastructure &amp; Testing:</b> AWS (Lambda, API Gateway, SAM), NGINX, Ubuntu
-                self-hosting, GitHub Actions CI, Playwright
+                <br><b>Infrastructure &amp; Testing:</b> Docker Compose, Cloudflare Tunnel, AWS (Lambda, API Gateway,
+                SAM), NGINX, Ubuntu self-hosting, GitHub Actions CI, Playwright
                 <br><b>AI / ML:</b> NumPy, TensorFlow / Keras, OpenCV, MediaPipe, scikit-learn, pandas, RAG with
                 Ollama, Hugging Face, Claude API
             </p>
