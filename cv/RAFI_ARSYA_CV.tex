@@ -2,6 +2,7 @@
 %  Muhammad Rafi Arsya  |  Curriculum Vitae
 %  Content matches rafiarsya.com/resume, except Selected Projects: the site lists
 %  all 17, this CV carries the strongest 8. Everything else stays in sync.
+%  Updated 1 October 2026.
 %  Build:  pdflatex RAFI_ARSYA_CV.tex   (run twice so hyperref settles)
 %
 %  Fits 2 pages with room to spare. If you add entries and it spills to 3,
@@ -16,12 +17,13 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
-\usepackage[margin=1.5cm,top=1.3cm,bottom=1.3cm]{geometry}
+\usepackage[margin=1.25cm,top=1.05cm,bottom=1.05cm]{geometry}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage{xcolor}
 \usepackage[hidelinks]{hyperref}
 \usepackage{microtype}
+\linespread{0.95}
 
 \hypersetup{
   pdftitle={Muhammad Rafi Arsya, Curriculum Vitae},
@@ -83,11 +85,11 @@
 
 % =====================================================================
 \section*{Profile}
-Software Engineering student at Universiti Malaya building full-stack and AI applications with
-Next.js, Node.js and Python, self-hosted and containerised on a personal Linux server behind a
-Cloudflare Tunnel. Combines infrastructure work (Docker, NGINX, PM2) with applied AI/ML (RAG,
-CNNs written from scratch) and independent product building. Seeking a Data Engineering or
-Software Engineering internship.
+Software Engineering student at Universiti Malaya who takes ideas all the way to live products.
+Built and runs two student platforms, CampusBay and UMOVE, end to end: Next.js and React front
+ends, Node and PostgreSQL back ends, Cloudflare Workers, and a self-hosted Linux server behind a
+Cloudflare Tunnel. Also works in applied AI/ML (RAG, CNNs written from scratch). Seeking a Data
+Engineering or Software Engineering internship.
 
 % =====================================================================
 \section*{Education}
@@ -140,6 +142,12 @@ Software Engineering internship.
 % =====================================================================
 \section*{Volunteering}
 
+\entry{Universiti Malaya Week of Welcome (UM-WOW)}{2026}{Buddy, Student Affairs Department}
+\begin{itemize}
+  \item Welcomed and guided new students through orientation week, registration and their first
+        days on campus at Universiti Malaya.
+\end{itemize}
+
 \entry{Faculty of Computer Science \& Information Technology, Universiti Malaya}{1 to 5 September 2026}{Student Buddy, Inbound Mobility Programme 2026}
 \begin{itemize}
   \item One of a four-person committee running a five-day FSKTM programme hosting students from
@@ -157,54 +165,62 @@ Software Engineering internship.
 
 % =====================================================================
 \section*{Selected Projects}
+\begingroup\small
 
-\project{PaperMind: Local RAG Paper Analyzer}{2026}{Ask questions of any PDF and get grounded
-answers from a local LLM. FastAPI backend, ChromaDB vector store, Ollama (phi3:mini) inference.
-Fully offline with zero external API calls, containerised with Docker Compose and self-hosted on
-a Linux mini PC behind a Cloudflare Tunnel.}
+\project{CampusBay: Student Marketplace}{2026}{Live marketplace where students list items or post
+requests and close deals on WhatsApp. Next.js 16 on Cloudflare Workers with D1 and Drizzle,
+instant updates through a Durable Object, EN/MS/ID search and a full moderation panel. Built and
+run solo.}
 
-\project{AI Digit Recognizer: CNN Built From Scratch}{2026}{Convolutional network written
-entirely in NumPy: im2col-vectorized convolutions, max-pooling, backpropagation and Adam, with no
-PyTorch and no TensorFlow. 99.1\% test accuracy on MNIST, served by Flask with a visualizer
-rendering per-pixel saliency and live signal flow through every layer.}
+\project{UMOVE: Campus Errand Delivery}{2026}{Students post errands and verified student runners
+deliver them, paid on delivery. React 19 front end on Cloudflare Workers; Node, Hono and
+PostgreSQL API in Docker on a mini PC behind Cloudflare Tunnel, with a live board over
+Server-Sent Events.}
 
-\project{ThoughtLog: Full-Stack Blog with Custom CMS}{2026}{Node.js, Express and PostgreSQL with
-Markdown authoring and a three-state auto-publishing scheduler. Full-text search on tsvector/GIN
-with tag filtering, RSS and email subscriptions. Self-hosted behind a Cloudflare Tunnel,
-PM2-managed, deployed via GitHub Actions.}
+\project{PaperMind: Local RAG Paper Analyzer}{2026}{Ask questions of any PDF with answers grounded
+in the text. FastAPI, ChromaDB and Ollama, fully offline, in Docker Compose on a self-hosted Linux
+server.}
 
-\project{Steam Market Intelligence}{2026}{In-browser analytics over a 1,400-title dataset running
-real SQLite compiled to WebAssembly, with a live query console. Window functions and recursive
-CTEs execute client-side, so there is no backend and no precomputed export.}
+\project{AI Digit Recognizer: CNN From Scratch}{2026}{Convolutional network written entirely in
+NumPy, from convolutions to backpropagation and Adam. 99.1\% on the MNIST test set, served by
+Flask with a layer-by-layer visualizer.}
 
-\project{snip: Serverless URL Shortener}{2026}{API Gateway, Lambda and DynamoDB defined as
-infrastructure-as-code with AWS SAM for one-command provisioning. No managed server,
-least-privilege IAM per function, scales to zero when idle.}
+\project{Nalar: Blog with a Custom CMS}{2026}{Node.js, Express and PostgreSQL blog with JWT auth,
+Markdown editing and scheduled publishing. Self-hosted behind Cloudflare Tunnel, managed with
+PM2.}
 
-\project{Crop Disease Detector}{2026}{Leaf-photo classifier across 38 disease categories trained
-on PlantVillage (54K+ images). MobileNetV2 transfer learning with data augmentation and two-phase
-fine-tuning in TensorFlow/Keras, deployed to Hugging Face Spaces with top-3 confidence scores.}
+\project{snip: Serverless URL Shortener}{2026}{Click-tracking URL shortener on API Gateway, Lambda
+and DynamoDB, defined as infrastructure as code with AWS SAM and least-privilege IAM per
+function.}
 
-\project{IDFEST 2026 Website}{2026}{Official site for an international cultural event at
-Universiti Malaya, built with a committee. Next.js 16 static export, React 19 and Tailwind CSS v4.
-Owned the homepage timeline, hero responsiveness across breakpoints, and the shared navigation and
-mascot components reused across sections.}
+\project{Crop Disease Detector}{2026}{Classifies 38 plant diseases from a leaf photo. MobileNetV2
+transfer learning with two-phase fine-tuning in TensorFlow/Keras, about 97\% accuracy, deployed on
+Hugging Face Spaces.}
 
-\project{Arena Duel}{2026}{Server-authoritative real-time 1v1 over WebSockets. Simultaneous blind
-actions resolved deterministically server-side, with state machines, cooldowns and disconnect
-handling, so the client is never trusted with the outcome.}
+\project{IDFEST 2026 Website}{2026}{Official site for PPI UM's cultural festival, built as a team
+in Next.js 16 and Tailwind v4. Owned the homepage timeline, responsive hero and shared
+navigation.}
+
+% =====================================================================
+\endgroup
 
 % =====================================================================
 \section*{Skills}
 
-\skillrow{Languages}{TypeScript, JavaScript (ES6+), Python, Java, PHP, SQL}
-\skillrow{Frontend}{React, Next.js, Tailwind CSS, HTML5, CSS3}
-\skillrow{Backend}{Node.js, Express, FastAPI, Flask, REST APIs, Socket.IO}
-\skillrow{Databases}{PostgreSQL, MySQL, SQLite, Redis, Supabase}
-\skillrow{Infrastructure \& Cloud}{Docker \& Compose, NGINX, Ubuntu self-hosting,
-Cloudflare Tunnel \& Pages, Git, Bash, AWS (Lambda, DynamoDB, API Gateway, SAM)}
-\skillrow{AI / ML \& Data}{NumPy, TensorFlow, Keras, OpenCV, MediaPipe, pandas,
-scikit-learn, Retrieval-Augmented Generation (ChromaDB, Ollama)}
+\skillrow{Core}{TypeScript, JavaScript, Python, React, Next.js, Node.js, PostgreSQL / SQL, Docker,
+Cloudflare, Git}
+\vspace{2pt}
+\noindent\textit{Also used in projects:}\par\vspace{3pt}
+\skillrow{Languages}{Java, PHP, Bash}
+\skillrow{Frontend}{Tailwind CSS, Vite, Bootstrap 5, Chart.js / Recharts, PWA, Chrome Extensions
+(Manifest V3)}
+\skillrow{Backend}{Express, Hono, FastAPI, Flask, WebSockets / Socket.IO, Server-Sent Events,
+Cloudflare Workers \& Durable Objects, Zod, JWT \& Google OAuth}
+\skillrow{Data}{SQLite / Cloudflare D1, Drizzle ORM, Supabase, DynamoDB, ChromaDB}
+\skillrow{Infrastructure \& Testing}{Docker Compose, Cloudflare Tunnel, AWS (Lambda, API Gateway,
+SAM), NGINX, Ubuntu self-hosting, GitHub Actions CI, Playwright}
+\skillrow{AI / ML}{NumPy, TensorFlow / Keras, OpenCV, MediaPipe, scikit-learn, pandas, RAG with
+Ollama, Hugging Face, Claude API}
 
 % =====================================================================
 \section*{Certifications \& Courses}
@@ -213,6 +229,8 @@ scikit-learn, Retrieval-Augmented Generation (ChromaDB, Ollama)}
         Stephane Maarek, June 2026
   \item Ultimate AWS Certified AI Practitioner (AIF-C01), Udemy course completion,
         Stephane Maarek, May 2026
+  \item Foundations: Data, Data, Everywhere, Google Data Analytics Certificate, Coursera,
+        September 2026
   \item IELTS Academic, Band 5.5 (CEFR B2), British Council IDP, June 2025
   \item Additional coursework, around 570 hours across 2025 and 2026: freeCodeCamp JavaScript
         Algorithms \& Data Structures (300 hours), The Complete JavaScript Course (Jonas
