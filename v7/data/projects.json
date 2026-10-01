@@ -11,10 +11,10 @@
             "Cloudflare"
         ],
         "cover": "image/assets/umove/hero.png",
-        "section": "Upcoming",
+        "section": "Ongoing",
         "cards": 7,
         "meta": {
-            "Status": "Launching soon",
+            "Status": "Live",
             "Year": "2026",
             "Role": "Solo Developer",
             "Stack": "React, Hono, PostgreSQL"

@@ -18,7 +18,7 @@
         <div id="project-content">
             <br>
             <div>
-                <h1>Upcoming</h1>
+                <h1>Ongoing</h1>
                 <hr>
                 <div class="row">
                     <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
@@ -44,13 +44,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <br>
-            <div>
-                <h1>Ongoing</h1>
-                <hr>
-                <div class="row">
                     <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
                         <div class="project-card d-flex align-items-center">
                             <a href="/campusbay" class="anone card-hitbox" aria-label="CampusBay, project details"></a>
