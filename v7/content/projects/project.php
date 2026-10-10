@@ -104,7 +104,7 @@
                                     <div class="tech-stack"><span class="badge blog-badge badge-blue">Next.js</span><span class="badge blog-badge badge-green">React</span><span class="badge blog-badge badge-purple">Tailwind CSS</span><span class="badge blog-badge badge-orange">TypeScript</span></div>
                                 </div>
                                 <div class="project-image-container">
-                                    <img src="image/assets/pekom/live-home-hero.jpg" alt="PEKOM website homepage hero" loading="lazy" decoding="async">
+                                    <img src="image/assets/pekom/about-hero.jpg" alt="PEKOM website About page hero" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/pekom">Project Details</a>
                                     </div>

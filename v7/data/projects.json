@@ -75,9 +75,9 @@
             "TypeScript",
             "Static Generation"
         ],
-        "cover": "image/assets/pekom/live-home-hero.jpg",
+        "cover": "image/assets/pekom/about-hero.jpg",
         "section": "Ongoing",
-        "cards": 15,
+        "cards": 20,
         "meta": {
             "Status": "In progress",
             "Year": "2026",

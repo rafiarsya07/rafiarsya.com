@@ -9,7 +9,7 @@
 <div class="d-flex justify-content-center">
     <div class="mdcontent">
 
-        <figure class="p-hero"><img alt="PEKOM website homepage hero, A computer society driven by purpose" decoding="async" src="image/assets/pekom/live-home-hero.jpg"/></figure>
+        <figure class="p-hero"><img alt="PEKOM website About page hero: the PEKOM wordmark over The computer science society of Universiti Malaya" decoding="async" src="image/assets/pekom/about-hero.jpg"/></figure>
 
         <div class="blog-content-header">
             <div>
@@ -74,40 +74,45 @@ Smokey       #C4C4C4   <span class="pt-comment"># muted text, placeholders</span
 
         <h3>04 Build Preview</h3>
         <div class="blog-content-body">
-<p class="rf-media-lead">Captured from a local production build at 1440 pixels wide. The site is not public yet, so some event dates still show TBC and some photos are placeholders from last session.</p>
+<p class="rf-media-lead">Each shot is one whole section, captured from a local production build at 1440 pixels wide with motion turned off, so nothing is caught halfway through an animation. The site is not public yet, so some dates still read TBC and some photos are from last session.</p>
 
 <div class="rf-livegroup">
 <p class="rf-livegroup-title">Home</p>
-<figure class="rf-figure-lg"><img alt="New here? Start here, three ways into PEKOM" decoding="async" loading="lazy" src="image/assets/pekom/live-home-start.jpg"/><figcaption class="img-caption">"New here? Start here": three ways in, each a couple of clicks away</figcaption></figure>
-<figure class="rf-figure-lg"><img alt="Latest news feature card with the PEKOM 26/27 member photo" decoding="async" loading="lazy" src="image/assets/pekom/live-home-news.jpg"/><figcaption class="img-caption">The latest story up top, the rest of the news below it</figcaption></figure>
-<figure class="rf-figure-lg"><img alt="Events carousel with event cards on the home page" decoding="async" loading="lazy" src="image/assets/pekom/live-home-events.jpg"/><figcaption class="img-caption">Every event in one horizontal run, driven by the events file</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="Home page hero, A computer society driven by purpose" decoding="async" loading="lazy" src="image/assets/pekom/home-hero.jpg"/><figcaption class="img-caption">The home hero, which plays a background video on tablets and larger screens</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="New here? Start here, with three ways into PEKOM" decoding="async" loading="lazy" src="image/assets/pekom/home-start.jpg"/><figcaption class="img-caption">"New here? Start here": three ways in, each a couple of clicks away</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="Upcoming Events list on the home page" decoding="async" loading="lazy" src="image/assets/pekom/home-upcoming.jpg"/><figcaption class="img-caption">Upcoming events, read straight from the events file, with TBC dates marked</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="Quick Stats cards: 113 people, 15 teams, 7 divisions" decoding="async" loading="lazy" src="image/assets/pekom/home-stats.jpg"/><figcaption class="img-caption">Quick Stats from Code Fest 2025 and the committee</figcaption></figure>
 </div>
 
 <div class="rf-livegroup">
 <p class="rf-livegroup-title">Events</p>
-<figure class="rf-figure-lg"><img alt="Events page with Coming up, Open now and Behind us tabs" decoding="async" loading="lazy" src="image/assets/pekom/live-events.jpg"/><figcaption class="img-caption">Events split into Coming up, Open now and Behind us</figcaption></figure>
-<figure class="rf-figure-lg"><img alt="PEKOM Onboarding 26/27 event page with a calendar date card" decoding="async" loading="lazy" src="image/assets/pekom/live-event-hero.jpg"/><figcaption class="img-caption">An event page, with the date shown as a small calendar card</figcaption></figure>
-<figure class="rf-figure-lg"><img alt="Event summary beside an At a glance ticket card" decoding="async" loading="lazy" src="image/assets/pekom/live-event-glance.jpg"/><figcaption class="img-caption">The At a glance ticket card: date, type, venue, session and status</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="Events list with Coming up, Open now and Behind us tabs" decoding="async" loading="lazy" src="image/assets/pekom/events-list.jpg"/><figcaption class="img-caption">Events split into Coming up, Open now and Behind us</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="PEKOM Onboarding 26/27 event page header with a calendar date card" decoding="async" loading="lazy" src="image/assets/pekom/event-header.jpg"/><figcaption class="img-caption">An event page header, with the date as a small calendar card</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="Event summary beside the At a glance ticket card" decoding="async" loading="lazy" src="image/assets/pekom/event-glance.jpg"/><figcaption class="img-caption">The At a glance ticket card, with Add to calendar and the form buttons</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="Photos section with a stack of event photos" decoding="async" loading="lazy" src="image/assets/pekom/event-photos.jpg"/><figcaption class="img-caption">The event's photos as a stack that opens in the story viewer</figcaption></figure>
 </div>
 
 <div class="rf-livegroup">
 <p class="rf-livegroup-title">About and Members</p>
-<figure class="rf-figure-lg"><img alt="About page mission statement with highlighted words" decoding="async" loading="lazy" src="image/assets/pekom/live-about-mission.jpg"/><figcaption class="img-caption">The mission, revealed line by line as you scroll</figcaption></figure>
-<figure class="rf-figure-lg"><img alt="About page history timeline" decoding="async" loading="lazy" src="image/assets/pekom/live-about-timeline.jpg"/><figcaption class="img-caption">A timeline of the society's milestones</figcaption></figure>
-<figure class="rf-figure-lg"><img alt="Members page organisation tree with the high committee" decoding="async" loading="lazy" src="image/assets/pekom/live-members-tree.jpg"/><figcaption class="img-caption">The committee as a searchable tree, from the president down to each division</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="Community, Skills, Careers section with four pillars" decoding="async" loading="lazy" src="image/assets/pekom/about-pillars.jpg"/><figcaption class="img-caption">Three words, one society, and the four things PEKOM works on</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="Our home section about the Faculty of Computer Science and Information Technology" decoding="async" loading="lazy" src="image/assets/pekom/about-faculty.jpg"/><figcaption class="img-caption">Our home: the faculty PEKOM belongs to</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="One committee, seven divisions, with the High Committee card open" decoding="async" loading="lazy" src="image/assets/pekom/about-divisions.jpg"/><figcaption class="img-caption">One committee, seven divisions: hover a division to see what it does</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="Members page header, Behind PEKOM 26/27" decoding="async" loading="lazy" src="image/assets/pekom/members-hero.jpg"/><figcaption class="img-caption">The Members page, which opens onto a searchable committee tree</figcaption></figure>
 </div>
 
 <div class="rf-livegroup">
-<p class="rf-livegroup-title">Gallery, News and Partners</p>
-<figure class="rf-figure-lg"><img alt="Gallery albums grid by event" decoding="async" loading="lazy" src="image/assets/pekom/live-gallery.jpg"/><figcaption class="img-caption">Albums by event, each opening in the story style photo viewer</figcaption></figure>
-<figure class="rf-figure-lg"><img alt="News page with the featured story" decoding="async" loading="lazy" src="image/assets/pekom/live-news.jpg"/><figcaption class="img-caption">News, with a featured story and filters by category</figcaption></figure>
-<figure class="rf-figure-lg"><img alt="Partner with PEKOM section with reach numbers" decoding="async" loading="lazy" src="image/assets/pekom/live-partners.jpg"/><figcaption class="img-caption">The pitch to sponsors, with the society's reach in numbers</figcaption></figure>
+<p class="rf-livegroup-title">Gallery and News</p>
+<figure class="rf-figure-lg"><img alt="Gallery header with one round thumbnail per event" decoding="async" loading="lazy" src="image/assets/pekom/gallery-header.jpg"/><figcaption class="img-caption">Gallery header, one bubble per event album</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="Gallery albums grid" decoding="async" loading="lazy" src="image/assets/pekom/gallery-albums.jpg"/><figcaption class="img-caption">The albums, each opening in the story style photo viewer</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="News page with the featured story" decoding="async" loading="lazy" src="image/assets/pekom/news-featured.jpg"/><figcaption class="img-caption">News, led by the featured story</figcaption></figure>
 </div>
 
 <div class="rf-livegroup">
-<p class="rf-livegroup-title">Merch and Recruitment</p>
-<figure class="rf-figure-lg"><img alt="Merch page header and the PEKOM 26/27 collection" decoding="async" loading="lazy" src="image/assets/pekom/live-merch.jpg"/><figcaption class="img-caption">Merch, grouped by collection, ordered through a pre-filled form</figcaption></figure>
-<figure class="rf-figure-lg"><img alt="Recruitment page application form" decoding="async" loading="lazy" src="image/assets/pekom/live-recruitment.jpg"/><figcaption class="img-caption">Recruitment: open event crews and the division application form</figcaption></figure>
+<p class="rf-livegroup-title">Partners, Merch and Recruitment</p>
+<figure class="rf-figure-lg"><img alt="Partners header with a scrolling row of partner names" decoding="async" loading="lazy" src="image/assets/pekom/partners-header.jpg"/><figcaption class="img-caption">Partners, with past sponsors running in a marquee</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="PEKOM 26/27 merch collection with four items" decoding="async" loading="lazy" src="image/assets/pekom/merch-collection.jpg"/><figcaption class="img-caption">The 26/27 merch collection, ordered through a pre-filled form</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="Seven divisions, one committee, with the Data Analyst division open" decoding="async" loading="lazy" src="image/assets/pekom/recruitment-divisions.jpg"/><figcaption class="img-caption">Recruitment: each division with its own apply button</figcaption></figure>
+<figure class="rf-figure-lg"><img alt="Tell us about you application form" decoding="async" loading="lazy" src="image/assets/pekom/recruitment-form.jpg"/><figcaption class="img-caption">The application form, which sends a filled in email until the official form is ready</figcaption></figure>
 </div>
         </div>
         <br>
