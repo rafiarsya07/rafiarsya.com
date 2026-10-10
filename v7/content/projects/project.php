@@ -92,6 +92,28 @@
                     </div>
                     <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
                         <div class="project-card d-flex align-items-center">
+                            <a href="/pekom" class="anone card-hitbox" aria-label="PEKOM UM Website, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">PEKOM UM Website</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">The computer science society's new site, in three languages.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Next.js</span><span class="badge blog-badge badge-green">React</span><span class="badge blog-badge badge-purple">Tailwind CSS</span><span class="badge blog-badge badge-orange">TypeScript</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <img src="image/assets/pekom/live-home-hero.jpg" alt="PEKOM website homepage hero" loading="lazy" decoding="async">
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/pekom">Project Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
                             <a href="/aievaldashboard" class="anone card-hitbox" aria-label="AI Eval Dashboard, project details"></a>
                             <div class="w100">
                                 <div class="project-header d-flex align-items-end justify-content-between">

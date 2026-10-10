@@ -65,6 +65,28 @@
         }
     },
     {
+        "slug": "pekom",
+        "title": "PEKOM UM Website",
+        "sub": "The computer science society's new site, in three languages.",
+        "tags": [
+            "Next.js",
+            "React",
+            "Tailwind CSS",
+            "TypeScript",
+            "Static Generation"
+        ],
+        "cover": "image/assets/pekom/live-home-hero.jpg",
+        "section": "Ongoing",
+        "cards": 15,
+        "meta": {
+            "Status": "In progress",
+            "Year": "2026",
+            "Role": "Technical Executive Committee, PEKOM",
+            "Stack": "Next.js, React, Tailwind CSS",
+            "Languages": "EN, BM, 中文"
+        }
+    },
+    {
         "slug": "aievaldashboard",
         "title": "AI Eval Dashboard",
         "sub": "Claude grades AI answers and tracks accuracy, latency and cost.",
