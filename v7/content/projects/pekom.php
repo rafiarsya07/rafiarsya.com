@@ -32,7 +32,7 @@
         <div class="blog-content-body">
 <p><strong>PEKOM</strong> (Persatuan Komputer Universiti Malaya) is the student society of the <a class="ext-link" href="https://fsktm.um.edu.my/" target="_blank" rel="noopener">Faculty of Computer Science &amp; Information Technology<svg class="ext-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>. It runs Code Fest, Mental Health Week, IS 101 and UMHackathon, and every session it needs one place where students can find all of that.</p>
 <p class="p-text">The 26/27 committee wanted a website that a fresher, a sponsor and a returning member can all use in a few clicks. <mark class="hl">Find the next event, register, read the news, see who runs the society, order merch, or apply to join a division.</mark> The site also has to be easy for the next committee to keep up to date, because the people who build it will not be the people who maintain it next year.</p>
-<p class="p-text"><strong>What I worked on:</strong> I set up the Next.js and Tailwind scaffold and wrote most of the pages so far as part of the PEKOM Technical team. That covers the home page, the events list and event pages, About, Members, Gallery, News, Partners, Merch, Recruitment and Join, plus the shared navigation, the language switch and the photo viewer.</p>
+<p class="p-text"><strong>What I worked on:</strong> <mark class="hl">I built the site myself, from the first Next.js and Tailwind scaffold to every page so far.</mark> Every code commit and pull request in the repository is mine. That covers the home page, the events list and event pages, About, Members, Gallery, News, Partners, Merch, Recruitment and Join, plus the shared navigation, the language switch and the photo viewer. The committee supplies the content: event details, photos, member lists and forms.</p>
 <p class="p-text">The site is still in progress. It is not public yet, and some links (membership form, merch order form, WhatsApp) are waiting on the committee. Every screenshot on this page comes from a local production build.</p>
         </div>
         <br>
@@ -51,7 +51,7 @@
 <li><b>Photos keep their shape</b>: a generated table records the width to height ratio of every photo, so the layout reserves the right space before an image loads. Posters and slides are listed separately and shown whole instead of being cropped like photos.</li>
 <li><b>Motion that steps aside</b>: Lenis smooth scroll, line by line headline reveals, parallax and the footer reveal are all switched off under <code class="inline">prefers-reduced-motion</code>, so the page stays usable for anyone who turns motion off.</li>
 </ul>
-<p class="p-text">The repository runs like a team project. <code class="inline">main</code> is protected, every change goes in through a pull request, and the README sets house rules such as never publishing matric or phone numbers from the committee list.</p>
+<p class="p-text">The repository is private to the society. Even with one developer, it runs like a team project so the next committee can pick it up: <code class="inline">main</code> is protected, every change goes in through a pull request, and the README sets house rules such as never publishing matric or phone numbers from the committee list.</p>
         </div>
         <br>
 
