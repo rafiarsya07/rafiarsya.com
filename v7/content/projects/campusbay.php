@@ -9,7 +9,7 @@
 <div class="d-flex justify-content-center">
     <div class="mdcontent">
 
-        <figure class="p-hero"><img alt="CampusBay homepage: headline, Browse and Start selling buttons, the Digital, Physical and Requests doors, and Bayo the mascot waving" decoding="async" src="image/assets/campusbay/hero.png"/></figure>
+        <figure class="p-hero"><picture><source media="(max-width: 600px)" srcset="image/assets/campusbay/hero-mobile.png"><img alt="CampusBay homepage: headline, Browse and Start selling buttons, the Digital, Physical and Requests doors, and Bayo the mascot waving" decoding="async" src="image/assets/campusbay/hero.png"/></picture></figure>
 
         <div class="blog-content-header">
             <div>

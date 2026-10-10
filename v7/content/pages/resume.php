@@ -9,7 +9,7 @@
 <div class="d-flex justify-content-center">
     <div class="content">
         <div class="d-flex justify-content-between align-items-center" style="margin-bottom: -10px;">
-            <small>Last updated: 1 October 2026</small>
+            <small>Last updated: 10 October 2026</small>
             <div class="d-flex justify-content-end align-items-center">
                 <div style="margin-left: 10px">
                     <a type="button" href="https://drive.google.com/file/d/1zuPWVwJPG_mSqoJOH703kcRyNptxJH3o/view?usp=sharing" target="_blank" rel="noopener"
@@ -120,6 +120,32 @@
             </div>
             <hr>
 
+            <h4>Leadership &amp; Activities</h4>
+            <div class="resume-entry">
+                <div class="resume-entry-top">
+                    <b>Institut Teknologi Batam (ITEBA), Indonesia</b>
+                    <span class="resume-year">2026</span>
+                </div>
+                <div class="resume-role">Student Representative &amp; Group Leader, Outbound Programme</div>
+                <ul>
+                    <li>Represented Universiti Malaya as its student representative: led a group of 28 students
+                        and delivered the student speech on stage at ITEBA, Batam, during a programme that included
+                        the public lecture "Behind the Scenes of TikTok &amp; ChatGPT".</li>
+                </ul>
+            </div>
+            <div class="resume-entry">
+                <div class="resume-entry-top">
+                    <b>LARAS, PPI Malaysia</b>
+                    <span class="resume-year">2026</span>
+                </div>
+                <div class="resume-role">Transportation Team &amp; Field Committee</div>
+                <ul>
+                    <li>Handled logistics, on-ground coordination and event-day operations for LARAS, PPI
+                        Malaysia's annual gathering.</li>
+                </ul>
+            </div>
+            <hr>
+
             <h4>Volunteering</h4>
             <div class="resume-entry">
                 <div class="resume-entry-top">
@@ -145,54 +171,43 @@
                         across the whole programme, covering sessions and daily activities on all five days.</li>
                 </ul>
             </div>
-            <div class="resume-entry">
-                <div class="resume-entry-top">
-                    <b>LARAS, PPI Malaysia</b>
-                    <span class="resume-year">2026</span>
-                </div>
-                <div class="resume-role">Transportation Team &amp; Field Committee</div>
-                <ul>
-                    <li>Handled logistics, on-ground coordination and event-day operations for LARAS, PPI
-                        Malaysia's annual gathering.</li>
-                </ul>
-            </div>
             <hr>
 
             <h4>Selected Projects (2026)</h4>
             <div class="resume-project">
-                <div class="resume-project-top"><b>CampusBay: Student Marketplace</b><span class="resume-links"><a href="https://campusbay.store" target="_blank" rel="noopener">campusbay.store</a></span></div>
+                <b>CampusBay: Student Marketplace</b>
                 <p>Live marketplace where students list items or post requests and close deals on WhatsApp. Next.js 16 on Cloudflare Workers with D1 and Drizzle, instant updates through a Durable Object, EN/MS/ID search and a full moderation panel. Built and run solo.</p>
             </div>
             <div class="resume-project">
-                <div class="resume-project-top"><b>UMOVE: Campus Errand Delivery</b><span class="resume-links"><a href="https://umove.rafiarsya.com" target="_blank" rel="noopener">umove.rafiarsya.com</a></span></div>
+                <b>UMOVE: Campus Errand Delivery</b>
                 <p>Students post errands and verified student runners deliver them, paid on delivery. React 19 front end on Cloudflare Workers; Node, Hono and PostgreSQL API in Docker on a mini PC behind Cloudflare Tunnel, with a live board over Server-Sent Events.</p>
             </div>
             <div class="resume-project">
-                <div class="resume-project-top"><b>PaperMind: Local RAG Paper Analyzer</b><span class="resume-links"><a href="https://papermind.rafiarsya.com" target="_blank" rel="noopener">papermind.rafiarsya.com</a></span></div>
+                <b>PaperMind: Local RAG Paper Analyzer</b>
                 <p>Ask questions of any PDF with answers grounded in the text. FastAPI, ChromaDB and Ollama, fully offline, in Docker Compose on a self-hosted Linux server.</p>
             </div>
             <div class="resume-project">
-                <div class="resume-project-top"><b>AI Digit Recognizer: CNN From Scratch</b><span class="resume-links"><a href="https://github.com/rafiarsya07/ai-digit-recognizer" target="_blank" rel="noopener">GitHub</a></span></div>
+                <b>AI Digit Recognizer: CNN From Scratch</b>
                 <p>Convolutional network written entirely in NumPy, from convolutions to backpropagation and Adam. 99.1% on the MNIST test set, served by Flask with a layer-by-layer visualizer.</p>
             </div>
             <div class="resume-project">
-                <div class="resume-project-top"><b>Nalar: Blog with a Custom CMS</b><span class="resume-links"><a href="https://blog.rafiarsya.com/" target="_blank" rel="noopener">blog.rafiarsya.com</a> &middot; <a href="https://github.com/rafiarsya07/thoughtlog" target="_blank" rel="noopener">GitHub</a></span></div>
+                <b>Nalar: Blog with a Custom CMS</b>
                 <p>Node.js, Express and PostgreSQL blog with JWT auth, Markdown editing and scheduled publishing. Self-hosted behind Cloudflare Tunnel, managed with PM2.</p>
             </div>
             <div class="resume-project">
-                <div class="resume-project-top"><b>Crop Disease Detector</b><span class="resume-links"><a href="https://huggingface.co/spaces/rafiarsya/crop-disease-detector" target="_blank" rel="noopener">Hugging Face</a></span></div>
+                <b>Crop Disease Detector</b>
                 <p>Classifies 38 plant diseases from a leaf photo. MobileNetV2 transfer learning with two-phase fine-tuning in TensorFlow/Keras, about 97% accuracy, deployed on Hugging Face Spaces.</p>
             </div>
             <div class="resume-project">
-                <div class="resume-project-top"><b>IDFEST 2026 Website</b><span class="resume-links"><a href="https://idfest.ppiunimalaya.id/" target="_blank" rel="noopener">idfest.ppiunimalaya.id</a></span></div>
+                <b>IDFEST 2026 Website</b>
                 <p>Official site for PPI UM's cultural festival, built as a team in Next.js 16 and Tailwind v4. Owned the homepage timeline, responsive hero and shared navigation.</p>
             </div>
             <div class="resume-project">
-                <div class="resume-project-top"><b>SENARA Creative Artfest 2026</b><span class="resume-links"><a href="https://senara.ppimalaysia.id/" target="_blank" rel="noopener">senara.ppimalaysia.id</a></span></div>
+                <b>SENARA Creative Artfest 2026</b>
                 <p>Refreshed PPI Malaysia's art exhibition site and built a new Online Exhibition with category and artwork pages, in HTML, CSS, JavaScript and Bootstrap 5.</p>
             </div>
             <div class="resume-project">
-                <div class="resume-project-top"><b>RafiFinance</b><span class="resume-links"><a href="https://finance.rafiarsya.com" target="_blank" rel="noopener">finance.rafiarsya.com</a></span></div>
+                <b>RafiFinance</b>
                 <p>Budget and savings tracker in a single HTML file with a financial health score. Works offline as a PWA, deployed on Cloudflare Pages.</p>
             </div>
             <hr>

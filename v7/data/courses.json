@@ -275,6 +275,17 @@
   "img": "image/cert/ibmi_strategic_sertif.jpeg"
  },
  {
+  "priority": 25.5,
+  "type": "3",
+  "issuer": "iteba",
+  "issuer_name": "ITEBA",
+  "title": "Certificate of Appreciation, Public Lecture: Behind the Scenes of TikTok & ChatGPT",
+  "subtitle": "October 2026",
+  "tags": "Outbound Programme, Data Centers, Universiti Malaya, Batam",
+  "desc": "Public lecture on the data centers behind TikTok and ChatGPT, held at ITEBA in Batam on 6 October 2026 with Universiti Malaya. Signed by the Vice Rector II of ITEBA. Ref. 016/SERTI/ITEBA/X/2026.",
+  "img": "image/cert/iteba-public-lecture-sertif.jpeg"
+ },
+ {
   "priority": 26,
   "type": "3",
   "issuer": "UM",

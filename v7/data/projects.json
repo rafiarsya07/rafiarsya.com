@@ -2,7 +2,7 @@
     {
         "slug": "umove",
         "title": "UMOVE",
-        "sub": "Campus errands delivered by fellow UM students. Live request board, verified runners, pay on delivery, self-hosted API.",
+        "sub": "Campus errands, delivered by fellow UM students.",
         "tags": [
             "React",
             "Hono",
@@ -23,7 +23,7 @@
     {
         "slug": "campusbay",
         "title": "CampusBay",
-        "sub": "Student marketplace where every deal happens on WhatsApp. Next.js on Cloudflare Workers, with live updates and a full moderation panel.",
+        "sub": "Student marketplace where every deal happens on WhatsApp.",
         "tags": [
             "Next.js",
             "TypeScript",
@@ -45,7 +45,7 @@
     {
         "slug": "senara",
         "title": "SENARA Creative Artfest 2026",
-        "sub": "Re-themed PPI Malaysia's art exhibition site for 2026 and built a new Online Exhibition with category and artwork pages.",
+        "sub": "PPI Malaysia's art exhibition site, with a new online gallery.",
         "tags": [
             "HTML",
             "CSS",
@@ -67,7 +67,7 @@
     {
         "slug": "aievaldashboard",
         "title": "AI Eval Dashboard",
-        "sub": "Claude grades model answers as correct, partial, wrong or hallucinated, with accuracy, latency and cost per run.",
+        "sub": "Claude grades AI answers and tracks accuracy, latency and cost.",
         "tags": [
             "React",
             "Node.js",
@@ -88,7 +88,7 @@
     {
         "slug": "marketpulse",
         "title": "MarketPulse ETL",
-        "sub": "Daily crypto data into PostgreSQL, analysed with window functions and CTEs, served by FastAPI to a Chart.js dashboard.",
+        "sub": "Crypto ETL pipeline: PostgreSQL, SQL analytics and a live dashboard.",
         "tags": [
             "Python",
             "PostgreSQL",
@@ -111,7 +111,7 @@
     {
         "slug": "pricetracker",
         "title": "PriceWatch",
-        "sub": "Chrome extension: point at a price once and get notified when it drops. Re-checks every three hours.",
+        "sub": "Chrome extension that alerts you when a price drops.",
         "tags": [
             "Chrome Extension",
             "Manifest V3",
@@ -131,7 +131,7 @@
     {
         "slug": "papermind",
         "title": "PaperMind",
-        "sub": "Ask questions of any PDF with a fully local RAG stack: FastAPI, ChromaDB and Ollama on my own server.",
+        "sub": "Chat with any PDF using a fully local RAG stack.",
         "tags": [
             "RAG",
             "LLM",
@@ -154,7 +154,7 @@
     {
         "slug": "digitrecognition",
         "title": "AI Digit Recognizer",
-        "sub": "A CNN written from scratch in NumPy, 99.1% on MNIST, with a visualizer that shows every layer at work.",
+        "sub": "A CNN written from scratch in NumPy, 99.1% on MNIST.",
         "tags": [
             "NumPy",
             "CNN",
@@ -175,7 +175,7 @@
     {
         "slug": "snip",
         "title": "Snip URL Shortener",
-        "sub": "Serverless URL shortener with click analytics: Lambda, API Gateway and DynamoDB, defined in AWS SAM.",
+        "sub": "Serverless URL shortener on AWS Lambda and DynamoDB.",
         "tags": [
             "AWS Lambda",
             "DynamoDB",
@@ -198,7 +198,7 @@
     {
         "slug": "nalar",
         "title": "Nalar",
-        "sub": "Personal blog with a hand-built CMS: Markdown editor, scheduled posts and JWT auth, self-hosted behind Cloudflare Tunnel.",
+        "sub": "Self-hosted blog with a CMS I built from scratch.",
         "tags": [
             "Node.js",
             "Express",
@@ -221,7 +221,7 @@
     {
         "slug": "cropdisease",
         "title": "Crop Disease Detector",
-        "sub": "Identifies 38 plant diseases from one leaf photo. MobileNetV2 transfer learning, about 97% accuracy, live on Hugging Face.",
+        "sub": "Detects 38 plant diseases from one leaf photo.",
         "tags": [
             "TensorFlow",
             "MobileNetV2",
@@ -245,7 +245,7 @@
     {
         "slug": "idfest",
         "title": "IDFEST 2026 Website",
-        "sub": "Official site for PPI UM's Indonesian cultural festival, built as a team from Figma designs in Next.js.",
+        "sub": "Official site for PPI UM's Indonesian cultural festival.",
         "tags": [
             "Next.js 16",
             "React 19",
@@ -268,7 +268,7 @@
     {
         "slug": "steamsql",
         "title": "Steam Market Intelligence",
-        "sub": "SQLite compiled to WebAssembly runs live SQL over 1,400 games right in the browser. No backend.",
+        "sub": "Live SQL analytics running entirely in the browser.",
         "tags": [
             "SQLite",
             "sql.js (WASM)",
@@ -290,7 +290,7 @@
     {
         "slug": "arenaduel",
         "title": "Arena Duel",
-        "sub": "Real-time 1v1 over WebSockets, with a server-authoritative state machine that keeps both players honest.",
+        "sub": "Real-time 1v1 game with cheat-proof server logic.",
         "tags": [
             "Node.js",
             "Socket.IO",
@@ -313,7 +313,7 @@
     {
         "slug": "resumematch",
         "title": "Resume Match",
-        "sub": "Scores a resume against a job description with skill matching and weighted scoring. No AI model needed.",
+        "sub": "Scores a resume against a job description, no AI needed.",
         "tags": [
             "React + Vite",
             "Node.js + Express",
@@ -335,7 +335,7 @@
     {
         "slug": "nase",
         "title": "NASE Accessibility",
-        "sub": "Accessibility audit of a platform for visually impaired students: 23 WCAG 2.1 issues and redesigned components.",
+        "sub": "Accessibility audit and redesign for visually impaired students.",
         "tags": [
             "Accessibility",
             "WCAG 2.1 AA",
@@ -358,7 +358,7 @@
     {
         "slug": "handgesture",
         "title": "HandGesture",
-        "sub": "Draw on screen with your index finger: real-time hand tracking with MediaPipe and OpenCV from a webcam.",
+        "sub": "Draw on screen with your finger through a webcam.",
         "tags": [
             "Python",
             "MediaPipe",
@@ -381,7 +381,7 @@
     {
         "slug": "reminderme",
         "title": "Reminder Me",
-        "sub": "Offline-first companion for habits, tasks, exams and prayer times, installable as a PWA and an Android app.",
+        "sub": "Offline-first student planner, installable on Android.",
         "tags": [
             "React 18",
             "Vite",
@@ -404,7 +404,7 @@
     {
         "slug": "briskwalk",
         "title": "BriskWalk",
-        "sub": "Registration site for PPI Malaysia's charity walk: multi-step form, image compression and a Google Sheets backend.",
+        "sub": "Registration site for PPI Malaysia's charity walk.",
         "tags": [
             "Figma",
             "Vanilla JS",
@@ -426,7 +426,7 @@
     {
         "slug": "rafifinance",
         "title": "RafiFinance",
-        "sub": "Budgets, savings goals and a health score in a single HTML file that works offline as a PWA.",
+        "sub": "Personal finance tracker in a single offline HTML file.",
         "tags": [
             "Vanilla JS",
             "Single HTML File",
@@ -449,7 +449,7 @@
     {
         "slug": "largenumber",
         "title": "Large Number Arithmetic",
-        "sub": "Arithmetic on numbers of any size with a doubly linked list, plus a step-by-step visualizer.",
+        "sub": "Arithmetic on huge numbers with a doubly linked list.",
         "tags": [
             "Java",
             "Data Structures",
@@ -470,7 +470,7 @@
     {
         "slug": "csastudy",
         "title": "CSA Study App",
-        "sub": "Exam prep for Computer Systems Architecture with drills and visualizers for cache mapping and Hamming codes.",
+        "sub": "Exam prep app with visual drills for Computer Systems Architecture.",
         "tags": [
             "Vanilla JS",
             "Single HTML File",
@@ -492,7 +492,7 @@
     {
         "slug": "llmclassification",
         "title": "LLM Response Preference Baseline",
-        "sub": "Predicts which of two chatbot answers a human preferred, with a TF-IDF and logistic regression baseline.",
+        "sub": "Predicts which chatbot answer people prefer.",
         "tags": [
             "scikit-learn",
             "TF-IDF",
