@@ -31,10 +31,11 @@
 
         <p class="about-section">
             Beyond that I lead as <span class="highlightv1">Head of Department</span> for the IDFEST Art Exhibition
-            at Universiti Malaya, and I served as a <span class="highlightv1">Student Buddy</span> for FSKTM's
-            Inbound Mobility Programme 2026, hosting Chulalongkorn University students in Kuala Lumpur. I've also
-            worked on PPI Malaysia's <span class="highlightv1">LARAS</span> committee, coordinating transportation
-            and field operations for events serving hundreds of participants.
+            at Universiti Malaya. I was also the <span class="highlightv1">student representative of
+                Universiti Malaya</span> on an outbound programme to Institut Teknologi Batam in Indonesia, where I
+            led a group of 28 students and delivered the student speech. Closer to home, I served as a
+            <span class="highlightv1">Student Buddy</span> for FSKTM's Inbound Mobility Programme 2026, hosting
+            Chulalongkorn University students in Kuala Lumpur.
         </p>
 
         <p class="about-section">
@@ -202,6 +203,44 @@
         <br>
 
         <div class="about-section">
+            <p class="text-silent">Leadership &amp; Activities</p>
+            <div class="d-flex flex-wrap justify-content-between">
+                <div class="d-flex flex-wrap gap-2">
+                    <img src="icon/UM.png" alt="Universiti Malaya" class="education-image" />
+                    <div>
+                        <p><b>Student Representative &amp; Group Leader</b></p>
+                        <a class="d-flex align-items-center gap-1 textlink" href="https://iteba.ac.id/en"
+                            target="_blank">Institut Teknologi Batam (ITEBA), Indonesia<arrow-icon class="togo-icon"
+                                style="margin-top: -1px;"></arrow-icon></a>
+                    </div>
+                </div>
+                <p class="text-silent m0">2026</p>
+            </div>
+            Represented <span class="markblue">Universiti Malaya as its student representative</span> on an
+            outbound programme to Batam, Indonesia. I led a group of 28 students and delivered the student speech
+            on stage. The programme included the public lecture <i>Behind the Scenes of TikTok &amp; ChatGPT:
+            Exploring the Giants of Data Centers</i>.
+        </div>
+
+        <div class="about-section">
+            <div class="d-flex flex-wrap justify-content-between">
+                <div class="d-flex flex-wrap gap-2">
+                    <img src="icon/ppim.png" alt="PPI Malaysia" class="education-image" />
+                    <div>
+                        <p><b>LARAS: Transportation Team &amp; Field Committee</b></p>
+                        <a class="d-flex align-items-center gap-1 textlink" href="https://ppimalaysia.id"
+                            target="_blank">PPI Malaysia<arrow-icon class="togo-icon"
+                                style="margin-top: -1px;"></arrow-icon></a>
+                    </div>
+                </div>
+                <p class="text-silent m0">2026</p>
+            </div>
+            Served on the Transportation Team and Field Committee for LARAS, covering logistics, on-ground
+            coordination, and event-day operations.
+        </div>
+        <br>
+
+        <div class="about-section">
             <p class="text-silent">Volunteering</p>
             <div class="d-flex flex-wrap justify-content-between">
                 <div class="d-flex flex-wrap gap-2">
@@ -220,23 +259,6 @@
         </div>
         <br>
 
-        <div class="about-section">
-            <div class="d-flex flex-wrap justify-content-between">
-                <div class="d-flex flex-wrap gap-2">
-                    <img src="icon/ppim.png" alt="PPI Malaysia" class="education-image" />
-                    <div>
-                        <p><b>LARAS: Transportation Team &amp; Field Committee</b></p>
-                        <a class="d-flex align-items-center gap-1 textlink" href="https://ppimalaysia.id"
-                            target="_blank">PPI Malaysia<arrow-icon class="togo-icon"
-                                style="margin-top: -1px;"></arrow-icon></a>
-                    </div>
-                </div>
-                <p class="text-silent m0">2026</p>
-            </div>
-            Volunteered on the Transportation Team and Field Committee for LARAS, covering logistics, on-ground
-            coordination, and event-day operations.
-        </div>
-        <br>
 
         <div class="about-section">
             <div class="d-flex flex-wrap justify-content-between">

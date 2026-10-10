@@ -9,7 +9,7 @@
 <div class="d-flex justify-content-center">
     <div class="content">
         <div class="d-flex justify-content-between align-items-center" style="margin-bottom: -10px;">
-            <small>Last updated: 1 October 2026</small>
+            <small>Last updated: 10 October 2026</small>
             <div class="d-flex justify-content-end align-items-center">
                 <div style="margin-left: 10px">
                     <a type="button" href="https://drive.google.com/file/d/1zuPWVwJPG_mSqoJOH703kcRyNptxJH3o/view?usp=sharing" target="_blank" rel="noopener"
@@ -120,6 +120,32 @@
             </div>
             <hr>
 
+            <h4>Leadership &amp; Activities</h4>
+            <div class="resume-entry">
+                <div class="resume-entry-top">
+                    <b>Institut Teknologi Batam (ITEBA), Indonesia</b>
+                    <span class="resume-year">2026</span>
+                </div>
+                <div class="resume-role">Student Representative &amp; Group Leader, Outbound Programme</div>
+                <ul>
+                    <li>Represented Universiti Malaya as its student representative: led a group of 28 students
+                        and delivered the student speech on stage at ITEBA, Batam, during a programme that included
+                        the public lecture "Behind the Scenes of TikTok &amp; ChatGPT".</li>
+                </ul>
+            </div>
+            <div class="resume-entry">
+                <div class="resume-entry-top">
+                    <b>LARAS, PPI Malaysia</b>
+                    <span class="resume-year">2026</span>
+                </div>
+                <div class="resume-role">Transportation Team &amp; Field Committee</div>
+                <ul>
+                    <li>Handled logistics, on-ground coordination and event-day operations for LARAS, PPI
+                        Malaysia's annual gathering.</li>
+                </ul>
+            </div>
+            <hr>
+
             <h4>Volunteering</h4>
             <div class="resume-entry">
                 <div class="resume-entry-top">
@@ -143,17 +169,6 @@
                         Chulalongkorn University, Thailand's top-ranked university, in Kuala Lumpur.</li>
                     <li>Served as a Student Buddy to the visiting delegation and was responsible for documentation
                         across the whole programme, covering sessions and daily activities on all five days.</li>
-                </ul>
-            </div>
-            <div class="resume-entry">
-                <div class="resume-entry-top">
-                    <b>LARAS, PPI Malaysia</b>
-                    <span class="resume-year">2026</span>
-                </div>
-                <div class="resume-role">Transportation Team &amp; Field Committee</div>
-                <ul>
-                    <li>Handled logistics, on-ground coordination and event-day operations for LARAS, PPI
-                        Malaysia's annual gathering.</li>
                 </ul>
             </div>
             <hr>
