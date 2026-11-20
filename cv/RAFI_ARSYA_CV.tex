@@ -1,29 +1,28 @@
 % =====================================================================
-%  Muhammad Rafi Arsya  |  Curriculum Vitae
-%  Content matches rafiarsya.com/resume, except Selected Projects: the site lists
-%  all 17, this CV carries the strongest 8. Everything else stays in sync.
-%  Updated 20 November 2026: Spektra and Morsel, Bollywood Glam, current modules.
+%  Muhammad Rafi Arsya | Curriculum Vitae
+%  Content matches rafiarsya.com/resume (Selected Projects: the strongest 8).
+%  Updated 20 November 2026.
 %  Build:  pdflatex RAFI_ARSYA_CV.tex   (run twice so hyperref settles)
-%
-%  Fits 2 pages with room to spare. If you add entries and it spills to 3,
-%  turn these knobs in order, checking the page count after each one:
-%    1. add  \linespread{0.95}  under the microtype line
-%    2. geometry margins  1.5cm -> 1.25cm, top/bottom 1.3cm -> 1.05cm
-%    3. wrap Selected Projects in  \begingroup\small ... \endgroup
-%  Past that, cut a project instead of shrinking further.
+%  Must stay at 2 pages. If it spills, shorten a bullet or drop a project
+%  before touching the margins.
 % =====================================================================
 \documentclass[a4paper,10pt]{article}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{lmodern}
-\usepackage[margin=1.25cm,top=1.05cm,bottom=1.05cm]{geometry}
+\usepackage{charter}
+\usepackage[margin=1.6cm,top=1.3cm,bottom=1.3cm]{geometry}
 \usepackage{enumitem}
 \usepackage{titlesec}
-\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tabularx}
+\usepackage{array}
 \usepackage[hidelinks]{hyperref}
 \usepackage{microtype}
-\linespread{0.95}
+\usepackage{needspace}
+
+\definecolor{accent}{RGB}{28,58,104}
+\definecolor{muted}{RGB}{95,99,110}
 
 \hypersetup{
   pdftitle={Muhammad Rafi Arsya, Curriculum Vitae},
@@ -31,208 +30,187 @@
   pdfsubject={Software Engineering},
 }
 
-% ---- no page numbers, no headers -----------------------------------
 \pagestyle{empty}
+\linespread{1.0}
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{0pt}
 
-% ---- section headings: small caps over a full width rule ------------
+% ---- section heading: small caps in the accent colour over a thin rule --
 \titleformat{\section}
-  {\normalfont\large\bfseries}{}{0pt}{}[\vspace{-6pt}\rule{\textwidth}{0.6pt}]
-\titlespacing*{\section}{0pt}{7pt}{3pt}
+  {\normalfont\large\scshape\color{accent}}{}{0pt}{}[\vspace{-7pt}{\color{accent!60}\rule{\textwidth}{0.5pt}}]
+\titlespacing*{\section}{0pt}{9pt}{5pt}
 
-% ---- tighter default lists -----------------------------------------
-\setlist[itemize]{leftmargin=1.2em, topsep=2pt, itemsep=1pt, parsep=0pt}
+\setlist[itemize]{leftmargin=1.1em, topsep=1pt, itemsep=0.5pt, parsep=0pt, label={\color{accent}\small\textbullet}}
 
-% ---- one entry header: role/place on the left, dates flush right ----
-% \entry{Bold line}{Right-aligned dates}{Subtitle line}
+% \entry{Role}{Dates}{Organisation}
 \newcommand{\entry}[3]{%
-  \vspace{2pt}%
-  \noindent\textbf{#1}\hfill{\itshape #2}\par
-  \ifx\relax#3\relax\else\noindent#3\par\fi
-  \vspace{1pt}%
+  \needspace{4\baselineskip}\vspace{3pt}%
+  \noindent\textbf{#1}\hfill{\small\color{muted}#2}\par
+  \noindent{\itshape #3}\par
 }
 
-% ---- one project block: title line, then the description under it, so the
-%      name and the prose never run together. Same shape as \entry above. --
+% \project{Title}{Tech}{Description}
 \newcommand{\project}[3]{%
-  \vspace{4pt}%
-  \noindent\textbf{#1}\hfill{\itshape #2}\par
-  \vspace{2pt}%
+  \needspace{3\baselineskip}\vspace{4pt}%
+  \noindent\textbf{#1}\hfill{\small\itshape\color{muted}#2}\par
   \noindent #3\par
 }
 
-% ---- skills row -----------------------------------------------------
-\newcommand{\skillrow}[2]{\noindent\textbf{#1:} #2\par\vspace{3pt}}
+\newcommand{\sep}{\hspace{0.6em}{\color{muted}|}\hspace{0.6em}}
 
 \begin{document}
 \raggedright
-\setlength{\parindent}{0pt}
 
 % =====================================================================
 %  HEADER
 % =====================================================================
 \begin{center}
-  {\LARGE\bfseries Muhammad Rafi Arsya}\\[2pt]
-  {\normalsize Software Engineering Student}\\[5pt]
+  {\fontsize{22}{26}\selectfont\bfseries\color{accent} Muhammad Rafi Arsya}\\[3pt]
+  {\large Software Engineering Student, Universiti Malaya}\\[5pt]
   \small
-  \href{mailto:rafiarsya.work@gmail.com}{rafiarsya.work@gmail.com} \quad$|$\quad
-  +60 17-941-5768 \quad$|$\quad
-  \href{https://rafiarsya.com}{rafiarsya.com} \quad$|$\quad
-  \href{https://github.com/rafiarsya07}{GitHub} \quad$|$\quad
-  \href{https://www.linkedin.com/in/muhammad-rafi-arsya-557335394/}{LinkedIn} \quad$|$\quad
-  Kuala Lumpur, Malaysia
+  \href{mailto:rafiarsya.work@gmail.com}{rafiarsya.work@gmail.com}\sep
+  +60 17-941-5768\sep
+  \href{https://rafiarsya.com}{\textcolor{accent}{rafiarsya.com}}\sep
+  \href{https://github.com/rafiarsya07}{\textcolor{accent}{github.com/rafiarsya07}}\sep
+  \href{https://www.linkedin.com/in/muhammad-rafi-arsya-557335394/}{\textcolor{accent}{LinkedIn}}\sep
+  Kuala Lumpur
 \end{center}
-\vspace{2pt}
 
 % =====================================================================
 \section*{Profile}
-Software Engineering student at Universiti Malaya who takes ideas all the way to live products.
-Builds and runs student platforms at UM, including CampusBay, UMOVE and Spektra, end to end: Next.js
-and React front ends, Node, Python and PostgreSQL back ends, deployed on Cloudflare and a self-hosted
-Linux server. Also works in applied AI/ML (RAG, CNNs written from scratch). Seeking a Data
-Engineering or Software Engineering internship.
+Software Engineering student who takes ideas all the way to live products. I build and run student
+platforms at Universiti Malaya end to end, including CampusBay, UMOVE and Spektra: React and Next.js
+front ends, Node, Python and PostgreSQL back ends, and deployment on Cloudflare and my own Linux
+server. I also work in applied AI/ML (RAG, CNNs written from scratch). Seeking a Software
+Engineering or Data Engineering internship.
 
 % =====================================================================
 \section*{Education}
 
-\entry{Universiti Malaya (UM), Malaysia}{Since 2025}{B.Sc. Computer Science (Software Engineering)}
+\entry{B.Sc. Computer Science (Software Engineering)}{2025 to present}{Universiti Malaya (UM), Kuala Lumpur}
 \begin{itemize}
-  \item Current: Database, Probability \& Statistics, Project Management, Computing Mathematics I,
+  \item \textbf{Current:} Database, Probability \& Statistics, Project Management, Computing Mathematics I,
         Computer Systems \& Organization, Thinking \& Communication Skills.
-  \item Completed: Data Structures, Machine Learning, Network Technology, Human Computer
+  \item \textbf{Completed:} Data Structures, Machine Learning, Network Technology, Human Computer
         Interaction, Computer System Architecture, Fundamentals of Programming.
 \end{itemize}
 
-\entry{International Program ICBS, Riau, Indonesia}{2022 to 2025}{Senior High School}
-\begin{itemize}
-  \item International curriculum taught in English; active in student leadership and language programmes.
-\end{itemize}
+\entry{Senior High School}{2022 to 2025}{International Program ICBS, Riau, Indonesia}
 
 % =====================================================================
 \section*{Experience}
 
-\entry{PEKOM: Computer Science Society, Universiti Malaya}{Since 2026}{Technical Executive Committee}
+\entry{Technical Executive Committee, Website Division}{2026 to present}{PEKOM: Computer Science Society, Universiti Malaya}
 \begin{itemize}
-  \item Serving in the Website Division, building and maintaining the society's web platforms.
-  \item Supporting faculty-wide events across the Faculty of Computer Science \& IT.
+  \item Build and maintain the society's web platforms and support faculty-wide events at FSKTM.
 \end{itemize}
 
-\entry{PPI Malaysia (Indonesian Students Association)}{Since 2025}{Head of Website Division, Data \& Information System Bureau}
+\entry{Head of Website Division, Data \& Information System Bureau}{2025 to present}{PPI Malaysia (Indonesian Students Association)}
 \begin{itemize}
-  \item Full ownership of the official PPI Malaysia website: development, maintenance, and
-        continuous improvement.
-  \item Serving Indonesian students across Malaysia.
+  \item Own the official PPI Malaysia website end to end: development, maintenance and improvements
+        for Indonesian students across Malaysia.
 \end{itemize}
 
-\entry{PPI University of Malaya}{Since 2026}{Head of Department, Art Exhibition at IDFEST}
+\entry{Head of Department, Art Exhibition}{2026}{IDFEST 2026, PPI Universiti Malaya}
 \begin{itemize}
-  \item Leading the Art Exhibition end to end for IDFEST, an international event on Indonesian heritage at UM:
-        theme and curation, artist coordination, layout and delivery on the day.
+  \item Led the Art Exhibition of an international festival on Indonesian heritage: theme and curation,
+        artist coordination, layout and delivery on the day.
 \end{itemize}
 
-\entry{PPI University of Malaya}{Since Jun 2026}{Website Development Committee at IDFEST}
+\entry{Website Development Committee}{2026}{IDFEST 2026, PPI Universiti Malaya}
 \begin{itemize}
-  \item Building the official IDFEST website in Next.js 16, React 19 and Tailwind v4 from Figma designs;
-        own the homepage timeline, responsive hero and shared navigation.
+  \item Built the official IDFEST website in Next.js 16, React 19 and Tailwind v4 from Figma designs;
+        owned the homepage timeline, responsive hero and shared navigation.
 \end{itemize}
 
 % =====================================================================
 \section*{Leadership \& Activities}
 
-\entry{Institut Teknologi Batam (ITEBA), Indonesia}{October 2026}{Student Representative \& Group Leader, Outbound Programme}
+\entry{Student Representative \& Group Leader, Outbound Programme}{October 2026}{Institut Teknologi Batam (ITEBA), Indonesia}
 \begin{itemize}
-  \item Represented Universiti Malaya as its student representative: led a group of 28 students and
-        delivered the student speech on stage at ITEBA, Batam, during a programme that included the
-        public lecture ``Behind the Scenes of TikTok \& ChatGPT''.
+  \item Represented Universiti Malaya, led a group of 28 students and gave the student speech on stage
+        at ITEBA, Batam.
 \end{itemize}
 
-\entry{LARAS, PPI Malaysia}{2026}{Transportation Team \& Field Committee}
+\entry{Transportation Team \& Field Committee}{2026}{LARAS, PPI Malaysia}
 \begin{itemize}
-  \item Handled logistics, on-ground coordination and event-day operations for LARAS,
-        PPI Malaysia's annual gathering.
+  \item Handled logistics, on-ground coordination and event-day operations for PPI Malaysia's annual gathering.
 \end{itemize}
 
 % =====================================================================
 \section*{Volunteering}
 
-\entry{Universiti Malaya Week of Welcome (UM-WOW)}{2026}{Buddy, Student Affairs Department}
+\entry{Buddy, UM Week of Welcome (UM-WOW)}{2026}{Student Affairs Department, Universiti Malaya}
 \begin{itemize}
-  \item Welcomed and guided new students through orientation week, registration and their first
-        days on campus at Universiti Malaya.
+  \item Welcomed and guided new students through orientation, registration and their first days on campus.
 \end{itemize}
 
-\entry{Bollywood Glam, FSKTM, Universiti Malaya}{2026}{Buddy, Student Affairs (HEP) FSKTM}
+\entry{Buddy, Bollywood Glam}{2026}{Student Affairs (HEP), FSKTM, Universiti Malaya}
 \begin{itemize}
-  \item Guided and looked after graduating undergraduate and PhD students during their graduation
-        celebration.
+  \item Guided graduating undergraduate and PhD students during the faculty's graduation celebration.
 \end{itemize}
 
-\entry{Faculty of Computer Science \& Information Technology, Universiti Malaya}{1 to 5 September 2026}{Student Buddy, Inbound Mobility Programme 2026}
+\entry{Student Buddy, Inbound Mobility Programme}{1 to 5 September 2026}{FSKTM, Universiti Malaya}
 \begin{itemize}
-  \item One of a four-person committee hosting Chulalongkorn University students for a five-day
-        FSKTM programme; Student Buddy and documentation lead for all five days.
+  \item One of a four-person committee hosting Chulalongkorn University students for five days; buddy
+        to the delegation and documentation lead.
 \end{itemize}
-
 
 % =====================================================================
 \section*{Selected Projects}
-\begingroup\small
 
-\project{CampusBay: Student Marketplace}{2026}{Live marketplace where students list items or post requests and close deals on WhatsApp. Next.js 16 on Cloudflare Workers with D1 and Drizzle, instant updates and search in English, Malay and Indonesian. Built and run solo.}
+\project{CampusBay: Student Marketplace}{Next.js, Cloudflare Workers, D1}{Live marketplace where students
+list items or post requests and close deals on WhatsApp, with instant updates and search in English,
+Malay and Indonesian. Designed, built and run solo.}
 
-\project{UMOVE: Campus Food Delivery}{2026}{Food from any UM cafe, delivered by verified UM students and paid on arrival. React 19, Hono and PostgreSQL, with a live request board, push notifications and Telegram alerts.}
+\project{UMOVE: Campus Food Delivery}{React, Hono, PostgreSQL}{Food from any UM cafe, delivered by
+verified UM students and paid on arrival, with a live request board, push notifications and Telegram
+alerts.}
 
-\project{Spektra: Study Reminders for UM}{2026}{Pulls SPeCTRUM deadlines, classes and announcements automatically and reminds students on Telegram, email and push. FastAPI and SQLite, installable as a PWA and Android app.}
+\project{Spektra: Study Reminders for UM}{FastAPI, SQLite, PWA}{Pulls SPeCTRUM deadlines, classes and
+announcements automatically and reminds students on Telegram, email and push. Installable as a PWA and
+Android app.}
 
-\project{Morsel: Surplus Campus Food}{2026}{WIX2002 Project Management course project: campus cafes post unsold food at up to half price and students reserve it with a pickup code. Next.js, Supabase and Tailwind, with live listings and seller approval.}
+\project{Morsel: Surplus Campus Food}{Next.js, Supabase, Tailwind}{WIX2002 Project Management course
+project: campus cafes post unsold food at up to half price and students reserve it with a pickup code.}
 
-\project{PaperMind: Local RAG Paper Analyzer}{2026}{Ask questions of any PDF with answers grounded in the text. FastAPI, ChromaDB and Ollama, fully offline and self-hosted.}
+\project{PaperMind: Local RAG Paper Analyzer}{FastAPI, ChromaDB, Ollama}{Ask questions of any PDF with
+answers grounded in the text, fully offline and self-hosted.}
 
-\project{AI Digit Recognizer: CNN From Scratch}{2026}{Convolutional network written entirely in NumPy, from convolutions to backpropagation and Adam. 99.1\% on the MNIST test set, with a layer-by-layer visualizer.}
+\project{AI Digit Recognizer: CNN From Scratch}{Python, NumPy, Flask}{Convolutional network written
+entirely in NumPy, from convolutions to backpropagation and Adam: 99.1\% on the MNIST test set.}
 
-\project{Nalar: Blog with a Custom CMS}{2026}{Node.js, Express and PostgreSQL blog with JWT auth, Markdown editing and scheduled publishing.}
+\project{Nalar: Blog with a Custom CMS}{Node.js, Express, PostgreSQL}{Personal blog with JWT auth,
+Markdown editing and scheduled publishing.}
 
-\project{Crop Disease Detector}{2026}{Classifies 38 plant diseases from a leaf photo with MobileNetV2 transfer learning in TensorFlow/Keras, about 97\% accuracy, on Hugging Face Spaces.}
-
-\endgroup
+\project{Crop Disease Detector}{TensorFlow, Keras}{Classifies 38 plant diseases from a leaf photo with
+MobileNetV2 transfer learning, about 97\% accuracy, on Hugging Face Spaces.}
 
 % =====================================================================
 \section*{Skills}
-
-\skillrow{Core}{TypeScript, JavaScript, Python, React, Next.js, Node.js, Hono, PostgreSQL / SQL,
-Docker, Cloudflare, Git}
-\vspace{2pt}
-\noindent\textit{Also used in projects:}\par\vspace{3pt}
-\skillrow{Languages}{Java, PHP, Bash}
-\skillrow{Frontend}{Tailwind CSS, Vite, React Router, Bootstrap 5, Chart.js / Recharts, PWA \& Web Push, Chrome Extensions}
-\skillrow{Backend}{Express, FastAPI, Flask, Socket.IO, SSE, Cloudflare Workers \& Durable Objects,
-Zod, Better Auth, JWT \& Google OAuth, Telegram bots}
-\skillrow{Data}{SQLite / Cloudflare D1, Drizzle ORM, SQLAlchemy, Supabase, DynamoDB, ChromaDB}
-\skillrow{Infrastructure \& Testing}{Docker Compose, Cloudflare Tunnel, Ubuntu self-hosting, AWS
-(Lambda, SAM), NGINX, GitHub Actions, Playwright}
-\skillrow{AI / ML}{NumPy, TensorFlow / Keras, OpenCV, MediaPipe, scikit-learn, pandas, RAG with
-Ollama, Hugging Face, Claude and Gemini APIs}
+\begin{tabularx}{\textwidth}{@{}p{3.3cm}>{\raggedright\arraybackslash}X@{}}
+\textbf{Core} & TypeScript, JavaScript, Python, React, Next.js, Node.js, Hono, PostgreSQL / SQL, Docker, Cloudflare, Git\\[2pt]
+\textbf{Languages} & Java, PHP, Bash\\[2pt]
+\textbf{Frontend} & Tailwind CSS, Vite, React Router, Bootstrap 5, Chart.js / Recharts, PWA \& Web Push, Chrome Extensions\\[2pt]
+\textbf{Backend} & Express, FastAPI, Flask, Socket.IO, SSE, Cloudflare Workers, Zod, Better Auth, JWT \& Google OAuth, Telegram bots\\[2pt]
+\textbf{Data} & SQLite / Cloudflare D1, Drizzle ORM, SQLAlchemy, Supabase, DynamoDB, ChromaDB\\[2pt]
+\textbf{DevOps \& Testing} & Docker Compose, Ubuntu self-hosting, AWS (Lambda, SAM), NGINX, GitHub Actions, Playwright\\[2pt]
+\textbf{AI / ML} & NumPy, TensorFlow / Keras, OpenCV, MediaPipe, scikit-learn, pandas, RAG with Ollama, Hugging Face, Claude and Gemini APIs\\
+\end{tabularx}
 
 % =====================================================================
 \section*{Certifications \& Courses}
 \begin{itemize}
-  \item Ultimate AWS Certified Developer Associate (DVA-C02), Udemy course completion,
-        Stephane Maarek, June 2026
-  \item Ultimate AWS Certified AI Practitioner (AIF-C01), Udemy course completion,
-        Stephane Maarek, May 2026
-  \item Foundations: Data, Data, Everywhere, Google Data Analytics Certificate, Coursera,
-        September 2026
+  \item Ultimate AWS Certified Developer Associate (DVA-C02), Udemy, St\'ephane Maarek, June 2026
+  \item Ultimate AWS Certified AI Practitioner (AIF-C01), Udemy, St\'ephane Maarek, May 2026
+  \item Foundations: Data, Data, Everywhere, Google Data Analytics Certificate, Coursera, September 2026
   \item IELTS Academic, Band 5.5 (CEFR B2), British Council IDP, June 2025
-  \item Additional coursework, around 570 hours across 2025 and 2026: freeCodeCamp JavaScript
-        Algorithms \& Data Structures (300 hours), The Complete JavaScript Course (Jonas
-        Schmedtmann), full-stack bootcamps with Angela Yu and Cloudaffle, Advanced SQL (Maven
-        Analytics), The Complete SQL Bootcamp (Jose Portilla), Spring AI Fast Track, and Cloud
-        \& Gen AI on AWS plus Spec-Driven Development with Kiro (Dicoding)
+  \item About 570 hours of further courses: freeCodeCamp JavaScript Algorithms \& Data Structures,
+        full-stack bootcamps, Advanced SQL, Spring AI, and Cloud \& Gen AI on AWS (Dicoding)
 \end{itemize}
 
 % =====================================================================
 \section*{Languages}
-Bahasa Indonesia: Native \quad$|$\quad
-English: Professional working proficiency \quad$|$\quad
-Malay: Professional working proficiency
+Bahasa Indonesia: Native\sep English: Professional working proficiency\sep Malay: Professional working proficiency
 
 \end{document}
