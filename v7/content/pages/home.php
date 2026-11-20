@@ -265,13 +265,15 @@
                     <img src="icon/UM.png" alt="Universiti Malaya" class="education-image" />
                     <div>
                         <p><b>Buddy, Bollywood Glam</b></p>
-                        <p class="text-silent m0">Universiti Malaya</p>
+                        <a class="d-flex align-items-center gap-1 textlink" href="https://fsktm.um.edu.my/"
+                            target="_blank">Student Affairs (HEP), FSKTM, Universiti Malaya<arrow-icon class="togo-icon"
+                                style="margin-top: -1px;"></arrow-icon></a>
                     </div>
                 </div>
                 <p class="text-silent m0">2026</p>
             </div>
-            Served as a buddy at Bollywood Glam, a celebration for <span class="markblue">graduating undergraduate and
-                PhD students</span>, guiding guests and helping the night run smoothly.
+            A graduation celebration by HEP FSKTM. Served as a buddy to <span class="markblue">graduating undergraduate and
+                PhD students</span>, guiding them through the event.
         </div>
         <br>
 

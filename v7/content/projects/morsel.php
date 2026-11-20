@@ -23,23 +23,22 @@
             <br>
             <span>Campus cafes post the food they did not sell today at up to half price. Students reserve a portion and pick it up before closing.</span>
             <br>
-            <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">In development</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Developer, WIX2002 team project</span></span><span class="p-meta-item"><span class="p-meta-k">Stack</span><span class="p-meta-v">Next.js, Supabase</span></span></div>
+            <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">In development</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">WIX2002 Project Management course project</span></span><span class="p-meta-item"><span class="p-meta-k">Stack</span><span class="p-meta-v">Next.js, Supabase</span></span></div>
         </div>
         <div style="border-top: solid 1px #acb8c0; margin-bottom: 10px;"></div>
 
         <h3>01 The Idea</h3>
         <div class="blog-content-body">
-<p class="p-text">Good food at UM cafes ends up in the bin every night while students look for a cheap dinner. Morsel connects the two: sellers list leftovers in a minute, students reserve with one tap and get a pickup code, and payment happens at the counter.</p>
+<p class="p-text">Good food at UM cafes ends up in the bin every night while students look for a cheap dinner. Morsel connects the two: cafes list leftovers in a minute and students reserve them before closing.</p>
         </div>
         <br>
 
         <h3>02 Highlights</h3>
         <div class="blog-content-body">
 <ul>
-<li><b>Reserve in one tap</b>: a 6 digit pickup code appears straight away, no online payment needed</li>
-<li><b>Live listings</b>: new food shows up as soon as a seller posts it, with sorting, filters and halal and allergen labels</li>
-<li><b>Sellers onboarded properly</b>: cafes apply, an admin approves them, then they get their own listing tools</li>
-<li><b>UM only</b>: sign in with a UM account, with fair limits so nobody hoards portions</li>
+<li><b>Reserve in one tap</b>: get a pickup code straight away and pay at the counter</li>
+<li><b>Live listings</b>: new food appears as soon as a cafe posts it, with filters and halal labels</li>
+<li><b>Verified sellers</b>: only approved campus cafes and stalls can list food</li>
 <li><b>Installable</b>: works as an app on any phone</li>
 </ul>
         </div>

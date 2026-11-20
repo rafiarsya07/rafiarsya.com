@@ -22,7 +22,7 @@
             </div>
             <h1>Spektra</h1>
             <br>
-            <span>Every SPeCTRUM deadline, class and announcement in one app, with reminders on Telegram and email before anything is due. Built for UM students.</span>
+            <span>Every SPeCTRUM deadline, class and announcement in one app, with reminders before anything is due. Built for UM students.</span>
             <br>
             <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">In use</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Solo Developer</span></span><span class="p-meta-item"><span class="p-meta-k">Platform</span><span class="p-meta-v">Web, Android</span></span></div>
         </div>
@@ -30,18 +30,17 @@
 
         <h3>01 The Idea</h3>
         <div class="blog-content-body">
-<p class="p-text">SPeCTRUM shows deadlines, but it never reminds you. Spektra pulls them in on its own, adds your own tasks and classes, and nudges you three days, one day and three hours before each one. Ticking a task done works right from the Telegram message.</p>
+<p class="p-text">SPeCTRUM shows deadlines, but it never reminds you. Spektra pulls them in on its own, adds your own tasks, and nudges you before each one is due.</p>
         </div>
         <br>
 
         <h3>02 Highlights</h3>
         <div class="blog-content-body">
 <ul>
-<li><b>Automatic sync</b>: deadlines, classes and announcements come in from SPeCTRUM by themselves, filtered to your own OCC</li>
-<li><b>Reminders that reach you</b>: Telegram, email and push, with a morning summary and a one-tap Mark done</li>
-<li><b>A real study planner</b>: month, week and agenda calendar, weekly timetable, focus timer and study sessions</li>
-<li><b>Grades at a glance</b>: current marks per course and the score you need on the final for each grade</li>
-<li><b>Installable</b>: a PWA on any phone and an Android app, in English and Indonesian</li>
+<li><b>Automatic sync</b>: deadlines, classes and announcements come in from SPeCTRUM by themselves</li>
+<li><b>Reminders that reach you</b>: Telegram, email and push, with a one-tap Mark done</li>
+<li><b>Study planner</b>: calendar, weekly timetable, focus timer and grades per course</li>
+<li><b>Installable</b>: works as an app on Android and any phone</li>
 </ul>
         </div>
         <br>

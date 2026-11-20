@@ -54,13 +54,13 @@
         "meta": {
             "Status": "In development",
             "Year": "2026",
-            "Role": "Developer, WIX2002 team project"
+            "Role": "WIX2002 Project Management course project"
         }
     },
     {
         "slug": "danchi",
         "title": "Danchi",
-        "sub": "A private, all-in-one app for everyday life.",
+        "sub": "A personal, just-for-fun app for everyday life.",
         "tags": [
             "Next.js",
             "PostgreSQL",
@@ -71,7 +71,7 @@
         "section": "Ongoing",
         "cards": 5,
         "meta": {
-            "Status": "In use",
+            "Status": "Personal project",
             "Year": "2026",
             "Role": "Solo Developer"
         }

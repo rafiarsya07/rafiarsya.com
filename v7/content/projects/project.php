@@ -96,7 +96,7 @@
                                     <div class="project-title">Danchi</div>
                                     <div class="text-silent text14">2026</div>
                                 </div>
-                                <div class="text-silent project-desc">A private, all-in-one app for everyday life.</div>
+                                <div class="text-silent project-desc">A personal, just-for-fun app for everyday life.</div>
                                 <div class="project-details">
                                     <div class="hr0-10"></div>
                                     <div class="tech-stack"><span class="badge blog-badge badge-blue">Next.js</span><span class="badge blog-badge badge-green">PostgreSQL</span><span class="badge blog-badge badge-purple">Drizzle</span><span class="badge blog-badge badge-orange">PWA</span></div>

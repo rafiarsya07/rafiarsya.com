@@ -35,10 +35,9 @@
         <h3>02 Highlights</h3>
         <div class="blog-content-body">
 <ul>
-<li><b>No-code admin</b>: news, agenda, programmes, gallery and board members are edited in Google Sheets</li>
-<li><b>Agenda that syncs</b>: every event can be saved to Google Calendar in one tap</li>
-<li><b>Fast and light</b>: a static site with smooth Motion transitions and a mobile first layout</li>
-<li><b>Search friendly</b>: sitemap and metadata generated at build time</li>
+<li><b>No-code updates</b>: the board edits news, agenda and members from a Google Sheet</li>
+<li><b>Agenda that syncs</b>: events can be saved to Google Calendar in one tap</li>
+<li><b>Fast and mobile first</b>: a light static site with smooth transitions</li>
 </ul>
         </div>
         <br>

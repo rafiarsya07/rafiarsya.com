@@ -22,26 +22,24 @@
             </div>
             <h1>Danchi</h1>
             <br>
-            <span>A cosy, private home for everyday life: tasks, study, meals, money and bills in one app, with an AI helper and reminders that actually arrive.</span>
+            <span>A personal, just-for-fun app: a cosy home for everyday life, made for one person.</span>
             <br>
-            <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">In use</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Solo Developer</span></span><span class="p-meta-item"><span class="p-meta-k">Access</span><span class="p-meta-v">Private, invite only</span></span></div>
+            <div class="p-meta"><span class="p-meta-item"><span class="p-meta-k">Status</span><span class="p-meta-v">Personal project</span></span><span class="p-meta-item"><span class="p-meta-k">Year</span><span class="p-meta-v">2026</span></span><span class="p-meta-item"><span class="p-meta-k">Role</span><span class="p-meta-v">Solo Developer</span></span><span class="p-meta-item"><span class="p-meta-k">Access</span><span class="p-meta-v">Private</span></span></div>
         </div>
         <div style="border-top: solid 1px #acb8c0; margin-bottom: 10px;"></div>
 
         <h3>01 The Idea</h3>
         <div class="blog-content-body">
-<p class="p-text">Life admin lives in ten different apps. Danchi puts it in one place with a friendly mascot, and reminds you before a bill is due, an exam is close or food in the fridge expires.</p>
+<p class="p-text">A side project built for fun and for someone close. Everyday things live in one place, wrapped in a playful design with a little mascot.</p>
         </div>
         <br>
 
         <h3>02 Highlights</h3>
         <div class="blog-content-body">
 <ul>
-<li><b>Everything in one place</b>: tasks, reminders, habits, study, kitchen, money, bills, notes and a calendar that shows it all</li>
-<li><b>Study tools</b>: assignments and exams with countdowns, plus flashcards with spaced repetition</li>
-<li><b>Smart kitchen</b>: recipes, a cook now view from what you have, and missing items straight to the shopping list</li>
-<li><b>AI helper</b>: ask in plain language and it adds tasks, logs spending or plans the week</li>
-<li><b>Reminders that reach you</b>: push notifications with Done and Snooze, email and a morning summary</li>
+<li><b>All in one place</b>: tasks, habits, study, kitchen, money and bills in one cosy app</li>
+<li><b>Gentle reminders</b>: notifications before something is due</li>
+<li><b>A friendly mascot</b>: an AI helper and little touches that make it fun to open</li>
 </ul>
         </div>
         <br>

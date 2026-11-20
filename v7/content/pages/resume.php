@@ -162,10 +162,10 @@
             </div>
             <div class="resume-entry">
                 <div class="resume-entry-top">
-                    <b>Bollywood Glam, Universiti Malaya</b>
+                    <b>Bollywood Glam, FSKTM, Universiti Malaya</b>
                     <span class="resume-year">2026</span>
                 </div>
-                <div class="resume-role">Buddy</div>
+                <div class="resume-role">Buddy, Student Affairs (HEP) FSKTM</div>
                 <ul>
                     <li>Guided and looked after graduating undergraduate and PhD students during their
                         graduation celebration.</li>
@@ -201,7 +201,7 @@
             </div>
             <div class="resume-project">
                 <b>Morsel: Surplus Campus Food</b>
-                <p>Team project (WIX2002): campus cafes post unsold food at up to half price and students reserve it with a pickup code. Next.js, Supabase and Tailwind, with live listings and seller approval.</p>
+                <p>WIX2002 Project Management course project: campus cafes post unsold food at up to half price and students reserve it with a pickup code. Next.js, Supabase and Tailwind, with live listings and seller approval.</p>
             </div>
             <div class="resume-project">
                 <b>PaperMind: Local RAG Paper Analyzer</b>
