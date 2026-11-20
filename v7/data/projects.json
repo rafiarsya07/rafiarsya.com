@@ -151,7 +151,7 @@
             "Bootstrap 5",
             "Static Site"
         ],
-        "cover": "",
+        "cover": "image/assets/senara/live-home-hero.jpg",
         "section": "Ongoing",
         "cards": 11,
         "meta": {
@@ -165,7 +165,7 @@
     {
         "slug": "pekom",
         "title": "PEKOM UM Website",
-        "sub": "The computer science society's new site, in three languages.",
+        "sub": "Official site of UM's computer science society, in three languages.",
         "tags": [
             "Next.js",
             "React",
@@ -177,7 +177,7 @@
         "section": "Ongoing",
         "cards": 20,
         "meta": {
-            "Status": "In progress",
+            "Status": "Live",
             "Year": "2026",
             "Role": "Technical Executive Committee, PEKOM",
             "Stack": "Next.js, React, Tailwind CSS",
@@ -195,7 +195,7 @@
             "Claude API",
             "LLM-as-Judge"
         ],
-        "cover": "",
+        "cover": "image/assets/aievaldashboard/cover.jpg",
         "section": "Ongoing",
         "cards": 3,
         "meta": {
@@ -238,7 +238,7 @@
             "Service Worker",
             "Vanilla JS"
         ],
-        "cover": "",
+        "cover": "image/assets/pricetracker/cover.jpg",
         "section": "Ongoing",
         "cards": 3,
         "meta": {
@@ -260,7 +260,7 @@
             "ChromaDB",
             "Ollama"
         ],
-        "cover": "",
+        "cover": "image/assets/papermind/chat-pages-rag.png",
         "section": "Completed",
         "cards": 9,
         "meta": {
@@ -282,7 +282,7 @@
             "Flask",
             "From Scratch"
         ],
-        "cover": "",
+        "cover": "image/assets/digitrecognition/cover.jpg",
         "section": "Completed",
         "cards": 3,
         "meta": {
@@ -304,7 +304,7 @@
             "IAM least-privilege",
             "Node.js"
         ],
-        "cover": "",
+        "cover": "image/assets/snip/cover.jpg",
         "section": "Completed",
         "cards": 8,
         "meta": {
@@ -327,7 +327,7 @@
             "Markdown",
             "Background Jobs"
         ],
-        "cover": "",
+        "cover": "image/assets/nalar/live-home.jpg",
         "section": "Completed",
         "cards": 9,
         "meta": {
@@ -350,7 +350,7 @@
             "Gradio",
             "Hugging Face"
         ],
-        "cover": "",
+        "cover": "image/assets/cropdisease/result-diseased.png",
         "section": "Completed",
         "cards": 7,
         "meta": {
@@ -374,7 +374,7 @@
             "Static Export",
             "Sharp"
         ],
-        "cover": "",
+        "cover": "image/assets/idfest/live-home-hero.jpg",
         "section": "Completed",
         "cards": 5,
         "meta": {
@@ -396,7 +396,7 @@
             "Recursive CTEs",
             "Static Hosting"
         ],
-        "cover": "",
+        "cover": "image/assets/steamsql/cover.jpg",
         "section": "Completed",
         "cards": 10,
         "meta": {
@@ -419,7 +419,7 @@
             "Vite",
             "Tailwind"
         ],
-        "cover": "",
+        "cover": "image/assets/arenaduel/cover.jpg",
         "section": "Completed",
         "cards": 5,
         "meta": {
@@ -441,7 +441,7 @@
             "Tailwind",
             "Zero AI / Zero Cost"
         ],
-        "cover": "",
+        "cover": "image/assets/resumematch/cover.jpg",
         "section": "Completed",
         "cards": 9,
         "meta": {
@@ -464,7 +464,7 @@
             "Figma",
             "Screen Reader"
         ],
-        "cover": "",
+        "cover": "image/assets/nase/about-us.png",
         "section": "Completed",
         "cards": 8,
         "meta": {
@@ -487,7 +487,7 @@
             "Real-Time",
             "Machine Learning"
         ],
-        "cover": "",
+        "cover": "image/assets/handgesture/cover.jpg",
         "section": "Completed",
         "cards": 9,
         "meta": {
@@ -510,7 +510,7 @@
             "Android TWA",
             "Capacitor"
         ],
-        "cover": "",
+        "cover": "image/assets/reminderme/cover.jpg",
         "section": "Completed",
         "cards": 8,
         "meta": {
@@ -532,7 +532,7 @@
             "Google Apps Script",
             "Mobile-First"
         ],
-        "cover": "",
+        "cover": "image/assets/briskwalk/logo_briswalk.png",
         "section": "Completed",
         "cards": 6,
         "meta": {
@@ -554,7 +554,7 @@
             "TypeScript",
             "Coursework"
         ],
-        "cover": "",
+        "cover": "image/assets/largenumber/cover.jpg",
         "section": "Completed",
         "cards": 3,
         "meta": {
@@ -575,7 +575,7 @@
             "Lucide Icons",
             "Cloudflare Pages"
         ],
-        "cover": "",
+        "cover": "image/assets/csastudy/cover.jpg",
         "section": "Completed",
         "cards": 9,
         "meta": {
@@ -597,7 +597,7 @@
             "Jupyter",
             "Baseline"
         ],
-        "cover": "",
+        "cover": "image/assets/llmclassification/cover.jpg",
         "section": "Completed",
         "cards": 3,
         "meta": {

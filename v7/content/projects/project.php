@@ -61,6 +61,7 @@
                                     <img class="thumb-contain" src="image/assets/spektra/hero.png" alt="Spektra calendar" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/spektra">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://spectrum.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
                                     </div>
                                 </div>
                             </div>
@@ -211,7 +212,7 @@
                                     <div class="project-title">PEKOM UM Website</div>
                                     <div class="text-silent text14">2026</div>
                                 </div>
-                                <div class="text-silent project-desc">The computer science society's new site, in three languages.</div>
+                                <div class="text-silent project-desc">Official site of UM's computer science society, in three languages.</div>
                                 <div class="project-details">
                                     <div class="hr0-10"></div>
                                     <div class="tech-stack"><span class="badge blog-badge badge-blue">Next.js</span><span class="badge blog-badge badge-green">React</span><span class="badge blog-badge badge-purple">Tailwind CSS</span><span class="badge blog-badge badge-orange">TypeScript</span></div>
@@ -220,6 +221,7 @@
                                     <img src="image/assets/pekom/about-hero.jpg" alt="PEKOM website About page hero" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/pekom">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://pekomum.org" target="_blank" rel="noopener noreferrer">Website</a>
                                     </div>
                                 </div>
                             </div>
@@ -239,7 +241,7 @@
                                     <div class="tech-stack"><span class="badge blog-badge badge-blue">React</span><span class="badge blog-badge badge-green">Node.js</span><span class="badge blog-badge badge-purple">Supabase</span><span class="badge blog-badge badge-orange">Claude API</span></div>
                                 </div>
                                 <div class="project-image-container">
-                                    <div class="project-mono">AED</div>
+                                    <img class="thumb-contain" src="image/assets/aievaldashboard/cover.jpg" alt="AI Eval Dashboard run with accuracy, latency, cost and graded results" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/aievaldashboard">Project Details</a>
                                         <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/ai-eval-dashboard" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -285,7 +287,7 @@
                                     <div class="tech-stack"><span class="badge blog-badge badge-blue">Chrome Extension</span><span class="badge blog-badge badge-green">Manifest V3</span><span class="badge blog-badge badge-purple">Service Worker</span><span class="badge blog-badge badge-orange">Vanilla JS</span></div>
                                 </div>
                                 <div class="project-image-container">
-                                    <div class="project-mono">P</div>
+                                    <img class="thumb-contain" src="image/assets/pricetracker/cover.jpg" alt="PriceWatch popup listing tracked products and price drops" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/pricetracker">Project Details</a>
                                         <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/price-tracker-extension" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -315,7 +317,7 @@
                                     <div class="tech-stack"><span class="badge blog-badge badge-blue">RAG</span><span class="badge blog-badge badge-green">LLM</span><span class="badge blog-badge badge-purple">React + Vite</span><span class="badge blog-badge badge-orange">FastAPI</span></div>
                                 </div>
                                 <div class="project-image-container">
-                                    <div class="project-mono">P</div>
+                                    <img class="thumb-contain" src="image/assets/papermind/chat-pages-rag.png" alt="PaperMind answering questions about an uploaded paper" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/papermind">Project Details</a>
                                         <a class="anone badge overlay-btn" href="https://papermind.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
@@ -339,7 +341,7 @@
                                     <div class="tech-stack"><span class="badge blog-badge badge-blue">NumPy</span><span class="badge blog-badge badge-green">CNN</span><span class="badge blog-badge badge-purple">MNIST</span><span class="badge blog-badge badge-orange">Flask</span></div>
                                 </div>
                                 <div class="project-image-container">
-                                    <div class="project-mono">ADR</div>
+                                    <img class="thumb-contain" src="image/assets/digitrecognition/cover.jpg" alt="Neural network visualizer showing how a drawn 3 is recognised" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/digitrecognition">Project Details</a>
                                         <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/ai-digit-recognizer" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -362,7 +364,7 @@
                                     <div class="tech-stack"><span class="badge blog-badge badge-blue">AWS Lambda</span><span class="badge blog-badge badge-green">DynamoDB</span><span class="badge blog-badge badge-purple">API Gateway</span><span class="badge blog-badge badge-orange">AWS SAM</span></div>
                                 </div>
                                 <div class="project-image-container">
-                                    <div class="project-mono">SUS</div>
+                                    <img class="thumb-contain" src="image/assets/snip/cover.jpg" alt="snip: shorten a link and check its stats" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/snip">Project Details</a>
                                         <a class="anone badge overlay-btn" href="https://snip.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
@@ -410,7 +412,7 @@
                                     <div class="tech-stack"><span class="badge blog-badge badge-blue">TensorFlow</span><span class="badge blog-badge badge-green">MobileNetV2</span><span class="badge blog-badge badge-purple">Transfer Learning</span><span class="badge blog-badge badge-orange">PlantVillage Dataset</span></div>
                                 </div>
                                 <div class="project-image-container">
-                                    <div class="project-mono">CDD</div>
+                                    <img class="thumb-contain" src="image/assets/cropdisease/result-diseased.png" alt="Crop Disease Detector result for a diseased leaf" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/cropdisease">Project Details</a>
                                         <a class="anone badge overlay-btn" href="https://huggingface.co/spaces/rafiarsya/crop-disease-detector" target="_blank" rel="noopener noreferrer">Website</a>
@@ -458,7 +460,7 @@
                                     <div class="tech-stack"><span class="badge blog-badge badge-blue">SQLite</span><span class="badge blog-badge badge-green">sql.js (WASM)</span><span class="badge blog-badge badge-purple">Window Functions</span><span class="badge blog-badge badge-orange">Recursive CTEs</span></div>
                                 </div>
                                 <div class="project-image-container">
-                                    <div class="project-mono">SMI</div>
+                                    <img class="thumb-contain" src="image/assets/steamsql/cover.jpg" alt="Steam Market Intelligence report with a live SQL chart" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/steamsql">Project Details</a>
                                         <a class="anone badge overlay-btn" href="https://steam.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
@@ -482,7 +484,7 @@
                                     <div class="tech-stack"><span class="badge blog-badge badge-blue">Node.js</span><span class="badge blog-badge badge-green">Socket.IO</span><span class="badge blog-badge badge-purple">Express</span><span class="badge blog-badge badge-orange">React</span></div>
                                 </div>
                                 <div class="project-image-container">
-                                    <div class="project-mono">AD</div>
+                                    <img class="thumb-contain" src="image/assets/arenaduel/cover.jpg" alt="Arena Duel waiting room and two players mid-round" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/arenaduel">Project Details</a>
 <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -505,7 +507,7 @@
                                     <div class="tech-stack"><span class="badge blog-badge badge-blue">React + Vite</span><span class="badge blog-badge badge-green">Node.js + Express</span><span class="badge blog-badge badge-purple">pdfjs-dist</span><span class="badge blog-badge badge-orange">Tailwind</span></div>
                                 </div>
                                 <div class="project-image-container">
-                                    <div class="project-mono">RM</div>
+                                    <img class="thumb-contain" src="image/assets/resumematch/cover.jpg" alt="Resume Match score of 80 with a score breakdown" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/resumematch">Project Details</a>
                                         <a class="anone badge overlay-btn" href="https://resumematch.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
@@ -529,7 +531,7 @@
                                     <div class="tech-stack"><span class="badge blog-badge badge-blue">Accessibility</span><span class="badge blog-badge badge-green">WCAG 2.1 AA</span><span class="badge blog-badge badge-purple">HCI Course</span><span class="badge blog-badge badge-orange">Python + OpenCV</span></div>
                                 </div>
                                 <div class="project-image-container">
-                                    <div class="project-mono">NA</div>
+                                    <img class="thumb-contain" src="image/assets/nase/about-us.png" alt="NASE site in high-contrast mode with the accessibility toolbar" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/nase">Project Details</a>
                                         <a class="anone badge overlay-btn" href="https://hci.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
@@ -552,7 +554,7 @@
                                     <div class="tech-stack"><span class="badge blog-badge badge-blue">Python</span><span class="badge blog-badge badge-green">MediaPipe</span><span class="badge blog-badge badge-purple">OpenCV</span><span class="badge blog-badge badge-orange">Computer Vision</span></div>
                                 </div>
                                 <div class="project-image-container">
-                                    <div class="project-mono">H</div>
+                                    <img class="thumb-contain" src="image/assets/handgesture/cover.jpg" alt="Drawing in the air with an index finger, tracked by the webcam" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/handgesture">Project Details</a>
 <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -575,7 +577,7 @@
                                     <div class="tech-stack"><span class="badge blog-badge badge-blue">React 18</span><span class="badge blog-badge badge-green">Vite</span><span class="badge blog-badge badge-purple">PWA</span><span class="badge blog-badge badge-orange">Service Worker</span></div>
                                 </div>
                                 <div class="project-image-container">
-                                    <div class="project-mono">RM</div>
+                                    <img class="thumb-contain" src="image/assets/reminderme/cover.jpg" alt="Reminder Me calendar, today and focus screens" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/reminderme">Project Details</a>
                                         <a class="anone badge overlay-btn" href="https://partner.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
@@ -622,7 +624,7 @@
                                     <div class="tech-stack"><span class="badge blog-badge badge-blue">Java</span><span class="badge blog-badge badge-green">Data Structures</span><span class="badge blog-badge badge-purple">Next.js</span><span class="badge blog-badge badge-orange">TypeScript</span></div>
                                 </div>
                                 <div class="project-image-container">
-                                    <div class="project-mono">LNA</div>
+                                    <img class="thumb-contain" src="image/assets/largenumber/cover.jpg" alt="DigiTrace visualizer adding two 20-digit numbers node by node" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/largenumber">Project Details</a>
                                         <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/WIA1002_LargeNumberArithmetic" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -645,7 +647,7 @@
                                     <div class="tech-stack"><span class="badge blog-badge badge-blue">Vanilla JS</span><span class="badge blog-badge badge-green">Single HTML File</span><span class="badge blog-badge badge-purple">Procedural Question Generation</span><span class="badge blog-badge badge-orange">Lucide Icons</span></div>
                                 </div>
                                 <div class="project-image-container">
-                                    <div class="project-mono">CSA</div>
+                                    <img class="thumb-contain" src="image/assets/csastudy/cover.jpg" alt="CSA Study App Hamming code calculator" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/csastudy">Project Details</a>
                                         <a class="anone badge overlay-btn" href="https://csastudy.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
@@ -669,7 +671,7 @@
                                     <div class="tech-stack"><span class="badge blog-badge badge-blue">scikit-learn</span><span class="badge blog-badge badge-green">TF-IDF</span><span class="badge blog-badge badge-purple">NLP</span><span class="badge blog-badge badge-orange">Jupyter</span></div>
                                 </div>
                                 <div class="project-image-container">
-                                    <div class="project-mono">CAP</div>
+                                    <img class="thumb-contain" src="image/assets/llmclassification/cover.jpg" alt="Notebook with the TF-IDF baseline and validation log loss" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/llmclassification">Project Details</a>
                                         <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/llm-classification" target="_blank" rel="noopener noreferrer">GitHub</a>

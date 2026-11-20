@@ -49,11 +49,29 @@
 
     <div class="navbar-section">
         <p class="text-silent navtitle">Projects</p>
-        <button id="menu" data-id="nalar" type="button"
-            class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "nalar") { echo "active"; } ?>"
+        <button id="menu" data-id="umove" type="button"
+            class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "umove") { echo "active"; } ?>"
             onclick="setActive(this)">
-            <span class="menu-icov2"><blog-icon class="menu-icon-data"></blog-icon></span>
-            <span>Nalar</span>
+            <span class="menu-icov2"><website-icon class="menu-icon-data"></website-icon></span>
+            <span>UMOVE</span>
+        </button>
+        <button id="menu" data-id="campusbay" type="button"
+            class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "campusbay") { echo "active"; } ?>"
+            onclick="setActive(this)">
+            <span class="menu-icov2"><website-icon class="menu-icon-data"></website-icon></span>
+            <span>CampusBay</span>
+        </button>
+        <button id="menu" data-id="spektra" type="button"
+            class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "spektra") { echo "active"; } ?>"
+            onclick="setActive(this)">
+            <span class="menu-icov2"><website-icon class="menu-icon-data"></website-icon></span>
+            <span>Spektra</span>
+        </button>
+        <button id="menu" data-id="pekom" type="button"
+            class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "pekom") { echo "active"; } ?>"
+            onclick="setActive(this)">
+            <span class="menu-icov2"><website-icon class="menu-icon-data"></website-icon></span>
+            <span>PEKOM UM</span>
         </button>
         <button id="menu" data-id="idfest" type="button"
             class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "idfest") { echo "active"; } ?>"
@@ -67,17 +85,11 @@
             <span class="menu-icov2"><website-icon class="menu-icon-data"></website-icon></span>
             <span>SENARA Artfest</span>
         </button>
-        <button id="menu" data-id="cropdisease" type="button"
-            class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "cropdisease") { echo "active"; } ?>"
+        <button id="menu" data-id="nalar" type="button"
+            class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "nalar") { echo "active"; } ?>"
             onclick="setActive(this)">
-            <span class="menu-icov2"><robot-icon class="menu-icon-data"></robot-icon></span>
-            <span>Crop Disease Detector</span>
-        </button>
-        <button id="menu" data-id="campusbay" type="button"
-            class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "campusbay") { echo "active"; } ?>"
-            onclick="setActive(this)">
-            <span class="menu-icov2"><website-icon class="menu-icon-data"></website-icon></span>
-            <span>CampusBay</span>
+            <span class="menu-icov2"><blog-icon class="menu-icon-data"></blog-icon></span>
+            <span>Nalar</span>
         </button>
         <button id="menu" data-id="project" type="button"
             class="btn btn-main btn-max d-flex align-items-center <?php if ($page == "project") { echo "active"; } ?>"

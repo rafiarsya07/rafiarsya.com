@@ -1137,6 +1137,7 @@ a:hover > .ext-arrow { opacity: 1; }
 .contributor-chip-avatar,
 .imgskills,
 img.education-image,
+img.xp-logo,
 .course-image,
 .project-image-container img {
     max-height: none;
@@ -1614,3 +1615,41 @@ a.contributor-chip:hover .contributor-chip-avatar {
 
 /* project card: wide screenshots shown whole instead of cropped at the sides */
 .project-image-container img.thumb-contain { object-fit: contain; background: #fff; }
+
+/* ---- compact experience list (home) ---- */
+.xp-group { padding-top: 4px; padding-bottom: 4px; text-align: left; }
+.xp-title { margin-bottom: 6px; }
+.xp-list { list-style: none; margin: 0; padding: 0; }
+.xp-item {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    column-gap: 14px;
+    align-items: start;
+    padding: 12px 0;
+    border-top: 1px solid #eeeff2;
+}
+.xp-item:first-child { border-top: 0; padding-top: 4px; }
+img.xp-logo {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid #eeeff2;
+    object-fit: cover;
+    background: #fff;
+}
+.xp-body { min-width: 0; }
+.xp-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.xp-role { margin: 0; font-weight: 600; color: #111827; line-height: 1.35; }
+.xp-year { flex: 0 0 auto; font-size: 13px; color: #9ca3af; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.xp-org { display: inline; font-size: 14px; text-align: left; }
+.xp-org .togo-icon { display: inline-block; width: 14px; height: 14px; vertical-align: -2px; margin: 0 0 0 2px; --iconsize: 14px; }
+.xp-top + .xp-org, .xp-top + span.xp-org { margin-top: 2px; }
+.xp-role, .xp-desc { hyphens: none; -webkit-hyphens: none; }
+.xp-desc { margin: 4px 0 0; font-size: 14px; line-height: 1.5; color: #4b5563; text-align: left; }
+@media (max-width: 575.98px) {
+    .xp-item { grid-template-columns: 34px 1fr; column-gap: 12px; padding: 11px 0; }
+    img.xp-logo { width: 34px; height: 34px; }
+    .xp-top { flex-direction: column; gap: 1px; }
+    .xp-year { font-size: 12px; order: -1; }
+    .xp-role { font-size: 15px; }
+    .xp-org, .xp-desc { font-size: 13.5px; }
+}

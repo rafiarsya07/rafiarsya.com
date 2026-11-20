@@ -111,192 +111,106 @@
             <p class="text-silent subtitle map-label" id="based-label">Petaling Jaya, Selangor, Malaysia</p>
         </div>
 
-        <div class="about-section">
-            <p class="text-silent">Education</p>
-            <div class="d-flex flex-wrap justify-content-between">
-                <div class="d-flex flex-wrap gap-2">
-                    <img src="icon/UM.png" alt="UM" class="education-image" />
-                    <div>
-                        <p><b>Bachelor of Computer Science</b></p>
-                        <a class="d-flex align-items-center gap-1 textlink" href="https://study.um.edu.my/"
-                            target="_blank">University of Malaya, Malaysia<arrow-icon class="togo-icon"
-                                style="margin-top: -1px;"></arrow-icon></a>
+        <div class="about-section xp-group">
+            <p class="text-silent xp-title">Education</p>
+            <ul class="xp-list">
+                <li class="xp-item">
+                    <img src="icon/UM.png" alt="Universiti Malaya" class="xp-logo" loading="lazy" />
+                    <div class="xp-body">
+                        <div class="xp-top"><p class="xp-role">Bachelor of Computer Science (Software Engineering)</p><span class="xp-year">2025 – now</span></div>
+                        <a class="xp-org textlink" href="https://study.um.edu.my/" target="_blank" rel="noopener noreferrer">Universiti Malaya<arrow-icon class="togo-icon"></arrow-icon></a>
+                        <p class="xp-desc">Year 2. Focus on full-stack development, data and software engineering.</p>
                     </div>
-                </div>
-                <p class="text-silent">2025</p>
-            </div>
-            Bachelor of Computer Science with a <span class="markblue">Software Engineering</span> specialization,
-            focused on <span class="highlightv1">full-stack development</span> and applied problem-solving.
+                </li>
+            </ul>
         </div>
-        <br>
-
-        <div class="about-section">
-            <p class="text-silent">Experience</p>
-            <div class="d-flex flex-wrap justify-content-between">
-                <div class="d-flex flex-wrap gap-2">
-                    <img src="icon/pekom.png" alt="PEKOM" class="education-image" />
-                    <div>
-                        <p><b>Technical Executive Committee</b></p>
-                        <a class="d-flex align-items-center gap-1 textlink" href="https://fsktm.um.edu.my/"
-                            target="_blank">PEKOM, Computer Science Society of Universiti Malaya<arrow-icon
-                                class="togo-icon" style="margin-top: -1px;"></arrow-icon></a>
+        <div class="about-section xp-group">
+            <p class="text-silent xp-title">Experience</p>
+            <ul class="xp-list">
+                <li class="xp-item">
+                    <img src="icon/pekom.png" alt="PEKOM" class="xp-logo" loading="lazy" />
+                    <div class="xp-body">
+                        <div class="xp-top"><p class="xp-role">Technical Executive Committee, Website Division</p><span class="xp-year">2026</span></div>
+                        <a class="xp-org textlink" href="https://pekomum.org" target="_blank" rel="noopener noreferrer">PEKOM, Computer Science Society of UM<arrow-icon class="togo-icon"></arrow-icon></a>
+                        <p class="xp-desc">Built the society's official website, <a class="textlink" href="/pekom">pekomum.org</a>, in three languages.</p>
                     </div>
-                </div>
-                <p class="text-silent">2026</p>
-            </div>
-            Serving in the Website Division of PEKOM, the student society of the Faculty of Computer Science &amp;
-            IT. I help <span class="highlightv1">build and maintain the society's web platforms</span> and
-            support faculty-wide events.
-        </div>
-
-        <div class="about-section">
-            <div class="d-flex flex-wrap justify-content-between">
-                <div class="d-flex flex-wrap gap-2">
-                    <img src="icon/ppim.png" alt="PPI Malaysia" class="education-image" />
-                    <div>
-                        <p><b>Head of Website Division, Data &amp; Information System Bureau</b></p>
-                        <a class="d-flex align-items-center gap-1 textlink" href="https://ppimalaysia.id"
-                            target="_blank">PPI Malaysia (Indonesian Students Association)<arrow-icon
-                                class="togo-icon" style="margin-top: -1px;"></arrow-icon></a>
+                </li>
+                <li class="xp-item">
+                    <img src="icon/ppim.png" alt="PPI Malaysia" class="xp-logo" loading="lazy" />
+                    <div class="xp-body">
+                        <div class="xp-top"><p class="xp-role">Head of Website Division, Data &amp; Information System Bureau</p><span class="xp-year">2026</span></div>
+                        <a class="xp-org textlink" href="https://ppimalaysia.id" target="_blank" rel="noopener noreferrer">PPI Malaysia<arrow-icon class="togo-icon"></arrow-icon></a>
+                        <p class="xp-desc">Own the association's website and its event sites, including SENARA and BriskWalk.</p>
                     </div>
-                </div>
-                <p class="text-silent">2026</p>
-            </div>
-            Leading the Website Division with <span class="markblue">full ownership of the official PPI Malaysia
-                website</span>: development, maintenance, and continuous improvement for Indonesian students
-            across Malaysia.
-        </div>
-
-        <div class="about-section">
-            <div class="d-flex flex-wrap justify-content-between">
-                <div class="d-flex flex-wrap gap-2">
-                    <img src="icon/ppium.png" alt="PPI UM" class="education-image" />
-                    <div>
-                        <p><b>Head of Department, Art Exhibition at IDFEST</b></p>
-                        <a class="d-flex align-items-center gap-1 textlink" href="https://ppiunimalaya.id"
-                            target="_blank">PPI University of Malaya<arrow-icon class="togo-icon"
-                                style="margin-top: -1px;"></arrow-icon></a>
+                </li>
+                <li class="xp-item">
+                    <img src="icon/ppium.png" alt="PPI UM" class="xp-logo" loading="lazy" />
+                    <div class="xp-body">
+                        <div class="xp-top"><p class="xp-role">Website Development Committee, IDFEST 2026</p><span class="xp-year">2026</span></div>
+                        <a class="xp-org textlink" href="https://idfest.ppiunimalaya.id" target="_blank" rel="noopener noreferrer">PPI Universiti Malaya<arrow-icon class="togo-icon"></arrow-icon></a>
+                        <p class="xp-desc">Built the festival website in Next.js from the team's Figma designs.</p>
                     </div>
-                </div>
-                <p class="text-silent">2026</p>
-            </div>
-            Directing the Art Exhibition division for IDFEST, an international event showcasing Indonesian heritage
-            at Universiti Malaya, from concept and curation through to delivery.
-        </div>
-
-        <div class="about-section">
-            <div class="d-flex flex-wrap justify-content-between">
-                <div class="d-flex flex-wrap gap-2">
-                    <img src="icon/ppium.png" alt="IDFEST" class="education-image" />
-                    <div>
-                        <p><b>Website Development Committee at IDFEST</b></p>
-                        <a class="d-flex align-items-center gap-1 textlink" href="https://idfest.ppiunimalaya.id"
-                            target="_blank">IDFEST 2026<arrow-icon class="togo-icon"
-                                style="margin-top: -1px;"></arrow-icon></a>
+                </li>
+                <li class="xp-item">
+                    <img src="icon/ppium.png" alt="PPI UM" class="xp-logo" loading="lazy" />
+                    <div class="xp-body">
+                        <div class="xp-top"><p class="xp-role">Head of Department, Art Exhibition, IDFEST 2026</p><span class="xp-year">2026</span></div>
+                        <a class="xp-org textlink" href="https://ppiunimalaya.id" target="_blank" rel="noopener noreferrer">PPI Universiti Malaya<arrow-icon class="togo-icon"></arrow-icon></a>
+                        <p class="xp-desc">Led the art exhibition from concept and curation to the event day.</p>
                     </div>
-                </div>
-                <p class="text-silent">2026</p>
-            </div>
-            Building the official IDFEST website with <span class="marksalmon">Next.js and Tailwind CSS</span>,
-            responsive, interactive interfaces translated from Figma into production-ready pages.
+                </li>
+            </ul>
         </div>
-        <br>
-
-        <div class="about-section">
-            <p class="text-silent">Leadership &amp; Activities</p>
-            <div class="d-flex flex-wrap justify-content-between">
-                <div class="d-flex flex-wrap gap-2">
-                    <img src="icon/UM.png" alt="Universiti Malaya" class="education-image" />
-                    <div>
-                        <p><b>Student Representative &amp; Group Leader</b></p>
-                        <a class="d-flex align-items-center gap-1 textlink" href="https://iteba.ac.id/en"
-                            target="_blank">Institut Teknologi Batam (ITEBA), Indonesia<arrow-icon class="togo-icon"
-                                style="margin-top: -1px;"></arrow-icon></a>
+        <div class="about-section xp-group">
+            <p class="text-silent xp-title">Leadership &amp; Activities</p>
+            <ul class="xp-list">
+                <li class="xp-item">
+                    <img src="icon/UM.png" alt="Universiti Malaya" class="xp-logo" loading="lazy" />
+                    <div class="xp-body">
+                        <div class="xp-top"><p class="xp-role">Student Representative &amp; Group Leader, Outbound Programme</p><span class="xp-year">2026</span></div>
+                        <a class="xp-org textlink" href="https://iteba.ac.id/en" target="_blank" rel="noopener noreferrer">Universiti Malaya × ITEBA, Batam, Indonesia<arrow-icon class="togo-icon"></arrow-icon></a>
+                        <p class="xp-desc">Represented UM on the outbound trip, led a group of 28 students and gave the student speech.</p>
                     </div>
-                </div>
-                <p class="text-silent m0">2026</p>
-            </div>
-            Represented <span class="markblue">Universiti Malaya as its student representative</span> on an
-            outbound programme to Batam, Indonesia. I led a group of 28 students and delivered the student speech
-            on stage. The programme included the public lecture <i>Behind the Scenes of TikTok &amp; ChatGPT:
-            Exploring the Giants of Data Centers</i>.
-        </div>
-
-        <div class="about-section">
-            <div class="d-flex flex-wrap justify-content-between">
-                <div class="d-flex flex-wrap gap-2">
-                    <img src="icon/ppim.png" alt="PPI Malaysia" class="education-image" />
-                    <div>
-                        <p><b>LARAS: Transportation Team &amp; Field Committee</b></p>
-                        <a class="d-flex align-items-center gap-1 textlink" href="https://ppimalaysia.id"
-                            target="_blank">PPI Malaysia<arrow-icon class="togo-icon"
-                                style="margin-top: -1px;"></arrow-icon></a>
+                </li>
+                <li class="xp-item">
+                    <img src="icon/ppim.png" alt="PPI Malaysia" class="xp-logo" loading="lazy" />
+                    <div class="xp-body">
+                        <div class="xp-top"><p class="xp-role">Transportation Team &amp; Field Committee, LARAS</p><span class="xp-year">2026</span></div>
+                        <a class="xp-org textlink" href="https://ppimalaysia.id" target="_blank" rel="noopener noreferrer">PPI Malaysia<arrow-icon class="togo-icon"></arrow-icon></a>
+                        <p class="xp-desc">Logistics and on-ground coordination on event day.</p>
                     </div>
-                </div>
-                <p class="text-silent m0">2026</p>
-            </div>
-            Served on the Transportation Team and Field Committee for LARAS, covering logistics, on-ground
-            coordination, and event-day operations.
+                </li>
+            </ul>
         </div>
-        <br>
-
-        <div class="about-section">
-            <p class="text-silent">Volunteering</p>
-            <div class="d-flex flex-wrap justify-content-between">
-                <div class="d-flex flex-wrap gap-2">
-                    <img src="icon/UM.png" alt="Universiti Malaya" class="education-image" />
-                    <div>
-                        <p><b>Buddy, UM Week of Welcome (UM-WOW)</b></p>
-                        <a class="d-flex align-items-center gap-1 textlink" href="https://hep.um.edu.my/umwow"
-                            target="_blank">Student Affairs, Universiti Malaya<arrow-icon class="togo-icon"
-                                style="margin-top: -1px;"></arrow-icon></a>
+        <div class="about-section xp-group">
+            <p class="text-silent xp-title">Volunteering</p>
+            <ul class="xp-list">
+                <li class="xp-item">
+                    <img src="icon/UM.png" alt="Universiti Malaya" class="xp-logo" loading="lazy" />
+                    <div class="xp-body">
+                        <div class="xp-top"><p class="xp-role">Buddy, UM Week of Welcome (UM-WOW)</p><span class="xp-year">2026</span></div>
+                        <a class="xp-org textlink" href="https://hep.um.edu.my/umwow" target="_blank" rel="noopener noreferrer">Student Affairs (HEP), Universiti Malaya<arrow-icon class="togo-icon"></arrow-icon></a>
+                        <p class="xp-desc">Guided new students through registration, campus and their first days.</p>
                     </div>
-                </div>
-                <p class="text-silent m0">2026</p>
-            </div>
-            Welcomed new students to Universiti Malaya during orientation week, <span class="markblue">guiding
-                freshies</span> through registration, campus and their first days at UM.
-        </div>
-        <br>
-
-        <div class="about-section">
-            <div class="d-flex flex-wrap justify-content-between">
-                <div class="d-flex flex-wrap gap-2">
-                    <img src="icon/UM.png" alt="Universiti Malaya" class="education-image" />
-                    <div>
-                        <p><b>Buddy, Bollywood Glam</b></p>
-                        <a class="d-flex align-items-center gap-1 textlink" href="https://fsktm.um.edu.my/"
-                            target="_blank">Student Affairs (HEP), FSKTM, Universiti Malaya<arrow-icon class="togo-icon"
-                                style="margin-top: -1px;"></arrow-icon></a>
+                </li>
+                <li class="xp-item">
+                    <img src="icon/UM.png" alt="Universiti Malaya" class="xp-logo" loading="lazy" />
+                    <div class="xp-body">
+                        <div class="xp-top"><p class="xp-role">Buddy, Bollywood Glam</p><span class="xp-year">2026</span></div>
+                        <a class="xp-org textlink" href="https://fsktm.um.edu.my/" target="_blank" rel="noopener noreferrer">Student Affairs (HEP), FSKTM, Universiti Malaya<arrow-icon class="togo-icon"></arrow-icon></a>
+                        <p class="xp-desc">Accompanied graduating undergraduate and PhD students at the faculty's graduation celebration.</p>
                     </div>
-                </div>
-                <p class="text-silent m0">2026</p>
-            </div>
-            A graduation celebration by HEP FSKTM. Served as a buddy to <span class="markblue">graduating undergraduate and
-                PhD students</span>, guiding them through the event.
-        </div>
-        <br>
-
-
-        <div class="about-section">
-            <div class="d-flex flex-wrap justify-content-between">
-                <div class="d-flex flex-wrap gap-2">
-                    <img src="icon/chula.png" alt="Chulalongkorn University" class="education-image" />
-                    <div>
-                        <p><b>Student Buddy, Inbound Mobility Programme 2026</b></p>
-                        <a class="d-flex align-items-center gap-1 textlink" href="https://fsktm.um.edu.my/"
-                            target="_blank">Faculty of Computer Science &amp; Information Technology, Universiti
-                            Malaya<arrow-icon class="togo-icon" style="margin-top: -1px;"></arrow-icon></a>
+                </li>
+                <li class="xp-item">
+                    <img src="icon/chula.png" alt="Chulalongkorn University" class="xp-logo" loading="lazy" />
+                    <div class="xp-body">
+                        <div class="xp-top"><p class="xp-role">Student Buddy &amp; Documentation, Inbound Mobility Programme</p><span class="xp-year">2026</span></div>
+                        <a class="xp-org textlink" href="https://fsktm.um.edu.my/" target="_blank" rel="noopener noreferrer">Student Affairs (HEP), FSKTM, Universiti Malaya<arrow-icon class="togo-icon"></arrow-icon></a>
+                        <p class="xp-desc">Hosted visiting students from Chulalongkorn University for five days and documented the programme.</p>
                     </div>
-                </div>
-                <p class="text-silent m0">2026</p>
-            </div>
-            A five-day FSKTM programme <span class="markblue">hosting students from Chulalongkorn
-                University</span>, Thailand's top-ranked university, run by a committee of four. I served as a
-            Student Buddy and handled documentation for the whole programme, covering sessions and daily
-            activities across all five days.
+                </li>
+            </ul>
         </div>
-        <br>
 
         <div class="about-section">
             <div class="text-silent">Skills</div>
@@ -332,6 +246,7 @@
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/java.svg" alt="Java" class="imgskills" loading="lazy"><span class="skill-name">Java</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/php.svg" alt="PHP" class="imgskills" loading="lazy"><span class="skill-name">PHP</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/bash.svg" alt="Bash" class="imgskills" loading="lazy"><span class="skill-name">Bash</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/latex.svg" alt="LaTeX" class="imgskills" loading="lazy"><span class="skill-name">LaTeX</span></div>
                 </div>
                 <div id="frontend-content" class="row text-center hidden">
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/react.svg" alt="React" class="imgskills" loading="lazy"><span class="skill-name">React</span></div>
@@ -339,54 +254,70 @@
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/reactrouter.svg" alt="React Router" class="imgskills" loading="lazy"><span class="skill-name">React Router</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/tailwind.svg" alt="Tailwind" class="imgskills" loading="lazy"><span class="skill-name">Tailwind</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/vite.svg" alt="Vite" class="imgskills" loading="lazy"><span class="skill-name">Vite</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/motion.svg" alt="Motion" class="imgskills" loading="lazy"><span class="skill-name">Motion</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/chartjs.svg" alt="Chart.js" class="imgskills" loading="lazy"><span class="skill-name">Chart.js</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/bootstrap.svg" alt="Bootstrap" class="imgskills" loading="lazy"><span class="skill-name">Bootstrap</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/html.svg" alt="HTML5" class="imgskills" loading="lazy"><span class="skill-name">HTML5</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/css.svg" alt="CSS3" class="imgskills" loading="lazy"><span class="skill-name">CSS3</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/pwa.svg" alt="PWA" class="imgskills" loading="lazy"><span class="skill-name">PWA</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/webpush.svg" alt="Web Push" class="imgskills" loading="lazy"><span class="skill-name">Web Push</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/capacitor.svg" alt="Capacitor" class="imgskills" loading="lazy"><span class="skill-name">Capacitor</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/chrome.svg" alt="Chrome Ext." class="imgskills" loading="lazy"><span class="skill-name">Chrome Ext.</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/figma.svg" alt="Figma" class="imgskills" loading="lazy"><span class="skill-name">Figma</span></div>
                 </div>
                 <div id="backend-content" class="row text-center hidden">
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/nodejs.svg" alt="Node.js" class="imgskills" loading="lazy"><span class="skill-name">Node.js</span></div>
-                        <div class="col-md-2 col-3 skill-cell"><img src="skills/hono.svg" alt="Hono" class="imgskills" loading="lazy"><span class="skill-name">Hono</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/express.svg" alt="Express" class="imgskills" loading="lazy"><span class="skill-name">Express</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/hono.svg" alt="Hono" class="imgskills" loading="lazy"><span class="skill-name">Hono</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/fastapi.svg" alt="FastAPI" class="imgskills" loading="lazy"><span class="skill-name">FastAPI</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/flask.svg" alt="Flask" class="imgskills" loading="lazy"><span class="skill-name">Flask</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/cloudflareworkers.svg" alt="CF Workers" class="imgskills" loading="lazy"><span class="skill-name">CF Workers</span></div>
-                        <div class="col-md-2 col-3 skill-cell"><img src="skills/sse.svg" alt="SSE" class="imgskills" loading="lazy"><span class="skill-name">SSE</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/socketio.svg" alt="Socket.IO" class="imgskills" loading="lazy"><span class="skill-name">Socket.IO</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/sse.svg" alt="SSE" class="imgskills" loading="lazy"><span class="skill-name">SSE</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/zod.svg" alt="Zod" class="imgskills" loading="lazy"><span class="skill-name">Zod</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/jwt.svg" alt="JWT" class="imgskills" loading="lazy"><span class="skill-name">JWT</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/betterauth.svg" alt="Better Auth" class="imgskills" loading="lazy"><span class="skill-name">Better Auth</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/google.svg" alt="Google OAuth" class="imgskills" loading="lazy"><span class="skill-name">Google OAuth</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/telegram.svg" alt="Telegram Bot" class="imgskills" loading="lazy"><span class="skill-name">Telegram Bot</span></div>
                 </div>
                 <div id="data-content" class="row text-center hidden">
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/postgresql.svg" alt="PostgreSQL" class="imgskills" loading="lazy"><span class="skill-name">PostgreSQL</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/sqlite.svg" alt="SQLite" class="imgskills" loading="lazy"><span class="skill-name">SQLite</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/sequelize.svg" alt="Sequelize" class="imgskills" loading="lazy"><span class="skill-name">Sequelize</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/drizzle.svg" alt="Drizzle ORM" class="imgskills" loading="lazy"><span class="skill-name">Drizzle ORM</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/sqlalchemy.svg" alt="SQLAlchemy" class="imgskills" loading="lazy"><span class="skill-name">SQLAlchemy</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/supabase.svg" alt="Supabase" class="imgskills" loading="lazy"><span class="skill-name">Supabase</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/dynamodb.svg" alt="DynamoDB" class="imgskills" loading="lazy"><span class="skill-name">DynamoDB</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/webassembly.svg" alt="sql.js (Wasm)" class="imgskills" loading="lazy"><span class="skill-name">sql.js (Wasm)</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/googlesheets.svg" alt="Google Sheets" class="imgskills" loading="lazy"><span class="skill-name">Google Sheets</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/pandas.svg" alt="pandas" class="imgskills" loading="lazy"><span class="skill-name">pandas</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/matplotlib.svg" alt="Matplotlib" class="imgskills" loading="lazy"><span class="skill-name">Matplotlib</span></div>
                 </div>
                 <div id="infra-content" class="row text-center hidden">
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/docker.svg" alt="Docker" class="imgskills" loading="lazy"><span class="skill-name">Docker</span></div>
-                        <div class="col-md-2 col-3 skill-cell"><img src="skills/cloudflare.svg" alt="CF Tunnel" class="imgskills" loading="lazy"><span class="skill-name">CF Tunnel</span></div>
-                        <div class="col-md-2 col-3 skill-cell"><img src="skills/ubuntu.svg" alt="Ubuntu" class="imgskills" loading="lazy"><span class="skill-name">Ubuntu</span></div>
-                        <div class="col-md-2 col-3 skill-cell"><img src="skills/nginx.svg" alt="NGINX" class="imgskills" loading="lazy"><span class="skill-name">NGINX</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/aws.svg" alt="AWS" class="imgskills" loading="lazy"><span class="skill-name">AWS</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/cloudflarepages.svg" alt="CF Pages" class="imgskills" loading="lazy"><span class="skill-name">CF Pages</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/nginx.svg" alt="NGINX" class="imgskills" loading="lazy"><span class="skill-name">NGINX</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/ubuntu.svg" alt="Ubuntu" class="imgskills" loading="lazy"><span class="skill-name">Ubuntu</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/pm2.svg" alt="PM2" class="imgskills" loading="lazy"><span class="skill-name">PM2</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/githubactions.svg" alt="GitHub Actions" class="imgskills" loading="lazy"><span class="skill-name">GitHub Actions</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/playwright.svg" alt="Playwright" class="imgskills" loading="lazy"><span class="skill-name">Playwright</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/googleanalytics.svg" alt="Google Analytics" class="imgskills" loading="lazy"><span class="skill-name">Google Analytics</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/git.svg" alt="Git" class="imgskills" loading="lazy"><span class="skill-name">Git</span></div>
                 </div>
                 <div id="aiml-content" class="row text-center hidden">
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/numpy.svg" alt="NumPy" class="imgskills" loading="lazy"><span class="skill-name">NumPy</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/tensorflow.svg" alt="TensorFlow" class="imgskills" loading="lazy"><span class="skill-name">TensorFlow</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/keras.svg" alt="Keras" class="imgskills" loading="lazy"><span class="skill-name">Keras</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/scikit-learn.svg" alt="scikit-learn" class="imgskills" loading="lazy"><span class="skill-name">scikit-learn</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/opencv.svg" alt="OpenCV" class="imgskills" loading="lazy"><span class="skill-name">OpenCV</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/mediapipe.svg" alt="MediaPipe" class="imgskills" loading="lazy"><span class="skill-name">MediaPipe</span></div>
-                        <div class="col-md-2 col-3 skill-cell"><img src="skills/scikit-learn.svg" alt="scikit-learn" class="imgskills" loading="lazy"><span class="skill-name">scikit-learn</span></div>
-                        <div class="col-md-2 col-3 skill-cell"><img src="skills/pandas.svg" alt="pandas" class="imgskills" loading="lazy"><span class="skill-name">pandas</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/huggingface.svg" alt="Hugging Face" class="imgskills" loading="lazy"><span class="skill-name">Hugging Face</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/gradio.svg" alt="Gradio" class="imgskills" loading="lazy"><span class="skill-name">Gradio</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/ollama.svg" alt="Ollama" class="imgskills" loading="lazy"><span class="skill-name">Ollama</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/gemini.svg" alt="Gemini API" class="imgskills" loading="lazy"><span class="skill-name">Gemini API</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/claude.svg" alt="Claude API" class="imgskills" loading="lazy"><span class="skill-name">Claude API</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/jupyter.svg" alt="Jupyter" class="imgskills" loading="lazy"><span class="skill-name">Jupyter</span></div>
                 </div>
             </div>
         </div>

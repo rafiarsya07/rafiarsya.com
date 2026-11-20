@@ -125,7 +125,7 @@
             <h4>Leadership &amp; Activities</h4>
             <div class="resume-entry">
                 <div class="resume-entry-top">
-                    <b>Institut Teknologi Batam (ITEBA), Indonesia</b>
+                    <b>Universiti Malaya Outbound Programme, ITEBA, Batam</b>
                     <span class="resume-year">2026</span>
                 </div>
                 <div class="resume-role">Student Representative &amp; Group Leader, Outbound Programme</div>
@@ -173,7 +173,7 @@
             </div>
             <div class="resume-entry">
                 <div class="resume-entry-top">
-                    <b>Faculty of Computer Science &amp; Information Technology, Universiti Malaya</b>
+                    <b>Student Affairs (HEP), FSKTM, Universiti Malaya</b>
                     <span class="resume-year">2026</span>
                 </div>
                 <div class="resume-role">Student Buddy, Inbound Mobility Programme 2026</div>
@@ -241,14 +241,14 @@
             <p class="resume-skills-more">
                 <b>Also used in projects:</b>
                 <br><b>Languages:</b> Java, PHP, Bash
-                <br><b>Frontend:</b> Tailwind CSS, Vite, React Router, Bootstrap 5, Chart.js / Recharts, PWA &amp;
-                Web Push, Chrome Extensions
+                <br><b>Frontend:</b> Tailwind CSS, Vite, React Router, Bootstrap 5, Motion, Chart.js / Recharts,
+                PWA &amp; Web Push, Capacitor, Chrome Extensions
                 <br><b>Backend:</b> Express, FastAPI, Flask, Socket.IO, SSE, Cloudflare Workers &amp; Durable Objects,
                 Zod, Better Auth, JWT &amp; Google OAuth, Telegram bots
-                <br><b>Data:</b> SQLite / Cloudflare D1, Drizzle ORM, SQLAlchemy, Supabase (Auth, Realtime), DynamoDB,
-                ChromaDB
-                <br><b>Infrastructure &amp; Testing:</b> Docker Compose, Cloudflare Tunnel, Ubuntu self-hosting, AWS
-                (Lambda, SAM), NGINX, GitHub Actions, Playwright
+                <br><b>Data:</b> SQLite / Cloudflare D1, Drizzle ORM, Sequelize, SQLAlchemy, Supabase (Auth, Realtime), DynamoDB,
+                ChromaDB, sql.js (WebAssembly), Google Sheets as a CMS
+                <br><b>Infrastructure &amp; Testing:</b> Docker Compose, Cloudflare Pages, Ubuntu, AWS
+                (Lambda, SAM), NGINX, GitHub Actions, PM2, Playwright, Google Analytics 4
                 <br><b>AI / ML:</b> NumPy, TensorFlow / Keras, OpenCV, MediaPipe, scikit-learn, pandas, RAG with
                 Ollama, Hugging Face, Claude API, Gemini API
             </p>
