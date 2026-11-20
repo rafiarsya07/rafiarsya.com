@@ -259,6 +259,22 @@
         </div>
         <br>
 
+        <div class="about-section">
+            <div class="d-flex flex-wrap justify-content-between">
+                <div class="d-flex flex-wrap gap-2">
+                    <img src="icon/UM.png" alt="Universiti Malaya" class="education-image" />
+                    <div>
+                        <p><b>Buddy, Bollywood Glam</b></p>
+                        <p class="text-silent m0">Universiti Malaya</p>
+                    </div>
+                </div>
+                <p class="text-silent m0">2026</p>
+            </div>
+            Served as a buddy at Bollywood Glam, a celebration for <span class="markblue">graduating undergraduate and
+                PhD students</span>, guiding guests and helping the night run smoothly.
+        </div>
+        <br>
+
 
         <div class="about-section">
             <div class="d-flex flex-wrap justify-content-between">
@@ -300,6 +316,8 @@
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/react.svg" alt="React" class="imgskills" loading="lazy"><span class="skill-name">React</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/nextjs.svg" alt="Next.js" class="imgskills" loading="lazy"><span class="skill-name">Next.js</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/nodejs.svg" alt="Node.js" class="imgskills" loading="lazy"><span class="skill-name">Node.js</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/hono.svg" alt="Hono" class="imgskills" loading="lazy"><span class="skill-name">Hono</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/tailwind.svg" alt="Tailwind" class="imgskills" loading="lazy"><span class="skill-name">Tailwind</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/postgresql.svg" alt="PostgreSQL" class="imgskills" loading="lazy"><span class="skill-name">PostgreSQL</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/docker.svg" alt="Docker" class="imgskills" loading="lazy"><span class="skill-name">Docker</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/cloudflare.svg" alt="Cloudflare" class="imgskills" loading="lazy"><span class="skill-name">Cloudflare</span></div>
@@ -316,37 +334,45 @@
                 <div id="frontend-content" class="row text-center hidden">
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/react.svg" alt="React" class="imgskills" loading="lazy"><span class="skill-name">React</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/nextjs.svg" alt="Next.js" class="imgskills" loading="lazy"><span class="skill-name">Next.js</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/reactrouter.svg" alt="React Router" class="imgskills" loading="lazy"><span class="skill-name">React Router</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/tailwind.svg" alt="Tailwind" class="imgskills" loading="lazy"><span class="skill-name">Tailwind</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/vite.svg" alt="Vite" class="imgskills" loading="lazy"><span class="skill-name">Vite</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/bootstrap.svg" alt="Bootstrap" class="imgskills" loading="lazy"><span class="skill-name">Bootstrap</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/html.svg" alt="HTML5" class="imgskills" loading="lazy"><span class="skill-name">HTML5</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/css.svg" alt="CSS3" class="imgskills" loading="lazy"><span class="skill-name">CSS3</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/pwa.svg" alt="PWA" class="imgskills" loading="lazy"><span class="skill-name">PWA</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/webpush.svg" alt="Web Push" class="imgskills" loading="lazy"><span class="skill-name">Web Push</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/figma.svg" alt="Figma" class="imgskills" loading="lazy"><span class="skill-name">Figma</span></div>
                 </div>
                 <div id="backend-content" class="row text-center hidden">
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/nodejs.svg" alt="Node.js" class="imgskills" loading="lazy"><span class="skill-name">Node.js</span></div>
-                        <div class="col-md-2 col-3 skill-cell"><img src="skills/express.svg" alt="Express" class="imgskills" loading="lazy"><span class="skill-name">Express</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/hono.svg" alt="Hono" class="imgskills" loading="lazy"><span class="skill-name">Hono</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/express.svg" alt="Express" class="imgskills" loading="lazy"><span class="skill-name">Express</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/fastapi.svg" alt="FastAPI" class="imgskills" loading="lazy"><span class="skill-name">FastAPI</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/flask.svg" alt="Flask" class="imgskills" loading="lazy"><span class="skill-name">Flask</span></div>
-                        <div class="col-md-2 col-3 skill-cell"><img src="skills/socketio.svg" alt="Socket.IO" class="imgskills" loading="lazy"><span class="skill-name">Socket.IO</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/cloudflareworkers.svg" alt="CF Workers" class="imgskills" loading="lazy"><span class="skill-name">CF Workers</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/sse.svg" alt="SSE" class="imgskills" loading="lazy"><span class="skill-name">SSE</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/socketio.svg" alt="Socket.IO" class="imgskills" loading="lazy"><span class="skill-name">Socket.IO</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/zod.svg" alt="Zod" class="imgskills" loading="lazy"><span class="skill-name">Zod</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/jwt.svg" alt="JWT" class="imgskills" loading="lazy"><span class="skill-name">JWT</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/google.svg" alt="Google OAuth" class="imgskills" loading="lazy"><span class="skill-name">Google OAuth</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/telegram.svg" alt="Telegram Bot" class="imgskills" loading="lazy"><span class="skill-name">Telegram Bot</span></div>
                 </div>
                 <div id="data-content" class="row text-center hidden">
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/postgresql.svg" alt="PostgreSQL" class="imgskills" loading="lazy"><span class="skill-name">PostgreSQL</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/sqlite.svg" alt="SQLite" class="imgskills" loading="lazy"><span class="skill-name">SQLite</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/drizzle.svg" alt="Drizzle ORM" class="imgskills" loading="lazy"><span class="skill-name">Drizzle ORM</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/supabase.svg" alt="Supabase" class="imgskills" loading="lazy"><span class="skill-name">Supabase</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/dynamodb.svg" alt="DynamoDB" class="imgskills" loading="lazy"><span class="skill-name">DynamoDB</span></div>
-                        <div class="col-md-2 col-3 skill-cell"><img src="skills/drizzle.svg" alt="Drizzle ORM" class="imgskills" loading="lazy"><span class="skill-name">Drizzle ORM</span></div>
                 </div>
                 <div id="infra-content" class="row text-center hidden">
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/docker.svg" alt="Docker" class="imgskills" loading="lazy"><span class="skill-name">Docker</span></div>
-                        <div class="col-md-2 col-3 skill-cell"><img src="skills/cloudflare.svg" alt="Cloudflare" class="imgskills" loading="lazy"><span class="skill-name">Cloudflare</span></div>
-                        <div class="col-md-2 col-3 skill-cell"><img src="skills/aws.svg" alt="AWS" class="imgskills" loading="lazy"><span class="skill-name">AWS</span></div>
-                        <div class="col-md-2 col-3 skill-cell"><img src="skills/nginx.svg" alt="NGINX" class="imgskills" loading="lazy"><span class="skill-name">NGINX</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/cloudflare.svg" alt="CF Tunnel" class="imgskills" loading="lazy"><span class="skill-name">CF Tunnel</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/ubuntu.svg" alt="Ubuntu" class="imgskills" loading="lazy"><span class="skill-name">Ubuntu</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/nginx.svg" alt="NGINX" class="imgskills" loading="lazy"><span class="skill-name">NGINX</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/aws.svg" alt="AWS" class="imgskills" loading="lazy"><span class="skill-name">AWS</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/githubactions.svg" alt="GitHub Actions" class="imgskills" loading="lazy"><span class="skill-name">GitHub Actions</span></div>
+                        <div class="col-md-2 col-3 skill-cell"><img src="skills/playwright.svg" alt="Playwright" class="imgskills" loading="lazy"><span class="skill-name">Playwright</span></div>
                         <div class="col-md-2 col-3 skill-cell"><img src="skills/git.svg" alt="Git" class="imgskills" loading="lazy"><span class="skill-name">Git</span></div>
                 </div>
                 <div id="aiml-content" class="row text-center hidden">

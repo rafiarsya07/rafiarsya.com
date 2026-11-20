@@ -20,7 +20,7 @@ var PROJECT_PAGES = [
     "reminderme", "handgesture", "rafifinance", "nase", "briskwalk",
     "steamsql", "csastudy", "resumematch",
     "aievaldashboard", "pricetracker", "digitrecognition",
-    "largenumber", "llmclassification", "idfest", "senara", "pekom", "campusbay", "umove"
+    "largenumber", "llmclassification", "idfest", "senara", "pekom", "campusbay", "umove", "spektra", "morsel", "danchi", "bemfkunri"
 ];
 
 /* content/ is split into pages/ (site-level) and projects/ (case

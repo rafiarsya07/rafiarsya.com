@@ -29,16 +29,129 @@
                                     <div class="project-title">UMOVE</div>
                                     <div class="text-silent text14">2026</div>
                                 </div>
-                                <div class="text-silent project-desc">Campus errands, delivered by fellow UM students.</div>
+                                <div class="text-silent project-desc">Food from any UM cafe, delivered by fellow students.</div>
                                 <div class="project-details">
                                     <div class="hr0-10"></div>
-                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">React</span><span class="badge blog-badge badge-green">Hono</span><span class="badge blog-badge badge-purple">PostgreSQL</span><span class="badge blog-badge badge-orange">Docker</span></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">React</span><span class="badge blog-badge badge-green">Hono</span><span class="badge blog-badge badge-purple">PostgreSQL</span><span class="badge blog-badge badge-orange">PWA</span></div>
                                 </div>
                                 <div class="project-image-container">
                                     <img class="thumb-contain" src="image/assets/umove/hero.png" alt="UMOVE homepage with the live request board" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/umove">Project Details</a>
                                         <a class="anone badge overlay-btn" href="https://umove.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
+                            <a href="/spektra" class="anone card-hitbox" aria-label="Spektra, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">Spektra</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">SPeCTRUM deadlines and classes, with reminders on Telegram.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">FastAPI</span><span class="badge blog-badge badge-green">SQLite</span><span class="badge blog-badge badge-purple">PWA</span><span class="badge blog-badge badge-orange">Telegram</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <img class="thumb-contain" src="image/assets/spektra/hero.png" alt="Spektra calendar" loading="lazy" decoding="async">
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/spektra">Project Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
+                            <a href="/morsel" class="anone card-hitbox" aria-label="Morsel, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">Morsel</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">Leftover campus food at up to half price, reserved in one tap.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Next.js</span><span class="badge blog-badge badge-green">Supabase</span><span class="badge blog-badge badge-purple">Tailwind</span><span class="badge blog-badge badge-orange">PWA</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <img class="thumb-contain" src="image/assets/morsel/browse.png" alt="Morsel browse page" loading="lazy" decoding="async">
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/morsel">Project Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
+                            <a href="/danchi" class="anone card-hitbox" aria-label="Danchi, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">Danchi</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">A private, all-in-one app for everyday life.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Next.js</span><span class="badge blog-badge badge-green">PostgreSQL</span><span class="badge blog-badge badge-purple">Drizzle</span><span class="badge blog-badge badge-orange">PWA</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <img class="thumb-contain" src="image/assets/danchi/hero.png" alt="Danchi tasks, money and habits screens" loading="lazy" decoding="async">
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/danchi">Project Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
+                            <a href="/bemfkunri" class="anone card-hitbox" aria-label="BEM FK UNRI Website, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">BEM FK UNRI Website</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">Student board website, edited from a Google Sheet.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Next.js</span><span class="badge blog-badge badge-green">Tailwind</span><span class="badge blog-badge badge-purple">Motion</span><span class="badge blog-badge badge-orange">Sheets</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <img class="thumb-contain" src="image/assets/bemfkunri/hero.png" alt="BEM FK UNRI homepage" loading="lazy" decoding="async">
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/bemfkunri">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://bemfkunri.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
+                            <a href="/rafifinance" class="anone card-hitbox" aria-label="RafiFinance, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">RafiFinance</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">Offline finance app for Ringgit and Rupiah, with bank notification capture and a Telegram bot.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Vanilla JS</span><span class="badge blog-badge badge-purple">PWA</span><span class="badge blog-badge badge-green">Node.js</span><span class="badge blog-badge badge-orange">SQLite</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <img class="thumb-contain" src="image/assets/rafifinance/hero.jpg" alt="RafiFinance report, home and inbox screens" loading="lazy" decoding="async">
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/rafifinance">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://finance.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/rafifinance" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     </div>
                                 </div>
                             </div>
@@ -490,30 +603,6 @@
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/briskwalk">Project Details</a>
 <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <div class="project-card d-flex align-items-center">
-                            <a href="/rafifinance" class="anone card-hitbox" aria-label="RafiFinance, project details"></a>
-                            <div class="w100">
-                                <div class="project-header d-flex align-items-end justify-content-between">
-                                    <div class="project-title">RafiFinance</div>
-                                    <div class="text-silent text14">2026</div>
-                                </div>
-                                <div class="text-silent project-desc">Personal finance tracker in a single offline HTML file.</div>
-                                <div class="project-details">
-                                    <div class="hr0-10"></div>
-                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Vanilla JS</span><span class="badge blog-badge badge-green">Single HTML File</span><span class="badge blog-badge badge-purple">PWA</span><span class="badge blog-badge badge-orange">localStorage</span></div>
-                                </div>
-                                <div class="project-image-container">
-                                    <div class="project-mono">R</div>
-                                    <div class="image-overlay">
-                                        <a class="anone badge overlay-btn" href="/rafifinance">Project Details</a>
-                                        <a class="anone badge overlay-btn" href="https://finance.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
-                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     </div>
                                 </div>
                             </div>

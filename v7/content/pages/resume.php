@@ -9,7 +9,7 @@
 <div class="d-flex justify-content-center">
     <div class="content">
         <div class="d-flex justify-content-between align-items-center" style="margin-bottom: -10px;">
-            <small>Last updated: 10 October 2026</small>
+            <small>Last updated: 20 November 2026</small>
             <div class="d-flex justify-content-end align-items-center">
                 <div style="margin-left: 10px">
                     <a type="button" href="https://drive.google.com/file/d/1zuPWVwJPG_mSqoJOH703kcRyNptxJH3o/view?usp=sharing" target="_blank" rel="noopener"
@@ -50,8 +50,10 @@
                 </div>
                 <div class="resume-role">B.Sc. Computer Science (Software Engineering)</div>
                 <ul>
-                    <li>Coursework: Data Structures &amp; Algorithms, Machine Learning, Network Technology,
-                        Human Computer Interaction, Computer Systems Architecture.</li>
+                    <li>Current modules: Database, Probability &amp; Statistics, Project Management, Computing
+                        Mathematics I, Computer Systems &amp; Organization, Thinking &amp; Communication Skills.</li>
+                    <li>Completed: Data Structures, Machine Learning, Network Technology, Human Computer
+                        Interaction, Computer System Architecture, Fundamentals of Programming.</li>
                 </ul>
             </div>
             <div class="resume-entry">
@@ -160,6 +162,17 @@
             </div>
             <div class="resume-entry">
                 <div class="resume-entry-top">
+                    <b>Bollywood Glam, Universiti Malaya</b>
+                    <span class="resume-year">2026</span>
+                </div>
+                <div class="resume-role">Buddy</div>
+                <ul>
+                    <li>Guided and looked after graduating undergraduate and PhD students during their
+                        graduation celebration.</li>
+                </ul>
+            </div>
+            <div class="resume-entry">
+                <div class="resume-entry-top">
                     <b>Faculty of Computer Science &amp; Information Technology, Universiti Malaya</b>
                     <span class="resume-year">2026</span>
                 </div>
@@ -176,59 +189,68 @@
             <h4>Selected Projects (2026)</h4>
             <div class="resume-project">
                 <b>CampusBay: Student Marketplace</b>
-                <p>Live marketplace where students list items or post requests and close deals on WhatsApp. Next.js 16 on Cloudflare Workers with D1 and Drizzle, instant updates through a Durable Object, EN/MS/ID search and a full moderation panel. Built and run solo.</p>
+                <p>Live marketplace where students list items or post requests and close deals on WhatsApp. Next.js 16 on Cloudflare Workers with D1 and Drizzle, instant updates and search in English, Malay and Indonesian. Built and run solo.</p>
             </div>
             <div class="resume-project">
-                <b>UMOVE: Campus Errand Delivery</b>
-                <p>Students post errands and verified student runners deliver them, paid on delivery. React 19 front end on Cloudflare Workers; Node, Hono and PostgreSQL API in Docker on a mini PC behind Cloudflare Tunnel, with a live board over Server-Sent Events.</p>
+                <b>UMOVE: Campus Food Delivery</b>
+                <p>Food from any UM cafe, delivered by verified UM students and paid on arrival. React 19, Hono and PostgreSQL, with a live request board, push notifications and Telegram alerts.</p>
+            </div>
+            <div class="resume-project">
+                <b>Spektra: Study Reminders for UM</b>
+                <p>Pulls SPeCTRUM deadlines, classes and announcements automatically and reminds students on Telegram, email and push. FastAPI and SQLite, installable as a PWA and Android app.</p>
+            </div>
+            <div class="resume-project">
+                <b>Morsel: Surplus Campus Food</b>
+                <p>Team project (WIX2002): campus cafes post unsold food at up to half price and students reserve it with a pickup code. Next.js, Supabase and Tailwind, with live listings and seller approval.</p>
             </div>
             <div class="resume-project">
                 <b>PaperMind: Local RAG Paper Analyzer</b>
-                <p>Ask questions of any PDF with answers grounded in the text. FastAPI, ChromaDB and Ollama, fully offline, in Docker Compose on a self-hosted Linux server.</p>
+                <p>Ask questions of any PDF with answers grounded in the text. FastAPI, ChromaDB and Ollama, fully offline and self-hosted.</p>
             </div>
             <div class="resume-project">
                 <b>AI Digit Recognizer: CNN From Scratch</b>
-                <p>Convolutional network written entirely in NumPy, from convolutions to backpropagation and Adam. 99.1% on the MNIST test set, served by Flask with a layer-by-layer visualizer.</p>
+                <p>Convolutional network written entirely in NumPy, from convolutions to backpropagation and Adam. 99.1% on the MNIST test set, with a layer-by-layer visualizer.</p>
             </div>
             <div class="resume-project">
                 <b>Nalar: Blog with a Custom CMS</b>
-                <p>Node.js, Express and PostgreSQL blog with JWT auth, Markdown editing and scheduled publishing. Self-hosted behind Cloudflare Tunnel, managed with PM2.</p>
+                <p>Node.js, Express and PostgreSQL blog with JWT auth, Markdown editing and scheduled publishing.</p>
             </div>
             <div class="resume-project">
                 <b>Crop Disease Detector</b>
-                <p>Classifies 38 plant diseases from a leaf photo. MobileNetV2 transfer learning with two-phase fine-tuning in TensorFlow/Keras, about 97% accuracy, deployed on Hugging Face Spaces.</p>
+                <p>Classifies 38 plant diseases from a leaf photo with MobileNetV2 transfer learning, about 97% accuracy, on Hugging Face Spaces.</p>
             </div>
             <div class="resume-project">
                 <b>IDFEST 2026 Website</b>
-                <p>Official site for PPI UM's cultural festival, built as a team in Next.js 16 and Tailwind v4. Owned the homepage timeline, responsive hero and shared navigation.</p>
+                <p>Official site for PPI UM's cultural festival, built as a team in Next.js 16 and Tailwind v4.</p>
             </div>
             <div class="resume-project">
-                <b>SENARA Creative Artfest 2026</b>
-                <p>Refreshed PPI Malaysia's art exhibition site and built a new Online Exhibition with category and artwork pages, in HTML, CSS, JavaScript and Bootstrap 5.</p>
+                <b>BEM FK UNRI Website</b>
+                <p>Website for the Faculty of Medicine student board at Universitas Riau, edited by the board from a Google Sheet. Next.js and Tailwind.</p>
             </div>
             <div class="resume-project">
                 <b>RafiFinance</b>
-                <p>Budget and savings tracker in a single HTML file with a financial health score. Works offline as a PWA, deployed on Cloudflare Pages.</p>
+                <p>Offline finance app for Ringgit and Rupiah with a financial health score and a Telegram bot.</p>
             </div>
             <hr>
 
             <h4>Skills</h4>
             <p>
-                <b>Core:</b> TypeScript, JavaScript, Python, React, Next.js, Node.js, PostgreSQL / SQL, Docker,
-                Cloudflare, Git
+                <b>Core:</b> TypeScript, JavaScript, Python, React, Next.js, Node.js, Hono, PostgreSQL / SQL,
+                Docker, Cloudflare, Git
             </p>
             <p class="resume-skills-more">
                 <b>Also used in projects:</b>
                 <br><b>Languages:</b> Java, PHP, Bash
-                <br><b>Frontend:</b> Tailwind CSS, Vite, Bootstrap 5, Chart.js / Recharts, PWA, Chrome Extensions
-                (Manifest V3)
-                <br><b>Backend:</b> Express, Hono, FastAPI, Flask, WebSockets / Socket.IO, Server-Sent Events, Cloudflare Workers &amp;
-                Durable Objects, Zod, JWT &amp; Google OAuth
-                <br><b>Data:</b> SQLite / Cloudflare D1, Drizzle ORM, Supabase, DynamoDB, ChromaDB
-                <br><b>Infrastructure &amp; Testing:</b> Docker Compose, Cloudflare Tunnel, AWS (Lambda, API Gateway,
-                SAM), NGINX, Ubuntu self-hosting, GitHub Actions CI, Playwright
+                <br><b>Frontend:</b> Tailwind CSS, Vite, React Router, Bootstrap 5, Chart.js / Recharts, PWA &amp;
+                Web Push, Chrome Extensions
+                <br><b>Backend:</b> Express, FastAPI, Flask, Socket.IO, SSE, Cloudflare Workers &amp; Durable Objects,
+                Zod, Better Auth, JWT &amp; Google OAuth, Telegram bots
+                <br><b>Data:</b> SQLite / Cloudflare D1, Drizzle ORM, SQLAlchemy, Supabase (Auth, Realtime), DynamoDB,
+                ChromaDB
+                <br><b>Infrastructure &amp; Testing:</b> Docker Compose, Cloudflare Tunnel, Ubuntu self-hosting, AWS
+                (Lambda, SAM), NGINX, GitHub Actions, Playwright
                 <br><b>AI / ML:</b> NumPy, TensorFlow / Keras, OpenCV, MediaPipe, scikit-learn, pandas, RAG with
-                Ollama, Hugging Face, Claude API
+                Ollama, Hugging Face, Claude API, Gemini API
             </p>
             <hr>
 

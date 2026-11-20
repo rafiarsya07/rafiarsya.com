@@ -2,13 +2,12 @@
     {
         "slug": "umove",
         "title": "UMOVE",
-        "sub": "Campus errands, delivered by fellow UM students.",
+        "sub": "Food from any UM cafe, delivered by fellow students.",
         "tags": [
             "React",
             "Hono",
             "PostgreSQL",
-            "Docker",
-            "Cloudflare"
+            "PWA"
         ],
         "cover": "image/assets/umove/hero.png",
         "section": "Ongoing",
@@ -18,6 +17,105 @@
             "Year": "2026",
             "Role": "Solo Developer",
             "Stack": "React, Hono, PostgreSQL"
+        }
+    },
+    {
+        "slug": "spektra",
+        "title": "Spektra",
+        "sub": "SPeCTRUM deadlines and classes, with reminders on Telegram.",
+        "tags": [
+            "FastAPI",
+            "SQLite",
+            "PWA",
+            "Telegram"
+        ],
+        "cover": "image/assets/spektra/hero.png",
+        "section": "Ongoing",
+        "cards": 5,
+        "meta": {
+            "Status": "In use",
+            "Year": "2026",
+            "Role": "Solo Developer"
+        }
+    },
+    {
+        "slug": "morsel",
+        "title": "Morsel",
+        "sub": "Leftover campus food at up to half price, reserved in one tap.",
+        "tags": [
+            "Next.js",
+            "Supabase",
+            "Tailwind",
+            "PWA"
+        ],
+        "cover": "image/assets/morsel/browse.png",
+        "section": "Ongoing",
+        "cards": 5,
+        "meta": {
+            "Status": "In development",
+            "Year": "2026",
+            "Role": "Developer, WIX2002 team project"
+        }
+    },
+    {
+        "slug": "danchi",
+        "title": "Danchi",
+        "sub": "A private, all-in-one app for everyday life.",
+        "tags": [
+            "Next.js",
+            "PostgreSQL",
+            "Drizzle",
+            "PWA"
+        ],
+        "cover": "image/assets/danchi/hero.png",
+        "section": "Ongoing",
+        "cards": 5,
+        "meta": {
+            "Status": "In use",
+            "Year": "2026",
+            "Role": "Solo Developer"
+        }
+    },
+    {
+        "slug": "bemfkunri",
+        "title": "BEM FK UNRI Website",
+        "sub": "Student board website, edited from a Google Sheet.",
+        "tags": [
+            "Next.js",
+            "Tailwind",
+            "Motion",
+            "Google Sheets"
+        ],
+        "cover": "image/assets/bemfkunri/hero.png",
+        "section": "Ongoing",
+        "cards": 5,
+        "meta": {
+            "Status": "Prototype",
+            "Year": "2026",
+            "Role": "Web Developer"
+        }
+    },
+    {
+        "slug": "rafifinance",
+        "title": "RafiFinance",
+        "sub": "Offline finance app for Ringgit and Rupiah, with bank notification capture and a Telegram bot.",
+        "tags": [
+            "Vanilla JS",
+            "PWA",
+            "Node.js",
+            "SQLite",
+            "Telegram Bot",
+            "Cloudflare Tunnel"
+        ],
+        "cover": "image/assets/rafifinance/hero.jpg",
+        "section": "Ongoing",
+        "cards": 10,
+        "meta": {
+            "Status": "Live, in daily use",
+            "Year": "2026",
+            "Role": "Solo Developer",
+            "Version": "v6.3",
+            "Live": "finance.rafiarsya.com"
         }
     },
     {
@@ -443,29 +541,6 @@
             "Role": "Designer &amp; Developer",
             "Organizer": "PPI Malaysia",
             "Venue": "Dataran Putrajaya"
-        }
-    },
-    {
-        "slug": "rafifinance",
-        "title": "RafiFinance",
-        "sub": "Personal finance tracker in a single offline HTML file.",
-        "tags": [
-            "Vanilla JS",
-            "Single HTML File",
-            "PWA",
-            "localStorage",
-            "Service Worker",
-            "Cloudflare Pages"
-        ],
-        "cover": "",
-        "section": "Completed",
-        "cards": 10,
-        "meta": {
-            "Status": "Completed · Live",
-            "Year": "2026",
-            "Type": "Personal Tool · v4",
-            "File Size": "1 HTML file",
-            "Live": "finance.rafiarsya.com"
         }
     },
     {

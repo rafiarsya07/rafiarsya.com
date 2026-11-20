@@ -1,5 +1,82 @@
 [
  {
+  "priority": 0.1,
+  "type": "1",
+  "issuer": "UM",
+  "issuer_name": "Universiti Malaya",
+  "title": "Database",
+  "subtitle": "Ongoing",
+  "tags": "SQL, Data Modelling, Normalisation",
+  "desc": "Relational design, ER modelling, normalisation and SQL.",
+  "img": null
+ },
+ {
+  "priority": 0.2,
+  "type": "1",
+  "issuer": "UM",
+  "issuer_name": "Universiti Malaya",
+  "title": "Probability and Statistics",
+  "subtitle": "Ongoing",
+  "tags": "Probability, Distributions, Inference",
+  "desc": "Probability, random variables, distributions and statistical inference.",
+  "img": null
+ },
+ {
+  "priority": 0.3,
+  "type": "1",
+  "issuer": "UM",
+  "issuer_name": "Universiti Malaya",
+  "title": "Project Management",
+  "subtitle": "Ongoing",
+  "tags": "Planning, Scheduling, Risk",
+  "desc": "Planning, scheduling, cost and risk across a project's life cycle.",
+  "img": null
+ },
+ {
+  "priority": 0.4,
+  "type": "1",
+  "issuer": "UM",
+  "issuer_name": "Universiti Malaya",
+  "title": "Thinking and Communication Skills",
+  "subtitle": "Ongoing",
+  "tags": "Critical Thinking, Communication",
+  "desc": "Critical and creative thinking with clear spoken and written communication.",
+  "img": null
+ },
+ {
+  "priority": 0.5,
+  "type": "1",
+  "issuer": "UM",
+  "issuer_name": "Universiti Malaya",
+  "title": "Appreciation of Ethics and Civilisations",
+  "subtitle": "Ongoing",
+  "tags": "Ethics, Civilisations, Society",
+  "desc": "Ethics and the civilisations that shape Malaysian society.",
+  "img": null
+ },
+ {
+  "priority": 0.6,
+  "type": "1",
+  "issuer": "UM",
+  "issuer_name": "Universiti Malaya",
+  "title": "Computing Mathematics I",
+  "subtitle": "Ongoing",
+  "tags": "Discrete Math, Proofs, Logic",
+  "desc": "Discrete math, propositional logic, set theory & graph theory.",
+  "img": null
+ },
+ {
+  "priority": 0.7,
+  "type": "1",
+  "issuer": "UM",
+  "issuer_name": "Universiti Malaya",
+  "title": "Computer Systems and Organization",
+  "subtitle": "Ongoing",
+  "tags": "Hardware, Digital Logic, Memory",
+  "desc": "CPU design, memory hierarchy, I/O systems & data representation.",
+  "img": null
+ },
+ {
   "priority": 1,
   "type": "1",
   "issuer": "UM",
@@ -74,28 +151,6 @@
   "subtitle": "Completed",
   "tags": "Python, Logic, OOP",
   "desc": "Control flow, functions, OOP basics & problem-solving in Python.",
-  "img": null
- },
- {
-  "priority": 8,
-  "type": "1",
-  "issuer": "UM",
-  "issuer_name": "Universiti Malaya",
-  "title": "Computing Mathematics",
-  "subtitle": "Completed",
-  "tags": "Discrete Math, Proofs, Logic",
-  "desc": "Discrete math, propositional logic, set theory & graph theory.",
-  "img": null
- },
- {
-  "priority": 9,
-  "type": "1",
-  "issuer": "UM",
-  "issuer_name": "Universiti Malaya",
-  "title": "Computer System Organization",
-  "subtitle": "Completed",
-  "tags": "Hardware, Digital Logic, Memory",
-  "desc": "CPU design, memory hierarchy, I/O systems & data representation.",
   "img": null
  },
  {
