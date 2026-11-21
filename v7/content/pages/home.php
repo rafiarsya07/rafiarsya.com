@@ -124,93 +124,174 @@
                 </li>
             </ul>
         </div>
-        <div class="about-section xp-group">
-            <p class="text-silent xp-title">Experience</p>
-            <ul class="xp-list">
-                <li class="xp-item">
-                    <img src="icon/pekom.png" alt="PEKOM" class="xp-logo" loading="lazy" />
-                    <div class="xp-body">
-                        <div class="xp-top"><p class="xp-role">Technical Executive Committee, Website Division</p><span class="xp-year">2026</span></div>
-                        <a class="xp-org textlink" href="https://pekomum.org" target="_blank" rel="noopener noreferrer">PEKOM, Computer Science Society of UM<arrow-icon class="togo-icon"></arrow-icon></a>
-                        <p class="xp-desc">Built the society's official website, <a class="textlink" href="/pekom">pekomum.org</a>, in three languages.</p>
+        <br>
+
+        <div class="about-section">
+            <p class="text-silent">Experience</p>
+            <div class="d-flex flex-wrap justify-content-between">
+                <div class="d-flex flex-wrap gap-2">
+                    <img src="icon/pekom.png" alt="PEKOM" class="education-image" />
+                    <div>
+                        <p><b>Technical Executive Committee</b></p>
+                        <a class="d-flex align-items-center gap-1 textlink" href="https://pekomum.org"
+                            target="_blank">PEKOM, Computer Science Society of Universiti Malaya<arrow-icon
+                                class="togo-icon" style="margin-top: -1px;"></arrow-icon></a>
                     </div>
-                </li>
-                <li class="xp-item">
-                    <img src="icon/ppim.png" alt="PPI Malaysia" class="xp-logo" loading="lazy" />
-                    <div class="xp-body">
-                        <div class="xp-top"><p class="xp-role">Head of Website Division, Data &amp; Information System Bureau</p><span class="xp-year">2026</span></div>
-                        <a class="xp-org textlink" href="https://ppimalaysia.id" target="_blank" rel="noopener noreferrer">PPI Malaysia<arrow-icon class="togo-icon"></arrow-icon></a>
-                        <p class="xp-desc">Own the association's website and its event sites, including SENARA and BriskWalk.</p>
-                    </div>
-                </li>
-                <li class="xp-item">
-                    <img src="icon/ppium.png" alt="PPI UM" class="xp-logo" loading="lazy" />
-                    <div class="xp-body">
-                        <div class="xp-top"><p class="xp-role">Website Development Committee, IDFEST 2026</p><span class="xp-year">2026</span></div>
-                        <a class="xp-org textlink" href="https://idfest.ppiunimalaya.id" target="_blank" rel="noopener noreferrer">PPI Universiti Malaya<arrow-icon class="togo-icon"></arrow-icon></a>
-                        <p class="xp-desc">Built the festival website in Next.js from the team's Figma designs.</p>
-                    </div>
-                </li>
-                <li class="xp-item">
-                    <img src="icon/ppium.png" alt="PPI UM" class="xp-logo" loading="lazy" />
-                    <div class="xp-body">
-                        <div class="xp-top"><p class="xp-role">Head of Department, Art Exhibition, IDFEST 2026</p><span class="xp-year">2026</span></div>
-                        <a class="xp-org textlink" href="https://ppiunimalaya.id" target="_blank" rel="noopener noreferrer">PPI Universiti Malaya<arrow-icon class="togo-icon"></arrow-icon></a>
-                        <p class="xp-desc">Led the art exhibition from concept and curation to the event day.</p>
-                    </div>
-                </li>
-            </ul>
+                </div>
+                <p class="text-silent">2026</p>
+            </div>
+            Serving in the Website Division of PEKOM, the student society of the Faculty of Computer Science &amp;
+            IT. I help <span class="highlightv1">build and maintain the society's web platforms</span> and
+            support faculty-wide events.
         </div>
-        <div class="about-section xp-group">
-            <p class="text-silent xp-title">Leadership &amp; Activities</p>
-            <ul class="xp-list">
-                <li class="xp-item">
-                    <img src="icon/UM.png" alt="Universiti Malaya" class="xp-logo" loading="lazy" />
-                    <div class="xp-body">
-                        <div class="xp-top"><p class="xp-role">Student Representative &amp; Group Leader, Outbound Programme</p><span class="xp-year">2026</span></div>
-                        <a class="xp-org textlink" href="https://iteba.ac.id/en" target="_blank" rel="noopener noreferrer">Universiti Malaya × ITEBA, Batam, Indonesia<arrow-icon class="togo-icon"></arrow-icon></a>
-                        <p class="xp-desc">Represented UM on the outbound trip, led a group of 28 students and gave the student speech.</p>
+
+        <div class="about-section">
+            <div class="d-flex flex-wrap justify-content-between">
+                <div class="d-flex flex-wrap gap-2">
+                    <img src="icon/ppim.png" alt="PPI Malaysia" class="education-image" />
+                    <div>
+                        <p><b>Head of Website Division, Data &amp; Information System Bureau</b></p>
+                        <a class="d-flex align-items-center gap-1 textlink" href="https://ppimalaysia.id"
+                            target="_blank">PPI Malaysia (Indonesian Students Association)<arrow-icon
+                                class="togo-icon" style="margin-top: -1px;"></arrow-icon></a>
                     </div>
-                </li>
-                <li class="xp-item">
-                    <img src="icon/ppim.png" alt="PPI Malaysia" class="xp-logo" loading="lazy" />
-                    <div class="xp-body">
-                        <div class="xp-top"><p class="xp-role">Transportation Team &amp; Field Committee, LARAS</p><span class="xp-year">2026</span></div>
-                        <a class="xp-org textlink" href="https://ppimalaysia.id" target="_blank" rel="noopener noreferrer">PPI Malaysia<arrow-icon class="togo-icon"></arrow-icon></a>
-                        <p class="xp-desc">Logistics and on-ground coordination on event day.</p>
-                    </div>
-                </li>
-            </ul>
+                </div>
+                <p class="text-silent">2026</p>
+            </div>
+            Leading the Website Division with <span class="markblue">full ownership of the official PPI Malaysia
+                website</span>: development, maintenance, and continuous improvement for Indonesian students
+            across Malaysia.
         </div>
-        <div class="about-section xp-group">
-            <p class="text-silent xp-title">Volunteering</p>
-            <ul class="xp-list">
-                <li class="xp-item">
-                    <img src="icon/UM.png" alt="Universiti Malaya" class="xp-logo" loading="lazy" />
-                    <div class="xp-body">
-                        <div class="xp-top"><p class="xp-role">Buddy, UM Week of Welcome (UM-WOW)</p><span class="xp-year">2026</span></div>
-                        <a class="xp-org textlink" href="https://hep.um.edu.my/umwow" target="_blank" rel="noopener noreferrer">Student Affairs (HEP), Universiti Malaya<arrow-icon class="togo-icon"></arrow-icon></a>
-                        <p class="xp-desc">Guided new students through registration, campus and their first days.</p>
+
+        <div class="about-section">
+            <div class="d-flex flex-wrap justify-content-between">
+                <div class="d-flex flex-wrap gap-2">
+                    <img src="icon/ppium.png" alt="PPI UM" class="education-image" />
+                    <div>
+                        <p><b>Head of Department, Art Exhibition at IDFEST</b></p>
+                        <a class="d-flex align-items-center gap-1 textlink" href="https://ppiunimalaya.id"
+                            target="_blank">PPI University of Malaya<arrow-icon class="togo-icon"
+                                style="margin-top: -1px;"></arrow-icon></a>
                     </div>
-                </li>
-                <li class="xp-item">
-                    <img src="icon/UM.png" alt="Universiti Malaya" class="xp-logo" loading="lazy" />
-                    <div class="xp-body">
-                        <div class="xp-top"><p class="xp-role">Buddy, Bollywood Glam</p><span class="xp-year">2026</span></div>
-                        <a class="xp-org textlink" href="https://fsktm.um.edu.my/" target="_blank" rel="noopener noreferrer">Student Affairs (HEP), FSKTM, Universiti Malaya<arrow-icon class="togo-icon"></arrow-icon></a>
-                        <p class="xp-desc">Accompanied graduating undergraduate and PhD students at the faculty's graduation celebration.</p>
-                    </div>
-                </li>
-                <li class="xp-item">
-                    <img src="icon/chula.png" alt="Chulalongkorn University" class="xp-logo" loading="lazy" />
-                    <div class="xp-body">
-                        <div class="xp-top"><p class="xp-role">Student Buddy &amp; Documentation, Inbound Mobility Programme</p><span class="xp-year">2026</span></div>
-                        <a class="xp-org textlink" href="https://fsktm.um.edu.my/" target="_blank" rel="noopener noreferrer">Student Affairs (HEP), FSKTM, Universiti Malaya<arrow-icon class="togo-icon"></arrow-icon></a>
-                        <p class="xp-desc">Hosted visiting students from Chulalongkorn University for five days and documented the programme.</p>
-                    </div>
-                </li>
-            </ul>
+                </div>
+                <p class="text-silent">2026</p>
+            </div>
+            Directing the Art Exhibition division for IDFEST, an international event showcasing Indonesian heritage
+            at Universiti Malaya, from concept and curation through to delivery.
         </div>
+
+        <div class="about-section">
+            <div class="d-flex flex-wrap justify-content-between">
+                <div class="d-flex flex-wrap gap-2">
+                    <img src="icon/ppium.png" alt="IDFEST" class="education-image" />
+                    <div>
+                        <p><b>Website Development Committee at IDFEST</b></p>
+                        <a class="d-flex align-items-center gap-1 textlink" href="https://idfest.ppiunimalaya.id"
+                            target="_blank">IDFEST 2026<arrow-icon class="togo-icon"
+                                style="margin-top: -1px;"></arrow-icon></a>
+                    </div>
+                </div>
+                <p class="text-silent">2026</p>
+            </div>
+            Building the official IDFEST website with <span class="marksalmon">Next.js and Tailwind CSS</span>,
+            responsive, interactive interfaces translated from Figma into production-ready pages.
+        </div>
+        <br>
+
+        <div class="about-section">
+            <p class="text-silent">Leadership &amp; Activities</p>
+            <div class="d-flex flex-wrap justify-content-between">
+                <div class="d-flex flex-wrap gap-2">
+                    <img src="icon/UM.png" alt="Universiti Malaya" class="education-image" />
+                    <div>
+                        <p><b>Student Representative &amp; Group Leader, Outbound Programme</b></p>
+                        <a class="d-flex align-items-center gap-1 textlink" href="https://iteba.ac.id/en"
+                            target="_blank">Institut Teknologi Batam (ITEBA), Indonesia<arrow-icon class="togo-icon"
+                                style="margin-top: -1px;"></arrow-icon></a>
+                    </div>
+                </div>
+                <p class="text-silent m0">2026</p>
+            </div>
+            Represented <span class="markblue">Universiti Malaya as its student representative</span> on an
+            outbound programme to Batam, Indonesia. I led a group of 28 students and delivered the student speech
+            on stage. The programme included the public lecture <i>Behind the Scenes of TikTok &amp; ChatGPT:
+            Exploring the Giants of Data Centers</i>.
+        </div>
+
+        <div class="about-section">
+            <div class="d-flex flex-wrap justify-content-between">
+                <div class="d-flex flex-wrap gap-2">
+                    <img src="icon/ppim.png" alt="PPI Malaysia" class="education-image" />
+                    <div>
+                        <p><b>LARAS: Transportation Team &amp; Field Committee</b></p>
+                        <a class="d-flex align-items-center gap-1 textlink" href="https://ppimalaysia.id"
+                            target="_blank">PPI Malaysia<arrow-icon class="togo-icon"
+                                style="margin-top: -1px;"></arrow-icon></a>
+                    </div>
+                </div>
+                <p class="text-silent m0">2026</p>
+            </div>
+            Served on the Transportation Team and Field Committee for LARAS, covering logistics, on-ground
+            coordination, and event-day operations.
+        </div>
+        <br>
+
+        <div class="about-section">
+            <p class="text-silent">Volunteering</p>
+            <div class="d-flex flex-wrap justify-content-between">
+                <div class="d-flex flex-wrap gap-2">
+                    <img src="icon/UM.png" alt="Universiti Malaya" class="education-image" />
+                    <div>
+                        <p><b>Buddy, UM Week of Welcome (UM-WOW)</b></p>
+                        <a class="d-flex align-items-center gap-1 textlink" href="https://hep.um.edu.my/umwow"
+                            target="_blank">Student Affairs, Universiti Malaya<arrow-icon class="togo-icon"
+                                style="margin-top: -1px;"></arrow-icon></a>
+                    </div>
+                </div>
+                <p class="text-silent m0">2026</p>
+            </div>
+            Welcomed new students to Universiti Malaya during orientation week, <span class="markblue">guiding
+                freshies</span> through registration, campus and their first days at UM.
+        </div>
+        <br>
+
+        <div class="about-section">
+            <div class="d-flex flex-wrap justify-content-between">
+                <div class="d-flex flex-wrap gap-2">
+                    <img src="icon/UM.png" alt="Universiti Malaya" class="education-image" />
+                    <div>
+                        <p><b>Buddy, Bollywood Glam</b></p>
+                        <a class="d-flex align-items-center gap-1 textlink" href="https://fsktm.um.edu.my/"
+                            target="_blank">Student Affairs (HEP), FSKTM, Universiti Malaya<arrow-icon class="togo-icon"
+                                style="margin-top: -1px;"></arrow-icon></a>
+                    </div>
+                </div>
+                <p class="text-silent m0">2026</p>
+            </div>
+            A graduation celebration by HEP FSKTM. Served as a buddy to <span class="markblue">graduating undergraduate and
+                PhD students</span>, guiding them through the event.
+        </div>
+        <br>
+
+
+        <div class="about-section">
+            <div class="d-flex flex-wrap justify-content-between">
+                <div class="d-flex flex-wrap gap-2">
+                    <img src="icon/chula.png" alt="Chulalongkorn University" class="education-image" />
+                    <div>
+                        <p><b>Student Buddy, Inbound Mobility Programme 2026</b></p>
+                        <a class="d-flex align-items-center gap-1 textlink" href="https://fsktm.um.edu.my/"
+                            target="_blank">Student Affairs (HEP), FSKTM, Universiti Malaya<arrow-icon class="togo-icon" style="margin-top: -1px;"></arrow-icon></a>
+                    </div>
+                </div>
+                <p class="text-silent m0">2026</p>
+            </div>
+            A five-day FSKTM programme <span class="markblue">hosting students from Chulalongkorn
+                University</span>, Thailand's top-ranked university, run by a committee of four. I served as a
+            Student Buddy and handled documentation for the whole programme, covering sessions and daily
+            activities across all five days.
+        </div>
+        <br>
 
         <div class="about-section">
             <div class="text-silent">Skills</div>
