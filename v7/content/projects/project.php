@@ -267,7 +267,7 @@
                                     <img src="image/assets/marketpulse/hero.jpg" alt="MarketPulse ETL dashboard preview" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/marketpulse">Project Details</a>
-                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/marketpulse-etl" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     </div>
                                 </div>
                             </div>
@@ -416,7 +416,6 @@
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/nalar">Project Details</a>
                                         <a class="anone badge overlay-btn" href="https://blog.rafiarsya.com/" target="_blank" rel="noopener noreferrer">Website</a>
-                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/thoughtlog" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     </div>
                                 </div>
                             </div>
@@ -440,7 +439,7 @@
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/cropdisease">Project Details</a>
                                         <a class="anone badge overlay-btn" href="https://huggingface.co/spaces/rafiarsya/crop-disease-detector" target="_blank" rel="noopener noreferrer">Website</a>
-                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/crop-disease-detector" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     </div>
                                 </div>
                             </div>
@@ -534,6 +533,7 @@
                                     <img class="thumb-contain" src="image/assets/nase/about-us.png" alt="NASE site in high-contrast mode with the accessibility toolbar" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/nase">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/Web-Accesibility" target="_blank" rel="noopener noreferrer">GitHub</a>
                                         <a class="anone badge overlay-btn" href="https://hci.rafiarsya.com" target="_blank" rel="noopener noreferrer">Website</a>
                                     </div>
                                 </div>
@@ -557,7 +557,7 @@
                                     <img class="thumb-contain" src="image/assets/handgesture/cover.jpg" alt="Drawing in the air with an index finger, tracked by the webcam" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/handgesture">Project Details</a>
-<a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
+<a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/HandGesture" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     </div>
                                 </div>
                             </div>
@@ -604,7 +604,7 @@
                                     <img src="image/assets/briskwalk/logo_briswalk.png" alt="BriskWalk event identity" loading="lazy" decoding="async">
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/briskwalk">Project Details</a>
-<a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
+<a class="anone badge overlay-btn" href="https://github.com/rafiarsya07/BriskWalk" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     </div>
                                 </div>
                             </div>
