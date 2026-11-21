@@ -305,6 +305,30 @@
                 <div class="row">
                     <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
                         <div class="project-card d-flex align-items-center">
+                            <a href="/idfest" class="anone card-hitbox" aria-label="IDFEST 2026 Website, project details"></a>
+                            <div class="w100">
+                                <div class="project-header d-flex align-items-end justify-content-between">
+                                    <div class="project-title">IDFEST 2026 Website</div>
+                                    <div class="text-silent text14">2026</div>
+                                </div>
+                                <div class="text-silent project-desc">Official site for PPI UM's Indonesian cultural festival.</div>
+                                <div class="project-details">
+                                    <div class="hr0-10"></div>
+                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Next.js 16</span><span class="badge blog-badge badge-green">React 19</span><span class="badge blog-badge badge-purple">TypeScript</span><span class="badge blog-badge badge-orange">Tailwind CSS v4</span></div>
+                                </div>
+                                <div class="project-image-container">
+                                    <img src="image/assets/idfest/live-home-hero.jpg" alt="IDFEST 2026 homepage hero" loading="lazy" decoding="async">
+                                    <div class="image-overlay">
+                                        <a class="anone badge overlay-btn" href="/idfest">Project Details</a>
+                                        <a class="anone badge overlay-btn" href="https://idfest.ppiunimalaya.id/" target="_blank" rel="noopener noreferrer">Website</a>
+                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
+                        <div class="project-card d-flex align-items-center">
                             <a href="/papermind" class="anone card-hitbox" aria-label="PaperMind, project details"></a>
                             <div class="w100">
                                 <div class="project-header d-flex align-items-end justify-content-between">
@@ -416,30 +440,6 @@
                                     <div class="image-overlay">
                                         <a class="anone badge overlay-btn" href="/cropdisease">Project Details</a>
                                         <a class="anone badge overlay-btn" href="https://huggingface.co/spaces/rafiarsya/crop-disease-detector" target="_blank" rel="noopener noreferrer">Website</a>
-                                        <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-6 col-xl-4" style="margin-bottom: 25px;">
-                        <div class="project-card d-flex align-items-center">
-                            <a href="/idfest" class="anone card-hitbox" aria-label="IDFEST 2026 Website, project details"></a>
-                            <div class="w100">
-                                <div class="project-header d-flex align-items-end justify-content-between">
-                                    <div class="project-title">IDFEST 2026 Website</div>
-                                    <div class="text-silent text14">2026</div>
-                                </div>
-                                <div class="text-silent project-desc">Official site for PPI UM's Indonesian cultural festival.</div>
-                                <div class="project-details">
-                                    <div class="hr0-10"></div>
-                                    <div class="tech-stack"><span class="badge blog-badge badge-blue">Next.js 16</span><span class="badge blog-badge badge-green">React 19</span><span class="badge blog-badge badge-purple">TypeScript</span><span class="badge blog-badge badge-orange">Tailwind CSS v4</span></div>
-                                </div>
-                                <div class="project-image-container">
-                                    <img src="image/assets/idfest/live-home-hero.jpg" alt="IDFEST 2026 homepage hero" loading="lazy" decoding="async">
-                                    <div class="image-overlay">
-                                        <a class="anone badge overlay-btn" href="/idfest">Project Details</a>
-                                        <a class="anone badge overlay-btn" href="https://idfest.ppiunimalaya.id/" target="_blank" rel="noopener noreferrer">Website</a>
                                         <a class="anone badge overlay-btn" href="https://github.com/rafiarsya07?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
                                     </div>
                                 </div>

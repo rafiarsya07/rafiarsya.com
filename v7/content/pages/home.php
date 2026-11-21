@@ -111,18 +111,22 @@
             <p class="text-silent subtitle map-label" id="based-label">Petaling Jaya, Selangor, Malaysia</p>
         </div>
 
-        <div class="about-section xp-group">
-            <p class="text-silent xp-title">Education</p>
-            <ul class="xp-list">
-                <li class="xp-item">
-                    <img src="icon/UM.png" alt="Universiti Malaya" class="xp-logo" loading="lazy" />
-                    <div class="xp-body">
-                        <div class="xp-top"><p class="xp-role">Bachelor of Computer Science (Software Engineering)</p><span class="xp-year">2025 – now</span></div>
-                        <a class="xp-org textlink" href="https://study.um.edu.my/" target="_blank" rel="noopener noreferrer">Universiti Malaya<arrow-icon class="togo-icon"></arrow-icon></a>
-                        <p class="xp-desc">Year 2. Focus on full-stack development, data and software engineering.</p>
+        <div class="about-section">
+            <p class="text-silent">Education</p>
+            <div class="d-flex flex-wrap justify-content-between">
+                <div class="d-flex flex-wrap gap-2">
+                    <img src="icon/UM.png" alt="UM" class="education-image" />
+                    <div>
+                        <p><b>Bachelor of Computer Science</b></p>
+                        <a class="d-flex align-items-center gap-1 textlink" href="https://study.um.edu.my/"
+                            target="_blank">University of Malaya, Malaysia<arrow-icon class="togo-icon"
+                                style="margin-top: -1px;"></arrow-icon></a>
                     </div>
-                </li>
-            </ul>
+                </div>
+                <p class="text-silent">2025</p>
+            </div>
+            Bachelor of Computer Science with a <span class="markblue">Software Engineering</span> specialization,
+            focused on <span class="highlightv1">full-stack development</span> and applied problem-solving.
         </div>
         <br>
 

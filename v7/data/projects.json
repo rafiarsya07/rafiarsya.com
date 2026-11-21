@@ -249,6 +249,29 @@
         }
     },
     {
+        "slug": "idfest",
+        "title": "IDFEST 2026 Website",
+        "sub": "Official site for PPI UM's Indonesian cultural festival.",
+        "tags": [
+            "Next.js 16",
+            "React 19",
+            "TypeScript",
+            "Tailwind CSS v4",
+            "Static Export",
+            "Sharp"
+        ],
+        "cover": "image/assets/idfest/live-home-hero.jpg",
+        "section": "Completed",
+        "cards": 5,
+        "meta": {
+            "Status": "In Development",
+            "Year": "2026",
+            "Role": "Website Development Committee",
+            "Stack": "Next.js · Tailwind CSS",
+            "Team": "Collaborative Build"
+        }
+    },
+    {
         "slug": "papermind",
         "title": "PaperMind",
         "sub": "Chat with any PDF using a fully local RAG stack.",
@@ -360,29 +383,6 @@
             "Accuracy": "~97%",
             "Classes": "38 disease types",
             "Dataset": "87K+ images"
-        }
-    },
-    {
-        "slug": "idfest",
-        "title": "IDFEST 2026 Website",
-        "sub": "Official site for PPI UM's Indonesian cultural festival.",
-        "tags": [
-            "Next.js 16",
-            "React 19",
-            "TypeScript",
-            "Tailwind CSS v4",
-            "Static Export",
-            "Sharp"
-        ],
-        "cover": "image/assets/idfest/live-home-hero.jpg",
-        "section": "Completed",
-        "cards": 5,
-        "meta": {
-            "Status": "In Development",
-            "Year": "2026",
-            "Role": "Website Development Committee",
-            "Stack": "Next.js · Tailwind CSS",
-            "Team": "Collaborative Build"
         }
     },
     {
